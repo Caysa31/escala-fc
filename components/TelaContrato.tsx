@@ -1,0 +1,276 @@
+'use client'
+
+import { useState } from 'react'
+import {
+  Contrato,
+  Jogador,
+  MULTIPLICADORES_CONTRATO,
+  BONUS_DESEMPENHO,
+} from '@/lib/types'
+import {
+  assinarContrato,
+  resolverTrivia,
+  calcularBonusMaximo,
+  getContratosAtivos,
+} from '@/lib/contrato'
+import { FileText, Clock, CheckCircle, Trophy, Zap, X } from 'lucide-react'
+
+// ── Modal de assinatura do Contrato ──────────────────────────
+
+interface ModalContratoProps {
+  jogador: Jogador
+  rodadaId: number
+  pistaAcerto: number
+  onFechar: (contrato: Contrato) => void
+}
+
+export function ModalContrato({ jogador, rodadaId, pistaAcerto, onFechar }: ModalContratoProps) {
+  const [triviaResposta, setTriviaResposta] = useState<number | null>(null)
+  const [triviaResolvida, setTriviaResolvida] = useState(false)
+  const [bonusTrivia, setBonusTrivia] = useState(0)
+
+  const multiplicador = MULTIPLICADORES_CONTRATO[pistaAcerto]
+  const bonusMax = calcularBonusMaximo(multiplicador)
+  const contrato = assinarContrato(rodadaId, jogador, pistaAcerto)
+
+  function handleTrivia(indice: number) {
+    if (triviaResolvida) return
+    const acertou = indice === jogador.triviaContrato?.respostaCorreta
+    const resolvido = resolverTrivia(rodadaId, acertou)
+    setTriviaResposta(indice)
+    setTriviaResolvida(true)
+    setBonusTrivia(resolvido?.bonusTotal ?? 0)
+  }
+
+  function handleFechar() {
+    onFechar(contrato)
+  }
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+      <div className="bg-zinc-900 border border-zinc-700 rounded-2xl w-full max-w-sm p-6 space-y-5">
+
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <FileText size={20} className="text-yellow-400" />
+            <h2 className="text-lg font-bold text-white">
+              {jogador.lenda ? 'Contrato Histórico' : 'Contrato Assinado'}
+            </h2>
+          </div>
+          {(jogador.lenda ? triviaResolvida : true) && (
+            <button onClick={handleFechar} className="text-zinc-500 hover:text-white">
+              <X size={20} />
+            </button>
+          )}
+        </div>
+
+        {/* Jogador */}
+        <div className="flex items-center gap-3 bg-zinc-800 rounded-xl p-3">
+          <span className="text-3xl">{jogador.bandeira}</span>
+          <div>
+            <p className="font-bold text-white">{jogador.nome}</p>
+            <p className="text-zinc-400 text-xs">{jogador.clube}</p>
+          </div>
+          <div className="ml-auto text-right">
+            <p className="text-yellow-400 font-black text-xl">{multiplicador}×</p>
+            <p className="text-zinc-500 text-xs">multiplicador</p>
+          </div>
+        </div>
+
+        {/* Conteúdo por tipo */}
+        {jogador.lenda ? (
+          <TriviaContrato
+            jogador={jogador}
+            multiplicador={multiplicador}
+            triviaResposta={triviaResposta}
+            triviaResolvida={triviaResolvida}
+            bonusTrivia={bonusTrivia}
+            onResponder={handleTrivia}
+          />
+        ) : (
+          <ContratoNormal multiplicador={multiplicador} bonusMax={bonusMax} />
+        )}
+
+        {/* Botão fechar (se lenda e trivia resolvida, ou se não é lenda) */}
+        {(!jogador.lenda || triviaResolvida) && (
+          <button
+            onClick={handleFechar}
+            className="w-full bg-green-500 hover:bg-green-400 text-black font-bold rounded-xl py-3 transition-colors"
+          >
+            {jogador.lenda ? `Recebi +${bonusTrivia} pts` : 'Fechar'}
+          </button>
+        )}
+      </div>
+    </div>
+  )
+}
+
+// ── Contrato normal (jogador ativo) ───────────────────────────
+
+function ContratoNormal({ multiplicador, bonusMax }: { multiplicador: number; bonusMax: number }) {
+  return (
+    <div className="space-y-3">
+      <div className="bg-zinc-800 rounded-xl p-4 space-y-2">
+        <p className="text-zinc-300 text-sm font-semibold mb-3">Bônus pelo desempenho dele:</p>
+        <BonusRow emoji="🏃" label="Entrou em campo" pts={BONUS_DESEMPENHO.entrou} mult={multiplicador} />
+        <BonusRow emoji="⏱️" label="Jogou 70%+ do tempo" pts={BONUS_DESEMPENHO.jogou70} mult={multiplicador} />
+        <BonusRow emoji="🎯" label="Criou chance de gol" pts={BONUS_DESEMPENHO.criouChance} mult={multiplicador} />
+        <BonusRow emoji="⚽" label="Gol ou assistência" pts={BONUS_DESEMPENHO.golOuAssistencia} mult={multiplicador} />
+        <BonusRow emoji="🔥" label="Gol E assistência" pts={BONUS_DESEMPENHO.golEAssistencia} mult={multiplicador} />
+        <BonusRow emoji="⭐" label="Man of the Match" pts={BONUS_DESEMPENHO.motm} mult={multiplicador} />
+      </div>
+
+      <div className="flex items-center gap-2 bg-yellow-950 border border-yellow-800 rounded-xl p-3">
+        <Zap size={16} className="text-yellow-400" />
+        <p className="text-yellow-300 text-sm">
+          Potencial máximo: <span className="font-black">+{bonusMax} pts</span>
+        </p>
+      </div>
+
+      <div className="flex items-center gap-2 text-zinc-500 text-xs">
+        <Clock size={12} />
+        <span>Bônus calculado automaticamente após a partida dele</span>
+      </div>
+    </div>
+  )
+}
+
+function BonusRow({ emoji, label, pts, mult }: { emoji: string; label: string; pts: number; mult: number }) {
+  return (
+    <div className="flex items-center justify-between text-sm">
+      <span className="text-zinc-400">{emoji} {label}</span>
+      <span className="text-green-400 font-semibold">+{Math.round(pts * mult)}</span>
+    </div>
+  )
+}
+
+// ── Trivia para lendas ────────────────────────────────────────
+
+function TriviaContrato({
+  jogador,
+  multiplicador,
+  triviaResposta,
+  triviaResolvida,
+  bonusTrivia,
+  onResponder,
+}: {
+  jogador: Jogador
+  multiplicador: number
+  triviaResposta: number | null
+  triviaResolvida: boolean
+  bonusTrivia: number
+  onResponder: (i: number) => void
+}) {
+  const trivia = jogador.triviaContrato
+  if (!trivia) return null
+
+  const bonusSeAcertar = Math.round(80 * multiplicador)
+
+  return (
+    <div className="space-y-3">
+      <div className="bg-zinc-800 rounded-xl p-4">
+        <p className="text-zinc-300 text-sm font-semibold mb-3">Questão bônus:</p>
+        <p className="text-white text-base font-medium leading-snug mb-4">{trivia.pergunta}</p>
+
+        <div className="grid grid-cols-2 gap-2">
+          {trivia.opcoes.map((opcao, i) => {
+            let estilo = 'bg-zinc-700 text-white hover:bg-zinc-600'
+            if (triviaResolvida) {
+              if (i === trivia.respostaCorreta) estilo = 'bg-green-700 text-white'
+              else if (i === triviaResposta && triviaResposta !== trivia.respostaCorreta)
+                estilo = 'bg-red-800 text-white'
+              else estilo = 'bg-zinc-800 text-zinc-500'
+            }
+            return (
+              <button
+                key={i}
+                onClick={() => onResponder(i)}
+                disabled={triviaResolvida}
+                className={`rounded-xl py-3 px-2 font-semibold text-sm transition-all ${estilo}`}
+              >
+                {opcao}
+              </button>
+            )
+          })}
+        </div>
+      </div>
+
+      {!triviaResolvida && (
+        <div className="flex items-center gap-2 bg-yellow-950 border border-yellow-800 rounded-xl p-3">
+          <Zap size={16} className="text-yellow-400" />
+          <p className="text-yellow-300 text-sm">
+            Acerte e ganhe <span className="font-black">+{bonusSeAcertar} pts</span>
+          </p>
+        </div>
+      )}
+
+      {triviaResolvida && (
+        <div className={`flex items-center gap-2 rounded-xl p-3 ${bonusTrivia > 0 ? 'bg-green-950 border border-green-800' : 'bg-zinc-800'}`}>
+          {bonusTrivia > 0
+            ? <><CheckCircle size={16} className="text-green-400" /><p className="text-green-300 text-sm font-bold">+{bonusTrivia} pts ganhos!</p></>
+            : <><X size={16} className="text-zinc-400" /><p className="text-zinc-400 text-sm">Não acertou — sem bônus desta vez</p></>
+          }
+        </div>
+      )}
+    </div>
+  )
+}
+
+// ── Tela de Contratos Ativos ──────────────────────────────────
+
+interface TelaContratosAtivosProps {
+  onFechar: () => void
+}
+
+export function TelaContratosAtivos({ onFechar }: TelaContratosAtivosProps) {
+  const contratos = getContratosAtivos()
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+      <div className="bg-zinc-900 border border-zinc-700 rounded-2xl w-full max-w-sm max-h-[80vh] flex flex-col">
+        <div className="flex items-center justify-between p-5 border-b border-zinc-700">
+          <div className="flex items-center gap-2">
+            <FileText size={18} className="text-yellow-400" />
+            <h2 className="font-bold text-white">Contratos Ativos</h2>
+          </div>
+          <button onClick={onFechar} className="text-zinc-500 hover:text-white">
+            <X size={20} />
+          </button>
+        </div>
+
+        <div className="overflow-y-auto flex-1 p-4 space-y-3">
+          {contratos.length === 0 ? (
+            <div className="text-center py-8">
+              <p className="text-4xl mb-3">📋</p>
+              <p className="text-zinc-400">Nenhum contrato ativo</p>
+              <p className="text-zinc-600 text-xs mt-1">Acerte o jogador do dia para assinar um</p>
+            </div>
+          ) : (
+            contratos.map(c => (
+              <div key={c.id} className="bg-zinc-800 rounded-xl p-4">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-2xl">{c.bandeira}</span>
+                  <div className="flex-1">
+                    <p className="font-bold text-white text-sm">{c.nomeJogador}</p>
+                    <p className="text-zinc-400 text-xs">{c.clube}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-yellow-400 font-black">{c.multiplicador}×</p>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between text-xs text-zinc-500">
+                  <div className="flex items-center gap-1">
+                    <Clock size={12} />
+                    <span>Aguardando partida</span>
+                  </div>
+                  <span className="text-green-400">até +{calcularBonusMaximo(c.multiplicador)} pts</span>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}

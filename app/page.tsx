@@ -1,65 +1,318 @@
-import Image from "next/image";
+'use client'
+
+import { useState, useEffect } from 'react'
+import {
+  Perfil, Tentativa, EstadoJogo,
+  PONTOS_BASE, TOTAL_PISTAS, TIPO_PISTAS,
+} from '@/lib/types'
+import {
+  getJogadorDoDia, getPistasTexto, getTipoPista,
+  verificarPalpite, calcularPontos,
+} from '@/lib/game'
+import { carregarPerfil, registrarResultado, getResultadoRodada } from '@/lib/perfil'
+import { assinarContrato, getContratoRodada, getContratosAtivos } from '@/lib/contrato'
+
+import TelaPerfil, { StatsPerfil } from '@/components/TelaPerfil'
+import Pista from '@/components/Pista'
+import PistaMedia from '@/components/PistaMedia'
+import InputPalpite from '@/components/InputPalpite'
+import ListaTentativas from '@/components/ListaTentativas'
+import TelaResultado from '@/components/TelaResultado'
+import { ModalContrato, TelaContratosAtivos } from '@/components/TelaContrato'
+import { Flame, FileText, Globe, Users } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Home() {
+  const [perfil, setPerfil] = useState<Perfil | null>(null)
+  const [carregado, setCarregado] = useState(false)
+  const [mostrarResultado, setMostrarResultado] = useState(false)
+  const [mostrarContrato, setMostrarContrato] = useState(false)
+  const [mostrarContratosAtivos, setMostrarContratosAtivos] = useState(false)
+  const [qtdContratosAtivos, setQtdContratosAtivos] = useState(0)
+
+  const { jogador, rodadaId } = getJogadorDoDia()
+  const pistasTexto = getPistasTexto(jogador)
+
+  const [estado, setEstado] = useState<EstadoJogo>({
+    pistaAtual: 1,
+    tentativas: [],
+    status: 'jogando',
+    pistaUsada: null,
+  })
+
+  useEffect(() => {
+    const p = carregarPerfil()
+    setPerfil(p)
+
+    if (p) {
+      const resultado = getResultadoRodada(rodadaId)
+      if (resultado) {
+        setEstado({
+          pistaAtual: resultado.pistaAcerto ?? TOTAL_PISTAS,
+          tentativas: resultado.tentativas,
+          status: resultado.pistaAcerto !== null ? 'ganhou' : 'perdeu',
+          pistaUsada: resultado.pistaAcerto,
+        })
+      }
+    }
+
+    setQtdContratosAtivos(getContratosAtivos().length)
+    setCarregado(true)
+  }, [rodadaId])
+
+  function handlePalpite(nome: string) {
+    if (estado.status !== 'jogando') return
+
+    const acertou = verificarPalpite(nome, jogador)
+    const novaTentativa: Tentativa = { nome, status: acertou ? 'acerto' : 'erro' }
+    const novasTentativas = [...estado.tentativas, novaTentativa]
+
+    if (acertou) {
+      const pontos = calcularPontos(estado.pistaAtual)
+      const novoEstado: EstadoJogo = {
+        ...estado,
+        tentativas: novasTentativas,
+        status: 'ganhou',
+        pistaUsada: estado.pistaAtual,
+      }
+      setEstado(novoEstado)
+
+      if (perfil) {
+        const perfilAtualizado = registrarResultado(perfil, {
+          rodadaId,
+          jogadorId: jogador.id,
+          pistaAcerto: estado.pistaAtual,
+          pontos,
+          tentativas: novasTentativas,
+        })
+        setPerfil(perfilAtualizado)
+      }
+
+      // Mostrar contrato imediatamente após acertar
+      setMostrarContrato(true)
+
+    } else {
+      const novaPista = estado.pistaAtual + 1
+      const acabou = novaPista > TOTAL_PISTAS
+
+      const novoEstado: EstadoJogo = {
+        ...estado,
+        tentativas: novasTentativas,
+        pistaAtual: acabou ? TOTAL_PISTAS : novaPista,
+        status: acabou ? 'perdeu' : 'jogando',
+        pistaUsada: null,
+      }
+      setEstado(novoEstado)
+
+      if (acabou) {
+        setMostrarResultado(true)
+        if (perfil) {
+          const perfilAtualizado = registrarResultado(perfil, {
+            rodadaId,
+            jogadorId: jogador.id,
+            pistaAcerto: null,
+            pontos: 0,
+            tentativas: novasTentativas,
+          })
+          setPerfil(perfilAtualizado)
+        }
+      }
+    }
+  }
+
+  if (!carregado) {
+    return (
+      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
+        <div className="text-zinc-500 animate-pulse text-lg">⚽ Carregando...</div>
+      </div>
+    )
+  }
+
+  if (!perfil) {
+    return <TelaPerfil onCriar={p => setPerfil(p)} />
+  }
+
+  const pontosRodada = estado.pistaUsada ? calcularPontos(estado.pistaUsada) : 0
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main className="min-h-screen bg-zinc-950 text-white">
+      <div className="max-w-md mx-auto px-4 py-6 space-y-4">
+
+        {/* Header */}
+        <header className="flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-black tracking-tight">⚽ ESCALA FC</h1>
+            <p className="text-zinc-500 text-xs">
+              Rodada #{rodadaId} · {new Date().toLocaleDateString('pt-BR', {
+                weekday: 'long', day: 'numeric', month: 'long',
+              })}
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            {/* Contratos ativos */}
+            {qtdContratosAtivos > 0 && (
+              <button
+                onClick={() => setMostrarContratosAtivos(true)}
+                className="relative flex items-center gap-1 bg-yellow-950 border border-yellow-800 rounded-xl px-3 py-2"
+              >
+                <FileText size={15} className="text-yellow-400" />
+                <span className="text-yellow-300 font-bold text-sm">{qtdContratosAtivos}</span>
+              </button>
+            )}
+            {/* Streak */}
+            <div className="flex items-center gap-1 bg-zinc-800 rounded-xl px-3 py-2">
+              <Flame size={16} className="text-orange-400" />
+              <span className="font-bold text-sm">{perfil.streakAtual}</span>
+            </div>
+          </div>
+        </header>
+
+        {/* Stats */}
+        <StatsPerfil perfil={perfil} />
+
+        {/* Status da rodada */}
+        {estado.status === 'jogando' && (
+          <div className="bg-zinc-800 rounded-xl px-4 py-3 text-center">
+            <p className="text-sm text-zinc-300">
+              Pista{' '}
+              <span className="text-green-400 font-bold">{estado.pistaAtual}</span>
+              {' '}de {TOTAL_PISTAS} · Vale{' '}
+              <span className="text-yellow-400 font-bold">{PONTOS_BASE[estado.pistaAtual]} pts</span>
+            </p>
+          </div>
+        )}
+
+        {estado.status === 'ganhou' && (
+          <div className="bg-green-950 border border-green-700 rounded-xl px-4 py-3 text-center">
+            <p className="text-green-300 font-bold">
+              🎯 Acertou na pista {estado.pistaUsada}! +{pontosRodada} pts
+            </p>
+            <button
+              onClick={() => setMostrarResultado(true)}
+              className="text-green-500 text-xs underline mt-1"
+            >
+              Ver resultado e compartilhar
+            </button>
+          </div>
+        )}
+
+        {estado.status === 'perdeu' && (
+          <div className="bg-red-950 border border-red-900 rounded-xl px-4 py-3 text-center">
+            <p className="text-red-300 font-bold">
+              Era <span className="text-white">{jogador.nome}</span> {jogador.bandeira}
+            </p>
+            <button
+              onClick={() => setMostrarResultado(true)}
+              className="text-red-400 text-xs underline mt-1"
+            >
+              Ver resultado e compartilhar
+            </button>
+          </div>
+        )}
+
+        {/* ── Pistas ── */}
+        <div className="space-y-2">
+          {Array.from({ length: TOTAL_PISTAS }, (_, i) => i + 1).map(num => {
+            const tipo = getTipoPista(num)
+            const revelada = num <= estado.pistaAtual
+            const atual = num === estado.pistaAtual && estado.status === 'jogando'
+
+            if (tipo !== 'texto') {
+              return (
+                <PistaMedia
+                  key={num}
+                  numero={num}
+                  tipo={tipo}
+                  jogador={jogador}
+                  revelada={revelada}
+                  atual={atual}
+                />
+              )
+            }
+
+            return (
+              <Pista
+                key={num}
+                numero={num}
+                texto={pistasTexto[num] ?? ''}
+                revelada={revelada}
+                atual={atual}
+              />
+            )
+          })}
+        </div>
+
+        {/* Input */}
+        {estado.status === 'jogando' && (
+          <InputPalpite
+            onPalpite={handlePalpite}
+            desabilitado={false}
+            tentativasAnteriores={estado.tentativas.map(t => t.nome)}
+          />
+        )}
+
+        {/* Tentativas */}
+        <ListaTentativas tentativas={estado.tentativas} />
+
+        {/* Código de recuperação */}
+        <div className="bg-zinc-900 border border-zinc-700 rounded-xl p-3 text-center">
+          <p className="text-zinc-500 text-xs">Código de recuperação:</p>
+          <p className="text-zinc-300 font-mono font-bold text-sm mt-1">{perfil.codigo}</p>
+          <p className="text-zinc-600 text-xs mt-1">Use em outro dispositivo para recuperar seu progresso</p>
+        </div>
+
+        {/* Navegação */}
+        <nav className="flex gap-2">
+          <Link
+            href="/ranking"
+            className="flex-1 flex items-center justify-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white text-sm font-semibold py-3 rounded-xl transition-all"
+          >
+            <Globe size={16} className="text-green-400" />
+            Ranking Global
+          </Link>
+          <Link
+            href="/grupos"
+            className="flex-1 flex items-center justify-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white text-sm font-semibold py-3 rounded-xl transition-all"
+          >
+            <Users size={16} className="text-green-400" />
+            Grupos
+          </Link>
+        </nav>
+
+      </div>
+
+      {/* ── Modais ── */}
+
+      {/* Contrato (aparece após acertar) */}
+      {mostrarContrato && estado.pistaUsada && (
+        <ModalContrato
+          jogador={jogador}
+          rodadaId={rodadaId}
+          pistaAcerto={estado.pistaUsada}
+          onFechar={() => {
+            setMostrarContrato(false)
+            setMostrarResultado(true)
+            setQtdContratosAtivos(getContratosAtivos().length)
+          }}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+      )}
+
+      {/* Resultado + compartilhar */}
+      {mostrarResultado && !mostrarContrato && (
+        <TelaResultado
+          jogador={jogador}
+          rodadaId={rodadaId}
+          pistaAcerto={estado.pistaUsada}
+          pontos={pontosRodada}
+          tentativas={estado.tentativas}
+          onFechar={() => setMostrarResultado(false)}
+        />
+      )}
+
+      {/* Lista de contratos ativos */}
+      {mostrarContratosAtivos && (
+        <TelaContratosAtivos onFechar={() => setMostrarContratosAtivos(false)} />
+      )}
+    </main>
+  )
 }
