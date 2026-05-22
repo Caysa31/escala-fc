@@ -6,7 +6,7 @@ import {
   PONTOS_BASE, TOTAL_PISTAS, TIPO_PISTAS,
 } from '@/lib/types'
 import {
-  getJogadorDoDia, getPistasTexto,
+  getJogadorDoDia, getPistasTexto, getIntroNarrativa,
   verificarPalpite, calcularPontos,
 } from '@/lib/game'
 import { carregarPerfil, registrarResultado, getResultadoRodada } from '@/lib/perfil'
@@ -31,6 +31,7 @@ export default function Home() {
 
   const { jogador, rodadaId } = getJogadorDoDia()
   const pistasTexto = getPistasTexto(jogador)
+  const introNarrativa = getIntroNarrativa(jogador)
 
   const [estado, setEstado] = useState<EstadoJogo>({
     pistaAtual: 1,
@@ -208,6 +209,16 @@ export default function Home() {
             </button>
           </div>
         )}
+
+        {/* ── Intro narrativa ── */}
+        <div className="bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-4">
+          <p className="text-xs text-zinc-500 uppercase font-semibold tracking-widest mb-2">
+            ⚡ Jogador do dia
+          </p>
+          <p className="text-zinc-200 text-sm leading-relaxed italic">
+            "{introNarrativa}"
+          </p>
+        </div>
 
         {/* ── Pistas ── */}
         <div className="space-y-2">

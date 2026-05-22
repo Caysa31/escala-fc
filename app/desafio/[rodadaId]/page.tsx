@@ -6,7 +6,7 @@ import {
   PONTOS_BASE, TOTAL_PISTAS,
 } from '@/lib/types'
 import {
-  getPistasTexto,
+  getPistasTexto, getIntroNarrativa,
   verificarPalpite, calcularPontos,
   gerarTextoCompartilhar,
 } from '@/lib/game'
@@ -35,6 +35,7 @@ export default function DesafioPage({ params }: { params: Promise<{ rodadaId: st
   const rodadaId = parseInt(rodadaIdStr, 10)
   const jogador = getJogadorDaRodada(rodadaId)
   const pistasTexto = getPistasTexto(jogador)
+  const introNarrativa = getIntroNarrativa(jogador)
 
   const [perfil, setPerfil] = useState<Perfil | null>(null)
   const [copiado, setCopiado] = useState(false)
@@ -130,6 +131,16 @@ export default function DesafioPage({ params }: { params: Promise<{ rodadaId: st
             </p>
           </div>
         )}
+
+        {/* Intro narrativa */}
+        <div className="bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-4">
+          <p className="text-xs text-zinc-500 uppercase font-semibold tracking-widest mb-2">
+            ⚡ Quem é esse jogador?
+          </p>
+          <p className="text-zinc-200 text-sm leading-relaxed italic">
+            "{introNarrativa}"
+          </p>
+        </div>
 
         {/* Pistas */}
         <div className="space-y-2">

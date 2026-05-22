@@ -16,7 +16,50 @@ export function getJogadorDoDia(): { jogador: Jogador; rodadaId: number } {
 }
 
 /**
- * Retorna as 6 pistas de texto de um jogador.
+ * Gera o parágrafo de introdução narrativa do jogador do dia.
+ * Aparece antes das pistas — serve de gancho dramático.
+ */
+export function getIntroNarrativa(jogador: Jogador): string {
+  const ligaLabel = jogador.liga === 'Brasileirão' ? 'no Brasileirão'
+    : jogador.liga === 'Premier League' ? 'na Premier League'
+    : jogador.liga === 'La Liga' ? 'na La Liga'
+    : jogador.liga === 'Bundesliga' ? 'na Bundesliga'
+    : jogador.liga === 'Serie A' ? 'na Serie A'
+    : jogador.liga === 'Ligue 1' ? 'na Ligue 1'
+    : `na ${jogador.liga}`
+
+  const temTitulos = jogador.titulos.length > 0
+  const eLenda = jogador.lenda === true
+
+  if (eLenda && temTitulos) {
+    return `Uma lenda. Um nome gravado na história do futebol. ${jogador.titulos.slice(0, 2).join(' e ')} estão entre as conquistas de quem marcou uma geração. Você consegue adivinhar quem é?`
+  }
+
+  if (eLenda) {
+    return `Um nome que dispensaria apresentações. Uma carreira que atravessou gerações e deixou marca onde passou. Você ainda se lembra de quem é?`
+  }
+
+  if (temTitulos && jogador.dificuldade === 'dificil') {
+    return `Campeão. Vencedor. Um dos jogadores mais decisivos ${ligaLabel} nos últimos anos. Mas será que você sabe o nome por trás das taças?`
+  }
+
+  if (temTitulos) {
+    return `Títulos no currículo e prestígio na chuteira. Este jogador já ergueu troféus e continua sendo peça-chave ${ligaLabel}. Você sabe quem é?`
+  }
+
+  if (jogador.dificuldade === 'dificil') {
+    return `Nem todo herói tem holofotes. Este jogador é decisivo, temido pelos adversários e ainda assim pouco falado fora do seu país. Prove que você conhece o futebol de verdade.`
+  }
+
+  if (jogador.dificuldade === 'medio') {
+    return `Um nome que está em alta ${ligaLabel}. Aparece nas manchetes, rouba a cena e agita a torcida. Você acompanhou o futebol essa temporada?`
+  }
+
+  return `Um jogador que está entre os mais conhecidos do futebol mundial. Mas nem todo mundo sabe tudo sobre ele. Quantas pistas você vai precisar?`
+}
+
+/**
+ * Retorna as 6 pistas de texto de um jogador — escritas como frases narrativas.
  * Progressão: pista 1 é a mais difícil, pista 6 é a mais fácil.
  */
 export function getPistasTexto(jogador: Jogador): Record<number, string> {
@@ -25,7 +68,7 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
   const censurar = (texto: string) =>
     texto.replace(new RegExp(primeiroNome, 'gi'), '???')
 
-  // Pista 1 — Liga e posição genérica (mais difícil)
+  // Pista 1 — Liga e posição (dramática, sem revelar muito)
   const ligaLabel = jogador.liga === 'Brasileirão' ? 'Brasileirão Série A'
     : jogador.liga === 'Premier League' ? 'Premier League 🏴󠁧󠁢󠁥󠁮󠁧󠁿'
     : jogador.liga === 'La Liga' ? 'La Liga 🇪🇸'
@@ -34,32 +77,48 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
     : jogador.liga === 'Ligue 1' ? 'Ligue 1 🇫🇷'
     : jogador.liga
 
-  const pista1 = `Joga na ${ligaLabel} como ${jogador.posicao}`
+  const posicaoFrase: Record<string, string> = {
+    'Goleiro':          'Entre os postes, é quase intransponível',
+    'Zagueiro':         'Na zaga, impõe respeito e barra os melhores ataques',
+    'Lateral-direito':  'Pelo lado direito, atacar e defender são a mesma coisa',
+    'Lateral-esquerdo': 'Pelo lado esquerdo, domina o corredor com velocidade',
+    'Volante':          'No meio, destrói jogadas antes que elas existam',
+    'Meia':             'No centro do campo, organiza, cria e decide quando a partida pede',
+    'Meia-atacante':    'Entre a criação e o gol, habita um território que poucos dominam',
+    'Ponta-direita':    'Pela direita, arranca, encaro e deixa o defensor no retrovisor',
+    'Ponta-esquerda':   'Pela esquerda, é um pesadelo para qualquer lateral do mundo',
+    'Atacante':         'No ataque, vive para uma coisa só: a rede balançar',
+    'Centroavante':     'Na área, é a referência que toda torcida quer e todo defensor teme',
+  }
+  const posicaoTexto = posicaoFrase[jogador.posicao] ?? `Atua como ${jogador.posicao}`
+  const pista1 = `${posicaoTexto} — e faz isso pela ${ligaLabel}.`
 
-  // Pista 2 — Faixa etária e continente/região de origem
+  // Pista 2 — Faixa etária e origem (com narrativa)
   const continente = ['Brasileiro', 'Argentino', 'Uruguaio', 'Colombiano',
     'Chileno', 'Paraguaio', 'Venezuelano', 'Equatoriano', 'Peruano'].includes(jogador.nacionalidade)
-    ? 'Sul-americano'
+    ? 'Nasceu na América do Sul'
     : ['Espanhol', 'Francês', 'Alemão', 'Italiano', 'Português', 'Inglês',
        'Belga', 'Holandês', 'Croata', 'Sérvio'].includes(jogador.nacionalidade)
-    ? 'Europeu'
-    : 'da América'
+    ? 'Formado no futebol europeu'
+    : 'Vem de outro continente'
 
-  const pista2 = `${continente} · Faixa etária: ${jogador.faixaEtaria} anos`
+  const pista2 = `${continente}, tem entre ${jogador.faixaEtaria} anos. Uma carreira que já tem história para contar.`
 
-  // Pista 3 — Títulos (sem revelar clube se aparecer na lista)
-  const pista3 = jogador.titulos.length > 0
-    ? `Títulos: ${jogador.titulos.slice(0, 3).join(' · ')}`
-    : 'Ainda sem títulos expressivos na carreira'
+  // Pista 3 — Títulos (narrativa de conquistas)
+  const pista3 = jogador.titulos.length >= 3
+    ? `No palmarès: ${jogador.titulos.slice(0, 3).join(', ')}. Não é alguém que está acostumado a perder.`
+    : jogador.titulos.length > 0
+    ? `Conquistou: ${jogador.titulos.join(', ')}. Cada título, uma história.`
+    : `Ainda sem grandes troféus — mas a carreira está longe do fim. A fome de vencer segue intacta.`
 
-  // Pista 4 — Nacionalidade completa + posição detalhada
-  const pista4 = `${jogador.bandeira} ${jogador.nacionalidade} · ${jogador.posicao}`
+  // Pista 4 — Nacionalidade + posição (mais direta)
+  const pista4 = `${jogador.bandeira} ${jogador.nacionalidade} de nascimento. Em campo, ocupa o posto de ${jogador.posicao}.`
 
   // Pista 5 — Curiosidade (com nome censurado)
   const pista5 = censurar(jogador.curiosidade)
 
-  // Pista 6 — Clube (mais fácil)
-  const pista6 = `Defende o ${jogador.clube} atualmente`
+  // Pista 6 — Clube (a mais fácil)
+  const pista6 = `Hoje defende as cores do ${jogador.clube}. Se chegou até aqui sem acertar, chegou a hora.`
 
   return { 1: pista1, 2: pista2, 3: pista3, 4: pista4, 5: pista5, 6: pista6 }
 }
