@@ -16,21 +16,55 @@ export function getJogadorDoDia(): { jogador: Jogador; rodadaId: number } {
 }
 
 /**
- * Retorna as pistas de um jogador.
- * Pistas 1-3 são mídia (o componente PistaMedia cuida da exibição).
- * Pistas 4-6 são texto.
+ * Retorna as 6 pistas de texto de um jogador.
+ * Progressão: pista 1 é a mais difícil, pista 6 é a mais fácil.
  */
 export function getPistasTexto(jogador: Jogador): Record<number, string> {
-  return {
-    4: `${jogador.posicao.toUpperCase()}  ·  ${jogador.bandeira} ${jogador.nacionalidade}`,
-    5: jogador.titulos.length > 0
-      ? jogador.titulos.slice(0, 3).join('  ·  ')
-      : 'Sem títulos expressivos ainda',
-    6: jogador.curiosidade.replace(new RegExp(jogador.nome.split(' ')[0], 'gi'), '???'),
-  }
+  // Remove o nome do jogador de qualquer pista que possa revelá-lo
+  const primeiroNome = jogador.nome.split(' ')[0]
+  const censurar = (texto: string) =>
+    texto.replace(new RegExp(primeiroNome, 'gi'), '???')
+
+  // Pista 1 — Liga e posição genérica (mais difícil)
+  const ligaLabel = jogador.liga === 'Brasileirão' ? 'Brasileirão Série A'
+    : jogador.liga === 'Premier League' ? 'Premier League 🏴󠁧󠁢󠁥󠁮󠁧󠁿'
+    : jogador.liga === 'La Liga' ? 'La Liga 🇪🇸'
+    : jogador.liga === 'Bundesliga' ? 'Bundesliga 🇩🇪'
+    : jogador.liga === 'Serie A' ? 'Serie A 🇮🇹'
+    : jogador.liga === 'Ligue 1' ? 'Ligue 1 🇫🇷'
+    : jogador.liga
+
+  const pista1 = `Joga na ${ligaLabel} como ${jogador.posicao}`
+
+  // Pista 2 — Faixa etária e continente/região de origem
+  const continente = ['Brasileiro', 'Argentino', 'Uruguaio', 'Colombiano',
+    'Chileno', 'Paraguaio', 'Venezuelano', 'Equatoriano', 'Peruano'].includes(jogador.nacionalidade)
+    ? 'Sul-americano'
+    : ['Espanhol', 'Francês', 'Alemão', 'Italiano', 'Português', 'Inglês',
+       'Belga', 'Holandês', 'Croata', 'Sérvio'].includes(jogador.nacionalidade)
+    ? 'Europeu'
+    : 'da América'
+
+  const pista2 = `${continente} · Faixa etária: ${jogador.faixaEtaria} anos`
+
+  // Pista 3 — Títulos (sem revelar clube se aparecer na lista)
+  const pista3 = jogador.titulos.length > 0
+    ? `Títulos: ${jogador.titulos.slice(0, 3).join(' · ')}`
+    : 'Ainda sem títulos expressivos na carreira'
+
+  // Pista 4 — Nacionalidade completa + posição detalhada
+  const pista4 = `${jogador.bandeira} ${jogador.nacionalidade} · ${jogador.posicao}`
+
+  // Pista 5 — Curiosidade (com nome censurado)
+  const pista5 = censurar(jogador.curiosidade)
+
+  // Pista 6 — Clube (mais fácil)
+  const pista6 = `Defende o ${jogador.clube} atualmente`
+
+  return { 1: pista1, 2: pista2, 3: pista3, 4: pista4, 5: pista5, 6: pista6 }
 }
 
-/** Tipo de cada pista (video / imagem / escudo / texto) */
+/** Tipo de cada pista — todas texto */
 export function getTipoPista(numero: number): TipoPista {
   return TIPO_PISTAS[numero] ?? 'texto'
 }

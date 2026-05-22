@@ -6,7 +6,7 @@ import {
   PONTOS_BASE, TOTAL_PISTAS,
 } from '@/lib/types'
 import {
-  getPistasTexto, getTipoPista,
+  getPistasTexto,
   verificarPalpite, calcularPontos,
   gerarTextoCompartilhar,
 } from '@/lib/game'
@@ -15,7 +15,6 @@ import jogadoresData from '@/data/jogadores.json'
 import { Jogador } from '@/lib/types'
 
 import Pista from '@/components/Pista'
-import PistaMedia from '@/components/PistaMedia'
 import InputPalpite from '@/components/InputPalpite'
 import ListaTentativas from '@/components/ListaTentativas'
 import { Copy, Check, Share2, ArrowLeft } from 'lucide-react'
@@ -134,16 +133,15 @@ export default function DesafioPage({ params }: { params: Promise<{ rodadaId: st
 
         {/* Pistas */}
         <div className="space-y-2">
-          {Array.from({ length: TOTAL_PISTAS }, (_, i) => i + 1).map(num => {
-            const tipo = getTipoPista(num)
-            const revelada = num <= estado.pistaAtual
-            const atual = num === estado.pistaAtual && estado.status === 'jogando'
-
-            if (tipo !== 'texto') {
-              return <PistaMedia key={num} numero={num} tipo={tipo} jogador={jogador} revelada={revelada} atual={atual} />
-            }
-            return <Pista key={num} numero={num} texto={pistasTexto[num] ?? ''} revelada={revelada} atual={atual} />
-          })}
+          {Array.from({ length: TOTAL_PISTAS }, (_, i) => i + 1).map(num => (
+            <Pista
+              key={num}
+              numero={num}
+              texto={pistasTexto[num] ?? ''}
+              revelada={num <= estado.pistaAtual}
+              atual={num === estado.pistaAtual && estado.status === 'jogando'}
+            />
+          ))}
         </div>
 
         {/* Input */}

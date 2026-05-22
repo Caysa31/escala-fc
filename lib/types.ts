@@ -14,11 +14,6 @@ export interface Jogador {
   faixaEtaria: string
   lenda?: boolean
 
-  // Mídia das pistas 1 e 2 (geradas pelo builder_escala.py)
-  // Null = ainda não processado → mostra placeholder
-  silhuetaUrl?: string | null   // Pista 1: vídeo de silhueta
-  fotoBlurUrl?: string | null   // Pista 2: foto com blur
-
   // Trivia para Contrato Histórico (lendas)
   triviaContrato?: {
     pergunta: string
@@ -131,21 +126,21 @@ export const TOTAL_PISTAS = 6
 
 // Labels visuais de cada pista
 export const LABEL_PISTAS: Record<number, string> = {
-  1: 'Silhueta',
-  2: 'Foto',
-  3: 'Escudo do Clube',
-  4: 'Posição & Nacionalidade',
-  5: 'Títulos',
-  6: 'Curiosidade',
+  1: 'Liga & Perfil',
+  2: 'Idade & Origem',
+  3: 'Conquistas',
+  4: 'Carreira',
+  5: 'Fato',
+  6: 'Clube',
 }
 
-// Tipo de pista (mídia ou texto)
-export type TipoPista = 'video' | 'imagem' | 'escudo' | 'texto'
+// Tipo de pista — todas texto por enquanto
+export type TipoPista = 'texto'
 
 export const TIPO_PISTAS: Record<number, TipoPista> = {
-  1: 'video',
-  2: 'imagem',
-  3: 'escudo',
+  1: 'texto',
+  2: 'texto',
+  3: 'texto',
   4: 'texto',
   5: 'texto',
   6: 'texto',

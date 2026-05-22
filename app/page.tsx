@@ -6,7 +6,7 @@ import {
   PONTOS_BASE, TOTAL_PISTAS, TIPO_PISTAS,
 } from '@/lib/types'
 import {
-  getJogadorDoDia, getPistasTexto, getTipoPista,
+  getJogadorDoDia, getPistasTexto,
   verificarPalpite, calcularPontos,
 } from '@/lib/game'
 import { carregarPerfil, registrarResultado, getResultadoRodada } from '@/lib/perfil'
@@ -14,7 +14,6 @@ import { assinarContrato, getContratoRodada, getContratosAtivos } from '@/lib/co
 
 import TelaPerfil, { StatsPerfil } from '@/components/TelaPerfil'
 import Pista from '@/components/Pista'
-import PistaMedia from '@/components/PistaMedia'
 import InputPalpite from '@/components/InputPalpite'
 import ListaTentativas from '@/components/ListaTentativas'
 import TelaResultado from '@/components/TelaResultado'
@@ -213,23 +212,8 @@ export default function Home() {
         {/* ── Pistas ── */}
         <div className="space-y-2">
           {Array.from({ length: TOTAL_PISTAS }, (_, i) => i + 1).map(num => {
-            const tipo = getTipoPista(num)
             const revelada = num <= estado.pistaAtual
             const atual = num === estado.pistaAtual && estado.status === 'jogando'
-
-            if (tipo !== 'texto') {
-              return (
-                <PistaMedia
-                  key={num}
-                  numero={num}
-                  tipo={tipo}
-                  jogador={jogador}
-                  revelada={revelada}
-                  atual={atual}
-                />
-              )
-            }
-
             return (
               <Pista
                 key={num}
