@@ -8,9 +8,15 @@
     "clube": "Flamengo",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Copa do Brasil", "Libertadores", "Brasileirão"],
+    "titulos": [
+      "Copa do Brasil",
+      "Libertadores",
+      "Brasileirão"
+    ],
     "curiosidade": "Retornou ao Flamengo por €42M vindo do West Ham — maior valor já pago por um clube brasileiro",
-    "faixaEtaria": "26-30"
+    "faixaEtaria": "26-30",
+    "fotoBlurUrl": "/players/1/foto-blur.jpg",
+    "silhuetaUrl": "/players/1/silhueta.mp4"
   },
   {
     "id": 2,
@@ -21,9 +27,15 @@
     "clube": "Flamengo",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Libertadores", "Brasileirão", "Copa do Brasil"],
+    "titulos": [
+      "Libertadores",
+      "Brasileirão",
+      "Copa do Brasil"
+    ],
     "curiosidade": "Camisa 14 do Flamengo, considerado um dos melhores meias da América do Sul dos últimos anos",
-    "faixaEtaria": "28-32"
+    "faixaEtaria": "28-32",
+    "fotoBlurUrl": "/players/2/foto-blur.jpg",
+    "silhuetaUrl": "/players/2/silhueta.mp4"
   },
   {
     "id": 3,
@@ -34,9 +46,15 @@
     "clube": "Flamengo",
     "liga": "Brasileirão",
     "dificuldade": "facil",
-    "titulos": ["Libertadores", "Brasileirão", "Copa do Brasil"],
+    "titulos": [
+      "Libertadores",
+      "Brasileirão",
+      "Copa do Brasil"
+    ],
     "curiosidade": "Artilheiro do Flamengo, um dos centroavantes mais letais do Brasil com forte presença aérea",
-    "faixaEtaria": "26-30"
+    "faixaEtaria": "26-30",
+    "fotoBlurUrl": "/players/3/foto-blur.jpg",
+    "silhuetaUrl": "/players/3/silhueta.mp4"
   },
   {
     "id": 4,
@@ -47,9 +65,14 @@
     "clube": "Corinthians",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Copa do Brasil", "Campeonato Brasileiro"],
+    "titulos": [
+      "Copa do Brasil",
+      "Campeonato Brasileiro"
+    ],
     "curiosidade": "Revelação das categorias de base do Corinthians, foi convocado para a Seleção Brasileira com apenas 21 anos",
-    "faixaEtaria": "18-22"
+    "faixaEtaria": "18-22",
+    "fotoBlurUrl": "/players/4/foto-blur.jpg",
+    "silhuetaUrl": "/players/4/silhueta.mp4"
   },
   {
     "id": 5,
@@ -60,9 +83,13 @@
     "clube": "Corinthians",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Copa do Brasil"],
+    "titulos": [
+      "Copa do Brasil"
+    ],
     "curiosidade": "Artilheiro do Corinthians, passou por Zenit e Internacional antes de se firmar no Timão",
-    "faixaEtaria": "22-26"
+    "faixaEtaria": "22-26",
+    "fotoBlurUrl": "/players/5/foto-blur.jpg",
+    "silhuetaUrl": "/players/5/silhueta.mp4"
   },
   {
     "id": 6,
@@ -73,9 +100,13 @@
     "clube": "Corinthians",
     "liga": "Brasileirão",
     "dificuldade": "dificil",
-    "titulos": ["Copa do Brasil"],
+    "titulos": [
+      "Copa do Brasil"
+    ],
     "curiosidade": "Camisa 10 argentino do Corinthians, considerado o principal criador de jogadas do Timão",
-    "faixaEtaria": "26-30"
+    "faixaEtaria": "26-30",
+    "fotoBlurUrl": "/players/6/foto-blur.jpg",
+    "silhuetaUrl": "/players/6/silhueta.mp4"
   },
   {
     "id": 7,
@@ -86,9 +117,14 @@
     "clube": "São Paulo",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Copa do Brasil", "Copa Sul-Americana"],
+    "titulos": [
+      "Copa do Brasil",
+      "Copa Sul-Americana"
+    ],
     "curiosidade": "Capitão e artilheiro histórico do São Paulo, ídolo da torcida tricolor desde 2022",
-    "faixaEtaria": "30-35"
+    "faixaEtaria": "30-35",
+    "fotoBlurUrl": "/players/7/foto-blur.jpg",
+    "silhuetaUrl": "/players/7/silhueta.mp4"
   },
   {
     "id": 8,
@@ -99,9 +135,14 @@
     "clube": "São Paulo",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Copa do Brasil", "Copa Sul-Americana"],
+    "titulos": [
+      "Copa do Brasil",
+      "Copa Sul-Americana"
+    ],
     "curiosidade": "Artilheiro do São Paulo pelo terceiro ano consecutivo, acumulando 16 gols em 2025",
-    "faixaEtaria": "28-32"
+    "faixaEtaria": "28-32",
+    "fotoBlurUrl": "/players/8/foto-blur.jpg",
+    "silhuetaUrl": "/players/8/silhueta.mp4"
   },
   {
     "id": 9,
@@ -112,9 +153,13 @@
     "clube": "São Paulo",
     "liga": "Brasileirão",
     "dificuldade": "dificil",
-    "titulos": ["Copa Sul-Americana"],
+    "titulos": [
+      "Copa Sul-Americana"
+    ],
     "curiosidade": "Extrema veloz do São Paulo, ganhou o apelido 'Rato' pela velocidade e agilidade em campo",
-    "faixaEtaria": "26-30"
+    "faixaEtaria": "26-30",
+    "fotoBlurUrl": "/players/9/foto-blur.jpg",
+    "silhuetaUrl": "/players/9/silhueta.mp4"
   },
   {
     "id": 10,
@@ -125,9 +170,14 @@
     "clube": "Palmeiras",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Copa do Brasil", "Brasileirão"],
+    "titulos": [
+      "Copa do Brasil",
+      "Brasileirão"
+    ],
     "curiosidade": "Retornou ao Brasil após empréstimo no Barcelona — foi contratado pelo Verdão para ser o futuro do ataque",
-    "faixaEtaria": "18-22"
+    "faixaEtaria": "18-22",
+    "fotoBlurUrl": "/players/10/foto-blur.jpg",
+    "silhuetaUrl": "/players/10/silhueta.mp4"
   },
   {
     "id": 11,
@@ -138,9 +188,14 @@
     "clube": "Palmeiras",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Brasileirão", "Copa do Brasil"],
+    "titulos": [
+      "Brasileirão",
+      "Copa do Brasil"
+    ],
     "curiosidade": "Centroavante argentino do Palmeiras apelidado de 'Flaco' por seu estilo físico esguio e técnico",
-    "faixaEtaria": "22-26"
+    "faixaEtaria": "22-26",
+    "fotoBlurUrl": "/players/11/foto-blur.jpg",
+    "silhuetaUrl": "/players/11/silhueta.mp4"
   },
   {
     "id": 12,
@@ -151,9 +206,14 @@
     "clube": "Palmeiras",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Brasileirão", "Copa do Brasil"],
+    "titulos": [
+      "Brasileirão",
+      "Copa do Brasil"
+    ],
     "curiosidade": "Voltou ao Brasil após passagem pelo Fulham na Premier League para jogar no Palmeiras",
-    "faixaEtaria": "28-32"
+    "faixaEtaria": "28-32",
+    "fotoBlurUrl": "/players/12/foto-blur.jpg",
+    "silhuetaUrl": "/players/12/silhueta.mp4"
   },
   {
     "id": 13,
@@ -166,7 +226,9 @@
     "dificuldade": "dificil",
     "titulos": [],
     "curiosidade": "Atacante colombiano apontado como um dos jogadores mais cobiçados da América do Sul em 2026",
-    "faixaEtaria": "22-26"
+    "faixaEtaria": "22-26",
+    "fotoBlurUrl": "/players/13/foto-blur.jpg",
+    "silhuetaUrl": "/players/13/silhueta.mp4"
   },
   {
     "id": 14,
@@ -179,7 +241,9 @@
     "dificuldade": "dificil",
     "titulos": [],
     "curiosidade": "Reforço português que se tornou titular absoluto no Vasco com mais de 15 participações em gols em 2025",
-    "faixaEtaria": "22-26"
+    "faixaEtaria": "22-26",
+    "fotoBlurUrl": "/players/14/foto-blur.jpg",
+    "silhuetaUrl": "/players/14/silhueta.mp4"
   },
   {
     "id": 15,
@@ -192,7 +256,9 @@
     "dificuldade": "dificil",
     "titulos": [],
     "curiosidade": "Goleiro pilar do sistema defensivo do Vasco, eleito o melhor em vários jogos pelo Cruz-Maltino",
-    "faixaEtaria": "26-30"
+    "faixaEtaria": "26-30",
+    "fotoBlurUrl": "/players/15/foto-blur.jpg",
+    "silhuetaUrl": "/players/15/silhueta.mp4"
   },
   {
     "id": 16,
@@ -203,9 +269,14 @@
     "clube": "Cruzeiro",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Libertadores", "Brasileirão"],
+    "titulos": [
+      "Libertadores",
+      "Brasileirão"
+    ],
     "curiosidade": "Chegou ao Cruzeiro por €30M a pedido de Tite — maior contratação da história do futebol sul-americano",
-    "faixaEtaria": "26-30"
+    "faixaEtaria": "26-30",
+    "fotoBlurUrl": "/players/16/foto-blur.jpg",
+    "silhuetaUrl": "/players/16/silhueta.mp4"
   },
   {
     "id": 17,
@@ -216,9 +287,13 @@
     "clube": "Cruzeiro",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Brasileirão"],
+    "titulos": [
+      "Brasileirão"
+    ],
     "curiosidade": "Camisa 10 do Cruzeiro, irmão de Andreas Pereira, considerado o principal armador da Raposa",
-    "faixaEtaria": "28-32"
+    "faixaEtaria": "28-32",
+    "fotoBlurUrl": "/players/17/foto-blur.jpg",
+    "silhuetaUrl": "/players/17/silhueta.mp4"
   },
   {
     "id": 18,
@@ -231,7 +306,9 @@
     "dificuldade": "medio",
     "titulos": [],
     "curiosidade": "Retornou ao Brasil após passagens por Juventus e outros clubes europeus para o Cruzeiro",
-    "faixaEtaria": "22-26"
+    "faixaEtaria": "22-26",
+    "fotoBlurUrl": "/players/18/foto-blur.jpg",
+    "silhuetaUrl": "/players/18/silhueta.mp4"
   },
   {
     "id": 19,
@@ -242,9 +319,13 @@
     "clube": "Internacional",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Gaúcho"],
+    "titulos": [
+      "Gaúcho"
+    ],
     "curiosidade": "Camisa 10 do Inter e ídolo da torcida colorada, um dos meias mais consistentes do Brasileirão",
-    "faixaEtaria": "30-35"
+    "faixaEtaria": "30-35",
+    "fotoBlurUrl": "/players/19/foto-blur.jpg",
+    "silhuetaUrl": "/players/19/silhueta.mp4"
   },
   {
     "id": 20,
@@ -255,9 +336,14 @@
     "clube": "Internacional",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Copa Libertadores", "Gaúcho"],
+    "titulos": [
+      "Copa Libertadores",
+      "Gaúcho"
+    ],
     "curiosidade": "Colombiano que fez história no River Plate conquistando a Libertadores antes de chegar ao Inter",
-    "faixaEtaria": "28-32"
+    "faixaEtaria": "28-32",
+    "fotoBlurUrl": "/players/20/foto-blur.jpg",
+    "silhuetaUrl": "/players/20/silhueta.mp4"
   },
   {
     "id": 21,
@@ -270,7 +356,9 @@
     "dificuldade": "dificil",
     "titulos": [],
     "curiosidade": "Meia-atacante veloz do Internacional com passagem pelo Sporting de Lisboa antes de voltar ao Brasil",
-    "faixaEtaria": "26-30"
+    "faixaEtaria": "26-30",
+    "fotoBlurUrl": "/players/21/foto-blur.jpg",
+    "silhuetaUrl": "/players/21/silhueta.mp4"
   },
   {
     "id": 22,
@@ -283,7 +371,9 @@
     "dificuldade": "dificil",
     "titulos": [],
     "curiosidade": "Centroavante colombiano escolhido pelo técnico Domínguez para liderar o ataque do Galo após a saída de Hulk",
-    "faixaEtaria": "26-30"
+    "faixaEtaria": "26-30",
+    "fotoBlurUrl": "/players/22/foto-blur.jpg",
+    "silhuetaUrl": "/players/22/silhueta.mp4"
   },
   {
     "id": 23,
@@ -294,9 +384,15 @@
     "clube": "Atlético-MG",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Brasileirão", "Copa do Brasil", "Libertadores"],
+    "titulos": [
+      "Brasileirão",
+      "Copa do Brasil",
+      "Libertadores"
+    ],
     "curiosidade": "Campeão da Libertadores pelo Palmeiras antes de se transferir para o Atlético-MG por alto valor",
-    "faixaEtaria": "30-35"
+    "faixaEtaria": "30-35",
+    "fotoBlurUrl": "/players/23/foto-blur.jpg",
+    "silhuetaUrl": "/players/23/silhueta.mp4"
   },
   {
     "id": 24,
@@ -307,9 +403,15 @@
     "clube": "Atlético-MG",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Brasileirão", "Copa do Brasil", "Libertadores"],
+    "titulos": [
+      "Brasileirão",
+      "Copa do Brasil",
+      "Libertadores"
+    ],
     "curiosidade": "Ídolo do Palmeiras que surpreendeu ao retornar da Arábia Saudita para o Atlético-MG em 2026",
-    "faixaEtaria": "32-36"
+    "faixaEtaria": "32-36",
+    "fotoBlurUrl": "/players/24/foto-blur.jpg",
+    "silhuetaUrl": "/players/24/silhueta.mp4"
   },
   {
     "id": 25,
@@ -320,9 +422,13 @@
     "clube": "Grêmio",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Copa do Brasil"],
+    "titulos": [
+      "Copa do Brasil"
+    ],
     "curiosidade": "Artilheiro do Brasileirão 2026 pelo Grêmio, passou por Benfica e Tottenham antes de voltar ao Brasil",
-    "faixaEtaria": "30-34"
+    "faixaEtaria": "30-34",
+    "fotoBlurUrl": "/players/25/foto-blur.jpg",
+    "silhuetaUrl": "/players/25/silhueta.mp4"
   },
   {
     "id": 26,
@@ -333,9 +439,14 @@
     "clube": "Grêmio",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Brasileirão", "Libertadores"],
+    "titulos": [
+      "Brasileirão",
+      "Libertadores"
+    ],
     "curiosidade": "Voltou ao Grêmio após passagens por Barcelona e Juventus — onde foi campeão da Série A italiana",
-    "faixaEtaria": "28-32"
+    "faixaEtaria": "28-32",
+    "fotoBlurUrl": "/players/26/foto-blur.jpg",
+    "silhuetaUrl": "/players/26/silhueta.mp4"
   },
   {
     "id": 27,
@@ -346,9 +457,13 @@
     "clube": "Grêmio",
     "liga": "Brasileirão",
     "dificuldade": "dificil",
-    "titulos": ["Copa do Brasil"],
+    "titulos": [
+      "Copa do Brasil"
+    ],
     "curiosidade": "Meia argentino camisa 10 do Grêmio, especialista em cobranças de falta e pênaltis decisivos",
-    "faixaEtaria": "26-30"
+    "faixaEtaria": "26-30",
+    "fotoBlurUrl": "/players/27/foto-blur.jpg",
+    "silhuetaUrl": "/players/27/silhueta.mp4"
   },
   {
     "id": 28,
@@ -359,9 +474,16 @@
     "clube": "Santos",
     "liga": "Brasileirão",
     "dificuldade": "facil",
-    "titulos": ["Champions League", "Copa do Mundo Sub-20", "Copa das Confederações", "Copa América"],
+    "titulos": [
+      "Champions League",
+      "Copa do Mundo Sub-20",
+      "Copa das Confederações",
+      "Copa América"
+    ],
     "curiosidade": "Retornou ao Santos — clube que o revelou — encerrando sua passagem pelo futebol europeu e árabe",
-    "faixaEtaria": "33-37"
+    "faixaEtaria": "33-37",
+    "fotoBlurUrl": "/players/28/foto-blur.jpg",
+    "silhuetaUrl": "/players/28/silhueta.mp4"
   },
   {
     "id": 29,
@@ -372,9 +494,15 @@
     "clube": "Santos",
     "liga": "Brasileirão",
     "dificuldade": "facil",
-    "titulos": ["Libertadores", "Brasileirão", "Copa do Brasil"],
+    "titulos": [
+      "Libertadores",
+      "Brasileirão",
+      "Copa do Brasil"
+    ],
     "curiosidade": "Ídolo do Flamengo que foi por empréstimo ao Santos — o mesmo clube que formou Pelé e Neymar",
-    "faixaEtaria": "28-32"
+    "faixaEtaria": "28-32",
+    "fotoBlurUrl": "/players/29/foto-blur.jpg",
+    "silhuetaUrl": "/players/29/silhueta.mp4"
   },
   {
     "id": 30,
@@ -385,9 +513,15 @@
     "clube": "Santos",
     "liga": "Brasileirão",
     "dificuldade": "dificil",
-    "titulos": ["Libertadores", "Brasileirão", "Copa do Brasil"],
+    "titulos": [
+      "Libertadores",
+      "Brasileirão",
+      "Copa do Brasil"
+    ],
     "curiosidade": "Volante campeão de tudo pelo Flamengo, foi peça fundamental no tricampeonato do Brasileirão",
-    "faixaEtaria": "32-36"
+    "faixaEtaria": "32-36",
+    "fotoBlurUrl": "/players/30/foto-blur.jpg",
+    "silhuetaUrl": "/players/30/silhueta.mp4"
   },
   {
     "id": 31,
@@ -398,9 +532,14 @@
     "clube": "Fluminense",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Libertadores", "Copa do Brasil"],
+    "titulos": [
+      "Libertadores",
+      "Copa do Brasil"
+    ],
     "curiosidade": "Goleiro lendário que defende o Fluminense com mais de 40 anos — um dos mais longevos do futebol mundial",
-    "faixaEtaria": "40+"
+    "faixaEtaria": "40+",
+    "fotoBlurUrl": "/players/31/foto-blur.jpg",
+    "silhuetaUrl": "/players/31/silhueta.mp4"
   },
   {
     "id": 32,
@@ -411,9 +550,14 @@
     "clube": "Fluminense",
     "liga": "Brasileirão",
     "dificuldade": "facil",
-    "titulos": ["Brasileirão", "Copa do Brasil"],
+    "titulos": [
+      "Brasileirão",
+      "Copa do Brasil"
+    ],
     "curiosidade": "Transferiu-se do Atlético-MG para o Fluminense em 2026 aos 39 anos — ainda jogando futebol de alto nível",
-    "faixaEtaria": "38-42"
+    "faixaEtaria": "38-42",
+    "fotoBlurUrl": "/players/32/foto-blur.jpg",
+    "silhuetaUrl": "/players/32/silhueta.mp4"
   },
   {
     "id": 33,
@@ -424,9 +568,13 @@
     "clube": "Fluminense",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Libertadores"],
+    "titulos": [
+      "Libertadores"
+    ],
     "curiosidade": "Herói da final da Libertadores 2023 contra o Boca — marcou o gol do título no Maracanã",
-    "faixaEtaria": "22-26"
+    "faixaEtaria": "22-26",
+    "fotoBlurUrl": "/players/33/foto-blur.jpg",
+    "silhuetaUrl": "/players/33/silhueta.mp4"
   },
   {
     "id": 34,
@@ -437,9 +585,14 @@
     "clube": "Botafogo",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Libertadores", "Brasileirão"],
+    "titulos": [
+      "Libertadores",
+      "Brasileirão"
+    ],
     "curiosidade": "Centroavante que voltou ao Brasil para o Botafogo após passagem pela Fiorentina e Benfica",
-    "faixaEtaria": "26-30"
+    "faixaEtaria": "26-30",
+    "fotoBlurUrl": "/players/34/foto-blur.jpg",
+    "silhuetaUrl": "/players/34/silhueta.mp4"
   },
   {
     "id": 35,
@@ -450,9 +603,14 @@
     "clube": "Botafogo",
     "liga": "Brasileirão",
     "dificuldade": "medio",
-    "titulos": ["Libertadores", "Brasileirão"],
+    "titulos": [
+      "Libertadores",
+      "Brasileirão"
+    ],
     "curiosidade": "Lateral-esquerdo que passou por Porto, Manchester United e Sevilla antes de chegar ao Botafogo",
-    "faixaEtaria": "32-36"
+    "faixaEtaria": "32-36",
+    "fotoBlurUrl": "/players/35/foto-blur.jpg",
+    "silhuetaUrl": "/players/35/silhueta.mp4"
   },
   {
     "id": 36,
@@ -463,9 +621,14 @@
     "clube": "Botafogo",
     "liga": "Brasileirão",
     "dificuldade": "dificil",
-    "titulos": ["Libertadores", "Brasileirão"],
+    "titulos": [
+      "Libertadores",
+      "Brasileirão"
+    ],
     "curiosidade": "Meia argentino do campeão Botafogo, peça importante na conquista da Libertadores 2024",
-    "faixaEtaria": "26-30"
+    "faixaEtaria": "26-30",
+    "fotoBlurUrl": "/players/36/foto-blur.jpg",
+    "silhuetaUrl": "/players/36/silhueta.mp4"
   },
   {
     "id": 37,
@@ -476,9 +639,15 @@
     "clube": "Real Madrid",
     "liga": "La Liga",
     "dificuldade": "facil",
-    "titulos": ["Champions League", "La Liga", "Copa do Mundo"],
+    "titulos": [
+      "Champions League",
+      "La Liga",
+      "Copa do Mundo"
+    ],
     "curiosidade": "Melhor jogador do mundo em 2024, saiu do Flamengo aos 18 anos pelo maior valor pago por um brasileiro até então",
-    "faixaEtaria": "24-28"
+    "faixaEtaria": "24-28",
+    "fotoBlurUrl": "/players/37/foto-blur.jpg",
+    "silhuetaUrl": "/players/37/silhueta.mp4"
   },
   {
     "id": 38,
@@ -489,9 +658,15 @@
     "clube": "Real Madrid",
     "liga": "La Liga",
     "dificuldade": "medio",
-    "titulos": ["Champions League", "La Liga", "Copa do Mundo"],
+    "titulos": [
+      "Champions League",
+      "La Liga",
+      "Copa do Mundo"
+    ],
     "curiosidade": "Marcou dois gols nos acréscimos do segundo tempo contra o Manchester City na semifinal da Champions",
-    "faixaEtaria": "24-28"
+    "faixaEtaria": "24-28",
+    "fotoBlurUrl": "/players/38/foto-blur.jpg",
+    "silhuetaUrl": "/players/38/silhueta.mp4"
   },
   {
     "id": 39,
@@ -502,9 +677,14 @@
     "clube": "Barcelona",
     "liga": "La Liga",
     "dificuldade": "medio",
-    "titulos": ["La Liga", "Copa do Rei"],
+    "titulos": [
+      "La Liga",
+      "Copa do Rei"
+    ],
     "curiosidade": "Eleito o melhor jogador do Barcelona em 2025, se tornou peça fundamental do time de Flick",
-    "faixaEtaria": "28-32"
+    "faixaEtaria": "28-32",
+    "fotoBlurUrl": "/players/39/foto-blur.jpg",
+    "silhuetaUrl": "/players/39/silhueta.mp4"
   },
   {
     "id": 40,
@@ -517,7 +697,9 @@
     "dificuldade": "medio",
     "titulos": [],
     "curiosidade": "Revelado pelo Ituano de Itu, foi contratado pelo Arsenal por apenas £6M e se tornou titular da Seleção",
-    "faixaEtaria": "24-28"
+    "faixaEtaria": "24-28",
+    "fotoBlurUrl": "/players/40/foto-blur.jpg",
+    "silhuetaUrl": "/players/40/silhueta.mp4"
   },
   {
     "id": 41,
@@ -528,9 +710,15 @@
     "clube": "Liverpool",
     "liga": "Premier League",
     "dificuldade": "medio",
-    "titulos": ["Champions League", "Premier League", "Copa do Mundo"],
+    "titulos": [
+      "Champions League",
+      "Premier League",
+      "Copa do Mundo"
+    ],
     "curiosidade": "Considerado o melhor goleiro do mundo, marcou um gol de cabeça decisivo pelo Liverpool na Champions",
-    "faixaEtaria": "32-36"
+    "faixaEtaria": "32-36",
+    "fotoBlurUrl": "/players/41/foto-blur.jpg",
+    "silhuetaUrl": "/players/41/silhueta.mp4"
   },
   {
     "id": 42,
@@ -543,7 +731,9 @@
     "dificuldade": "medio",
     "titulos": [],
     "curiosidade": "Melhor volante do Brasil atualmente, foi vendido ao Newcastle pelo Lyon e se tornou ídolo da torcida inglesa",
-    "faixaEtaria": "26-30"
+    "faixaEtaria": "26-30",
+    "fotoBlurUrl": "/players/42/foto-blur.jpg",
+    "silhuetaUrl": "/players/42/silhueta.mp4"
   },
   {
     "id": 43,
@@ -554,9 +744,13 @@
     "clube": "Nottingham Forest",
     "liga": "Premier League",
     "dificuldade": "medio",
-    "titulos": ["Copa Libertadores"],
+    "titulos": [
+      "Copa Libertadores"
+    ],
     "curiosidade": "Saiu do Botafogo para o Nottingham Forest marcando 16 gols e 5 assistências na primeira Premier League",
-    "faixaEtaria": "22-26"
+    "faixaEtaria": "22-26",
+    "fotoBlurUrl": "/players/43/foto-blur.jpg",
+    "silhuetaUrl": "/players/43/silhueta.mp4"
   },
   {
     "id": 44,
@@ -569,7 +763,9 @@
     "dificuldade": "medio",
     "titulos": [],
     "curiosidade": "Bateu o recorde de gols de um brasileiro em uma única temporada da Premier League com 22 gols pelo Brentford",
-    "faixaEtaria": "22-26"
+    "faixaEtaria": "22-26",
+    "fotoBlurUrl": "/players/44/foto-blur.jpg",
+    "silhuetaUrl": "/players/44/silhueta.mp4"
   },
   {
     "id": 45,
@@ -582,7 +778,9 @@
     "dificuldade": "medio",
     "titulos": [],
     "curiosidade": "Foi do Palmeiras ao Chelsea por €80M — maior transferência da história do futebol brasileiro para a Europa",
-    "faixaEtaria": "18-22"
+    "faixaEtaria": "18-22",
+    "fotoBlurUrl": "/players/45/foto-blur.jpg",
+    "silhuetaUrl": "/players/45/silhueta.mp4"
   },
   {
     "id": 46,
@@ -595,7 +793,9 @@
     "dificuldade": "medio",
     "titulos": [],
     "curiosidade": "Emprestado pelo Real Madrid ao Lyon, marcou 8 gols e deu 7 assistências na primeira temporada europeia",
-    "faixaEtaria": "18-22"
+    "faixaEtaria": "18-22",
+    "fotoBlurUrl": "/players/46/foto-blur.jpg",
+    "silhuetaUrl": "/players/46/silhueta.mp4"
   },
   {
     "id": 47,
@@ -606,9 +806,16 @@
     "clube": "Inter Miami",
     "liga": "MLS",
     "dificuldade": "facil",
-    "titulos": ["Copa do Mundo", "Champions League", "La Liga", "Bola de Ouro (8x)"],
+    "titulos": [
+      "Copa do Mundo",
+      "Champions League",
+      "La Liga",
+      "Bola de Ouro (8x)"
+    ],
     "curiosidade": "Maior jogador da história do futebol, foi para a MLS para encerrar a carreira nos EUA com a camisa 10",
-    "faixaEtaria": "36-40"
+    "faixaEtaria": "36-40",
+    "fotoBlurUrl": "/players/47/foto-blur.jpg",
+    "silhuetaUrl": "/players/47/silhueta.mp4"
   },
   {
     "id": 48,
@@ -619,9 +826,17 @@
     "clube": "Al Nassr",
     "liga": "Saudi Pro League",
     "dificuldade": "facil",
-    "titulos": ["Champions League", "Premier League", "La Liga", "Euro", "Bola de Ouro (5x)"],
+    "titulos": [
+      "Champions League",
+      "Premier League",
+      "La Liga",
+      "Euro",
+      "Bola de Ouro (5x)"
+    ],
     "curiosidade": "Maior artilheiro da história do futebol mundial, foi para a Arábia Saudita após deixar o Manchester United",
-    "faixaEtaria": "40+"
+    "faixaEtaria": "40+",
+    "fotoBlurUrl": "/players/48/foto-blur.jpg",
+    "silhuetaUrl": "/players/48/silhueta.mp4"
   },
   {
     "id": 49,
@@ -632,9 +847,15 @@
     "clube": "Real Madrid",
     "liga": "La Liga",
     "dificuldade": "facil",
-    "titulos": ["Copa do Mundo", "Ligue 1", "Champions League"],
+    "titulos": [
+      "Copa do Mundo",
+      "Ligue 1",
+      "Champions League"
+    ],
     "curiosidade": "Transferiu-se de graça do PSG ao Real Madrid em 2024 realizando o sonho de jogar com Vinicius Jr",
-    "faixaEtaria": "25-29"
+    "faixaEtaria": "25-29",
+    "fotoBlurUrl": "/players/49/foto-blur.jpg",
+    "silhuetaUrl": "/players/49/silhueta.mp4"
   },
   {
     "id": 50,
@@ -645,9 +866,14 @@
     "clube": "Manchester City",
     "liga": "Premier League",
     "dificuldade": "facil",
-    "titulos": ["Premier League", "Champions League"],
+    "titulos": [
+      "Premier League",
+      "Champions League"
+    ],
     "curiosidade": "Bateu o recorde de gols em uma única temporada da Premier League com 36 gols em 35 jogos",
-    "faixaEtaria": "24-28"
+    "faixaEtaria": "24-28",
+    "fotoBlurUrl": "/players/50/foto-blur.jpg",
+    "silhuetaUrl": "/players/50/silhueta.mp4"
   },
   {
     "id": 51,
@@ -658,15 +884,26 @@
     "clube": "Santos",
     "liga": "Lenda",
     "dificuldade": "facil",
-    "titulos": ["Copa do Mundo (3x)", "Libertadores", "Intercontinental"],
+    "titulos": [
+      "Copa do Mundo (3x)",
+      "Libertadores",
+      "Intercontinental"
+    ],
     "curiosidade": "Único jogador da história a conquistar três Copas do Mundo — campeão em 1958, 1962 e 1970",
     "faixaEtaria": "Lenda",
     "lenda": true,
     "triviaContrato": {
       "pergunta": "Com quantos anos Pelé marcou seu primeiro gol em uma Copa do Mundo?",
-      "opcoes": ["15", "17", "19", "21"],
+      "opcoes": [
+        "15",
+        "17",
+        "19",
+        "21"
+      ],
       "respostaCorreta": 1
-    }
+    },
+    "fotoBlurUrl": "/players/51/foto-blur.jpg",
+    "silhuetaUrl": "/players/51/silhueta.mp4"
   },
   {
     "id": 52,
@@ -677,15 +914,27 @@
     "clube": "Real Madrid",
     "liga": "Lenda",
     "dificuldade": "facil",
-    "titulos": ["Copa do Mundo (2x)", "Champions League", "La Liga", "Bola de Ouro (2x)"],
+    "titulos": [
+      "Copa do Mundo (2x)",
+      "Champions League",
+      "La Liga",
+      "Bola de Ouro (2x)"
+    ],
     "curiosidade": "Marcou os dois gols na final da Copa de 2002 contra a Alemanha após superar dois anos de lesões graves",
     "faixaEtaria": "Lenda",
     "lenda": true,
     "triviaContrato": {
       "pergunta": "Quantas Copas do Mundo Ronaldo Fenômeno conquistou com a Seleção Brasileira?",
-      "opcoes": ["1", "2", "3", "Nenhuma"],
+      "opcoes": [
+        "1",
+        "2",
+        "3",
+        "Nenhuma"
+      ],
       "respostaCorreta": 1
-    }
+    },
+    "fotoBlurUrl": "/players/52/foto-blur.jpg",
+    "silhuetaUrl": "/players/52/silhueta.mp4"
   },
   {
     "id": 53,
@@ -696,15 +945,27 @@
     "clube": "Barcelona",
     "liga": "Lenda",
     "dificuldade": "facil",
-    "titulos": ["Champions League", "La Liga", "Copa do Mundo", "Bola de Ouro (2x)"],
+    "titulos": [
+      "Champions League",
+      "La Liga",
+      "Copa do Mundo",
+      "Bola de Ouro (2x)"
+    ],
     "curiosidade": "Ganhou dois Bolas de Ouro e fez o estádio do Real Madrid aplaudir de pé após uma atuação histórica",
     "faixaEtaria": "Lenda",
     "lenda": true,
     "triviaContrato": {
       "pergunta": "Quantas Bolas de Ouro Ronaldinho Gaúcho conquistou?",
-      "opcoes": ["1", "2", "3", "4"],
+      "opcoes": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
       "respostaCorreta": 1
-    }
+    },
+    "fotoBlurUrl": "/players/53/foto-blur.jpg",
+    "silhuetaUrl": "/players/53/silhueta.mp4"
   },
   {
     "id": 54,
@@ -715,15 +976,26 @@
     "clube": "Barcelona",
     "liga": "Lenda",
     "dificuldade": "medio",
-    "titulos": ["Copa do Mundo", "La Liga", "Libertadores"],
+    "titulos": [
+      "Copa do Mundo",
+      "La Liga",
+      "Libertadores"
+    ],
     "curiosidade": "Declarou ter marcado mais de 1.000 gols na carreira — artilheiro compulsivo e dono de um dos dribles mais famosos",
     "faixaEtaria": "Lenda",
     "lenda": true,
     "triviaContrato": {
       "pergunta": "Em qual Copa do Mundo Romário foi campeão com o Brasil?",
-      "opcoes": ["1990", "1994", "1998", "2002"],
+      "opcoes": [
+        "1990",
+        "1994",
+        "1998",
+        "2002"
+      ],
       "respostaCorreta": 1
-    }
+    },
+    "fotoBlurUrl": "/players/54/foto-blur.jpg",
+    "silhuetaUrl": "/players/54/silhueta.mp4"
   },
   {
     "id": 55,
@@ -734,15 +1006,26 @@
     "clube": "Napoli",
     "liga": "Lenda",
     "dificuldade": "facil",
-    "titulos": ["Copa do Mundo", "Serie A (2x)", "Copa da UEFA"],
+    "titulos": [
+      "Copa do Mundo",
+      "Serie A (2x)",
+      "Copa da UEFA"
+    ],
     "curiosidade": "Marcou a 'Mão de Deus' e o 'Gol do Século' no mesmo jogo contra a Inglaterra na Copa de 1986",
     "faixaEtaria": "Lenda",
     "lenda": true,
     "triviaContrato": {
       "pergunta": "Em qual país Maradona ganhou dois títulos do Campeonato Nacional?",
-      "opcoes": ["Argentina", "Espanha", "Itália", "México"],
+      "opcoes": [
+        "Argentina",
+        "Espanha",
+        "Itália",
+        "México"
+      ],
       "respostaCorreta": 2
-    }
+    },
+    "fotoBlurUrl": "/players/55/foto-blur.jpg",
+    "silhuetaUrl": "/players/55/silhueta.mp4"
   },
   {
     "id": 56,
@@ -753,14 +1036,26 @@
     "clube": "Real Madrid",
     "liga": "Lenda",
     "dificuldade": "medio",
-    "titulos": ["Copa do Mundo", "Champions League", "La Liga", "Bola de Ouro"],
+    "titulos": [
+      "Copa do Mundo",
+      "Champions League",
+      "La Liga",
+      "Bola de Ouro"
+    ],
     "curiosidade": "Deu uma cabeçada em Materazzi na final da Copa de 2006 — um dos momentos mais marcantes da história do esporte",
     "faixaEtaria": "Lenda",
     "lenda": true,
     "triviaContrato": {
       "pergunta": "Qual foi o último clube de Zidane como jogador?",
-      "opcoes": ["Juventus", "Real Madrid", "Barcelona", "PSG"],
+      "opcoes": [
+        "Juventus",
+        "Real Madrid",
+        "Barcelona",
+        "PSG"
+      ],
       "respostaCorreta": 1
-    }
+    },
+    "fotoBlurUrl": "/players/56/foto-blur.jpg",
+    "silhuetaUrl": "/players/56/silhueta.mp4"
   }
 ]
