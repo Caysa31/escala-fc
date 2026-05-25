@@ -147,7 +147,7 @@
   {
     "id": 9,
     "nome": "Wellington Rato",
-    "posicao": "Ponta",
+    "posicao": "Ponta-direita",
     "nacionalidade": "Brasileiro",
     "bandeira": "🇧🇷",
     "clube": "São Paulo",
@@ -547,14 +547,14 @@
     "posicao": "Atacante",
     "nacionalidade": "Brasileiro",
     "bandeira": "🇧🇷",
-    "clube": "Fluminense",
+    "clube": "Atlético-MG",
     "liga": "Brasileirão",
     "dificuldade": "facil",
     "titulos": [
       "Brasileirão",
       "Copa do Brasil"
     ],
-    "curiosidade": "Transferiu-se do Atlético-MG para o Fluminense em 2026 aos 39 anos — ainda jogando futebol de alto nível",
+    "curiosidade": "Garantiu permanência no Atlético-MG em 2026 aos 39 anos e chegou aos 500 gols na carreira — uma das histórias mais longevas do futebol brasileiro",
     "faixaEtaria": "38-42",
     "fotoBlurUrl": "/players/32/foto-blur.jpg",
     "silhuetaUrl": "/players/32/silhueta.mp4"
@@ -788,11 +788,11 @@
     "posicao": "Atacante",
     "nacionalidade": "Brasileiro",
     "bandeira": "🇧🇷",
-    "clube": "Lyon",
-    "liga": "Ligue 1",
+    "clube": "Real Madrid",
+    "liga": "La Liga",
     "dificuldade": "medio",
     "titulos": [],
-    "curiosidade": "Emprestado pelo Real Madrid ao Lyon, marcou 8 gols e deu 7 assistências na primeira temporada europeia",
+    "curiosidade": "Vendido pelo Palmeiras ao Real Madrid por €60M — o brasileiro mais jovem a defender o clube merengue na história",
     "faixaEtaria": "18-22",
     "fotoBlurUrl": "/players/46/foto-blur.jpg",
     "silhuetaUrl": "/players/46/silhueta.mp4"
@@ -1229,16 +1229,16 @@
   },
   {
     "id": 70,
-    "nome": "Payet",
-    "posicao": "Meia",
-    "nacionalidade": "Francês",
-    "bandeira": "🇫🇷",
+    "nome": "Puma Rodríguez",
+    "posicao": "Lateral-direito",
+    "nacionalidade": "Uruguaio",
+    "bandeira": "🇺🇾",
     "clube": "Vasco",
     "liga": "Brasileirão",
-    "dificuldade": "medio",
+    "dificuldade": "dificil",
     "titulos": [],
-    "curiosidade": "O meia francês que encantou a Euro 2016 pelo seu país veio ao Vasco em 2023 como a maior contratação da história recente do clube carioca",
-    "faixaEtaria": "38-42"
+    "curiosidade": "Lateral-direito uruguaio que virou um dos jogadores mais queridos da torcida do Vasco pela garra e entrega em campo",
+    "faixaEtaria": "26-30"
   },
   {
     "id": 71,
