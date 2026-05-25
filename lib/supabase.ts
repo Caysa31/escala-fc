@@ -115,6 +115,62 @@ export async function getPosicaoRanking(usuarioId: string): Promise<{ semanal: n
   return { semanal: posSemanal, geral: posGeral }
 }
 
+// ── Contratos ─────────────────────────────────────────────────
+
+export async function assinarContratoSupabase(payload: {
+  id: string
+  usuarioId: string
+  rodadaId: number
+  jogadorId: number
+  nomeJogador: string
+  bandeira: string
+  clube: string
+  multiplicador: number
+  pistaAcerto: number
+  lenda: boolean
+}) {
+  if (!supabase) return
+  const { error } = await supabase.from('contratos').upsert({
+    id:            payload.id,
+    usuario_id:    payload.usuarioId,
+    rodada_id:     payload.rodadaId,
+    jogador_id:    payload.jogadorId,
+    nome_jogador:  payload.nomeJogador,
+    bandeira:      payload.bandeira,
+    clube:         payload.clube,
+    multiplicador: payload.multiplicador,
+    pista_acerto:  payload.pistaAcerto,
+    status:        payload.lenda ? 'trivia_pendente' : 'aguardando_jogo',
+  }, { onConflict: 'id' })
+  if (error) console.error('assinarContratoSupabase:', error)
+}
+
+export async function resolverTriviaSupabase(
+  contratoId: string,
+  bonusBase: number,
+  bonusTotal: number
+) {
+  if (!supabase) return
+  await supabase.from('contratos').update({
+    status:       'trivia_resolvida',
+    bonus_base:   bonusBase,
+    bonus_total:  bonusTotal,
+    resolvido_em: new Date().toISOString(),
+  }).eq('id', contratoId)
+}
+
+export async function getContratosResolvidosSupabase(usuarioId: string) {
+  if (!supabase) return []
+  const { data } = await supabase
+    .from('contratos')
+    .select('*')
+    .eq('usuario_id', usuarioId)
+    .in('status', ['resolvido', 'trivia_resolvida'])
+    .order('resolvido_em', { ascending: false })
+    .limit(50)
+  return data ?? []
+}
+
 // ── Grupos ────────────────────────────────────────────────────
 
 function gerarCodigoGrupo(nome: string): string {

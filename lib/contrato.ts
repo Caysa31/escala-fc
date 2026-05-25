@@ -7,6 +7,13 @@ import {
   BONUS_DESEMPENHO,
   Jogador,
 } from './types'
+import { assinarContratoSupabase, resolverTriviaSupabase } from './supabase'
+
+/** Lê o supabase_id do usuário (armazenado no localStorage após sync) */
+function getUsuarioId(): string | null {
+  if (typeof window === 'undefined') return null
+  return localStorage.getItem('escalafc_supabase_id')
+}
 
 const CHAVE_CONTRATOS = 'escalafc_contratos'
 
@@ -57,6 +64,24 @@ export function assinarContrato(
 
   contratos.push(novoContrato)
   salvarContratos(contratos)
+
+  // Sync para Supabase (fire-and-forget — não bloqueia a UI)
+  const usuarioId = getUsuarioId()
+  if (usuarioId) {
+    void assinarContratoSupabase({
+      id:           novoContrato.id,
+      usuarioId,
+      rodadaId,
+      jogadorId:    jogador.id,
+      nomeJogador:  jogador.nome,
+      bandeira:     jogador.bandeira,
+      clube:        jogador.clube,
+      multiplicador: novoContrato.multiplicador,
+      pistaAcerto,
+      lenda:        jogador.lenda ?? false,
+    })
+  }
+
   return novoContrato
 }
 
@@ -82,6 +107,13 @@ export function resolverTrivia(
   }
 
   salvarContratos(contratos)
+
+  // Sync para Supabase (fire-and-forget)
+  const usuarioId = getUsuarioId()
+  if (usuarioId) {
+    void resolverTriviaSupabase(contrato.id, bonusBase, bonusTotal)
+  }
+
   return contratos[idx]
 }
 
