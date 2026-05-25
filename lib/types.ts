@@ -17,6 +17,11 @@ export interface Jogador {
   // Estado do clube (apenas clubes brasileiros; null para clubes do exterior)
   estadoClube?: string | null
 
+  // Clube anterior — pista 4
+  clubeAnterior?: string
+  origemAnterior?: 'exterior' | 'brasil' | 'base'
+  ligaAnterior?: string | null
+
   // IDs para integração API-Football v3 (null = lenda ou clube não mapeado)
   apiFootballTeamId?: number | null
   apiFootballLeagueId?: number | null
@@ -134,7 +139,7 @@ export const LABEL_PISTAS: Record<number, string> = {
   1: 'Posição',
   2: 'Nome',
   3: 'Nacionalidade',
-  4: 'Idade',
+  4: 'Trajetória',
   5: 'Clube',
 }
 

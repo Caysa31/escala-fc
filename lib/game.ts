@@ -178,8 +178,21 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
   }
   const pista3 = paisNascimento[jogador.nacionalidade] ?? `Nacionalidade: ${jogador.nacionalidade}`
 
-  // Pista 4 — Faixa etária
-  const pista4 = `Tem entre ${jogador.faixaEtaria} anos de idade.`
+  // Pista 4 — Clube anterior (trajetória)
+  let pista4: string
+  if (!jogador.clubeAnterior || jogador.origemAnterior === 'base') {
+    // Revelado nas categorias de base do próprio clube
+    pista4 = 'Foi revelado nas categorias de base do próprio clube onde joga hoje.'
+  } else if (jogador.origemAnterior === 'brasil') {
+    pista4 = `Antes do clube atual, jogou no ${jogador.clubeAnterior}.`
+  } else {
+    // exterior — distingue se o clube atual é no Brasil ou fora
+    if (jogador.liga === 'Brasileirão') {
+      pista4 = `Retornou ao Brasil vindo do ${jogador.clubeAnterior}, na ${jogador.ligaAnterior}.`
+    } else {
+      pista4 = `Chegou ao clube atual vindo do ${jogador.clubeAnterior}, na ${jogador.ligaAnterior}.`
+    }
+  }
 
   // Pista 5 — Clube + letras parciais do nome
   // Formato: "NomeClube|L _ t _ a _ _   P _ r _ i _ _"

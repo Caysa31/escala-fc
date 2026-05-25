@@ -19,7 +19,10 @@
     "silhuetaUrl": "/players/1/silhueta.mp4",
     "apiFootballTeamId": 127,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "West Ham United",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Premier League"
   },
   {
     "id": 2,
@@ -41,7 +44,10 @@
     "silhuetaUrl": "/players/2/silhueta.mp4",
     "apiFootballTeamId": 127,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Cruzeiro",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 3,
@@ -63,7 +69,10 @@
     "silhuetaUrl": "/players/3/silhueta.mp4",
     "apiFootballTeamId": 127,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Fiorentina",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Serie A"
   },
   {
     "id": 4,
@@ -84,7 +93,10 @@
     "silhuetaUrl": "/players/4/silhueta.mp4",
     "apiFootballTeamId": 131,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Corinthians",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 5,
@@ -104,7 +116,10 @@
     "silhuetaUrl": "/players/5/silhueta.mp4",
     "apiFootballTeamId": 131,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Zenit",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Russa"
   },
   {
     "id": 6,
@@ -124,7 +139,10 @@
     "silhuetaUrl": "/players/6/silhueta.mp4",
     "apiFootballTeamId": 131,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Talleres",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Profesional"
   },
   {
     "id": 7,
@@ -145,7 +163,10 @@
     "silhuetaUrl": "/players/7/silhueta.mp4",
     "apiFootballTeamId": 126,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Deportivo Alavés",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "La Liga"
   },
   {
     "id": 8,
@@ -166,7 +187,10 @@
     "silhuetaUrl": "/players/8/silhueta.mp4",
     "apiFootballTeamId": 126,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Athletico-PR",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 9,
@@ -186,7 +210,10 @@
     "silhuetaUrl": "/players/9/silhueta.mp4",
     "apiFootballTeamId": 126,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Goiás",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 10,
@@ -207,7 +234,10 @@
     "silhuetaUrl": "/players/10/silhueta.mp4",
     "apiFootballTeamId": 121,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Barcelona",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "La Liga"
   },
   {
     "id": 11,
@@ -228,7 +258,10 @@
     "silhuetaUrl": "/players/11/silhueta.mp4",
     "apiFootballTeamId": 121,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Argentinos Juniors",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Profesional"
   },
   {
     "id": 12,
@@ -249,7 +282,10 @@
     "silhuetaUrl": "/players/12/silhueta.mp4",
     "apiFootballTeamId": 121,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Fulham",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Premier League"
   },
   {
     "id": 13,
@@ -267,7 +303,10 @@
     "silhuetaUrl": "/players/13/silhueta.mp4",
     "apiFootballTeamId": 133,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Deportivo Pereira",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Categoría Primera A"
   },
   {
     "id": 14,
@@ -285,7 +324,10 @@
     "silhuetaUrl": "/players/14/silhueta.mp4",
     "apiFootballTeamId": 133,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Vitória de Guimarães",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Portugal"
   },
   {
     "id": 15,
@@ -303,7 +345,10 @@
     "silhuetaUrl": "/players/15/silhueta.mp4",
     "apiFootballTeamId": 133,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Coritiba",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 16,
@@ -324,7 +369,10 @@
     "silhuetaUrl": "/players/16/silhueta.mp4",
     "apiFootballTeamId": 116,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Minas Gerais"
+    "estadoClube": "Minas Gerais",
+    "clubeAnterior": "Flamengo",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 17,
@@ -344,7 +392,10 @@
     "silhuetaUrl": "/players/17/silhueta.mp4",
     "apiFootballTeamId": 116,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Minas Gerais"
+    "estadoClube": "Minas Gerais",
+    "clubeAnterior": "Al-Hilal",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Saudi Pro League"
   },
   {
     "id": 18,
@@ -362,7 +413,10 @@
     "silhuetaUrl": "/players/18/silhueta.mp4",
     "apiFootballTeamId": 116,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Minas Gerais"
+    "estadoClube": "Minas Gerais",
+    "clubeAnterior": "Juventus",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Serie A"
   },
   {
     "id": 19,
@@ -382,7 +436,10 @@
     "silhuetaUrl": "/players/19/silhueta.mp4",
     "apiFootballTeamId": 119,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio Grande do Sul"
+    "estadoClube": "Rio Grande do Sul",
+    "clubeAnterior": "Shakhtar Donetsk",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Ucrânia"
   },
   {
     "id": 20,
@@ -403,7 +460,10 @@
     "silhuetaUrl": "/players/20/silhueta.mp4",
     "apiFootballTeamId": 119,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio Grande do Sul"
+    "estadoClube": "Rio Grande do Sul",
+    "clubeAnterior": "Eintracht Frankfurt",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Bundesliga"
   },
   {
     "id": 21,
@@ -421,7 +481,10 @@
     "silhuetaUrl": "/players/21/silhueta.mp4",
     "apiFootballTeamId": 119,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio Grande do Sul"
+    "estadoClube": "Rio Grande do Sul",
+    "clubeAnterior": "Sporting CP",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Portugal"
   },
   {
     "id": 22,
@@ -439,7 +502,10 @@
     "silhuetaUrl": "/players/22/silhueta.mp4",
     "apiFootballTeamId": 1062,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Minas Gerais"
+    "estadoClube": "Minas Gerais",
+    "clubeAnterior": "Atlético Nacional",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Categoría Primera A"
   },
   {
     "id": 23,
@@ -461,7 +527,10 @@
     "silhuetaUrl": "/players/23/silhueta.mp4",
     "apiFootballTeamId": 1062,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Minas Gerais"
+    "estadoClube": "Minas Gerais",
+    "clubeAnterior": "Palmeiras",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 24,
@@ -483,7 +552,10 @@
     "silhuetaUrl": "/players/24/silhueta.mp4",
     "apiFootballTeamId": 1062,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Minas Gerais"
+    "estadoClube": "Minas Gerais",
+    "clubeAnterior": "Al-Qadsiah",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Saudi Pro League"
   },
   {
     "id": 25,
@@ -503,7 +575,10 @@
     "silhuetaUrl": "/players/25/silhueta.mp4",
     "apiFootballTeamId": 130,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio Grande do Sul"
+    "estadoClube": "Rio Grande do Sul",
+    "clubeAnterior": "Fulham",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Premier League"
   },
   {
     "id": 26,
@@ -524,7 +599,10 @@
     "silhuetaUrl": "/players/26/silhueta.mp4",
     "apiFootballTeamId": 130,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio Grande do Sul"
+    "estadoClube": "Rio Grande do Sul",
+    "clubeAnterior": "Juventus",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Serie A"
   },
   {
     "id": 27,
@@ -544,7 +622,10 @@
     "silhuetaUrl": "/players/27/silhueta.mp4",
     "apiFootballTeamId": 130,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio Grande do Sul"
+    "estadoClube": "Rio Grande do Sul",
+    "clubeAnterior": "Independiente",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Profesional"
   },
   {
     "id": 28,
@@ -567,7 +648,10 @@
     "silhuetaUrl": "/players/28/silhueta.mp4",
     "apiFootballTeamId": 128,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Al-Hilal",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Saudi Pro League"
   },
   {
     "id": 29,
@@ -589,7 +673,10 @@
     "silhuetaUrl": "/players/29/silhueta.mp4",
     "apiFootballTeamId": 128,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Flamengo",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 30,
@@ -611,7 +698,10 @@
     "silhuetaUrl": "/players/30/silhueta.mp4",
     "apiFootballTeamId": 128,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Flamengo",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 31,
@@ -632,7 +722,10 @@
     "silhuetaUrl": "/players/31/silhueta.mp4",
     "apiFootballTeamId": 124,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Cruzeiro",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 32,
@@ -653,7 +746,10 @@
     "silhuetaUrl": "/players/32/silhueta.mp4",
     "apiFootballTeamId": 124,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Atlético-MG",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 33,
@@ -673,7 +769,10 @@
     "silhuetaUrl": "/players/33/silhueta.mp4",
     "apiFootballTeamId": 124,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Fluminense",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 34,
@@ -694,7 +793,10 @@
     "silhuetaUrl": "/players/34/silhueta.mp4",
     "apiFootballTeamId": 711,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Benfica",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Portugal"
   },
   {
     "id": 35,
@@ -715,7 +817,10 @@
     "silhuetaUrl": "/players/35/silhueta.mp4",
     "apiFootballTeamId": 711,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Sevilla",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "La Liga"
   },
   {
     "id": 36,
@@ -736,7 +841,10 @@
     "silhuetaUrl": "/players/36/silhueta.mp4",
     "apiFootballTeamId": 711,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Racing Club",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Profesional"
   },
   {
     "id": 37,
@@ -758,7 +866,10 @@
     "silhuetaUrl": "/players/37/silhueta.mp4",
     "apiFootballTeamId": 541,
     "apiFootballLeagueId": 140,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Flamengo",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 38,
@@ -780,7 +891,10 @@
     "silhuetaUrl": "/players/38/silhueta.mp4",
     "apiFootballTeamId": 541,
     "apiFootballLeagueId": 140,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Santos",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 39,
@@ -801,7 +915,10 @@
     "silhuetaUrl": "/players/39/silhueta.mp4",
     "apiFootballTeamId": 529,
     "apiFootballLeagueId": 140,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Leeds United",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Premier League"
   },
   {
     "id": 40,
@@ -819,7 +936,10 @@
     "silhuetaUrl": "/players/40/silhueta.mp4",
     "apiFootballTeamId": 42,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Ituano",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 41,
@@ -841,7 +961,10 @@
     "silhuetaUrl": "/players/41/silhueta.mp4",
     "apiFootballTeamId": 40,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Roma",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Serie A"
   },
   {
     "id": 42,
@@ -859,7 +982,10 @@
     "silhuetaUrl": "/players/42/silhueta.mp4",
     "apiFootballTeamId": 34,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Lyon",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Ligue 1"
   },
   {
     "id": 43,
@@ -879,7 +1005,10 @@
     "silhuetaUrl": "/players/43/silhueta.mp4",
     "apiFootballTeamId": 65,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Botafogo",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 44,
@@ -897,7 +1026,10 @@
     "silhuetaUrl": "/players/44/silhueta.mp4",
     "apiFootballTeamId": 55,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Club Brugge",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Pro League"
   },
   {
     "id": 45,
@@ -915,7 +1047,10 @@
     "silhuetaUrl": "/players/45/silhueta.mp4",
     "apiFootballTeamId": 49,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Palmeiras",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 46,
@@ -933,7 +1068,10 @@
     "silhuetaUrl": "/players/46/silhueta.mp4",
     "apiFootballTeamId": 541,
     "apiFootballLeagueId": 140,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Palmeiras",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 47,
@@ -956,7 +1094,10 @@
     "silhuetaUrl": "/players/47/silhueta.mp4",
     "apiFootballTeamId": 9568,
     "apiFootballLeagueId": 253,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "PSG",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Ligue 1"
   },
   {
     "id": 48,
@@ -980,7 +1121,10 @@
     "silhuetaUrl": "/players/48/silhueta.mp4",
     "apiFootballTeamId": 2932,
     "apiFootballLeagueId": 307,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Manchester United",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Premier League"
   },
   {
     "id": 49,
@@ -1002,7 +1146,10 @@
     "silhuetaUrl": "/players/49/silhueta.mp4",
     "apiFootballTeamId": 541,
     "apiFootballLeagueId": 140,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "PSG",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Ligue 1"
   },
   {
     "id": 50,
@@ -1023,7 +1170,10 @@
     "silhuetaUrl": "/players/50/silhueta.mp4",
     "apiFootballTeamId": 50,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Borussia Dortmund",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Bundesliga"
   },
   {
     "id": 51,
@@ -1056,7 +1206,10 @@
     "silhuetaUrl": "/players/51/silhueta.mp4",
     "apiFootballTeamId": null,
     "apiFootballLeagueId": null,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Santos",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 52,
@@ -1090,7 +1243,10 @@
     "silhuetaUrl": "/players/52/silhueta.mp4",
     "apiFootballTeamId": null,
     "apiFootballLeagueId": null,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Inter Milan",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Serie A"
   },
   {
     "id": 53,
@@ -1124,7 +1280,10 @@
     "silhuetaUrl": "/players/53/silhueta.mp4",
     "apiFootballTeamId": null,
     "apiFootballLeagueId": null,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "PSG",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Ligue 1"
   },
   {
     "id": 54,
@@ -1157,7 +1316,10 @@
     "silhuetaUrl": "/players/54/silhueta.mp4",
     "apiFootballTeamId": null,
     "apiFootballLeagueId": null,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "PSV Eindhoven",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Eredivisie"
   },
   {
     "id": 55,
@@ -1190,7 +1352,10 @@
     "silhuetaUrl": "/players/55/silhueta.mp4",
     "apiFootballTeamId": null,
     "apiFootballLeagueId": null,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Barcelona",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "La Liga"
   },
   {
     "id": 56,
@@ -1224,7 +1389,10 @@
     "silhuetaUrl": "/players/56/silhueta.mp4",
     "apiFootballTeamId": null,
     "apiFootballLeagueId": null,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Juventus",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Serie A"
   },
   {
     "id": 57,
@@ -1244,7 +1412,10 @@
     "faixaEtaria": "28-32",
     "apiFootballTeamId": 127,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Benfica",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Portugal"
   },
   {
     "id": 58,
@@ -1263,7 +1434,10 @@
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 127,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "River Plate",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Profesional"
   },
   {
     "id": 59,
@@ -1282,7 +1456,10 @@
     "faixaEtaria": "30-35",
     "apiFootballTeamId": 127,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Boca Juniors",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Profesional"
   },
   {
     "id": 60,
@@ -1300,7 +1477,10 @@
     "faixaEtaria": "30-34",
     "apiFootballTeamId": 131,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Atlético de Madrid",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "La Liga"
   },
   {
     "id": 61,
@@ -1318,7 +1498,10 @@
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 131,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "CF Montréal",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "MLS"
   },
   {
     "id": 62,
@@ -1336,7 +1519,10 @@
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 131,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Flamengo",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 63,
@@ -1355,7 +1541,10 @@
     "faixaEtaria": "33-37",
     "apiFootballTeamId": 126,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Shanghai Port",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Super Liga Chinesa"
   },
   {
     "id": 64,
@@ -1373,7 +1562,10 @@
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 126,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Manchester City",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Premier League"
   },
   {
     "id": 65,
@@ -1391,7 +1583,10 @@
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 126,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "São Paulo",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 66,
@@ -1410,7 +1605,10 @@
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 121,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Millonarios",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Categoría Primera A"
   },
   {
     "id": 67,
@@ -1430,7 +1628,10 @@
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 121,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Junior",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Categoría Primera A"
   },
   {
     "id": 68,
@@ -1450,7 +1651,10 @@
     "faixaEtaria": "30-34",
     "apiFootballTeamId": 121,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "AC Milan",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Serie A"
   },
   {
     "id": 69,
@@ -1466,7 +1670,10 @@
     "faixaEtaria": "32-36",
     "apiFootballTeamId": 133,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Independiente",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Profesional"
   },
   {
     "id": 70,
@@ -1482,7 +1689,10 @@
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 133,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Nacional",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Primera División"
   },
   {
     "id": 71,
@@ -1501,7 +1711,10 @@
     "faixaEtaria": "33-37",
     "apiFootballTeamId": 133,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Barcelona",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "La Liga"
   },
   {
     "id": 72,
@@ -1522,7 +1735,10 @@
     "faixaEtaria": "37-41",
     "apiFootballTeamId": 116,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Minas Gerais"
+    "estadoClube": "Minas Gerais",
+    "clubeAnterior": "Corinthians",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 73,
@@ -1541,7 +1757,10 @@
     "faixaEtaria": "30-35",
     "apiFootballTeamId": 116,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Minas Gerais"
+    "estadoClube": "Minas Gerais",
+    "clubeAnterior": "Benfica",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Portugal"
   },
   {
     "id": 74,
@@ -1559,7 +1778,10 @@
     "faixaEtaria": "30-35",
     "apiFootballTeamId": 116,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Minas Gerais"
+    "estadoClube": "Minas Gerais",
+    "clubeAnterior": "Boca Juniors",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Profesional"
   },
   {
     "id": 75,
@@ -1577,7 +1799,10 @@
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 119,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio Grande do Sul"
+    "estadoClube": "Rio Grande do Sul",
+    "clubeAnterior": "Sporting CP",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Portugal"
   },
   {
     "id": 76,
@@ -1595,7 +1820,10 @@
     "faixaEtaria": "34-38",
     "apiFootballTeamId": 119,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio Grande do Sul"
+    "estadoClube": "Rio Grande do Sul",
+    "clubeAnterior": "Tigres UANL",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga MX"
   },
   {
     "id": 77,
@@ -1614,7 +1842,10 @@
     "faixaEtaria": "30-35",
     "apiFootballTeamId": 119,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio Grande do Sul"
+    "estadoClube": "Rio Grande do Sul",
+    "clubeAnterior": "Rennes",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Ligue 1"
   },
   {
     "id": 78,
@@ -1634,7 +1865,10 @@
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 1062,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Minas Gerais"
+    "estadoClube": "Minas Gerais",
+    "clubeAnterior": "Sevilla",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "La Liga"
   },
   {
     "id": 79,
@@ -1654,7 +1888,10 @@
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 1062,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Minas Gerais"
+    "estadoClube": "Minas Gerais",
+    "clubeAnterior": "Atlético-MG",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 80,
@@ -1673,7 +1910,10 @@
     "faixaEtaria": "30-34",
     "apiFootballTeamId": 1062,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Minas Gerais"
+    "estadoClube": "Minas Gerais",
+    "clubeAnterior": "FC Porto",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Portugal"
   },
   {
     "id": 81,
@@ -1692,7 +1932,10 @@
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 130,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio Grande do Sul"
+    "estadoClube": "Rio Grande do Sul",
+    "clubeAnterior": "FC Porto",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Portugal"
   },
   {
     "id": 82,
@@ -1710,7 +1953,10 @@
     "faixaEtaria": "32-36",
     "apiFootballTeamId": 130,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio Grande do Sul"
+    "estadoClube": "Rio Grande do Sul",
+    "clubeAnterior": "São Paulo",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 83,
@@ -1729,7 +1975,10 @@
     "faixaEtaria": "33-37",
     "apiFootballTeamId": 130,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio Grande do Sul"
+    "estadoClube": "Rio Grande do Sul",
+    "clubeAnterior": "San Lorenzo",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Profesional"
   },
   {
     "id": 84,
@@ -1745,7 +1994,10 @@
     "faixaEtaria": "32-36",
     "apiFootballTeamId": 128,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Atlético-MG",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 85,
@@ -1765,7 +2017,10 @@
     "faixaEtaria": "36-40",
     "apiFootballTeamId": 128,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Corinthians",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 86,
@@ -1781,7 +2036,10 @@
     "faixaEtaria": "18-22",
     "apiFootballTeamId": 128,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Santos",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 87,
@@ -1799,7 +2057,10 @@
     "faixaEtaria": "37-41",
     "apiFootballTeamId": 124,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Vasco",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 88,
@@ -1820,7 +2081,10 @@
     "faixaEtaria": "40+",
     "apiFootballTeamId": 124,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Chelsea",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Premier League"
   },
   {
     "id": 89,
@@ -1838,7 +2102,10 @@
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 124,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Avaí",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 90,
@@ -1857,7 +2124,10 @@
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 711,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "River Plate",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Profesional"
   },
   {
     "id": 91,
@@ -1876,7 +2146,10 @@
     "faixaEtaria": "28-32",
     "apiFootballTeamId": 711,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Atlético-GO",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 92,
@@ -1895,7 +2168,10 @@
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 711,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Real Betis",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "La Liga"
   },
   {
     "id": 93,
@@ -1913,7 +2189,10 @@
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 1054,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Ceará"
+    "estadoClube": "Ceará",
+    "clubeAnterior": "Palmeiras",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 94,
@@ -1929,7 +2208,10 @@
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 1054,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Ceará"
+    "estadoClube": "Ceará",
+    "clubeAnterior": "Fortaleza",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 95,
@@ -1945,7 +2227,10 @@
     "faixaEtaria": "28-32",
     "apiFootballTeamId": 1054,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Ceará"
+    "estadoClube": "Ceará",
+    "clubeAnterior": "Independiente",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Profesional"
   },
   {
     "id": 96,
@@ -1961,7 +2246,10 @@
     "faixaEtaria": "28-32",
     "apiFootballTeamId": 118,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Bahia"
+    "estadoClube": "Bahia",
+    "clubeAnterior": "Estoril Praia",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Portugal"
   },
   {
     "id": 97,
@@ -1981,7 +2269,10 @@
     "faixaEtaria": "34-38",
     "apiFootballTeamId": 118,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Bahia"
+    "estadoClube": "Bahia",
+    "clubeAnterior": "Flamengo",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 98,
@@ -1997,7 +2288,10 @@
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 118,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Bahia"
+    "estadoClube": "Bahia",
+    "clubeAnterior": "Vitória",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 99,
@@ -2013,7 +2307,10 @@
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 134,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Paraná"
+    "estadoClube": "Paraná",
+    "clubeAnterior": "Nacional",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Primera División"
   },
   {
     "id": 100,
@@ -2033,7 +2330,10 @@
     "faixaEtaria": "38-42",
     "apiFootballTeamId": 134,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Paraná"
+    "estadoClube": "Paraná",
+    "clubeAnterior": "Manchester City",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Premier League"
   },
   {
     "id": 101,
@@ -2049,7 +2349,10 @@
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 134,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Paraná"
+    "estadoClube": "Paraná",
+    "clubeAnterior": "Athletico-PR",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 102,
@@ -2065,7 +2368,10 @@
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 747,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Cuiabá",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null
   },
   {
     "id": 103,
@@ -2083,7 +2389,10 @@
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 747,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "Red Bull Bragantino",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 104,
@@ -2101,7 +2410,10 @@
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 747,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "RB Leipzig",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Bundesliga"
   },
   {
     "id": 105,
@@ -2120,7 +2432,10 @@
     "faixaEtaria": "21-25",
     "apiFootballTeamId": 541,
     "apiFootballLeagueId": 140,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Borussia Dortmund",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Bundesliga"
   },
   {
     "id": 106,
@@ -2140,7 +2455,10 @@
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 541,
     "apiFootballLeagueId": 140,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Peñarol",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Primera División"
   },
   {
     "id": 107,
@@ -2159,7 +2477,10 @@
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 541,
     "apiFootballLeagueId": 140,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Liverpool",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Premier League"
   },
   {
     "id": 108,
@@ -2178,7 +2499,10 @@
     "faixaEtaria": "17-21",
     "apiFootballTeamId": 529,
     "apiFootballLeagueId": 140,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Barcelona",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 109,
@@ -2198,7 +2522,10 @@
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 529,
     "apiFootballLeagueId": 140,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Las Palmas",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "La Liga"
   },
   {
     "id": 110,
@@ -2218,7 +2545,10 @@
     "faixaEtaria": "37-41",
     "apiFootballTeamId": 529,
     "apiFootballLeagueId": 140,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Bayern Munich",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Bundesliga"
   },
   {
     "id": 111,
@@ -2237,7 +2567,10 @@
     "faixaEtaria": "34-38",
     "apiFootballTeamId": 50,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Wolfsburg",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Bundesliga"
   },
   {
     "id": 112,
@@ -2256,7 +2589,10 @@
     "faixaEtaria": "25-29",
     "apiFootballTeamId": 50,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Manchester City",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 113,
@@ -2276,7 +2612,10 @@
     "faixaEtaria": "30-34",
     "apiFootballTeamId": 50,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Monaco",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Ligue 1"
   },
   {
     "id": 114,
@@ -2295,7 +2634,10 @@
     "faixaEtaria": "33-37",
     "apiFootballTeamId": 40,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Roma",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Serie A"
   },
   {
     "id": 115,
@@ -2314,7 +2656,10 @@
     "faixaEtaria": "34-38",
     "apiFootballTeamId": 40,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Southampton",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Premier League"
   },
   {
     "id": 116,
@@ -2332,7 +2677,10 @@
     "faixaEtaria": "25-29",
     "apiFootballTeamId": 40,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Benfica",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Portugal"
   },
   {
     "id": 117,
@@ -2348,7 +2696,10 @@
     "faixaEtaria": "23-27",
     "apiFootballTeamId": 42,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Arsenal",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 118,
@@ -2364,7 +2715,10 @@
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 42,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "West Ham United",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Premier League"
   },
   {
     "id": 119,
@@ -2380,7 +2734,10 @@
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 42,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Real Sociedad",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "La Liga"
   },
   {
     "id": 120,
@@ -2398,7 +2755,10 @@
     "faixaEtaria": "31-35",
     "apiFootballTeamId": 157,
     "apiFootballLeagueId": 78,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Tottenham",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Premier League"
   },
   {
     "id": 121,
@@ -2416,7 +2776,10 @@
     "faixaEtaria": "21-25",
     "apiFootballTeamId": 157,
     "apiFootballLeagueId": 78,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Bayern Munich",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 122,
@@ -2434,7 +2797,10 @@
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 157,
     "apiFootballLeagueId": 78,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Crystal Palace",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Premier League"
   },
   {
     "id": 123,
@@ -2454,7 +2820,10 @@
     "faixaEtaria": "27-31",
     "apiFootballTeamId": 85,
     "apiFootballLeagueId": 61,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Barcelona",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "La Liga"
   },
   {
     "id": 124,
@@ -2472,7 +2841,10 @@
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 85,
     "apiFootballLeagueId": 61,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "FC Porto",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Portugal"
   },
   {
     "id": 125,
@@ -2490,7 +2862,10 @@
     "faixaEtaria": "30-34",
     "apiFootballTeamId": 85,
     "apiFootballLeagueId": 61,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Roma",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Serie A"
   },
   {
     "id": 126,
@@ -2510,7 +2885,10 @@
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 505,
     "apiFootballLeagueId": 135,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Racing Club",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Profesional"
   },
   {
     "id": 127,
@@ -2529,7 +2907,10 @@
     "faixaEtaria": "27-31",
     "apiFootballTeamId": 505,
     "apiFootballLeagueId": 135,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Cagliari",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Serie A"
   },
   {
     "id": 128,
@@ -2547,7 +2928,10 @@
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 505,
     "apiFootballLeagueId": 135,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Borussia Mönchengladbach",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Bundesliga"
   },
   {
     "id": 129,
@@ -2563,7 +2947,10 @@
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 49,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Manchester City",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Premier League"
   },
   {
     "id": 130,
@@ -2582,7 +2969,10 @@
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 49,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Benfica",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Portugal"
   },
   {
     "id": 131,
@@ -2598,7 +2988,10 @@
     "faixaEtaria": "23-27",
     "apiFootballTeamId": 49,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Villarreal",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "La Liga"
   },
   {
     "id": 132,
@@ -2617,7 +3010,10 @@
     "faixaEtaria": "20-24",
     "apiFootballTeamId": 33,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Manchester United",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 133,
@@ -2636,7 +3032,10 @@
     "faixaEtaria": "30-34",
     "apiFootballTeamId": 33,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Sporting CP",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Portugal"
   },
   {
     "id": 134,
@@ -2654,7 +3053,10 @@
     "faixaEtaria": "21-25",
     "apiFootballTeamId": 33,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Atalanta",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Serie A"
   },
   {
     "id": 135,
@@ -2672,7 +3074,10 @@
     "faixaEtaria": "25-29",
     "apiFootballTeamId": 496,
     "apiFootballLeagueId": 135,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Fiorentina",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Serie A"
   },
   {
     "id": 136,
@@ -2690,7 +3095,10 @@
     "faixaEtaria": "19-23",
     "apiFootballTeamId": 496,
     "apiFootballLeagueId": 135,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Juventus",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 137,
@@ -2709,7 +3117,10 @@
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 496,
     "apiFootballLeagueId": 135,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "FC Porto",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Portugal"
   },
   {
     "id": 138,
@@ -2730,7 +3141,10 @@
     "faixaEtaria": "34-38",
     "apiFootballTeamId": 530,
     "apiFootballLeagueId": 140,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Barcelona",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "La Liga"
   },
   {
     "id": 139,
@@ -2751,7 +3165,10 @@
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 530,
     "apiFootballLeagueId": 140,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Manchester City",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Premier League"
   },
   {
     "id": 140,
@@ -2770,7 +3187,10 @@
     "faixaEtaria": "31-35",
     "apiFootballTeamId": 530,
     "apiFootballLeagueId": 140,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Sporting CP",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Portugal"
   },
   {
     "id": 141,
@@ -2789,7 +3209,10 @@
     "faixaEtaria": "21-25",
     "apiFootballTeamId": 168,
     "apiFootballLeagueId": 78,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Bayer Leverkusen",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 142,
@@ -2808,7 +3231,10 @@
     "faixaEtaria": "31-35",
     "apiFootballTeamId": 168,
     "apiFootballLeagueId": 78,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Arsenal",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Premier League"
   },
   {
     "id": 143,
@@ -2827,7 +3253,10 @@
     "faixaEtaria": "23-27",
     "apiFootballTeamId": 168,
     "apiFootballLeagueId": 78,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Union Saint-Gilloise",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Pro League"
   },
   {
     "id": 144,
@@ -2845,7 +3274,10 @@
     "faixaEtaria": "25-29",
     "apiFootballTeamId": 489,
     "apiFootballLeagueId": 135,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Lille",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Ligue 1"
   },
   {
     "id": 145,
@@ -2863,7 +3295,10 @@
     "faixaEtaria": "27-31",
     "apiFootballTeamId": 489,
     "apiFootballLeagueId": 135,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Real Sociedad",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "La Liga"
   },
   {
     "id": 146,
@@ -2882,7 +3317,10 @@
     "faixaEtaria": "28-32",
     "apiFootballTeamId": 489,
     "apiFootballLeagueId": 135,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Lille",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Ligue 1"
   },
   {
     "id": 147,
@@ -2898,7 +3336,10 @@
     "faixaEtaria": "33-37",
     "apiFootballTeamId": 47,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Bayer Leverkusen",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Bundesliga"
   },
   {
     "id": 148,
@@ -2914,7 +3355,10 @@
     "faixaEtaria": "27-31",
     "apiFootballTeamId": 47,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Everton",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Premier League"
   },
   {
     "id": 149,
@@ -2930,7 +3374,10 @@
     "faixaEtaria": "29-33",
     "apiFootballTeamId": 47,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Leicester City",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Premier League"
   },
   {
     "id": 150,
@@ -2946,7 +3393,10 @@
     "faixaEtaria": "28-32",
     "apiFootballTeamId": 165,
     "apiFootballLeagueId": 78,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Stuttgart",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Bundesliga"
   },
   {
     "id": 151,
@@ -2962,7 +3412,10 @@
     "faixaEtaria": "20-24",
     "apiFootballTeamId": 165,
     "apiFootballLeagueId": 78,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Borussia Dortmund",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 152,
@@ -2978,7 +3431,10 @@
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 165,
     "apiFootballLeagueId": 78,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Red Bull Salzburg",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Bundesliga Austríaca"
   },
   {
     "id": 153,
@@ -2997,7 +3453,10 @@
     "faixaEtaria": "23-27",
     "apiFootballTeamId": 85,
     "apiFootballLeagueId": 61,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Napoli",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Serie A"
   },
   {
     "id": 154,
@@ -3015,7 +3474,10 @@
     "faixaEtaria": "30-35",
     "apiFootballTeamId": 492,
     "apiFootballLeagueId": 135,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Empoli",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Serie A"
   },
   {
     "id": 155,
@@ -3047,7 +3509,10 @@
     },
     "apiFootballTeamId": null,
     "apiFootballLeagueId": null,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Flamengo",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 156,
@@ -3078,7 +3543,10 @@
     },
     "apiFootballTeamId": null,
     "apiFootballLeagueId": null,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Inter Milan",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Serie A"
   },
   {
     "id": 157,
@@ -3109,7 +3577,10 @@
     },
     "apiFootballTeamId": null,
     "apiFootballLeagueId": null,
-    "estadoClube": "São Paulo"
+    "estadoClube": "São Paulo",
+    "clubeAnterior": "São Paulo",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 158,
@@ -3140,7 +3611,10 @@
     },
     "apiFootballTeamId": null,
     "apiFootballLeagueId": null,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Deportivo La Coruña",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "La Liga"
   },
   {
     "id": 159,
@@ -3171,7 +3645,10 @@
     },
     "apiFootballTeamId": null,
     "apiFootballLeagueId": null,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Deportivo La Coruña",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "La Liga"
   },
   {
     "id": 160,
@@ -3200,7 +3677,10 @@
     },
     "apiFootballTeamId": null,
     "apiFootballLeagueId": null,
-    "estadoClube": "Rio de Janeiro"
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Botafogo",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 161,
@@ -3232,7 +3712,10 @@
     },
     "apiFootballTeamId": null,
     "apiFootballLeagueId": null,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Juventus",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Serie A"
   },
   {
     "id": 162,
@@ -3262,7 +3745,10 @@
     },
     "apiFootballTeamId": null,
     "apiFootballLeagueId": null,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "AC Milan",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 163,
@@ -3293,7 +3779,10 @@
     },
     "apiFootballTeamId": null,
     "apiFootballLeagueId": null,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Fiorentina",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Serie A"
   },
   {
     "id": 164,
@@ -3325,7 +3814,10 @@
     },
     "apiFootballTeamId": null,
     "apiFootballLeagueId": null,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Real Mallorca",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "La Liga"
   },
   {
     "id": 165,
@@ -3357,7 +3849,10 @@
     },
     "apiFootballTeamId": null,
     "apiFootballLeagueId": null,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Bayern Munich",
+    "origemAnterior": "base",
+    "ligaAnterior": null
   },
   {
     "id": 166,
@@ -3388,7 +3883,10 @@
     },
     "apiFootballTeamId": null,
     "apiFootballLeagueId": null,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Olympique de Marseille",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Ligue 1"
   },
   {
     "id": 167,
@@ -3407,7 +3905,10 @@
     "faixaEtaria": "28-32",
     "apiFootballTeamId": 541,
     "apiFootballLeagueId": 140,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "FC Porto",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Portugal"
   },
   {
     "id": 168,
@@ -3427,6 +3928,9 @@
     "faixaEtaria": "34-38",
     "apiFootballTeamId": 33,
     "apiFootballLeagueId": 39,
-    "estadoClube": null
+    "estadoClube": null,
+    "clubeAnterior": "Real Madrid",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "La Liga"
   }
 ]
