@@ -18,7 +18,8 @@
     "fotoBlurUrl": "/players/1/foto-blur.jpg",
     "silhuetaUrl": "/players/1/silhueta.mp4",
     "apiFootballTeamId": 127,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 2,
@@ -39,7 +40,8 @@
     "fotoBlurUrl": "/players/2/foto-blur.jpg",
     "silhuetaUrl": "/players/2/silhueta.mp4",
     "apiFootballTeamId": 127,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 3,
@@ -60,7 +62,8 @@
     "fotoBlurUrl": "/players/3/foto-blur.jpg",
     "silhuetaUrl": "/players/3/silhueta.mp4",
     "apiFootballTeamId": 127,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 4,
@@ -80,7 +83,8 @@
     "fotoBlurUrl": "/players/4/foto-blur.jpg",
     "silhuetaUrl": "/players/4/silhueta.mp4",
     "apiFootballTeamId": 131,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 5,
@@ -99,7 +103,8 @@
     "fotoBlurUrl": "/players/5/foto-blur.jpg",
     "silhuetaUrl": "/players/5/silhueta.mp4",
     "apiFootballTeamId": 131,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 6,
@@ -118,7 +123,8 @@
     "fotoBlurUrl": "/players/6/foto-blur.jpg",
     "silhuetaUrl": "/players/6/silhueta.mp4",
     "apiFootballTeamId": 131,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 7,
@@ -138,7 +144,8 @@
     "fotoBlurUrl": "/players/7/foto-blur.jpg",
     "silhuetaUrl": "/players/7/silhueta.mp4",
     "apiFootballTeamId": 126,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 8,
@@ -158,7 +165,8 @@
     "fotoBlurUrl": "/players/8/foto-blur.jpg",
     "silhuetaUrl": "/players/8/silhueta.mp4",
     "apiFootballTeamId": 126,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 9,
@@ -177,7 +185,8 @@
     "fotoBlurUrl": "/players/9/foto-blur.jpg",
     "silhuetaUrl": "/players/9/silhueta.mp4",
     "apiFootballTeamId": 126,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 10,
@@ -197,7 +206,8 @@
     "fotoBlurUrl": "/players/10/foto-blur.jpg",
     "silhuetaUrl": "/players/10/silhueta.mp4",
     "apiFootballTeamId": 121,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 11,
@@ -217,7 +227,8 @@
     "fotoBlurUrl": "/players/11/foto-blur.jpg",
     "silhuetaUrl": "/players/11/silhueta.mp4",
     "apiFootballTeamId": 121,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 12,
@@ -237,7 +248,8 @@
     "fotoBlurUrl": "/players/12/foto-blur.jpg",
     "silhuetaUrl": "/players/12/silhueta.mp4",
     "apiFootballTeamId": 121,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 13,
@@ -254,7 +266,8 @@
     "fotoBlurUrl": "/players/13/foto-blur.jpg",
     "silhuetaUrl": "/players/13/silhueta.mp4",
     "apiFootballTeamId": 133,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 14,
@@ -271,7 +284,8 @@
     "fotoBlurUrl": "/players/14/foto-blur.jpg",
     "silhuetaUrl": "/players/14/silhueta.mp4",
     "apiFootballTeamId": 133,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 15,
@@ -288,7 +302,8 @@
     "fotoBlurUrl": "/players/15/foto-blur.jpg",
     "silhuetaUrl": "/players/15/silhueta.mp4",
     "apiFootballTeamId": 133,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 16,
@@ -308,7 +323,8 @@
     "fotoBlurUrl": "/players/16/foto-blur.jpg",
     "silhuetaUrl": "/players/16/silhueta.mp4",
     "apiFootballTeamId": 116,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Minas Gerais"
   },
   {
     "id": 17,
@@ -327,7 +343,8 @@
     "fotoBlurUrl": "/players/17/foto-blur.jpg",
     "silhuetaUrl": "/players/17/silhueta.mp4",
     "apiFootballTeamId": 116,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Minas Gerais"
   },
   {
     "id": 18,
@@ -344,7 +361,8 @@
     "fotoBlurUrl": "/players/18/foto-blur.jpg",
     "silhuetaUrl": "/players/18/silhueta.mp4",
     "apiFootballTeamId": 116,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Minas Gerais"
   },
   {
     "id": 19,
@@ -363,7 +381,8 @@
     "fotoBlurUrl": "/players/19/foto-blur.jpg",
     "silhuetaUrl": "/players/19/silhueta.mp4",
     "apiFootballTeamId": 119,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio Grande do Sul"
   },
   {
     "id": 20,
@@ -383,7 +402,8 @@
     "fotoBlurUrl": "/players/20/foto-blur.jpg",
     "silhuetaUrl": "/players/20/silhueta.mp4",
     "apiFootballTeamId": 119,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio Grande do Sul"
   },
   {
     "id": 21,
@@ -400,7 +420,8 @@
     "fotoBlurUrl": "/players/21/foto-blur.jpg",
     "silhuetaUrl": "/players/21/silhueta.mp4",
     "apiFootballTeamId": 119,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio Grande do Sul"
   },
   {
     "id": 22,
@@ -417,7 +438,8 @@
     "fotoBlurUrl": "/players/22/foto-blur.jpg",
     "silhuetaUrl": "/players/22/silhueta.mp4",
     "apiFootballTeamId": 1062,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Minas Gerais"
   },
   {
     "id": 23,
@@ -438,7 +460,8 @@
     "fotoBlurUrl": "/players/23/foto-blur.jpg",
     "silhuetaUrl": "/players/23/silhueta.mp4",
     "apiFootballTeamId": 1062,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Minas Gerais"
   },
   {
     "id": 24,
@@ -459,7 +482,8 @@
     "fotoBlurUrl": "/players/24/foto-blur.jpg",
     "silhuetaUrl": "/players/24/silhueta.mp4",
     "apiFootballTeamId": 1062,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Minas Gerais"
   },
   {
     "id": 25,
@@ -478,7 +502,8 @@
     "fotoBlurUrl": "/players/25/foto-blur.jpg",
     "silhuetaUrl": "/players/25/silhueta.mp4",
     "apiFootballTeamId": 130,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio Grande do Sul"
   },
   {
     "id": 26,
@@ -498,7 +523,8 @@
     "fotoBlurUrl": "/players/26/foto-blur.jpg",
     "silhuetaUrl": "/players/26/silhueta.mp4",
     "apiFootballTeamId": 130,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio Grande do Sul"
   },
   {
     "id": 27,
@@ -517,7 +543,8 @@
     "fotoBlurUrl": "/players/27/foto-blur.jpg",
     "silhuetaUrl": "/players/27/silhueta.mp4",
     "apiFootballTeamId": 130,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio Grande do Sul"
   },
   {
     "id": 28,
@@ -539,7 +566,8 @@
     "fotoBlurUrl": "/players/28/foto-blur.jpg",
     "silhuetaUrl": "/players/28/silhueta.mp4",
     "apiFootballTeamId": 128,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 29,
@@ -560,7 +588,8 @@
     "fotoBlurUrl": "/players/29/foto-blur.jpg",
     "silhuetaUrl": "/players/29/silhueta.mp4",
     "apiFootballTeamId": 128,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 30,
@@ -581,7 +610,8 @@
     "fotoBlurUrl": "/players/30/foto-blur.jpg",
     "silhuetaUrl": "/players/30/silhueta.mp4",
     "apiFootballTeamId": 128,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 31,
@@ -601,7 +631,8 @@
     "fotoBlurUrl": "/players/31/foto-blur.jpg",
     "silhuetaUrl": "/players/31/silhueta.mp4",
     "apiFootballTeamId": 124,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 32,
@@ -621,7 +652,8 @@
     "fotoBlurUrl": "/players/32/foto-blur.jpg",
     "silhuetaUrl": "/players/32/silhueta.mp4",
     "apiFootballTeamId": 124,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 33,
@@ -640,7 +672,8 @@
     "fotoBlurUrl": "/players/33/foto-blur.jpg",
     "silhuetaUrl": "/players/33/silhueta.mp4",
     "apiFootballTeamId": 124,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 34,
@@ -660,7 +693,8 @@
     "fotoBlurUrl": "/players/34/foto-blur.jpg",
     "silhuetaUrl": "/players/34/silhueta.mp4",
     "apiFootballTeamId": 711,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 35,
@@ -680,7 +714,8 @@
     "fotoBlurUrl": "/players/35/foto-blur.jpg",
     "silhuetaUrl": "/players/35/silhueta.mp4",
     "apiFootballTeamId": 711,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 36,
@@ -700,7 +735,8 @@
     "fotoBlurUrl": "/players/36/foto-blur.jpg",
     "silhuetaUrl": "/players/36/silhueta.mp4",
     "apiFootballTeamId": 711,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 37,
@@ -721,7 +757,8 @@
     "fotoBlurUrl": "/players/37/foto-blur.jpg",
     "silhuetaUrl": "/players/37/silhueta.mp4",
     "apiFootballTeamId": 541,
-    "apiFootballLeagueId": 140
+    "apiFootballLeagueId": 140,
+    "estadoClube": null
   },
   {
     "id": 38,
@@ -742,7 +779,8 @@
     "fotoBlurUrl": "/players/38/foto-blur.jpg",
     "silhuetaUrl": "/players/38/silhueta.mp4",
     "apiFootballTeamId": 541,
-    "apiFootballLeagueId": 140
+    "apiFootballLeagueId": 140,
+    "estadoClube": null
   },
   {
     "id": 39,
@@ -762,7 +800,8 @@
     "fotoBlurUrl": "/players/39/foto-blur.jpg",
     "silhuetaUrl": "/players/39/silhueta.mp4",
     "apiFootballTeamId": 529,
-    "apiFootballLeagueId": 140
+    "apiFootballLeagueId": 140,
+    "estadoClube": null
   },
   {
     "id": 40,
@@ -779,7 +818,8 @@
     "fotoBlurUrl": "/players/40/foto-blur.jpg",
     "silhuetaUrl": "/players/40/silhueta.mp4",
     "apiFootballTeamId": 42,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 41,
@@ -800,7 +840,8 @@
     "fotoBlurUrl": "/players/41/foto-blur.jpg",
     "silhuetaUrl": "/players/41/silhueta.mp4",
     "apiFootballTeamId": 40,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 42,
@@ -817,7 +858,8 @@
     "fotoBlurUrl": "/players/42/foto-blur.jpg",
     "silhuetaUrl": "/players/42/silhueta.mp4",
     "apiFootballTeamId": 34,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 43,
@@ -836,7 +878,8 @@
     "fotoBlurUrl": "/players/43/foto-blur.jpg",
     "silhuetaUrl": "/players/43/silhueta.mp4",
     "apiFootballTeamId": 65,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 44,
@@ -853,7 +896,8 @@
     "fotoBlurUrl": "/players/44/foto-blur.jpg",
     "silhuetaUrl": "/players/44/silhueta.mp4",
     "apiFootballTeamId": 55,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 45,
@@ -870,7 +914,8 @@
     "fotoBlurUrl": "/players/45/foto-blur.jpg",
     "silhuetaUrl": "/players/45/silhueta.mp4",
     "apiFootballTeamId": 49,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 46,
@@ -887,7 +932,8 @@
     "fotoBlurUrl": "/players/46/foto-blur.jpg",
     "silhuetaUrl": "/players/46/silhueta.mp4",
     "apiFootballTeamId": 541,
-    "apiFootballLeagueId": 140
+    "apiFootballLeagueId": 140,
+    "estadoClube": null
   },
   {
     "id": 47,
@@ -909,7 +955,8 @@
     "fotoBlurUrl": "/players/47/foto-blur.jpg",
     "silhuetaUrl": "/players/47/silhueta.mp4",
     "apiFootballTeamId": 9568,
-    "apiFootballLeagueId": 253
+    "apiFootballLeagueId": 253,
+    "estadoClube": null
   },
   {
     "id": 48,
@@ -932,7 +979,8 @@
     "fotoBlurUrl": "/players/48/foto-blur.jpg",
     "silhuetaUrl": "/players/48/silhueta.mp4",
     "apiFootballTeamId": 2932,
-    "apiFootballLeagueId": 307
+    "apiFootballLeagueId": 307,
+    "estadoClube": null
   },
   {
     "id": 49,
@@ -953,7 +1001,8 @@
     "fotoBlurUrl": "/players/49/foto-blur.jpg",
     "silhuetaUrl": "/players/49/silhueta.mp4",
     "apiFootballTeamId": 541,
-    "apiFootballLeagueId": 140
+    "apiFootballLeagueId": 140,
+    "estadoClube": null
   },
   {
     "id": 50,
@@ -973,7 +1022,8 @@
     "fotoBlurUrl": "/players/50/foto-blur.jpg",
     "silhuetaUrl": "/players/50/silhueta.mp4",
     "apiFootballTeamId": 50,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 51,
@@ -1005,7 +1055,8 @@
     "fotoBlurUrl": "/players/51/foto-blur.jpg",
     "silhuetaUrl": "/players/51/silhueta.mp4",
     "apiFootballTeamId": null,
-    "apiFootballLeagueId": null
+    "apiFootballLeagueId": null,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 52,
@@ -1038,7 +1089,8 @@
     "fotoBlurUrl": "/players/52/foto-blur.jpg",
     "silhuetaUrl": "/players/52/silhueta.mp4",
     "apiFootballTeamId": null,
-    "apiFootballLeagueId": null
+    "apiFootballLeagueId": null,
+    "estadoClube": null
   },
   {
     "id": 53,
@@ -1071,7 +1123,8 @@
     "fotoBlurUrl": "/players/53/foto-blur.jpg",
     "silhuetaUrl": "/players/53/silhueta.mp4",
     "apiFootballTeamId": null,
-    "apiFootballLeagueId": null
+    "apiFootballLeagueId": null,
+    "estadoClube": null
   },
   {
     "id": 54,
@@ -1103,7 +1156,8 @@
     "fotoBlurUrl": "/players/54/foto-blur.jpg",
     "silhuetaUrl": "/players/54/silhueta.mp4",
     "apiFootballTeamId": null,
-    "apiFootballLeagueId": null
+    "apiFootballLeagueId": null,
+    "estadoClube": null
   },
   {
     "id": 55,
@@ -1135,7 +1189,8 @@
     "fotoBlurUrl": "/players/55/foto-blur.jpg",
     "silhuetaUrl": "/players/55/silhueta.mp4",
     "apiFootballTeamId": null,
-    "apiFootballLeagueId": null
+    "apiFootballLeagueId": null,
+    "estadoClube": null
   },
   {
     "id": 56,
@@ -1168,7 +1223,8 @@
     "fotoBlurUrl": "/players/56/foto-blur.jpg",
     "silhuetaUrl": "/players/56/silhueta.mp4",
     "apiFootballTeamId": null,
-    "apiFootballLeagueId": null
+    "apiFootballLeagueId": null,
+    "estadoClube": null
   },
   {
     "id": 57,
@@ -1187,7 +1243,8 @@
     "curiosidade": "Foi um dos destaques da Copa América 2019 pelo Brasil, marcando o gol do título contra o Peru na final do Maracanã",
     "faixaEtaria": "28-32",
     "apiFootballTeamId": 127,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 58,
@@ -1205,7 +1262,8 @@
     "curiosidade": "Chegou ao Flamengo vindo do River Plate por €25M — o uruguaio rapidamente se tornou titular e foi convocado para a Copa América 2024",
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 127,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 59,
@@ -1223,7 +1281,8 @@
     "curiosidade": "Eleito o melhor goleiro do Brasileirão, o argentino Rossi foi um dos pilares do Flamengo com defesas decisivas em momentos-chave",
     "faixaEtaria": "30-35",
     "apiFootballTeamId": 127,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 60,
@@ -1240,7 +1299,8 @@
     "curiosidade": "Estrela holandesa que chegou ao Brasil sem custos após deixar o Atlético de Madrid — tornou-se o maior nome do Corinthians em 2025",
     "faixaEtaria": "30-34",
     "apiFootballTeamId": 131,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 61,
@@ -1257,7 +1317,8 @@
     "curiosidade": "Zagueiro capitão da Seleção Equatoriana, é um dos pilares defensivos do Corinthians e referência na Copa do Mundo 2026",
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 131,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 62,
@@ -1274,7 +1335,8 @@
     "curiosidade": "Revelação das categorias de base do Flamengo, firmou-se como titular no Corinthians e virou um dos goleiros mais valorizados do Brasileirão",
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 131,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 63,
@@ -1292,7 +1354,8 @@
     "curiosidade": "Retornou ao São Paulo em 2023 após 7 anos no futebol chinês pelo Shanghai Port — seu retorno foi aguardado por toda uma geração de torcedores",
     "faixaEtaria": "33-37",
     "apiFootballTeamId": 126,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 64,
@@ -1309,7 +1372,8 @@
     "curiosidade": "Capitão da Seleção Venezuelana em ascensão no futebol sul-americano, é um dos zagueiros mais sólidos do Brasileirão",
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 126,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 65,
@@ -1326,7 +1390,8 @@
     "curiosidade": "Lateral-esquerdo revelado nas categorias de base do São Paulo, foi convocado para a Seleção Brasileira antes dos 22 anos pelo alto nível constante",
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 126,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 66,
@@ -1344,7 +1409,8 @@
     "curiosidade": "Volante colombiano considerado um dos mais completos da América do Sul, disputou a Copa América 2024 e é cobiçado por clubes europeus",
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 121,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 67,
@@ -1363,7 +1429,8 @@
     "curiosidade": "Lateral-esquerdo uruguaio que se tornou um dos melhores da posição no Brasil, com participação ofensiva que lembra um ponta",
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 121,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 68,
@@ -1382,7 +1449,8 @@
     "curiosidade": "Capitão do Palmeiras e da Seleção Paraguaia, é um dos zagueiros mais titulados do futebol sul-americano dos últimos anos",
     "faixaEtaria": "30-34",
     "apiFootballTeamId": 121,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 69,
@@ -1397,7 +1465,8 @@
     "curiosidade": "Apelidado de 'Gigante' pela torcida do Vasco, o centroavante argentino chegou vindo de Independiente e se tornou artilheiro e ídolo rapidamente",
     "faixaEtaria": "32-36",
     "apiFootballTeamId": 133,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 70,
@@ -1412,7 +1481,8 @@
     "curiosidade": "Lateral-direito uruguaio que virou um dos jogadores mais queridos da torcida do Vasco pela garra e entrega em campo",
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 133,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 71,
@@ -1430,7 +1500,8 @@
     "curiosidade": "Ex-Liverpool e Barcelona, retornou ao Brasil para jogar no Vasco — o mesmo clube que o revelou antes de ser vendido ao Inter de Milão",
     "faixaEtaria": "33-37",
     "apiFootballTeamId": 133,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 72,
@@ -1450,7 +1521,8 @@
     "curiosidade": "Lendário goleiro que encerrou 12 anos no Corinthians para se tornar o símbolo do Cruzeiro — a maior transferência doméstica entre goleiros do Brasil",
     "faixaEtaria": "37-41",
     "apiFootballTeamId": 116,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Minas Gerais"
   },
   {
     "id": 73,
@@ -1468,7 +1540,8 @@
     "curiosidade": "Campeão europeu pela Seleção Portuguesa em 2016, chegou ao Cruzeiro vindo do Benfica para ser o destaque do clube mineiro",
     "faixaEtaria": "30-35",
     "apiFootballTeamId": 116,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Minas Gerais"
   },
   {
     "id": 74,
@@ -1485,7 +1558,8 @@
     "curiosidade": "Meia gaúcho com passagens por Grêmio, Corinthians e Boca Juniors antes de chegar à Raposa como um dos jogadores mais experientes do elenco",
     "faixaEtaria": "30-35",
     "apiFootballTeamId": 116,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Minas Gerais"
   },
   {
     "id": 75,
@@ -1502,7 +1576,8 @@
     "curiosidade": "Revelado pelo Internacional, passou pelo Sporting de Portugal antes de retornar ao clube gaúcho como um dos zagueiros mais sólidos do Brasil",
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 119,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio Grande do Sul"
   },
   {
     "id": 76,
@@ -1519,7 +1594,8 @@
     "curiosidade": "O maior artilheiro da história da Seleção Equatoriana marcou três gols sozinho na Copa do Mundo de 2014 — incluindo dois na estreia",
     "faixaEtaria": "34-38",
     "apiFootballTeamId": 119,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio Grande do Sul"
   },
   {
     "id": 77,
@@ -1537,7 +1613,8 @@
     "curiosidade": "Lateral-esquerdo com passagens por Flamengo e Rennes, retornou ao Internacional como titular experiente do elenco gaúcho",
     "faixaEtaria": "30-35",
     "apiFootballTeamId": 119,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio Grande do Sul"
   },
   {
     "id": 78,
@@ -1556,7 +1633,8 @@
     "curiosidade": "Titular da Seleção Brasileira e um dos laterais-esquerdos mais ofensivos do continente, é peça-chave no Atlético-MG há anos",
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 1062,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Minas Gerais"
   },
   {
     "id": 79,
@@ -1575,7 +1653,8 @@
     "curiosidade": "Revelado pelo Atlético-MG, foi campeão da Libertadores com o Galo antes de retornar ao clube após passagem no futebol europeu",
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 1062,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Minas Gerais"
   },
   {
     "id": 80,
@@ -1593,7 +1672,8 @@
     "curiosidade": "Meia português que brilhou por anos no FC Porto antes de chegar ao Atlético-MG, trazendo qualidade técnica europeia ao Brasileirão",
     "faixaEtaria": "30-34",
     "apiFootballTeamId": 1062,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Minas Gerais"
   },
   {
     "id": 81,
@@ -1611,7 +1691,8 @@
     "curiosidade": "Revelado pelo Grêmio, foi vendido ao Porto por €15M e retornou ao clube gaúcho para encerrar a trajetória onde tudo começou",
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 130,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio Grande do Sul"
   },
   {
     "id": 82,
@@ -1628,7 +1709,8 @@
     "curiosidade": "Lateral-esquerdo que passou por São Paulo antes de se tornar referência e ídolo no Grêmio, onde fez a maior parte de sua carreira",
     "faixaEtaria": "32-36",
     "apiFootballTeamId": 130,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio Grande do Sul"
   },
   {
     "id": 83,
@@ -1646,7 +1728,8 @@
     "curiosidade": "Zagueiro argentino que se tornou capitão e símbolo do Grêmio por mais de uma década, sendo um dos estrangeiros mais queridos da história do clube",
     "faixaEtaria": "33-37",
     "apiFootballTeamId": 130,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio Grande do Sul"
   },
   {
     "id": 84,
@@ -1661,7 +1744,8 @@
     "curiosidade": "Meia venezuelano considerado um dos mais técnicos e criativos do Brasileirão por anos, servindo ao Santos com participações decisivas",
     "faixaEtaria": "32-36",
     "apiFootballTeamId": 128,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 85,
@@ -1680,7 +1764,8 @@
     "curiosidade": "Campeão da Libertadores 2012 pelo Corinthians — o único mundial de clubes de um clube brasileiro —, encerrando a carreira no Santos",
     "faixaEtaria": "36-40",
     "apiFootballTeamId": 128,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 86,
@@ -1695,7 +1780,8 @@
     "curiosidade": "Joia revelada pelo Santos e cobiçada por gigantes europeus, JP Chermont é apontado como uma das maiores promessas do futebol brasileiro para a próxima geração",
     "faixaEtaria": "18-22",
     "apiFootballTeamId": 128,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 87,
@@ -1712,7 +1798,8 @@
     "curiosidade": "Artilheiro histórico do Fluminense e herói da Libertadores 2023, marcou o gol do título sobre o Boca Juniors no Maracanã lotado",
     "faixaEtaria": "37-41",
     "apiFootballTeamId": 124,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 88,
@@ -1732,7 +1819,8 @@
     "curiosidade": "Lenda do futebol mundial que retornou ao Fluminense — clube que o revelou — após conquistas pelo PSG, Milan e Chelsea. O eterno guerreiro",
     "faixaEtaria": "40+",
     "apiFootballTeamId": 124,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 89,
@@ -1749,7 +1837,8 @@
     "curiosidade": "Meia criativo do Fluminense reconhecido pela capacidade de finalização de fora da área e pela visão de jogo acima da média no Brasileirão",
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 124,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 90,
@@ -1767,7 +1856,8 @@
     "curiosidade": "Eleito o melhor jogador da América do Sul em 2024, o venezuelano foi peça fundamental na histórica conquista da Libertadores pelo Botafogo",
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 711,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 91,
@@ -1785,7 +1875,8 @@
     "curiosidade": "Eleito o melhor volante do Brasil em 2024, foi o cérebro do milagre do Botafogo na conquista histórica da Libertadores",
     "faixaEtaria": "28-32",
     "apiFootballTeamId": 711,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 92,
@@ -1803,7 +1894,8 @@
     "curiosidade": "Retornou do Real Betis para o Botafogo e foi decisivo na conquista da Libertadores 2024, com participações diretas nos gols do título",
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 711,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 93,
@@ -1820,7 +1912,8 @@
     "curiosidade": "Marcou o gol do título da Libertadores 2021 pelo Palmeiras no último lance da prorrogação — um dos momentos mais dramáticos do futebol brasileiro",
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 1054,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Ceará"
   },
   {
     "id": 94,
@@ -1835,7 +1928,8 @@
     "curiosidade": "Meia criativo formado nas categorias de base do Fortaleza, é considerado um dos maiores talentos revelados pelo futebol nordestino nos últimos anos",
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 1054,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Ceará"
   },
   {
     "id": 95,
@@ -1850,7 +1944,8 @@
     "curiosidade": "Centroavante argentino que se tornou um dos maiores artilheiros da história do Fortaleza, ídolo da torcida leonina do Nordeste",
     "faixaEtaria": "28-32",
     "apiFootballTeamId": 1054,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Ceará"
   },
   {
     "id": 96,
@@ -1865,7 +1960,8 @@
     "curiosidade": "Meia artilheiro e assistente do Bahia, considerado o melhor jogador do Nordeste com números impressionantes de gols e assistências pelo tricolor baiano",
     "faixaEtaria": "28-32",
     "apiFootballTeamId": 118,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Bahia"
   },
   {
     "id": 97,
@@ -1884,7 +1980,8 @@
     "curiosidade": "Ídolo do Flamengo e campeão de tudo pelo Rubro-Negro, surpreendeu ao defender o Bahia — clube do seu estado natal — numa das transferências mais simbólicas do Brasil",
     "faixaEtaria": "34-38",
     "apiFootballTeamId": 118,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Bahia"
   },
   {
     "id": 98,
@@ -1899,7 +1996,8 @@
     "curiosidade": "Meia-atacante baiano nato que se tornou referência e ídolo do Bahia, sendo uma das principais peças do clube na disputa do Brasileirão",
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 118,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Bahia"
   },
   {
     "id": 99,
@@ -1914,7 +2012,8 @@
     "curiosidade": "Ponta uruguaio que se destacou no Athletico-PR e foi convocado para a Seleção Uruguaia, tornando-se um dos atacantes mais perigosos do Brasileirão",
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 134,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Paraná"
   },
   {
     "id": 100,
@@ -1933,7 +2032,8 @@
     "curiosidade": "Retornou ao clube que o revelou após 14 anos no Manchester City onde conquistou 6 Premier Leagues — o encerramento mais emocionante de uma carreira",
     "faixaEtaria": "38-42",
     "apiFootballTeamId": 134,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Paraná"
   },
   {
     "id": 101,
@@ -1948,7 +2048,8 @@
     "curiosidade": "Meia revelado nas categorias de base do Athletico-PR, considerado um dos maiores talentos produzidos pelo futebol paranaense na atualidade",
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 134,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "Paraná"
   },
   {
     "id": 102,
@@ -1963,7 +2064,8 @@
     "curiosidade": "Centroavante artilheiro do Bragantino contratado do futebol sul-americano, tornou-se um dos goleadores mais eficientes do Brasileirão",
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 747,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 103,
@@ -1980,7 +2082,8 @@
     "curiosidade": "Volante do Bragantino com excelente visão de jogo, foi campeão da Copa Sul-Americana pelo clube e é um dos mais regulares do elenco",
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 747,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 104,
@@ -1997,7 +2100,8 @@
     "curiosidade": "Lateral-esquerdo revelado pelo Bragantino que disputou as principais competições sul-americanas e é tido como uma das promessas da posição no Brasil",
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 747,
-    "apiFootballLeagueId": 71
+    "apiFootballLeagueId": 71,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 105,
@@ -2015,7 +2119,8 @@
     "curiosidade": "Chegou ao Real Madrid por €103M aos 19 anos e foi eleito o melhor jogador da temporada logo na primeira — a chegada mais impactante da última década",
     "faixaEtaria": "21-25",
     "apiFootballTeamId": 541,
-    "apiFootballLeagueId": 140
+    "apiFootballLeagueId": 140,
+    "estadoClube": null
   },
   {
     "id": 106,
@@ -2034,7 +2139,8 @@
     "curiosidade": "Eleito o melhor jogador do mundo na sua posição, é o motor do meio-campo do Real Madrid e da Seleção Uruguaia — box-to-box completo",
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 541,
-    "apiFootballLeagueId": 140
+    "apiFootballLeagueId": 140,
+    "estadoClube": null
   },
   {
     "id": 107,
@@ -2052,7 +2158,8 @@
     "curiosidade": "O lateral-meia que revolucionou a posição deixou o Liverpool de graça após anos como ídolo para assinar com o Real Madrid em 2025",
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 541,
-    "apiFootballLeagueId": 140
+    "apiFootballLeagueId": 140,
+    "estadoClube": null
   },
   {
     "id": 108,
@@ -2070,7 +2177,8 @@
     "curiosidade": "Marcou o gol do empate com apenas 17 anos na semifinal da Eurocopa 2024, tornando-se o jogador mais jovem a marcar numa Euro — no dia do seu aniversário",
     "faixaEtaria": "17-21",
     "apiFootballTeamId": 529,
-    "apiFootballLeagueId": 140
+    "apiFootballLeagueId": 140,
+    "estadoClube": null
   },
   {
     "id": 109,
@@ -2089,7 +2197,8 @@
     "curiosidade": "Comparado a Iniesta e Xavi pelos próprios técnicos do Barcelona, Pedri é o herdeiro do trono do meio-campo catalão com apenas 23 anos",
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 529,
-    "apiFootballLeagueId": 140
+    "apiFootballLeagueId": 140,
+    "estadoClube": null
   },
   {
     "id": 110,
@@ -2108,7 +2217,8 @@
     "curiosidade": "Marcou 50 gols em uma única temporada da Bundesliga — um recorde que pertenceu por décadas a Gerd Müller e pode durar outras tantas",
     "faixaEtaria": "37-41",
     "apiFootballTeamId": 529,
-    "apiFootballLeagueId": 140
+    "apiFootballLeagueId": 140,
+    "estadoClube": null
   },
   {
     "id": 111,
@@ -2126,7 +2236,8 @@
     "curiosidade": "Eleito o melhor jogador da Premier League quatro vezes — considerado o meia mais completo de sua geração e o cérebro do City de Guardiola",
     "faixaEtaria": "34-38",
     "apiFootballTeamId": 50,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 112,
@@ -2144,7 +2255,8 @@
     "curiosidade": "Eleito o melhor jogador da Premier League 2023/24 — e nunca jogou profissionalmente por nenhum outro clube além do Manchester City",
     "faixaEtaria": "25-29",
     "apiFootballTeamId": 50,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 113,
@@ -2163,7 +2275,8 @@
     "curiosidade": "Considerado o jogador mais inteligente do futebol moderno por Guardiola, Bernardo recusou o Barcelona várias vezes por amor ao Manchester City",
     "faixaEtaria": "30-34",
     "apiFootballTeamId": 50,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 114,
@@ -2181,7 +2294,8 @@
     "curiosidade": "O Rei do Egito — maior artilheiro do Liverpool na era Premier League — foi renovado múltiplas vezes por ser considerado insubstituível pelo clube inglês",
     "faixaEtaria": "33-37",
     "apiFootballTeamId": 40,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 115,
@@ -2199,7 +2313,8 @@
     "curiosidade": "Considerado o melhor zagueiro do mundo por dois anos consecutivos, foi o pilar que transformou o Liverpool de Klopp numa máquina defensiva",
     "faixaEtaria": "34-38",
     "apiFootballTeamId": 40,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 116,
@@ -2216,7 +2331,8 @@
     "curiosidade": "Contratado pelo Liverpool por €100M vindo do Benfica, o uruguaio explosivo e veloz é considerado um dos centroavantes mais difíceis de marcar na Europa",
     "faixaEtaria": "25-29",
     "apiFootballTeamId": 40,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 117,
@@ -2231,7 +2347,8 @@
     "curiosidade": "Nascido em Ealing de pais nigerianos, Saka é o coração do Arsenal moderno — driblador, assistente e goleador que carrega o clube nas costas",
     "faixaEtaria": "23-27",
     "apiFootballTeamId": 42,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 118,
@@ -2246,7 +2363,8 @@
     "curiosidade": "Contratado pelo Arsenal por £105M do West Ham — recorde para um volante no mundo — e logo se tornou capitão da Seleção Inglesa",
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 42,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 119,
@@ -2261,7 +2379,8 @@
     "curiosidade": "Foi revelado pelo Real Madrid aos 15 anos como o maior talento europeu de sua geração — e hoje é capitão do Arsenal e da Noruega",
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 42,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 120,
@@ -2278,7 +2397,8 @@
     "curiosidade": "O maior artilheiro da história da Seleção Inglesa foi ao Bayern por £100M para finalmente conquistar o primeiro grande título da carreira",
     "faixaEtaria": "31-35",
     "apiFootballTeamId": 157,
-    "apiFootballLeagueId": 78
+    "apiFootballLeagueId": 78,
+    "estadoClube": null
   },
   {
     "id": 121,
@@ -2295,7 +2415,8 @@
     "curiosidade": "Nascido em Stuttgart e criado em Bath, na Inglaterra, escolheu jogar pela Alemanha — e rapidamente se tornou a maior estrela do futebol alemão",
     "faixaEtaria": "21-25",
     "apiFootballTeamId": 157,
-    "apiFootballLeagueId": 78
+    "apiFootballLeagueId": 78,
+    "estadoClube": null
   },
   {
     "id": 122,
@@ -2312,7 +2433,8 @@
     "curiosidade": "Nascido em Manchester de origem francesa e nigeriana, foi do Crystal Palace ao Bayern por €50M para ser o jogador mais explosivo do elenco bávaro",
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 157,
-    "apiFootballLeagueId": 78
+    "apiFootballLeagueId": 78,
+    "estadoClube": null
   },
   {
     "id": 123,
@@ -2331,7 +2453,8 @@
     "curiosidade": "Saiu do Barcelona de graça para o PSG e virou um dos melhores da Europa — prova de que a perseverança supera qualquer transferência mal recebida",
     "faixaEtaria": "27-31",
     "apiFootballTeamId": 85,
-    "apiFootballLeagueId": 61
+    "apiFootballLeagueId": 61,
+    "estadoClube": null
   },
   {
     "id": 124,
@@ -2348,7 +2471,8 @@
     "curiosidade": "Meia português vendido pelo Porto ao PSG por €40M, tornou-se o coração do time parisiense com sua capacidade de dominar o jogo pelo chão",
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 85,
-    "apiFootballLeagueId": 61
+    "apiFootballLeagueId": 61,
+    "estadoClube": null
   },
   {
     "id": 125,
@@ -2365,7 +2489,8 @@
     "curiosidade": "Capitão do PSG por mais de uma década — o zagueiro carioca é o símbolo e o rosto humano de um dos projetos mais milionários do futebol mundial",
     "faixaEtaria": "30-34",
     "apiFootballTeamId": 85,
-    "apiFootballLeagueId": 61
+    "apiFootballLeagueId": 61,
+    "estadoClube": null
   },
   {
     "id": 126,
@@ -2384,7 +2509,8 @@
     "curiosidade": "Capitão da Argentina campeã do mundo, o 'Toro' recusou o Barcelona para ser ídolo eterno da Inter de Milão — onde já é lenda",
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 505,
-    "apiFootballLeagueId": 135
+    "apiFootballLeagueId": 135,
+    "estadoClube": null
   },
   {
     "id": 127,
@@ -2402,7 +2528,8 @@
     "curiosidade": "Eleito o melhor jogador da Itália em 2024, Barella é o motor da Inter de Milão — um volante que corre, cria e decide como se fossem três jogadores",
     "faixaEtaria": "27-31",
     "apiFootballTeamId": 505,
-    "apiFootballLeagueId": 135
+    "apiFootballLeagueId": 135,
+    "estadoClube": null
   },
   {
     "id": 128,
@@ -2419,7 +2546,8 @@
     "curiosidade": "Filho do lendário Lilian Thuram — mas superou o pai em conquistas de clube ao ser campeão da Serie A pela Inter de Milão em grande estilo",
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 505,
-    "apiFootballLeagueId": 135
+    "apiFootballLeagueId": 135,
+    "estadoClube": null
   },
   {
     "id": 129,
@@ -2434,7 +2562,8 @@
     "curiosidade": "Criado no Manchester City mas nunca aproveitado lá — foi para o Chelsea por £40M e tornou-se o melhor jogador da Premier League em 2023/24",
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 49,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 130,
@@ -2452,7 +2581,8 @@
     "curiosidade": "Campeão do Mundo pela Argentina, chegou ao Chelsea por £106M — a maior transferência da história do clube londrino em uma única janela",
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 49,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 131,
@@ -2467,7 +2597,8 @@
     "curiosidade": "Centroavante senegalês revelado pelo Villarreal que se tornou o artilheiro do Chelsea — chegou sem alarde e virou peça fundamental do ataque londrino",
     "faixaEtaria": "23-27",
     "apiFootballTeamId": 49,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 132,
@@ -2485,7 +2616,8 @@
     "curiosidade": "Nascido em Madri de pai argentino, escolheu a Albiceleste e marcou um gol de bicicleta eleito o mais bonito da temporada na Premier League",
     "faixaEtaria": "20-24",
     "apiFootballTeamId": 33,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 133,
@@ -2503,7 +2635,8 @@
     "curiosidade": "Capitão do Manchester United e de Portugal, foi o jogador mais decisivo dos Red Devils nos últimos cinco anos — e mesmo assim nunca ganhou a Premier League",
     "faixaEtaria": "30-34",
     "apiFootballTeamId": 33,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 134,
@@ -2520,7 +2653,8 @@
     "curiosidade": "Contratado pelo United por €85M, tornou-se o jogador mais jovem a marcar em três jogos consecutivos da fase de grupos da Liga dos Campeões",
     "faixaEtaria": "21-25",
     "apiFootballTeamId": 33,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 135,
@@ -2537,7 +2671,8 @@
     "curiosidade": "Contratado pela Juventus por €80M como o futuro da 'número 9' histórica do clube — o sérvio tem potência e precisão que lembram os grandes goleadores bianconeri",
     "faixaEtaria": "25-29",
     "apiFootballTeamId": 496,
-    "apiFootballLeagueId": 135
+    "apiFootballLeagueId": 135,
+    "estadoClube": null
   },
   {
     "id": 136,
@@ -2554,7 +2689,8 @@
     "curiosidade": "Turco de 19 anos apontado como o novo Baggio da Juventus — tornou-se o mais jovem a marcar para o clube num jogo da Champions League",
     "faixaEtaria": "19-23",
     "apiFootballTeamId": 496,
-    "apiFootballLeagueId": 135
+    "apiFootballLeagueId": 135,
+    "estadoClube": null
   },
   {
     "id": 137,
@@ -2572,7 +2708,8 @@
     "curiosidade": "Filho do técnico Sérgio Conceição — campeão pelo Porto e pelo Milan — Francisco foi emprestado à Juventus pelo Porto e brilhou na Serie A",
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 496,
-    "apiFootballLeagueId": 135
+    "apiFootballLeagueId": 135,
+    "estadoClube": null
   },
   {
     "id": 138,
@@ -2592,7 +2729,8 @@
     "curiosidade": "Eleito o melhor jogador da Copa do Mundo 2018, o 'Grizou' é um dos maiores ídolos da história do Atlético de Madrid — voltou ao clube depois do Barcelona",
     "faixaEtaria": "34-38",
     "apiFootballTeamId": 530,
-    "apiFootballLeagueId": 140
+    "apiFootballLeagueId": 140,
+    "estadoClube": null
   },
   {
     "id": 139,
@@ -2612,7 +2750,8 @@
     "curiosidade": "Campeão do Mundo, saiu do Manchester City ao Atlético Madrid por €75M para ter mais protagonismo — recusou ser reserva até no melhor time do mundo",
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 530,
-    "apiFootballLeagueId": 140
+    "apiFootballLeagueId": 140,
+    "estadoClube": null
   },
   {
     "id": 140,
@@ -2630,7 +2769,8 @@
     "curiosidade": "Considerado o melhor goleiro do mundo por cinco anos consecutivos, Oblak tem o melhor índice de gols sofridos da história moderna da La Liga",
     "faixaEtaria": "31-35",
     "apiFootballTeamId": 530,
-    "apiFootballLeagueId": 140
+    "apiFootballLeagueId": 140,
+    "estadoClube": null
   },
   {
     "id": 141,
@@ -2648,7 +2788,8 @@
     "curiosidade": "Foi peça-chave no histórico invicto do Leverkusen em 2023/24 — a melhor temporada da história do clube alemão, sem uma única derrota",
     "faixaEtaria": "21-25",
     "apiFootballTeamId": 168,
-    "apiFootballLeagueId": 78
+    "apiFootballLeagueId": 78,
+    "estadoClube": null
   },
   {
     "id": 142,
@@ -2666,7 +2807,8 @@
     "curiosidade": "Saiu do Arsenal após 7 anos como vilão para se tornar herói no Leverkusen — campeão invicto da Bundesliga na maior virada de carreira do futebol recente",
     "faixaEtaria": "31-35",
     "apiFootballTeamId": 168,
-    "apiFootballLeagueId": 78
+    "apiFootballLeagueId": 78,
+    "estadoClube": null
   },
   {
     "id": 143,
@@ -2684,7 +2826,8 @@
     "curiosidade": "Nigeriano contratado do Union SG belga por €20M, foi artilheiro do Leverkusen na temporada histórica do título invicto — uma das revelações do futebol europeu",
     "faixaEtaria": "23-27",
     "apiFootballTeamId": 168,
-    "apiFootballLeagueId": 78
+    "apiFootballLeagueId": 78,
+    "estadoClube": null
   },
   {
     "id": 144,
@@ -2701,7 +2844,8 @@
     "curiosidade": "Apontado como o mais talentoso jogador português da atualidade, foi eleito o melhor da Serie A em 2022 pelo impressionante estilo ágil, veloz e imprevisível",
     "faixaEtaria": "25-29",
     "apiFootballTeamId": 489,
-    "apiFootballLeagueId": 135
+    "apiFootballLeagueId": 135,
+    "estadoClube": null
   },
   {
     "id": 145,
@@ -2718,7 +2862,8 @@
     "curiosidade": "Irmão de Lucas Hernández, o lateral francês é o mais ofensivo da posição na Serie A — com mais de 10 gols por temporada, parece mais um atacante",
     "faixaEtaria": "27-31",
     "apiFootballTeamId": 489,
-    "apiFootballLeagueId": 135
+    "apiFootballLeagueId": 135,
+    "estadoClube": null
   },
   {
     "id": 146,
@@ -2736,7 +2881,8 @@
     "curiosidade": "Ganhou o apelido 'Magic Mike' após substituir Donnarumma no Milan e rapidamente superar o antecessor em prestígio e atuações decisivas",
     "faixaEtaria": "28-32",
     "apiFootballTeamId": 489,
-    "apiFootballLeagueId": 135
+    "apiFootballLeagueId": 135,
+    "estadoClube": null
   },
   {
     "id": 147,
@@ -2751,7 +2897,8 @@
     "curiosidade": "Artilheiro compartilhado da Premier League em 2021/22 sem converter nenhum pênalti — façanha inédita na história da competição mais assistida do mundo",
     "faixaEtaria": "33-37",
     "apiFootballTeamId": 47,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 148,
@@ -2766,7 +2913,8 @@
     "curiosidade": "Comprado pelo Tottenham por £60M, marcou dois gols na estreia do Brasil na Copa do Mundo de 2022 — incluindo uma bicicleta que parou o mundo",
     "faixaEtaria": "27-31",
     "apiFootballTeamId": 47,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 149,
@@ -2781,7 +2929,8 @@
     "curiosidade": "Meia inglês contratado do Leicester após a conquista do título da Championship, tornou-se o principal criador de jogadas e cobrador de faltas do Tottenham",
     "faixaEtaria": "29-33",
     "apiFootballTeamId": 47,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   },
   {
     "id": 150,
@@ -2796,7 +2945,8 @@
     "curiosidade": "Contratado do Stuttgart por €20M após marcar 28 gols na Bundesliga 2023/24 — um dos artilheiros mais prolíficos e ignorados da temporada europeia",
     "faixaEtaria": "28-32",
     "apiFootballTeamId": 165,
-    "apiFootballLeagueId": 78
+    "apiFootballLeagueId": 78,
+    "estadoClube": null
   },
   {
     "id": 151,
@@ -2811,7 +2961,8 @@
     "curiosidade": "Jovem inglês revelado pelo Dortmund como um dos talentos mais explosivos da Bundesliga — chamou atenção de clubes gigantes da Premier League",
     "faixaEtaria": "20-24",
     "apiFootballTeamId": 165,
-    "apiFootballLeagueId": 78
+    "apiFootballLeagueId": 78,
+    "estadoClube": null
   },
   {
     "id": 152,
@@ -2826,7 +2977,8 @@
     "curiosidade": "Atacante alemão de origem nigeriana, brilhou na semifinal da Champions League 2023 e é apontado como um dos mais rápidos do futebol europeu",
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 165,
-    "apiFootballLeagueId": 78
+    "apiFootballLeagueId": 78,
+    "estadoClube": null
   },
   {
     "id": 153,
@@ -2844,7 +2996,8 @@
     "curiosidade": "A revelação que encantou Nápoles foi vendida ao PSG por €70M em 2025 — um dos jogadores mais dribladores e imprevisíveis do futebol mundial",
     "faixaEtaria": "23-27",
     "apiFootballTeamId": 85,
-    "apiFootballLeagueId": 61
+    "apiFootballLeagueId": 61,
+    "estadoClube": null
   },
   {
     "id": 154,
@@ -2861,7 +3014,8 @@
     "curiosidade": "Capitão do Napoli e da Seleção Italiana, foi peça fundamental no histórico título da Serie A de 2022/23 — o 3º scudetto da história do clube napolitano",
     "faixaEtaria": "30-35",
     "apiFootballTeamId": 492,
-    "apiFootballLeagueId": 135
+    "apiFootballLeagueId": 135,
+    "estadoClube": null
   },
   {
     "id": 155,
@@ -2892,7 +3046,8 @@
       "respostaCorreta": 2
     },
     "apiFootballTeamId": null,
-    "apiFootballLeagueId": null
+    "apiFootballLeagueId": null,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 156,
@@ -2922,7 +3077,8 @@
       "respostaCorreta": 1
     },
     "apiFootballTeamId": null,
-    "apiFootballLeagueId": null
+    "apiFootballLeagueId": null,
+    "estadoClube": null
   },
   {
     "id": 157,
@@ -2952,7 +3108,8 @@
       "respostaCorreta": 2
     },
     "apiFootballTeamId": null,
-    "apiFootballLeagueId": null
+    "apiFootballLeagueId": null,
+    "estadoClube": "São Paulo"
   },
   {
     "id": 158,
@@ -2982,7 +3139,8 @@
       "respostaCorreta": 1
     },
     "apiFootballTeamId": null,
-    "apiFootballLeagueId": null
+    "apiFootballLeagueId": null,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 159,
@@ -3012,7 +3170,8 @@
       "respostaCorreta": 2
     },
     "apiFootballTeamId": null,
-    "apiFootballLeagueId": null
+    "apiFootballLeagueId": null,
+    "estadoClube": null
   },
   {
     "id": 160,
@@ -3040,7 +3199,8 @@
       "respostaCorreta": 0
     },
     "apiFootballTeamId": null,
-    "apiFootballLeagueId": null
+    "apiFootballLeagueId": null,
+    "estadoClube": "Rio de Janeiro"
   },
   {
     "id": 161,
@@ -3071,7 +3231,8 @@
       "respostaCorreta": 2
     },
     "apiFootballTeamId": null,
-    "apiFootballLeagueId": null
+    "apiFootballLeagueId": null,
+    "estadoClube": null
   },
   {
     "id": 162,
@@ -3100,7 +3261,8 @@
       "respostaCorreta": 2
     },
     "apiFootballTeamId": null,
-    "apiFootballLeagueId": null
+    "apiFootballLeagueId": null,
+    "estadoClube": null
   },
   {
     "id": 163,
@@ -3130,7 +3292,8 @@
       "respostaCorreta": 2
     },
     "apiFootballTeamId": null,
-    "apiFootballLeagueId": null
+    "apiFootballLeagueId": null,
+    "estadoClube": null
   },
   {
     "id": 164,
@@ -3161,7 +3324,8 @@
       "respostaCorreta": 1
     },
     "apiFootballTeamId": null,
-    "apiFootballLeagueId": null
+    "apiFootballLeagueId": null,
+    "estadoClube": null
   },
   {
     "id": 165,
@@ -3192,7 +3356,8 @@
       "respostaCorreta": 2
     },
     "apiFootballTeamId": null,
-    "apiFootballLeagueId": null
+    "apiFootballLeagueId": null,
+    "estadoClube": null
   },
   {
     "id": 166,
@@ -3222,7 +3387,8 @@
       "respostaCorreta": 1
     },
     "apiFootballTeamId": null,
-    "apiFootballLeagueId": null
+    "apiFootballLeagueId": null,
+    "estadoClube": null
   },
   {
     "id": 167,
@@ -3240,7 +3406,8 @@
     "curiosidade": "Superou duas graves lesões no joelho para reconquistar a titularidade no Real Madrid e ser convocado para a Copa do Mundo 2026 pela Seleção Brasileira",
     "faixaEtaria": "28-32",
     "apiFootballTeamId": 541,
-    "apiFootballLeagueId": 140
+    "apiFootballLeagueId": 140,
+    "estadoClube": null
   },
   {
     "id": 168,
@@ -3259,6 +3426,7 @@
     "curiosidade": "Tricampeão da Champions League pelo Real Madrid, foi o volante mais decisivo de sua geração antes de se transferir ao Manchester United por £70M",
     "faixaEtaria": "34-38",
     "apiFootballTeamId": 33,
-    "apiFootballLeagueId": 39
+    "apiFootballLeagueId": 39,
+    "estadoClube": null
   }
 ]

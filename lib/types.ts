@@ -14,6 +14,9 @@ export interface Jogador {
   faixaEtaria: string
   lenda?: boolean
 
+  // Estado do clube (apenas clubes brasileiros; null para clubes do exterior)
+  estadoClube?: string | null
+
   // IDs para integração API-Football v3 (null = lenda ou clube não mapeado)
   apiFootballTeamId?: number | null
   apiFootballLeagueId?: number | null

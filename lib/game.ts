@@ -99,7 +99,11 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
     'Centroavante':     'Na área, é a referência que toda torcida quer e todo defensor teme',
   }
   const posicaoTexto = posicaoFrase[jogador.posicao] ?? `Atua como ${jogador.posicao}`
-  const pista1 = `${posicaoTexto} — e faz isso pela ${ligaLabel}.`
+
+  // Se tiver estado do clube, inclui na pista. Senão, só liga.
+  const pista1 = jogador.estadoClube
+    ? `${posicaoTexto} — por um clube do ${jogador.estadoClube}, na ${ligaLabel}.`
+    : `${posicaoTexto} — e faz isso pela ${ligaLabel}.`
 
   // Pista 2 — Comprimento de cada palavra do nome (ex: "5" ou "7 5")
   // O componente Pista.tsx renderiza como blocos ■ por letra
