@@ -9,7 +9,7 @@ interface PistaProps {
   atual: boolean
 }
 
-const LABELS_PISTAS = ['Posição', 'Nacionalidade', 'Clube / Liga', 'Faixa Etária', 'Títulos', 'Curiosidade']
+const LABELS_PISTAS = ['Posição', 'Primeira Letra', 'Nacionalidade', 'Idade', 'Clube']
 
 export default function Pista({ numero, texto, revelada, atual }: PistaProps) {
   return (

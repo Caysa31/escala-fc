@@ -106,36 +106,33 @@ export const BONUS_DESEMPENHO = {
   motm:             100,
 } as const
 
-// Pontuação base por pista
+// Pontuação base por pista (5 pistas — pista 1 vale mais, pista 5 vale menos)
 export const PONTOS_BASE: Record<number, number> = {
   1: 100,
   2: 80,
   3: 60,
   4: 40,
   5: 20,
-  6: 10,
 }
 
-// Multiplicadores do Contrato por pista
+// Multiplicadores do Contrato por pista (quanto mais cedo acertou, maior o bônus)
 export const MULTIPLICADORES_CONTRATO: Record<number, number> = {
   1: 3.0,
   2: 2.5,
   3: 2.0,
   4: 1.5,
-  5: 1.2,
-  6: 1.1,
+  5: 1.1,
 }
 
-export const TOTAL_PISTAS = 6
+export const TOTAL_PISTAS = 5
 
 // Labels visuais de cada pista
 export const LABEL_PISTAS: Record<number, string> = {
-  1: 'Liga & Perfil',
-  2: 'Idade & Origem',
-  3: 'Conquistas',
-  4: 'Carreira',
-  5: 'Fato',
-  6: 'Clube',
+  1: 'Posição',
+  2: 'Primeira Letra',
+  3: 'Nacionalidade',
+  4: 'Idade',
+  5: 'Clube',
 }
 
 // Tipo de pista — todas texto por enquanto
@@ -147,5 +144,4 @@ export const TIPO_PISTAS: Record<number, TipoPista> = {
   3: 'texto',
   4: 'texto',
   5: 'texto',
-  6: 'texto',
 }

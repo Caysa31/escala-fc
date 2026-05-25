@@ -76,18 +76,13 @@ export function getIntroNarrativa(jogador: Jogador): string {
  * Progressão: pista 1 é a mais difícil, pista 6 é a mais fácil.
  */
 export function getPistasTexto(jogador: Jogador): Record<number, string> {
-  // Remove o nome do jogador de qualquer pista que possa revelá-lo
-  const primeiroNome = jogador.nome.split(' ')[0]
-  const censurar = (texto: string) =>
-    texto.replace(new RegExp(primeiroNome, 'gi'), '???')
-
-  // Pista 1 — Liga e posição (dramática, sem revelar muito)
+  // Pista 1 — Posição em campo (com narrativa por liga)
   const ligaLabel = jogador.liga === 'Brasileirão' ? 'Brasileirão Série A'
-    : jogador.liga === 'Premier League' ? 'Premier League 🏴󠁧󠁢󠁥󠁮󠁧󠁿'
-    : jogador.liga === 'La Liga' ? 'La Liga 🇪🇸'
-    : jogador.liga === 'Bundesliga' ? 'Bundesliga 🇩🇪'
-    : jogador.liga === 'Serie A' ? 'Serie A 🇮🇹'
-    : jogador.liga === 'Ligue 1' ? 'Ligue 1 🇫🇷'
+    : jogador.liga === 'Premier League' ? 'Premier League'
+    : jogador.liga === 'La Liga' ? 'La Liga'
+    : jogador.liga === 'Bundesliga' ? 'Bundesliga'
+    : jogador.liga === 'Serie A' ? 'Serie A italiana'
+    : jogador.liga === 'Ligue 1' ? 'Ligue 1'
     : jogador.liga
 
   const posicaoFrase: Record<string, string> = {
@@ -98,7 +93,7 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
     'Volante':          'No meio, destrói jogadas antes que elas existam',
     'Meia':             'No centro do campo, organiza, cria e decide quando a partida pede',
     'Meia-atacante':    'Entre a criação e o gol, habita um território que poucos dominam',
-    'Ponta-direita':    'Pela direita, arranca, encaro e deixa o defensor no retrovisor',
+    'Ponta-direita':    'Pela direita, arranca e deixa o defensor no retrovisor',
     'Ponta-esquerda':   'Pela esquerda, é um pesadelo para qualquer lateral do mundo',
     'Atacante':         'No ataque, vive para uma coisa só: a rede balançar',
     'Centroavante':     'Na área, é a referência que toda torcida quer e todo defensor teme',
@@ -106,7 +101,11 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
   const posicaoTexto = posicaoFrase[jogador.posicao] ?? `Atua como ${jogador.posicao}`
   const pista1 = `${posicaoTexto} — e faz isso pela ${ligaLabel}.`
 
-  // Pista 2 — Faixa etária e origem (país real do jogador)
+  // Pista 2 — Primeira letra do nome
+  const primeiraLetra = jogador.nome.trim()[0].toUpperCase()
+  const pista2 = `O nome deste jogador começa com a letra "${primeiraLetra}".`
+
+  // Pista 3 — Nacionalidade (país real)
   const paisNascimento: Record<string, string> = {
     'Alemão':       'Nasceu na Alemanha',
     'Argentino':    'Nasceu na Argentina',
@@ -141,27 +140,15 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
     'Uruguaio':     'Nasceu no Uruguai',
     'Venezuelano':  'Nasceu na Venezuela',
   }
-  const origemTexto = paisNascimento[jogador.nacionalidade] ?? `É ${jogador.nacionalidade}`
+  const pista3 = paisNascimento[jogador.nacionalidade] ?? `Nacionalidade: ${jogador.nacionalidade}`
 
-  const pista2 = `${origemTexto}, tem entre ${jogador.faixaEtaria} anos. Uma carreira que já tem história para contar.`
+  // Pista 4 — Faixa etária
+  const pista4 = `Tem entre ${jogador.faixaEtaria} anos de idade.`
 
-  // Pista 3 — Títulos (narrativa de conquistas)
-  const pista3 = jogador.titulos.length >= 3
-    ? `No palmarès: ${jogador.titulos.slice(0, 3).join(', ')}. Não é alguém que está acostumado a perder.`
-    : jogador.titulos.length > 0
-    ? `Conquistou: ${jogador.titulos.join(', ')}. Cada título, uma história.`
-    : `Ainda sem grandes troféus — mas a carreira está longe do fim. A fome de vencer segue intacta.`
+  // Pista 5 — Clube (a mais fácil — revela o time)
+  const pista5 = `Hoje defende as cores do ${jogador.clube}. Se chegou até aqui sem acertar, chegou a hora.`
 
-  // Pista 4 — Nacionalidade + posição (mais direta)
-  const pista4 = `${jogador.bandeira} ${jogador.nacionalidade} de nascimento. Em campo, ocupa o posto de ${jogador.posicao}.`
-
-  // Pista 5 — Curiosidade (com nome censurado)
-  const pista5 = censurar(jogador.curiosidade)
-
-  // Pista 6 — Clube (a mais fácil)
-  const pista6 = `Hoje defende as cores do ${jogador.clube}. Se chegou até aqui sem acertar, chegou a hora.`
-
-  return { 1: pista1, 2: pista2, 3: pista3, 4: pista4, 5: pista5, 6: pista6 }
+  return { 1: pista1, 2: pista2, 3: pista3, 4: pista4, 5: pista5 }
 }
 
 /** Tipo de cada pista — todas texto */
