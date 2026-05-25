@@ -1,6 +1,39 @@
 // Gerenciamento de perfil local (localStorage) — sem login necessário
 
 import { Perfil, ResultadoRodada } from './types'
+import { criarUsuarioSupabase, buscarUsuarioPorCodigo, salvarResultadoSupabase, upsertStreakSupabase } from './supabase'
+
+/** Lê o supabase_id do usuário (armazenado no localStorage após sync) */
+function getUsuarioId(): string | null {
+  if (typeof window === 'undefined') return null
+  return localStorage.getItem('escalafc_supabase_id')
+}
+
+/** Salva o supabase_id no localStorage */
+function setUsuarioId(id: string): void {
+  if (typeof window === 'undefined') return
+  localStorage.setItem('escalafc_supabase_id', id)
+}
+
+/**
+ * Cria (ou recupera) o usuário no Supabase e armazena o ID local.
+ * Fire-and-forget — não bloqueia a criação do perfil.
+ */
+async function sincronizarPerfilSupabase(apelido: string, codigo: string): Promise<void> {
+  // Já sincronizado anteriormente
+  if (getUsuarioId()) return
+
+  // Tentar recuperar usuário existente pelo código
+  const existente = await buscarUsuarioPorCodigo(codigo)
+  if (existente?.id) {
+    setUsuarioId(existente.id)
+    return
+  }
+
+  // Criar novo usuário no Supabase
+  const novoId = await criarUsuarioSupabase(apelido, codigo)
+  if (novoId) setUsuarioId(novoId)
+}
 
 const CHAVE_PERFIL = 'escalafc_perfil'
 const CHAVE_RESULTADOS = 'escalafc_resultados'
@@ -25,7 +58,14 @@ export function carregarPerfil(): Perfil | null {
   try {
     const raw = localStorage.getItem(CHAVE_PERFIL)
     if (!raw) return null
-    return JSON.parse(raw) as Perfil
+    const perfil = JSON.parse(raw) as Perfil
+
+    // Usuário existente sem supabase_id → sincronizar em background
+    if (!getUsuarioId()) {
+      void sincronizarPerfilSupabase(perfil.apelido, perfil.codigo)
+    }
+
+    return perfil
   } catch {
     return null
   }
@@ -54,6 +94,10 @@ export function criarPerfil(apelido: string): Perfil {
     ultimaRodada: null,
   }
   salvarPerfil(perfil)
+
+  // Sync com Supabase (fire-and-forget — não bloqueia o fluxo)
+  void sincronizarPerfilSupabase(perfil.apelido, perfil.codigo)
+
   return perfil
 }
 
@@ -110,6 +154,28 @@ export function registrarResultado(
   }
 
   salvarPerfil(perfilAtualizado)
+
+  // Sync para Supabase (fire-and-forget — não bloqueia a UI)
+  const usuarioId = getUsuarioId()
+  if (usuarioId) {
+    void salvarResultadoSupabase({
+      usuarioId,
+      rodadaId:    resultado.rodadaId,
+      jogadorId:   resultado.jogadorId,
+      pistaAcerto: resultado.pistaAcerto,
+      pontos:      resultado.pontos,
+      tentativas:  resultado.tentativas,
+    })
+    void upsertStreakSupabase(usuarioId, {
+      streakAtual:       perfilAtualizado.streakAtual,
+      streakMaximo:      perfilAtualizado.streakMaximo,
+      ultimaRodada:      perfilAtualizado.ultimaRodada,
+      pontosTotal:       perfilAtualizado.pontosTotal,
+      rodadasJogadas:    perfilAtualizado.rodadasJogadas,
+      rodadasAcertadas:  perfilAtualizado.rodadasAcertadas,
+    })
+  }
+
   return perfilAtualizado
 }
 
