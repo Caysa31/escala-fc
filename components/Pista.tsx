@@ -14,16 +14,24 @@ interface PistaProps {
 function BlocosNome({ codificado, atual }: { codificado: string; atual: boolean }) {
   const tamanhos = codificado.split(' ').map(Number).filter(n => n > 0)
   return (
-    <div className="flex gap-4 flex-wrap mt-1">
+    <div className="flex items-center flex-wrap mt-1 gap-y-2">
       {tamanhos.map((tam, wi) => (
-        <div key={wi} className="flex gap-1">
-          {Array.from({ length: tam }).map((_, li) => (
-            <div
-              key={li}
-              className={`w-7 h-7 rounded flex items-center justify-center text-xs font-bold
-                ${atual ? 'bg-green-700 border border-green-400' : 'bg-zinc-600 border border-zinc-500'}`}
-            />
-          ))}
+        <div key={wi} className="flex items-center">
+          {/* Separador visual entre palavras */}
+          {wi > 0 && (
+            <div className="flex items-center mx-3">
+              <div className="w-1 h-1 rounded-full bg-zinc-600" />
+            </div>
+          )}
+          <div className="flex gap-1">
+            {Array.from({ length: tam }).map((_, li) => (
+              <div
+                key={li}
+                className={`w-7 h-7 rounded
+                  ${atual ? 'bg-green-700 border border-green-400' : 'bg-zinc-600 border border-zinc-500'}`}
+              />
+            ))}
+          </div>
         </div>
       ))}
     </div>
