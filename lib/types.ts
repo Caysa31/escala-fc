@@ -14,6 +14,10 @@ export interface Jogador {
   faixaEtaria: string
   lenda?: boolean
 
+  // IDs para integração API-Football v3 (null = lenda ou clube não mapeado)
+  apiFootballTeamId?: number | null
+  apiFootballLeagueId?: number | null
+
   // Trivia para Contrato Histórico (lendas)
   triviaContrato?: {
     pergunta: string
