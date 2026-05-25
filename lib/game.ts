@@ -101,9 +101,9 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
   const posicaoTexto = posicaoFrase[jogador.posicao] ?? `Atua como ${jogador.posicao}`
   const pista1 = `${posicaoTexto} — e faz isso pela ${ligaLabel}.`
 
-  // Pista 2 — Primeira letra do nome
-  const primeiraLetra = jogador.nome.trim()[0].toUpperCase()
-  const pista2 = `O nome deste jogador começa com a letra "${primeiraLetra}".`
+  // Pista 2 — Comprimento de cada palavra do nome (ex: "5" ou "7 5")
+  // O componente Pista.tsx renderiza como blocos ■ por letra
+  const pista2 = jogador.nome.trim().split(/\s+/).map(p => p.length).join(' ')
 
   // Pista 3 — Nacionalidade (país real)
   const paisNascimento: Record<string, string> = {
@@ -145,8 +145,17 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
   // Pista 4 — Faixa etária
   const pista4 = `Tem entre ${jogador.faixaEtaria} anos de idade.`
 
-  // Pista 5 — Clube (a mais fácil — revela o time)
-  const pista5 = `Hoje defende as cores do ${jogador.clube}. Se chegou até aqui sem acertar, chegou a hora.`
+  // Pista 5 — Clube + letras parciais do nome
+  // Formato: "NomeClube|L _ t _ a _ _   P _ r _ i _ _"
+  // Posições reveladas: 0, 2, e 4 (se palavra > 5 chars). Resto = "_"
+  // Palavras separadas por "   " (3 espaços), letras por " " (1 espaço)
+  const letrasReveladas = jogador.nome.trim().split(/\s+/).map(palavra =>
+    palavra.split('').map((letra, i) => {
+      if (i === 0 || i === 2 || (i === 4 && palavra.length > 5)) return letra
+      return '_'
+    }).join(' ')
+  ).join('   ')
+  const pista5 = `${jogador.clube}|${letrasReveladas}`
 
   return { 1: pista1, 2: pista2, 3: pista3, 4: pista4, 5: pista5 }
 }
