@@ -106,16 +106,44 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
   const posicaoTexto = posicaoFrase[jogador.posicao] ?? `Atua como ${jogador.posicao}`
   const pista1 = `${posicaoTexto} — e faz isso pela ${ligaLabel}.`
 
-  // Pista 2 — Faixa etária e origem (com narrativa)
-  const continente = ['Brasileiro', 'Argentino', 'Uruguaio', 'Colombiano',
-    'Chileno', 'Paraguaio', 'Venezuelano', 'Equatoriano', 'Peruano'].includes(jogador.nacionalidade)
-    ? 'Nasceu na América do Sul'
-    : ['Espanhol', 'Francês', 'Alemão', 'Italiano', 'Português', 'Inglês',
-       'Belga', 'Holandês', 'Croata', 'Sérvio'].includes(jogador.nacionalidade)
-    ? 'Formado no futebol europeu'
-    : 'Vem de outro continente'
+  // Pista 2 — Faixa etária e origem (país real do jogador)
+  const paisNascimento: Record<string, string> = {
+    'Alemão':       'Nasceu na Alemanha',
+    'Argentino':    'Nasceu na Argentina',
+    'Belga':        'Nasceu na Bélgica',
+    'Brasileiro':   'Nasceu no Brasil',
+    'Camaronês':    'Nasceu nos Camarões',
+    'Chileno':      'Nasceu no Chile',
+    'Colombiano':   'Nasceu na Colômbia',
+    'Dinamarquês':  'Nasceu na Dinamarca',
+    'Egípcio':      'Nasceu no Egito',
+    'Equatoriano':  'Nasceu no Equador',
+    'Esloveno':     'Nasceu na Eslovênia',
+    'Espanhol':     'Nasceu na Espanha',
+    'Francês':      'Nasceu na França',
+    'Georgiano':    'Nasceu na Geórgia',
+    'Guineense':    'Nasceu na Guiné',
+    'Holandês':     'Nasceu na Holanda',
+    'Inglês':       'Nasceu na Inglaterra',
+    'Italiano':     'Nasceu na Itália',
+    'Marfinense':   'Nasceu na Costa do Marfim',
+    'Nigeriano':    'Nasceu na Nigéria',
+    'Norueguês':    'Nasceu na Noruega',
+    'Paraguaio':    'Nasceu no Paraguai',
+    'Peruano':      'Nasceu no Peru',
+    'Polonês':      'Nasceu na Polônia',
+    'Português':    'Nasceu em Portugal',
+    'Senegalês':    'Nasceu no Senegal',
+    'Sul-Coreano':  'Nasceu na Coreia do Sul',
+    'Suíço':        'Nasceu na Suíça',
+    'Sérvio':       'Nasceu na Sérvia',
+    'Turco':        'Nasceu na Turquia',
+    'Uruguaio':     'Nasceu no Uruguai',
+    'Venezuelano':  'Nasceu na Venezuela',
+  }
+  const origemTexto = paisNascimento[jogador.nacionalidade] ?? `É ${jogador.nacionalidade}`
 
-  const pista2 = `${continente}, tem entre ${jogador.faixaEtaria} anos. Uma carreira que já tem história para contar.`
+  const pista2 = `${origemTexto}, tem entre ${jogador.faixaEtaria} anos. Uma carreira que já tem história para contar.`
 
   // Pista 3 — Títulos (narrativa de conquistas)
   const pista3 = jogador.titulos.length >= 3
