@@ -105,9 +105,41 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
     ? `${posicaoTexto} — por um clube do ${jogador.estadoClube}, na ${ligaLabel}.`
     : `${posicaoTexto} — e faz isso pela ${ligaLabel}.`
 
-  // Pista 2 — Comprimento de cada palavra do nome (ex: "5" ou "7 5")
-  // O componente Pista.tsx renderiza como blocos ■ por letra
-  const pista2 = jogador.nome.trim().split(/\s+/).map(p => p.length).join(' ')
+  // Pista 2 — Blocos com letras do meio reveladas
+  // Proporção: total letras ≤5 → 1 reveal; 6-10 → 2; 11+ → 3
+  // Posições reveladas: meio palavra1, meio palavra2 (se houver), ¾ palavra1
+  // NUNCA posições 0 e 1 de nenhuma palavra
+  // Formato: palavras separadas por "|", cada palavra = string de letras e "_"
+  // Ex: "Pedro" → "__d__" | "Rodrigo Garro" → "___r_g_|__r__"
+  const _palavras2 = jogador.nome.trim().split(/\s+/)
+  const _totalLetras = _palavras2.reduce((s, p) => s + p.length, 0)
+  const _numRevelar = _totalLetras <= 5 ? 1 : _totalLetras <= 10 ? 2 : 3
+  const _mid  = (len: number) => Math.max(2, Math.floor(len / 2))
+  const _treq = (len: number) => Math.min(len - 1, Math.floor(len * 3 / 4))
+  const _rev: { w: number; c: number }[] = []
+  // 1ª — meio da palavra 0
+  if (_palavras2[0].length > 2) _rev.push({ w: 0, c: _mid(_palavras2[0].length) })
+  // 2ª — meio da palavra 1 (se existir), senão ¾ da palavra 0
+  if (_numRevelar >= 2) {
+    if (_palavras2.length >= 2 && _palavras2[1].length > 2) {
+      _rev.push({ w: 1, c: _mid(_palavras2[1].length) })
+    } else {
+      const p = _treq(_palavras2[0].length)
+      if (!_rev.some(r => r.w === 0 && r.c === p)) _rev.push({ w: 0, c: p })
+    }
+  }
+  // 3ª — ¾ da palavra 0 (complementa o meio já revelado)
+  if (_numRevelar >= 3) {
+    const midPos = _mid(_palavras2[0].length)
+    let p = _treq(_palavras2[0].length)
+    if (p === midPos) p = Math.min(_palavras2[0].length - 1, p + 1)
+    if (!_rev.some(r => r.w === 0 && r.c === p)) _rev.push({ w: 0, c: p })
+  }
+  const pista2 = _palavras2.map((palavra, wi) =>
+    palavra.split('').map((letra, ci) =>
+      _rev.some(r => r.w === wi && r.c === ci) ? letra : '_'
+    ).join('')
+  ).join('|')
 
   // Pista 3 — Nacionalidade (país real)
   const paisNascimento: Record<string, string> = {

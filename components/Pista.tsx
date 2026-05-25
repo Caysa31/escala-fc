@@ -9,28 +9,40 @@ interface PistaProps {
   atual: boolean
 }
 
-// Pista 2 vira blocos ■ — um quadrado por letra, agrupados por palavra
-// `codificado` ex: "5" (Pedro) ou "7 5" (Rodrigo Garro)
+// Pista 2 — blocos com letras do meio reveladas
+// `codificado` ex: "__d__" (Pedro) ou "___r_g_|__r__" (Rodrigo Garro)
+// "_" = bloco fechado | letra = bloco com letra revelada no meio
 function BlocosNome({ codificado, atual }: { codificado: string; atual: boolean }) {
-  const tamanhos = codificado.split(' ').map(Number).filter(n => n > 0)
+  const palavras = codificado.split('|').map(p => p.split(''))
   return (
     <div className="flex items-center flex-wrap mt-1 gap-y-2">
-      {tamanhos.map((tam, wi) => (
+      {palavras.map((chars, wi) => (
         <div key={wi} className="flex items-center">
-          {/* Separador visual entre palavras */}
           {wi > 0 && (
             <div className="flex items-center mx-3">
               <div className="w-1 h-1 rounded-full bg-zinc-600" />
             </div>
           )}
           <div className="flex gap-1">
-            {Array.from({ length: tam }).map((_, li) => (
-              <div
-                key={li}
-                className={`w-7 h-7 rounded
-                  ${atual ? 'bg-green-700 border border-green-400' : 'bg-zinc-600 border border-zinc-500'}`}
-              />
-            ))}
+            {chars.map((char, ci) => {
+              const revelada = char !== '_'
+              return (
+                <div
+                  key={ci}
+                  className={`w-7 h-7 rounded flex items-center justify-center text-xs font-bold
+                    ${revelada
+                      ? atual
+                        ? 'bg-green-900 border-2 border-green-400 text-green-200'
+                        : 'bg-zinc-700 border-2 border-zinc-300 text-white'
+                      : atual
+                        ? 'bg-green-700 border border-green-600'
+                        : 'bg-zinc-600 border border-zinc-500'
+                    }`}
+                >
+                  {revelada ? char.toUpperCase() : ''}
+                </div>
+              )
+            })}
           </div>
         </div>
       ))}
