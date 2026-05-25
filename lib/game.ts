@@ -5,14 +5,27 @@ import { Jogador, PONTOS_BASE, TIPO_PISTAS, TipoPista } from './types'
 
 const jogadores = jogadoresData as Jogador[]
 
-/** Jogador do dia — mesmo para todos os usuários no mesmo dia */
+/** @deprecated Use getJogadoresDoDia() — mantido para compatibilidade com /desafio/[rodadaId] */
 export function getJogadorDoDia(): { jogador: Jogador; rodadaId: number } {
   const hoje = new Date()
   const inicio = new Date('2026-05-22')
   const diffDias = Math.floor((hoje.getTime() - inicio.getTime()) / (1000 * 60 * 60 * 24))
-  const rodadaId = diffDias + 1
-  const indice = Math.abs(diffDias) % jogadores.length
+  const rodadaId = diffDias * 3 + 1
+  const indice = Math.abs(diffDias * 3) % jogadores.length
   return { jogador: jogadores[indice], rodadaId }
+}
+
+/** 3 jogadores do dia — um por desafio, mesmo para todos os usuários */
+export function getJogadoresDoDia(): Array<{ jogador: Jogador; rodadaId: number }> {
+  const hoje = new Date()
+  const inicio = new Date('2026-05-22')
+  const diffDias = Math.floor((hoje.getTime() - inicio.getTime()) / (1000 * 60 * 60 * 24))
+
+  return [0, 1, 2].map(i => {
+    const indice = Math.abs(diffDias * 3 + i) % jogadores.length
+    const rodadaId = diffDias * 3 + i + 1
+    return { jogador: jogadores[indice], rodadaId }
+  })
 }
 
 /**
