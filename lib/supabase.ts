@@ -159,6 +159,44 @@ export async function resolverTriviaSupabase(
   }).eq('id', contratoId)
 }
 
+// Salva fixture_id + data_jogo + rodada_futebol no contrato (chamado após assinar)
+export async function atualizarFixtureContrato(
+  contratoId:    string,
+  fixtureId:     number,
+  dataJogo:      string,
+  rodadaFutebol: string,
+  teamId:        number,
+  leagueId:      number,
+) {
+  if (!supabase) return
+  const { error } = await supabase.from('contratos').update({
+    fixture_id:     fixtureId,
+    data_jogo:      dataJogo,
+    rodada_futebol: rodadaFutebol,
+    team_id:        teamId,
+    league_id:      leagueId,
+  }).eq('id', contratoId)
+  if (error) console.error('atualizarFixtureContrato:', error)
+}
+
+// Resolve o contrato com dados reais da partida (chamado pelo cron)
+export async function resolverContratoSupabase(
+  contratoId: string,
+  bonusBase:  number,
+  bonusTotal: number,
+  desempenho: object,
+) {
+  if (!supabase) return
+  const { error } = await supabase.from('contratos').update({
+    status:       'resolvido',
+    bonus_base:   bonusBase,
+    bonus_total:  bonusTotal,
+    desempenho,
+    resolvido_em: new Date().toISOString(),
+  }).eq('id', contratoId)
+  if (error) console.error('resolverContratoSupabase:', error)
+}
+
 export async function getContratosResolvidosSupabase(usuarioId: string) {
   if (!supabase) return []
   const { data } = await supabase

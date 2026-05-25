@@ -34,6 +34,27 @@ function salvarContratos(contratos: Contrato[]): void {
   localStorage.setItem(CHAVE_CONTRATOS, JSON.stringify(contratos))
 }
 
+// ── Enriquecer contrato com dados do próximo fixture ─────────
+// Chama a rota server-side /api/contrato/fixture (protege a API key)
+// Fire-and-forget — não bloqueia a assinatura
+
+async function enriquecerComFixture(
+  contratoId: string,
+  teamId: number,
+  leagueId: number,
+): Promise<void> {
+  try {
+    await fetch('/api/contrato/fixture', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ contratoId, teamId, leagueId }),
+    })
+  } catch (err) {
+    // Falha silenciosa — contrato local já foi salvo
+    console.warn('[enriquecerComFixture]', err)
+  }
+}
+
 // ── Criar contrato ────────────────────────────────────────────
 
 export function assinarContrato(
@@ -80,6 +101,19 @@ export function assinarContrato(
       pistaAcerto,
       lenda:        jogador.lenda ?? false,
     })
+  }
+
+  // Enriquecer com próximo fixture via API-Football (apenas jogadores ativos)
+  if (
+    !jogador.lenda &&
+    jogador.apiFootballTeamId != null &&
+    jogador.apiFootballLeagueId != null
+  ) {
+    void enriquecerComFixture(
+      novoContrato.id,
+      jogador.apiFootballTeamId,
+      jogador.apiFootballLeagueId,
+    )
   }
 
   return novoContrato
