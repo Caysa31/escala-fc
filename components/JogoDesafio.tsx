@@ -24,10 +24,11 @@ interface Props {
   perfil: Perfil | null
   onResultado: (perfilAtualizado: Perfil) => void
   onContratosChange: (qtd: number) => void
+  onProximoDesafio?: () => void  // Se existir, mostra botão "Próximo desafio"
 }
 
 export default function JogoDesafio({
-  jogador, rodadaId, perfil, onResultado, onContratosChange,
+  jogador, rodadaId, perfil, onResultado, onContratosChange, onProximoDesafio,
 }: Props) {
   const pistasTexto = getPistasTexto(jogador)
   const introNarrativa = getIntroNarrativa(jogador)
@@ -134,30 +135,50 @@ export default function JogoDesafio({
       )}
 
       {estado.status === 'ganhou' && (
-        <div className="bg-green-950 border border-green-700 rounded-xl px-4 py-3 text-center">
+        <div className="bg-green-950 border border-green-700 rounded-xl px-4 py-3 text-center space-y-2">
           <p className="text-green-300 font-bold">
             🎯 Acertou na pista {estado.pistaUsada}! +{pontosRodada} pts
           </p>
-          <button
-            onClick={() => setMostrarResultado(true)}
-            className="text-green-500 text-xs underline mt-1"
-          >
-            Ver resultado e compartilhar
-          </button>
+          <div className="flex gap-2 justify-center">
+            <button
+              onClick={() => setMostrarResultado(true)}
+              className="text-green-500 text-xs underline"
+            >
+              Ver resultado
+            </button>
+            {onProximoDesafio && (
+              <button
+                onClick={onProximoDesafio}
+                className="bg-green-600 hover:bg-green-500 text-white text-xs font-bold px-4 py-1.5 rounded-lg transition-all"
+              >
+                Próximo desafio →
+              </button>
+            )}
+          </div>
         </div>
       )}
 
       {estado.status === 'perdeu' && (
-        <div className="bg-red-950 border border-red-900 rounded-xl px-4 py-3 text-center">
+        <div className="bg-red-950 border border-red-900 rounded-xl px-4 py-3 text-center space-y-2">
           <p className="text-red-300 font-bold">
             Era <span className="text-white">{jogador.nome}</span> {jogador.bandeira}
           </p>
-          <button
-            onClick={() => setMostrarResultado(true)}
-            className="text-red-400 text-xs underline mt-1"
-          >
-            Ver resultado e compartilhar
-          </button>
+          <div className="flex gap-2 justify-center">
+            <button
+              onClick={() => setMostrarResultado(true)}
+              className="text-red-400 text-xs underline"
+            >
+              Ver resultado
+            </button>
+            {onProximoDesafio && (
+              <button
+                onClick={onProximoDesafio}
+                className="bg-zinc-600 hover:bg-zinc-500 text-white text-xs font-bold px-4 py-1.5 rounded-lg transition-all"
+              >
+                Próximo desafio →
+              </button>
+            )}
+          </div>
         </div>
       )}
 

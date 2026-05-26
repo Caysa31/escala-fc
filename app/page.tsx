@@ -119,6 +119,19 @@ export default function Home() {
           perfil={perfil}
           onResultado={p => setPerfil(p)}
           onContratosChange={setQtdContratosAtivos}
+          onProximoDesafio={
+            // Só mostra se ainda há desafio não jogado depois do atual
+            jogadoresDoDia.slice(desafioIdx + 1).some(
+              ({ rodadaId }) => getStatusDesafio(rodadaId) === 'jogando'
+            )
+              ? () => {
+                  const proximo = jogadoresDoDia.findIndex(
+                    ({ rodadaId }, i) => i > desafioIdx && getStatusDesafio(rodadaId) === 'jogando'
+                  )
+                  if (proximo !== -1) setDesafioIdx(proximo)
+                }
+              : undefined
+          }
         />
 
         {/* Código de recuperação */}
