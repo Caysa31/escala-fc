@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { Perfil } from '@/lib/types'
 import { getJogadoresDoDia } from '@/lib/game'
 import { carregarPerfil, getResultadoRodada } from '@/lib/perfil'
@@ -13,6 +13,8 @@ import TelaFinalDia from '@/components/TelaFinalDia'
 import { Flame, FileText, Globe, Users } from 'lucide-react'
 import Link from 'next/link'
 
+const HOJE = new Date().toISOString().split('T')[0]
+
 export default function Home() {
   const [perfil, setPerfil] = useState<Perfil | null>(null)
   const [carregado, setCarregado] = useState(false)
@@ -20,6 +22,9 @@ export default function Home() {
   const [mostrarContratosAtivos, setMostrarContratosAtivos] = useState(false)
   const [mostrarFinalDia, setMostrarFinalDia] = useState(false)
   const [qtdContratosAtivos, setQtdContratosAtivos] = useState(0)
+
+  // Flag para não mostrar a tela final mais de uma vez por sessão
+  const finalDiaMostrado = useRef(false)
 
   const jogadoresDoDia = getJogadoresDoDia()
 
@@ -29,6 +34,23 @@ export default function Home() {
     setQtdContratosAtivos(getContratosAtivos().length)
     setCarregado(true)
   }, [])
+
+  // Detecta quando todos os 3 desafios estão completos e mostra a tela final
+  // Usa perfil como trigger (muda após cada resultado registrado)
+  useEffect(() => {
+    if (!carregado || finalDiaMostrado.current) return
+
+    const todosConcluidos = jogadoresDoDia.every(
+      ({ rodadaId }) => getResultadoRodada(rodadaId) !== null
+    )
+
+    if (todosConcluidos) {
+      finalDiaMostrado.current = true
+      // Pequeno delay para o modal de resultado fechar antes da tela final
+      const timer = setTimeout(() => setMostrarFinalDia(true), 600)
+      return () => clearTimeout(timer)
+    }
+  }, [perfil, carregado]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const getStatusDesafio = useCallback((rodadaId: number): 'jogando' | 'ganhou' | 'perdeu' => {
     const resultado = getResultadoRodada(rodadaId)
@@ -50,7 +72,6 @@ export default function Home() {
 
   const { rodadaId: rodadaAtiva, jogador: jogadorAtivo } = jogadoresDoDia[desafioIdx]
 
-  // Verifica se ainda há desafio não jogado depois do atual
   const temProximoDesafio = jogadoresDoDia.slice(desafioIdx + 1).some(
     ({ rodadaId }) => getStatusDesafio(rodadaId) === 'jogando'
   )
@@ -70,7 +91,6 @@ export default function Home() {
             </p>
           </div>
           <div className="flex items-center gap-2">
-            {/* Contratos ativos */}
             {qtdContratosAtivos > 0 && (
               <button
                 onClick={() => setMostrarContratosAtivos(true)}
@@ -80,7 +100,6 @@ export default function Home() {
                 <span className="text-yellow-300 font-bold text-sm">{qtdContratosAtivos}</span>
               </button>
             )}
-            {/* Streak */}
             <div className="flex items-center gap-1 bg-zinc-800 rounded-xl px-3 py-2">
               <Flame size={16} className="text-orange-400" />
               <span className="font-bold text-sm">{perfil.streakAtual}</span>
@@ -136,13 +155,6 @@ export default function Home() {
                 }
               : undefined
           }
-          onDiaCompleto={() => {
-            // Garante que todos os 3 desafios estão realmente completos
-            const todosConcluidos = jogadoresDoDia.every(
-              ({ rodadaId }) => getStatusDesafio(rodadaId) !== 'jogando'
-            )
-            if (todosConcluidos) setMostrarFinalDia(true)
-          }}
         />
 
         {/* Código de recuperação */}

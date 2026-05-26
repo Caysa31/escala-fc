@@ -25,11 +25,10 @@ interface Props {
   onResultado: (perfilAtualizado: Perfil) => void
   onContratosChange: (qtd: number) => void
   onProximoDesafio?: () => void  // Se existir, mostra botão "Próximo desafio"
-  onDiaCompleto?: () => void     // Chamado ao fechar o resultado do último desafio
 }
 
 export default function JogoDesafio({
-  jogador, rodadaId, perfil, onResultado, onContratosChange, onProximoDesafio, onDiaCompleto,
+  jogador, rodadaId, perfil, onResultado, onContratosChange, onProximoDesafio,
 }: Props) {
   const pistasTexto = getPistasTexto(jogador)
   const introNarrativa = getIntroNarrativa(jogador)
@@ -249,10 +248,7 @@ export default function JogoDesafio({
           pistaAcerto={estado.pistaUsada}
           pontos={pontosRodada}
           tentativas={estado.tentativas}
-          onFechar={() => {
-            setMostrarResultado(false)
-            if (!onProximoDesafio) onDiaCompleto?.()
-          }}
+          onFechar={() => setMostrarResultado(false)}
           onProximoDesafio={onProximoDesafio}
         />
       )}
