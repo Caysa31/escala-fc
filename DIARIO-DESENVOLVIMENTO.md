@@ -1,6 +1,7 @@
 # ESCALA FC — Diário de Desenvolvimento Completo
 
-> Documento gerado em 23/05/2026. Registra todo o processo de construção do MVP, do zero ao deploy, com decisões, erros e soluções.
+> Documento gerado em 23/05/2026. Registra todo o processo de construção do MVP, do zero ao deploy, com decisões, erros e soluções.  
+> **Última atualização: 26/05/2026** — Expansão para 168 jogadores, redesign para 5 pistas, pista 4 → Trajetória, API-Football integrada, 3 desafios/dia.
 
 ---
 
@@ -51,10 +52,15 @@ escala-fc/
 │   ├── perfil.ts                   ← Gerenciamento de perfil (localStorage)
 │   ├── contrato.ts                 ← Sistema "O Contrato" (bônus por desempenho)
 │   ├── supabase.ts                 ← Client Supabase + queries (ranking, grupos)
+│   ├── api-football.ts             ← Integração API-Football v3 (stats reais)
 │   └── crests.ts                   ← (Auxiliar) logos de clubes
 │
+├── api/
+│   ├── contrato/fixture/route.ts   ← Busca próxima partida do jogador (API-Football)
+│   └── cron/resolver-contratos/route.ts ← Cron diário: resolve contratos com dados reais
+│
 ├── data/
-│   └── jogadores.json              ← Base com 56 jogadores cadastrados
+│   └── jogadores.json              ← Base com 168 jogadores cadastrados
 │
 ├── vercel.json                     ← Configuração de deploy
 ├── .env.local                      ← Variáveis de ambiente (Supabase, API Football)
@@ -72,6 +78,7 @@ Definição de todos os tipos em `lib/types.ts` antes de qualquer linha de lógi
 
 ```typescript
 // O jogador — dados que alimentam as pistas
+// ⚠️ Atualizado em 26/05/2026 — faixaEtaria removida, novos campos adicionados
 interface Jogador {
   id: number
   nome: string
@@ -83,8 +90,20 @@ interface Jogador {
   dificuldade: 'facil' | 'medio' | 'dificil'
   titulos: string[]
   curiosidade: string
-  faixaEtaria: string
   lenda?: boolean
+
+  // Estado do clube — pista 1 (apenas Brasileirão; null para exterior)
+  estadoClube?: string | null
+
+  // Trajetória — pista 4
+  clubeAnterior?: string
+  origemAnterior?: 'exterior' | 'brasil' | 'base'
+  ligaAnterior?: string | null
+
+  // IDs para API-Football v3 (null = lenda ou clube não mapeado)
+  apiFootballTeamId?: number | null
+  apiFootballLeagueId?: number | null
+
   triviaContrato?: {      // Só para lendas — pergunta de múltipla escolha
     pergunta: string
     opcoes: string[]
@@ -116,11 +135,11 @@ interface Perfil {
 ### Constantes do sistema de pontuação
 
 ```typescript
-// Pontos base por pista (pista 1 = mais difícil = mais pontos)
-const PONTOS_BASE = { 1: 100, 2: 80, 3: 60, 4: 40, 5: 20, 6: 10 }
+// Pontos base por pista — 5 pistas (pista 6 removida em 26/05/2026)
+const PONTOS_BASE = { 1: 100, 2: 80, 3: 60, 4: 40, 5: 20 }
 
 // Multiplicadores do Contrato por pista de acerto
-const MULTIPLICADORES_CONTRATO = { 1: 3.0, 2: 2.5, 3: 2.0, 4: 1.5, 5: 1.2, 6: 1.1 }
+const MULTIPLICADORES_CONTRATO = { 1: 3.0, 2: 2.5, 3: 2.0, 4: 1.5, 5: 1.1 }
 
 // Bônus de desempenho do Contrato
 const BONUS_DESEMPENHO = {
@@ -180,20 +199,36 @@ Criação manual de 56 jogadores representando o futebol brasileiro e os princip
 
 ## Fase 3 — Lógica central do jogo (`lib/game.ts`)
 
-### Jogador do dia — `getJogadorDoDia()`
+### Jogadores do dia — `getJogadoresDoDia()` (3 desafios/dia)
+
+> ⚠️ Atualizado em 26/05/2026: o jogo passou a ter **3 desafios por dia** em vez de 1. `getJogadorDoDia()` mantido por compatibilidade mas depreciado.
 
 ```typescript
+/** @deprecated Use getJogadoresDoDia() */
 export function getJogadorDoDia(): { jogador: Jogador; rodadaId: number } {
   const hoje = new Date()
-  const inicio = new Date('2026-05-22')  // Data de lançamento
+  const inicio = new Date('2026-05-22')
   const diffDias = Math.floor((hoje.getTime() - inicio.getTime()) / (1000 * 60 * 60 * 24))
-  const rodadaId = diffDias + 1
-  const indice = Math.abs(diffDias) % jogadores.length
+  const rodadaId = diffDias * 3 + 1
+  const indice = Math.abs(diffDias * 3) % jogadores.length
   return { jogador: jogadores[indice], rodadaId }
+}
+
+/** 3 jogadores por dia — desafio 1, 2 e 3, iguais para todos */
+export function getJogadoresDoDia(): Array<{ jogador: Jogador; rodadaId: number }> {
+  const hoje = new Date()
+  const inicio = new Date('2026-05-22')
+  const diffDias = Math.floor((hoje.getTime() - inicio.getTime()) / (1000 * 60 * 60 * 24))
+
+  return [0, 1, 2].map(i => {
+    const indice = Math.abs(diffDias * 3 + i) % jogadores.length
+    const rodadaId = diffDias * 3 + i + 1
+    return { jogador: jogadores[indice], rodadaId }
+  })
 }
 ```
 
-**Princípio:** todos os usuários no mundo veem o mesmo jogador no mesmo dia — sem servidor, só matemática de data.
+**Princípio:** todos os usuários no mundo veem os mesmos 3 jogadores no mesmo dia — sem servidor, só matemática de data. Com 168 jogadores e 3/dia, o banco dura ~56 dias antes de repetir.
 
 ---
 
@@ -212,24 +247,77 @@ export function getIntroNarrativa(jogador: Jogador): string {
 
 ---
 
-### Geração das 6 pistas — `getPistasTexto()`
+### Geração das 5 pistas — `getPistasTexto()`
 
-Cada pista é uma **frase narrativa**, não um label seco. Progressão do mais difícil ao mais fácil:
+> ⚠️ Redesenhado em 26/05/2026: eram 6 pistas com conteúdo diferente. Agora são 5, com formatos e lógica completamente distintos por pista.
 
-| Pista | Label | O que revela | Exemplo |
+Progressão do mais difícil ao mais fácil:
+
+| Pista | Label | Formato | O que revela |
 |---|---|---|---|
-| 1 | Liga & Perfil | Posição + Liga | *"No centro do campo, organiza, cria e decide — pela Premier League."* |
-| 2 | Idade & Origem | Continente + faixa etária | *"Nasceu na América do Sul, tem entre 26-30 anos."* |
-| 3 | Conquistas | Títulos | *"No palmarès: Copa do Brasil, Libertadores, Recopa."* |
-| 4 | Carreira | Bandeira + nacionalidade + posição | *"🇧🇷 Brasileiro de nascimento. Atua como Meia."* |
-| 5 | Fato | Curiosidade com nome censurado | *"Retornou ao ??? por €42M vindo do West Ham."* |
-| 6 | Clube | Nome do clube | *"Hoje defende as cores do Flamengo."* |
+| 1 | Posição | Texto narrativo | Posição + Liga (+ estado para Brasileirão) |
+| 2 | Nome | BlocosNome (visual) | Letras do meio reveladas em blocos |
+| 3 | Nacionalidade | Texto direto | País de nascimento |
+| 4 | Trajetória | Texto narrativo | Clube anterior + origem |
+| 5 | Clube | LetrasNome (visual) | Nome do clube + letras parciais do nome |
 
-**Censura do nome na pista 5:**
+#### Pista 1 — Posição (narrativa com liga)
+
+Para clubes do Brasileirão inclui o estado do clube. Para exterior, só a liga:
+
+```
+"No centro do campo, organiza, cria e decide — por um clube de São Paulo, na Brasileirão Série A."
+"Entre os postes, é quase intransponível — e faz isso pela Premier League."
+```
+
+#### Pista 2 — BlocosNome (blocos visuais)
+
+Cada letra do nome vira um bloco. Algumas letras do meio são reveladas (nunca as duas primeiras de nenhuma palavra):
+
+- ≤5 letras no nome total → 1 letra revelada
+- 6–10 letras → 2 letras reveladas
+- ≥11 letras → 3 letras reveladas
+
+Encoding no JSON: palavras separadas por `|`, letra revelada ou `_` por posição:
+
+```
+"Pedro"          → "__d__"
+"Rodrigo Garro"  → "___r_g_|__r__"
+"Vinicius Jr"    → "___i_i_s|_r"
+```
+
+#### Pista 3 — Nacionalidade
+
+```
+"Nasceu no Brasil"
+"Nasceu na Argentina"
+"Nasceu na França"
+```
+
+#### Pista 4 — Trajetória (clubeAnterior)
+
+3 variantes conforme `origemAnterior`:
+
 ```typescript
-const primeiroNome = jogador.nome.split(' ')[0]
-const censurar = (texto: string) =>
-  texto.replace(new RegExp(primeiroNome, 'gi'), '???')
+// base
+"Foi revelado nas categorias de base do próprio clube onde joga hoje."
+
+// brasil
+"Antes do clube atual, jogou no Corinthians."
+
+// exterior + Brasileirão atual
+"Retornou ao Brasil vindo do West Ham United, na Premier League."
+
+// exterior + liga estrangeira
+"Chegou ao clube atual vindo do PSG, na Ligue 1."
+```
+
+#### Pista 5 — Clube + letras parciais
+
+Nome do clube revelado. Letras do nome do jogador com posições 0, 2 e 4 (se >5 chars) reveladas:
+
+```
+"Flamengo|P _ d _ _   G _ r _ _"
 ```
 
 ---
@@ -536,8 +624,12 @@ https://github.com/Caysa31/escala-fc.git
 ```
 NEXT_PUBLIC_SUPABASE_URL=https://cejmcwnubzwllyyzqgza.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=sb_publishable_cNDKiLE-o49w3uR3ZjVWTg_iqz3igqN
-API_FOOTBALL_KEY=   ← (ainda não preenchida — para futura integração)
+API_FOOTBALL_KEY=231ea0bcdf93117c79415510de93e7d3
+CRON_SECRET=escalafc2026secretocron
 ```
+
+> **API-Football:** chave RapidAPI para API-Football v3. Usada por `lib/api-football.ts` e pela rota `/api/cron/resolver-contratos`.  
+> **CRON_SECRET:** protege a rota do cron job de chamadas não autorizadas.
 
 ### Processo de deploy
 
@@ -636,26 +728,33 @@ A qualidade das imagens geradas era inconsistente — fontes gratuitas como Wiki
 
 ---
 
-## Funcionalidades ativas no MVP (v1.0 — 23/05/2026)
+## Funcionalidades ativas no MVP (v1.1 — 26/05/2026)
 
 | Funcionalidade | Status |
 |---|---|
-| Jogador do dia (mesmo para todos) | ✅ |
-| 6 pistas progressivas como frases narrativas | ✅ |
+| 3 jogadores do dia (mesmo para todos) | ✅ |
+| 5 pistas progressivas (redesenhadas) | ✅ |
+| Pista 1: Posição narrativa + liga + estado do clube | ✅ |
+| Pista 2: BlocosNome (blocos visuais com letra do meio) | ✅ |
+| Pista 3: Nacionalidade (país de nascimento) | ✅ |
+| Pista 4: Trajetória (clubeAnterior — 3 variantes narrativas) | ✅ |
+| Pista 5: Clube + letras parciais do nome | ✅ |
 | Intro narrativa antes das pistas | ✅ |
 | Autocomplete de jogadores | ✅ |
-| Sistema de pontos (100/80/60/40/20/10) | ✅ |
+| Sistema de pontos (100/80/60/40/20) | ✅ |
 | Perfil local (sem login) | ✅ |
 | Streak diário | ✅ |
 | Código de recuperação FC-xxxxx | ✅ |
-| "O Contrato" — bônus por desempenho | ✅ (estrutura pronta, API não integrada) |
-| Trivia para lendas | ✅ |
+| "O Contrato" — bônus por desempenho real (API-Football) | ✅ |
+| Cron job diário de resolução de contratos | ✅ |
+| Trivia para lendas (Contrato Histórico) | ✅ |
 | Compartilhamento (Copiar + WhatsApp) | ✅ |
 | Grade de emojis sem spoiler | ✅ |
 | Modo Desafio (link por rodada) | ✅ |
 | Ranking Global (Semanal + Geral) | ✅ (Supabase configurado) |
 | Grupos de amigos | ✅ (Supabase configurado) |
 | Deploy automático via GitHub + Vercel | ✅ |
+| 168 jogadores no banco | ✅ |
 
 ---
 
@@ -663,12 +762,195 @@ A qualidade das imagens geradas era inconsistente — fontes gratuitas como Wiki
 
 | Tarefa | Prioridade |
 |---|---|
-| Integrar API-Football para resolver Contratos com dados reais | Alta |
-| Adicionar mais jogadores (atual: 56) | Média |
-| Melhorar sistema de recuperação de conta por código | Média |
-| Produção de mídia profissional para pistas 1-2 | Baixa (pós-tração) |
+| Testar e ajustar dificuldade das pistas com usuários reais | Alta |
+| Implementar ranking global funcional no Supabase | Alta |
+| Grupos/torneio local entre amigos | Média |
+| Versão Copa do Mundo 2026 (banco separado, jogadores convocados) | Média |
+| Registrar domínio escalafe.com.br (~R$40/ano) | Média |
+| Pistas visuais (silhueta via YOLO11 — fase 2) | Baixa (pós-tração) |
 | Ajustes de layout mobile | Baixa (conforme feedback) |
 
 ---
 
-*ESCALA FC — desenvolvido do zero em uma única sessão de trabalho.*
+## Fase 10 — Expansão do banco: 56 → 168 jogadores (25/05/2026)
+
+### O que foi feito
+
+O banco original tinha 56 jogadores. Para suportar 3 desafios por dia por mais tempo sem repetições, o banco foi expandido para **168 jogadores**.
+
+### Composição dos 168
+
+| Grupo | Qtd |
+|---|---|
+| 12 clubes do Brasileirão (3 titulares por time) | 36 |
+| Extras de outros clubes brasileiros (Fortaleza, Bahia, Athletico-PR, Bragantino) | 10+ |
+| Brasileiros no exterior (Premier League, La Liga, Bundesliga, etc.) | ~30 |
+| Estrelas internacionais (Messi, CR7, Mbappé, Haaland, Salah...) | ~20 |
+| Lendas brasileiras e internacionais (Pelé, Ronaldo, Ronaldinho, Maradona, Zidane...) | ~20 |
+| Outros (coberta de 20+ ligas e nacionalidades) | restante |
+
+### Como foi feito
+
+Script Node.js gravado em `C:\temp\add-clube-anterior.js` e executado com `node "C:\temp\add-clube-anterior.js"`. O script fez duas coisas em lote:
+1. Adicionou todos os novos jogadores ao JSON
+2. Populou os campos `clubeAnterior`, `origemAnterior` e `ligaAnterior` para todos os 168
+
+Resultado: `✅ 168 jogadores atualizados`
+
+---
+
+## Fase 11 — Redesign das pistas: 6 → 5 (25/05/2026)
+
+### Problema com as 6 pistas originais
+
+As 6 pistas originais revelavam: Liga, Faixa etária, Títulos, Nacionalidade, Curiosidade, Clube. O problema:
+- Pista 2 (faixa etária) era fraca e não muito diferenciadora
+- Pista 5 (curiosidade com nome censurado) dependia de escrever bem a curiosidade de cada jogador — difícil de escalar para 168
+- 6 pistas era uma pista a mais que o necessário
+
+### Decisão
+
+Reduzir para **5 pistas** com formatos completamente diferentes entre si:
+
+| Pista | Antes | Depois |
+|---|---|---|
+| 1 | Posição + Liga (texto) | Posição + Liga + Estado (texto narrativo mais rico) |
+| 2 | Faixa etária + continente | **BlocosNome** — blocos visuais com letras do meio reveladas |
+| 3 | Títulos | Nacionalidade (país de nascimento) |
+| 4 | Nacionalidade + posição | **Trajetória** — clube anterior em texto narrativo |
+| 5 | Curiosidade censurada | **LetrasNome** — clube revelado + letras parciais do nome |
+| 6 | Clube (era a mais fácil) | *(removida — conteúdo migrado para pista 5)* |
+
+### Impacto técnico
+
+- `TOTAL_PISTAS` alterado de 6 para 5 em `lib/types.ts`
+- `PONTOS_BASE` e `MULTIPLICADORES_CONTRATO` atualizados (removida entrada 6)
+- `LABELS_PISTAS` em `Pista.tsx` atualizado
+- `getPistasTexto()` em `game.ts` reescrito completamente
+- Componentes `BlocosNome` e `LetrasNome` adicionados em `Pista.tsx`
+
+---
+
+## Fase 12 — Pista 4: Trajetória / clubeAnterior (25–26/05/2026)
+
+### Motivação
+
+A pista de "Faixa etária" era pouco útil — o jogador poderia ter 26 ou 30 anos e a dica era a mesma. A "Trajetória" (clube anterior) é muito mais concreta e memorável.
+
+### Campos adicionados ao tipo `Jogador`
+
+```typescript
+clubeAnterior?: string           // Ex: "West Ham United", "Corinthians", null (base)
+origemAnterior?: 'exterior' | 'brasil' | 'base'
+ligaAnterior?: string | null     // Só quando origemAnterior === 'exterior'
+```
+
+### Lógica da pista 4
+
+```typescript
+if (!jogador.clubeAnterior || jogador.origemAnterior === 'base') {
+  pista4 = 'Foi revelado nas categorias de base do próprio clube onde joga hoje.'
+} else if (jogador.origemAnterior === 'brasil') {
+  pista4 = `Antes do clube atual, jogou no ${jogador.clubeAnterior}.`
+} else if (jogador.liga === 'Brasileirão') {
+  pista4 = `Retornou ao Brasil vindo do ${jogador.clubeAnterior}, na ${jogador.ligaAnterior}.`
+} else {
+  pista4 = `Chegou ao clube atual vindo do ${jogador.clubeAnterior}, na ${jogador.ligaAnterior}.`
+}
+```
+
+### Exemplo de registro completo atualizado
+
+```json
+{
+  "id": 1,
+  "nome": "Lucas Paquetá",
+  "posicao": "Meia",
+  "nacionalidade": "Brasileiro",
+  "bandeira": "🇧🇷",
+  "clube": "Flamengo",
+  "liga": "Brasileirão",
+  "estadoClube": "Rio de Janeiro",
+  "dificuldade": "medio",
+  "titulos": ["Libertadores", "Brasileirão"],
+  "curiosidade": "Retornou ao Flamengo por €42M vindo do West Ham",
+  "lenda": false,
+  "clubeAnterior": "West Ham United",
+  "origemAnterior": "exterior",
+  "ligaAnterior": "Premier League",
+  "apiFootballTeamId": 127,
+  "apiFootballLeagueId": 71
+}
+```
+
+---
+
+## Fase 13 — API-Football integrada + cron de contratos (25/05/2026)
+
+### Integração
+
+O sistema "O Contrato" agora usa dados reais da **API-Football v3** (via RapidAPI) para calcular o bônus de desempenho após a partida do jogador.
+
+```
+Chave: 231ea0bcdf93117c79415510de93e7d3
+Provider: RapidAPI (api-football.com)
+```
+
+### `lib/api-football.ts`
+
+Funções principais:
+- `buscarProximaPartida(teamId, leagueId)` → retorna fixture ID da próxima partida
+- `buscarDesempenhoNaPartida(fixtureId, playerId)` → retorna `DesempenhoPartida`
+
+### Rota `/api/contrato/fixture`
+
+Endpoint chamado pelo frontend ao assinar o contrato. Recebe `teamId` + `leagueId` e retorna a próxima partida agendada.
+
+### Rota `/api/cron/resolver-contratos`
+
+Cron job executado diariamente. Lógica:
+1. Busca todos os contratos com `status: 'aguardando_jogo'` no Supabase
+2. Para cada contrato, verifica se a partida já ocorreu
+3. Se sim, busca o desempenho real do jogador
+4. Calcula `bonusBase` pelos eventos do jogo
+5. Aplica o `multiplicador` da pista de acerto → `bonusTotal`
+6. Atualiza o contrato para `status: 'resolvido'` com os dados
+
+```
+Proteção: header Authorization: Bearer escalafc2026secretocron
+Execução: GET /api/cron/resolver-contratos
+```
+
+### Estrutura de bônus (inalterada)
+
+| Evento | Pontos base |
+|---|---|
+| Entrou em campo | +10 |
+| Jogou 70%+ do tempo | +20 |
+| Criou chance de gol | +30 |
+| Gol OU assistência | +50 |
+| Gol E assistência | +80 |
+| Man of the Match | +100 |
+
+**Máximo possível:** 240 pts base × 3.0 (multiplicador pista 1) = **720 pts**
+
+---
+
+## Erro adicional durante desenvolvimento (26/05/2026)
+
+### 10. Script bash com quoting aninhado falha no PowerShell
+
+**Erro:** `unexpected EOF while looking for matching '"'` ao tentar rodar script inline no bash  
+**Causa:** Aspas duplas aninhadas em heredoc dentro do PowerShell corrompem o parse  
+**Solução:** Gravar o script em arquivo temporário antes de executar:
+
+```powershell
+# Em vez de: node -e "...script com aspas..."
+# Gravar em arquivo e executar:
+Set-Content "C:\temp\meu-script.js" $scriptContent
+node "C:\temp\meu-script.js"
+```
+
+---
+
+*ESCALA FC — desenvolvido do zero. v1.1 — 168 jogadores, 5 pistas, API-Football integrada.*
