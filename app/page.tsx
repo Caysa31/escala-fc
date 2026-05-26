@@ -9,6 +9,7 @@ import { getContratosAtivos } from '@/lib/contrato'
 import TelaPerfil, { StatsPerfil } from '@/components/TelaPerfil'
 import JogoDesafio from '@/components/JogoDesafio'
 import { TelaContratosAtivos } from '@/components/TelaContrato'
+import TelaFinalDia from '@/components/TelaFinalDia'
 import { Flame, FileText, Globe, Users } from 'lucide-react'
 import Link from 'next/link'
 
@@ -17,6 +18,7 @@ export default function Home() {
   const [carregado, setCarregado] = useState(false)
   const [desafioIdx, setDesafioIdx] = useState(0)
   const [mostrarContratosAtivos, setMostrarContratosAtivos] = useState(false)
+  const [mostrarFinalDia, setMostrarFinalDia] = useState(false)
   const [qtdContratosAtivos, setQtdContratosAtivos] = useState(0)
 
   const jogadoresDoDia = getJogadoresDoDia()
@@ -32,7 +34,7 @@ export default function Home() {
     const resultado = getResultadoRodada(rodadaId)
     if (!resultado) return 'jogando'
     return resultado.pistaAcerto !== null ? 'ganhou' : 'perdeu'
-  }, [perfil]) // re-evaluate when perfil changes (after registrarResultado)
+  }, [perfil])
 
   if (!carregado) {
     return (
@@ -47,6 +49,11 @@ export default function Home() {
   }
 
   const { rodadaId: rodadaAtiva, jogador: jogadorAtivo } = jogadoresDoDia[desafioIdx]
+
+  // Verifica se ainda há desafio não jogado depois do atual
+  const temProximoDesafio = jogadoresDoDia.slice(desafioIdx + 1).some(
+    ({ rodadaId }) => getStatusDesafio(rodadaId) === 'jogando'
+  )
 
   return (
     <main className="min-h-screen bg-zinc-950 text-white">
@@ -120,10 +127,7 @@ export default function Home() {
           onResultado={p => setPerfil(p)}
           onContratosChange={setQtdContratosAtivos}
           onProximoDesafio={
-            // Só mostra se ainda há desafio não jogado depois do atual
-            jogadoresDoDia.slice(desafioIdx + 1).some(
-              ({ rodadaId }) => getStatusDesafio(rodadaId) === 'jogando'
-            )
+            temProximoDesafio
               ? () => {
                   const proximo = jogadoresDoDia.findIndex(
                     ({ rodadaId }, i) => i > desafioIdx && getStatusDesafio(rodadaId) === 'jogando'
@@ -132,6 +136,7 @@ export default function Home() {
                 }
               : undefined
           }
+          onDiaCompleto={() => setMostrarFinalDia(true)}
         />
 
         {/* Código de recuperação */}
@@ -164,6 +169,15 @@ export default function Home() {
       {/* Contratos ativos (modal) */}
       {mostrarContratosAtivos && (
         <TelaContratosAtivos onFechar={() => setMostrarContratosAtivos(false)} />
+      )}
+
+      {/* Tela final do dia */}
+      {mostrarFinalDia && perfil && (
+        <TelaFinalDia
+          jogadoresDoDia={jogadoresDoDia}
+          perfil={perfil}
+          onFechar={() => setMostrarFinalDia(false)}
+        />
       )}
     </main>
   )
