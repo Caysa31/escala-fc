@@ -156,7 +156,7 @@ export default function TelaResultado({
           <div className="bg-zinc-800 border border-zinc-700 rounded-xl p-4 text-center space-y-1">
             <p className="text-2xl">🏆</p>
             <p className="text-white font-bold text-sm">Você completou os 3 desafios de hoje!</p>
-            <p className="text-zinc-400 text-xs">Novos desafios amanhã à meia-noite.</p>
+            <p className="text-zinc-400 text-xs">Novos desafios amanhã.</p>
             <p className="text-zinc-500 text-xs mt-1">Ative as notificações para não perder 🔔</p>
           </div>
         )}
