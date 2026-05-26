@@ -12,6 +12,7 @@ interface TelaResultadoProps {
   pontos: number
   tentativas: Tentativa[]
   onFechar: () => void
+  onProximoDesafio?: () => void
 }
 
 export default function TelaResultado({
@@ -21,6 +22,7 @@ export default function TelaResultado({
   pontos,
   tentativas,
   onFechar,
+  onProximoDesafio,
 }: TelaResultadoProps) {
   const [copiado, setCopiado] = useState(false)
   const ganhou = pistaAcerto !== null
@@ -126,6 +128,16 @@ export default function TelaResultado({
           </button>
         </div>
 
+        {/* Próximo desafio (se houver) */}
+        {onProximoDesafio && (
+          <button
+            onClick={() => { onFechar(); onProximoDesafio() }}
+            className="w-full flex items-center justify-center gap-2 rounded-xl py-4 font-bold text-base bg-green-600 hover:bg-green-500 text-white transition-all"
+          >
+            Próximo desafio →
+          </button>
+        )}
+
         {/* Desafiar amigo */}
         <button
           onClick={() => {
@@ -139,10 +151,12 @@ export default function TelaResultado({
           Desafiar amigo
         </button>
 
-        {/* Volta amanhã */}
-        <p className="text-center text-zinc-500 text-xs">
-          🔄 Novo desafio amanhã à meia-noite
-        </p>
+        {/* Volta amanhã — só mostra se não há próximo desafio */}
+        {!onProximoDesafio && (
+          <p className="text-center text-zinc-500 text-xs">
+            🔄 Novo desafio amanhã à meia-noite
+          </p>
+        )}
       </div>
     </div>
   )

@@ -244,6 +244,7 @@ export default function JogoDesafio({
           pontos={pontosRodada}
           tentativas={estado.tentativas}
           onFechar={() => setMostrarResultado(false)}
+          onProximoDesafio={onProximoDesafio}
         />
       )}
     </div>
