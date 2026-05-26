@@ -22,9 +22,10 @@ interface ModalContratoProps {
   rodadaId: number
   pistaAcerto: number
   onFechar: (contrato: Contrato) => void
+  onProximoDesafio?: () => void
 }
 
-export function ModalContrato({ jogador, rodadaId, pistaAcerto, onFechar }: ModalContratoProps) {
+export function ModalContrato({ jogador, rodadaId, pistaAcerto, onFechar, onProximoDesafio }: ModalContratoProps) {
   const [triviaResposta, setTriviaResposta] = useState<number | null>(null)
   const [triviaResolvida, setTriviaResolvida] = useState(false)
   const [bonusTrivia, setBonusTrivia] = useState(0)
@@ -92,14 +93,33 @@ export function ModalContrato({ jogador, rodadaId, pistaAcerto, onFechar }: Moda
           <ContratoNormal multiplicador={multiplicador} bonusMax={bonusMax} />
         )}
 
-        {/* Botão fechar (se lenda e trivia resolvida, ou se não é lenda) */}
+        {/* Botão principal */}
         {(!jogador.lenda || triviaResolvida) && (
-          <button
-            onClick={handleFechar}
-            className="w-full bg-green-500 hover:bg-green-400 text-black font-bold rounded-xl py-3 transition-colors"
-          >
-            {jogador.lenda ? `Recebi +${bonusTrivia} pts` : 'Fechar'}
-          </button>
+          <div className="space-y-2">
+            {onProximoDesafio ? (
+              <>
+                <button
+                  onClick={onProximoDesafio}
+                  className="w-full bg-green-500 hover:bg-green-400 text-black font-bold rounded-xl py-4 text-base transition-colors"
+                >
+                  Próximo desafio →
+                </button>
+                <button
+                  onClick={handleFechar}
+                  className="w-full text-zinc-500 hover:text-zinc-300 text-sm py-1 transition-colors"
+                >
+                  Ver resultado
+                </button>
+              </>
+            ) : (
+              <button
+                onClick={handleFechar}
+                className="w-full bg-green-500 hover:bg-green-400 text-black font-bold rounded-xl py-3 transition-colors"
+              >
+                {jogador.lenda ? `Recebi +${bonusTrivia} pts` : 'Ver resultado'}
+              </button>
+            )}
+          </div>
         )}
       </div>
     </div>

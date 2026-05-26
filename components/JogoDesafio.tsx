@@ -232,6 +232,11 @@ export default function JogoDesafio({
             setMostrarResultado(true)
             onContratosChange(getContratosAtivos().length)
           }}
+          onProximoDesafio={onProximoDesafio ? () => {
+            setMostrarContrato(false)
+            onContratosChange(getContratosAtivos().length)
+            onProximoDesafio()
+          } : undefined}
         />
       )}
 
