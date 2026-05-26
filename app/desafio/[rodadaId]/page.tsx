@@ -101,10 +101,10 @@ export default function DesafioPage({ params }: { params: Promise<{ rodadaId: st
         {/* Banner desafio */}
         <div className="bg-yellow-950 border border-yellow-800 rounded-xl px-4 py-3 text-center">
           <p className="text-yellow-300 text-sm font-semibold">
-            🏆 Você foi desafiado! Jogue a rodada #{rodadaId} e compare com seu amigo.
+            🏆 Seu amigo te desafiou! Será que você faz mais pontos que ele?
           </p>
           <p className="text-yellow-600 text-xs mt-1">
-            Essa rodada não conta para o ranking global.
+            Jogue, compartilhe seu resultado e descubra quem manja mais de futebol.
           </p>
         </div>
 
@@ -197,10 +197,13 @@ export default function DesafioPage({ params }: { params: Promise<{ rodadaId: st
 
             <Link
               href="/"
-              className="block w-full text-center bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-semibold rounded-xl py-3 text-sm transition-colors"
+              className="block w-full text-center bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl py-4 text-sm transition-colors"
             >
-              Jogar rodada de hoje →
+              ⚽ Jogar os 3 desafios de hoje e marcar pontos →
             </Link>
+            <p className="text-center text-zinc-600 text-xs">
+              Crie seu apelido, jogue os desafios do dia e apareça no ranking
+            </p>
           </div>
         )}
       </div>
