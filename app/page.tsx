@@ -136,7 +136,13 @@ export default function Home() {
                 }
               : undefined
           }
-          onDiaCompleto={() => setMostrarFinalDia(true)}
+          onDiaCompleto={() => {
+            // Garante que todos os 3 desafios estão realmente completos
+            const todosConcluidos = jogadoresDoDia.every(
+              ({ rodadaId }) => getStatusDesafio(rodadaId) !== 'jogando'
+            )
+            if (todosConcluidos) setMostrarFinalDia(true)
+          }}
         />
 
         {/* Código de recuperação */}
