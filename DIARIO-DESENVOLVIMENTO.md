@@ -1,7 +1,7 @@
 # ESCALA FC — Diário de Desenvolvimento Completo
 
 > Documento gerado em 23/05/2026. Registra todo o processo de construção do MVP, do zero ao deploy, com decisões, erros e soluções.  
-> **Última atualização: 26/05/2026** — Expansão para 168 jogadores, redesign para 5 pistas, pista 4 → Trajetória, API-Football integrada, 3 desafios/dia.
+> **Última atualização: 28/05/2026** — Redesign completo do fluxo pós-jogo: UX da sequência de desafios, ModalContrato com CTA inteligente, TelaResultado com botão de próximo, TelaFinalDia informativa e marketeira.
 
 ---
 
@@ -33,7 +33,8 @@ Jogo diário de adivinhação de jogadores de futebol — no estilo Wordle/Globl
 ```
 escala-fc/
 ├── app/
-│   ├── page.tsx                    ← Tela principal do jogo
+│   ├── page.tsx                    ← Tela principal do jogo (3 desafios + TelaFinalDia)
+│   ├── reset/page.tsx              ← Limpa localStorage e redireciona (uso em testes)
 │   ├── ranking/page.tsx            ← Ranking global (Semanal e Geral)
 │   ├── grupos/page.tsx             ← Grupos de amigos com código de convite
 │   └── desafio/[rodadaId]/page.tsx ← Modo desafio — jogue a rodada de um amigo
@@ -43,8 +44,10 @@ escala-fc/
 │   ├── InputPalpite.tsx            ← Campo de texto com autocomplete de jogadores
 │   ├── ListaTentativas.tsx         ← Lista visual de tentativas feitas
 │   ├── TelaPerfil.tsx              ← Onboarding + stats do perfil no header
-│   ├── TelaResultado.tsx           ← Modal de resultado final + compartilhar
-│   └── TelaContrato.tsx            ← Modal "O Contrato" + trivia para lendas
+│   ├── TelaResultado.tsx           ← Modal de resultado individual + compartilhar
+│   ├── TelaContrato.tsx            ← Modal "O Contrato" + trivia para lendas
+│   ├── JogoDesafio.tsx             ← Componente de jogo encapsulado (3 desafios/dia)
+│   └── TelaFinalDia.tsx            ← Tela de encerramento do dia com resumo completo
 │
 ├── lib/
 │   ├── types.ts                    ← Todas as interfaces e constantes do projeto
@@ -728,7 +731,7 @@ A qualidade das imagens geradas era inconsistente — fontes gratuitas como Wiki
 
 ---
 
-## Funcionalidades ativas no MVP (v1.1 — 26/05/2026)
+## Funcionalidades ativas no MVP (v1.2 — 28/05/2026)
 
 | Funcionalidade | Status |
 |---|---|
@@ -755,6 +758,13 @@ A qualidade das imagens geradas era inconsistente — fontes gratuitas como Wiki
 | Grupos de amigos | ✅ (Supabase configurado) |
 | Deploy automático via GitHub + Vercel | ✅ |
 | 168 jogadores no banco | ✅ |
+| Botão "Próximo desafio →" no ModalContrato | ✅ |
+| Botão "Próximo desafio →" na TelaResultado | ✅ |
+| TelaFinalDia com resumo completo do dia | ✅ |
+| Ranking global na TelaFinalDia (Supabase) | ✅ |
+| Compartilhamento do dia completo (3 desafios) | ✅ |
+| Rota /reset para testes (limpa localStorage) | ✅ |
+| Banner do /desafio reescrito (mais convidativo) | ✅ |
 
 ---
 
@@ -936,6 +946,251 @@ Execução: GET /api/cron/resolver-contratos
 
 ---
 
+## Fase 14 — Redesign do fluxo pós-jogo (26–28/05/2026)
+
+### Problema identificado
+
+Após acertar o primeiro desafio, o usuário não tinha nenhuma indicação clara de como seguir para o segundo. O fluxo era:
+
+1. Acerta jogador → modal `ModalContrato` aparece com botão **"Fechar"** verde (nenhuma indicação do próximo desafio)
+2. Fecha → modal `TelaResultado` aparece com opções de compartilhar
+3. Fecha → volta à tela principal sem direcionamento
+
+Além disso, ao terminar os 3 desafios, a tela finalizava com "Novo desafio amanhã à meia-noite" — fraca, sem informação e sem apelo de retorno.
+
+---
+
+### Fase 14a — Botão "Próximo desafio →" no fluxo
+
+**Solução:** propagar `onProximoDesafio` por toda a cadeia de modais.
+
+#### `app/page.tsx`
+
+```tsx
+// Calculado antes de renderizar JogoDesafio
+const temProximoDesafio = jogadoresDoDia.slice(desafioIdx + 1).some(
+  ({ rodadaId }) => getStatusDesafio(rodadaId) === 'jogando'
+)
+
+// Passado como prop
+onProximoDesafio={
+  temProximoDesafio
+    ? () => {
+        const proximo = jogadoresDoDia.findIndex(
+          ({ rodadaId }, i) => i > desafioIdx && getStatusDesafio(rodadaId) === 'jogando'
+        )
+        if (proximo !== -1) setDesafioIdx(proximo)
+      }
+    : undefined  // undefined = não mostra o botão
+}
+```
+
+#### `components/TelaContrato.tsx` — ModalContrato
+
+Recebe `onProximoDesafio?: () => void`. Quando existe:
+- Botão primário verde grande: **"Próximo desafio →"** → fecha contrato e vai direto pro próximo (sem passar pela TelaResultado)
+- Link secundário pequeno: "Ver resultado" → fecha contrato e abre TelaResultado
+
+Quando não existe (último desafio):
+- Botão primário: **"Ver resultado"** → abre TelaResultado
+
+```tsx
+{onProximoDesafio ? (
+  <>
+    <button onClick={onProximoDesafio} className="...verde grande...">
+      Próximo desafio →
+    </button>
+    <button onClick={handleFechar} className="...link pequeno...">
+      Ver resultado
+    </button>
+  </>
+) : (
+  <button onClick={handleFechar} className="...verde...">
+    Ver resultado
+  </button>
+)}
+```
+
+#### `components/TelaResultado.tsx`
+
+Recebe `onProximoDesafio?: () => void`. Quando existe:
+- Mostra botão verde grande **"Próximo desafio →"** entre os botões de compartilhar e "Desafiar amigo"
+- Clicar fecha o modal e avança para o próximo
+
+Quando não existe (último desafio):
+- Mostra bloco de encerramento: "Você completou os 3 desafios de hoje! / Novos desafios amanhã."
+
+#### `components/JogoDesafio.tsx`
+
+Propaga `onProximoDesafio` tanto para `ModalContrato` quanto para `TelaResultado`. No caso do ModalContrato, o callback encapsula também o `setMostrarContrato(false)` e `onContratosChange`.
+
+---
+
+### Fase 14b — Rota /reset para testes
+
+Criada `app/reset/page.tsx`:
+
+```tsx
+// Limpa todo o localStorage e redireciona para /
+useEffect(() => {
+  localStorage.clear()
+  router.replace('/')
+}, [])
+```
+
+Uso: enviar link `https://escala-fc-app2.vercel.app/reset` para testar sempre do zero.
+
+---
+
+### Fase 14c — Melhoria da página /desafio
+
+Banner reescrito de "Você foi desafiado! Esta rodada não conta para o ranking global" (que desestimulava jogar) para:
+
+```tsx
+<div className="bg-yellow-950 border border-yellow-800 rounded-xl px-4 py-3 text-center">
+  <p className="text-yellow-300 text-sm font-semibold">
+    🏆 Seu amigo te desafiou! Será que você faz mais pontos que ele?
+  </p>
+  <p className="text-yellow-600 text-xs mt-1">
+    Jogue, compartilhe seu resultado e descubra quem manja mais de futebol.
+  </p>
+</div>
+```
+
+CTA final também reescrito — de botão cinza neutro para botão verde proeminente convidando a jogar a rodada completa e criar perfil.
+
+---
+
+### Fase 14d — TelaFinalDia (novo componente)
+
+**`components/TelaFinalDia.tsx`** — aparece automaticamente ao concluir os 3 desafios do dia.
+
+#### Trigger (em `app/page.tsx`)
+
+Substituída abordagem de closure frágil por `useEffect` direto:
+
+```tsx
+const finalDiaMostrado = useRef(false)
+
+useEffect(() => {
+  if (!carregado || finalDiaMostrado.current) return
+
+  const todosConcluidos = jogadoresDoDia.every(
+    ({ rodadaId }) => getResultadoRodada(rodadaId) !== null
+  )
+
+  if (todosConcluidos) {
+    finalDiaMostrado.current = true
+    // 600ms de delay para o modal de resultado fechar antes
+    const timer = setTimeout(() => setMostrarFinalDia(true), 600)
+    return () => clearTimeout(timer)
+  }
+}, [perfil, carregado])  // dispara toda vez que perfil muda (após cada resultado)
+```
+
+**Por que useEffect em vez de callback?**
+- Abordagem anterior: `onDiaCompleto` passado de `page.tsx` → `JogoDesafio` → `TelaResultado` → closure. Em qualquer re-render intermediário, o closure poderia capturar uma versão stale do callback.
+- Abordagem nova: detecta direto do `localStorage` sem depender de nenhuma cadeia de props. Muito mais robusto.
+
+#### Estrutura da TelaFinalDia
+
+```
+┌─────────────────────────────────┐
+│  [X fechar]                     │
+│                                 │
+│  🏆 Hero dinâmico               │
+│  Título + subtítulo por acertos │
+│  (0/1/2/3 acertos)              │
+│                                 │
+│  [pts hoje] [acertos/3] [streak]│
+│                                 │
+│  🥇 Ranking Global              │
+│  #N entre todos · X pts total   │
+│                                 │
+│  Seus desafios hoje:            │
+│  🇨🇴 Marino Hinestroza  🟩  +100 │
+│  🇵🇹 Nuno Moreira       🟩🟩 +80  │
+│  🇧🇷 Léo Jardim         ⬛⬛⬛⬛  0 │
+│                                 │
+│  ⚡ Contratos assinados hoje    │
+│  Cada jogador + multiplicador   │
+│  Bônus potencial total: +720    │
+│                                 │
+│  [Compartilhar no WhatsApp]     │
+│  [⚔️ Desafiar um amigo]          │
+│                                 │
+│  🔔 Novos desafios amanhã!      │
+│  "X dias seguidos. Não apague!" │
+└─────────────────────────────────┘
+```
+
+#### Hero dinâmico por performance
+
+| Acertos | Emoji | Título | Cor |
+|---|---|---|---|
+| 3/3 | 🏆 | Perfeito! Craque absoluto! | Amarelo |
+| 2/3 | 🎯 | Muito bem! Quase perfeito! | Verde |
+| 1/3 | ⚽ | Boa! 1 acerto hoje! | Azul |
+| 0/3 | 💪 | Hoje não foi — mas você jogou! | Cinza |
+
+#### Ranking global (async)
+
+Busca posição real do usuário no Supabase:
+
+```tsx
+useEffect(() => {
+  const usuarioId = localStorage.getItem('escalafc_supabase_id')
+  if (usuarioId) {
+    getPosicaoRanking(usuarioId).then(pos => {
+      if (pos.geral > 0) setPosicaoRanking(pos.geral)
+    })
+  }
+}, [])
+```
+
+#### Contratos da sessão
+
+Filtra apenas contratos das rodadas do dia — não mostra contratos de dias anteriores:
+
+```tsx
+const todaysRodadaIds = jogadoresDoDia.map(j => j.rodadaId)
+const contratosHoje = getContratosAtivos().filter(c =>
+  todaysRodadaIds.includes(c.rodadaId)
+)
+```
+
+#### Compartilhamento
+
+**"Compartilhar resultado"** — envia resultado dos 3 desafios com emojis:
+```
+⚽ ESCALA FC — 2/3 acertos hoje!
+🟩 🟩🟩 ⬛⬛⬛⬛
+Fiz 180 pts. Você consegue mais?
+https://escala-fc-app2.vercel.app
+```
+
+**"Desafiar um amigo"** — mensagem de desafio direta:
+```
+⚽ Você conhece futebol? Fiz 180 pts hoje no ESCALA FC — consegue me superar?
+https://escala-fc-app2.vercel.app
+```
+
+---
+
+### Resumo de arquivos modificados (Fase 14)
+
+| Arquivo | Mudança |
+|---|---|
+| `app/page.tsx` | `mostrarFinalDia` state, `useEffect` para detecção automática, import `TelaFinalDia`, `useRef finalDiaMostrado` |
+| `app/reset/page.tsx` | **Novo** — limpa localStorage e redireciona |
+| `app/desafio/[rodadaId]/page.tsx` | Banner reescrito, CTA final em verde |
+| `components/JogoDesafio.tsx` | Prop `onProximoDesafio` propagada para ModalContrato e TelaResultado |
+| `components/TelaContrato.tsx` | Prop `onProximoDesafio` no ModalContrato, lógica de botão primário inteligente |
+| `components/TelaResultado.tsx` | Prop `onProximoDesafio`, botão "Próximo desafio →" proeminente, bloco de encerramento |
+| `components/TelaFinalDia.tsx` | **Novo** — tela de resumo do dia completa |
+
+---
+
 ## Erro adicional durante desenvolvimento (26/05/2026)
 
 ### 10. Script bash com quoting aninhado falha no PowerShell
@@ -953,4 +1208,4 @@ node "C:\temp\meu-script.js"
 
 ---
 
-*ESCALA FC — desenvolvido do zero. v1.1 — 168 jogadores, 5 pistas, API-Football integrada.*
+*ESCALA FC — desenvolvido do zero. v1.2 — 168 jogadores, 5 pistas, API-Football integrada, fluxo pós-jogo completo com TelaFinalDia.*
