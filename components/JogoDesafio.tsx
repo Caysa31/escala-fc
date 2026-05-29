@@ -53,6 +53,9 @@ export default function JogoDesafio({
 
   // Carrega progresso salvo ao montar (ou ao trocar de rodada)
   useEffect(() => {
+    // Volta pro topo da tela ao entrar num novo desafio
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+
     const resultado = getResultadoRodada(rodadaId)
     if (resultado) {
       setEstado({
@@ -67,6 +70,7 @@ export default function JogoDesafio({
     }
     setMostrarContrato(false)
     setMostrarResultado(false)
+    setAutoAvancando(false)
   }, [rodadaId]) // eslint-disable-line react-hooks/exhaustive-deps
 
   function handlePalpite(nome: string) {

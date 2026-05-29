@@ -17,11 +17,7 @@ export default function InputPalpite({ onPalpite, desabilitado, tentativasAnteri
   const [focado, setFocado] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  useEffect(() => {
-    if (!desabilitado) {
-      inputRef.current?.focus()
-    }
-  }, [desabilitado])
+  // Sem auto-foco: o jogador deve ler a intro e as pistas antes de digitar
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const v = e.target.value
