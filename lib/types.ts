@@ -140,7 +140,7 @@ export const LABEL_PISTAS: Record<number, string> = {
   2: 'Posição',
   3: 'Nacionalidade',
   4: 'Trajetória',
-  5: 'Nome',
+  5: 'Nome + Clube',
 }
 
 // Tipo de pista — todas texto por enquanto
