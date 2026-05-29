@@ -99,12 +99,12 @@ export default function DesafioPage({ params }: { params: Promise<{ rodadaId: st
         </header>
 
         {/* Banner desafio */}
-        <div className="bg-yellow-950 border border-yellow-800 rounded-xl px-4 py-3 text-center">
+        <div className="bg-yellow-950 border border-yellow-800 rounded-xl px-4 py-3 text-center space-y-1">
           <p className="text-yellow-300 text-sm font-semibold">
-            🏆 Seu amigo te desafiou! Será que você faz mais pontos que ele?
+            🏆 Seu amigo te desafiou! Será que você faz mais pontos?
           </p>
-          <p className="text-yellow-600 text-xs mt-1">
-            Jogue, compartilhe seu resultado e descubra quem manja mais de futebol.
+          <p className="text-yellow-500 text-xs">
+            Jogue esta rodada, compare o resultado — e depois jogue o desafio completo e entre no Ranking Global →
           </p>
         </div>
 
