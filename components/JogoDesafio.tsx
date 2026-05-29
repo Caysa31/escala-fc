@@ -140,11 +140,9 @@ export default function JogoDesafio({
           })
           onResultado(perfilAtualizado)
         }
-        // Último desafio: abre TelaResultado (TelaFinalDia cuida do resto via useEffect)
-        if (!onProximoDesafio) {
-          setMostrarResultado(true)
-        }
-        // Desafios 1/2: o banner de derrota mostra o nome e um botão "Próximo desafio →" manual
+        // Sempre abre TelaResultado na derrota — igual à vitória que abre ModalContrato
+        // Para o último desafio, TelaFinalDia aparece por cima via useEffect do pai
+        setMostrarResultado(true)
       }
     }
   }
