@@ -49,14 +49,12 @@ export default function JogoDesafio({
   })
   const [mostrarContrato, setMostrarContrato] = useState(false)
   const [mostrarResultado, setMostrarResultado] = useState(false)
-  const [autoAvancando, setAutoAvancando] = useState(false)
   const [inputMontado, setInputMontado] = useState(false)
 
   // Carrega progresso salvo ao montar (ou ao trocar de rodada)
   useEffect(() => {
     // 1. Desmonta o input para o iOS não focar e rolar a tela
     setInputMontado(false)
-    setAutoAvancando(false)
 
     // 2. Rola pro topo instantaneamente (sem input na DOM, iOS não interfere)
     window.scrollTo(0, 0)
@@ -137,18 +135,11 @@ export default function JogoDesafio({
           })
           onResultado(perfilAtualizado)
         }
-
-        // Desafio 1 ou 2: auto-avança pro próximo sem abrir modal
-        if (indiceDesafio < 2 && onProximoDesafio) {
-          setAutoAvancando(true)
-          setTimeout(() => {
-            setAutoAvancando(false)
-            onProximoDesafio()
-          }, 1800)
-        } else {
-          // Último desafio: mostra resultado e TelaFinalDia cuida do resto
+        // Último desafio: abre TelaResultado (TelaFinalDia cuida do resto via useEffect)
+        if (!onProximoDesafio) {
           setMostrarResultado(true)
         }
+        // Desafios 1/2: o banner de derrota mostra o nome e um botão "Próximo desafio →" manual
       }
     }
   }
@@ -226,31 +217,35 @@ export default function JogoDesafio({
       )}
 
       {estado.status === 'perdeu' && (
-        <div className="bg-red-950 border border-red-900 rounded-xl px-4 py-3 text-center space-y-2">
-          <p className="text-red-300 font-bold">
-            Era <span className="text-white">{jogador.nome}</span> {jogador.bandeira}
-          </p>
-          {autoAvancando ? (
-            <p className="text-zinc-500 text-xs animate-pulse">
-              Avançando pro próximo desafio...
+        <div className="bg-red-950 border border-red-900 rounded-2xl px-5 py-5 text-center space-y-3">
+          <div>
+            <p className="text-red-400 text-sm font-semibold">Não foi dessa vez...</p>
+            <p className="text-white font-black text-2xl mt-1">
+              {jogador.nome} {jogador.bandeira}
             </p>
-          ) : (
-            <div className="flex gap-2 justify-center">
+          </div>
+          {onProximoDesafio ? (
+            <div className="space-y-2">
+              <button
+                onClick={onProximoDesafio}
+                className="w-full bg-zinc-600 hover:bg-zinc-500 text-white font-bold py-3 rounded-xl text-sm transition-all"
+              >
+                Próximo desafio →
+              </button>
               <button
                 onClick={() => setMostrarResultado(true)}
-                className="text-red-400 text-xs underline"
+                className="text-zinc-500 text-xs underline"
               >
-                Ver resultado
+                Ver detalhes
               </button>
-              {onProximoDesafio && (
-                <button
-                  onClick={onProximoDesafio}
-                  className="bg-zinc-600 hover:bg-zinc-500 text-white text-xs font-bold px-4 py-1.5 rounded-lg transition-all"
-                >
-                  Próximo desafio →
-                </button>
-              )}
             </div>
+          ) : (
+            <button
+              onClick={() => setMostrarResultado(true)}
+              className="text-red-400 text-xs underline"
+            >
+              Ver resultado
+            </button>
           )}
         </div>
       )}
