@@ -7,12 +7,13 @@ interface PistaProps {
   texto: string
   revelada: boolean
   atual: boolean
+  errou?: boolean    // essa pista teve tentativa errada — card vermelho
+  correto?: boolean  // essa pista foi onde acertou — mantém verde mesmo após ganhar
 }
 
-// Pista 2 — blocos com letras do meio reveladas
-// `codificado` ex: "__d__" (Pedro) ou "___r_g_|__r__" (Rodrigo Garro)
-// "_" = bloco fechado | letra = bloco com letra revelada no meio
-function BlocosNome({ codificado, atual }: { codificado: string; atual: boolean }) {
+// Pista 1 — blocos com letras do meio reveladas
+function BlocosNome({ codificado, atual, correto }: { codificado: string; atual: boolean; correto?: boolean }) {
+  const ativa = atual || correto
   const palavras = codificado.split('|').map(p => p.split(''))
   return (
     <div className="flex items-center flex-wrap mt-1 gap-y-2">
@@ -31,10 +32,10 @@ function BlocosNome({ codificado, atual }: { codificado: string; atual: boolean 
                   key={ci}
                   className={`w-8 h-8 rounded flex items-center justify-center text-sm font-bold
                     ${revelada
-                      ? atual
+                      ? ativa
                         ? 'bg-green-900 border-2 border-green-400 text-green-200'
                         : 'bg-zinc-700 border-2 border-zinc-300 text-white'
-                      : atual
+                      : ativa
                         ? 'bg-green-700 border border-green-600'
                         : 'bg-zinc-600 border border-zinc-500'
                     }`}
@@ -50,25 +51,19 @@ function BlocosNome({ codificado, atual }: { codificado: string; atual: boolean 
   )
 }
 
-// Pista 5 mostra clube + letras parciais do nome
-// `codificado` ex: "Flamengo|P _ d _ _   G _ r _ _"
-// letras reveladas em verde, "_" em zinc-500
-function LetrasNome({ codificado, atual }: { codificado: string; atual: boolean }) {
+// Pista 5 — clube + letras parciais do nome
+function LetrasNome({ codificado, atual, correto }: { codificado: string; atual: boolean; correto?: boolean }) {
+  const ativa = atual || correto
   const sepIdx = codificado.indexOf('|')
   const clube   = sepIdx >= 0 ? codificado.slice(0, sepIdx) : codificado
   const letras  = sepIdx >= 0 ? codificado.slice(sepIdx + 1) : ''
-
-  // Palavras separadas por "   " (3 espaços)
   const palavras = letras ? letras.split('   ') : []
 
   return (
     <div className="space-y-2 mt-1">
-      {/* Nome do clube */}
-      <p className={`font-bold text-base ${atual ? 'text-green-300' : 'text-white'}`}>
+      <p className={`font-bold text-base ${ativa ? 'text-green-300' : 'text-white'}`}>
         {clube}
       </p>
-
-      {/* Letras parciais */}
       {palavras.length > 0 && (
         <div className="flex gap-4 flex-wrap items-end">
           {palavras.map((palavra, wi) => (
@@ -78,13 +73,13 @@ function LetrasNome({ codificado, atual }: { codificado: string; atual: boolean 
                   <span
                     className={`text-base font-bold font-mono leading-none
                       ${char !== '_'
-                        ? (atual ? 'text-green-300' : 'text-white')
+                        ? (ativa ? 'text-green-300' : 'text-white')
                         : 'text-zinc-500'
                       }`}
                   >
                     {char}
                   </span>
-                  <div className={`mt-0.5 h-px w-full ${char !== '_' ? (atual ? 'bg-green-400' : 'bg-zinc-500') : 'bg-zinc-600'}`} />
+                  <div className={`mt-0.5 h-px w-full ${char !== '_' ? (ativa ? 'bg-green-400' : 'bg-zinc-500') : 'bg-zinc-600'}`} />
                 </div>
               ))}
             </div>
@@ -97,56 +92,63 @@ function LetrasNome({ codificado, atual }: { codificado: string; atual: boolean 
 
 const LABELS_PISTAS = ['Sopa de Letras', 'Posição', 'Nacionalidade', 'Trajetória', 'Nome + Clube']
 
-export default function Pista({ numero, texto, revelada, atual }: PistaProps) {
+export default function Pista({ numero, texto, revelada, atual, errou, correto }: PistaProps) {
+  // Determina o estado visual da pista
+  const isVerde = atual || correto
+  const isVermelho = errou && !isVerde
+
+  // Card
+  const cardClass = revelada
+    ? isVermelho
+      ? 'border-red-800 bg-red-950/60'
+      : isVerde
+        ? 'border-green-400 bg-green-950 shadow-lg shadow-green-900/30'
+        : 'border-zinc-600 bg-zinc-800'
+    : 'border-zinc-700 bg-zinc-900'
+
+  // Bolinha do número
+  const circuloClass = revelada
+    ? isVermelho
+      ? 'bg-red-700 text-white'
+      : isVerde
+        ? 'bg-green-400 text-black'
+        : 'bg-zinc-600 text-white'
+    : 'bg-blue-950 border border-blue-600 text-blue-400'  // azul quando travada
+
+  // Label da pista
+  const labelClass = revelada
+    ? isVermelho
+      ? 'text-red-500'
+      : 'text-zinc-400'
+    : 'text-zinc-600'
+
+  // Texto do conteúdo (pistas 2, 3, 4)
+  const textoClass = isVerde ? 'text-green-300' : isVermelho ? 'text-red-200' : 'text-white'
+
   return (
-    <div
-      className={`
-        rounded-xl border-2 p-4 transition-all duration-500
-        ${revelada
-          ? atual
-            ? 'border-green-400 bg-green-950 shadow-lg shadow-green-900/30'
-            : 'border-zinc-600 bg-zinc-800'
-          : 'border-zinc-700 bg-zinc-900'
-        }
-      `}
-    >
+    <div className={`rounded-xl border-2 p-4 transition-all duration-300 ${cardClass}`}>
       <div className="flex items-start gap-3">
-        {/* Número da pista */}
-        <div
-          className={`
-            flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold
-            ${revelada
-              ? atual
-                ? 'bg-green-400 text-black'
-                : 'bg-zinc-600 text-white'
-              : 'bg-zinc-800 text-zinc-500'
-            }
-          `}
-        >
+        {/* Número */}
+        <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${circuloClass}`}>
           {numero}
         </div>
 
         {/* Conteúdo */}
         <div className="flex-1 min-w-0">
-          <p className={`text-xs font-medium mb-1 ${revelada ? 'text-zinc-400' : 'text-zinc-600'}`}>
+          <p className={`text-xs font-medium mb-1 ${labelClass}`}>
             {LABELS_PISTAS[numero - 1]}
           </p>
 
           {revelada ? (
             <>
-              {/* Pista 1 — blocos de nome */}
               {numero === 1 && (
-                <BlocosNome codificado={texto} atual={atual} />
+                <BlocosNome codificado={texto} atual={atual} correto={correto} />
               )}
-
-              {/* Pista 5 — clube + letras parciais */}
               {numero === 5 && (
-                <LetrasNome codificado={texto} atual={atual} />
+                <LetrasNome codificado={texto} atual={atual} correto={correto} />
               )}
-
-              {/* Demais pistas — texto simples */}
               {numero !== 1 && numero !== 5 && (
-                <p className={`font-semibold text-base leading-snug ${atual ? 'text-green-300' : 'text-white'}`}>
+                <p className={`font-semibold text-base leading-snug ${textoClass}`}>
                   {texto}
                 </p>
               )}

@@ -25,7 +25,7 @@ interface Props {
   indiceDesafio: number  // 0 = primeiro, 1 = segundo, 2 = terceiro
   onResultado: (perfilAtualizado: Perfil) => void
   onContratosChange: (qtd: number) => void
-  onProximoDesafio?: () => void  // Se existir, mostra botão "Próximo desafio"
+  onProximoDesafio?: () => void
 }
 
 export default function JogoDesafio({
@@ -33,10 +33,14 @@ export default function JogoDesafio({
 }: Props) {
   const pistasTexto = getPistasTexto(jogador)
   const introNarrativa = getIntroNarrativa(jogador)
+
+  // No primeiro desafio, começa com pistaAtual=0 (nenhuma pista revelada)
+  // para dar protagonismo à intro narrativa.
+  // Nos demais, começa em 1 (pista 1 já aberta).
   const isFirstRodada = indiceDesafio === 0
 
   const [estado, setEstado] = useState<EstadoJogo>({
-    pistaAtual: 1,
+    pistaAtual: isFirstRodada ? 0 : 1,
     tentativas: [],
     status: 'jogando',
     pistaUsada: null,
@@ -55,11 +59,12 @@ export default function JogoDesafio({
         pistaUsada: resultado.pistaAcerto,
       })
     } else {
-      setEstado({ pistaAtual: 1, tentativas: [], status: 'jogando', pistaUsada: null })
+      // Fresh game — primeiro desafio começa sem pistas abertas
+      setEstado({ pistaAtual: indiceDesafio === 0 ? 0 : 1, tentativas: [], status: 'jogando', pistaUsada: null })
     }
     setMostrarContrato(false)
     setMostrarResultado(false)
-  }, [rodadaId])
+  }, [rodadaId]) // eslint-disable-line react-hooks/exhaustive-deps
 
   function handlePalpite(nome: string) {
     if (estado.status !== 'jogando') return
@@ -68,13 +73,16 @@ export default function JogoDesafio({
     const novaTentativa: Tentativa = { nome, status: acertou ? 'acerto' : 'erro' }
     const novasTentativas = [...estado.tentativas, novaTentativa]
 
+    // pistaAtual=0 é tratado como pista 1 para fins de pontuação e salvamento
+    const pistaEfetiva = Math.max(1, estado.pistaAtual)
+
     if (acertou) {
-      const pontos = calcularPontos(estado.pistaAtual)
+      const pontos = calcularPontos(pistaEfetiva)
       const novoEstado: EstadoJogo = {
         ...estado,
         tentativas: novasTentativas,
         status: 'ganhou',
-        pistaUsada: estado.pistaAtual,
+        pistaUsada: pistaEfetiva,
       }
       setEstado(novoEstado)
 
@@ -82,7 +90,7 @@ export default function JogoDesafio({
         const perfilAtualizado = registrarResultado(perfil, {
           rodadaId,
           jogadorId: jogador.id,
-          pistaAcerto: estado.pistaAtual,
+          pistaAcerto: pistaEfetiva,
           pontos,
           tentativas: novasTentativas,
         })
@@ -121,16 +129,16 @@ export default function JogoDesafio({
 
   const pontosRodada = estado.pistaUsada ? calcularPontos(estado.pistaUsada) : 0
 
-  // Pista 1 oculta na primeira rodada enquanto nenhuma tentativa foi feita
-  const pistaUmOculta = isFirstRodada && estado.pistaAtual === 1 && estado.status === 'jogando'
+  // Intro narrativa em destaque quando ainda não há pistas reveladas (primeiro desafio, estado inicial)
+  const introEmDestaque = isFirstRodada && estado.pistaAtual === 0 && estado.status === 'jogando'
 
   return (
     <div className="space-y-4">
 
       {/* Status da rodada */}
       {estado.status === 'jogando' && (
-        <div className={`rounded-xl px-4 py-3 text-center ${pistaUmOculta ? 'bg-green-950 border border-green-800' : 'bg-zinc-800'}`}>
-          {pistaUmOculta ? (
+        <div className={`rounded-xl px-4 py-3 text-center ${introEmDestaque ? 'bg-green-950 border border-green-800' : 'bg-zinc-800'}`}>
+          {introEmDestaque ? (
             <p className="text-sm text-green-300">
               ✨ Adivinhe pelo histórico — Vale{' '}
               <span className="text-yellow-400 font-bold">100 pts</span>
@@ -196,23 +204,23 @@ export default function JogoDesafio({
 
       {/* Intro narrativa */}
       <div className={`rounded-xl px-4 py-5 transition-all duration-500 ${
-        pistaUmOculta
+        introEmDestaque
           ? 'bg-zinc-900 border-2 border-green-500 shadow-lg shadow-green-900/40'
           : 'bg-zinc-900 border border-zinc-700'
       }`}>
         <p className={`text-xs uppercase font-bold tracking-widest mb-3 ${
-          pistaUmOculta ? 'text-green-400' : 'text-zinc-500'
+          introEmDestaque ? 'text-green-400' : 'text-zinc-500'
         }`}>
           ⚡ Jogador do dia
         </p>
         <p className={`leading-relaxed italic ${
-          pistaUmOculta
+          introEmDestaque
             ? 'text-white text-base font-medium'
             : 'text-zinc-200 text-sm'
         }`}>
           &ldquo;{introNarrativa}&rdquo;
         </p>
-        {pistaUmOculta && (
+        {introEmDestaque && (
           <p className="text-green-600 text-xs mt-3 font-semibold">
             Quem é esse jogador? Tente adivinhar agora.
           </p>
@@ -222,10 +230,12 @@ export default function JogoDesafio({
       {/* Pistas */}
       <div className="space-y-2">
         {Array.from({ length: TOTAL_PISTAS }, (_, i) => i + 1).map(num => {
-          // Na primeira rodada, enquanto nenhuma pista foi liberada ainda,
-          // mostrar pista 1 como travada (igual às demais)
-          const revelada = pistaUmOculta && num === 1 ? false : num <= estado.pistaAtual
-          const atual = pistaUmOculta && num === 1 ? false : num === estado.pistaAtual && estado.status === 'jogando'
+          const revelada = num <= estado.pistaAtual
+          const atual = num === estado.pistaAtual && estado.status === 'jogando'
+          // Pista ficou vermelha se foi revelada, não é a atual e não é a pista de acerto
+          const errou = revelada && (num < estado.pistaAtual || estado.status === 'perdeu')
+          // Pista fica verde permanente se foi onde o jogador acertou
+          const correto = estado.status === 'ganhou' && num === estado.pistaUsada
           return (
             <Pista
               key={num}
@@ -233,6 +243,8 @@ export default function JogoDesafio({
               texto={pistasTexto[num] ?? ''}
               revelada={revelada}
               atual={atual}
+              errou={errou}
+              correto={correto}
             />
           )
         })}
