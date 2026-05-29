@@ -78,6 +78,11 @@ export default function JogoDesafio({
     return () => clearTimeout(timer)
   }, [rodadaId]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Avança para a próxima pista sem digitar nome (custa uma tentativa)
+  function handleDestravar() {
+    handlePalpite('—')
+  }
+
   function handlePalpite(nome: string) {
     if (estado.status !== 'jogando') return
 
@@ -288,6 +293,13 @@ export default function JogoDesafio({
           const onRevelar = isFirstRodada && estado.pistaAtual === 0 && num === 1 && estado.status === 'jogando'
             ? () => setEstado(e => ({ ...e, pistaAtual: 1 }))
             : undefined
+          // Botão "Ver próxima dica" aparece apenas na pista seguinte à atual (quando em jogo)
+          const onDestravar = estado.status === 'jogando' &&
+            estado.pistaAtual >= 1 &&
+            num === estado.pistaAtual + 1 &&
+            !onRevelar
+            ? handleDestravar
+            : undefined
           return (
             <Pista
               key={num}
@@ -298,6 +310,7 @@ export default function JogoDesafio({
               errou={errou}
               correto={correto}
               onRevelar={onRevelar}
+              onDestravar={onDestravar}
             />
           )
         })}

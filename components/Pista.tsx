@@ -7,9 +7,10 @@ interface PistaProps {
   texto: string
   revelada: boolean
   atual: boolean
-  errou?: boolean     // essa pista teve tentativa errada — card vermelho
-  correto?: boolean   // essa pista foi onde acertou — mantém verde mesmo após ganhar
-  onRevelar?: () => void  // se fornecido, o card travado vira clicável para revelar
+  errou?: boolean       // essa pista teve tentativa errada — card vermelho
+  correto?: boolean     // essa pista foi onde acertou — mantém verde mesmo após ganhar
+  onRevelar?: () => void    // card travado vira clicável (pista 1 do primeiro desafio)
+  onDestravar?: () => void  // botão "Ver próxima dica" na pista seguinte travada
 }
 
 // Pista 1 — blocos com letras do meio reveladas
@@ -105,7 +106,7 @@ function LetrasNome({ codificado, atual, correto }: { codificado: string; atual:
 
 const LABELS_PISTAS = ['Sopa de Letras', 'Posição', 'Nacionalidade', 'Trajetória', 'Nome + Clube']
 
-export default function Pista({ numero, texto, revelada, atual, errou, correto, onRevelar }: PistaProps) {
+export default function Pista({ numero, texto, revelada, atual, errou, correto, onRevelar, onDestravar }: PistaProps) {
   // Determina o estado visual da pista
   const isVerde = atual || correto
   const isVermelho = errou && !isVerde
@@ -175,6 +176,14 @@ export default function Pista({ numero, texto, revelada, atual, errou, correto, 
             <div className="flex items-center gap-2">
               {clicavel ? (
                 <span className="text-blue-400 text-sm font-semibold">Toque para revelar →</span>
+              ) : onDestravar ? (
+                <button
+                  type="button"
+                  onClick={e => { e.stopPropagation(); onDestravar() }}
+                  className="text-xs font-semibold text-blue-400 border border-blue-800/60 rounded-lg px-3 py-1.5 hover:bg-blue-950/50 active:scale-95 transition-all"
+                >
+                  Ver próxima dica →
+                </button>
               ) : (
                 <>
                   <Lock size={14} className="text-zinc-600" />
