@@ -251,9 +251,20 @@ export function calcularPontos(pistaAcerto: number): number {
 export function buscarJogadores(termo: string): Jogador[] {
   if (!termo || termo.length < 2) return []
   const t = normalizarNome(termo)
-  return jogadores
-    .filter(j => normalizarNome(j.nome).includes(t))
-    .slice(0, 6)
+  const resultados = jogadores.filter(j => normalizarNome(j.nome).includes(t))
+
+  // Ordena por relevância: nomes que começam com o termo aparecem antes dos que só contêm
+  resultados.sort((a, b) => {
+    const nA = normalizarNome(a.nome)
+    const nB = normalizarNome(b.nome)
+    const aStart = nA.startsWith(t)
+    const bStart = nB.startsWith(t)
+    if (aStart && !bStart) return -1
+    if (!aStart && bStart) return 1
+    return 0
+  })
+
+  return resultados.slice(0, 8)
 }
 
 /** Gera grade de emojis para compartilhar */
