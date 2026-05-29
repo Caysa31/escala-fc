@@ -188,26 +188,40 @@ export default function JogoDesafio({
       )}
 
       {estado.status === 'ganhou' && (
-        <div className="bg-green-950 border border-green-700 rounded-xl px-4 py-3 text-center space-y-2">
-          <p className="text-green-300 font-bold">
-            🎯 Acertou na pista {estado.pistaUsada}! +{pontosRodada} pts
-          </p>
-          <div className="flex gap-2 justify-center">
-            <button
-              onClick={() => setMostrarResultado(true)}
-              className="text-green-500 text-xs underline"
-            >
-              Ver resultado
-            </button>
-            {onProximoDesafio && (
+        <div className="bg-green-950 border border-green-700 rounded-2xl px-5 py-5 text-center space-y-3">
+          {/* Pontuação em destaque */}
+          <div>
+            <p className="text-green-300 font-bold text-base">
+              🎯 Acertou na pista {estado.pistaUsada}!
+            </p>
+            <p className="text-yellow-400 font-black text-3xl mt-1">+{pontosRodada} pts</p>
+          </div>
+
+          {onProximoDesafio ? (
+            /* Desafios 1 ou 2 — tem próximo desafio */
+            <div className="space-y-2">
+              <p className="text-zinc-300 text-sm">
+                Você ainda pode aumentar sua pontuação!
+              </p>
               <button
                 onClick={onProximoDesafio}
-                className="bg-green-600 hover:bg-green-500 text-white text-xs font-bold px-4 py-1.5 rounded-lg transition-all"
+                className="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 rounded-xl text-sm transition-all"
               >
                 Próximo desafio →
               </button>
-            )}
-          </div>
+              <button
+                onClick={() => setMostrarResultado(true)}
+                className="text-zinc-500 text-xs underline"
+              >
+                Ver detalhes
+              </button>
+            </div>
+          ) : (
+            /* Desafio 3 — TelaFinalDia abre automaticamente via useEffect */
+            <p className="text-zinc-400 text-xs animate-pulse">
+              Calculando resultado do dia...
+            </p>
+          )}
         </div>
       )}
 
@@ -308,8 +322,9 @@ export default function JogoDesafio({
           pistaAcerto={estado.pistaUsada}
           onFechar={() => {
             setMostrarContrato(false)
-            setMostrarResultado(true)
             onContratosChange(getContratosAtivos().length)
+            // Não abre TelaResultado — o banner "ganhou" tem o botão "Próximo desafio"
+            // Para o último desafio, TelaFinalDia abre automaticamente via useEffect
           }}
           onProximoDesafio={onProximoDesafio ? () => {
             setMostrarContrato(false)
