@@ -194,7 +194,8 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
   ).join('   ')
   const pista5 = `${jogador.clube}|${letrasReveladas}`
 
-  return { 1: pista1, 2: pista2, 3: pista3, 4: pista4, 5: pista5 }
+  // Pista 1 = Nome (blocos), Pista 2 = Posição — ordem invertida intencionalmente
+  return { 1: pista2, 2: pista1, 3: pista3, 4: pista4, 5: pista5 }
 }
 
 /** Tipo de cada pista — todas texto */
