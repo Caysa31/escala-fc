@@ -23,13 +23,15 @@ interface Props {
   rodadaId: number
   perfil: Perfil | null
   indiceDesafio: number  // 0 = primeiro, 1 = segundo, 2 = terceiro
+  mensagemMotivacional?: string  // exibida no topo quando o desafio anterior foi perdido
   onResultado: (perfilAtualizado: Perfil) => void
   onContratosChange: (qtd: number) => void
   onProximoDesafio?: () => void
 }
 
 export default function JogoDesafio({
-  jogador, rodadaId, perfil, indiceDesafio, onResultado, onContratosChange, onProximoDesafio,
+  jogador, rodadaId, perfil, indiceDesafio, mensagemMotivacional,
+  onResultado, onContratosChange, onProximoDesafio,
 }: Props) {
   const pistasTexto = getPistasTexto(jogador)
   const introNarrativa = getIntroNarrativa(jogador)
@@ -47,6 +49,7 @@ export default function JogoDesafio({
   })
   const [mostrarContrato, setMostrarContrato] = useState(false)
   const [mostrarResultado, setMostrarResultado] = useState(false)
+  const [autoAvancando, setAutoAvancando] = useState(false)
 
   // Carrega progresso salvo ao montar (ou ao trocar de rodada)
   useEffect(() => {
@@ -112,7 +115,7 @@ export default function JogoDesafio({
       setEstado(novoEstado)
 
       if (acabou) {
-        setMostrarResultado(true)
+        // Salva o resultado independente do fluxo
         if (perfil) {
           const perfilAtualizado = registrarResultado(perfil, {
             rodadaId,
@@ -122,6 +125,18 @@ export default function JogoDesafio({
             tentativas: novasTentativas,
           })
           onResultado(perfilAtualizado)
+        }
+
+        // Desafio 1 ou 2: auto-avança pro próximo sem abrir modal
+        if (indiceDesafio < 2 && onProximoDesafio) {
+          setAutoAvancando(true)
+          setTimeout(() => {
+            setAutoAvancando(false)
+            onProximoDesafio()
+          }, 1800)
+        } else {
+          // Último desafio: mostra resultado e TelaFinalDia cuida do resto
+          setMostrarResultado(true)
         }
       }
     }
@@ -134,6 +149,13 @@ export default function JogoDesafio({
 
   return (
     <div className="space-y-4">
+
+      {/* Banner motivacional (desafio anterior foi perdido) */}
+      {mensagemMotivacional && (
+        <div className="bg-blue-950 border border-blue-800 rounded-xl px-4 py-3 text-center">
+          <p className="text-blue-300 text-sm font-semibold">{mensagemMotivacional}</p>
+        </div>
+      )}
 
       {/* Status da rodada */}
       {estado.status === 'jogando' && (
@@ -183,22 +205,28 @@ export default function JogoDesafio({
           <p className="text-red-300 font-bold">
             Era <span className="text-white">{jogador.nome}</span> {jogador.bandeira}
           </p>
-          <div className="flex gap-2 justify-center">
-            <button
-              onClick={() => setMostrarResultado(true)}
-              className="text-red-400 text-xs underline"
-            >
-              Ver resultado
-            </button>
-            {onProximoDesafio && (
+          {autoAvancando ? (
+            <p className="text-zinc-500 text-xs animate-pulse">
+              Avançando pro próximo desafio...
+            </p>
+          ) : (
+            <div className="flex gap-2 justify-center">
               <button
-                onClick={onProximoDesafio}
-                className="bg-zinc-600 hover:bg-zinc-500 text-white text-xs font-bold px-4 py-1.5 rounded-lg transition-all"
+                onClick={() => setMostrarResultado(true)}
+                className="text-red-400 text-xs underline"
               >
-                Próximo desafio →
+                Ver resultado
               </button>
-            )}
-          </div>
+              {onProximoDesafio && (
+                <button
+                  onClick={onProximoDesafio}
+                  className="bg-zinc-600 hover:bg-zinc-500 text-white text-xs font-bold px-4 py-1.5 rounded-lg transition-all"
+                >
+                  Próximo desafio →
+                </button>
+              )}
+            </div>
+          )}
         </div>
       )}
 

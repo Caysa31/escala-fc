@@ -76,6 +76,12 @@ export default function Home() {
     ({ rodadaId }) => getStatusDesafio(rodadaId) === 'jogando'
   )
 
+  // Mensagem motivacional quando o desafio anterior foi perdido
+  const desafioAnterior = desafioIdx > 0 ? jogadoresDoDia[desafioIdx - 1] : null
+  const mensagemMotivacional = desafioAnterior && getStatusDesafio(desafioAnterior.rodadaId) === 'perdeu'
+    ? '💪 Essa não foi — mas o jogo não acabou! Ainda dá pra marcar pontos.'
+    : undefined
+
   return (
     <main className="min-h-screen bg-zinc-950 text-white">
       <div className="max-w-md mx-auto px-4 py-6 space-y-4">
@@ -144,6 +150,7 @@ export default function Home() {
           rodadaId={rodadaAtiva}
           perfil={perfil}
           indiceDesafio={desafioIdx}
+          mensagemMotivacional={mensagemMotivacional}
           onResultado={p => setPerfil(p)}
           onContratosChange={setQtdContratosAtivos}
           onProximoDesafio={
