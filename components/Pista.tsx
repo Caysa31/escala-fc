@@ -23,13 +23,13 @@ function BlocosNome({ codificado, atual }: { codificado: string; atual: boolean 
               <div className="w-1 h-1 rounded-full bg-zinc-600" />
             </div>
           )}
-          <div className="flex gap-1">
+          <div className="flex gap-1.5">
             {chars.map((char, ci) => {
               const revelada = char !== '_'
               return (
                 <div
                   key={ci}
-                  className={`w-7 h-7 rounded flex items-center justify-center text-xs font-bold
+                  className={`w-8 h-8 rounded flex items-center justify-center text-sm font-bold
                     ${revelada
                       ? atual
                         ? 'bg-green-900 border-2 border-green-400 text-green-200'
@@ -95,7 +95,7 @@ function LetrasNome({ codificado, atual }: { codificado: string; atual: boolean 
   )
 }
 
-const LABELS_PISTAS = ['Posição', 'Nome', 'Nacionalidade', 'Trajetória', 'Clube']
+const LABELS_PISTAS = ['Nome', 'Posição', 'Nacionalidade', 'Trajetória', 'Clube']
 
 export default function Pista({ numero, texto, revelada, atual }: PistaProps) {
   return (
@@ -134,8 +134,8 @@ export default function Pista({ numero, texto, revelada, atual }: PistaProps) {
 
           {revelada ? (
             <>
-              {/* Pista 2 — blocos de nome */}
-              {numero === 2 && (
+              {/* Pista 1 — blocos de nome */}
+              {numero === 1 && (
                 <BlocosNome codificado={texto} atual={atual} />
               )}
 
@@ -145,7 +145,7 @@ export default function Pista({ numero, texto, revelada, atual }: PistaProps) {
               )}
 
               {/* Demais pistas — texto simples */}
-              {numero !== 2 && numero !== 5 && (
+              {numero !== 1 && numero !== 5 && (
                 <p className={`font-semibold text-base leading-snug ${atual ? 'text-green-300' : 'text-white'}`}>
                   {texto}
                 </p>
