@@ -1,9 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Perfil } from '@/lib/types'
-import { criarPerfil } from '@/lib/perfil'
-import { Flame, Trophy, Target, Percent } from 'lucide-react'
+import { criarPerfil, getResultadoRodada } from '@/lib/perfil'
+import { getJogadoresDoDia } from '@/lib/game'
+import { getPosicaoRanking } from '@/lib/supabase'
+import { Flame, Trophy, Medal } from 'lucide-react'
 
 interface TelaPerfilProps {
   onCriar: (perfil: Perfil) => void
@@ -95,16 +97,33 @@ interface StatsPerfilProps {
 }
 
 export function StatsPerfil({ perfil }: StatsPerfilProps) {
-  const taxa = perfil.rodadasJogadas > 0
-    ? Math.round((perfil.rodadasAcertadas / perfil.rodadasJogadas) * 100)
-    : 0
+  const [posicaoRanking, setPosicaoRanking] = useState<number | null>(null)
+
+  // Pontos ganhos hoje (soma dos desafios do dia)
+  const jogadoresDoDia = getJogadoresDoDia()
+  const pontosHoje = jogadoresDoDia.reduce((sum, { rodadaId }) => {
+    const resultado = getResultadoRodada(rodadaId)
+    return sum + (resultado?.pontos ?? 0)
+  }, 0)
+
+  // Posição no ranking global (busca async)
+  useEffect(() => {
+    const usuarioId = typeof window !== 'undefined'
+      ? localStorage.getItem('escalafc_supabase_id')
+      : null
+    if (usuarioId) {
+      getPosicaoRanking(usuarioId).then(pos => {
+        if (pos.geral > 0) setPosicaoRanking(pos.geral)
+      })
+    }
+  }, [perfil.pontosTotal])
 
   return (
     <div className="grid grid-cols-4 gap-2">
       <StatCard icon={<Flame size={16} className="text-orange-400" />} valor={perfil.streakAtual} label="Sequência" />
-      <StatCard icon={<Trophy size={16} className="text-yellow-400" />} valor={perfil.pontosTotal} label="Pontos" />
-      <StatCard icon={<Target size={16} className="text-blue-400" />} valor={perfil.rodadasJogadas} label="Jogos" />
-      <StatCard icon={<Percent size={16} className="text-green-400" />} valor={`${taxa}%`} label="Acerto" />
+      <StatCard icon={<Trophy size={16} className="text-yellow-400" />} valor={pontosHoje} label="Hoje" />
+      <StatCard icon={<Medal size={16} className="text-yellow-400" />} valor={posicaoRanking ? `#${posicaoRanking}` : '—'} label="Ranking" />
+      <StatCard icon={<Trophy size={16} className="text-green-400" />} valor={perfil.pontosTotal} label="Total" />
     </div>
   )
 }
