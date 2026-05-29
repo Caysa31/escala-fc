@@ -1,251 +1,116 @@
 'use client'
 
-import { useState, useEffect, use } from 'react'
-import {
-  Perfil, Tentativa, EstadoJogo,
-  PONTOS_BASE, TOTAL_PISTAS,
-} from '@/lib/types'
-import {
-  getPistasTexto, getIntroNarrativa,
-  verificarPalpite, calcularPontos,
-  gerarTextoCompartilhar,
-} from '@/lib/game'
-import { carregarPerfil } from '@/lib/perfil'
+import { use } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 import jogadoresData from '@/data/jogadores.json'
 import { Jogador } from '@/lib/types'
-
-import Pista from '@/components/Pista'
-import InputPalpite from '@/components/InputPalpite'
-import ListaTentativas from '@/components/ListaTentativas'
-import { Copy, Check, Share2, ArrowLeft } from 'lucide-react'
+import { getIntroNarrativa } from '@/lib/game'
+import { PONTOS_BASE } from '@/lib/types'
 import Link from 'next/link'
+import { Trophy, ArrowRight } from 'lucide-react'
 
 const jogadores = jogadoresData as Jogador[]
 
 function getJogadorDaRodada(rodadaId: number): Jogador {
-  const diffDias = rodadaId - 1
-  const indice = Math.abs(diffDias) % jogadores.length
+  const indice = Math.abs(rodadaId - 1) % jogadores.length
   return jogadores[indice]
+}
+
+function DesafioConteudo({ rodadaId }: { rodadaId: number }) {
+  const params = useSearchParams()
+
+  // Resultado do amigo vindo da URL
+  const pistaAcerto = parseInt(params.get('p') ?? '0', 10) || null
+  const tentativasStr = params.get('t') ?? ''
+  const tentativas = tentativasStr.split('').map(c => c === '1' ? '🟩' : '⬛')
+
+  const jogador = getJogadorDaRodada(rodadaId)
+  const intro = getIntroNarrativa(jogador)
+  const pontos = pistaAcerto ? (PONTOS_BASE[pistaAcerto] ?? 0) : 0
+
+  return (
+    <main className="min-h-screen bg-zinc-950 text-white flex items-center justify-center px-4 py-8">
+      <div className="w-full max-w-sm space-y-5">
+
+        {/* Header */}
+        <div className="text-center space-y-1">
+          <p className="text-3xl">⚽</p>
+          <h1 className="text-2xl font-black">ESCALA FC</h1>
+          <p className="text-zinc-400 text-sm">Rodada #{rodadaId}</p>
+        </div>
+
+        {/* Card do resultado do amigo */}
+        <div className="bg-zinc-900 border border-zinc-700 rounded-2xl p-5 space-y-4">
+          <p className="text-yellow-400 text-sm font-bold text-center">
+            🏆 Seu amigo te desafiou!
+          </p>
+
+          {/* Emoji grid */}
+          {tentativas.length > 0 && (
+            <div className="text-center">
+              <p className="text-3xl tracking-widest">{tentativas.join('')}</p>
+            </div>
+          )}
+
+          {/* Pontuação do amigo */}
+          {pistaAcerto ? (
+            <div className="flex items-center gap-3 bg-green-950 border border-green-800 rounded-xl px-4 py-3">
+              <Trophy size={20} className="text-yellow-400 flex-shrink-0" />
+              <div>
+                <p className="text-green-300 font-bold text-sm">
+                  Acertou na pista {pistaAcerto}!
+                </p>
+                <p className="text-green-600 text-xs">+{pontos} pontos · Você consegue superar?</p>
+              </div>
+            </div>
+          ) : tentativas.length > 0 ? (
+            <div className="bg-zinc-800 rounded-xl px-4 py-3 text-center">
+              <p className="text-zinc-400 text-sm">Não acertou desta vez — mas tentou!</p>
+              <p className="text-zinc-500 text-xs mt-0.5">Será que você vai melhor?</p>
+            </div>
+          ) : null}
+        </div>
+
+        {/* Teaser do jogador */}
+        <div className="bg-zinc-900 border border-zinc-700 rounded-2xl px-5 py-4 space-y-2">
+          <p className="text-xs uppercase font-bold tracking-widest text-zinc-500">
+            ⚡ Jogador do dia
+          </p>
+          <p className="text-zinc-200 text-sm italic leading-relaxed">
+            &ldquo;{intro}&rdquo;
+          </p>
+          <p className="text-zinc-600 text-xs">Você sabe quem é?</p>
+        </div>
+
+        {/* CTA principal */}
+        <Link
+          href="/"
+          className="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl py-4 text-base transition-all"
+        >
+          Aceitar o desafio
+          <ArrowRight size={18} />
+        </Link>
+
+        <p className="text-center text-zinc-600 text-xs">
+          Jogue os 3 desafios do dia, acumule pontos e entre no ranking global
+        </p>
+      </div>
+    </main>
+  )
 }
 
 export default function DesafioPage({ params }: { params: Promise<{ rodadaId: string }> }) {
   const { rodadaId: rodadaIdStr } = use(params)
   const rodadaId = parseInt(rodadaIdStr, 10)
-  const jogador = getJogadorDaRodada(rodadaId)
-  const pistasTexto = getPistasTexto(jogador)
-  const introNarrativa = getIntroNarrativa(jogador)
-
-  const [perfil, setPerfil] = useState<Perfil | null>(null)
-  const [copiado, setCopiado] = useState(false)
-
-  // Começa com pistaAtual=0 — nenhuma pista revelada, intro em destaque
-  const [estado, setEstado] = useState<EstadoJogo>({
-    pistaAtual: 0,
-    tentativas: [],
-    status: 'jogando',
-    pistaUsada: null,
-  })
-
-  useEffect(() => {
-    setPerfil(carregarPerfil())
-  }, [])
-
-  function handlePalpite(nome: string) {
-    if (estado.status !== 'jogando') return
-    const acertou = verificarPalpite(nome, jogador)
-    const novaTentativa: Tentativa = { nome, status: acertou ? 'acerto' : 'erro' }
-    const novasTentativas = [...estado.tentativas, novaTentativa]
-
-    // pistaAtual=0 é tratado como pista 1 para pontuação/salvamento
-    const pistaEfetiva = Math.max(1, estado.pistaAtual)
-
-    if (acertou) {
-      setEstado({ ...estado, tentativas: novasTentativas, status: 'ganhou', pistaUsada: pistaEfetiva })
-    } else {
-      const novaPista = estado.pistaAtual + 1
-      const acabou = novaPista > TOTAL_PISTAS
-      setEstado({
-        ...estado,
-        tentativas: novasTentativas,
-        pistaAtual: acabou ? TOTAL_PISTAS : novaPista,
-        status: acabou ? 'perdeu' : 'jogando',
-        pistaUsada: null,
-      })
-    }
-  }
-
-  async function copiarResultado() {
-    const texto = gerarTextoCompartilhar(rodadaId, estado.pistaUsada, estado.tentativas)
-    await navigator.clipboard.writeText(texto).catch(() => {})
-    setCopiado(true)
-    setTimeout(() => setCopiado(false), 2000)
-  }
-
-  const pontosRodada = estado.pistaUsada ? calcularPontos(estado.pistaUsada) : 0
-  const encerrado = estado.status !== 'jogando'
-
-  // Intro em destaque enquanto nenhuma pista está aberta
-  const introEmDestaque = estado.pistaAtual === 0 && estado.status === 'jogando'
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-white">
-      <div className="max-w-md mx-auto px-4 py-6 space-y-4">
-
-        {/* Header */}
-        <header className="flex items-center gap-3">
-          <Link href="/" className="text-zinc-500 hover:text-white transition-colors">
-            <ArrowLeft size={20} />
-          </Link>
-          <div>
-            <h1 className="text-xl font-black">⚽ ESCALA FC — Desafio</h1>
-            <p className="text-zinc-500 text-xs">
-              Rodada #{rodadaId} · {perfil ? `Desafio enviado para ${perfil.apelido}` : 'Você foi desafiado!'}
-            </p>
-          </div>
-        </header>
-
-        {/* Banner desafio */}
-        <div className="bg-yellow-950 border border-yellow-800 rounded-xl px-4 py-3 text-center space-y-1">
-          <p className="text-yellow-300 text-sm font-semibold">
-            🏆 Seu amigo te desafiou! Será que você faz mais pontos?
-          </p>
-          <p className="text-yellow-500 text-xs">
-            Jogue esta rodada, compare o resultado — e depois jogue o desafio completo e entre no Ranking Global →
-          </p>
-        </div>
-
-        {/* Status */}
-        {estado.status === 'jogando' && (
-          <div className={`rounded-xl px-4 py-3 text-center ${introEmDestaque ? 'bg-green-950 border border-green-800' : 'bg-zinc-800'}`}>
-            {introEmDestaque ? (
-              <p className="text-sm text-green-300">
-                ✨ Adivinhe pelo histórico — Vale{' '}
-                <span className="text-yellow-400 font-bold">100 pts</span>
-              </p>
-            ) : (
-              <p className="text-sm text-zinc-300">
-                Pista <span className="text-green-400 font-bold">{estado.pistaAtual}</span> de {TOTAL_PISTAS} · Vale{' '}
-                <span className="text-yellow-400 font-bold">{PONTOS_BASE[estado.pistaAtual]} pts</span>
-              </p>
-            )}
-          </div>
-        )}
-
-        {estado.status === 'ganhou' && (
-          <div className="bg-green-950 border border-green-700 rounded-xl px-4 py-3 text-center">
-            <p className="text-green-300 font-bold">🎯 Acertou na pista {estado.pistaUsada}! +{pontosRodada} pts</p>
-          </div>
-        )}
-
-        {estado.status === 'perdeu' && (
-          <div className="bg-red-950 border border-red-900 rounded-xl px-4 py-3 text-center">
-            <p className="text-red-300 font-bold">
-              Era <span className="text-white">{jogador.nome}</span> {jogador.bandeira}
-            </p>
-          </div>
-        )}
-
-        {/* Intro narrativa */}
-        <div className={`rounded-xl px-4 py-5 transition-all duration-500 ${
-          introEmDestaque
-            ? 'bg-zinc-900 border-2 border-green-500 shadow-lg shadow-green-900/40'
-            : 'bg-zinc-900 border border-zinc-700'
-        }`}>
-          <p className={`text-xs uppercase font-bold tracking-widest mb-3 ${
-            introEmDestaque ? 'text-green-400' : 'text-zinc-500'
-          }`}>
-            ⚡ Jogador do dia
-          </p>
-          <p className={`leading-relaxed italic ${
-            introEmDestaque ? 'text-white text-base font-medium' : 'text-zinc-200 text-sm'
-          }`}>
-            &ldquo;{introNarrativa}&rdquo;
-          </p>
-          {introEmDestaque && (
-            <p className="text-green-600 text-xs mt-3 font-semibold">
-              Quem é esse jogador? Tente adivinhar agora.
-            </p>
-          )}
-        </div>
-
-        {/* Pistas */}
-        <div className="space-y-2">
-          {Array.from({ length: TOTAL_PISTAS }, (_, i) => i + 1).map(num => {
-            const revelada = num <= estado.pistaAtual
-            const atual = num === estado.pistaAtual && estado.status === 'jogando'
-            const errou = revelada && (num < estado.pistaAtual || estado.status === 'perdeu')
-            const correto = estado.status === 'ganhou' && num === estado.pistaUsada
-            // Pista 1 clicável enquanto pistaAtual=0
-            const onRevelar = estado.pistaAtual === 0 && num === 1 && estado.status === 'jogando'
-              ? () => setEstado(e => ({ ...e, pistaAtual: 1 }))
-              : undefined
-            return (
-              <Pista
-                key={num}
-                numero={num}
-                texto={pistasTexto[num] ?? ''}
-                revelada={revelada}
-                atual={atual}
-                errou={errou}
-                correto={correto}
-                onRevelar={onRevelar}
-              />
-            )
-          })}
-        </div>
-
-        {/* Input */}
-        {estado.status === 'jogando' && (
-          <InputPalpite
-            onPalpite={handlePalpite}
-            desabilitado={false}
-            tentativasAnteriores={estado.tentativas.map(t => t.nome)}
-          />
-        )}
-
-        <ListaTentativas tentativas={estado.tentativas} />
-
-        {/* Compartilhar resultado */}
-        {encerrado && (
-          <div className="space-y-2">
-            <div className="bg-zinc-800 rounded-xl p-4 text-center">
-              <p className="text-zinc-400 text-xs mb-2">ESCALA FC #{rodadaId}</p>
-              <p className="text-2xl tracking-widest mb-1">
-                {estado.tentativas.map(t => t.status === 'acerto' ? '🟩' : '⬛').join('')}
-              </p>
-              <p className="text-zinc-500 text-xs">escalafe.com.br</p>
-            </div>
-
-            <div className="flex gap-2">
-              <button
-                onClick={copiarResultado}
-                className={`flex-1 flex items-center justify-center gap-2 rounded-xl py-3 font-semibold text-sm transition-all
-                  ${copiado ? 'bg-green-600 text-white' : 'bg-zinc-700 hover:bg-zinc-600 text-white'}`}
-              >
-                {copiado ? <Check size={16} /> : <Copy size={16} />}
-                {copiado ? 'Copiado!' : 'Copiar'}
-              </button>
-              <button
-                onClick={() => window.open(`https://wa.me/?text=${encodeURIComponent(gerarTextoCompartilhar(rodadaId, estado.pistaUsada, estado.tentativas))}`, '_blank')}
-                className="flex-1 flex items-center justify-center gap-2 rounded-xl py-3 font-semibold text-sm bg-green-600 hover:bg-green-500 text-white"
-              >
-                <Share2 size={16} />
-                WhatsApp
-              </button>
-            </div>
-
-            <Link
-              href="/"
-              className="block w-full text-center bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl py-4 text-sm transition-colors"
-            >
-              ⚽ Jogar os 3 desafios de hoje e marcar pontos →
-            </Link>
-            <p className="text-center text-zinc-600 text-xs">
-              Crie seu apelido, jogue os desafios do dia e apareça no ranking
-            </p>
-          </div>
-        )}
-      </div>
-    </main>
+    <Suspense fallback={
+      <main className="min-h-screen bg-zinc-950 flex items-center justify-center">
+        <p className="text-zinc-500">Carregando...</p>
+      </main>
+    }>
+      <DesafioConteudo rodadaId={rodadaId} />
+    </Suspense>
   )
 }

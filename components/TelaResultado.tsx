@@ -141,8 +141,11 @@ export default function TelaResultado({
         {/* Desafiar amigo */}
         <button
           onClick={() => {
-            const link = `${window.location.origin}/desafio/${rodadaId}`
-            const msg = `Consegui acertar o ESCALA FC #${rodadaId}${pistaAcerto ? ` em ${pistaAcerto} pista${pistaAcerto > 1 ? 's' : ''}` : ''} — você consegue? ${link}`
+            // Codifica o resultado na URL: p=pistaAcerto, t=tentativas (1=acerto,0=erro)
+            const t = tentativas.map(x => x.status === 'acerto' ? '1' : '0').join('')
+            const p = pistaAcerto ?? 0
+            const link = `${window.location.origin}/desafio/${rodadaId}?p=${p}&t=${t}`
+            const msg = `Consegui acertar o ESCALA FC #${rodadaId}${pistaAcerto ? ` na pista ${pistaAcerto}` : ''} — você consegue?\n${link}`
             window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank')
           }}
           className="w-full flex items-center justify-center gap-2 rounded-xl py-3 font-semibold text-sm bg-zinc-700 hover:bg-zinc-600 text-white transition-all"
