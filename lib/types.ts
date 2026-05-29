@@ -136,11 +136,11 @@ export const TOTAL_PISTAS = 5
 
 // Labels visuais de cada pista
 export const LABEL_PISTAS: Record<number, string> = {
-  1: 'Nome',
+  1: 'Sopa de Letras',
   2: 'Posição',
   3: 'Nacionalidade',
   4: 'Trajetória',
-  5: 'Clube',
+  5: 'Nome',
 }
 
 // Tipo de pista — todas texto por enquanto

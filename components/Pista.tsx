@@ -95,7 +95,7 @@ function LetrasNome({ codificado, atual }: { codificado: string; atual: boolean 
   )
 }
 
-const LABELS_PISTAS = ['Nome', 'Posição', 'Nacionalidade', 'Trajetória', 'Clube']
+const LABELS_PISTAS = ['Sopa de Letras', 'Posição', 'Nacionalidade', 'Trajetória', 'Nome']
 
 export default function Pista({ numero, texto, revelada, atual }: PistaProps) {
   return (
