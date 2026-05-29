@@ -236,6 +236,10 @@ export default function JogoDesafio({
           const errou = revelada && (num < estado.pistaAtual || estado.status === 'perdeu')
           // Pista fica verde permanente se foi onde o jogador acertou
           const correto = estado.status === 'ganhou' && num === estado.pistaUsada
+          // No 1º desafio, pista 1 é clicável para revelar quando ainda não há pistas abertas
+          const onRevelar = isFirstRodada && estado.pistaAtual === 0 && num === 1 && estado.status === 'jogando'
+            ? () => setEstado(e => ({ ...e, pistaAtual: 1 }))
+            : undefined
           return (
             <Pista
               key={num}
@@ -245,6 +249,7 @@ export default function JogoDesafio({
               atual={atual}
               errou={errou}
               correto={correto}
+              onRevelar={onRevelar}
             />
           )
         })}

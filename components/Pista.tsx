@@ -7,8 +7,9 @@ interface PistaProps {
   texto: string
   revelada: boolean
   atual: boolean
-  errou?: boolean    // essa pista teve tentativa errada — card vermelho
-  correto?: boolean  // essa pista foi onde acertou — mantém verde mesmo após ganhar
+  errou?: boolean     // essa pista teve tentativa errada — card vermelho
+  correto?: boolean   // essa pista foi onde acertou — mantém verde mesmo após ganhar
+  onRevelar?: () => void  // se fornecido, o card travado vira clicável para revelar
 }
 
 // Pista 1 — blocos com letras do meio reveladas
@@ -92,7 +93,7 @@ function LetrasNome({ codificado, atual, correto }: { codificado: string; atual:
 
 const LABELS_PISTAS = ['Sopa de Letras', 'Posição', 'Nacionalidade', 'Trajetória', 'Nome + Clube']
 
-export default function Pista({ numero, texto, revelada, atual, errou, correto }: PistaProps) {
+export default function Pista({ numero, texto, revelada, atual, errou, correto, onRevelar }: PistaProps) {
   // Determina o estado visual da pista
   const isVerde = atual || correto
   const isVermelho = errou && !isVerde
@@ -125,8 +126,13 @@ export default function Pista({ numero, texto, revelada, atual, errou, correto }
   // Texto do conteúdo (pistas 2, 3, 4)
   const textoClass = isVerde ? 'text-green-300' : isVermelho ? 'text-red-200' : 'text-white'
 
+  const clicavel = !revelada && !!onRevelar
+
   return (
-    <div className={`rounded-xl border-2 p-4 transition-all duration-300 ${cardClass}`}>
+    <div
+      className={`rounded-xl border-2 p-4 transition-all duration-300 ${cardClass} ${clicavel ? 'cursor-pointer active:scale-95 hover:border-blue-500 hover:bg-blue-950/30' : ''}`}
+      onClick={clicavel ? onRevelar : undefined}
+    >
       <div className="flex items-start gap-3">
         {/* Número */}
         <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${circuloClass}`}>
@@ -154,9 +160,15 @@ export default function Pista({ numero, texto, revelada, atual, errou, correto }
               )}
             </>
           ) : (
-            <div className="flex items-center gap-2 text-zinc-600">
-              <Lock size={14} />
-              <span className="text-sm">Bloqueada</span>
+            <div className="flex items-center gap-2">
+              {clicavel ? (
+                <span className="text-blue-400 text-sm font-semibold">Toque para revelar →</span>
+              ) : (
+                <>
+                  <Lock size={14} className="text-zinc-600" />
+                  <span className="text-zinc-600 text-sm">Bloqueada</span>
+                </>
+              )}
             </div>
           )}
         </div>
