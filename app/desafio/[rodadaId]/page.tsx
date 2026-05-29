@@ -22,9 +22,7 @@ import Link from 'next/link'
 
 const jogadores = jogadoresData as Jogador[]
 
-// Pega o jogador da rodada com base no ID
 function getJogadorDaRodada(rodadaId: number): Jogador {
-  const inicio = new Date('2026-05-22')
   const diffDias = rodadaId - 1
   const indice = Math.abs(diffDias) % jogadores.length
   return jogadores[indice]
@@ -39,8 +37,10 @@ export default function DesafioPage({ params }: { params: Promise<{ rodadaId: st
 
   const [perfil, setPerfil] = useState<Perfil | null>(null)
   const [copiado, setCopiado] = useState(false)
+
+  // Começa com pistaAtual=0 — nenhuma pista revelada, intro em destaque
   const [estado, setEstado] = useState<EstadoJogo>({
-    pistaAtual: 1,
+    pistaAtual: 0,
     tentativas: [],
     status: 'jogando',
     pistaUsada: null,
@@ -56,8 +56,11 @@ export default function DesafioPage({ params }: { params: Promise<{ rodadaId: st
     const novaTentativa: Tentativa = { nome, status: acertou ? 'acerto' : 'erro' }
     const novasTentativas = [...estado.tentativas, novaTentativa]
 
+    // pistaAtual=0 é tratado como pista 1 para pontuação/salvamento
+    const pistaEfetiva = Math.max(1, estado.pistaAtual)
+
     if (acertou) {
-      setEstado({ ...estado, tentativas: novasTentativas, status: 'ganhou', pistaUsada: estado.pistaAtual })
+      setEstado({ ...estado, tentativas: novasTentativas, status: 'ganhou', pistaUsada: pistaEfetiva })
     } else {
       const novaPista = estado.pistaAtual + 1
       const acabou = novaPista > TOTAL_PISTAS
@@ -80,6 +83,9 @@ export default function DesafioPage({ params }: { params: Promise<{ rodadaId: st
 
   const pontosRodada = estado.pistaUsada ? calcularPontos(estado.pistaUsada) : 0
   const encerrado = estado.status !== 'jogando'
+
+  // Intro em destaque enquanto nenhuma pista está aberta
+  const introEmDestaque = estado.pistaAtual === 0 && estado.status === 'jogando'
 
   return (
     <main className="min-h-screen bg-zinc-950 text-white">
@@ -110,11 +116,18 @@ export default function DesafioPage({ params }: { params: Promise<{ rodadaId: st
 
         {/* Status */}
         {estado.status === 'jogando' && (
-          <div className="bg-zinc-800 rounded-xl px-4 py-3 text-center">
-            <p className="text-sm text-zinc-300">
-              Pista <span className="text-green-400 font-bold">{estado.pistaAtual}</span> de {TOTAL_PISTAS} · Vale{' '}
-              <span className="text-yellow-400 font-bold">{PONTOS_BASE[estado.pistaAtual]} pts</span>
-            </p>
+          <div className={`rounded-xl px-4 py-3 text-center ${introEmDestaque ? 'bg-green-950 border border-green-800' : 'bg-zinc-800'}`}>
+            {introEmDestaque ? (
+              <p className="text-sm text-green-300">
+                ✨ Adivinhe pelo histórico — Vale{' '}
+                <span className="text-yellow-400 font-bold">100 pts</span>
+              </p>
+            ) : (
+              <p className="text-sm text-zinc-300">
+                Pista <span className="text-green-400 font-bold">{estado.pistaAtual}</span> de {TOTAL_PISTAS} · Vale{' '}
+                <span className="text-yellow-400 font-bold">{PONTOS_BASE[estado.pistaAtual]} pts</span>
+              </p>
+            )}
           </div>
         )}
 
@@ -133,26 +146,52 @@ export default function DesafioPage({ params }: { params: Promise<{ rodadaId: st
         )}
 
         {/* Intro narrativa */}
-        <div className="bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-4">
-          <p className="text-xs text-zinc-500 uppercase font-semibold tracking-widest mb-2">
-            ⚡ Quem é esse jogador?
+        <div className={`rounded-xl px-4 py-5 transition-all duration-500 ${
+          introEmDestaque
+            ? 'bg-zinc-900 border-2 border-green-500 shadow-lg shadow-green-900/40'
+            : 'bg-zinc-900 border border-zinc-700'
+        }`}>
+          <p className={`text-xs uppercase font-bold tracking-widest mb-3 ${
+            introEmDestaque ? 'text-green-400' : 'text-zinc-500'
+          }`}>
+            ⚡ Jogador do dia
           </p>
-          <p className="text-zinc-200 text-sm leading-relaxed italic">
-            "{introNarrativa}"
+          <p className={`leading-relaxed italic ${
+            introEmDestaque ? 'text-white text-base font-medium' : 'text-zinc-200 text-sm'
+          }`}>
+            &ldquo;{introNarrativa}&rdquo;
           </p>
+          {introEmDestaque && (
+            <p className="text-green-600 text-xs mt-3 font-semibold">
+              Quem é esse jogador? Tente adivinhar agora.
+            </p>
+          )}
         </div>
 
         {/* Pistas */}
         <div className="space-y-2">
-          {Array.from({ length: TOTAL_PISTAS }, (_, i) => i + 1).map(num => (
-            <Pista
-              key={num}
-              numero={num}
-              texto={pistasTexto[num] ?? ''}
-              revelada={num <= estado.pistaAtual}
-              atual={num === estado.pistaAtual && estado.status === 'jogando'}
-            />
-          ))}
+          {Array.from({ length: TOTAL_PISTAS }, (_, i) => i + 1).map(num => {
+            const revelada = num <= estado.pistaAtual
+            const atual = num === estado.pistaAtual && estado.status === 'jogando'
+            const errou = revelada && (num < estado.pistaAtual || estado.status === 'perdeu')
+            const correto = estado.status === 'ganhou' && num === estado.pistaUsada
+            // Pista 1 clicável enquanto pistaAtual=0
+            const onRevelar = estado.pistaAtual === 0 && num === 1 && estado.status === 'jogando'
+              ? () => setEstado(e => ({ ...e, pistaAtual: 1 }))
+              : undefined
+            return (
+              <Pista
+                key={num}
+                numero={num}
+                texto={pistasTexto[num] ?? ''}
+                revelada={revelada}
+                atual={atual}
+                errou={errou}
+                correto={correto}
+                onRevelar={onRevelar}
+              />
+            )
+          })}
         </div>
 
         {/* Input */}
