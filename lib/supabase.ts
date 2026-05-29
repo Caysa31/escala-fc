@@ -24,7 +24,7 @@ export async function criarUsuarioSupabase(apelido: string, codigo: string) {
     .insert({ apelido, codigo })
     .select('id')
     .single()
-  if (error) { console.error('Supabase criarUsuario:', error); return null }
+  if (error) { console.warn('[Supabase] criarUsuario:', error.message ?? error); return null }
   return data?.id ?? null
 }
 
@@ -130,19 +130,23 @@ export async function assinarContratoSupabase(payload: {
   lenda: boolean
 }) {
   if (!supabase) return
-  const { error } = await supabase.from('contratos').upsert({
-    id:            payload.id,
-    usuario_id:    payload.usuarioId,
-    rodada_id:     payload.rodadaId,
-    jogador_id:    payload.jogadorId,
-    nome_jogador:  payload.nomeJogador,
-    bandeira:      payload.bandeira,
-    clube:         payload.clube,
-    multiplicador: payload.multiplicador,
-    pista_acerto:  payload.pistaAcerto,
-    status:        payload.lenda ? 'trivia_pendente' : 'aguardando_jogo',
-  }, { onConflict: 'id' })
-  if (error) console.error('assinarContratoSupabase:', error)
+  try {
+    const { error } = await supabase.from('contratos').upsert({
+      id:            payload.id,
+      usuario_id:    payload.usuarioId,
+      rodada_id:     payload.rodadaId,
+      jogador_id:    payload.jogadorId,
+      nome_jogador:  payload.nomeJogador,
+      bandeira:      payload.bandeira,
+      clube:         payload.clube,
+      multiplicador: payload.multiplicador,
+      pista_acerto:  payload.pistaAcerto,
+      status:        payload.lenda ? 'trivia_pendente' : 'aguardando_jogo',
+    }, { onConflict: 'id' })
+    if (error) console.warn('[Supabase] assinarContratoSupabase:', error.message ?? error)
+  } catch (err) {
+    console.warn('[Supabase] assinarContratoSupabase exception:', err)
+  }
 }
 
 export async function resolverTriviaSupabase(
@@ -176,7 +180,7 @@ export async function atualizarFixtureContrato(
     team_id:        teamId,
     league_id:      leagueId,
   }).eq('id', contratoId)
-  if (error) console.error('atualizarFixtureContrato:', error)
+  if (error) console.warn('[Supabase] atualizarFixtureContrato:', error.message ?? error)
 }
 
 // Resolve o contrato com dados reais da partida (chamado pelo cron)
@@ -194,7 +198,7 @@ export async function resolverContratoSupabase(
     desempenho,
     resolvido_em: new Date().toISOString(),
   }).eq('id', contratoId)
-  if (error) console.error('resolverContratoSupabase:', error)
+  if (error) console.warn('[Supabase] resolverContratoSupabase:', error.message ?? error)
 }
 
 export async function getContratosResolvidosSupabase(usuarioId: string) {
