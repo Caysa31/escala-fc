@@ -50,11 +50,16 @@ export default function JogoDesafio({
   const [mostrarContrato, setMostrarContrato] = useState(false)
   const [mostrarResultado, setMostrarResultado] = useState(false)
   const [autoAvancando, setAutoAvancando] = useState(false)
+  const [inputMontado, setInputMontado] = useState(false)
 
   // Carrega progresso salvo ao montar (ou ao trocar de rodada)
   useEffect(() => {
-    // Volta pro topo da tela ao entrar num novo desafio
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    // 1. Desmonta o input para o iOS não focar e rolar a tela
+    setInputMontado(false)
+    setAutoAvancando(false)
+
+    // 2. Rola pro topo instantaneamente (sem input na DOM, iOS não interfere)
+    window.scrollTo(0, 0)
 
     const resultado = getResultadoRodada(rodadaId)
     if (resultado) {
@@ -65,12 +70,14 @@ export default function JogoDesafio({
         pistaUsada: resultado.pistaAcerto,
       })
     } else {
-      // Fresh game — primeiro desafio começa sem pistas abertas
       setEstado({ pistaAtual: indiceDesafio === 0 ? 0 : 1, tentativas: [], status: 'jogando', pistaUsada: null })
     }
     setMostrarContrato(false)
     setMostrarResultado(false)
-    setAutoAvancando(false)
+
+    // 3. Monta o input depois que a tela já está no topo
+    const timer = setTimeout(() => setInputMontado(true), 400)
+    return () => clearTimeout(timer)
   }, [rodadaId]) // eslint-disable-line react-hooks/exhaustive-deps
 
   function handlePalpite(nome: string) {
@@ -287,8 +294,8 @@ export default function JogoDesafio({
         })}
       </div>
 
-      {/* Input */}
-      {estado.status === 'jogando' && (
+      {/* Input — montado com delay para o iOS não rolar a tela ao focar */}
+      {estado.status === 'jogando' && inputMontado && (
         <InputPalpite
           onPalpite={handlePalpite}
           desabilitado={false}
