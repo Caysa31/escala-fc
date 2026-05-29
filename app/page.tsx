@@ -143,6 +143,7 @@ export default function Home() {
           jogador={jogadorAtivo}
           rodadaId={rodadaAtiva}
           perfil={perfil}
+          indiceDesafio={desafioIdx}
           onResultado={p => setPerfil(p)}
           onContratosChange={setQtdContratosAtivos}
           onProximoDesafio={

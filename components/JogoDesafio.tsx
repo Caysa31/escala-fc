@@ -22,16 +22,18 @@ interface Props {
   jogador: Jogador
   rodadaId: number
   perfil: Perfil | null
+  indiceDesafio: number  // 0 = primeiro, 1 = segundo, 2 = terceiro
   onResultado: (perfilAtualizado: Perfil) => void
   onContratosChange: (qtd: number) => void
   onProximoDesafio?: () => void  // Se existir, mostra botão "Próximo desafio"
 }
 
 export default function JogoDesafio({
-  jogador, rodadaId, perfil, onResultado, onContratosChange, onProximoDesafio,
+  jogador, rodadaId, perfil, indiceDesafio, onResultado, onContratosChange, onProximoDesafio,
 }: Props) {
   const pistasTexto = getPistasTexto(jogador)
   const introNarrativa = getIntroNarrativa(jogador)
+  const isFirstRodada = indiceDesafio === 0
 
   const [estado, setEstado] = useState<EstadoJogo>({
     pistaAtual: 1,
@@ -119,18 +121,28 @@ export default function JogoDesafio({
 
   const pontosRodada = estado.pistaUsada ? calcularPontos(estado.pistaUsada) : 0
 
+  // Pista 1 oculta na primeira rodada enquanto nenhuma tentativa foi feita
+  const pistaUmOculta = isFirstRodada && estado.pistaAtual === 1 && estado.status === 'jogando'
+
   return (
     <div className="space-y-4">
 
       {/* Status da rodada */}
       {estado.status === 'jogando' && (
-        <div className="bg-zinc-800 rounded-xl px-4 py-3 text-center">
-          <p className="text-sm text-zinc-300">
-            Pista{' '}
-            <span className="text-green-400 font-bold">{estado.pistaAtual}</span>
-            {' '}de {TOTAL_PISTAS} · Vale{' '}
-            <span className="text-yellow-400 font-bold">{PONTOS_BASE[estado.pistaAtual]} pts</span>
-          </p>
+        <div className={`rounded-xl px-4 py-3 text-center ${pistaUmOculta ? 'bg-green-950 border border-green-800' : 'bg-zinc-800'}`}>
+          {pistaUmOculta ? (
+            <p className="text-sm text-green-300">
+              ✨ Adivinhe pelo histórico — Vale{' '}
+              <span className="text-yellow-400 font-bold">100 pts</span>
+            </p>
+          ) : (
+            <p className="text-sm text-zinc-300">
+              Pista{' '}
+              <span className="text-green-400 font-bold">{estado.pistaAtual}</span>
+              {' '}de {TOTAL_PISTAS} · Vale{' '}
+              <span className="text-yellow-400 font-bold">{PONTOS_BASE[estado.pistaAtual]} pts</span>
+            </p>
+          )}
         </div>
       )}
 
@@ -183,20 +195,37 @@ export default function JogoDesafio({
       )}
 
       {/* Intro narrativa */}
-      <div className="bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-4">
-        <p className="text-xs text-zinc-500 uppercase font-semibold tracking-widest mb-2">
+      <div className={`rounded-xl px-4 py-5 transition-all duration-500 ${
+        pistaUmOculta
+          ? 'bg-zinc-900 border-2 border-green-500 shadow-lg shadow-green-900/40'
+          : 'bg-zinc-900 border border-zinc-700'
+      }`}>
+        <p className={`text-xs uppercase font-bold tracking-widest mb-3 ${
+          pistaUmOculta ? 'text-green-400' : 'text-zinc-500'
+        }`}>
           ⚡ Jogador do dia
         </p>
-        <p className="text-zinc-200 text-sm leading-relaxed italic">
+        <p className={`leading-relaxed italic ${
+          pistaUmOculta
+            ? 'text-white text-base font-medium'
+            : 'text-zinc-200 text-sm'
+        }`}>
           &ldquo;{introNarrativa}&rdquo;
         </p>
+        {pistaUmOculta && (
+          <p className="text-green-600 text-xs mt-3 font-semibold">
+            Quem é esse jogador? Tente adivinhar agora.
+          </p>
+        )}
       </div>
 
       {/* Pistas */}
       <div className="space-y-2">
         {Array.from({ length: TOTAL_PISTAS }, (_, i) => i + 1).map(num => {
-          const revelada = num <= estado.pistaAtual
-          const atual = num === estado.pistaAtual && estado.status === 'jogando'
+          // Na primeira rodada, enquanto nenhuma pista foi liberada ainda,
+          // mostrar pista 1 como travada (igual às demais)
+          const revelada = pistaUmOculta && num === 1 ? false : num <= estado.pistaAtual
+          const atual = pistaUmOculta && num === 1 ? false : num === estado.pistaAtual && estado.status === 'jogando'
           return (
             <Pista
               key={num}

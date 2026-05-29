@@ -185,6 +185,7 @@ export default function TestePage() {
           jogador={jogadorAtivo}
           rodadaId={rodadaAtiva}
           perfil={perfil}
+          indiceDesafio={desafioIdx}
           onResultado={p => setPerfil(p)}
           onContratosChange={setQtdContratosAtivos}
           onProximoDesafio={
