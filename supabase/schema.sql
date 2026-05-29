@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS grupo_membros (
 
 -- ── Contratos ─────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS contratos (
-  id              TEXT PRIMARY KEY,   -- rodadaId-jogadorId
+  id              TEXT PRIMARY KEY,   -- "{rodadaId}-{jogadorId}"
   usuario_id      UUID REFERENCES usuarios(id) ON DELETE CASCADE,
   rodada_id       INTEGER NOT NULL,
   jogador_id      INTEGER NOT NULL,
@@ -63,10 +63,19 @@ CREATE TABLE IF NOT EXISTS contratos (
   multiplicador   NUMERIC NOT NULL,
   pista_acerto    INTEGER NOT NULL,
   data_assinatura DATE DEFAULT CURRENT_DATE,
-  status          TEXT DEFAULT 'aguardando_jogo',
+  status          TEXT DEFAULT 'aguardando_jogo',  -- aguardando_jogo | trivia_pendente | trivia_resolvida | resolvido
   bonus_base      INTEGER DEFAULT 0,
   bonus_total     INTEGER DEFAULT 0,
-  desempenho      JSONB
+  desempenho      JSONB,
+  -- fixture (preenchido após assinatura via API-Football)
+  fixture_id      INTEGER,
+  data_jogo       DATE,
+  rodada_futebol  TEXT,
+  team_id         INTEGER,
+  league_id       INTEGER,
+  -- timestamp de resolução
+  resolvido_em    TIMESTAMPTZ,
+  criado_em       TIMESTAMPTZ DEFAULT NOW()
 );
 
 -- ── Índices para performance ──────────────────────────────────
@@ -131,5 +140,6 @@ CREATE POLICY "Insert livre" ON streaks       FOR INSERT WITH CHECK (true);
 CREATE POLICY "Upsert livre" ON streaks       FOR UPDATE WITH CHECK (true);
 CREATE POLICY "Insert livre" ON grupos        FOR INSERT WITH CHECK (true);
 CREATE POLICY "Insert livre" ON grupo_membros FOR INSERT WITH CHECK (true);
+CREATE POLICY "Select livre" ON contratos     FOR SELECT USING (true);
 CREATE POLICY "Insert livre" ON contratos     FOR INSERT WITH CHECK (true);
 CREATE POLICY "Update livre" ON contratos     FOR UPDATE WITH CHECK (true);
