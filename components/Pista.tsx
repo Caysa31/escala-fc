@@ -13,26 +13,38 @@ interface PistaProps {
 }
 
 // Pista 1 — blocos com letras do meio reveladas
+// Ajusta tamanho dos blocos dinamicamente pela palavra mais longa
 function BlocosNome({ codificado, atual, correto }: { codificado: string; atual: boolean; correto?: boolean }) {
   const ativa = atual || correto
   const palavras = codificado.split('|').map(p => p.split(''))
+  const maxLen = Math.max(...palavras.map(p => p.length))
+
+  // Largura disponível aprox: 360px tela - 32px padding card - 32px ícone - 12px gap ≈ 284px
+  // bloco + gap por letra: calcula pra caber dentro de 280px
+  const { bloco, texto, gap, mx } =
+    maxLen <= 5  ? { bloco: 'w-8 h-8',  texto: 'text-sm', gap: 'gap-1.5', mx: 'mx-2' } :
+    maxLen <= 7  ? { bloco: 'w-7 h-7',  texto: 'text-sm', gap: 'gap-1',   mx: 'mx-2' } :
+    maxLen <= 9  ? { bloco: 'w-6 h-6',  texto: 'text-xs', gap: 'gap-1',   mx: 'mx-1.5' } :
+    maxLen <= 11 ? { bloco: 'w-5 h-5',  texto: 'text-xs', gap: 'gap-1',   mx: 'mx-1.5' } :
+                   { bloco: 'w-4 h-4',  texto: 'text-xs', gap: 'gap-0.5', mx: 'mx-1' }
+
   return (
     <div className="flex items-center flex-wrap mt-1 gap-y-2">
       {palavras.map((chars, wi) => (
         <div key={wi} className="flex items-center">
           {wi > 0 && (
-            <div className="flex items-center mx-3">
+            <div className={`flex items-center ${mx}`}>
               <div className="w-1 h-1 rounded-full bg-zinc-600" />
             </div>
           )}
-          <div className="flex gap-1.5">
+          <div className={`flex ${gap}`}>
             {chars.map((char, ci) => {
-              const revelada = char !== '_'
+              const rev = char !== '_'
               return (
                 <div
                   key={ci}
-                  className={`w-8 h-8 rounded flex items-center justify-center text-sm font-bold
-                    ${revelada
+                  className={`${bloco} rounded flex items-center justify-center ${texto} font-bold
+                    ${rev
                       ? ativa
                         ? 'bg-green-900 border-2 border-green-400 text-green-200'
                         : 'bg-zinc-700 border-2 border-zinc-300 text-white'
@@ -41,7 +53,7 @@ function BlocosNome({ codificado, atual, correto }: { codificado: string; atual:
                         : 'bg-zinc-600 border border-zinc-500'
                     }`}
                 >
-                  {revelada ? char.toUpperCase() : ''}
+                  {rev ? char.toUpperCase() : ''}
                 </div>
               )
             })}
