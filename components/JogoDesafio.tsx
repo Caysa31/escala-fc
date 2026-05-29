@@ -294,17 +294,11 @@ export default function JogoDesafio({
         })}
       </div>
 
-      {/* Input — montado com delay para o iOS não rolar a tela ao focar */}
-      {estado.status === 'jogando' && inputMontado && (
-        <InputPalpite
-          onPalpite={handlePalpite}
-          desabilitado={false}
-          tentativasAnteriores={estado.tentativas.map(t => t.nome)}
-        />
-      )}
-
       {/* Tentativas */}
       <ListaTentativas tentativas={estado.tentativas} />
+
+      {/* Espaço para o input fixo não cobrir o conteúdo */}
+      {estado.status === 'jogando' && <div className="h-20" />}
 
       {/* Modal contrato (após acertar) */}
       {mostrarContrato && estado.pistaUsada && (
@@ -336,6 +330,24 @@ export default function JogoDesafio({
           onFechar={() => setMostrarResultado(false)}
           onProximoDesafio={onProximoDesafio}
         />
+      )}
+
+      {/* ── Barra de input fixa no rodapé ─────────────────────────────
+          Sempre visível na tela, sem precisar rolar.
+          O env(safe-area-inset-bottom) cobre o indicador home do iPhone. */}
+      {estado.status === 'jogando' && inputMontado && (
+        <div
+          className="fixed bottom-0 left-0 right-0 z-40 bg-zinc-950 border-t border-zinc-800 px-4 pt-3"
+          style={{ paddingBottom: 'max(12px, env(safe-area-inset-bottom))' }}
+        >
+          <div className="max-w-md mx-auto">
+            <InputPalpite
+              onPalpite={handlePalpite}
+              desabilitado={false}
+              tentativasAnteriores={estado.tentativas.map(t => t.nome)}
+            />
+          </div>
+        </div>
       )}
     </div>
   )
