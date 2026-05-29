@@ -49,7 +49,7 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
             <p>🔒 Pistas reveladas uma por vez</p>
             <p>⬇️ Quanto menos pistas, mais pontos</p>
             <p>🟩 Compartilhe sem spoiler</p>
-            <p>🔥 Jogue todo dia para manter o streak</p>
+            <p>🔥 Jogue todo dia para manter sua sequência</p>
           </div>
         </div>
 
@@ -101,7 +101,7 @@ export function StatsPerfil({ perfil }: StatsPerfilProps) {
 
   return (
     <div className="grid grid-cols-4 gap-2">
-      <StatCard icon={<Flame size={16} className="text-orange-400" />} valor={perfil.streakAtual} label="Streak" />
+      <StatCard icon={<Flame size={16} className="text-orange-400" />} valor={perfil.streakAtual} label="Sequência" />
       <StatCard icon={<Trophy size={16} className="text-yellow-400" />} valor={perfil.pontosTotal} label="Pontos" />
       <StatCard icon={<Target size={16} className="text-blue-400" />} valor={perfil.rodadasJogadas} label="Jogos" />
       <StatCard icon={<Percent size={16} className="text-green-400" />} valor={`${taxa}%`} label="Acerto" />

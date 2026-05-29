@@ -105,7 +105,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
             <div className="bg-zinc-800 rounded-xl p-3 text-center">
               <Flame size={16} className="text-orange-400 mx-auto mb-1" />
               <p className="text-orange-400 font-black text-2xl">{perfil.streakAtual}</p>
-              <p className="text-zinc-500 text-xs">streak</p>
+              <p className="text-zinc-500 text-xs">sequência</p>
             </div>
           </div>
 

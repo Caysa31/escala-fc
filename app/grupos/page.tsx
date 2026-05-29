@@ -377,7 +377,7 @@ export default function GruposPage() {
             <ul className="text-zinc-500 text-xs space-y-1">
               <li>• Crie um grupo e compartilhe o código com amigos</li>
               <li>• O ranking mostra os pontos de cada semana</li>
-              <li>• Quem jogar todo dia acumula mais pontos e streak 🔥</li>
+              <li>• Quem jogar todo dia acumula mais pontos e aumenta a sequência 🔥</li>
               <li>• O ranking reseta toda segunda-feira às 00h</li>
             </ul>
           </div>
