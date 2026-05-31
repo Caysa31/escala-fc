@@ -318,7 +318,7 @@ export default function JogoDesafio({
       <ListaTentativas tentativas={estado.tentativas} />
 
       {/* Espaço para o input fixo não cobrir o conteúdo */}
-      {estado.status === 'jogando' && <div className="h-20" />}
+      {estado.status === 'jogando' && <div className="h-28" />}
 
       {/* Modal contrato (após acertar) */}
       {mostrarContrato && estado.pistaUsada && (
@@ -358,10 +358,22 @@ export default function JogoDesafio({
           O env(safe-area-inset-bottom) cobre o indicador home do iPhone. */}
       {estado.status === 'jogando' && inputMontado && (
         <div
-          className="fixed bottom-0 left-0 right-0 z-40 bg-zinc-950 border-t border-zinc-800 px-4 pt-3"
+          className="fixed bottom-0 left-0 right-0 z-40 bg-zinc-950 border-t border-zinc-800 px-4 pt-2"
           style={{ paddingBottom: 'max(12px, env(safe-area-inset-bottom))' }}
         >
           <div className="max-w-md mx-auto">
+            {/* Lembrete de pontos — sempre visível mesmo com scroll */}
+            <div className="text-center mb-2">
+              {introEmDestaque ? (
+                <p className="text-xs text-green-400 font-semibold">
+                  ✨ Adivinhe pelo histórico · Vale <span className="text-yellow-400">100 pts</span>
+                </p>
+              ) : (
+                <p className="text-xs text-zinc-400">
+                  Pista <span className="text-green-400 font-bold">{estado.pistaAtual}</span> de {TOTAL_PISTAS} · Vale <span className="text-yellow-400 font-bold">{PONTOS_BASE[estado.pistaAtual]} pts</span>
+                </p>
+              )}
+            </div>
             <InputPalpite
               onPalpite={handlePalpite}
               desabilitado={false}
