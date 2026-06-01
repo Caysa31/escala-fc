@@ -130,25 +130,25 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
     : jogador.liga
 
   const posicaoFrase: Record<string, string> = {
-    'Goleiro':          'Entre os postes, é quase intransponível',
-    'Zagueiro':         'Na zaga, impõe respeito e barra os melhores ataques',
-    'Lateral-direito':  'Pelo lado direito, atacar e defender são a mesma coisa',
-    'Lateral-esquerdo': 'Pelo lado esquerdo, domina o corredor com velocidade',
-    'Volante':          'No meio, destrói jogadas antes que elas existam',
-    'Meia':             'No centro do campo, organiza, cria e decide quando a partida pede',
-    'Meia-atacante':    'Entre a criação e o gol, habita um território que poucos dominam',
-    'Ponta-direita':    'Pela direita, arranca e deixa o defensor no retrovisor',
-    'Ponta-esquerda':   'Pela esquerda, é um pesadelo para qualquer lateral do mundo',
-    'Atacante':         'No ataque, vive para uma coisa só: a rede balançar',
-    'Centroavante':     'Na área, é a referência que toda torcida quer e todo defensor teme',
-    'Ponta':            'Pelos flancos, carrega a bola como ninguém e deixa laterais no retrovisor',
-    'Lateral':          'No corredor, equilibra arte e garra entre o ataque e a defesa',
+    'Goleiro':          'Entre os postes, é quase intransponível — não apenas defende, comanda. Sua presença transforma a defesa inteira',
+    'Zagueiro':         'Na zaga, é uma muralha. Cada duelo é uma batalha — e raramente sai perdendo',
+    'Lateral-direito':  'Pelo lado direito, atacar e defender são a mesma missão. Incansável no corredor, sobe e volta sem parar',
+    'Lateral-esquerdo': 'Pelo lado esquerdo, mistura ginga e garra num corredor que parece pertencer só a ele',
+    'Volante':          'No meio, é o escudo do time. Intercepta, desarma, distribui — sem ele o jogo simplesmente não funciona',
+    'Meia':             'No coração do jogo é onde ele vive. Tem visão que poucos possuem — cada passe parece um roteiro escrito antes de a jogada começar',
+    'Meia-atacante':    'Entre a criação e o gol existe um território que poucos sabem habitar. Ele mora lá',
+    'Ponta-direita':    'Pela direita, deixa o defensor no retrovisor. Velocidade e ginga que poucas laterais do mundo conseguem acompanhar',
+    'Ponta-esquerda':   'Pela esquerda, é um pesadelo que se repete toda vez que recebe a bola',
+    'Atacante':         'Quando ele recebe a bola de frente ao gol, o goleiro já sabe o que vem — mas raramente consegue fazer algo a respeito',
+    'Centroavante':     'Na área, é a referência que toda zaga teme. Cada cruzamento, cada bola aérea, é uma ameaça real e concreta',
+    'Ponta':            'Pelos flancos, carrega a bola como se fosse propriedade sua — e deixa laterais atordoados pelo caminho',
+    'Lateral':          'No corredor, equilibra arte e garra. Sobe como atacante, volta como defensor — incansável dos dois lados',
   }
   const posicaoTexto = posicaoFrase[jogador.posicao] ?? `Atua como ${jogador.posicao}`
 
   // Se tiver estado do clube, inclui na pista. Senão, só liga.
   const pista1 = jogador.estadoClube
-    ? `${posicaoTexto} — por um clube do ${jogador.estadoClube}, na ${ligaLabel}.`
+    ? `${posicaoTexto} — atuando por um clube do ${jogador.estadoClube}, na ${ligaLabel}.`
     : `${posicaoTexto} — e faz isso pela ${ligaLabel}.`
 
   // Pista 2 — Blocos com letras reveladas por palavra (independentemente)
@@ -177,54 +177,54 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
 
   // Pista 3 — Nacionalidade (país real)
   const paisNascimento: Record<string, string> = {
-    'Alemão':       'Nasceu na Alemanha',
-    'Argentino':    'Nasceu na Argentina',
-    'Belga':        'Nasceu na Bélgica',
-    'Brasileiro':   'Nasceu no Brasil',
-    'Camaronês':    'Nasceu nos Camarões',
-    'Chileno':      'Nasceu no Chile',
-    'Colombiano':   'Nasceu na Colômbia',
-    'Dinamarquês':  'Nasceu na Dinamarca',
-    'Egípcio':      'Nasceu no Egito',
-    'Equatoriano':  'Nasceu no Equador',
-    'Esloveno':     'Nasceu na Eslovênia',
-    'Espanhol':     'Nasceu na Espanha',
-    'Francês':      'Nasceu na França',
-    'Georgiano':    'Nasceu na Geórgia',
-    'Guineense':    'Nasceu na Guiné',
-    'Holandês':     'Nasceu na Holanda',
-    'Inglês':       'Nasceu na Inglaterra',
-    'Italiano':     'Nasceu na Itália',
-    'Marfinense':   'Nasceu na Costa do Marfim',
-    'Nigeriano':    'Nasceu na Nigéria',
-    'Norueguês':    'Nasceu na Noruega',
-    'Paraguaio':    'Nasceu no Paraguai',
-    'Peruano':      'Nasceu no Peru',
-    'Polonês':      'Nasceu na Polônia',
-    'Português':    'Nasceu em Portugal',
-    'Senegalês':    'Nasceu no Senegal',
-    'Sul-Coreano':  'Nasceu na Coreia do Sul',
-    'Suíço':        'Nasceu na Suíça',
-    'Sérvio':       'Nasceu na Sérvia',
-    'Turco':        'Nasceu na Turquia',
-    'Uruguaio':     'Nasceu no Uruguai',
-    'Venezuelano':  'Nasceu na Venezuela',
+    'Alemão':       'Nasceu na Alemanha — terra de disciplina, organização e um futebol admirado no mundo inteiro.',
+    'Argentino':    'Nasceu na Argentina, onde o futebol não é esporte — é religião.',
+    'Belga':        'Nasceu na Bélgica, da geração dourada que dominou rankings e encantou a Europa por anos.',
+    'Brasileiro':   'Nasceu no Brasil, o país que mais ama o futebol no mundo.',
+    'Camaronês':    'Nasceu nos Camarões — terra do Leão Indomável e de atletas que encantam multidões.',
+    'Chileno':      'Nasceu no Chile, nação que revelou uma das gerações mais guerreiras da América do Sul.',
+    'Colombiano':   'Nasceu na Colômbia, país que nos últimos anos não para de revelar talentos ao futebol.',
+    'Dinamarquês':  'Nasceu na Dinamarca — pequeno país com força de gigante dentro de campo.',
+    'Egípcio':      'Nasceu no Egito, terra de faraós — e de um dos ídolos mais admirados do futebol atual.',
+    'Equatoriano':  'Nasceu no Equador, país que vem ganhando cada vez mais respeito no cenário sul-americano.',
+    'Esloveno':     'Nasceu na Eslovênia, nação pequena que revelou ao mundo um dos mais temidos artilheiros da Europa.',
+    'Espanhol':     'Nasceu na Espanha, berço do tiki-taka e de gerações que dominaram o futebol mundial.',
+    'Francês':      'Nasceu na França — nação que revelou uma nova geração de gênios do futebol.',
+    'Georgiano':    'Nasceu na Geórgia, um país que surpreende o mundo com talentos que ninguém esperava.',
+    'Guineense':    'Nasceu na Guiné, um dos países africanos que mais exporta talentos para o futebol europeu.',
+    'Holandês':     'Nasceu na Holanda, país do futebol total e de uma escola técnica admirada em todo o mundo.',
+    'Inglês':       'Nasceu na Inglaterra — onde o futebol nasceu, e onde esta história também começou.',
+    'Italiano':     'Nasceu na Itália, terra de grandes defensores, táticos geniais e campeões do mundo.',
+    'Marfinense':   'Nasceu na Costa do Marfim, que revelou ao mundo uma geração extraordinária de jogadores.',
+    'Nigeriano':    'Nasceu na Nigéria, um dos países africanos com maior tradição em revelar atletas de elite.',
+    'Norueguês':    'Nasceu na Noruega — terra fria com um goleador que aquece qualquer estádio do mundo.',
+    'Paraguaio':    'Nasceu no Paraguai, país pequeno com coração grande e garra que não conhece derrota fácil.',
+    'Peruano':      'Nasceu no Peru, nação com amor ao futebol que atravessa gerações.',
+    'Polonês':      'Nasceu na Polônia, que revelou ao mundo um dos centroavantes mais letais da atualidade.',
+    'Português':    'Nasceu em Portugal — pequeno país com história enorme dentro do futebol europeu.',
+    'Senegalês':    'Nasceu no Senegal, a nação dos Leões de Teranga que rugem cada vez mais alto.',
+    'Sul-Coreano':  'Nasceu na Coreia do Sul, país que assombrou o mundo na Copa de 2002 e nunca mais parou.',
+    'Suíço':        'Nasceu na Suíça, terra neutra que produz jogadores de alto nível para as melhores ligas do mundo.',
+    'Sérvio':       'Nasceu na Sérvia, país dos Bálcãs com uma escola de futebol cada vez mais respeitada.',
+    'Turco':        'Nasceu na Turquia, que vive um momento de crescimento real no futebol internacional.',
+    'Uruguaio':     'Nasceu no Uruguai — pequeno país com alma enorme e história gigante dentro do futebol.',
+    'Venezuelano':  'Nasceu na Venezuela, nação que vem crescendo a passos largos no cenário do futebol sul-americano.',
   }
-  const pista3 = paisNascimento[jogador.nacionalidade] ?? `Nacionalidade: ${jogador.nacionalidade}`
+  const pista3 = paisNascimento[jogador.nacionalidade] ?? `Nasceu em ${jogador.nacionalidade} — um país que tem sua própria história dentro do futebol.`
 
   // Pista 4 — Clube anterior (trajetória)
   let pista4: string
   if (!jogador.clubeAnterior || jogador.origemAnterior === 'base') {
     // Revelado nas categorias de base do próprio clube
-    pista4 = 'Foi revelado nas categorias de base do próprio clube onde joga hoje.'
+    pista4 = 'Cresceu ali, aprendeu ali, se formou ali. Foi revelado nas categorias de base do próprio clube onde joga hoje — e nunca precisou ir longe para encontrar seu caminho.'
   } else if (jogador.origemAnterior === 'brasil') {
-    pista4 = `Antes do clube atual, jogou no ${jogador.clubeAnterior}.`
+    pista4 = `Antes de chegar ao clube atual, construiu seu nome no ${jogador.clubeAnterior}. Foi de lá que veio o convite que mudou tudo.`
   } else {
     // exterior — distingue se o clube atual é no Brasil ou fora
     if (jogador.liga === 'Brasileirão') {
-      pista4 = `Retornou ao Brasil vindo do ${jogador.clubeAnterior}, na ${jogador.ligaAnterior}.`
+      pista4 = `Rodou o mundo antes de voltar para casa. Retornou ao Brasil vindo do ${jogador.clubeAnterior}, na ${jogador.ligaAnterior}.`
     } else {
-      pista4 = `Chegou ao clube atual vindo do ${jogador.clubeAnterior}, na ${jogador.ligaAnterior}.`
+      pista4 = `Cruzou fronteiras em busca de um desafio maior. Chegou ao clube atual vindo do ${jogador.clubeAnterior}, na ${jogador.ligaAnterior}.`
     }
   }
 

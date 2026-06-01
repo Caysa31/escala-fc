@@ -9,6 +9,7 @@ interface PistaProps {
   atual: boolean
   errou?: boolean       // essa pista teve tentativa errada — card vermelho
   correto?: boolean     // essa pista foi onde acertou — mantém verde mesmo após ganhar
+  subtitulo?: string    // label do capítulo (substitui o padrão quando fornecido — ex: "O Maestro")
   onRevelar?: () => void    // card travado vira clicável (pista 1 do primeiro desafio)
   onDestravar?: () => void  // botão "Ver próxima dica" na pista seguinte travada
 }
@@ -104,9 +105,10 @@ function LetrasNome({ codificado, atual, correto }: { codificado: string; atual:
   )
 }
 
-const LABELS_PISTAS = ['Sopa de Letras', 'Posição', 'Nacionalidade', 'Trajetória', 'Nome + Clube']
+// Label temático padrão de cada capítulo (pista 2 é sobrescrita por `subtitulo` via posição)
+const LABELS_PISTAS = ['O Nome', 'O Dom', 'A Raiz', 'A Jornada', 'O Lar']
 
-export default function Pista({ numero, texto, revelada, atual, errou, correto, onRevelar, onDestravar }: PistaProps) {
+export default function Pista({ numero, texto, revelada, atual, errou, correto, subtitulo, onRevelar, onDestravar }: PistaProps) {
   // Determina o estado visual da pista
   const isVerde = atual || correto
   const isVermelho = errou && !isVerde
@@ -155,7 +157,7 @@ export default function Pista({ numero, texto, revelada, atual, errou, correto, 
         {/* Conteúdo */}
         <div className="flex-1 min-w-0">
           <p className={`text-xs font-medium mb-1 ${labelClass}`}>
-            {LABELS_PISTAS[numero - 1]}
+            {`Capítulo ${numero} · ${subtitulo ?? LABELS_PISTAS[numero - 1]}`}
           </p>
 
           {revelada ? (
