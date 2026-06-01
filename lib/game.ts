@@ -22,14 +22,29 @@ const poolAtaque = jogadores.filter(j => POSICOES_ATAQUE.has(j.posicao))
 const poolMeio   = jogadores.filter(j => POSICOES_MEIO.has(j.posicao))
 const poolDefesa = jogadores.filter(j => POSICOES_DEFESA.has(j.posicao))
 
-/** @deprecated Use getJogadoresDoDia() — mantido para compatibilidade com /desafio/[rodadaId] */
-export function getJogadorDoDia(): { jogador: Jogador; rodadaId: number } {
-  const hoje = new Date()
-  const inicio = new Date('2026-05-22')
-  const diffDias = Math.floor((hoje.getTime() - inicio.getTime()) / (1000 * 60 * 60 * 24))
-  const rodadaId = diffDias * 3 + 1
-  const indice = Math.abs(diffDias * 3) % jogadores.length
-  return { jogador: jogadores[indice], rodadaId }
+/**
+ * Retorna o jogador correto para um rodadaId específico.
+ * Usa a mesma lógica de pools por posição de getJogadoresDoDia().
+ * Retorna null se rodadaId for inválido.
+ */
+export function getJogadorPorRodadaId(rodadaId: number): Jogador | null {
+  if (!Number.isFinite(rodadaId) || rodadaId < 1) return null
+
+  const diffDias  = Math.floor((rodadaId - 1) / 3)
+  const slotIndex = (rodadaId - 1) % 3
+
+  const iAtq0 = diffDias % poolAtaque.length
+  const iAtq1 = (diffDias + Math.floor(poolAtaque.length / 2)) % poolAtaque.length
+  const iMeio = diffDias % poolMeio.length
+  const iDef  = Math.floor(diffDias / 2) % poolDefesa.length
+
+  const isDiaImpar = diffDias % 2 === 1
+
+  const slots = isDiaImpar
+    ? [poolAtaque[iAtq0], poolAtaque[iAtq1], poolMeio[iMeio]]
+    : [poolAtaque[iAtq0], poolMeio[iMeio],   poolDefesa[iDef]]
+
+  return slots[slotIndex] ?? null
 }
 
 /** 3 jogadores do dia — um por desafio, mesmo para todos os usuários */

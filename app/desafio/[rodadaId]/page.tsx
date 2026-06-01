@@ -3,19 +3,10 @@
 import { use } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Suspense } from 'react'
-import jogadoresData from '@/data/jogadores.json'
-import { Jogador } from '@/lib/types'
-import { getIntroNarrativa } from '@/lib/game'
+import { getIntroNarrativa, getJogadorPorRodadaId } from '@/lib/game'
 import { PONTOS_BASE } from '@/lib/types'
 import Link from 'next/link'
 import { Trophy, ArrowRight } from 'lucide-react'
-
-const jogadores = jogadoresData as Jogador[]
-
-function getJogadorDaRodada(rodadaId: number): Jogador {
-  const indice = Math.abs(rodadaId - 1) % jogadores.length
-  return jogadores[indice]
-}
 
 function DesafioConteudo({ rodadaId }: { rodadaId: number }) {
   const params = useSearchParams()
@@ -25,7 +16,24 @@ function DesafioConteudo({ rodadaId }: { rodadaId: number }) {
   const tentativasStr = params.get('t') ?? ''
   const tentativas = tentativasStr.split('').map(c => c === '1' ? '🟩' : '⬛')
 
-  const jogador = getJogadorDaRodada(rodadaId)
+  const jogador = getJogadorPorRodadaId(rodadaId)
+
+  // rodadaId inválido ou fora do intervalo conhecido
+  if (!jogador) {
+    return (
+      <main className="min-h-screen bg-zinc-950 text-white flex items-center justify-center px-4">
+        <div className="text-center space-y-3">
+          <p className="text-4xl">⚽</p>
+          <p className="text-zinc-300 font-bold">Desafio não encontrado</p>
+          <p className="text-zinc-500 text-sm">Este link pode estar desatualizado.</p>
+          <Link href="/" className="inline-block mt-2 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl px-6 py-3 text-sm transition-all">
+            Jogar agora
+          </Link>
+        </div>
+      </main>
+    )
+  }
+
   const intro = getIntroNarrativa(jogador)
   const pontos = pistaAcerto ? (PONTOS_BASE[pistaAcerto] ?? 0) : 0
 
@@ -103,6 +111,8 @@ function DesafioConteudo({ rodadaId }: { rodadaId: number }) {
 export default function DesafioPage({ params }: { params: Promise<{ rodadaId: string }> }) {
   const { rodadaId: rodadaIdStr } = use(params)
   const rodadaId = parseInt(rodadaIdStr, 10)
+  // NaN ou valores negativos são tratados como inválidos pelo getJogadorPorRodadaId
+  const rodadaIdSafe = Number.isFinite(rodadaId) ? rodadaId : -1
 
   return (
     <Suspense fallback={
@@ -110,7 +120,7 @@ export default function DesafioPage({ params }: { params: Promise<{ rodadaId: st
         <p className="text-zinc-500">Carregando...</p>
       </main>
     }>
-      <DesafioConteudo rodadaId={rodadaId} />
+      <DesafioConteudo rodadaId={rodadaIdSafe} />
     </Suspense>
   )
 }
