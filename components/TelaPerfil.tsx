@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { Perfil } from '@/lib/types'
 import { criarPerfil, getResultadoRodada } from '@/lib/perfil'
 import { getJogadoresDoDia } from '@/lib/game'
-import { getPosicaoRanking } from '@/lib/supabase'
+import { getPosicaoRanking, verificarApelidoDisponivel } from '@/lib/supabase'
 import { Flame, Trophy, Medal } from 'lucide-react'
 
 interface TelaPerfilProps {
@@ -14,8 +14,10 @@ interface TelaPerfilProps {
 export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
   const [apelido, setApelido] = useState('')
   const [erro, setErro] = useState('')
+  const [verificando, setVerificando] = useState(false)
+  const [sugestoes, setSugestoes] = useState<string[]>([])
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     const nome = apelido.trim()
     if (!nome) {
@@ -26,6 +28,20 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
       setErro('Apelido muito curto (mínimo 2 caracteres)')
       return
     }
+
+    setVerificando(true)
+    setSugestoes([])
+    try {
+      const disponivel = await verificarApelidoDisponivel(nome)
+      if (!disponivel) {
+        setSugestoes([`${nome}2`, `${nome}FC`, `${nome}10`])
+        setErro('Esse apelido já está em uso — escolha outro ou use uma sugestão abaixo')
+        return
+      }
+    } finally {
+      setVerificando(false)
+    }
+
     const perfil = criarPerfil(nome)
     onCriar(perfil)
   }
@@ -64,19 +80,38 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
             <input
               type="text"
               value={apelido}
-              onChange={e => { setApelido(e.target.value); setErro('') }}
+              onChange={e => { setApelido(e.target.value); setErro(''); setSugestoes([]) }}
               placeholder="Ex: CraqueDaSala"
               maxLength={20}
               className="w-full bg-zinc-800 border-2 border-zinc-600 focus:border-green-400 rounded-xl px-4 py-3 text-white placeholder-zinc-500 outline-none transition-colors text-base"
               autoFocus
             />
             {erro && <p className="text-red-400 text-xs mt-1">{erro}</p>}
+            {sugestoes.length > 0 && (
+              <div className="flex gap-2 mt-2 flex-wrap">
+                {sugestoes.map(s => (
+                  <button
+                    key={s}
+                    type="button"
+                    onClick={() => { setApelido(s); setErro(''); setSugestoes([]) }}
+                    className="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors"
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
           <button
             type="submit"
-            className="w-full bg-green-500 hover:bg-green-400 text-black font-black text-lg rounded-xl py-4 transition-colors"
+            disabled={verificando}
+            className={`w-full font-black text-lg rounded-xl py-4 transition-colors ${
+              verificando
+                ? 'bg-zinc-600 text-zinc-400 cursor-not-allowed'
+                : 'bg-green-500 hover:bg-green-400 text-black'
+            }`}
           >
-            ENTRAR NO JOGO
+            {verificando ? 'Verificando...' : 'ENTRAR NO JOGO'}
           </button>
         </form>
 

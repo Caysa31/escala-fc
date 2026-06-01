@@ -38,6 +38,21 @@ export async function buscarUsuarioPorCodigo(codigo: string) {
   return data
 }
 
+/**
+ * Verifica se um apelido já está em uso no ranking global.
+ * Retorna true se disponível, false se já existe.
+ * Em modo offline (sem Supabase), sempre retorna true.
+ */
+export async function verificarApelidoDisponivel(apelido: string): Promise<boolean> {
+  if (!supabase) return true
+  const { data } = await supabase
+    .from('usuarios')
+    .select('id')
+    .ilike('apelido', apelido)
+    .limit(1)
+  return !data || data.length === 0
+}
+
 // ── Resultados ────────────────────────────────────────────────
 
 export async function salvarResultadoSupabase(payload: {
