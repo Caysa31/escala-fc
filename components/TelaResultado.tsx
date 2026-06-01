@@ -90,7 +90,14 @@ export default function TelaResultado({
 
         {!ganhou && (
           <div className="bg-zinc-800 rounded-xl p-4 text-center">
-            <p className="text-zinc-400 text-sm">Sem contrato hoje — tente amanhã! 🔄</p>
+            {onProximoDesafio ? (
+              <>
+                <p className="text-zinc-300 text-sm font-semibold">Sem contrato nessa 😤</p>
+                <p className="text-zinc-500 text-xs mt-0.5">Próximo desafio te espera 👇</p>
+              </>
+            ) : (
+              <p className="text-zinc-400 text-sm">Sem contrato hoje — tente amanhã! 🔄</p>
+            )}
           </div>
         )}
 
