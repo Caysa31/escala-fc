@@ -23,9 +23,10 @@ interface ModalContratoProps {
   pistaAcerto: number
   onFechar: (contrato: Contrato) => void
   onProximoDesafio?: () => void
+  onBonusResolvido?: (bonusTotal: number) => void
 }
 
-export function ModalContrato({ jogador, rodadaId, pistaAcerto, onFechar, onProximoDesafio }: ModalContratoProps) {
+export function ModalContrato({ jogador, rodadaId, pistaAcerto, onFechar, onProximoDesafio, onBonusResolvido }: ModalContratoProps) {
   const [triviaResposta, setTriviaResposta] = useState<number | null>(null)
   const [triviaResolvida, setTriviaResolvida] = useState(false)
   const [bonusTrivia, setBonusTrivia] = useState(0)
@@ -38,9 +39,12 @@ export function ModalContrato({ jogador, rodadaId, pistaAcerto, onFechar, onProx
     if (triviaResolvida) return
     const acertou = indice === jogador.triviaContrato?.respostaCorreta
     const resolvido = resolverTrivia(rodadaId, acertou)
+    const bonus = resolvido?.bonusTotal ?? 0
     setTriviaResposta(indice)
     setTriviaResolvida(true)
-    setBonusTrivia(resolvido?.bonusTotal ?? 0)
+    setBonusTrivia(bonus)
+    // Notifica o pai para atualizar pontosTotal no perfil
+    if (bonus > 0) onBonusResolvido?.(bonus)
   }
 
   function handleFechar() {

@@ -76,6 +76,38 @@ export async function salvarResultadoSupabase(payload: {
 
 // ── Streaks ───────────────────────────────────────────────────
 
+/**
+ * Lê pontos_total do servidor para sincronizar o perfil local.
+ * Usado para detectar bônus de contratos resolvidos pelo cron enquanto o usuário estava offline.
+ */
+export async function getPontosDoServidor(usuarioId: string): Promise<number | null> {
+  if (!supabase) return null
+  const { data } = await supabase
+    .from('streaks')
+    .select('pontos_total')
+    .eq('usuario_id', usuarioId)
+    .single()
+  return data?.pontos_total ?? null
+}
+
+/**
+ * Incrementa pontos_total no Supabase pelo bônus de um contrato resolvido.
+ * Chamado pelo cron após resolver cada contrato.
+ */
+export async function incrementarPontosStreak(usuarioId: string, bonus: number): Promise<void> {
+  if (!supabase || bonus <= 0) return
+  const { data } = await supabase
+    .from('streaks')
+    .select('pontos_total')
+    .eq('usuario_id', usuarioId)
+    .single()
+  const atual = data?.pontos_total ?? 0
+  await supabase
+    .from('streaks')
+    .update({ pontos_total: atual + bonus })
+    .eq('usuario_id', usuarioId)
+}
+
 export async function upsertStreakSupabase(usuarioId: string, dados: {
   streakAtual: number
   streakMaximo: number

@@ -9,7 +9,7 @@ import {
   getPistasTexto, getIntroNarrativa,
   verificarPalpite, calcularPontos,
 } from '@/lib/game'
-import { registrarResultado, getResultadoRodada } from '@/lib/perfil'
+import { registrarResultado, getResultadoRodada, aplicarBonusContrato } from '@/lib/perfil'
 import { getContratosAtivos } from '@/lib/contrato'
 
 import Pista from './Pista'
@@ -329,14 +329,17 @@ export default function JogoDesafio({
           onFechar={() => {
             setMostrarContrato(false)
             onContratosChange(getContratosAtivos().length)
-            // Não abre TelaResultado — o banner "ganhou" tem o botão "Próximo desafio"
-            // Para o último desafio, TelaFinalDia abre automaticamente via useEffect
           }}
           onProximoDesafio={onProximoDesafio ? () => {
             setMostrarContrato(false)
             onContratosChange(getContratosAtivos().length)
             onProximoDesafio()
           } : undefined}
+          onBonusResolvido={(bonus) => {
+            // Bônus da trivia de lendas → aplica imediatamente ao perfil
+            const perfilAtualizado = aplicarBonusContrato(bonus)
+            if (perfilAtualizado) onResultado(perfilAtualizado)
+          }}
         />
       )}
 

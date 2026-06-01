@@ -1,7 +1,7 @@
 // Gerenciamento de perfil local (localStorage) — sem login necessário
 
 import { Perfil, ResultadoRodada } from './types'
-import { criarUsuarioSupabase, buscarUsuarioPorCodigo, salvarResultadoSupabase, upsertStreakSupabase } from './supabase'
+import { criarUsuarioSupabase, buscarUsuarioPorCodigo, salvarResultadoSupabase, upsertStreakSupabase, getPontosDoServidor } from './supabase'
 
 /** Lê o supabase_id do usuário (armazenado no localStorage após sync) */
 function getUsuarioId(): string | null {
@@ -199,6 +199,55 @@ export function carregarResultados(): ResultadoRodada[] {
 export function getResultadoRodada(rodadaId: number): ResultadoRodada | null {
   const resultados = carregarResultados()
   return resultados.find(r => r.rodadaId === rodadaId) ?? null
+}
+
+/**
+ * Aplica o bônus de um contrato (trivia ou partida real) ao perfil local.
+ * Atualiza localStorage e sincroniza com Supabase.
+ * Retorna o perfil atualizado, ou null se não houver perfil.
+ */
+export function aplicarBonusContrato(bonusTotal: number): Perfil | null {
+  const perfil = carregarPerfil()
+  if (!perfil || bonusTotal <= 0) return perfil
+
+  const perfilAtualizado: Perfil = {
+    ...perfil,
+    pontosTotal: perfil.pontosTotal + bonusTotal,
+  }
+  salvarPerfil(perfilAtualizado)
+
+  // Sync para Supabase
+  const usuarioId = getUsuarioId()
+  if (usuarioId) {
+    void upsertStreakSupabase(usuarioId, {
+      streakAtual:      perfilAtualizado.streakAtual,
+      streakMaximo:     perfilAtualizado.streakMaximo,
+      ultimaRodada:     perfilAtualizado.ultimaRodada,
+      pontosTotal:      perfilAtualizado.pontosTotal,
+      rodadasJogadas:   perfilAtualizado.rodadasJogadas,
+      rodadasAcertadas: perfilAtualizado.rodadasAcertadas,
+    })
+  }
+
+  return perfilAtualizado
+}
+
+/**
+ * Sincroniza pontosTotal com o servidor.
+ * Se o Supabase tiver pontos maiores (ex: bônus de contratos resolvidos pelo cron
+ * enquanto o usuário estava offline), atualiza o perfil local.
+ */
+export async function sincronizarPontosDeServidor(): Promise<void> {
+  if (typeof window === 'undefined') return
+  const perfil = carregarPerfil()
+  if (!perfil) return
+  const usuarioId = getUsuarioId()
+  if (!usuarioId) return
+
+  const pontosServidor = await getPontosDoServidor(usuarioId)
+  if (pontosServidor !== null && pontosServidor > perfil.pontosTotal) {
+    salvarPerfil({ ...perfil, pontosTotal: pontosServidor })
+  }
 }
 
 /**

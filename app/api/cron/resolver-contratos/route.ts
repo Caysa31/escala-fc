@@ -16,7 +16,7 @@ import { supabase } from '@/lib/supabase'
 import { buscarStatusFixture, buscarStatsJogador } from '@/lib/api-football'
 import { calcularBonusBase } from '@/lib/contrato'
 import { DesempenhoPartida } from '@/lib/types'
-import { resolverContratoSupabase } from '@/lib/supabase'
+import { resolverContratoSupabase, incrementarPontosStreak } from '@/lib/supabase'
 
 // Linha do log para cada contrato processado
 type LogEntry = {
@@ -109,6 +109,11 @@ export async function GET(req: Request) {
 
       // 5. Resolver no Supabase
       await resolverContratoSupabase(c.id, bonusBase, bonusTotal, desempenho)
+
+      // 6. Incrementar pontos_total na tabela streaks do usuário
+      if (bonusTotal > 0 && c.usuario_id) {
+        await incrementarPontosStreak(c.usuario_id, bonusTotal)
+      }
 
       resolvidos++
       const detalheStat = stats

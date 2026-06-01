@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { Perfil } from '@/lib/types'
 import { getJogadoresDoDia } from '@/lib/game'
-import { carregarPerfil, getResultadoRodada } from '@/lib/perfil'
+import { carregarPerfil, getResultadoRodada, sincronizarPontosDeServidor } from '@/lib/perfil'
 import { getContratosAtivos } from '@/lib/contrato'
 
 import TelaPerfil, { StatsPerfil } from '@/components/TelaPerfil'
@@ -37,6 +37,13 @@ export default function Home() {
     setPerfil(p)
     setQtdContratosAtivos(getContratosAtivos().length)
     setCarregado(true)
+
+    // Sincroniza pontos com o servidor em background.
+    // Detecta bônus de contratos resolvidos pelo cron enquanto o usuário estava offline.
+    void sincronizarPontosDeServidor().then(() => {
+      const pAtualizado = carregarPerfil()
+      if (pAtualizado) setPerfil(pAtualizado)
+    })
   }, [])
 
   // Detecta quando todos os 3 desafios estão completos e mostra a tela final
