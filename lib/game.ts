@@ -129,20 +129,21 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
     : jogador.liga === 'Ligue 1' ? 'Ligue 1'
     : jogador.liga
 
+  // Regra: máximo 60 caracteres por frase — o sufixo do clube/liga já adiciona ~70 chars
   const posicaoFrase: Record<string, string> = {
-    'Goleiro':          'Entre os postes, é quase intransponível — não apenas defende, comanda. Sua presença transforma a defesa inteira',
-    'Zagueiro':         'Na zaga, é uma muralha. Cada duelo é uma batalha — e raramente sai perdendo',
-    'Lateral-direito':  'Pelo lado direito, atacar e defender são a mesma missão. Incansável no corredor, sobe e volta sem parar',
-    'Lateral-esquerdo': 'Pelo lado esquerdo, mistura ginga e garra num corredor que parece pertencer só a ele',
-    'Volante':          'No meio, é o escudo do time. Intercepta, desarma, distribui — sem ele o jogo simplesmente não funciona',
-    'Meia':             'No coração do jogo é onde ele vive. Tem visão que poucos possuem — cada passe parece um roteiro escrito antes de a jogada começar',
-    'Meia-atacante':    'Entre a criação e o gol existe um território que poucos sabem habitar. Ele mora lá',
-    'Ponta-direita':    'Pela direita, deixa o defensor no retrovisor. Velocidade e ginga que poucas laterais do mundo conseguem acompanhar',
-    'Ponta-esquerda':   'Pela esquerda, é um pesadelo que se repete toda vez que recebe a bola',
-    'Atacante':         'Quando ele recebe a bola de frente ao gol, o goleiro já sabe o que vem — mas raramente consegue fazer algo a respeito',
-    'Centroavante':     'Na área, é a referência que toda zaga teme. Cada cruzamento, cada bola aérea, é uma ameaça real e concreta',
-    'Ponta':            'Pelos flancos, carrega a bola como se fosse propriedade sua — e deixa laterais atordoados pelo caminho',
-    'Lateral':          'No corredor, equilibra arte e garra. Sobe como atacante, volta como defensor — incansável dos dois lados',
+    'Goleiro':          'Entre os postes, é intransponível — não defende, comanda',
+    'Zagueiro':         'Na zaga, cada duelo é uma batalha — e raramente perde',
+    'Lateral-direito':  'Pelo lado direito, ataque e defesa são a mesma missão',
+    'Lateral-esquerdo': 'Pelo lado esquerdo, velocidade e ginga no corredor',
+    'Volante':          'O escudo do time. Intercepta antes da jogada existir',
+    'Meia':             'No coração do jogo — cada passe parece escrito antes',
+    'Meia-atacante':    'Entre a criação e o gol — um espaço que poucos dominam',
+    'Ponta-direita':    'Pela direita, deixa defensores no retrovisor sempre',
+    'Ponta-esquerda':   'Pela esquerda, é um pesadelo que se repete sempre',
+    'Atacante':         'Vive para fazer a bola entrar. Cada chance, uma ameaça',
+    'Centroavante':     'Na área, é a referência que toda zaga teme',
+    'Ponta':            'Pelos flancos, carrega a bola como se fosse sua',
+    'Lateral':          'No corredor, sobe como atacante e volta como defensor',
   }
   const posicaoTexto = posicaoFrase[jogador.posicao] ?? `Atua como ${jogador.posicao}`
 
