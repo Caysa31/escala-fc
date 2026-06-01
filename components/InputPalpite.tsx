@@ -70,9 +70,9 @@ export default function InputPalpite({ onPalpite, desabilitado, tentativasAnteri
             spellCheck={false}
           />
 
-          {/* Dropdown de sugestões */}
+          {/* Dropdown de sugestões — aparece ACIMA do input (input está fixo no rodapé) */}
           {focado && sugestoes.length > 0 && (
-            <ul className="absolute z-50 w-full mt-1 bg-zinc-800 border border-zinc-600 rounded-xl overflow-hidden shadow-xl">
+            <ul className="absolute z-50 w-full bottom-full mb-2 bg-zinc-800 border border-zinc-600 rounded-xl overflow-hidden shadow-xl">
               {sugestoes.map(j => (
                 <li key={j.id}>
                   <button
