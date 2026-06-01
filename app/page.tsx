@@ -25,6 +25,10 @@ export default function Home() {
 
   // Flag para não mostrar a tela final mais de uma vez por sessão
   const finalDiaMostrado = useRef(false)
+  // Flag para ignorar a primeira checagem ao carregar a página.
+  // TelaFinalDia só deve aparecer quando o usuário ACABOU DE completar o último
+  // desafio nesta sessão — não ao entrar na página com resultados já no localStorage.
+  const isInitialLoad = useRef(true)
 
   const jogadoresDoDia = getJogadoresDoDia()
 
@@ -39,6 +43,14 @@ export default function Home() {
   // Usa perfil como trigger (muda após cada resultado registrado)
   useEffect(() => {
     if (!carregado || finalDiaMostrado.current) return
+
+    // Ignora a primeira checagem ao carregar a página:
+    // resultados no localStorage de sessões anteriores não devem abrir o modal.
+    // Só mostra quando perfil mudar após completar um desafio nesta sessão.
+    if (isInitialLoad.current) {
+      isInitialLoad.current = false
+      return
+    }
 
     const todosConcluidos = jogadoresDoDia.every(
       ({ rodadaId }) => getResultadoRodada(rodadaId) !== null
