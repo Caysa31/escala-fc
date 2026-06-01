@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { buscarJogadores } from '@/lib/game'
+import { buscarJogadores, verificarPalpite } from '@/lib/game'
 import { Jogador } from '@/lib/types'
 import { Send } from 'lucide-react'
 
@@ -22,8 +22,10 @@ export default function InputPalpite({ onPalpite, desabilitado, tentativasAnteri
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const v = e.target.value
     setValor(v)
+    // Filtra jogadores já tentados, comparando por nome canônico OU por apelido
+    // (ex: tentativa "Messi" deve suprimir "Lionel Messi" no autocomplete)
     const resultados = buscarJogadores(v).filter(
-      j => !tentativasAnteriores.includes(j.nome)
+      j => !tentativasAnteriores.some(t => verificarPalpite(t, j) || t === j.nome)
     )
     setSugestoes(resultados)
   }

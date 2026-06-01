@@ -30,7 +30,8 @@ type LogEntry = {
 export async function GET(req: Request) {
   // ── Auth ──────────────────────────────────────────────────
   const authHeader = req.headers.get('authorization')
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  const cronSecret = process.env.CRON_SECRET
+  if (!cronSecret || authHeader !== `Bearer ${cronSecret}`) {
     return NextResponse.json({ error: 'Não autorizado' }, { status: 401 })
   }
 
@@ -91,8 +92,8 @@ export async function GET(req: Request) {
             entrou:            stats.entrou,
             jogou70:           stats.minutos >= 70,
             criouChance:       stats.passesChave >= 1,
-            // golOuAssistencia = exatamente 1 contribuição (não os dois)
-            golOuAssistencia:  (stats.gols + stats.assistencias) === 1,
+            // golOuAssistencia = pelo menos 1 contribuição mas NÃO os dois
+            golOuAssistencia:  (stats.gols + stats.assistencias) >= 1 && !(stats.gols >= 1 && stats.assistencias >= 1),
             golEAssistencia:   stats.gols >= 1 && stats.assistencias >= 1,
             motm:              stats.rating !== null && stats.rating >= 8.0,
             dataPartida:       hoje,

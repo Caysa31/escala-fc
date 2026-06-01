@@ -15,6 +15,9 @@ function setUsuarioId(id: string): void {
   localStorage.setItem('escalafc_supabase_id', id)
 }
 
+// Lock em memória para evitar chamadas paralelas a sincronizarPerfilSupabase
+let _sincronizando = false
+
 /**
  * Cria (ou recupera) o usuário no Supabase e armazena o ID local.
  * Fire-and-forget — não bloqueia a criação do perfil.
@@ -22,17 +25,24 @@ function setUsuarioId(id: string): void {
 async function sincronizarPerfilSupabase(apelido: string, codigo: string): Promise<void> {
   // Já sincronizado anteriormente
   if (getUsuarioId()) return
+  // Evita chamadas concorrentes (race condition que duplicaria o usuário no Supabase)
+  if (_sincronizando) return
+  _sincronizando = true
 
-  // Tentar recuperar usuário existente pelo código
-  const existente = await buscarUsuarioPorCodigo(codigo)
-  if (existente?.id) {
-    setUsuarioId(existente.id)
-    return
+  try {
+    // Tentar recuperar usuário existente pelo código
+    const existente = await buscarUsuarioPorCodigo(codigo)
+    if (existente?.id) {
+      setUsuarioId(existente.id)
+      return
+    }
+
+    // Criar novo usuário no Supabase
+    const novoId = await criarUsuarioSupabase(apelido, codigo)
+    if (novoId) setUsuarioId(novoId)
+  } finally {
+    _sincronizando = false
   }
-
-  // Criar novo usuário no Supabase
-  const novoId = await criarUsuarioSupabase(apelido, codigo)
-  if (novoId) setUsuarioId(novoId)
 }
 
 const CHAVE_PERFIL = 'escalafc_perfil'
@@ -110,12 +120,16 @@ export function jaJogouHoje(perfil: Perfil, rodadaId: number): boolean {
 }
 
 /**
- * Registra o resultado de uma rodada e atualiza o perfil
+ * Registra o resultado de uma rodada e atualiza o perfil.
+ * Sempre relê o perfil do localStorage para evitar race condition
+ * quando dois desafios são concluídos em rápida sucessão.
  */
 export function registrarResultado(
-  perfil: Perfil,
+  _perfilIgnorado: Perfil,
   resultado: Omit<ResultadoRodada, 'data'>
 ): Perfil {
+  // Relê do localStorage para garantir o estado mais recente
+  const perfil = carregarPerfil() ?? _perfilIgnorado
   const hoje = new Date().toISOString().split('T')[0]
   const resultadoCompleto: ResultadoRodada = { ...resultado, data: hoje }
 
@@ -141,15 +155,14 @@ export function registrarResultado(
     novoStreak = 1 // Quebrou o streak
   }
 
-  // Atualizar perfil
+  // Atualizar perfil — rodadasJogadas e rodadasAcertadas contam por desafio, não por dia
   const perfilAtualizado: Perfil = {
     ...perfil,
     streakAtual: novoStreak,
     streakMaximo: Math.max(novoStreak, perfil.streakMaximo),
     pontosTotal: perfil.pontosTotal + resultado.pontos,
-    rodadasJogadas: perfil.rodadasJogadas + (perfil.ultimaRodada !== hoje ? 1 : 0),
-    rodadasAcertadas:
-      perfil.rodadasAcertadas + (resultado.pistaAcerto !== null && perfil.ultimaRodada !== hoje ? 1 : 0),
+    rodadasJogadas:   perfil.rodadasJogadas + 1,
+    rodadasAcertadas: perfil.rodadasAcertadas + (resultado.pistaAcerto !== null ? 1 : 0),
     ultimaRodada: hoje,
   }
 

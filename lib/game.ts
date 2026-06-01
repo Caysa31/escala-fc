@@ -141,6 +141,8 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
     'Ponta-esquerda':   'Pela esquerda, é um pesadelo para qualquer lateral do mundo',
     'Atacante':         'No ataque, vive para uma coisa só: a rede balançar',
     'Centroavante':     'Na área, é a referência que toda torcida quer e todo defensor teme',
+    'Ponta':            'Pelos flancos, carrega a bola como ninguém e deixa laterais no retrovisor',
+    'Lateral':          'No corredor, equilibra arte e garra entre o ataque e a defesa',
   }
   const posicaoTexto = posicaoFrase[jogador.posicao] ?? `Atua como ${jogador.posicao}`
 

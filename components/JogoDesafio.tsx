@@ -24,6 +24,7 @@ interface Props {
   perfil: Perfil | null
   indiceDesafio: number  // 0 = primeiro, 1 = segundo, 2 = terceiro
   mensagemMotivacional?: string  // exibida no topo quando o desafio anterior foi perdido
+  telaFinalAberta?: boolean      // suprime TelaResultado quando TelaFinalDia está visível
   onResultado: (perfilAtualizado: Perfil) => void
   onContratosChange: (qtd: number) => void
   onProximoDesafio?: () => void
@@ -31,18 +32,18 @@ interface Props {
 
 export default function JogoDesafio({
   jogador, rodadaId, perfil, indiceDesafio, mensagemMotivacional,
+  telaFinalAberta,
   onResultado, onContratosChange, onProximoDesafio,
 }: Props) {
   const pistasTexto = getPistasTexto(jogador)
   const introNarrativa = getIntroNarrativa(jogador)
 
-  // No primeiro desafio, começa com pistaAtual=0 (nenhuma pista revelada)
-  // para dar protagonismo à intro narrativa.
-  // Nos demais, começa em 1 (pista 1 já aberta).
+  // Todos os desafios começam com pistaAtual=0 (nenhuma pista revelada)
+  // para dar protagonismo à intro narrativa — 6 oportunidades consistentes em todos.
   const isFirstRodada = indiceDesafio === 0
 
   const [estado, setEstado] = useState<EstadoJogo>({
-    pistaAtual: isFirstRodada ? 0 : 1,
+    pistaAtual: 0,
     tentativas: [],
     status: 'jogando',
     pistaUsada: null,
@@ -68,7 +69,7 @@ export default function JogoDesafio({
         pistaUsada: resultado.pistaAcerto,
       })
     } else {
-      setEstado({ pistaAtual: indiceDesafio === 0 ? 0 : 1, tentativas: [], status: 'jogando', pistaUsada: null })
+      setEstado({ pistaAtual: 0, tentativas: [], status: 'jogando', pistaUsada: null })
     }
     setMostrarContrato(false)
     setMostrarResultado(false)
@@ -343,8 +344,8 @@ export default function JogoDesafio({
         />
       )}
 
-      {/* Tela de resultado */}
-      {mostrarResultado && !mostrarContrato && (
+      {/* Tela de resultado — suprimida se TelaFinalDia estiver aberta no pai */}
+      {mostrarResultado && !mostrarContrato && !telaFinalAberta && (
         <TelaResultado
           jogador={jogador}
           rodadaId={rodadaId}

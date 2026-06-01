@@ -151,15 +151,25 @@ export async function getRankingGeral(limite = 100) {
 export async function getPosicaoRanking(usuarioId: string): Promise<{ semanal: number; geral: number }> {
   if (!supabase) return { semanal: 0, geral: 0 }
 
-  const [{ data: semanalData }, { data: geralData }] = await Promise.all([
-    supabase.from('ranking_semanal').select('id'),
-    supabase.from('ranking_geral').select('id'),
+  // Conta quantos usuários têm mais pontos que o usuário atual — posição = count + 1
+  // Evita trazer todos os registros para o client (escalável)
+  const [semanalResult, geralResult] = await Promise.all([
+    supabase.from('ranking_semanal').select('pontos_semana').eq('id', usuarioId).single(),
+    supabase.from('ranking_geral').select('pontos_total').eq('id', usuarioId).single(),
   ])
 
-  const posSemanal = (semanalData ?? []).findIndex((r: {id: string}) => r.id === usuarioId) + 1
-  const posGeral   = (geralData   ?? []).findIndex((r: {id: string}) => r.id === usuarioId) + 1
+  const pontosSemanal = semanalResult.data?.pontos_semana ?? 0
+  const pontosGeral   = geralResult.data?.pontos_total   ?? 0
 
-  return { semanal: posSemanal, geral: posGeral }
+  const [{ count: acimaSemanal }, { count: acimaGeral }] = await Promise.all([
+    supabase.from('ranking_semanal').select('id', { count: 'exact', head: true }).gt('pontos_semana', pontosSemanal),
+    supabase.from('ranking_geral').select('id', { count: 'exact', head: true }).gt('pontos_total', pontosGeral),
+  ])
+
+  return {
+    semanal: (acimaSemanal ?? 0) + 1,
+    geral:   (acimaGeral   ?? 0) + 1,
+  }
 }
 
 // ── Contratos ─────────────────────────────────────────────────

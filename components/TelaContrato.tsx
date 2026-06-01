@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import {
   Contrato,
   Jogador,
@@ -30,10 +30,18 @@ export function ModalContrato({ jogador, rodadaId, pistaAcerto, onFechar, onProx
   const [triviaResposta, setTriviaResposta] = useState<number | null>(null)
   const [triviaResolvida, setTriviaResolvida] = useState(false)
   const [bonusTrivia, setBonusTrivia] = useState(0)
+  const contratoRef = useRef<Contrato | null>(null)
 
   const multiplicador = MULTIPLICADORES_CONTRATO[pistaAcerto]
   const bonusMax = calcularBonusMaximo(multiplicador)
-  const contrato = assinarContrato(rodadaId, jogador, pistaAcerto)
+
+  // Assina o contrato uma única vez ao montar o modal (evita chamada dupla no StrictMode)
+  useEffect(() => {
+    contratoRef.current = assinarContrato(rodadaId, jogador, pistaAcerto)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Lê o contrato atual (fallback síncrono para o primeiro render)
+  const contrato = contratoRef.current ?? assinarContrato(rodadaId, jogador, pistaAcerto)
 
   function handleTrivia(indice: number) {
     if (triviaResolvida) return
