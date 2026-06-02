@@ -195,18 +195,18 @@ export default function JogoDesafio({
   const introEmDestaque = estado.pistaAtual === 0 && estado.status === 'jogando'
 
   // ── Placar dinâmico ──────────────────────────────────────────
-  // Pontos que o jogador vai ganhar SE acertar agora
-  const pistaDisplay = estado.pistaAtual === 0 ? 1 : estado.pistaAtual
-  const pontosBrutosDisplay = PONTOS_BASE[pistaDisplay] ?? 20
+  // Pontos que o jogador vai ganhar SE acertar agora (baseado na pista atual)
+  // pistaAtual=0 → ainda não revelou → vale 100 (pista 1)
+  const pistaValor = estado.pistaAtual === 0 ? 1 : estado.pistaAtual
+  const pontosBrutosDisplay = PONTOS_BASE[pistaValor] ?? 20
   const pontosDisplay = Math.round(pontosBrutosDisplay * multiplicador)
 
   // Cor muda conforme os pontos caem (cria urgência visual)
   const corPts = (() => {
-    const ratio = pistaDisplay / totalPistas
-    if (ratio <= 1 / totalPistas) return 'text-yellow-400'   // pista 1 — dourado
-    if (ratio <= 2 / totalPistas) return 'text-green-400'    // pista 2 — verde
-    if (ratio <= 3 / totalPistas) return 'text-orange-400'   // pista 3 — laranja
-    return 'text-red-400'                                     // pistas 4+ — vermelho
+    if (pontosDisplay >= Math.round(100 * multiplicador)) return 'text-yellow-400'
+    if (pontosDisplay >= Math.round(60 * multiplicador))  return 'text-green-400'
+    if (pontosDisplay >= Math.round(40 * multiplicador))  return 'text-orange-400'
+    return 'text-red-400'
   })()
 
   // Flash animation quando os pontos caem (nova pista revelada)
@@ -369,14 +369,13 @@ export default function JogoDesafio({
             !onRevelar
             ? handleDestravar
             : undefined
-          // Pontos que o jogador ganha se acertar NESTA pista agora
-          const ptsPista = Math.round((PONTOS_BASE[num] ?? 20) * multiplicador)
-          // Perda sofrida ao revelar esta pista (diferença em relação à anterior)
-          const perdaPista = num > 1
-            ? Math.round(((PONTOS_BASE[num - 1] ?? 100) - (PONTOS_BASE[num] ?? 20)) * multiplicador)
-            : 0
-          // Custo de revelar a PRÓXIMA pista (mostrado no botão "Ver próxima dica")
-          const custoProxima = Math.round(((PONTOS_BASE[num] ?? 20) - (PONTOS_BASE[num + 1] ?? 0)) * multiplicador)
+          // Valor atual: pontos que o jogador ganha se acertar AGORA (antes de ver mais pistas)
+          // Aparece na próxima pista bloqueada, não na revelada
+          const ptsAtivos = Math.round((PONTOS_BASE[estado.pistaAtual] ?? 100) * multiplicador)
+          // Custo de revelar esta pista específica (quanto cai ao desbloqueá-la)
+          const custoEsta = Math.round(
+            ((PONTOS_BASE[num - 1] ?? 100) - (PONTOS_BASE[num] ?? 20)) * multiplicador
+          )
 
           return (
             <Pista
@@ -390,9 +389,9 @@ export default function JogoDesafio({
               subtitulo={num === 2 ? subtituloPista2 : undefined}
               onRevelar={onRevelar}
               onDestravar={onDestravar}
-              pontosAtual={atual && estado.status === 'jogando' ? ptsPista : undefined}
-              pontosPerda={atual && estado.status === 'jogando' && perdaPista > 0 ? perdaPista : undefined}
-              custoDestravar={onDestravar ? custoProxima : undefined}
+              // "Agora vale X pts" aparece na pista BLOQUEADA com botão de destravar
+              pontosAtual={onDestravar ? ptsAtivos : undefined}
+              custoDestravar={onDestravar && custoEsta > 0 ? custoEsta : undefined}
             />
           )
         })}

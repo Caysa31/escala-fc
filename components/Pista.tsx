@@ -178,26 +178,25 @@ export default function Pista({ numero, texto, revelada, atual, errou, correto, 
                 </p>
               )}
 
-              {/* Banner de pontos — só na pista ativa, enquanto jogando */}
-              {atual && pontosAtual !== undefined && (
-                <div className="mt-3 pt-2 border-t border-green-800/40 flex items-center justify-between">
-                  {pontosPerda ? (
-                    <span className="text-red-400 text-xs font-bold">▼ −{pontosPerda} pts</span>
-                  ) : (
-                    <span />
-                  )}
-                  <span className="text-yellow-400 text-sm font-black">
-                    Agora vale {pontosAtual} pts
-                  </span>
-                </div>
-              )}
+              {/* nada de banner de pontos na pista já revelada */}
             </>
           ) : (
             <div className="flex items-center gap-2">
               {clicavel ? (
                 <span className="text-blue-400 text-sm font-semibold">Toque para revelar →</span>
               ) : onDestravar ? (
-                <div className="flex items-center justify-between w-full">
+                <div className="space-y-2 w-full">
+                  {/* Valor atual + custo de revelar — decisão do jogador */}
+                  {pontosAtual !== undefined && (
+                    <div className="flex items-center justify-between">
+                      <span className="text-yellow-400 text-sm font-black">
+                        Agora vale {pontosAtual} pts
+                      </span>
+                      {custoDestravar !== undefined && (
+                        <span className="text-red-400 text-xs font-bold">−{custoDestravar} pts se revelar</span>
+                      )}
+                    </div>
+                  )}
                   <button
                     type="button"
                     onClick={e => { e.stopPropagation(); onDestravar() }}
@@ -205,9 +204,6 @@ export default function Pista({ numero, texto, revelada, atual, errou, correto, 
                   >
                     Ver próxima dica →
                   </button>
-                  {custoDestravar !== undefined && (
-                    <span className="text-red-400 text-xs font-bold">−{custoDestravar} pts</span>
-                  )}
                 </div>
               ) : (
                 <>
