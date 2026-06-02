@@ -46,7 +46,18 @@ export default function TelaResultado({
     }
   }
 
-  function compartilharWhatsApp() {
+  async function compartilharWhatsApp() {
+    // navigator.share abre o menu nativo do iOS/Android — usuário escolhe o app (WhatsApp, WA Business, Telegram…)
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({ text: texto })
+        return
+      } catch {
+        // Cancelou ou falhou — não faz nada
+        return
+      }
+    }
+    // Fallback: abre wa.me diretamente (Android sem Web Share API)
     const url = `https://wa.me/?text=${encodeURIComponent(texto)}`
     window.open(url, '_blank')
   }
