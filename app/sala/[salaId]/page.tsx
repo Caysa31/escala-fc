@@ -278,31 +278,77 @@ export default function SalaJogoPage() {
             </p>
           </div>
 
-          {/* ── Campeonato ── */}
+          {/* ── Bônus de Contrato ── */}
           <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 space-y-4">
             <div>
-              <p className="text-white font-bold text-sm">O Campeonato da Liga</p>
-              <p className="text-zinc-500 text-xs mt-1">A liga dura enquanto durar o futebol brasileiro</p>
+              <p className="text-white font-bold text-sm">⚡ Bônus de Contrato</p>
+              <p className="text-zinc-500 text-xs mt-1">Após acertar, você assina um contrato com o jogador — e ganha bônus pelo desempenho dele na próxima partida real</p>
             </div>
             <div className="space-y-2">
               {[
-                { comp: 'Brasileirão', emoji: '🇧🇷', status: 'Em andamento', ate: 'Dezembro 2025', cor: 'text-green-400' },
-                { comp: 'Copa do Brasil', emoji: '🏆', status: 'Em andamento', ate: 'Novembro 2025', cor: 'text-green-400' },
-                { comp: 'Libertadores', emoji: '⭐', status: 'Em andamento', ate: 'Novembro 2025', cor: 'text-green-400' },
+                { acao: 'Entrou em campo',       pts: '+10',  cor: 'text-zinc-300' },
+                { acao: 'Jogou 70+ minutos',     pts: '+20',  cor: 'text-zinc-300' },
+                { acao: 'Criou chance de gol',   pts: '+30',  cor: 'text-blue-300' },
+                { acao: 'Gol ou assistência',    pts: '+50',  cor: 'text-green-400' },
+                { acao: 'Gol E assistência',     pts: '+80',  cor: 'text-yellow-400' },
+                { acao: 'Man of the Match',      pts: '+100', cor: 'text-orange-400' },
+              ].map(r => (
+                <div key={r.acao} className="flex items-center justify-between bg-zinc-800 rounded-lg px-3 py-2">
+                  <p className="text-zinc-400 text-xs">{r.acao}</p>
+                  <p className={`font-black text-sm ${r.cor}`}>{r.pts} pts</p>
+                </div>
+              ))}
+            </div>
+            <div className="bg-zinc-800 border border-zinc-700 rounded-xl p-3 space-y-2">
+              <p className="text-zinc-400 text-xs font-bold uppercase tracking-wider">Multiplicador pelo momento do acerto</p>
+              <div className="grid grid-cols-5 gap-1 text-center">
+                {[
+                  { label: 'Histórico', mult: '×3.0', cor: 'text-yellow-400' },
+                  { label: 'Pista 1',   mult: '×3.0', cor: 'text-yellow-400' },
+                  { label: 'Pista 2',   mult: '×2.5', cor: 'text-green-400' },
+                  { label: 'Pista 3',   mult: '×2.0', cor: 'text-green-400' },
+                  { label: 'Pista 4+',  mult: '×1.1', cor: 'text-zinc-400' },
+                ].map(m => (
+                  <div key={m.label} className="bg-zinc-900 rounded-lg py-2 px-1">
+                    <p className={`font-black text-sm ${m.cor}`}>{m.mult}</p>
+                    <p className="text-zinc-600 text-xs mt-0.5 leading-tight">{m.label}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="text-zinc-600 text-xs text-center">
+                Acertar cedo + Man of the Match = até <span className="text-yellow-400 font-bold">+300 pts</span> de bônus!
+              </p>
+            </div>
+          </div>
+
+          {/* ── Campeonato ── */}
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 space-y-4">
+            <div>
+              <p className="text-white font-bold text-sm">🗓️ Duração do Campeonato</p>
+              <p className="text-zinc-500 text-xs mt-1">
+                A liga fica aberta enquanto os campeonatos estiverem rolando — e só encerra com a última rodada do <span className="text-white font-semibold">Brasileirão</span>
+              </p>
+            </div>
+            <div className="space-y-2">
+              {[
+                { comp: 'Libertadores',  emoji: '⭐', ate: 'Novembro 2025', cor: 'text-yellow-400' },
+                { comp: 'Copa do Brasil', emoji: '🏆', ate: 'Novembro 2025', cor: 'text-green-400' },
+                { comp: 'Brasileirão',   emoji: '🇧🇷', ate: 'Dezembro 2025 — encerramento da liga', cor: 'text-purple-400' },
               ].map(c => (
                 <div key={c.comp} className="flex items-center gap-3 bg-zinc-800 rounded-xl px-4 py-3">
                   <span className="text-xl flex-shrink-0">{c.emoji}</span>
                   <div className="flex-1">
                     <p className="text-white text-sm font-semibold">{c.comp}</p>
-                    <p className={`text-xs font-medium ${c.cor}`}>{c.status}</p>
+                    <p className={`text-xs font-medium ${c.cor}`}>{c.ate}</p>
                   </div>
-                  <p className="text-zinc-500 text-xs flex-shrink-0">até {c.ate}</p>
                 </div>
               ))}
             </div>
-            <div className="bg-purple-950 border border-purple-900 rounded-xl px-4 py-3">
-              <p className="text-purple-300 text-xs text-center leading-relaxed">
-                🏆 O campeão da liga é quem tiver <span className="text-white font-bold">mais pontos acumulados</span> ao final da última rodada do Brasileirão
+            <div className="bg-gradient-to-r from-purple-950 to-zinc-900 border border-purple-800 rounded-xl px-4 py-4 space-y-1 text-center">
+              <p className="text-2xl">👑</p>
+              <p className="text-white font-black text-base">Quem vence a liga?</p>
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                O jogador com <span className="text-yellow-400 font-bold">mais pontos acumulados</span> ao final da última rodada do Brasileirão é o campeão — somando pontos do jogo <span className="text-white font-semibold">e</span> bônus de contrato.
               </p>
             </div>
           </div>
