@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import {
   Perfil, Tentativa, EstadoJogo,
   PONTOS_BASE, TOTAL_PISTAS, Jogador,
@@ -194,6 +194,33 @@ export default function JogoDesafio({
   // Intro narrativa em destaque quando ainda não há pistas reveladas (qualquer desafio, estado inicial)
   const introEmDestaque = estado.pistaAtual === 0 && estado.status === 'jogando'
 
+  // ── Placar dinâmico ──────────────────────────────────────────
+  // Pontos que o jogador vai ganhar SE acertar agora
+  const pistaDisplay = estado.pistaAtual === 0 ? 1 : estado.pistaAtual
+  const pontosBrutosDisplay = PONTOS_BASE[pistaDisplay] ?? 20
+  const pontosDisplay = Math.round(pontosBrutosDisplay * multiplicador)
+
+  // Cor muda conforme os pontos caem (cria urgência visual)
+  const corPts = (() => {
+    const ratio = pistaDisplay / totalPistas
+    if (ratio <= 1 / totalPistas) return 'text-yellow-400'   // pista 1 — dourado
+    if (ratio <= 2 / totalPistas) return 'text-green-400'    // pista 2 — verde
+    if (ratio <= 3 / totalPistas) return 'text-orange-400'   // pista 3 — laranja
+    return 'text-red-400'                                     // pistas 4+ — vermelho
+  })()
+
+  // Flash animation quando os pontos caem (nova pista revelada)
+  const [flashPts, setFlashPts] = useState(false)
+  const prevPistaRef = useRef(estado.pistaAtual)
+  useEffect(() => {
+    if (estado.pistaAtual !== prevPistaRef.current && estado.pistaAtual > 0) {
+      prevPistaRef.current = estado.pistaAtual
+      setFlashPts(true)
+      const t = setTimeout(() => setFlashPts(false), 500)
+      return () => clearTimeout(t)
+    }
+  }, [estado.pistaAtual])
+
   return (
     <div className="space-y-4">
 
@@ -204,34 +231,13 @@ export default function JogoDesafio({
         </div>
       )}
 
-      {/* Status da rodada */}
-      {estado.status === 'jogando' && (
-        <div className={`rounded-xl px-4 py-3 text-center ${introEmDestaque ? 'bg-green-950 border border-green-800' : 'bg-zinc-800'}`}>
-          {introEmDestaque ? (
-            <p className="text-sm text-green-300">
-              ✨ Adivinhe pelo histórico — Vale{' '}
-              <span className="text-yellow-400 font-bold">100 pts</span>
-            </p>
-          ) : multiplicador > 1 ? (
-            <p className="text-sm text-zinc-300">
-              Pista{' '}
-              <span className="text-green-400 font-bold">{estado.pistaAtual}</span>
-              {' '}de {totalPistas} · Vale{' '}
-              <span className="text-zinc-400 line-through">{PONTOS_BASE[estado.pistaAtual]}</span>
-              {' '}
-              <span className="text-orange-400 font-bold">×{multiplicador}</span>
-              {' = '}
-              <span className="text-yellow-400 font-bold">{Math.round(PONTOS_BASE[estado.pistaAtual] * multiplicador)} pts</span>
-              {' 🏋️'}
-            </p>
-          ) : (
-            <p className="text-sm text-zinc-300">
-              Pista{' '}
-              <span className="text-green-400 font-bold">{estado.pistaAtual}</span>
-              {' '}de {totalPistas} · Vale{' '}
-              <span className="text-yellow-400 font-bold">{PONTOS_BASE[estado.pistaAtual]} pts</span>
-            </p>
-          )}
+      {/* Intro em destaque — só quando ainda não revelou nenhuma pista */}
+      {introEmDestaque && (
+        <div className="bg-green-950 border border-green-800 rounded-xl px-4 py-3 text-center">
+          <p className="text-sm text-green-300">
+            ✨ Adivinhe pelo histórico — Vale{' '}
+            <span className="text-yellow-400 font-bold">100 pts</span>
+          </p>
         </div>
       )}
 
@@ -431,17 +437,29 @@ export default function JogoDesafio({
           style={{ paddingBottom: 'max(12px, env(safe-area-inset-bottom))' }}
         >
           <div className="max-w-md mx-auto">
-            {/* Lembrete de pontos — sempre visível mesmo com scroll */}
-            <div className="text-center mb-2">
-              {introEmDestaque ? (
-                <p className="text-xs text-green-400 font-semibold">
-                  ✨ Adivinhe pelo histórico · Vale <span className="text-yellow-400">100 pts</span>
-                </p>
-              ) : (
-                <p className="text-xs text-zinc-400">
-                  Pista <span className="text-green-400 font-bold">{estado.pistaAtual}</span> de {totalPistas} · Vale <span className="text-yellow-400 font-bold">{PONTOS_BASE[estado.pistaAtual]} pts</span>
-                </p>
-              )}
+            {/* Placar sempre visível — grande, colorido, com flash ao cair */}
+            <div className="flex items-center justify-between mb-2 px-1">
+              <p className="text-zinc-500 text-xs">
+                {introEmDestaque
+                  ? 'Adivinhe pelo histórico'
+                  : `Pista ${estado.pistaAtual} de ${totalPistas}`}
+              </p>
+              <div
+                className={`flex items-baseline gap-1 transition-transform duration-300 ${
+                  flashPts ? 'scale-125' : 'scale-100'
+                }`}
+              >
+                {multiplicador > 1 && (
+                  <>
+                    <span className="text-zinc-500 text-xs line-through">{pontosBrutosDisplay}</span>
+                    <span className="text-orange-400 text-xs font-bold">×{multiplicador}</span>
+                  </>
+                )}
+                <span className={`text-2xl font-black leading-none transition-colors duration-300 ${corPts}`}>
+                  {pontosDisplay}
+                </span>
+                <span className="text-zinc-400 text-sm font-semibold">pts</span>
+              </div>
             </div>
             <InputPalpite
               onPalpite={handlePalpite}
