@@ -8,6 +8,7 @@ import { Perfil } from '@/lib/types'
 import { carregarPerfil } from '@/lib/perfil'
 import { getJogadoresDoDia } from '@/lib/game'
 import { criarSala, isSupabaseConfigurado } from '@/lib/supabase'
+import TelaPerfil from '@/components/TelaPerfil'
 
 export default function SalaPage() {
   const router = useRouter()
@@ -24,7 +25,7 @@ export default function SalaPage() {
   }, [])
 
   async function handleCriarSala() {
-    if (!perfil) { setErro('Jogue uma partida primeiro para criar seu perfil.'); return }
+    if (!perfil) return
     setCriando(true)
     setErro('')
 
@@ -44,16 +45,22 @@ export default function SalaPage() {
     setTimeout(() => setCopiado(false), 2500)
   }
 
-  function compartilharWhatsApp() {
+  async function compartilharWhatsApp() {
     const url = `${window.location.origin}/sala/${salaId}`
-    const texto = encodeURIComponent(
-      `🏆 Topa me vencer no ESCALA FC? Entre na minha sala e adivinhe o mesmo jogador!\n${url}`
-    )
-    window.open(`https://wa.me/?text=${texto}`, '_blank')
+    const texto = `🏆 Topa me vencer no ESCALA FC? Entre na minha sala e adivinhe o mesmo jogador!\n${url}`
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try { await navigator.share({ text: texto }); return } catch { return }
+    }
+    window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank')
   }
 
   function irParaSala() {
     if (salaId) router.push(`/sala/${salaId}`)
+  }
+
+  // ── Sem perfil — mostra criação de apelido ───────────────────
+  if (!perfil) {
+    return <TelaPerfil onCriar={p => setPerfil(p)} />
   }
 
   // ── Tela pós-criação ─────────────────────────────────────────
