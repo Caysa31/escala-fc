@@ -116,7 +116,7 @@ async function enviarPorTipo(tipo: string) {
     const resultado = await enviarNotificacao(
       tokens,
       '⚽ Novo desafio no ESCALA FC!',
-      '3 jogadores esperando você hoje. Qual é o seu streak? 🔥',
+      '3 jogadores esperando você hoje. Qual é a sua sequência? 🔥',
       '/'
     )
     return Response.json({ tipo: 'diario', tokens: tokens.length, ...resultado })
@@ -134,7 +134,7 @@ async function enviarPorTipo(tipo: string) {
 
     const resultado = await enviarNotificacao(
       tokens,
-      '🔥 Seu streak está em risco!',
+      '🔥 Sua sequência está em risco!',
       'Você ainda não jogou hoje. Vai deixar acabar a sequência? 😬',
       '/'
     )

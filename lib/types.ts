@@ -22,6 +22,11 @@ export interface Jogador {
   origemAnterior?: 'exterior' | 'brasil' | 'base'
   ligaAnterior?: string | null
 
+  // Pistas personalizadas por jogador (sobrescrevem o template automático quando presentes)
+  pista2?: string   // estilo de jogo — máx 60 chars (Capítulo 2)
+  pista3?: string   // origem/raiz — 1-2 frases (Capítulo 3)
+  pista4?: string   // trajetória — 1-2 frases (Capítulo 4)
+
   // IDs para integração API-Football v3 (null = lenda ou clube não mapeado)
   apiFootballTeamId?: number | null
   apiFootballLeagueId?: number | null

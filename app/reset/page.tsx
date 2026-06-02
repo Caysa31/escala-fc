@@ -29,7 +29,7 @@ export default function ResetPage() {
           <h1 className="text-white font-black text-xl">Resetar o jogo?</h1>
           <p className="text-zinc-400 text-sm mt-2">
             Isso apaga <span className="text-red-400 font-semibold">todos os seus dados</span>:
-            perfil, pontos, streak e contratos.
+            perfil, pontos, sequência e contratos.
           </p>
           <p className="text-zinc-600 text-xs mt-1">Essa ação não pode ser desfeita.</p>
         </div>

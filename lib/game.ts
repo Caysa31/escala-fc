@@ -242,7 +242,14 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
   const pista5 = `${jogador.clube}|${letrasReveladas}`
 
   // Pista 1 = Nome (blocos), Pista 2 = Posição — ordem invertida intencionalmente
-  return { 1: pista2, 2: pista1, 3: pista3, 4: pista4, 5: pista5 }
+  // Campos personalizados por jogador têm prioridade sobre o template automático
+  return {
+    1: pista2,
+    2: jogador.pista2 ?? pista1,
+    3: jogador.pista3 ?? pista3,
+    4: jogador.pista4 ?? pista4,
+    5: pista5,
+  }
 }
 
 /** Tipo de cada pista — todas texto */

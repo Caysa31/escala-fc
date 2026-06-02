@@ -27,7 +27,7 @@ export default function ModosPage() {
         <div className="bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3">
           <p className="text-zinc-400 text-xs leading-relaxed">
             🎮 Cada modo tem até <span className="text-white font-bold">{MAX_PLAYS_POR_DIA} partidas por dia</span>.
-            Pontos ganhos aqui contam para o seu total. Streak só conta no desafio diário.
+            Pontos ganhos aqui contam para o seu total. Sequência só conta no desafio diário.
           </p>
         </div>
 
