@@ -28,13 +28,24 @@ interface Props {
   onResultado: (perfilAtualizado: Perfil) => void
   onContratosChange: (qtd: number) => void
   onProximoDesafio?: () => void
+  // ── Modo Extra ────────────────────────────────────────────────
+  modoExtra?: boolean         // true: não afeta streak/stats, não abre ModalContrato
+  totalPistasMax?: number     // override de TOTAL_PISTAS (Relâmpago = 3)
+  labelProximoDesafio?: string // label do botão de próximo (padrão: "Próximo desafio →")
+  mensagemFimJogo?: string    // texto quando não há próximo desafio (padrão: "Calculando...")
 }
 
 export default function JogoDesafio({
   jogador, rodadaId, perfil, indiceDesafio, mensagemMotivacional,
   telaFinalAberta,
   onResultado, onContratosChange, onProximoDesafio,
+  modoExtra = false,
+  totalPistasMax,
+  labelProximoDesafio = 'Próximo desafio →',
+  mensagemFimJogo = 'Calculando resultado do dia...',
 }: Props) {
+  // Total de pistas dinâmico (Relâmpago sobrescreve TOTAL_PISTAS)
+  const totalPistas = totalPistasMax ?? TOTAL_PISTAS
   const pistasTexto = getPistasTexto(jogador)
   const introNarrativa = getIntroNarrativa(jogador)
 
@@ -119,33 +130,39 @@ export default function JogoDesafio({
       setEstado(novoEstado)
 
       if (perfil) {
-        const perfilAtualizado = registrarResultado(perfil, {
-          rodadaId,
-          jogadorId: jogador.id,
-          pistaAcerto: pistaEfetiva,
-          pontos,
-          tentativas: novasTentativas,
-        })
-        onResultado(perfilAtualizado)
+        if (modoExtra) {
+          // Modo Extra: só adiciona pontos, sem streak/stats
+          const perfilAtualizado = aplicarBonusContrato(pontos) ?? perfil
+          onResultado(perfilAtualizado)
+        } else {
+          const perfilAtualizado = registrarResultado(perfil, {
+            rodadaId,
+            jogadorId: jogador.id,
+            pistaAcerto: pistaEfetiva,
+            pontos,
+            tentativas: novasTentativas,
+          })
+          onResultado(perfilAtualizado)
+        }
       }
 
-      setMostrarContrato(true)
+      if (!modoExtra) setMostrarContrato(true)
     } else {
       const novaPista = estado.pistaAtual + 1
-      const acabou = novaPista > TOTAL_PISTAS
+      const acabou = novaPista > totalPistas
 
       const novoEstado: EstadoJogo = {
         ...estado,
         tentativas: novasTentativas,
-        pistaAtual: acabou ? TOTAL_PISTAS : novaPista,
+        pistaAtual: acabou ? totalPistas : novaPista,
         status: acabou ? 'perdeu' : 'jogando',
         pistaUsada: null,
       }
       setEstado(novoEstado)
 
       if (acabou) {
-        // Salva o resultado independente do fluxo
-        if (perfil) {
+        if (!modoExtra && perfil) {
+          // Modo normal: salva resultado no perfil
           const perfilAtualizado = registrarResultado(perfil, {
             rodadaId,
             jogadorId: jogador.id,
@@ -189,7 +206,7 @@ export default function JogoDesafio({
             <p className="text-sm text-zinc-300">
               Pista{' '}
               <span className="text-green-400 font-bold">{estado.pistaAtual}</span>
-              {' '}de {TOTAL_PISTAS} · Vale{' '}
+              {' '}de {totalPistas} · Vale{' '}
               <span className="text-yellow-400 font-bold">{PONTOS_BASE[estado.pistaAtual]} pts</span>
             </p>
           )}
@@ -207,28 +224,32 @@ export default function JogoDesafio({
           </div>
 
           {onProximoDesafio ? (
-            /* Desafios 1 ou 2 — tem próximo desafio */
+            /* Tem próximo desafio ou "Jogar Novamente" no modo extra */
             <div className="space-y-2">
-              <p className="text-zinc-300 text-sm">
-                Você ainda pode aumentar sua pontuação!
-              </p>
+              {!modoExtra && (
+                <p className="text-zinc-300 text-sm">
+                  Você ainda pode aumentar sua pontuação!
+                </p>
+              )}
               <button
                 onClick={onProximoDesafio}
                 className="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 rounded-xl text-sm transition-all"
               >
-                Próximo desafio →
+                {labelProximoDesafio}
               </button>
-              <button
-                onClick={() => setMostrarResultado(true)}
-                className="text-zinc-500 text-xs underline"
-              >
-                Ver detalhes
-              </button>
+              {!modoExtra && (
+                <button
+                  onClick={() => setMostrarResultado(true)}
+                  className="text-zinc-500 text-xs underline"
+                >
+                  Ver detalhes
+                </button>
+              )}
             </div>
           ) : (
-            /* Desafio 3 — TelaFinalDia abre automaticamente via useEffect */
+            /* Último desafio ou modo extra sem mais plays */
             <p className="text-zinc-400 text-xs animate-pulse">
-              Calculando resultado do dia...
+              {mensagemFimJogo}
             </p>
           )}
         </div>
@@ -248,14 +269,16 @@ export default function JogoDesafio({
                 onClick={onProximoDesafio}
                 className="w-full bg-zinc-600 hover:bg-zinc-500 text-white font-bold py-3 rounded-xl text-sm transition-all"
               >
-                Próximo desafio →
+                {labelProximoDesafio}
               </button>
-              <button
-                onClick={() => setMostrarResultado(true)}
-                className="text-zinc-500 text-xs underline"
-              >
-                Ver detalhes
-              </button>
+              {!modoExtra && (
+                <button
+                  onClick={() => setMostrarResultado(true)}
+                  className="text-zinc-500 text-xs underline"
+                >
+                  Ver detalhes
+                </button>
+              )}
             </div>
           ) : (
             <button
@@ -295,7 +318,7 @@ export default function JogoDesafio({
 
       {/* Pistas */}
       <div className="space-y-2">
-        {Array.from({ length: TOTAL_PISTAS }, (_, i) => i + 1).map(num => {
+        {Array.from({ length: totalPistas }, (_, i) => i + 1).map(num => {
           const revelada = num <= estado.pistaAtual
           const atual = num === estado.pistaAtual && estado.status === 'jogando'
           // Pista ficou vermelha se foi revelada, não é a atual e não é a pista de acerto
@@ -389,7 +412,7 @@ export default function JogoDesafio({
                 </p>
               ) : (
                 <p className="text-xs text-zinc-400">
-                  Pista <span className="text-green-400 font-bold">{estado.pistaAtual}</span> de {TOTAL_PISTAS} · Vale <span className="text-yellow-400 font-bold">{PONTOS_BASE[estado.pistaAtual]} pts</span>
+                  Pista <span className="text-green-400 font-bold">{estado.pistaAtual}</span> de {totalPistas} · Vale <span className="text-yellow-400 font-bold">{PONTOS_BASE[estado.pistaAtual]} pts</span>
                 </p>
               )}
             </div>

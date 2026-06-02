@@ -10,7 +10,7 @@ import TelaPerfil, { StatsPerfil } from '@/components/TelaPerfil'
 import JogoDesafio from '@/components/JogoDesafio'
 import { TelaContratosAtivos } from '@/components/TelaContrato'
 import TelaFinalDia from '@/components/TelaFinalDia'
-import { Flame, FileText, Globe, Users } from 'lucide-react'
+import { Flame, FileText, Globe, Users, Gamepad2 } from 'lucide-react'
 import Link from 'next/link'
 
 const HOJE = new Date().toISOString().split('T')[0]
@@ -193,19 +193,26 @@ export default function Home() {
         </div>
 
         {/* Navegação */}
-        <nav className="flex gap-2">
+        <nav className="grid grid-cols-3 gap-2">
+          <Link
+            href="/modos"
+            className="flex flex-col items-center justify-center gap-1 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white text-xs font-semibold py-3 rounded-xl transition-all"
+          >
+            <Gamepad2 size={18} className="text-purple-400" />
+            Modos Extra
+          </Link>
           <Link
             href="/ranking"
-            className="flex-1 flex items-center justify-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white text-sm font-semibold py-3 rounded-xl transition-all"
+            className="flex flex-col items-center justify-center gap-1 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white text-xs font-semibold py-3 rounded-xl transition-all"
           >
-            <Globe size={16} className="text-green-400" />
-            Ranking Global
+            <Globe size={18} className="text-green-400" />
+            Ranking
           </Link>
           <Link
             href="/grupos"
-            className="flex-1 flex items-center justify-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white text-sm font-semibold py-3 rounded-xl transition-all"
+            className="flex flex-col items-center justify-center gap-1 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white text-xs font-semibold py-3 rounded-xl transition-all"
           >
-            <Users size={16} className="text-green-400" />
+            <Users size={18} className="text-green-400" />
             Grupos
           </Link>
         </nav>
