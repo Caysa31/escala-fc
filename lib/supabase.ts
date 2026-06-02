@@ -326,7 +326,7 @@ function gerarCodigoSala(): string {
   return `${l()}${l()}${l()}${l()}${n()}${n()}`
 }
 
-export async function criarSala(jogadorId: number, criadorApelido: string): Promise<string | null> {
+export async function criarSala(jogadorId: number, criadorApelido: string, nomeLiga?: string): Promise<string | null> {
   if (!supabase) return null
   const id = gerarCodigoSala()
   const expiraEm = new Date(Date.now() + 6 * 60 * 60 * 1000).toISOString()
@@ -335,16 +335,17 @@ export async function criarSala(jogadorId: number, criadorApelido: string): Prom
     jogador_id: jogadorId,
     criador_apelido: criadorApelido,
     expira_em: expiraEm,
+    nome: nomeLiga ?? null,
   })
   if (error) { console.warn('[Supabase] criarSala:', error.message); return null }
   return id
 }
 
-export async function getSala(salaId: string): Promise<{ id: string; jogador_id: number; criador_apelido: string; expira_em: string } | null> {
+export async function getSala(salaId: string): Promise<{ id: string; jogador_id: number; criador_apelido: string; expira_em: string; nome: string | null } | null> {
   if (!supabase) return null
   const { data } = await supabase
     .from('salas')
-    .select('id, jogador_id, criador_apelido, expira_em')
+    .select('id, jogador_id, criador_apelido, expira_em, nome')
     .eq('id', salaId.toUpperCase())
     .single()
   return data ?? null
