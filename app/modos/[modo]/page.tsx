@@ -194,8 +194,8 @@ export default function ModoPage() {
             </div>
           )}
 
-          {/* Progresso de treino */}
-          {bonusAmanha > 1 && (
+          {/* Progresso de treino — só aparece na vitória */}
+          {resultado.ganhou && bonusAmanha > 1 && (
             <div className="bg-orange-950 border border-orange-800 rounded-xl py-3 px-4">
               <p className="text-orange-300 text-sm font-semibold">
                 🏋️ Bônus de amanhã: <span className="text-orange-400 font-black">×{bonusAmanha}</span>
