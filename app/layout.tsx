@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ESCALA FC — Adivinhe o jogador do dia",
-  description: "Jogo diário de futebol: adivinhe o jogador com o mínimo de pistas. Compartilhe seu resultado!",
+  title: "COBRA — Quem é o Craque?",
+  description: "Jogo diário de futebol: adivinhe o jogador com o mínimo de pistas. Prove que você é cobra no assunto!",
 };
 
 export default function RootLayout({

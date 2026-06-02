@@ -66,13 +66,13 @@ export function ModalContrato({ jogador, rodadaId, pistaAcerto, onFechar, onProx
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <FileText size={20} className="text-yellow-400" />
+            <FileText size={20} className="text-[#FFD23F]" />
             <h2 className="text-lg font-bold text-white">
               {jogador.lenda ? 'Contrato Histórico' : 'Contrato Assinado'}
             </h2>
           </div>
           {(jogador.lenda ? triviaResolvida : true) && (
-            <button onClick={handleFechar} className="text-zinc-500 hover:text-white">
+            <button onClick={handleFechar} className="text-[#8AB4CC] hover:text-white">
               <X size={20} />
             </button>
           )}
@@ -83,11 +83,11 @@ export function ModalContrato({ jogador, rodadaId, pistaAcerto, onFechar, onProx
           <span className="text-3xl">{jogador.bandeira}</span>
           <div>
             <p className="font-bold text-white">{jogador.nome}</p>
-            <p className="text-zinc-400 text-xs">{jogador.clube}</p>
+            <p className="text-[#8AB4CC] text-xs">{jogador.clube}</p>
           </div>
           <div className="ml-auto text-right">
-            <p className="text-yellow-400 font-black text-xl">{multiplicador}×</p>
-            <p className="text-zinc-500 text-xs">multiplicador</p>
+            <p className="text-[#FFD23F] font-black text-xl">{multiplicador}×</p>
+            <p className="text-[#8AB4CC] text-xs">multiplicador</p>
           </div>
         </div>
 
@@ -118,7 +118,7 @@ export function ModalContrato({ jogador, rodadaId, pistaAcerto, onFechar, onProx
                 </button>
                 <button
                   onClick={handleFechar}
-                  className="w-full text-zinc-500 hover:text-zinc-300 text-sm py-1 transition-colors"
+                  className="w-full text-[#8AB4CC] hover:text-zinc-300 text-sm py-1 transition-colors"
                 >
                   Ver resultado
                 </button>
@@ -153,14 +153,14 @@ function ContratoNormal({ multiplicador, bonusMax }: { multiplicador: number; bo
         <BonusRow emoji="⭐" label="Man of the Match" pts={BONUS_DESEMPENHO.motm} mult={multiplicador} />
       </div>
 
-      <div className="flex items-center gap-2 bg-yellow-950 border border-yellow-800 rounded-xl p-3">
-        <Zap size={16} className="text-yellow-400" />
-        <p className="text-yellow-300 text-sm">
+      <div className="flex items-center gap-2 bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-3">
+        <Zap size={16} className="text-[#FFD23F]" />
+        <p className="text-[#FFD23F] text-sm">
           Potencial máximo: <span className="font-black">+{bonusMax} pts</span>
         </p>
       </div>
 
-      <div className="flex items-center gap-2 text-zinc-500 text-xs">
+      <div className="flex items-center gap-2 text-[#8AB4CC] text-xs">
         <Clock size={12} />
         <span>Bônus calculado automaticamente após a partida dele</span>
       </div>
@@ -171,8 +171,8 @@ function ContratoNormal({ multiplicador, bonusMax }: { multiplicador: number; bo
 function BonusRow({ emoji, label, pts, mult }: { emoji: string; label: string; pts: number; mult: number }) {
   return (
     <div className="flex items-center justify-between text-sm">
-      <span className="text-zinc-400">{emoji} {label}</span>
-      <span className="text-green-400 font-semibold">+{Math.round(pts * mult)}</span>
+      <span className="text-[#8AB4CC]">{emoji} {label}</span>
+      <span className="text-[#00C853] font-semibold">+{Math.round(pts * mult)}</span>
     </div>
   )
 }
@@ -212,7 +212,7 @@ function TriviaContrato({
               if (i === trivia.respostaCorreta) estilo = 'bg-green-700 text-white'
               else if (i === triviaResposta && triviaResposta !== trivia.respostaCorreta)
                 estilo = 'bg-red-800 text-white'
-              else estilo = 'bg-zinc-800 text-zinc-500'
+              else estilo = 'bg-zinc-800 text-[#8AB4CC]'
             }
             return (
               <button
@@ -229,9 +229,9 @@ function TriviaContrato({
       </div>
 
       {!triviaResolvida && (
-        <div className="flex items-center gap-2 bg-yellow-950 border border-yellow-800 rounded-xl p-3">
-          <Zap size={16} className="text-yellow-400" />
-          <p className="text-yellow-300 text-sm">
+        <div className="flex items-center gap-2 bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-3">
+          <Zap size={16} className="text-[#FFD23F]" />
+          <p className="text-[#FFD23F] text-sm">
             Acerte e ganhe <span className="font-black">+{bonusSeAcertar} pts</span>
           </p>
         </div>
@@ -240,8 +240,8 @@ function TriviaContrato({
       {triviaResolvida && (
         <div className={`flex items-center gap-2 rounded-xl p-3 ${bonusTrivia > 0 ? 'bg-green-950 border border-green-800' : 'bg-zinc-800'}`}>
           {bonusTrivia > 0
-            ? <><CheckCircle size={16} className="text-green-400" /><p className="text-green-300 text-sm font-bold">+{bonusTrivia} pts ganhos!</p></>
-            : <><X size={16} className="text-zinc-400" /><p className="text-zinc-400 text-sm">Não acertou — sem bônus desta vez</p></>
+            ? <><CheckCircle size={16} className="text-[#00C853]" /><p className="text-[#4A9A6A] text-sm font-bold">+{bonusTrivia} pts ganhos!</p></>
+            : <><X size={16} className="text-[#8AB4CC]" /><p className="text-[#8AB4CC] text-sm">Não acertou — sem bônus desta vez</p></>
           }
         </div>
       )}
@@ -263,10 +263,10 @@ export function TelaContratosAtivos({ onFechar }: TelaContratosAtivosProps) {
       <div className="bg-zinc-900 border border-zinc-700 rounded-2xl w-full max-w-sm max-h-[80vh] flex flex-col">
         <div className="flex items-center justify-between p-5 border-b border-zinc-700">
           <div className="flex items-center gap-2">
-            <FileText size={18} className="text-yellow-400" />
+            <FileText size={18} className="text-[#FFD23F]" />
             <h2 className="font-bold text-white">Contratos Ativos</h2>
           </div>
-          <button onClick={onFechar} className="text-zinc-500 hover:text-white">
+          <button onClick={onFechar} className="text-[#8AB4CC] hover:text-white">
             <X size={20} />
           </button>
         </div>
@@ -275,7 +275,7 @@ export function TelaContratosAtivos({ onFechar }: TelaContratosAtivosProps) {
           {contratos.length === 0 ? (
             <div className="text-center py-8">
               <p className="text-4xl mb-3">📋</p>
-              <p className="text-zinc-400">Nenhum contrato ativo</p>
+              <p className="text-[#8AB4CC]">Nenhum contrato ativo</p>
               <p className="text-zinc-600 text-xs mt-1">Acerte o jogador do dia para assinar um</p>
             </div>
           ) : (
@@ -285,18 +285,18 @@ export function TelaContratosAtivos({ onFechar }: TelaContratosAtivosProps) {
                   <span className="text-2xl">{c.bandeira}</span>
                   <div className="flex-1">
                     <p className="font-bold text-white text-sm">{c.nomeJogador}</p>
-                    <p className="text-zinc-400 text-xs">{c.clube}</p>
+                    <p className="text-[#8AB4CC] text-xs">{c.clube}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-yellow-400 font-black">{c.multiplicador}×</p>
+                    <p className="text-[#FFD23F] font-black">{c.multiplicador}×</p>
                   </div>
                 </div>
-                <div className="flex items-center justify-between text-xs text-zinc-500">
+                <div className="flex items-center justify-between text-xs text-[#8AB4CC]">
                   <div className="flex items-center gap-1">
                     <Clock size={12} />
                     <span>Aguardando partida</span>
                   </div>
-                  <span className="text-green-400">até +{calcularBonusMaximo(c.multiplicador)} pts</span>
+                  <span className="text-[#00C853]">até +{calcularBonusMaximo(c.multiplicador)} pts</span>
                 </div>
               </div>
             ))

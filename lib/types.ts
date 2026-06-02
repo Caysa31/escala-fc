@@ -119,8 +119,9 @@ export const BONUS_DESEMPENHO = {
   motm:             100,
 } as const
 
-// Pontuação base por pista (5 pistas — pista 1 vale mais, pista 5 vale menos)
+// Pontuação base por pista (0 = histórico, 1-5 = pistas)
 export const PONTOS_BASE: Record<number, number> = {
+  0: 120, // histórico — acertou sem ver nenhuma pista
   1: 100,
   2: 80,
   3: 60,
@@ -128,8 +129,9 @@ export const PONTOS_BASE: Record<number, number> = {
   5: 20,
 }
 
-// Multiplicadores do Contrato por pista (quanto mais cedo acertou, maior o bônus)
+// Multiplicadores do Contrato por pista (0 = histórico, 1-5 = pistas)
 export const MULTIPLICADORES_CONTRATO: Record<number, number> = {
+  0: 3.0, // histórico — bônus máximo
   1: 3.0,
   2: 2.5,
   3: 2.0,

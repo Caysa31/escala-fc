@@ -12,7 +12,7 @@ export default function ListaTentativas({ tentativas }: ListaTentativasProps) {
 
   return (
     <div className="w-full space-y-2">
-      <p className="text-xs text-zinc-500 uppercase tracking-wide font-medium">Tentativas</p>
+      <p className="text-xs text-[#8AB4CC] uppercase tracking-wide font-medium">Tentativas</p>
       <div className="space-y-1">
         {tentativas.map((t, i) => {
           const isPulou = t.nome === '—'
@@ -22,10 +22,10 @@ export default function ListaTentativas({ tentativas }: ListaTentativasProps) {
               className={`
                 flex items-center gap-3 px-4 py-2 rounded-lg text-sm
                 ${t.status === 'acerto'
-                  ? 'bg-green-950 border border-green-700 text-green-300'
+                  ? 'bg-[#071A0F] border border-[#00C853]/40 text-[#00C853]'
                   : isPulou
-                    ? 'bg-zinc-800/60 border border-zinc-700 text-zinc-500'
-                    : 'bg-red-950 border border-red-900 text-red-300'
+                    ? 'bg-[#0F1D30] border border-[#1A3A5C] text-[#8AB4CC]'
+                    : 'bg-red-950/40 border border-red-900/40 text-red-300'
                 }
               `}
             >

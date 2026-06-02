@@ -73,26 +73,23 @@ export default function BotaoNotificacoes({ apelido, modo = 'banner' }: Props) {
 
   // Modo banner
   return (
-    <div className="bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 flex items-center gap-3">
-      <div className="w-9 h-9 bg-zinc-800 rounded-xl flex items-center justify-center flex-shrink-0">
-        <Bell size={18} className="text-yellow-400" />
+    <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl px-4 py-3 flex items-center gap-3">
+      <div className="w-9 h-9 bg-[#1A3A5C] rounded-xl flex items-center justify-center flex-shrink-0">
+        <Bell size={18} className="text-[#FFD23F]" />
       </div>
       <div className="flex-1 min-w-0">
         <p className="text-white font-semibold text-sm">Ativar notificações</p>
-        <p className="text-zinc-500 text-xs">Avisa quando novo desafio aparecer</p>
+        <p className="text-[#8AB4CC] text-xs">Avisa quando novo desafio aparecer</p>
       </div>
       <div className="flex items-center gap-2 shrink-0">
         <button
           onClick={handleAtivar}
           disabled={status === 'pedindo'}
-          className="bg-green-600 hover:bg-green-500 disabled:bg-zinc-700 text-white text-xs font-bold px-3 py-2 rounded-lg transition-all"
+          className="bg-[#00C853] hover:bg-[#00E060] disabled:bg-[#1A3A5C] disabled:text-[#8AB4CC] text-[#0A1626] text-xs font-bold px-3 py-2 rounded-lg transition-all"
         >
           {status === 'pedindo' ? '...' : 'Ativar'}
         </button>
-        <button
-          onClick={handleDispensar}
-          className="p-1.5 rounded-lg text-zinc-600 hover:text-zinc-400 transition-colors"
-        >
+        <button onClick={handleDispensar} className="p-1.5 rounded-lg text-[#5A8AAA] hover:text-[#8AB4CC] transition-colors">
           <X size={14} />
         </button>
       </div>

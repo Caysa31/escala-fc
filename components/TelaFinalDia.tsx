@@ -73,7 +73,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/85 backdrop-blur-sm p-3">
-      <div className="bg-zinc-900 border border-zinc-700 rounded-2xl w-full max-w-sm max-h-[95vh] overflow-y-auto">
+      <div className="bg-[#0A1626] border border-[#1A3A5C] rounded-2xl w-full max-w-sm max-h-[95vh] overflow-y-auto">
 
         {/* Botão fechar */}
         <div className="flex justify-end p-4 pb-0">
@@ -93,27 +93,28 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
 
           {/* ── PLACAR DO DIA ────────────────────────────── */}
           <div className="grid grid-cols-3 gap-2">
-            <div className="bg-zinc-800 rounded-xl p-3 text-center">
-              <Trophy size={16} className="text-yellow-400 mx-auto mb-1" />
-              <p className="text-yellow-400 font-black text-2xl">{pontosHoje}</p>
-              <p className="text-zinc-500 text-xs">pts hoje</p>
+            <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-3 text-center">
+              <Trophy size={16} className="text-[#FFD23F] mx-auto mb-1" />
+              <p className="text-[#FFD23F] font-black text-2xl">{pontosHoje}</p>
+              <p className="text-[#8AB4CC] text-xs">pts hoje</p>
+
             </div>
-            <div className="bg-zinc-800 rounded-xl p-3 text-center">
-              <p className="text-2xl font-black text-white">{acertos}<span className="text-zinc-500 text-base">/3</span></p>
-              <p className="text-zinc-500 text-xs mt-1">acertos</p>
+            <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-3 text-center">
+              <p className="text-2xl font-black text-[#FFD23F]">{acertos}<span className="text-[#8AB4CC] text-base">/3</span></p>
+              <p className="text-[#8AB4CC] text-xs mt-1">acertos</p>
             </div>
-            <div className="bg-zinc-800 rounded-xl p-3 text-center">
+            <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-3 text-center">
               <Flame size={16} className="text-orange-400 mx-auto mb-1" />
-              <p className="text-orange-400 font-black text-2xl">{perfil.streakAtual}</p>
-              <p className="text-zinc-500 text-xs">sequência</p>
+              <p className="text-[#FFD23F] font-black text-2xl">{perfil.streakAtual}</p>
+              <p className="text-[#8AB4CC] text-xs">sequência</p>
             </div>
           </div>
 
           {/* ── RANKING GLOBAL ───────────────────────────── */}
-          <div className="bg-zinc-800 rounded-xl p-4 flex items-center gap-3">
+          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-4 flex items-center gap-3">
             <Medal size={22} className="text-yellow-400 shrink-0" />
             <div className="flex-1">
-              <p className="text-zinc-400 text-xs uppercase tracking-wider font-semibold">Ranking global</p>
+              <p className="text-[#8AB4CC] text-xs uppercase tracking-wider font-semibold">Ranking global</p>
               <p className="text-white font-bold text-sm mt-0.5">
                 {posicaoRanking
                   ? `#${posicaoRanking} entre todos os jogadores`
@@ -123,7 +124,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
             </div>
             <div className="text-right shrink-0">
               <p className="text-zinc-500 text-xs">total</p>
-              <p className="text-green-400 font-black text-lg">{perfil.pontosTotal}</p>
+              <p className="text-[#FFD23F] font-black text-lg">{perfil.pontosTotal}</p>
             </div>
           </div>
 
@@ -140,7 +141,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
                 <div
                   key={rodadaId}
                   className={`flex items-center gap-3 rounded-xl p-3 border ${
-                    ganhou ? 'bg-green-950/60 border-green-900' : 'bg-zinc-800 border-zinc-700'
+                    ganhou ? 'bg-[#071A0F] border-[#00C853]/30' : 'bg-[#0F1D30] border-[#1A3A5C]'
                   }`}
                 >
                   <span className="text-xl shrink-0">{jogador.bandeira}</span>
@@ -151,7 +152,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
                   <div className="text-right shrink-0">
                     {ganhou ? (
                       <>
-                        <p className="text-green-400 font-black text-sm">+{pontos}</p>
+                        <p className="text-[#FFD23F] font-black text-sm">+{pontos}</p>
                         <p className="text-zinc-500 text-xs">pista {resultado?.pistaAcerto}</p>
                       </>
                     ) : (
@@ -181,12 +182,12 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
                     <p className="text-white text-xs font-bold">{c.nomeJogador}</p>
                     <p className="text-zinc-500 text-xs">{c.multiplicador}× multiplicador</p>
                   </div>
-                  <p className="text-yellow-400 font-bold text-sm">até +{calcularBonusMaximo(c.multiplicador)} pts</p>
+                  <p className="text-[#FFD23F] font-bold text-sm">até +{calcularBonusMaximo(c.multiplicador)} pts</p>
                 </div>
               ))}
               <div className="border-t border-yellow-900 pt-2 flex justify-between items-center">
                 <p className="text-yellow-500 text-xs">Bônus potencial total</p>
-                <p className="text-yellow-400 font-black text-lg">+{bonusPotencialTotal} pts</p>
+                <p className="text-[#FFD23F] font-black text-lg">+{bonusPotencialTotal} pts</p>
               </div>
             </div>
           )}
@@ -202,7 +203,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
             </button>
             <button
               onClick={desafiarAmigo}
-              className="w-full flex items-center justify-center gap-2 bg-zinc-700 hover:bg-zinc-600 text-white font-semibold rounded-xl py-3 text-sm transition-colors"
+              className="w-full flex items-center justify-center gap-2 bg-[#0F1D30] border border-[#1A3A5C] hover:border-[#00C853]/30 text-white font-semibold rounded-xl py-3 text-sm transition-all"
             >
               ⚔️ Desafiar um amigo
               <ChevronRight size={14} className="text-zinc-400" />

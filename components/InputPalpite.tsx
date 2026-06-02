@@ -59,11 +59,11 @@ export default function InputPalpite({ onPalpite, desabilitado, tentativasAnteri
             disabled={desabilitado}
             placeholder={desabilitado ? 'Rodada encerrada' : 'Digite o nome do jogador...'}
             className={`
-              w-full rounded-xl px-4 py-3 text-base bg-zinc-800 border-2 text-white placeholder-zinc-500
+              w-full rounded-xl px-4 py-3 text-base bg-[#0F1D30] border-2 text-white placeholder-[#2A4A6A]
               outline-none transition-all
               ${desabilitado
-                ? 'border-zinc-700 opacity-50 cursor-not-allowed'
-                : 'border-zinc-600 focus:border-green-400'
+                ? 'border-[#1A3A5C] opacity-50 cursor-not-allowed'
+                : 'border-[#1A3A5C] focus:border-[#00C853]'
               }
             `}
             autoComplete="off"
@@ -77,7 +77,7 @@ export default function InputPalpite({ onPalpite, desabilitado, tentativasAnteri
               do elemento pai (fixed z-40), que bloqueava a visibilidade. */}
           {focado && sugestoes.length > 0 && (
             <ul
-              className="fixed left-4 right-4 z-[999] bg-zinc-800 border border-zinc-600 rounded-xl overflow-hidden shadow-2xl max-h-56 overflow-y-auto"
+              className="fixed left-4 right-4 z-[999] bg-[#0F1D30] border border-[#1A3A5C] rounded-xl overflow-hidden shadow-2xl max-h-56 overflow-y-auto"
               style={{ bottom: 'calc(max(88px, 88px + env(safe-area-inset-bottom)))' }}
             >
               {sugestoes.map(j => (
@@ -85,12 +85,12 @@ export default function InputPalpite({ onPalpite, desabilitado, tentativasAnteri
                   <button
                     type="button"
                     onMouseDown={() => handleSugestao(j.nome)}
-                    className="w-full flex items-center gap-3 px-4 py-3 hover:bg-zinc-700 transition-colors text-left"
+                    className="w-full flex items-center gap-3 px-4 py-3 hover:bg-[#1A3A5C] transition-colors text-left border-b border-[#1A3A5C] last:border-0"
                   >
                     <span className="text-xl">{j.bandeira}</span>
                     <div>
                       <p className="font-semibold text-white text-sm">{j.nome}</p>
-                      <p className="text-xs text-zinc-400">{j.posicao} · {j.clube}</p>
+                      <p className="text-xs text-[#8AB4CC]">{j.posicao} · {j.clube}</p>
                     </div>
                   </button>
                 </li>
@@ -105,8 +105,8 @@ export default function InputPalpite({ onPalpite, desabilitado, tentativasAnteri
           className={`
             flex-shrink-0 rounded-xl px-5 py-3 font-bold text-sm transition-all flex items-center gap-2
             ${desabilitado || !valor.trim()
-              ? 'bg-zinc-700 text-zinc-500 cursor-not-allowed'
-              : 'bg-green-500 hover:bg-green-400 text-black'
+              ? 'bg-[#1A3A5C] text-[#8AB4CC] cursor-not-allowed'
+              : 'bg-[#00C853] hover:bg-[#00E060] text-[#0A1626]'
             }
           `}
         >

@@ -110,7 +110,7 @@ function LetrasNome({ codificado, atual, correto }: { codificado: string; atual:
 }
 
 // Label temático padrão de cada capítulo (pista 2 é sobrescrita por `subtitulo` via posição)
-const LABELS_PISTAS = ['O Nome', 'O Dom', 'A Raiz', 'A Jornada', 'O Lar']
+const LABELS_PISTAS = ['O Nome', 'O Dom', 'A Raiz', 'A Jornada', 'Time + Nome']
 
 export default function Pista({ numero, texto, revelada, atual, errou, correto, subtitulo, onRevelar, onDestravar, pontosAtual, pontosPerda, custoDestravar }: PistaProps) {
   // Determina o estado visual da pista
@@ -120,36 +120,36 @@ export default function Pista({ numero, texto, revelada, atual, errou, correto, 
   // Card
   const cardClass = revelada
     ? isVermelho
-      ? 'border-red-800 bg-red-950/60'
+      ? 'border-red-800 bg-red-950/40'
       : isVerde
-        ? 'border-green-400 bg-green-950 shadow-lg shadow-green-900/30'
-        : 'border-zinc-600 bg-zinc-800'
-    : 'border-zinc-700 bg-zinc-900'
+        ? 'border-[#00C853] bg-[#071A0F] shadow-lg shadow-[#00C853]/10'
+        : 'border-[#2A5275] bg-[#0F1D30]'
+    : 'border-[#2A5275] bg-[#0A1626]'
 
   // Bolinha do número
   const circuloClass = revelada
     ? isVermelho
       ? 'bg-red-700 text-white'
       : isVerde
-        ? 'bg-green-400 text-black'
-        : 'bg-zinc-600 text-white'
-    : 'bg-blue-950 border border-blue-600 text-blue-400'  // azul quando travada
+        ? 'bg-[#00C853] text-[#0A1626]'
+        : 'bg-[#1E3A5F] text-white'
+    : 'bg-[#0F1D30] border border-[#2A5275] text-[#8AB4CC]'
 
   // Label da pista
   const labelClass = revelada
     ? isVermelho
       ? 'text-red-500'
-      : 'text-zinc-400'
-    : 'text-zinc-600'
+      : 'text-[#8AB4CC]'
+    : 'text-[#8AB4CC]'
 
   // Texto do conteúdo (pistas 2, 3, 4)
-  const textoClass = isVerde ? 'text-green-300' : isVermelho ? 'text-red-200' : 'text-white'
+  const textoClass = isVerde ? 'text-[#4A9A6A]' : isVermelho ? 'text-red-200' : 'text-white'
 
   const clicavel = !revelada && !!onRevelar
 
   return (
     <div
-      className={`rounded-xl border-2 p-4 transition-all duration-300 ${cardClass} ${clicavel ? 'cursor-pointer active:scale-95 hover:border-blue-500 hover:bg-blue-950/30' : ''}`}
+      className={`rounded-xl border-2 p-4 transition-all duration-300 ${cardClass} ${clicavel ? 'cursor-pointer active:scale-95 hover:border-[#00C853]/60' : ''}`}
       onClick={clicavel ? onRevelar : undefined}
     >
       <div className="flex items-start gap-3">
@@ -160,9 +160,21 @@ export default function Pista({ numero, texto, revelada, atual, errou, correto, 
 
         {/* Conteúdo */}
         <div className="flex-1 min-w-0">
-          <p className={`text-xs font-medium mb-1 ${labelClass}`}>
-            {`Capítulo ${numero} · ${subtitulo ?? LABELS_PISTAS[numero - 1]}`}
-          </p>
+
+          {/* Rótulo secundário: "Capítulo X ·" mudo + nome da pista em destaque */}
+          <div className="flex items-baseline gap-1.5 mb-1.5">
+            <span className={`text-[10px] font-medium tracking-wide ${labelClass}`}>
+              Cap. {numero} ·
+            </span>
+            <span className={`text-sm font-bold ${
+              isVerde ? 'text-[#00C853]'
+              : isVermelho ? 'text-red-400'
+              : revelada ? 'text-white'
+              : 'text-white'
+            }`}>
+              {subtitulo ?? LABELS_PISTAS[numero - 1]}
+            </span>
+          </div>
 
           {revelada ? (
             <>
@@ -180,8 +192,8 @@ export default function Pista({ numero, texto, revelada, atual, errou, correto, 
 
               {/* Banner de pontos — aparece na pista recém-revelada (ativa) */}
               {atual && pontosAtual !== undefined && (
-                <div className="mt-3 pt-2 border-t border-green-800/40 text-right">
-                  <span className="text-yellow-400 text-sm font-black">
+                <div className="mt-3 pt-2 border-t border-[#2A5275] text-right">
+                  <span className="text-[#FFD23F] text-sm font-black">
                     Agora vale {pontosAtual} pts
                   </span>
                 </div>
@@ -190,13 +202,13 @@ export default function Pista({ numero, texto, revelada, atual, errou, correto, 
           ) : (
             <div className="flex items-center gap-2">
               {clicavel ? (
-                <span className="text-blue-400 text-sm font-semibold">Toque para revelar →</span>
+                <span className="text-[#00C853] text-sm font-semibold">Toque para revelar →</span>
               ) : onDestravar ? (
                 <div className="flex items-center justify-between w-full">
                   <button
                     type="button"
                     onClick={e => { e.stopPropagation(); onDestravar() }}
-                    className="text-xs font-semibold text-blue-400 border border-blue-800/60 rounded-lg px-3 py-1.5 hover:bg-blue-950/50 active:scale-95 transition-all"
+                    className="text-xs font-semibold text-[#00C853] border border-[#00C853]/30 rounded-lg px-3 py-1.5 hover:bg-[#00C853]/10 active:scale-95 transition-all"
                   >
                     Ver próxima dica →
                   </button>
@@ -205,10 +217,10 @@ export default function Pista({ numero, texto, revelada, atual, errou, correto, 
                   )}
                 </div>
               ) : (
-                <>
-                  <Lock size={14} className="text-zinc-600" />
-                  <span className="text-zinc-600 text-sm">Bloqueada</span>
-                </>
+                <div className="flex items-center gap-1.5">
+                  <Lock size={12} className="text-[#5A8AAA]" />
+                  <span className="text-[#8AB4CC] text-xs">bloqueada</span>
+                </div>
               )}
             </div>
           )}

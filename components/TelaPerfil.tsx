@@ -216,21 +216,41 @@ export function StatsPerfil({ perfil }: StatsPerfilProps) {
   }, [perfil.pontosTotal])
 
   return (
-    <div className="grid grid-cols-4 gap-2">
-      <StatCard icon={<Flame size={16} className="text-orange-400" />} valor={perfil.streakAtual} label="Sequência" />
-      <StatCard icon={<Trophy size={16} className="text-yellow-400" />} valor={pontosHoje} label="Hoje" />
-      <StatCard icon={<Medal size={16} className="text-yellow-400" />} valor={posicaoRanking ? `#${posicaoRanking}` : '—'} label="Ranking" />
-      <StatCard icon={<Trophy size={16} className="text-green-400" />} valor={perfil.pontosTotal} label="Total" />
+    <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl px-5 py-4">
+      {/* Nome do jogador */}
+      <p className="text-white font-bold text-base mb-3">Olá, {perfil.apelido} 👋</p>
+
+      {/* 4 stats em linha — mesmo card, só o número tem cor */}
+      <div className="grid grid-cols-4 gap-2">
+        <div className="text-center">
+          <p className="text-[#FFD23F] font-black text-2xl leading-none">{perfil.pontosTotal}</p>
+          <p className="text-[#8AB4CC] text-[10px] mt-1">pts total</p>
+        </div>
+        <div className="text-center border-l border-[#1A3A5C]">
+          <p className="text-[#FFD23F] font-black text-2xl leading-none">
+            {posicaoRanking ? `#${posicaoRanking}` : '—'}
+          </p>
+          <p className="text-[#8AB4CC] text-[10px] mt-1">ranking</p>
+        </div>
+        <div className="text-center border-l border-[#1A3A5C]">
+          <p className="text-[#FFD23F] font-black text-2xl leading-none">{perfil.streakAtual}</p>
+          <p className="text-[#8AB4CC] text-[10px] mt-1">sequência</p>
+        </div>
+        <div className="text-center border-l border-[#1A3A5C]">
+          <p className="text-[#FFD23F] font-black text-2xl leading-none">{pontosHoje}</p>
+          <p className="text-[#8AB4CC] text-[10px] mt-1">pts hoje</p>
+        </div>
+      </div>
     </div>
   )
 }
 
 function StatCard({ icon, valor, label }: { icon: React.ReactNode; valor: number | string; label: string }) {
   return (
-    <div className="bg-zinc-800 rounded-xl p-3 text-center">
+    <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-3 text-center">
       <div className="flex justify-center mb-1">{icon}</div>
       <p className="text-white font-bold text-lg leading-none">{valor}</p>
-      <p className="text-zinc-500 text-xs mt-1">{label}</p>
+      <p className="text-[#8AB4CC] text-xs mt-1">{label}</p>
     </div>
   )
 }

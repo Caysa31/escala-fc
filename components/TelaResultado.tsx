@@ -64,94 +64,80 @@ export default function TelaResultado({
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-      <div className="bg-zinc-900 border border-zinc-700 rounded-2xl w-full max-w-sm p-6 space-y-5">
+      <div className="bg-[#0A1626] border border-[#1A3A5C] rounded-2xl w-full max-w-sm p-6 space-y-4">
 
         {/* Cabeçalho */}
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-bold text-white">
             {ganhou ? '🎯 Acertou!' : '😬 Não foi dessa vez'}
           </h2>
-          <button
-            onClick={onFechar}
-            className="text-zinc-500 hover:text-white transition-colors"
-          >
+          <button onClick={onFechar} className="text-[#8AB4CC] hover:text-white transition-colors">
             <X size={20} />
           </button>
         </div>
 
         {/* Jogador revelado */}
-        <div className="bg-zinc-800 rounded-xl p-4 text-center">
+        <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-4 text-center">
           <p className="text-4xl mb-2">{jogador.bandeira}</p>
           <p className="text-2xl font-black text-white">{jogador.nome}</p>
-          <p className="text-zinc-400 text-sm mt-1">{jogador.posicao} · {jogador.clube}</p>
+          <p className="text-[#8AB4CC] text-sm mt-1">{jogador.posicao} · {jogador.clube}</p>
         </div>
 
         {/* Pontos */}
         {ganhou && (
-          <div className="flex items-center gap-3 bg-green-950 border border-green-800 rounded-xl p-4">
-            <Trophy size={24} className="text-yellow-400" />
+          <div className="flex items-center gap-3 bg-[#071A0F] border border-[#00C853]/30 rounded-xl p-4">
+            <Trophy size={24} className="text-[#FFD23F]" />
             <div>
-              <p className="text-green-300 font-bold text-lg">+{pontos} pontos</p>
-              <p className="text-green-600 text-xs">
-                Pista {pistaAcerto} · Contrato assinado com multiplicador {MULTIPLICADORES_CONTRATO[pistaAcerto!]}×
+              <p className="text-[#00C853] font-black text-xl">+{pontos} pts</p>
+              <p className="text-[#4A9A6A] text-xs">
+                {pistaAcerto === 0 ? 'Histórico' : `Pista ${pistaAcerto}`} · multiplicador {MULTIPLICADORES_CONTRATO[pistaAcerto!]}×
               </p>
             </div>
           </div>
         )}
 
         {!ganhou && (
-          <div className="bg-zinc-800 rounded-xl p-4 text-center">
+          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-4 text-center">
             {onProximoDesafio ? (
               <>
-                <p className="text-zinc-300 text-sm font-semibold">Sem contrato nessa 😤</p>
-                <p className="text-zinc-500 text-xs mt-0.5">Próximo desafio te espera 👇</p>
+                <p className="text-white text-sm font-semibold">Sem contrato nessa 😤</p>
+                <p className="text-[#8AB4CC] text-xs mt-0.5">Próximo desafio te espera 👇</p>
               </>
             ) : (
-              <p className="text-zinc-400 text-sm">Sem contrato hoje — tente amanhã! 🔄</p>
+              <p className="text-[#8AB4CC] text-sm">Sem contrato hoje — tente amanhã! 🔄</p>
             )}
           </div>
         )}
 
         {/* Grade de emojis */}
-        <div className="bg-zinc-800 rounded-xl p-4">
-          <p className="text-zinc-400 text-xs mb-2 text-center">ESCALA FC #{rodadaId}</p>
+        <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-4">
+          <p className="text-[#8AB4CC] text-xs mb-2 text-center">COBRA #Quem é o Craque #{rodadaId}</p>
           <p className="text-2xl text-center tracking-widest">
             {tentativas.map(t => t.status === 'acerto' ? '🟩' : '⬛').join('')}
           </p>
-          <p className="text-zinc-500 text-xs text-center mt-2">escalafe.com.br</p>
+          <p className="text-[#5A8AAA] text-xs text-center mt-2">cobra.com.br</p>
         </div>
 
         {/* Botões de compartilhar */}
         <div className="flex gap-2">
-          <button
-            onClick={copiar}
-            className={`
-              flex-1 flex items-center justify-center gap-2 rounded-xl py-3 font-semibold text-sm transition-all
-              ${copiado
-                ? 'bg-green-600 text-white'
-                : 'bg-zinc-700 hover:bg-zinc-600 text-white'
-              }
-            `}
+          <button onClick={copiar}
+            className={`flex-1 flex items-center justify-center gap-2 rounded-xl py-3 font-semibold text-sm transition-all
+              ${copiado ? 'bg-[#00C853] text-[#0A1626]' : 'bg-[#0F1D30] border border-[#1A3A5C] hover:border-[#00C853]/30 text-white'}`}
           >
             {copiado ? <Check size={16} /> : <Copy size={16} />}
             {copiado ? 'Copiado!' : 'Copiar'}
           </button>
-
-          <button
-            onClick={compartilharWhatsApp}
-            className="flex-1 flex items-center justify-center gap-2 rounded-xl py-3 font-semibold text-sm bg-green-600 hover:bg-green-500 text-white transition-all"
-          >
+          <button onClick={compartilharWhatsApp}
+            className="flex-1 flex items-center justify-center gap-2 rounded-xl py-3 font-semibold text-sm bg-[#00C853] hover:bg-[#00E060] text-[#0A1626] transition-all">
             <Share2 size={16} />
             WhatsApp
           </button>
         </div>
 
-        {/* Próximo desafio (se houver) */}
+        {/* Próximo desafio */}
         {onProximoDesafio && (
-          <button
-            onClick={() => { onFechar(); onProximoDesafio() }}
-            className="w-full flex items-center justify-center gap-2 rounded-xl py-4 font-bold text-base bg-green-600 hover:bg-green-500 text-white transition-all"
-          >
+          <button onClick={() => { onFechar(); onProximoDesafio() }}
+            className="w-full flex items-center justify-center gap-2 rounded-xl py-4 font-bold text-base bg-[#00C853] hover:bg-[#00E060] text-[#0A1626] transition-all">
             Próximo desafio →
           </button>
         )}
@@ -159,26 +145,24 @@ export default function TelaResultado({
         {/* Desafiar amigo */}
         <button
           onClick={() => {
-            // Codifica o resultado na URL: p=pistaAcerto, t=tentativas (1=acerto,0=erro)
             const t = tentativas.map(x => x.status === 'acerto' ? '1' : '0').join('')
             const p = pistaAcerto ?? 0
             const link = `${window.location.origin}/desafio/${rodadaId}?p=${p}&t=${t}`
-            const msg = `Consegui acertar o ESCALA FC #${rodadaId}${pistaAcerto ? ` na pista ${pistaAcerto}` : ''} — você consegue?\n${link}`
+            const msg = `Acertei o COBRA #${rodadaId}${pistaAcerto ? ` na pista ${pistaAcerto}` : ''} — você consegue?\n${link}`
             window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank')
           }}
-          className="w-full flex items-center justify-center gap-2 rounded-xl py-3 font-semibold text-sm bg-zinc-700 hover:bg-zinc-600 text-white transition-all"
+          className="w-full flex items-center justify-center gap-2 rounded-xl py-3 font-semibold text-sm bg-[#0F1D30] border border-[#1A3A5C] hover:border-[#00C853]/30 text-white transition-all"
         >
           <Swords size={16} />
           Desafiar amigo
         </button>
 
-        {/* Encerramento do dia — só mostra se não há próximo desafio */}
+        {/* Encerramento do dia */}
         {!onProximoDesafio && (
-          <div className="bg-zinc-800 border border-zinc-700 rounded-xl p-4 text-center space-y-1">
+          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-4 text-center space-y-1">
             <p className="text-2xl">🏆</p>
             <p className="text-white font-bold text-sm">Você completou os 3 desafios de hoje!</p>
-            <p className="text-zinc-400 text-xs">Novos desafios amanhã.</p>
-            <p className="text-zinc-500 text-xs mt-1">Ative as notificações para não perder 🔔</p>
+            <p className="text-[#8AB4CC] text-xs">Novos desafios amanhã.</p>
           </div>
         )}
       </div>

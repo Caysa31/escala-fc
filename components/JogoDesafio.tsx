@@ -122,8 +122,8 @@ export default function JogoDesafio({
     const novaTentativa: Tentativa = { nome, status: acertou ? 'acerto' : 'erro' }
     const novasTentativas = [...estado.tentativas, novaTentativa]
 
-    // pistaAtual=0 é tratado como pista 1 para fins de pontuação e salvamento
-    const pistaEfetiva = Math.max(1, estado.pistaAtual)
+    // pistaAtual=0 = acertou pelo histórico (120 pts), 1-5 = pistas normais
+    const pistaEfetiva = estado.pistaAtual
 
     if (acertou) {
       const pontosBrutos = calcularPontos(pistaEfetiva)
@@ -195,17 +195,15 @@ export default function JogoDesafio({
   const introEmDestaque = estado.pistaAtual === 0 && estado.status === 'jogando'
 
   // ── Placar dinâmico ──────────────────────────────────────────
-  // Pontos que o jogador vai ganhar SE acertar agora (pista onde está)
-  // pistaAtual=0 → intro, ainda vale 100 (pista 1)
-  const pistaValor = Math.max(1, estado.pistaAtual)
+  // Pontos que o jogador vai ganhar SE acertar agora
+  // pistaAtual=0 → histórico vale 120, pista 1 em diante segue PONTOS_BASE
+  const pistaValor = estado.pistaAtual  // 0 = histórico, 1-5 = pistas
   const pontosBrutosDisplay = PONTOS_BASE[pistaValor] ?? 20
   const pontosDisplay = Math.round(pontosBrutosDisplay * multiplicador)
 
-  // Cor muda conforme os pontos caem (cria urgência visual)
+  // Cor muda conforme os pontos caem (cria urgência visual) — sempre dourado até cair para vermelho
   const corPts = (() => {
-    if (pontosDisplay >= Math.round(100 * multiplicador)) return 'text-yellow-400'
-    if (pontosDisplay >= Math.round(60 * multiplicador))  return 'text-green-400'
-    if (pontosDisplay >= Math.round(40 * multiplicador))  return 'text-orange-400'
+    if (pontosDisplay >= Math.round(40 * multiplicador)) return 'text-[#FFD23F]'
     return 'text-red-400'
   })()
 
@@ -226,31 +224,30 @@ export default function JogoDesafio({
 
       {/* Banner motivacional (desafio anterior foi perdido) */}
       {mensagemMotivacional && (
-        <div className="bg-blue-950 border border-blue-800 rounded-xl px-4 py-3 text-center">
-          <p className="text-blue-300 text-sm font-semibold">{mensagemMotivacional}</p>
+        <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl px-4 py-3 text-center">
+          <p className="text-[#8AB4CC] text-sm font-semibold">{mensagemMotivacional}</p>
         </div>
       )}
 
       {/* Intro em destaque — só quando ainda não revelou nenhuma pista */}
       {introEmDestaque && (
-        <div className="bg-green-950 border border-green-800 rounded-xl px-4 py-3 text-center">
-          <p className="text-sm text-green-300">
-            ✨ Adivinhe pelo histórico — Vale{' '}
-            <span className="text-yellow-400 font-bold">100 pts</span>
+        <div className="bg-gradient-to-r from-[#071A0F] to-[#0A1626] border border-[#00C853]/30 rounded-xl px-4 py-3 flex items-center justify-between">
+          <p className="text-sm text-[#4A9A6A]">
+            ✨ Adivinhe pelo histórico
           </p>
+          <span className="text-[#FFD23F] font-black text-base">{Math.round((PONTOS_BASE[0] ?? 120) * multiplicador)} pts</span>
         </div>
       )}
 
       {estado.status === 'ganhou' && (
-        <div className="bg-green-950 border border-green-700 rounded-2xl px-5 py-5 text-center space-y-3">
-          {/* Pontuação em destaque */}
+        <div className="bg-[#071A0F] border border-[#00C853]/30 rounded-2xl px-5 py-5 text-center space-y-3">
           <div>
-            <p className="text-green-300 font-bold text-base">
-              🎯 Acertou na pista {estado.pistaUsada}!
+            <p className="text-[#4A9A6A] font-bold text-base">
+              🎯 {estado.pistaUsada === 0 ? 'Acertou pelo histórico!' : `Acertou na pista ${estado.pistaUsada}!`}
             </p>
-            <p className="text-yellow-400 font-black text-3xl mt-1">+{pontosRodada} pts</p>
+            <p className="text-[#FFD23F] font-black text-3xl mt-1">+{pontosRodada} pts</p>
             {!modoExtra && multiplicador > 1 && (
-              <p className="text-orange-400 text-xs font-semibold mt-1">
+              <p className="text-[#8AB4CC] text-xs font-semibold mt-1">
                 🏋️ Bônus de treino ×{multiplicador} ativado!
               </p>
             )}
@@ -327,11 +324,11 @@ export default function JogoDesafio({
       {/* Intro narrativa */}
       <div className={`rounded-xl px-4 py-5 transition-all duration-500 ${
         introEmDestaque
-          ? 'bg-zinc-900 border-2 border-green-500 shadow-lg shadow-green-900/40'
-          : 'bg-zinc-900 border border-zinc-700'
+          ? 'bg-[#0F1D30] border-2 border-[#00C853]/60 shadow-lg shadow-[#00C853]/10'
+          : 'bg-[#0F1D30] border border-[#1A3A5C]'
       }`}>
         <p className={`text-xs uppercase font-bold tracking-widest mb-3 ${
-          introEmDestaque ? 'text-green-400' : 'text-zinc-500'
+          introEmDestaque ? 'text-[#00C853]' : 'text-[#8AB4CC]'
         }`}>
           ⚡ Jogador do dia
         </p>
@@ -444,13 +441,13 @@ export default function JogoDesafio({
           O env(safe-area-inset-bottom) cobre o indicador home do iPhone. */}
       {estado.status === 'jogando' && inputMontado && (
         <div
-          className="fixed bottom-0 left-0 right-0 z-40 bg-zinc-950 border-t border-zinc-800 px-4 pt-2"
+          className="fixed bottom-0 left-0 right-0 z-40 bg-[#070E1A] border-t border-[#2A5275] px-4 pt-3"
           style={{ paddingBottom: 'max(12px, env(safe-area-inset-bottom))' }}
         >
           <div className="max-w-md mx-auto">
-            {/* Placar sempre visível — grande, colorido, com flash ao cair */}
+            {/* Placar sempre visível */}
             <div className="flex items-center justify-between mb-2 px-1">
-              <p className="text-zinc-500 text-xs">
+              <p className="text-[#8AB4CC] text-xs">
                 {introEmDestaque
                   ? 'Adivinhe pelo histórico'
                   : `Pista ${estado.pistaAtual} de ${totalPistas}`}
@@ -462,14 +459,14 @@ export default function JogoDesafio({
               >
                 {multiplicador > 1 && (
                   <>
-                    <span className="text-zinc-500 text-xs line-through">{pontosBrutosDisplay}</span>
+                    <span className="text-[#8AB4CC] text-xs line-through">{pontosBrutosDisplay}</span>
                     <span className="text-orange-400 text-xs font-bold">×{multiplicador}</span>
                   </>
                 )}
                 <span className={`text-2xl font-black leading-none transition-colors duration-300 ${corPts}`}>
                   {pontosDisplay}
                 </span>
-                <span className="text-zinc-400 text-sm font-semibold">pts</span>
+                <span className="text-[#8AB4CC] text-sm font-semibold">pts</span>
               </div>
             </div>
             <InputPalpite
