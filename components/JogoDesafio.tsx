@@ -56,10 +56,6 @@ export default function JogoDesafio({
   }
   const subtituloPista2 = chapterLabelPosicao[jogador.posicao] ?? 'O Dom'
 
-  // Todos os desafios começam com pistaAtual=0 (nenhuma pista revelada)
-  // para dar protagonismo à intro narrativa — 6 oportunidades consistentes em todos.
-  const isFirstRodada = indiceDesafio === 0
-
   const [estado, setEstado] = useState<EstadoJogo>({
     pistaAtual: 0,
     tentativas: [],
@@ -168,8 +164,8 @@ export default function JogoDesafio({
 
   const pontosRodada = estado.pistaUsada ? calcularPontos(estado.pistaUsada) : 0
 
-  // Intro narrativa em destaque quando ainda não há pistas reveladas (primeiro desafio, estado inicial)
-  const introEmDestaque = isFirstRodada && estado.pistaAtual === 0 && estado.status === 'jogando'
+  // Intro narrativa em destaque quando ainda não há pistas reveladas (qualquer desafio, estado inicial)
+  const introEmDestaque = estado.pistaAtual === 0 && estado.status === 'jogando'
 
   return (
     <div className="space-y-4">
@@ -306,8 +302,8 @@ export default function JogoDesafio({
           const errou = revelada && (num < estado.pistaAtual || estado.status === 'perdeu')
           // Pista fica verde permanente se foi onde o jogador acertou
           const correto = estado.status === 'ganhou' && num === estado.pistaUsada
-          // No 1º desafio, pista 1 é clicável para revelar quando ainda não há pistas abertas
-          const onRevelar = isFirstRodada && estado.pistaAtual === 0 && num === 1 && estado.status === 'jogando'
+          // Pista 1 é clicável para revelar em todos os desafios quando ainda não há pistas abertas
+          const onRevelar = estado.pistaAtual === 0 && num === 1 && estado.status === 'jogando'
             ? () => setEstado(e => ({ ...e, pistaAtual: 1 }))
             : undefined
           // Botão "Ver próxima dica" aparece apenas na pista seguinte à atual (quando em jogo)
