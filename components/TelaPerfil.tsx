@@ -131,7 +131,7 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
             <button
               type="button"
               onClick={() => { setModoRecuperacao(true); setErro('') }}
-              className="w-full text-zinc-500 hover:text-zinc-300 text-sm text-center py-2 transition-colors"
+              className="w-full text-zinc-400 hover:text-white text-sm font-semibold text-center py-2 underline underline-offset-4 decoration-zinc-600 hover:decoration-zinc-400 transition-colors"
             >
               Já joguei antes →
             </button>
