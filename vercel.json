@@ -8,6 +8,14 @@
     {
       "path": "/api/cron/resolver-contratos",
       "schedule": "0 8 * * *"
+    },
+    {
+      "path": "/api/notif/send",
+      "schedule": "0 3 * * *"
+    },
+    {
+      "path": "/api/notif/send",
+      "schedule": "0 23 * * *"
     }
   ]
 }

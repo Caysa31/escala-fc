@@ -270,6 +270,31 @@ export async function getContratosResolvidosSupabase(usuarioId: string) {
   return data ?? []
 }
 
+// ── Notificações Push (FCM Tokens) ───────────────────────────
+
+export async function salvarTokenNotificacao(payload: {
+  token: string
+  usuarioId?: string
+  apelido?: string
+}): Promise<void> {
+  if (!supabase) return
+  try {
+    await supabase.from('notif_tokens').upsert({
+      fcm_token:    payload.token,
+      usuario_id:   payload.usuarioId ?? null,
+      apelido:      payload.apelido ?? null,
+      atualizado_em: new Date().toISOString(),
+    }, { onConflict: 'fcm_token' })
+  } catch (err) {
+    console.warn('[Supabase] salvarTokenNotificacao:', err)
+  }
+}
+
+export async function atualizarUltimaRodadaToken(token: string, data: string): Promise<void> {
+  if (!supabase) return
+  await supabase.from('notif_tokens').update({ ultima_rodada: data }).eq('fcm_token', token)
+}
+
 // ── Salas Privadas (Multiplayer) ──────────────────────────────
 
 export interface SalaResultado {

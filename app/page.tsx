@@ -10,6 +10,7 @@ import TelaPerfil, { StatsPerfil } from '@/components/TelaPerfil'
 import JogoDesafio from '@/components/JogoDesafio'
 import { TelaContratosAtivos } from '@/components/TelaContrato'
 import TelaFinalDia from '@/components/TelaFinalDia'
+import BotaoNotificacoes from '@/components/BotaoNotificacoes'
 import { Flame, FileText, Globe, Users, Gamepad2, Swords } from 'lucide-react'
 import Link from 'next/link'
 
@@ -161,6 +162,9 @@ export default function Home() {
             )
           })}
         </div>
+
+        {/* Banner de notificações — aparece de forma não intrusiva */}
+        <BotaoNotificacoes apelido={perfil.apelido} />
 
         {/* Jogo do desafio ativo */}
         <JogoDesafio
