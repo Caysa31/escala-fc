@@ -2,26 +2,26 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { recuperarPerfilPorCodigo } from '@/lib/perfil'
+import { recuperarPerfilPorApelido } from '@/lib/perfil'
 
 export default function RecuperarPage() {
   const router = useRouter()
-  const [codigo, setCodigo] = useState('')
+  const [apelido, setApelido] = useState('')
   const [erro, setErro] = useState('')
   const [recuperando, setRecuperando] = useState(false)
   const [sucesso, setSucesso] = useState('')
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    const cod = codigo.trim()
-    if (!cod) { setErro('Digite seu código de recuperação'); return }
+    const nome = apelido.trim()
+    if (!nome) { setErro('Digite seu apelido'); return }
 
     setRecuperando(true)
     setErro('')
     try {
-      const perfil = await recuperarPerfilPorCodigo(cod)
+      const perfil = await recuperarPerfilPorApelido(nome)
       if (!perfil) {
-        setErro('Código não encontrado. Verifique e tente de novo.')
+        setErro('Apelido não encontrado. Verifique como digitou.')
         return
       }
       setSucesso(`Conta de ${perfil.apelido} restaurada! Redirecionando...`)
@@ -48,23 +48,23 @@ export default function RecuperarPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="bg-zinc-900 border border-zinc-700 rounded-2xl p-4">
               <p className="text-zinc-400 text-xs leading-relaxed">
-                Digite o código <span className="text-white font-bold">FC-XXXXX</span> que aparece
-                na tela principal do jogo, abaixo dos desafios. Seus pontos e apelido serão restaurados.
+                Digite o <span className="text-white font-bold">apelido</span> que você escolheu
+                quando entrou no jogo. Seus pontos serão restaurados.
               </p>
             </div>
 
             <div>
-              <label className="block text-zinc-400 text-sm mb-2">Código de recuperação:</label>
+              <label className="block text-zinc-400 text-sm mb-2">Qual era o seu apelido?</label>
               <input
                 type="text"
-                value={codigo}
-                onChange={e => { setCodigo(e.target.value.toUpperCase()); setErro('') }}
-                placeholder="FC-XXXXX"
-                maxLength={10}
-                className="w-full bg-zinc-800 border-2 border-zinc-600 focus:border-blue-400 rounded-xl px-4 py-3 text-white placeholder-zinc-500 outline-none transition-colors text-xl font-mono tracking-widest text-center"
+                value={apelido}
+                onChange={e => { setApelido(e.target.value); setErro('') }}
+                placeholder="Ex: CraqueDaSala"
+                maxLength={20}
+                className="w-full bg-zinc-800 border-2 border-zinc-600 focus:border-blue-400 rounded-xl px-4 py-3 text-white placeholder-zinc-500 outline-none transition-colors text-base"
                 autoFocus
               />
-              {erro && <p className="text-red-400 text-xs mt-2 text-center">{erro}</p>}
+              {erro && <p className="text-red-400 text-xs mt-2">{erro}</p>}
             </div>
 
             <button

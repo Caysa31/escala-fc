@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Perfil } from '@/lib/types'
-import { criarPerfil, recuperarPerfilPorCodigo, getResultadoRodada } from '@/lib/perfil'
+import { criarPerfil, recuperarPerfilPorApelido, getResultadoRodada } from '@/lib/perfil'
 import { getJogadoresDoDia } from '@/lib/game'
 import { getPosicaoRanking, verificarApelidoDisponivel } from '@/lib/supabase'
 import { Flame, Trophy, Medal } from 'lucide-react'
@@ -19,7 +19,7 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
 
   // Fluxo de recuperação
   const [modoRecuperacao, setModoRecuperacao] = useState(false)
-  const [codigo, setCodigo] = useState('')
+  const [apelidoRecuperacao, setApelidoRecuperacao] = useState('')
   const [erroRecuperacao, setErroRecuperacao] = useState('')
   const [recuperando, setRecuperando] = useState(false)
 
@@ -47,15 +47,15 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
 
   async function handleRecuperar(e: React.FormEvent) {
     e.preventDefault()
-    const cod = codigo.trim()
-    if (!cod) { setErroRecuperacao('Digite seu código de recuperação'); return }
+    const apelido = apelidoRecuperacao.trim()
+    if (!apelido) { setErroRecuperacao('Digite seu apelido'); return }
 
     setRecuperando(true)
     setErroRecuperacao('')
     try {
-      const perfil = await recuperarPerfilPorCodigo(cod)
+      const perfil = await recuperarPerfilPorApelido(apelido)
       if (!perfil) {
-        setErroRecuperacao('Código não encontrado. Verifique e tente de novo.')
+        setErroRecuperacao('Apelido não encontrado. Verifique como digitou.')
         return
       }
       onCriar(perfil)
@@ -142,17 +142,17 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
         {modoRecuperacao && (
           <form onSubmit={handleRecuperar} className="space-y-3">
             <div>
-              <label className="block text-zinc-400 text-sm mb-1">Código de recuperação:</label>
+              <label className="block text-zinc-400 text-sm mb-1">Qual era o seu apelido?</label>
               <p className="text-zinc-600 text-xs mb-2">
-                Encontre o código FC-XXXXX na tela principal do jogo, abaixo do desafio.
+                O mesmo apelido que você escolheu quando entrou no jogo.
               </p>
               <input
                 type="text"
-                value={codigo}
-                onChange={e => { setCodigo(e.target.value.toUpperCase()); setErroRecuperacao('') }}
-                placeholder="Ex: FC-abc12"
-                maxLength={10}
-                className="w-full bg-zinc-800 border-2 border-zinc-600 focus:border-blue-400 rounded-xl px-4 py-3 text-white placeholder-zinc-500 outline-none transition-colors text-base font-mono tracking-widest"
+                value={apelidoRecuperacao}
+                onChange={e => { setApelidoRecuperacao(e.target.value); setErroRecuperacao('') }}
+                placeholder="Ex: CraqueDaSala"
+                maxLength={20}
+                className="w-full bg-zinc-800 border-2 border-zinc-600 focus:border-blue-400 rounded-xl px-4 py-3 text-white placeholder-zinc-500 outline-none transition-colors text-base"
                 autoFocus
               />
               {erroRecuperacao && <p className="text-red-400 text-xs mt-1">{erroRecuperacao}</p>}

@@ -53,6 +53,17 @@ export async function verificarApelidoDisponivel(apelido: string): Promise<boole
   return !data || data.length === 0
 }
 
+export async function buscarUsuarioPorApelido(apelido: string) {
+  if (!supabase) return null
+  const { data } = await supabase
+    .from('usuarios')
+    .select('id, apelido, codigo')
+    .ilike('apelido', apelido)
+    .limit(1)
+    .single()
+  return data
+}
+
 // ── Resultados ────────────────────────────────────────────────
 
 export async function salvarResultadoSupabase(payload: {
