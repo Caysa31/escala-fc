@@ -166,75 +166,167 @@ export default function SalaJogoPage() {
   // ── Lobby — boas-vindas antes do jogo ───────────────────────
   if (!entrou && sala && !expirou) {
     const nomeLiga = sala.nome ?? `Sala ${salaId}`
-    return (
-      <main className="min-h-screen bg-zinc-950 text-white flex flex-col">
-        <div className="max-w-md mx-auto px-4 py-8 w-full space-y-6 flex-1 flex flex-col justify-center">
+    const lider = resultadosOrdenados[0]
 
-          {/* Emblema da liga */}
-          <div className="text-center space-y-2">
-            <div className="text-6xl">🏆</div>
-            <h1 className="text-3xl font-black text-white tracking-tight">{nomeLiga}</h1>
-            <p className="text-purple-400 text-sm font-semibold">
-              Criada por {sala.criador_apelido}
-            </p>
+    return (
+      <main className="min-h-screen bg-zinc-950 text-white">
+        <div className="max-w-md mx-auto px-4 py-8 space-y-5 pb-32">
+
+          {/* ── Hero ── */}
+          <div className="relative bg-gradient-to-b from-purple-950 to-zinc-950 border border-purple-800 rounded-3xl px-6 pt-8 pb-6 text-center overflow-hidden">
+            {/* Brilho decorativo */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-40 bg-purple-600/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative z-10 space-y-3">
+              <div className="text-6xl">🏆</div>
+              <div>
+                <p className="text-purple-400 text-xs font-bold uppercase tracking-widest mb-1">Liga Privada</p>
+                <h1 className="text-3xl font-black text-white tracking-tight leading-tight">{nomeLiga}</h1>
+              </div>
+              <p className="text-zinc-400 text-sm">
+                Criada por <span className="text-purple-300 font-semibold">{sala.criador_apelido}</span>
+              </p>
+              {/* Timer */}
+              <div className="inline-flex items-center gap-1.5 bg-zinc-900/80 border border-zinc-700 rounded-full px-3 py-1.5">
+                <Clock size={12} className="text-zinc-500" />
+                <span className="text-zinc-400 text-xs font-semibold">
+                  {horasRestantes}h{minutosRestantes.toString().padStart(2,'0')}m restantes
+                </span>
+              </div>
+            </div>
           </div>
 
-          {/* Participantes já na sala */}
-          {resultados.length > 0 && (
-            <div className="bg-purple-950 border border-purple-800 rounded-2xl px-5 py-4 text-center">
-              <p className="text-purple-300 text-sm">
-                <span className="text-white font-black text-lg">{resultados.length}</span>{' '}
-                {resultados.length === 1 ? 'jogador já jogou' : 'jogadores já jogaram'}
-              </p>
-              <p className="text-purple-500 text-xs mt-1">
-                {resultadosOrdenados[0]?.apelido} está na liderança com {resultadosOrdenados[0]?.pontos} pts
-              </p>
+          {/* ── Quem já está ── */}
+          {resultados.length > 0 ? (
+            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden">
+              <div className="px-4 py-3 border-b border-zinc-800 flex items-center justify-between">
+                <p className="text-white font-bold text-sm">Quem já jogou</p>
+                <span className="bg-purple-800 text-purple-200 text-xs font-bold px-2 py-0.5 rounded-full">
+                  {resultados.length} {resultados.length === 1 ? 'jogador' : 'jogadores'}
+                </span>
+              </div>
+              <div className="divide-y divide-zinc-800">
+                {resultadosOrdenados.slice(0, 5).map((r, i) => (
+                  <div key={r.apelido} className="flex items-center gap-3 px-4 py-3">
+                    <span className="text-base w-6 text-center flex-shrink-0">
+                      {i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `#${i+1}`}
+                    </span>
+                    <p className="flex-1 text-sm font-semibold text-white truncate">{r.apelido}</p>
+                    <div className="text-right flex-shrink-0">
+                      <p className="text-yellow-400 font-black text-sm">{r.pontos > 0 ? `+${r.pontos}` : '0'} pts</p>
+                      <p className="text-zinc-600 text-xs">{r.pista_acerto ? `pista ${r.pista_acerto}` : 'errou'}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {lider && (
+                <div className="px-4 py-3 bg-purple-950/50 border-t border-purple-900">
+                  <p className="text-purple-300 text-xs text-center">
+                    🔥 <span className="font-bold">{lider.apelido}</span> lidera com <span className="font-black text-yellow-400">{lider.pontos} pts</span> — você consegue bater?
+                  </p>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl px-5 py-5 text-center space-y-1">
+              <p className="text-2xl">👀</p>
+              <p className="text-white font-bold text-sm">Ninguém jogou ainda</p>
+              <p className="text-zinc-500 text-xs">Você pode ser o primeiro!</p>
             </div>
           )}
 
-          {/* Regras rápidas */}
-          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 space-y-3">
-            <p className="text-white font-bold text-sm">Como funciona</p>
-            <div className="space-y-2 text-sm text-zinc-400">
-              <div className="flex items-start gap-2">
-                <span>🔒</span>
-                <p>Adivinhe o jogador com o mínimo de pistas</p>
-              </div>
-              <div className="flex items-start gap-2">
-                <span>⬇️</span>
-                <p>Quanto menos pistas usar, mais pontos você ganha</p>
-              </div>
-              <div className="flex items-start gap-2">
-                <span>🏆</span>
-                <p>O placar da liga é separado do ranking global</p>
-              </div>
-              <div className="flex items-start gap-2">
-                <span>⏱️</span>
-                <p>
-                  Sala válida por{' '}
-                  <span className="text-white font-semibold">
-                    {horasRestantes}h{minutosRestantes.toString().padStart(2, '0')}m
-                  </span>
-                </p>
-              </div>
+          {/* ── Como jogar ── */}
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 space-y-4">
+            <p className="text-white font-bold text-sm">Como jogar</p>
+            <div className="space-y-3">
+              {[
+                { n: '1', icon: '✨', titulo: 'Leia o histórico', desc: 'Cada partida começa com uma narrativa sobre o jogador. Tente adivinhar só com ela.' },
+                { n: '2', icon: '🔒', titulo: 'Revele as pistas', desc: 'Se errar, a próxima pista é liberada — mas custa pontos.' },
+                { n: '3', icon: '🎯', titulo: 'Acerte com menos pistas', desc: 'Quanto antes acertar, mais pontos você ganha para a liga.' },
+              ].map(s => (
+                <div key={s.n} className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-purple-900 border border-purple-700 flex items-center justify-center text-purple-300 font-black text-sm flex-shrink-0">
+                    {s.n}
+                  </div>
+                  <div>
+                    <p className="text-white text-sm font-semibold">{s.icon} {s.titulo}</p>
+                    <p className="text-zinc-500 text-xs mt-0.5">{s.desc}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Apelido do jogador */}
-          <div className="bg-zinc-800 rounded-xl px-4 py-3 flex items-center justify-between">
-            <p className="text-zinc-400 text-sm">Jogando como</p>
+          {/* ── Tabela de pontos ── */}
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 space-y-3">
+            <p className="text-white font-bold text-sm">Como conquistar pontos</p>
+            <div className="grid grid-cols-5 gap-2">
+              {[
+                { pista: 'Histórico', pts: 100, cor: 'text-yellow-400', bg: 'bg-yellow-950 border-yellow-800' },
+                { pista: 'Pista 1', pts: 80, cor: 'text-green-400', bg: 'bg-green-950 border-green-800' },
+                { pista: 'Pista 2', pts: 60, cor: 'text-green-400', bg: 'bg-green-950 border-green-900' },
+                { pista: 'Pista 3', pts: 40, cor: 'text-orange-400', bg: 'bg-orange-950 border-orange-900' },
+                { pista: 'Pista 4', pts: 20, cor: 'text-red-400', bg: 'bg-red-950 border-red-900' },
+              ].map(p => (
+                <div key={p.pista} className={`border rounded-xl p-2 text-center ${p.bg}`}>
+                  <p className={`font-black text-base leading-none ${p.cor}`}>{p.pts}</p>
+                  <p className="text-zinc-500 text-xs mt-1 leading-tight">{p.pista}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-zinc-600 text-xs text-center">
+              Errar não zera — você avança para a próxima pista
+            </p>
+          </div>
+
+          {/* ── Campeonato ── */}
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 space-y-4">
+            <div>
+              <p className="text-white font-bold text-sm">O Campeonato da Liga</p>
+              <p className="text-zinc-500 text-xs mt-1">A liga dura enquanto durar o futebol brasileiro</p>
+            </div>
+            <div className="space-y-2">
+              {[
+                { comp: 'Brasileirão', emoji: '🇧🇷', status: 'Em andamento', ate: 'Dezembro 2025', cor: 'text-green-400' },
+                { comp: 'Copa do Brasil', emoji: '🏆', status: 'Em andamento', ate: 'Novembro 2025', cor: 'text-green-400' },
+                { comp: 'Libertadores', emoji: '⭐', status: 'Em andamento', ate: 'Novembro 2025', cor: 'text-green-400' },
+              ].map(c => (
+                <div key={c.comp} className="flex items-center gap-3 bg-zinc-800 rounded-xl px-4 py-3">
+                  <span className="text-xl flex-shrink-0">{c.emoji}</span>
+                  <div className="flex-1">
+                    <p className="text-white text-sm font-semibold">{c.comp}</p>
+                    <p className={`text-xs font-medium ${c.cor}`}>{c.status}</p>
+                  </div>
+                  <p className="text-zinc-500 text-xs flex-shrink-0">até {c.ate}</p>
+                </div>
+              ))}
+            </div>
+            <div className="bg-purple-950 border border-purple-900 rounded-xl px-4 py-3">
+              <p className="text-purple-300 text-xs text-center leading-relaxed">
+                🏆 O campeão da liga é quem tiver <span className="text-white font-bold">mais pontos acumulados</span> ao final da última rodada do Brasileirão
+              </p>
+            </div>
+          </div>
+
+          {/* ── Jogando como ── */}
+          <div className="bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 flex items-center justify-between">
+            <p className="text-zinc-400 text-sm">Entrando como</p>
             <p className="text-white font-bold">{perfil?.apelido}</p>
           </div>
 
-          {/* Botão entrar */}
-          <button
-            onClick={() => setEntrou(true)}
-            className="w-full bg-purple-700 hover:bg-purple-600 active:scale-95 text-white font-black text-xl py-5 rounded-2xl transition-all"
-          >
-            Entrar na Liga →
-          </button>
-
         </div>
+
+        {/* ── Botão fixo no rodapé ── */}
+        <div className="fixed bottom-0 left-0 right-0 bg-zinc-950/95 backdrop-blur border-t border-zinc-800 px-4 pt-3 pb-6">
+          <div className="max-w-md mx-auto">
+            <button
+              onClick={() => setEntrou(true)}
+              className="w-full bg-purple-700 hover:bg-purple-600 active:scale-95 text-white font-black text-xl py-5 rounded-2xl transition-all shadow-lg shadow-purple-900/40"
+            >
+              Entrar na Liga →
+            </button>
+          </div>
+        </div>
+
       </main>
     )
   }
