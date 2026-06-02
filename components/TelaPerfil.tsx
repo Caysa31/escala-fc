@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Perfil } from '@/lib/types'
-import { criarPerfil, getResultadoRodada } from '@/lib/perfil'
+import { criarPerfil, recuperarPerfilPorCodigo, getResultadoRodada } from '@/lib/perfil'
 import { getJogadoresDoDia } from '@/lib/game'
 import { getPosicaoRanking, verificarApelidoDisponivel } from '@/lib/supabase'
 import { Flame, Trophy, Medal } from 'lucide-react'
@@ -17,17 +17,17 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
   const [verificando, setVerificando] = useState(false)
   const [sugestoes, setSugestoes] = useState<string[]>([])
 
+  // Fluxo de recuperação
+  const [modoRecuperacao, setModoRecuperacao] = useState(false)
+  const [codigo, setCodigo] = useState('')
+  const [erroRecuperacao, setErroRecuperacao] = useState('')
+  const [recuperando, setRecuperando] = useState(false)
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     const nome = apelido.trim()
-    if (!nome) {
-      setErro('Digite um apelido para continuar')
-      return
-    }
-    if (nome.length < 2) {
-      setErro('Apelido muito curto (mínimo 2 caracteres)')
-      return
-    }
+    if (!nome) { setErro('Digite um apelido para continuar'); return }
+    if (nome.length < 2) { setErro('Apelido muito curto (mínimo 2 caracteres)'); return }
 
     setVerificando(true)
     setSugestoes([])
@@ -42,8 +42,26 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
       setVerificando(false)
     }
 
-    const perfil = criarPerfil(nome)
-    onCriar(perfil)
+    onCriar(criarPerfil(nome))
+  }
+
+  async function handleRecuperar(e: React.FormEvent) {
+    e.preventDefault()
+    const cod = codigo.trim()
+    if (!cod) { setErroRecuperacao('Digite seu código de recuperação'); return }
+
+    setRecuperando(true)
+    setErroRecuperacao('')
+    try {
+      const perfil = await recuperarPerfilPorCodigo(cod)
+      if (!perfil) {
+        setErroRecuperacao('Código não encontrado. Verifique e tente de novo.')
+        return
+      }
+      onCriar(perfil)
+    } finally {
+      setRecuperando(false)
+    }
   }
 
   return (
@@ -52,9 +70,7 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
 
         {/* Logo */}
         <div className="text-center">
-          <h1 className="text-5xl font-black text-white tracking-tight">
-            ⚽ ESCALA FC
-          </h1>
+          <h1 className="text-5xl font-black text-white tracking-tight">⚽ ESCALA FC</h1>
           <p className="text-zinc-400 mt-2 text-sm">
             Adivinhe o jogador do dia com o mínimo de pistas
           </p>
@@ -71,49 +87,95 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
           </div>
         </div>
 
-        {/* Form de apelido */}
-        <form onSubmit={handleSubmit} className="space-y-3">
-          <div>
-            <label className="block text-zinc-400 text-sm mb-2">
-              Escolha seu apelido:
-            </label>
-            <input
-              type="text"
-              value={apelido}
-              onChange={e => { setApelido(e.target.value); setErro(''); setSugestoes([]) }}
-              placeholder="Ex: CraqueDaSala"
-              maxLength={20}
-              className="w-full bg-zinc-800 border-2 border-zinc-600 focus:border-green-400 rounded-xl px-4 py-3 text-white placeholder-zinc-500 outline-none transition-colors text-base"
-              autoFocus
-            />
-            {erro && <p className="text-red-400 text-xs mt-1">{erro}</p>}
-            {sugestoes.length > 0 && (
-              <div className="flex gap-2 mt-2 flex-wrap">
-                {sugestoes.map(s => (
-                  <button
-                    key={s}
-                    type="button"
-                    onClick={() => { setApelido(s); setErro(''); setSugestoes([]) }}
-                    className="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors"
-                  >
-                    {s}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-          <button
-            type="submit"
-            disabled={verificando}
-            className={`w-full font-black text-lg rounded-xl py-4 transition-colors ${
-              verificando
-                ? 'bg-zinc-600 text-zinc-400 cursor-not-allowed'
-                : 'bg-green-500 hover:bg-green-400 text-black'
-            }`}
-          >
-            {verificando ? 'Verificando...' : 'ENTRAR NO JOGO'}
-          </button>
-        </form>
+        {/* ── Novo jogador ── */}
+        {!modoRecuperacao && (
+          <form onSubmit={handleSubmit} className="space-y-3">
+            <div>
+              <label className="block text-zinc-400 text-sm mb-2">Escolha seu apelido:</label>
+              <input
+                type="text"
+                value={apelido}
+                onChange={e => { setApelido(e.target.value); setErro(''); setSugestoes([]) }}
+                placeholder="Ex: CraqueDaSala"
+                maxLength={20}
+                className="w-full bg-zinc-800 border-2 border-zinc-600 focus:border-green-400 rounded-xl px-4 py-3 text-white placeholder-zinc-500 outline-none transition-colors text-base"
+                autoFocus
+              />
+              {erro && <p className="text-red-400 text-xs mt-1">{erro}</p>}
+              {sugestoes.length > 0 && (
+                <div className="flex gap-2 mt-2 flex-wrap">
+                  {sugestoes.map(s => (
+                    <button
+                      key={s}
+                      type="button"
+                      onClick={() => { setApelido(s); setErro(''); setSugestoes([]) }}
+                      className="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors"
+                    >
+                      {s}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+            <button
+              type="submit"
+              disabled={verificando}
+              className={`w-full font-black text-lg rounded-xl py-4 transition-colors ${
+                verificando ? 'bg-zinc-600 text-zinc-400 cursor-not-allowed' : 'bg-green-500 hover:bg-green-400 text-black'
+              }`}
+            >
+              {verificando ? 'Verificando...' : 'ENTRAR NO JOGO'}
+            </button>
+
+            {/* Toggle para recuperação */}
+            <button
+              type="button"
+              onClick={() => { setModoRecuperacao(true); setErro('') }}
+              className="w-full text-zinc-500 hover:text-zinc-300 text-sm text-center py-2 transition-colors"
+            >
+              Já joguei antes →
+            </button>
+          </form>
+        )}
+
+        {/* ── Recuperar conta ── */}
+        {modoRecuperacao && (
+          <form onSubmit={handleRecuperar} className="space-y-3">
+            <div>
+              <label className="block text-zinc-400 text-sm mb-1">Código de recuperação:</label>
+              <p className="text-zinc-600 text-xs mb-2">
+                Encontre o código FC-XXXXX na tela principal do jogo, abaixo do desafio.
+              </p>
+              <input
+                type="text"
+                value={codigo}
+                onChange={e => { setCodigo(e.target.value.toUpperCase()); setErroRecuperacao('') }}
+                placeholder="Ex: FC-abc12"
+                maxLength={10}
+                className="w-full bg-zinc-800 border-2 border-zinc-600 focus:border-blue-400 rounded-xl px-4 py-3 text-white placeholder-zinc-500 outline-none transition-colors text-base font-mono tracking-widest"
+                autoFocus
+              />
+              {erroRecuperacao && <p className="text-red-400 text-xs mt-1">{erroRecuperacao}</p>}
+            </div>
+            <button
+              type="submit"
+              disabled={recuperando}
+              className={`w-full font-black text-lg rounded-xl py-4 transition-colors ${
+                recuperando ? 'bg-zinc-600 text-zinc-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-500 text-white'
+              }`}
+            >
+              {recuperando ? 'Buscando conta...' : 'RECUPERAR CONTA'}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => { setModoRecuperacao(false); setErroRecuperacao('') }}
+              className="w-full text-zinc-500 hover:text-zinc-300 text-sm text-center py-2 transition-colors"
+            >
+              ← Criar novo apelido
+            </button>
+          </form>
+        )}
 
         <p className="text-center text-zinc-600 text-xs">
           Sem cadastro. Sem e-mail. Sem senha.

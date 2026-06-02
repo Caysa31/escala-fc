@@ -264,6 +264,37 @@ export async function sincronizarPontosDeServidor(): Promise<void> {
 }
 
 /**
+ * Recupera um perfil pelo código FC-xxxxx (busca no Supabase).
+ * Restaura apelido, código e pontos do servidor no localStorage.
+ * Usado quando o jogador perdeu o localStorage (novo celular, limpeza de dados).
+ */
+export async function recuperarPerfilPorCodigo(codigoRaw: string): Promise<Perfil | null> {
+  const codigo = codigoRaw.trim().toUpperCase()
+  if (!codigo.startsWith('FC-') || codigo.length < 5) return null
+
+  const usuario = await buscarUsuarioPorCodigo(codigo)
+  if (!usuario?.id) return null
+
+  setUsuarioId(usuario.id)
+
+  const pontosServidor = await getPontosDoServidor(usuario.id)
+
+  const perfil: Perfil = {
+    apelido:          usuario.apelido,
+    codigo:           usuario.codigo,
+    streakAtual:      0,
+    streakMaximo:     0,
+    pontosTotal:      pontosServidor ?? 0,
+    rodadasJogadas:   0,
+    rodadasAcertadas: 0,
+    ultimaRodada:     null,
+  }
+
+  salvarPerfil(perfil)
+  return perfil
+}
+
+/**
  * Calcula a taxa de acerto
  */
 export function calcularTaxaAcerto(perfil: Perfil): number {
