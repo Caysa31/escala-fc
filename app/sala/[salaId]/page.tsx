@@ -33,6 +33,7 @@ export default function SalaJogoPage() {
   const [carregado, setCarregado] = useState(false)
   const [sala, setSala] = useState<{ id: string; jogador_id: number; criador_apelido: string; expira_em: string; nome: string | null } | null>(null)
   const [entrou, setEntrou] = useState(false)
+  const [jogando, setJogando] = useState(false)
   const [jogador, setJogador] = useState<Jogador | null>(null)
   const [resultados, setResultados] = useState<SalaResultado[]>([])
   const [aba, setAba] = useState<Aba>('jogar')
@@ -112,8 +113,8 @@ export default function SalaJogoPage() {
       pistaAcerto: resultado.pistaAcerto,
     })
     setJaJogou(true)
-    // Muda para o placar após breve delay
-    setTimeout(() => setAba('placar'), 800)
+    // Volta para a página da liga após breve delay
+    setTimeout(() => setJogando(false), 800)
   }, [perfil, jaJogou, salaId])
 
   async function compartilharWhatsApp() {
@@ -377,6 +378,148 @@ export default function SalaJogoPage() {
     )
   }
 
+  // ── Página da Liga (dashboard entre lobby e jogo) ────────────
+  if (entrou && !jogando && sala && !expirou) {
+    const nomeLiga = sala.nome ?? `Sala ${salaId}`
+    const meuResultado = resultados.find(r => r.apelido === perfil?.apelido)
+    const lider = resultadosOrdenados[0]
+
+    return (
+      <main className="min-h-screen bg-zinc-950 text-white">
+        <div className="max-w-md mx-auto px-4 py-6 space-y-4 pb-32">
+
+          {/* Header */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setEntrou(false)}
+                className="p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 transition-all"
+              >
+                <ArrowLeft size={18} className="text-zinc-400" />
+              </button>
+              <div>
+                <h1 className="text-lg font-black text-purple-300">🏆 {nomeLiga}</h1>
+                <p className="text-zinc-500 text-xs">por {sala.criador_apelido} · {horasRestantes}h{minutosRestantes.toString().padStart(2,'0')}m</p>
+              </div>
+            </div>
+            <button onClick={compartilharWhatsApp} className="p-2 rounded-xl bg-green-900 hover:bg-green-800 transition-all">
+              <Share2 size={16} className="text-green-300" />
+            </button>
+          </div>
+
+          {/* Seu resultado do dia */}
+          {meuResultado ? (
+            <div className="bg-green-950 border border-green-800 rounded-2xl px-5 py-4 flex items-center justify-between">
+              <div>
+                <p className="text-green-400 text-xs font-semibold uppercase tracking-wide">Sua rodada de hoje</p>
+                <p className="text-white font-bold text-sm mt-0.5">
+                  {meuResultado.pista_acerto ? `✅ Acertou na pista ${meuResultado.pista_acerto}` : '❌ Não acertou hoje'}
+                </p>
+              </div>
+              <div className="text-right">
+                <p className="text-yellow-400 font-black text-2xl">{meuResultado.pontos > 0 ? `+${meuResultado.pontos}` : '0'}</p>
+                <p className="text-zinc-500 text-xs">pts hoje</p>
+              </div>
+            </div>
+          ) : (
+            <div className="bg-purple-950 border border-purple-800 rounded-2xl px-5 py-4 flex items-center justify-between">
+              <div>
+                <p className="text-purple-300 text-xs font-semibold uppercase tracking-wide">Rodada de hoje</p>
+                <p className="text-white font-bold text-sm mt-0.5">Você ainda não jogou</p>
+                {resultados.length > 0 && (
+                  <p className="text-zinc-500 text-xs mt-0.5">
+                    {resultados.length} {resultados.length === 1 ? 'membro jogou' : 'membros jogaram'}
+                  </p>
+                )}
+              </div>
+              <div className="text-4xl">⚽</div>
+            </div>
+          )}
+
+          {/* Placar da Liga */}
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden">
+            <div className="px-4 py-3 border-b border-zinc-800 flex items-center justify-between">
+              <p className="text-white font-bold text-sm">Placar da Liga</p>
+              <span className="text-zinc-500 text-xs">atualiza ao vivo</span>
+            </div>
+
+            {resultadosOrdenados.length === 0 ? (
+              <div className="px-4 py-8 text-center">
+                <p className="text-zinc-600 text-sm">Ninguém jogou ainda hoje</p>
+                <p className="text-zinc-700 text-xs mt-1">Seja o primeiro!</p>
+              </div>
+            ) : (
+              <div className="divide-y divide-zinc-800">
+                {resultadosOrdenados.map((r, i) => {
+                  const souEu = r.apelido === perfil?.apelido
+                  const pos = i + 1
+                  return (
+                    <div key={r.apelido} className={`flex items-center gap-3 px-4 py-3 ${souEu ? 'bg-purple-950/50' : ''}`}>
+                      <span className="w-7 text-center text-base flex-shrink-0">
+                        {pos === 1 ? '🥇' : pos === 2 ? '🥈' : pos === 3 ? '🥉' : <span className="text-zinc-600 text-sm font-bold">#{pos}</span>}
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <p className={`text-sm font-semibold truncate ${souEu ? 'text-purple-300' : 'text-white'}`}>
+                          {r.apelido} {souEu && <span className="text-purple-500 text-xs">(você)</span>}
+                        </p>
+                        <p className="text-zinc-600 text-xs">
+                          {r.pista_acerto ? `acertou na pista ${r.pista_acerto}` : 'não acertou'}
+                        </p>
+                      </div>
+                      <div className="text-right flex-shrink-0">
+                        <p className={`font-black text-sm ${r.pontos > 0 ? 'text-yellow-400' : 'text-zinc-600'}`}>
+                          {r.pontos > 0 ? `+${r.pontos}` : '0'} pts
+                        </p>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+
+            {lider && lider.apelido !== perfil?.apelido && (
+              <div className="px-4 py-3 border-t border-zinc-800 bg-zinc-900/50">
+                <p className="text-zinc-500 text-xs text-center">
+                  🔥 <span className="text-white font-semibold">{lider.apelido}</span> lidera hoje com{' '}
+                  <span className="text-yellow-400 font-bold">{lider.pontos} pts</span>
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* Convidar mais */}
+          <button
+            onClick={compartilharWhatsApp}
+            className="w-full flex items-center justify-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-semibold py-3 rounded-xl text-sm transition-all active:scale-95"
+          >
+            <Share2 size={15} />
+            Convidar mais amigos para a liga
+          </button>
+
+        </div>
+
+        {/* Botão fixo — jogar ou ver placar */}
+        <div className="fixed bottom-0 left-0 right-0 bg-zinc-950/95 backdrop-blur border-t border-zinc-800 px-4 pt-3 pb-6">
+          <div className="max-w-md mx-auto">
+            {jaJogou ? (
+              <div className="bg-zinc-800 rounded-2xl px-5 py-4 text-center">
+                <p className="text-zinc-400 text-sm font-semibold">✅ Você já jogou a rodada de hoje</p>
+                <p className="text-zinc-600 text-xs mt-1">Volte amanhã para a próxima rodada</p>
+              </div>
+            ) : (
+              <button
+                onClick={() => setJogando(true)}
+                className="w-full bg-purple-700 hover:bg-purple-600 active:scale-95 text-white font-black text-xl py-5 rounded-2xl transition-all shadow-lg shadow-purple-900/40"
+              >
+                ⚽ Jogar Rodada de Hoje →
+              </button>
+            )}
+          </div>
+        </div>
+      </main>
+    )
+  }
+
   // ── Sala expirada ────────────────────────────────────────────
   if (expirou) {
     return (
@@ -400,7 +543,7 @@ export default function SalaJogoPage() {
     )
   }
 
-  // Rodada ID único para esta sala (evita conflito com desafios diários)
+  // ── Jogo da rodada ───────────────────────────────────────────
   const rodadaIdSala = 2_000_000 + parseInt(salaId.replace(/[^0-9]/g, '0').slice(0, 6), 10)
 
   return (
@@ -408,117 +551,33 @@ export default function SalaJogoPage() {
       <div className="max-w-md mx-auto px-4 py-6 space-y-4">
 
         {/* Header */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Link href="/" className="p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 transition-all">
-              <ArrowLeft size={18} className="text-zinc-400" />
-            </Link>
-            <div>
-              <h1 className="text-lg font-black text-purple-300">🏆 {sala.nome ?? salaId}</h1>
-              <p className="text-zinc-500 text-xs">Sala de {sala.criador_apelido}</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            {/* Tempo restante */}
-            <div className="flex items-center gap-1 bg-zinc-800 rounded-lg px-2 py-1">
-              <Clock size={12} className="text-zinc-500" />
-              <span className="text-zinc-400 text-xs">{horasRestantes}h{minutosRestantes.toString().padStart(2,'0')}m</span>
-            </div>
-            <button
-              onClick={compartilharWhatsApp}
-              className="p-2 rounded-xl bg-green-800 hover:bg-green-700 transition-all"
-            >
-              <Share2 size={16} className="text-green-300" />
-            </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setJogando(false)}
+            className="p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 transition-all"
+          >
+            <ArrowLeft size={18} className="text-zinc-400" />
+          </button>
+          <div>
+            <h1 className="text-base font-black text-purple-300">🏆 {sala.nome ?? salaId}</h1>
+            <p className="text-zinc-500 text-xs">Rodada de hoje</p>
           </div>
         </div>
 
-        {/* Tabs */}
-        <div className="flex bg-zinc-800 rounded-xl p-1 gap-1">
-          <button
-            onClick={() => setAba('jogar')}
-            className={`flex-1 py-2 rounded-lg text-sm font-bold transition-all ${
-              aba === 'jogar' ? 'bg-purple-700 text-white' : 'text-zinc-400 hover:text-white'
-            }`}
-          >
-            ⚽ Jogar
-          </button>
-          <button
-            onClick={() => setAba('placar')}
-            className={`flex-1 py-2 rounded-lg text-sm font-bold transition-all relative ${
-              aba === 'placar' ? 'bg-purple-700 text-white' : 'text-zinc-400 hover:text-white'
-            }`}
-          >
-            <Trophy size={14} className="inline mr-1" />
-            Placar
-            {resultados.length > 0 && (
-              <span className="absolute top-1 right-2 bg-purple-500 text-white text-xs font-black rounded-full w-4 h-4 flex items-center justify-center leading-none">
-                {resultados.length}
-              </span>
-            )}
-          </button>
-        </div>
-
-        {/* Aba Jogar */}
-        {aba === 'jogar' && (
-          <>
-            {jaJogou ? (
-              <div className="bg-zinc-800 border border-zinc-700 rounded-2xl p-6 text-center space-y-3">
-                <p className="text-3xl">✅</p>
-                <p className="text-white font-bold">Você já jogou nesta sala!</p>
-                <p className="text-zinc-400 text-sm">Confira o placar — mais pessoas podem ainda estar jogando.</p>
-                <button
-                  onClick={() => setAba('placar')}
-                  className="w-full bg-purple-700 hover:bg-purple-600 text-white font-bold py-3 rounded-xl transition-all"
-                >
-                  Ver placar ao vivo →
-                </button>
-              </div>
-            ) : (
-              <JogoDesafio
-                key={rodadaIdSala}
-                jogador={jogador}
-                rodadaId={rodadaIdSala}
-                perfil={perfil}
-                indiceDesafio={0}
-                modoExtra={true}
-                labelProximoDesafio="Ver placar →"
-                mensagemFimJogo="Confira o placar! 👇"
-                onResultado={p => setPerfil(p)}
-                onContratosChange={() => {}}
-                onProximoDesafio={() => setAba('placar')}
-                onFimJogo={handleFimJogo}
-              />
-            )}
-          </>
-        )}
-
-        {/* Aba Placar */}
-        {aba === 'placar' && (
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <p className="text-zinc-400 text-sm">
-                {resultados.length} {resultados.length === 1 ? 'resultado' : 'resultados'} • atualiza ao vivo
-              </p>
-              <button
-                onClick={compartilharWhatsApp}
-                className="text-green-400 text-xs font-semibold"
-              >
-                Convidar mais →
-              </button>
-            </div>
-
-            <PlacardSala resultados={resultadosOrdenados} meuApelido={meuApelido} />
-
-            {resultados.length === 0 && (
-              <div className="text-center py-10 text-zinc-500">
-                <p className="text-3xl mb-2">⏳</p>
-                <p>Ainda ninguém terminou</p>
-                <p className="text-xs mt-1">Compartilhe a sala para chamar mais amigos!</p>
-              </div>
-            )}
-          </div>
-        )}
+        <JogoDesafio
+          key={rodadaIdSala}
+          jogador={jogador}
+          rodadaId={rodadaIdSala}
+          perfil={perfil}
+          indiceDesafio={0}
+          modoExtra={true}
+          labelProximoDesafio="Ver placar da liga →"
+          mensagemFimJogo="Voltando para a liga..."
+          onResultado={p => setPerfil(p)}
+          onContratosChange={() => {}}
+          onProximoDesafio={() => setJogando(false)}
+          onFimJogo={handleFimJogo}
+        />
       </div>
     </main>
   )
