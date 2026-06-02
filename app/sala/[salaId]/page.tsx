@@ -31,7 +31,8 @@ export default function SalaJogoPage() {
 
   const [perfil, setPerfil] = useState<Perfil | null>(null)
   const [carregado, setCarregado] = useState(false)
-  const [sala, setSala] = useState<{ id: string; jogador_id: number; criador_apelido: string; expira_em: string } | null>(null)
+  const [sala, setSala] = useState<{ id: string; jogador_id: number; criador_apelido: string; expira_em: string; nome: string | null } | null>(null)
+  const [entrou, setEntrou] = useState(false)
   const [jogador, setJogador] = useState<Jogador | null>(null)
   const [resultados, setResultados] = useState<SalaResultado[]>([])
   const [aba, setAba] = useState<Aba>('jogar')
@@ -115,12 +116,14 @@ export default function SalaJogoPage() {
     setTimeout(() => setAba('placar'), 800)
   }, [perfil, jaJogou, salaId])
 
-  function compartilharWhatsApp() {
+  async function compartilharWhatsApp() {
     const url = `${window.location.origin}/sala/${salaId}`
-    const texto = encodeURIComponent(
-      `⚔️ Topa me vencer no ESCALA FC? Entre na sala ${salaId} e joga o mesmo jogador!\n${url}`
-    )
-    window.open(`https://wa.me/?text=${texto}`, '_blank')
+    const nomeLiga = sala?.nome ?? `Sala ${salaId}`
+    const texto = `🏆 ${nomeLiga} — Topa me vencer no ESCALA FC?\nAdivinhe o mesmo jogador e veja quem acerta com menos pistas!\n${url}`
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try { await navigator.share({ text: texto }); return } catch { return }
+    }
+    window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank')
   }
 
   // Tempo restante da sala
@@ -155,6 +158,82 @@ export default function SalaJogoPage() {
             <p className="text-white font-bold">{erro || 'Sala não encontrada'}</p>
             <p className="text-zinc-400 text-sm">Verifique o código e tente novamente.</p>
           </div>
+        </div>
+      </main>
+    )
+  }
+
+  // ── Lobby — boas-vindas antes do jogo ───────────────────────
+  if (!entrou && sala && !expirou) {
+    const nomeLiga = sala.nome ?? `Sala ${salaId}`
+    return (
+      <main className="min-h-screen bg-zinc-950 text-white flex flex-col">
+        <div className="max-w-md mx-auto px-4 py-8 w-full space-y-6 flex-1 flex flex-col justify-center">
+
+          {/* Emblema da liga */}
+          <div className="text-center space-y-2">
+            <div className="text-6xl">🏆</div>
+            <h1 className="text-3xl font-black text-white tracking-tight">{nomeLiga}</h1>
+            <p className="text-purple-400 text-sm font-semibold">
+              Criada por {sala.criador_apelido}
+            </p>
+          </div>
+
+          {/* Participantes já na sala */}
+          {resultados.length > 0 && (
+            <div className="bg-purple-950 border border-purple-800 rounded-2xl px-5 py-4 text-center">
+              <p className="text-purple-300 text-sm">
+                <span className="text-white font-black text-lg">{resultados.length}</span>{' '}
+                {resultados.length === 1 ? 'jogador já jogou' : 'jogadores já jogaram'}
+              </p>
+              <p className="text-purple-500 text-xs mt-1">
+                {resultadosOrdenados[0]?.apelido} está na liderança com {resultadosOrdenados[0]?.pontos} pts
+              </p>
+            </div>
+          )}
+
+          {/* Regras rápidas */}
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 space-y-3">
+            <p className="text-white font-bold text-sm">Como funciona</p>
+            <div className="space-y-2 text-sm text-zinc-400">
+              <div className="flex items-start gap-2">
+                <span>🔒</span>
+                <p>Adivinhe o jogador com o mínimo de pistas</p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span>⬇️</span>
+                <p>Quanto menos pistas usar, mais pontos você ganha</p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span>🏆</span>
+                <p>O placar da liga é separado do ranking global</p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span>⏱️</span>
+                <p>
+                  Sala válida por{' '}
+                  <span className="text-white font-semibold">
+                    {horasRestantes}h{minutosRestantes.toString().padStart(2, '0')}m
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Apelido do jogador */}
+          <div className="bg-zinc-800 rounded-xl px-4 py-3 flex items-center justify-between">
+            <p className="text-zinc-400 text-sm">Jogando como</p>
+            <p className="text-white font-bold">{perfil?.apelido}</p>
+          </div>
+
+          {/* Botão entrar */}
+          <button
+            onClick={() => setEntrou(true)}
+            className="w-full bg-purple-700 hover:bg-purple-600 active:scale-95 text-white font-black text-xl py-5 rounded-2xl transition-all"
+          >
+            Entrar na Liga →
+          </button>
+
         </div>
       </main>
     )
@@ -197,7 +276,7 @@ export default function SalaJogoPage() {
               <ArrowLeft size={18} className="text-zinc-400" />
             </Link>
             <div>
-              <h1 className="text-lg font-black text-purple-300">⚔️ {salaId}</h1>
+              <h1 className="text-lg font-black text-purple-300">🏆 {sala.nome ?? salaId}</h1>
               <p className="text-zinc-500 text-xs">Sala de {sala.criador_apelido}</p>
             </div>
           </div>
