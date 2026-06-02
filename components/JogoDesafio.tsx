@@ -212,6 +212,18 @@ export default function JogoDesafio({
               ✨ Adivinhe pelo histórico — Vale{' '}
               <span className="text-yellow-400 font-bold">100 pts</span>
             </p>
+          ) : multiplicador > 1 ? (
+            <p className="text-sm text-zinc-300">
+              Pista{' '}
+              <span className="text-green-400 font-bold">{estado.pistaAtual}</span>
+              {' '}de {totalPistas} · Vale{' '}
+              <span className="text-zinc-400 line-through">{PONTOS_BASE[estado.pistaAtual]}</span>
+              {' '}
+              <span className="text-orange-400 font-bold">×{multiplicador}</span>
+              {' = '}
+              <span className="text-yellow-400 font-bold">{Math.round(PONTOS_BASE[estado.pistaAtual] * multiplicador)} pts</span>
+              {' 🏋️'}
+            </p>
           ) : (
             <p className="text-sm text-zinc-300">
               Pista{' '}
