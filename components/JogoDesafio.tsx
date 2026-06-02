@@ -369,9 +369,9 @@ export default function JogoDesafio({
             !onRevelar
             ? handleDestravar
             : undefined
-          // Valor DESTA pista: o que o jogador vai ganhar se revelar ela e acertar
+          // Valor desta pista — mostrado dentro do card após ser revelada (pista ativa)
           const ptsDestaPista = Math.round((PONTOS_BASE[num] ?? 20) * multiplicador)
-          // Custo de revelar: diferença entre pista anterior e esta
+          // Custo de revelar a PRÓXIMA — mostrado no botão da pista bloqueada
           const custoEsta = Math.round(
             ((PONTOS_BASE[num - 1] ?? 100) - (PONTOS_BASE[num] ?? 20)) * multiplicador
           )
@@ -388,8 +388,9 @@ export default function JogoDesafio({
               subtitulo={num === 2 ? subtituloPista2 : undefined}
               onRevelar={onRevelar}
               onDestravar={onDestravar}
-              // "Agora vale X pts" = valor desta pista após revelar
-              pontosAtual={onDestravar ? ptsDestaPista : undefined}
+              // "Agora vale X pts" → só na pista ATIVA (recém-revelada)
+              pontosAtual={atual && estado.status === 'jogando' ? ptsDestaPista : undefined}
+              // "−X pts se revelar" → só na pista BLOQUEADA com botão
               custoDestravar={onDestravar && custoEsta > 0 ? custoEsta : undefined}
             />
           )

@@ -178,25 +178,21 @@ export default function Pista({ numero, texto, revelada, atual, errou, correto, 
                 </p>
               )}
 
-              {/* nada de banner de pontos na pista já revelada */}
+              {/* Banner de pontos — aparece na pista recém-revelada (ativa) */}
+              {atual && pontosAtual !== undefined && (
+                <div className="mt-3 pt-2 border-t border-green-800/40 text-right">
+                  <span className="text-yellow-400 text-sm font-black">
+                    Agora vale {pontosAtual} pts
+                  </span>
+                </div>
+              )}
             </>
           ) : (
             <div className="flex items-center gap-2">
               {clicavel ? (
                 <span className="text-blue-400 text-sm font-semibold">Toque para revelar →</span>
               ) : onDestravar ? (
-                <div className="space-y-2 w-full">
-                  {/* Valor atual + custo de revelar — decisão do jogador */}
-                  {pontosAtual !== undefined && (
-                    <div className="flex items-center justify-between">
-                      <span className="text-yellow-400 text-sm font-black">
-                        Agora vale {pontosAtual} pts
-                      </span>
-                      {custoDestravar !== undefined && (
-                        <span className="text-red-400 text-xs font-bold">−{custoDestravar} pts se revelar</span>
-                      )}
-                    </div>
-                  )}
+                <div className="flex items-center justify-between w-full">
                   <button
                     type="button"
                     onClick={e => { e.stopPropagation(); onDestravar() }}
@@ -204,6 +200,9 @@ export default function Pista({ numero, texto, revelada, atual, errou, correto, 
                   >
                     Ver próxima dica →
                   </button>
+                  {custoDestravar !== undefined && (
+                    <span className="text-red-400 text-xs font-bold">−{custoDestravar} pts se revelar</span>
+                  )}
                 </div>
               ) : (
                 <>
