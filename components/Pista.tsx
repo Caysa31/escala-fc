@@ -12,6 +12,10 @@ interface PistaProps {
   subtitulo?: string    // label do capítulo (substitui o padrão quando fornecido — ex: "O Maestro")
   onRevelar?: () => void    // card travado vira clicável (pista 1 do primeiro desafio)
   onDestravar?: () => void  // botão "Ver próxima dica" na pista seguinte travada
+  // Pontuação dinâmica
+  pontosAtual?: number    // pontos que o jogador ganha SE acertar agora (mostrado na pista ativa)
+  pontosPerda?: number    // pontos perdidos ao revelar esta pista (mostrado na pista ativa)
+  custoDestravar?: number // custo de revelar a próxima pista (mostrado no botão "Ver próxima dica")
 }
 
 // Pista 1 — blocos com letras do meio reveladas
@@ -108,7 +112,7 @@ function LetrasNome({ codificado, atual, correto }: { codificado: string; atual:
 // Label temático padrão de cada capítulo (pista 2 é sobrescrita por `subtitulo` via posição)
 const LABELS_PISTAS = ['O Nome', 'O Dom', 'A Raiz', 'A Jornada', 'O Lar']
 
-export default function Pista({ numero, texto, revelada, atual, errou, correto, subtitulo, onRevelar, onDestravar }: PistaProps) {
+export default function Pista({ numero, texto, revelada, atual, errou, correto, subtitulo, onRevelar, onDestravar, pontosAtual, pontosPerda, custoDestravar }: PistaProps) {
   // Determina o estado visual da pista
   const isVerde = atual || correto
   const isVermelho = errou && !isVerde
@@ -173,19 +177,38 @@ export default function Pista({ numero, texto, revelada, atual, errou, correto, 
                   {texto}
                 </p>
               )}
+
+              {/* Banner de pontos — só na pista ativa, enquanto jogando */}
+              {atual && pontosAtual !== undefined && (
+                <div className="mt-3 pt-2 border-t border-green-800/40 flex items-center justify-between">
+                  {pontosPerda ? (
+                    <span className="text-red-400 text-xs font-bold">▼ −{pontosPerda} pts</span>
+                  ) : (
+                    <span />
+                  )}
+                  <span className="text-yellow-400 text-sm font-black">
+                    Agora vale {pontosAtual} pts
+                  </span>
+                </div>
+              )}
             </>
           ) : (
             <div className="flex items-center gap-2">
               {clicavel ? (
                 <span className="text-blue-400 text-sm font-semibold">Toque para revelar →</span>
               ) : onDestravar ? (
-                <button
-                  type="button"
-                  onClick={e => { e.stopPropagation(); onDestravar() }}
-                  className="text-xs font-semibold text-blue-400 border border-blue-800/60 rounded-lg px-3 py-1.5 hover:bg-blue-950/50 active:scale-95 transition-all"
-                >
-                  Ver próxima dica →
-                </button>
+                <div className="flex items-center justify-between w-full">
+                  <button
+                    type="button"
+                    onClick={e => { e.stopPropagation(); onDestravar() }}
+                    className="text-xs font-semibold text-blue-400 border border-blue-800/60 rounded-lg px-3 py-1.5 hover:bg-blue-950/50 active:scale-95 transition-all"
+                  >
+                    Ver próxima dica →
+                  </button>
+                  {custoDestravar !== undefined && (
+                    <span className="text-red-400 text-xs font-bold">−{custoDestravar} pts</span>
+                  )}
+                </div>
               ) : (
                 <>
                   <Lock size={14} className="text-zinc-600" />

@@ -369,6 +369,15 @@ export default function JogoDesafio({
             !onRevelar
             ? handleDestravar
             : undefined
+          // Pontos que o jogador ganha se acertar NESTA pista agora
+          const ptsPista = Math.round((PONTOS_BASE[num] ?? 20) * multiplicador)
+          // Perda sofrida ao revelar esta pista (diferença em relação à anterior)
+          const perdaPista = num > 1
+            ? Math.round(((PONTOS_BASE[num - 1] ?? 100) - (PONTOS_BASE[num] ?? 20)) * multiplicador)
+            : 0
+          // Custo de revelar a PRÓXIMA pista (mostrado no botão "Ver próxima dica")
+          const custoProxima = Math.round(((PONTOS_BASE[num] ?? 20) - (PONTOS_BASE[num + 1] ?? 0)) * multiplicador)
+
           return (
             <Pista
               key={num}
@@ -381,6 +390,9 @@ export default function JogoDesafio({
               subtitulo={num === 2 ? subtituloPista2 : undefined}
               onRevelar={onRevelar}
               onDestravar={onDestravar}
+              pontosAtual={atual && estado.status === 'jogando' ? ptsPista : undefined}
+              pontosPerda={atual && estado.status === 'jogando' && perdaPista > 0 ? perdaPista : undefined}
+              custoDestravar={onDestravar ? custoProxima : undefined}
             />
           )
         })}
