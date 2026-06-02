@@ -14,7 +14,7 @@ import {
   ModoId, getModoConfig, getJogadorAleatorio,
   getModoPlaysHoje, getModoPlayedIdsHoje,
   incrementarModoPlays, registrarModoJogadorId,
-  MAX_PLAYS_POR_DIA,
+  MAX_PLAYS_POR_DIA, registrarTreinoHoje, getBonusAmanha,
 } from '@/lib/modos'
 
 import JogoDesafio from '@/components/JogoDesafio'
@@ -31,6 +31,7 @@ export default function ModoPage() {
   const [carregado, setCarregado] = useState(false)
   const [jogoAtual, setJogoAtual] = useState<{ jogadorId: number; rodadaId: number } | null>(null)
   const [playsHoje, setPlaysHoje] = useState(0)
+  const [bonusAmanha, setBonusAmanha] = useState(1)
 
   // Carrega jogador aleatório para a partida atual
   const iniciarNovoJogo = useCallback(() => {
@@ -49,6 +50,7 @@ export default function ModoPage() {
     const p = carregarPerfil()
     setPerfil(p)
     setPlaysHoje(getModoPlaysHoje(modoId))
+    setBonusAmanha(getBonusAmanha())
     setCarregado(true)
 
     if (!getModoConfig(modoId)) {
@@ -113,10 +115,18 @@ export default function ModoPage() {
             </div>
           </div>
 
-          {/* Pontos do perfil */}
-          <div className="bg-zinc-800 rounded-xl px-3 py-2 text-center">
-            <p className="text-yellow-400 font-black text-base leading-none">{perfil.pontosTotal}</p>
-            <p className="text-zinc-500 text-xs">pts total</p>
+          {/* Bônus de amanhã / Pontos */}
+          <div className="flex items-center gap-2">
+            {bonusAmanha > 1 && (
+              <div className="bg-orange-950 border border-orange-800 rounded-xl px-3 py-2 text-center">
+                <p className="text-orange-400 font-black text-base leading-none">×{bonusAmanha}</p>
+                <p className="text-orange-600 text-xs">amanhã</p>
+              </div>
+            )}
+            <div className="bg-zinc-800 rounded-xl px-3 py-2 text-center">
+              <p className="text-yellow-400 font-black text-base leading-none">{perfil.pontosTotal}</p>
+              <p className="text-zinc-500 text-xs">pts total</p>
+            </div>
           </div>
         </div>
 
@@ -134,6 +144,10 @@ export default function ModoPage() {
             mensagemFimJogo={restantes <= 0 ? '🔒 Limite diário atingido. Volte amanhã!' : undefined}
             onResultado={p => setPerfil(p)}
             onContratosChange={() => {}}
+            onFimJogo={() => {
+              registrarTreinoHoje()
+              setBonusAmanha(getBonusAmanha())
+            }}
             onProximoDesafio={restantes > 0 ? proximoJogo : undefined}
           />
         ) : (

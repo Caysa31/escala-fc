@@ -11,6 +11,7 @@ import {
 } from '@/lib/game'
 import { registrarResultado, getResultadoRodada, aplicarBonusContrato } from '@/lib/perfil'
 import { getContratosAtivos } from '@/lib/contrato'
+import { getMultiplicadorTreino } from '@/lib/modos'
 
 import Pista from './Pista'
 import InputPalpite from './InputPalpite'
@@ -48,6 +49,9 @@ export default function JogoDesafio({
 }: Props) {
   // Total de pistas dinâmico (Relâmpago sobrescreve TOTAL_PISTAS)
   const totalPistas = totalPistasMax ?? TOTAL_PISTAS
+
+  // Multiplicador de treino — ativo apenas no desafio diário (não em modos extras)
+  const multiplicador = modoExtra ? 1 : getMultiplicadorTreino()
   const pistasTexto = getPistasTexto(jogador)
   const introNarrativa = getIntroNarrativa(jogador)
 
@@ -122,7 +126,9 @@ export default function JogoDesafio({
     const pistaEfetiva = Math.max(1, estado.pistaAtual)
 
     if (acertou) {
-      const pontos = calcularPontos(pistaEfetiva)
+      const pontosBrutos = calcularPontos(pistaEfetiva)
+      // Aplica multiplicador de treino apenas no desafio diário
+      const pontos = Math.round(pontosBrutos * multiplicador)
       const novoEstado: EstadoJogo = {
         ...estado,
         tentativas: novasTentativas,
@@ -183,7 +189,7 @@ export default function JogoDesafio({
     }
   }
 
-  const pontosRodada = estado.pistaUsada ? calcularPontos(estado.pistaUsada) : 0
+  const pontosRodada = estado.pistaUsada ? Math.round(calcularPontos(estado.pistaUsada) * multiplicador) : 0
 
   // Intro narrativa em destaque quando ainda não há pistas reveladas (qualquer desafio, estado inicial)
   const introEmDestaque = estado.pistaAtual === 0 && estado.status === 'jogando'
@@ -225,6 +231,11 @@ export default function JogoDesafio({
               🎯 Acertou na pista {estado.pistaUsada}!
             </p>
             <p className="text-yellow-400 font-black text-3xl mt-1">+{pontosRodada} pts</p>
+            {!modoExtra && multiplicador > 1 && (
+              <p className="text-orange-400 text-xs font-semibold mt-1">
+                🏋️ Bônus de treino ×{multiplicador} ativado!
+              </p>
+            )}
           </div>
 
           {onProximoDesafio ? (

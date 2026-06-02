@@ -2,9 +2,12 @@
 
 import Link from 'next/link'
 import { ArrowLeft, Lock } from 'lucide-react'
-import { MODOS_CONFIG, getModoPlaysHoje, MAX_PLAYS_POR_DIA } from '@/lib/modos'
+import { MODOS_CONFIG, getModoPlaysHoje, MAX_PLAYS_POR_DIA, getTreinoJogosHoje, getBonusAmanha } from '@/lib/modos'
 
 export default function ModosPage() {
+  const treinoHoje = getTreinoJogosHoje()
+  const bonusAmanha = getBonusAmanha()
+
   return (
     <main className="min-h-screen bg-zinc-950 text-white">
       <div className="max-w-md mx-auto px-4 py-6 space-y-5">
@@ -29,6 +32,40 @@ export default function ModosPage() {
             🎮 Cada modo tem até <span className="text-white font-bold">{MAX_PLAYS_POR_DIA} partidas por dia</span>.
             Pontos ganhos aqui contam para o seu total. Sequência só conta no desafio diário.
           </p>
+        </div>
+
+        {/* Bônus de treino */}
+        <div className={`rounded-xl px-4 py-3 border ${bonusAmanha > 1 ? 'bg-orange-950 border-orange-800' : 'bg-zinc-900 border-zinc-700'}`}>
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-white text-xs font-bold">🏋️ Bônus de treino</p>
+              <p className="text-zinc-400 text-xs mt-0.5">
+                Treinar hoje multiplica seus pontos amanhã no desafio diário
+              </p>
+            </div>
+            <div className="text-right shrink-0 ml-3">
+              <p className={`font-black text-lg leading-none ${bonusAmanha > 1 ? 'text-orange-400' : 'text-zinc-500'}`}>
+                ×{bonusAmanha}
+              </p>
+              <p className="text-zinc-500 text-xs">{treinoHoje} jogos hoje</p>
+            </div>
+          </div>
+          {bonusAmanha < 1.5 && (
+            <div className="mt-2 flex gap-1">
+              {[{ min: 1, mult: '1.2×' }, { min: 5, mult: '1.35×' }, { min: 10, mult: '1.5×' }].map(tier => (
+                <div
+                  key={tier.mult}
+                  className={`flex-1 text-center text-xs py-1 rounded-lg font-semibold ${
+                    treinoHoje >= tier.min
+                      ? 'bg-orange-900 text-orange-300'
+                      : 'bg-zinc-800 text-zinc-600'
+                  }`}
+                >
+                  {tier.mult}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Cards de modos */}

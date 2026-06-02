@@ -5,6 +5,7 @@ import { Perfil } from '@/lib/types'
 import { getJogadoresDoDia } from '@/lib/game'
 import { carregarPerfil, getResultadoRodada, sincronizarPontosDeServidor } from '@/lib/perfil'
 import { getContratosAtivos } from '@/lib/contrato'
+import { getMultiplicadorTreino } from '@/lib/modos'
 
 import TelaPerfil, { StatsPerfil } from '@/components/TelaPerfil'
 import JogoDesafio from '@/components/JogoDesafio'
@@ -125,6 +126,14 @@ export default function Home() {
                 <FileText size={15} className="text-yellow-400" />
                 <span className="text-yellow-300 font-bold text-sm">{qtdContratosAtivos}</span>
               </button>
+            )}
+            {getMultiplicadorTreino() > 1 && (
+              <div
+                className="flex items-center gap-1 bg-orange-950 border border-orange-800 rounded-xl px-3 py-2"
+                title="Bônus de treino ativo hoje!"
+              >
+                <span className="text-orange-400 font-black text-sm">×{getMultiplicadorTreino()}</span>
+              </div>
             )}
             <div className="flex items-center gap-1 bg-zinc-800 rounded-xl px-3 py-2">
               <Flame size={16} className="text-orange-400" />

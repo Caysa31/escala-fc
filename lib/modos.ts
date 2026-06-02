@@ -123,3 +123,60 @@ export function registrarModoJogadorId(modoId: string, jogadorId: number): void 
     localStorage.setItem(playedIdsKey(modoId), JSON.stringify([...ids, jogadorId]))
   }
 }
+
+// ── Multiplicador de treino ───────────────────────────────────
+// Cada jogo nos modos extras carrega um bônus para o desafio diário do dia seguinte.
+// Tiers: 1–4 jogos → ×1.2 | 5–9 jogos → ×1.35 | 10+ jogos → ×1.5
+
+const TREINO_KEY = 'escalafc_treino'
+
+interface TreinoData {
+  data: string
+  jogos: number
+}
+
+function getTreinoData(dataAlvo: string): TreinoData {
+  if (typeof window === 'undefined') return { data: dataAlvo, jogos: 0 }
+  try {
+    const raw = localStorage.getItem(TREINO_KEY)
+    if (!raw) return { data: dataAlvo, jogos: 0 }
+    const parsed = JSON.parse(raw) as TreinoData
+    return parsed.data === dataAlvo ? parsed : { data: dataAlvo, jogos: 0 }
+  } catch { return { data: dataAlvo, jogos: 0 } }
+}
+
+function tiersMultiplicador(jogos: number): number {
+  if (jogos >= 10) return 1.5
+  if (jogos >= 5) return 1.35
+  if (jogos >= 1) return 1.2
+  return 1
+}
+
+/** Registra uma partida de modo extra como "treino" para o bônus de amanhã */
+export function registrarTreinoHoje(): void {
+  if (typeof window === 'undefined') return
+  const dataHoje = hoje()
+  const treino = getTreinoData(dataHoje)
+  treino.jogos++
+  localStorage.setItem(TREINO_KEY, JSON.stringify(treino))
+}
+
+/** Quantos jogos de treino foram feitos hoje */
+export function getTreinoJogosHoje(): number {
+  return getTreinoData(hoje()).jogos
+}
+
+/** Preview do multiplicador que o treino de hoje vai gerar amanhã */
+export function getBonusAmanha(): number {
+  return tiersMultiplicador(getTreinoJogosHoje())
+}
+
+/**
+ * Multiplicador ativo AGORA no desafio diário (baseado no treino de ontem).
+ * Retorna 1 se não treinou ontem.
+ */
+export function getMultiplicadorTreino(): number {
+  if (typeof window === 'undefined') return 1
+  const ontemStr = new Date(Date.now() - 86_400_000).toISOString().split('T')[0]
+  return tiersMultiplicador(getTreinoData(ontemStr).jogos)
+}
