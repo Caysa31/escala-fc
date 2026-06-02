@@ -195,9 +195,9 @@ export default function JogoDesafio({
   const introEmDestaque = estado.pistaAtual === 0 && estado.status === 'jogando'
 
   // ── Placar dinâmico ──────────────────────────────────────────
-  // Pontos que o jogador vai ganhar SE acertar agora (baseado na pista atual)
-  // pistaAtual=0 → ainda não revelou → vale 100 (pista 1)
-  const pistaValor = estado.pistaAtual === 0 ? 1 : estado.pistaAtual
+  // Pontos que o jogador vai ganhar SE acertar agora (pista onde está)
+  // pistaAtual=0 → intro, ainda vale 100 (pista 1)
+  const pistaValor = Math.max(1, estado.pistaAtual)
   const pontosBrutosDisplay = PONTOS_BASE[pistaValor] ?? 20
   const pontosDisplay = Math.round(pontosBrutosDisplay * multiplicador)
 
@@ -369,10 +369,9 @@ export default function JogoDesafio({
             !onRevelar
             ? handleDestravar
             : undefined
-          // Valor atual: pontos que o jogador ganha se acertar AGORA (antes de ver mais pistas)
-          // Aparece na próxima pista bloqueada, não na revelada
-          const ptsAtivos = Math.round((PONTOS_BASE[estado.pistaAtual] ?? 100) * multiplicador)
-          // Custo de revelar esta pista específica (quanto cai ao desbloqueá-la)
+          // Valor DESTA pista: o que o jogador vai ganhar se revelar ela e acertar
+          const ptsDestaPista = Math.round((PONTOS_BASE[num] ?? 20) * multiplicador)
+          // Custo de revelar: diferença entre pista anterior e esta
           const custoEsta = Math.round(
             ((PONTOS_BASE[num - 1] ?? 100) - (PONTOS_BASE[num] ?? 20)) * multiplicador
           )
@@ -389,8 +388,8 @@ export default function JogoDesafio({
               subtitulo={num === 2 ? subtituloPista2 : undefined}
               onRevelar={onRevelar}
               onDestravar={onDestravar}
-              // "Agora vale X pts" aparece na pista BLOQUEADA com botão de destravar
-              pontosAtual={onDestravar ? ptsAtivos : undefined}
+              // "Agora vale X pts" = valor desta pista após revelar
+              pontosAtual={onDestravar ? ptsDestaPista : undefined}
               custoDestravar={onDestravar && custoEsta > 0 ? custoEsta : undefined}
             />
           )
