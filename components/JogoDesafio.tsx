@@ -33,6 +33,7 @@ interface Props {
   totalPistasMax?: number     // override de TOTAL_PISTAS (Relâmpago = 3)
   labelProximoDesafio?: string // label do botão de próximo (padrão: "Próximo desafio →")
   mensagemFimJogo?: string    // texto quando não há próximo desafio (padrão: "Calculando...")
+  onFimJogo?: (resultado: { ganhou: boolean; pontos: number; pistaAcerto: number | null }) => void
 }
 
 export default function JogoDesafio({
@@ -43,6 +44,7 @@ export default function JogoDesafio({
   totalPistasMax,
   labelProximoDesafio = 'Próximo desafio →',
   mensagemFimJogo = 'Calculando resultado do dia...',
+  onFimJogo,
 }: Props) {
   // Total de pistas dinâmico (Relâmpago sobrescreve TOTAL_PISTAS)
   const totalPistas = totalPistasMax ?? TOTAL_PISTAS
@@ -146,6 +148,7 @@ export default function JogoDesafio({
         }
       }
 
+      onFimJogo?.({ ganhou: true, pontos, pistaAcerto: pistaEfetiva })
       if (!modoExtra) setMostrarContrato(true)
     } else {
       const novaPista = estado.pistaAtual + 1
@@ -172,6 +175,7 @@ export default function JogoDesafio({
           })
           onResultado(perfilAtualizado)
         }
+        onFimJogo?.({ ganhou: false, pontos: 0, pistaAcerto: null })
         // Sempre abre TelaResultado na derrota — igual à vitória que abre ModalContrato
         // Para o último desafio, TelaFinalDia aparece por cima via useEffect do pai
         setMostrarResultado(true)

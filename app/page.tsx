@@ -10,7 +10,7 @@ import TelaPerfil, { StatsPerfil } from '@/components/TelaPerfil'
 import JogoDesafio from '@/components/JogoDesafio'
 import { TelaContratosAtivos } from '@/components/TelaContrato'
 import TelaFinalDia from '@/components/TelaFinalDia'
-import { Flame, FileText, Globe, Users, Gamepad2 } from 'lucide-react'
+import { Flame, FileText, Globe, Users, Gamepad2, Swords } from 'lucide-react'
 import Link from 'next/link'
 
 const HOJE = new Date().toISOString().split('T')[0]
@@ -193,12 +193,19 @@ export default function Home() {
         </div>
 
         {/* Navegação */}
-        <nav className="grid grid-cols-3 gap-2">
+        <nav className="grid grid-cols-2 gap-2">
+          <Link
+            href="/sala"
+            className="flex flex-col items-center justify-center gap-1 bg-purple-950 hover:bg-purple-900 border border-purple-800 text-purple-300 hover:text-white text-xs font-semibold py-3 rounded-xl transition-all"
+          >
+            <Swords size={18} className="text-purple-400" />
+            Sala Privada
+          </Link>
           <Link
             href="/modos"
             className="flex flex-col items-center justify-center gap-1 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white text-xs font-semibold py-3 rounded-xl transition-all"
           >
-            <Gamepad2 size={18} className="text-purple-400" />
+            <Gamepad2 size={18} className="text-indigo-400" />
             Modos Extra
           </Link>
           <Link
@@ -206,7 +213,7 @@ export default function Home() {
             className="flex flex-col items-center justify-center gap-1 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white text-xs font-semibold py-3 rounded-xl transition-all"
           >
             <Globe size={18} className="text-green-400" />
-            Ranking
+            Ranking Global
           </Link>
           <Link
             href="/grupos"

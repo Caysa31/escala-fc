@@ -270,6 +270,92 @@ export async function getContratosResolvidosSupabase(usuarioId: string) {
   return data ?? []
 }
 
+// ── Salas Privadas (Multiplayer) ──────────────────────────────
+
+export interface SalaResultado {
+  id: string
+  sala_id: string
+  apelido: string
+  pontos: number
+  pista_acerto: number | null
+  concluido_em: string
+}
+
+function gerarCodigoSala(): string {
+  // 4 letras não ambíguas + 2 dígitos → ~600k combinações únicas
+  const L = 'ABCDEFGHJKLMNPQRSTUVWXYZ'
+  const N = '23456789'
+  const l = () => L[Math.floor(Math.random() * L.length)]
+  const n = () => N[Math.floor(Math.random() * N.length)]
+  return `${l()}${l()}${l()}${l()}${n()}${n()}`
+}
+
+export async function criarSala(jogadorId: number, criadorApelido: string): Promise<string | null> {
+  if (!supabase) return null
+  const id = gerarCodigoSala()
+  const expiraEm = new Date(Date.now() + 6 * 60 * 60 * 1000).toISOString()
+  const { error } = await supabase.from('salas').insert({
+    id,
+    jogador_id: jogadorId,
+    criador_apelido: criadorApelido,
+    expira_em: expiraEm,
+  })
+  if (error) { console.warn('[Supabase] criarSala:', error.message); return null }
+  return id
+}
+
+export async function getSala(salaId: string): Promise<{ id: string; jogador_id: number; criador_apelido: string; expira_em: string } | null> {
+  if (!supabase) return null
+  const { data } = await supabase
+    .from('salas')
+    .select('id, jogador_id, criador_apelido, expira_em')
+    .eq('id', salaId.toUpperCase())
+    .single()
+  return data ?? null
+}
+
+export async function salvarResultadoSala(payload: {
+  salaId: string
+  apelido: string
+  pontos: number
+  pistaAcerto: number | null
+}): Promise<void> {
+  if (!supabase) return
+  await supabase.from('sala_resultados').upsert({
+    sala_id:      payload.salaId,
+    apelido:      payload.apelido,
+    pontos:       payload.pontos,
+    pista_acerto: payload.pistaAcerto,
+  }, { onConflict: 'sala_id,apelido' })
+}
+
+export async function getResultadosSala(salaId: string): Promise<SalaResultado[]> {
+  if (!supabase) return []
+  const { data } = await supabase
+    .from('sala_resultados')
+    .select('*')
+    .eq('sala_id', salaId)
+    .order('pontos', { ascending: false })
+    .order('pista_acerto', { ascending: true })
+  return (data ?? []) as SalaResultado[]
+}
+
+export function subscribeToSala(
+  salaId: string,
+  onNovoResultado: (resultado: SalaResultado) => void
+) {
+  if (!supabase) return () => {}
+  const channel = supabase
+    .channel(`sala-${salaId}`)
+    .on(
+      'postgres_changes',
+      { event: 'INSERT', schema: 'public', table: 'sala_resultados', filter: `sala_id=eq.${salaId}` },
+      payload => onNovoResultado(payload.new as SalaResultado)
+    )
+    .subscribe()
+  return () => { void supabase!.removeChannel(channel) }
+}
+
 // ── Grupos ────────────────────────────────────────────────────
 
 function gerarCodigoGrupo(nome: string): string {
