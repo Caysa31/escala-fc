@@ -58,7 +58,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
       ).join('') ?? '—'
       return emojis
     }).join(' ')
-    return `🐍 COBRA — Quem é o Craque?\n${acertos}/3 acertos hoje!\n${linhas}\n\nFiz ${pontosHoje} pts. Você consegue mais?\nhttps://escala-fc.vercel.app`
+    return `🐍 COBRA — Quem é o Craque?\n${acertos}/3 acertos hoje!\n${linhas}\n\nFiz ${pontosHoje} pts. Você consegue mais?\nhttps://cobra-craque.vercel.app`
   }
 
   function compartilhar() {
@@ -67,7 +67,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
   }
 
   function desafiarAmigo() {
-    const texto = `🐍 Fiz ${pontosHoje} pts hoje no COBRA — Quem é o Craque?\nConsegue me superar?\nhttps://escala-fc.vercel.app`
+    const texto = `🐍 Fiz ${pontosHoje} pts hoje no COBRA — Quem é o Craque?\nConsegue me superar?\nhttps://cobra-craque.vercel.app`
     window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank')
   }
 

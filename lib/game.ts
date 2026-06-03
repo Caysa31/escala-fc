@@ -338,5 +338,5 @@ export function gerarTextoCompartilhar(
     ? (pistaAcerto === 0 ? 'Acertei pelo histórico! 🎯' : `Acertei em ${pistaAcerto} pista${pistaAcerto > 1 ? 's' : ''} 🎯`)
     : 'Não acertei hoje 😬'
 
-  return `🐍 COBRA — Quem é o Craque? #${rodadaId}\n${resultado}\n\n${grade}\n\nescala-fc.vercel.app`
+  return `🐍 COBRA — Quem é o Craque? #${rodadaId}\n${resultado}\n\n${grade}\n\ncobra-craque.vercel.app`
 }

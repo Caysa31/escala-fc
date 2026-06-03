@@ -115,7 +115,7 @@ export default function TelaResultado({
           <p className="text-2xl text-center tracking-widest">
             {tentativas.map(t => t.status === 'acerto' ? '🟩' : '⬛').join('')}
           </p>
-          <p className="text-[#5A8AAA] text-xs text-center mt-2">escala-fc.vercel.app</p>
+          <p className="text-[#5A8AAA] text-xs text-center mt-2">cobra-craque.vercel.app</p>
         </div>
 
         {/* Botões de compartilhar */}
