@@ -89,6 +89,24 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
           </div>
         </div>
 
+        {/* Dois diferenciais */}
+        <div className="grid grid-cols-2 gap-3">
+          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-4 space-y-2">
+            <p className="text-2xl">🌍</p>
+            <p className="text-white font-bold text-sm">Ranking Global</p>
+            <p className="text-[#8AB4CC] text-xs leading-relaxed">
+              Compita com jogadores do Brasil inteiro. Quem é o cobra de verdade?
+            </p>
+          </div>
+          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-4 space-y-2">
+            <p className="text-2xl">⚡</p>
+            <p className="text-white font-bold text-sm">Bônus de Contrato</p>
+            <p className="text-[#8AB4CC] text-xs leading-relaxed">
+              Adivinhou? Assine contrato com o jogador real. O que ele fizer em campo pode render pontos pra você.
+            </p>
+          </div>
+        </div>
+
         {/* ── Novo jogador ── */}
         {!modoRecuperacao && (
           <form onSubmit={handleSubmit} className="space-y-3">
