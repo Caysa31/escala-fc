@@ -438,8 +438,11 @@ export default function JogoDesafio({
           O env(safe-area-inset-bottom) cobre o indicador home do iPhone. */}
       {estado.status === 'jogando' && inputMontado && (
         <div
-          className={`fixed left-0 right-0 z-50 bg-[#070E1A] border-t border-[#2A5275] px-4 pt-3 ${temBottomNav ? 'bottom-16' : 'bottom-0'}`}
-          style={{ paddingBottom: temBottomNav ? '8px' : 'max(12px, env(safe-area-inset-bottom))' }}
+          className="fixed left-0 right-0 z-50 bg-[#070E1A] border-t border-[#2A5275] px-4 pt-3"
+          style={{
+            bottom: temBottomNav ? 'calc(56px + env(safe-area-inset-bottom))' : '0',
+            paddingBottom: temBottomNav ? '8px' : 'max(12px, env(safe-area-inset-bottom))',
+          }}
         >
           <div className="max-w-md mx-auto">
             {/* Placar sempre visível */}
