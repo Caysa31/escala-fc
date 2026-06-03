@@ -180,18 +180,21 @@ export default function SalaPage() {
             </button>
 
             {/* Como funciona */}
-            <div className="bg-[#0F1D30] border border-[#1A3A5C] border-l-2 border-l-[#00C853] rounded-xl px-4 py-4 space-y-2">
-              <p className="text-white text-sm font-bold">⚽ Como funciona</p>
-              <div className="space-y-1.5">
+            <div className="bg-[#0F1D30] border border-[#1A3A5C] border-l-2 border-l-[#00C853] rounded-xl px-4 py-4 space-y-3">
+              <p className="text-white text-sm font-bold">⚽ Como funciona a Liga Privada</p>
+              <div className="space-y-3">
                 {[
-                  { icon: '🏆', texto: 'Liga permanente — dura até o fim dos campeonatos' },
-                  { icon: '📅', texto: 'Todo dia novos desafios para todos os membros' },
-                  { icon: '📈', texto: 'Pontos acumulam ao longo de toda a temporada' },
-                  { icon: '⚡', texto: 'Bônus de contrato (Brasileirão, Libertadores, Copa do Brasil) também valem' },
+                  { icon: '👥', titulo: 'Convide quem você quer desafiar', texto: 'Compartilhe o código com amigos, colegas e família. Cada um entra com o próprio apelido.' },
+                  { icon: '🎯', titulo: 'Todo dia, os mesmos 3 desafios', texto: 'Todos os membros jogam os mesmos desafios diários. Adivinhou o jogador? Ganhou pontos para a liga.' },
+                  { icon: '⚡', titulo: 'Assine contratos com jogadores reais', texto: 'Ao acertar, você assina um contrato com o jogador. Se ele entrar em campo, criar chances ou marcar — você ganha bônus automático.' },
+                  { icon: '🏆', titulo: 'A liga dura a temporada inteira', texto: 'Os pontos acumulam semana a semana. Quem tiver mais pontos ao final da Copa do Brasil, Libertadores e Brasileirão é o campeão da liga.' },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-2">
-                    <span className="text-sm mt-0.5">{item.icon}</span>
-                    <p className="text-[#8AB4CC] text-xs leading-snug">{item.texto}</p>
+                  <div key={i} className="flex items-start gap-3">
+                    <span className="text-lg shrink-0">{item.icon}</span>
+                    <div>
+                      <p className="text-white text-xs font-semibold">{item.titulo}</p>
+                      <p className="text-[#8AB4CC] text-xs leading-snug mt-0.5">{item.texto}</p>
+                    </div>
                   </div>
                 ))}
               </div>
