@@ -268,12 +268,3 @@ export function StatsPerfil({ perfil }: StatsPerfilProps) {
   )
 }
 
-function StatCard({ icon, valor, label }: { icon: React.ReactNode; valor: number | string; label: string }) {
-  return (
-    <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-3 text-center">
-      <div className="flex justify-center mb-1">{icon}</div>
-      <p className="text-white font-bold text-lg leading-none">{valor}</p>
-      <p className="text-[#8AB4CC] text-xs mt-1">{label}</p>
-    </div>
-  )
-}

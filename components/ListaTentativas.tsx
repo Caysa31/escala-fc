@@ -30,7 +30,7 @@ export default function ListaTentativas({ tentativas }: ListaTentativasProps) {
               `}
             >
               {t.status === 'acerto' ? (
-                <CheckCircle size={16} className="text-green-400 flex-shrink-0" />
+                <CheckCircle size={16} className="text-[#00C853] flex-shrink-0" />
               ) : isPulou ? (
                 <ChevronRight size={16} className="text-[#5A8AAA] flex-shrink-0" />
               ) : (

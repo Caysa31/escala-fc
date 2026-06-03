@@ -33,7 +33,7 @@ function DesafioConteudo({ rodadaId }: { rodadaId: number }) {
   }
 
   const intro = getIntroNarrativa(jogador)
-  const pontos = pistaAcerto ? (PONTOS_BASE[pistaAcerto] ?? 0) : 0
+  const pontos = pistaAcerto !== null ? (PONTOS_BASE[pistaAcerto] ?? 0) : 0
   const pistaLabel = pistaAcerto === 0 ? 'pelo histórico' : pistaAcerto ? `na pista ${pistaAcerto}` : null
 
   return (
@@ -59,7 +59,7 @@ function DesafioConteudo({ rodadaId }: { rodadaId: number }) {
             </div>
           )}
 
-          {pistaAcerto ? (
+          {pistaAcerto !== null ? (
             <div className="flex items-center gap-3 bg-[#071A0F] border border-[#00C853]/30 rounded-xl px-4 py-3">
               <Trophy size={20} className="text-[#FFD23F] flex-shrink-0" />
               <div>

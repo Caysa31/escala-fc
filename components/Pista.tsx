@@ -14,7 +14,6 @@ interface PistaProps {
   onDestravar?: () => void  // botão "Ver próxima dica" na pista seguinte travada
   // Pontuação dinâmica
   pontosAtual?: number    // pontos que o jogador ganha SE acertar agora (mostrado na pista ativa)
-  pontosPerda?: number    // pontos perdidos ao revelar esta pista (mostrado na pista ativa)
   custoDestravar?: number // custo de revelar a próxima pista (mostrado no botão "Ver próxima dica")
 }
 
@@ -56,7 +55,7 @@ function BlocosNome({ codificado, atual, correto }: { codificado: string; atual:
                         : 'bg-[#0F1D30] border-2 border-[#2A5275] text-white'
                       : ativa
                         ? 'bg-[#0F1D30] border border-[#00C853]/40'
-                        : 'bg-[#1A3A5C] border border-zinc-500'
+                        : 'bg-[#1A3A5C] border border-[#2A5275]'
                     }`}
                 >
                   {rev ? char.toUpperCase() : ''}
@@ -112,7 +111,7 @@ function LetrasNome({ codificado, atual, correto }: { codificado: string; atual:
 // Label temático padrão de cada capítulo (pista 2 é sobrescrita por `subtitulo` via posição)
 const LABELS_PISTAS = ['O Nome', 'O Dom', 'A Raiz', 'A Jornada', 'Time + Nome']
 
-export default function Pista({ numero, texto, revelada, atual, errou, correto, subtitulo, onRevelar, onDestravar, pontosAtual, pontosPerda, custoDestravar }: PistaProps) {
+export default function Pista({ numero, texto, revelada, atual, errou, correto, subtitulo, onRevelar, onDestravar, pontosAtual,  custoDestravar }: PistaProps) {
   // Determina o estado visual da pista
   const isVerde = atual || correto
   const isVermelho = errou && !isVerde

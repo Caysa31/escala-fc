@@ -59,14 +59,8 @@ export default function ModoPage() {
       return
     }
 
-    // Inicia o primeiro jogo automaticamente
-    const excluidos = getModoPlayedIdsHoje(modoId)
-    const jogador = getJogadorAleatorio(modoId, excluidos)
-    const rodadaId = 1_000_000 + Date.now() % 1_000_000
-    registrarModoJogadorId(modoId, jogador.id)
-    incrementarModoPlays(modoId)
-    setPlaysHoje(getModoPlaysHoje(modoId))
-    setJogoAtual({ jogadorId: jogador.id, rodadaId })
+    // Inicia o primeiro jogo via função centralizada (evita double-play)
+    iniciarNovoJogo()
   }, [modoId]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Próximo jogo — chamado pelo botão "Jogar Novamente"

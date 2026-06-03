@@ -186,7 +186,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
                 </div>
               ))}
               <div className="border-t border-[#FFD23F]/30 pt-2 flex justify-between items-center">
-                <p className="text-yellow-500 text-xs">Bônus potencial total</p>
+                <p className="text-[#FFD23F] text-xs">Bônus potencial total</p>
                 <p className="text-[#FFD23F] font-black text-lg">+{bonusPotencialTotal} pts</p>
               </div>
             </div>

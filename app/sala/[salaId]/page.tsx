@@ -43,9 +43,6 @@ export default function LigaPage() {
   )
 
   // Verifica se já é membro
-  const ehMembro = useCallback((apelido: string, lista: LigaMembro[]) => {
-    return lista.some(m => m.apelido === apelido)
-  }, [])
 
   const carregarPlacar = useCallback(async () => {
     const dados = await getPlacarLiga(ligaId)
@@ -142,7 +139,7 @@ export default function LigaPage() {
 
     return (
       <main className="min-h-screen bg-[#0A1626] text-white">
-        <div className="max-w-md mx-auto px-4 pt-5 pb-10 space-y-4">
+        <div className="max-w-md mx-auto px-4 pt-5 pb-28 space-y-4">
           <div className="flex items-center gap-3">
             <button onClick={() => setTela('dashboard')}
               className="p-2 rounded-xl bg-[#0F1D30] border border-[#1A3A5C] shrink-0">
@@ -246,8 +243,8 @@ export default function LigaPage() {
           <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-4 space-y-2">
             <p className="text-[#8AB4CC] text-xs font-bold uppercase tracking-wider">Campeonatos da liga</p>
             {[
-              { emoji: '🏆', nome: 'Copa do Brasil', ate: 'Novembro 2025' },
-              { emoji: '⭐', nome: 'Libertadores', ate: 'Novembro 2025' },
+              { emoji: '🏆', nome: 'Copa do Brasil', ate: 'Final da temporada 2026' },
+              { emoji: '⭐', nome: 'Libertadores', ate: 'Final da temporada 2026' },
               { emoji: '🇧🇷', nome: 'Brasileirão', ate: 'Dezembro 2025 — encerramento' },
             ].map(c => (
               <div key={c.nome} className="flex items-center gap-3">
