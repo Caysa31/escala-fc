@@ -498,13 +498,15 @@ export default function JogoDesafio({
 
             {/* Opção de pular — só aparece após revelar pelo menos 1 pista */}
             {estado.pistaAtual >= 1 && (
-              <button
-                type="button"
-                onClick={handlePularDesafio}
-                className="w-full text-center text-[#2A4A6A] hover:text-[#5A8AAA] text-xs py-1 transition-colors"
-              >
-                🏳️ Não sei esse — passar
-              </button>
+              <div className="border-t border-[#1A3A5C] mt-1 pt-2">
+                <button
+                  type="button"
+                  onClick={handlePularDesafio}
+                  className="w-full text-center text-[#8AB4CC] hover:text-white text-xs font-medium py-1 transition-colors"
+                >
+                  🏳️ Não sei esse jogador — passar
+                </button>
+              </div>
             )}
           </div>
         </div>
