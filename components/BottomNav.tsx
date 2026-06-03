@@ -2,14 +2,13 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Home as HomeIcon, Swords, Gamepad2, Globe, Users } from 'lucide-react'
+import { Home as HomeIcon, Swords, Gamepad2, Globe } from 'lucide-react'
 
 const NAV = [
   { href: '/',        Icon: HomeIcon, label: 'Início'  },
   { href: '/sala',    Icon: Swords,   label: 'Liga'    },
   { href: '/modos',   Icon: Gamepad2, label: 'Modos'   },
   { href: '/ranking', Icon: Globe,    label: 'Ranking' },
-  { href: '/grupos',  Icon: Users,    label: 'Grupos'  },
 ]
 
 export default function BottomNav() {
