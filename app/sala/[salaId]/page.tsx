@@ -161,31 +161,27 @@ export default function LigaPage() {
             rodadaId={rodadaId}
             perfil={perfil}
             indiceDesafio={desafioIdx}
-            onResultado={p => setPerfil(p)}
-            onContratosChange={() => {}}
-            onFimJogo={(r) => {
-              // Salva pontos exatos no DB da liga — sem subtração, sem race condition
-              if (r.ganhou && r.pontos > 0) {
-                void incrementarPontosLiga(ligaId, perfil.apelido, r.pontos)
-              }
-              if (temProximo) {
-                // Ainda há desafios — navega para o próximo
-                const prox = jogadoresDoDia.findIndex(
-                  ({ rodadaId: rid }, i) => i > desafioIdx && getResultadoRodada(rid) === null
-                )
-                if (prox !== -1) setDesafioIdx(prox)
-              } else {
-                // Último desafio — volta ao dashboard com placar atualizado
-                setTimeout(() => { carregarPlacar(); setTela('dashboard') }, 1000)
+            onResultado={p => {
+              // Calcula pontos ganhos NESTE desafio e salva na liga
+              const pontosGanhos = p.pontosTotal - (perfil?.pontosTotal ?? 0)
+              setPerfil(p)
+              if (pontosGanhos > 0) {
+                void incrementarPontosLiga(ligaId, perfil!.apelido, pontosGanhos)
               }
             }}
+            onContratosChange={() => {}}
+            // Sem onFimJogo — deixa o JogoDesafio mostrar resultado normalmente
             onProximoDesafio={temProximo ? () => {
               const prox = jogadoresDoDia.findIndex(
                 ({ rodadaId: rid }, i) => i > desafioIdx && getResultadoRodada(rid) === null
               )
               if (prox !== -1) setDesafioIdx(prox)
               else setTela('dashboard')
-            } : undefined}
+            } : () => {
+              // Último desafio — volta ao dashboard
+              carregarPlacar()
+              setTela('dashboard')
+            }}
           />
         </div>
       </main>
