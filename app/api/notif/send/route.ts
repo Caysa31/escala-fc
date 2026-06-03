@@ -56,7 +56,7 @@ async function enviarNotificacao(tokens: string[], titulo: string, corpo: string
         notification: { title: titulo, body: corpo },
         webpush: {
           notification: { icon: '/icon-192.png', badge: '/icon-192.png' },
-          fcmOptions: { link: `${process.env.NEXT_PUBLIC_APP_URL ?? 'https://escalafe.com.br'}${url}` },
+          fcmOptions: { link: `${process.env.NEXT_PUBLIC_APP_URL ?? 'https://escala-fc.vercel.app'}${url}` },
         },
       })
       enviados += res.successCount
@@ -115,7 +115,7 @@ async function enviarPorTipo(tipo: string) {
 
     const resultado = await enviarNotificacao(
       tokens,
-      '⚽ Novo desafio no ESCALA FC!',
+      '🐍 Novo desafio no COBRA!',
       '3 jogadores esperando você hoje. Qual é a sua sequência? 🔥',
       '/'
     )

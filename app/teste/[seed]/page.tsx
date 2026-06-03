@@ -132,7 +132,7 @@ export default function TestePage() {
         {/* Header */}
         <header className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-black tracking-tight">⚽ ESCALA FC</h1>
+            <h1 className="text-2xl font-black tracking-tight">🐍 COBRA</h1>
             <p className="text-zinc-500 text-xs">
               Teste de jogo completo · 3 desafios
             </p>

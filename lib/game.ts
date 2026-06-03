@@ -1,4 +1,4 @@
-// Lógica central do jogo ESCALA FC
+// Lógica central do jogo COBRA — Quem é o Craque?
 
 import jogadoresData from '@/data/jogadores.json'
 import { Jogador, PONTOS_BASE, TIPO_PISTAS, TipoPista } from './types'

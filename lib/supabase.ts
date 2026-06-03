@@ -1,4 +1,4 @@
-// Cliente Supabase — ESCALA FC
+// Cliente Supabase — COBRA
 // Preencha o .env.local com suas credenciais (veja .env.local.example)
 
 import { createClient } from '@supabase/supabase-js'

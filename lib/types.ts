@@ -1,4 +1,4 @@
-// Tipos centrais do ESCALA FC
+// Tipos centrais do COBRA — Quem é o Craque?
 
 export interface Jogador {
   id: number

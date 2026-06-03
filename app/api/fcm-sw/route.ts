@@ -22,7 +22,7 @@ const messaging = firebase.messaging();
 messaging.onBackgroundMessage(function(payload) {
   var notif = payload.notification || {};
   var data  = payload.data || {};
-  self.registration.showNotification(notif.title || 'ESCALA FC', {
+  self.registration.showNotification(notif.title || 'COBRA — Quem é o Craque?', {
     body:  notif.body  || 'Você tem novidades esperando!',
     icon:  notif.icon  || '/icon-192.png',
     badge: '/icon-192.png',
