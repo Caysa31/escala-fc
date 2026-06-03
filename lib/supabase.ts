@@ -488,15 +488,27 @@ export async function getPlacarLiga(ligaId: string): Promise<LigaMembro[]> {
 
   const apelidos = membros.map(m => m.apelido)
 
-  // 2. Busca pontos atuais de cada membro na tabela streaks
-  const { data: streaks } = await supabase
-    .from('streaks')
-    .select('apelido, pontos_total')
-    .in('apelido', apelidos)
+  // 2. Busca pontos atuais via usuario_id (streaks usa usuario_id, não apelido)
+  const userIds = membros.filter(m => m.user_id).map(m => m.user_id!)
+  const userIdToPontos: Record<string, number> = {}
 
+  if (userIds.length > 0) {
+    const { data: streaks } = await supabase
+      .from('streaks')
+      .select('usuario_id, pontos_total')
+      .in('usuario_id', userIds)
+
+    for (const s of (streaks ?? [])) {
+      userIdToPontos[s.usuario_id] = s.pontos_total ?? 0
+    }
+  }
+
+  // Mapeia apelido → pontos via user_id
   const streakMap: Record<string, number> = {}
-  for (const s of (streaks ?? [])) {
-    streakMap[s.apelido] = s.pontos_total ?? 0
+  for (const m of membros) {
+    if (m.user_id && userIdToPontos[m.user_id] !== undefined) {
+      streakMap[m.apelido] = userIdToPontos[m.user_id]
+    }
   }
 
   // 3. Calcula pontos na liga = atual - base
