@@ -502,7 +502,7 @@ export default function JogoDesafio({
                 <button
                   type="button"
                   onClick={handlePularDesafio}
-                  className="w-full text-center text-[#8AB4CC] hover:text-white text-xs font-medium py-1 transition-colors"
+                  className="w-full text-center text-white text-xs font-medium py-1 transition-colors opacity-70 hover:opacity-100"
                 >
                   🏳️ Não sei esse jogador — passar
                 </button>
