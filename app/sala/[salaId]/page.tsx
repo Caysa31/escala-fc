@@ -170,7 +170,10 @@ export default function LigaPage() {
               if (prox !== -1) setDesafioIdx(prox)
               else setTela('dashboard')
             } : undefined}
-            onFimJogo={() => { setTimeout(() => setTela('dashboard'), 600) }}
+            onFimJogo={!temProximo ? () => {
+              // Só volta ao dashboard quando acabar o último desafio
+              setTimeout(() => { carregarPlacar(); setTela('dashboard') }, 800)
+            } : undefined}
           />
         </div>
       </main>
