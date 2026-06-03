@@ -102,7 +102,7 @@ export function ModalContrato({ jogador, rodadaId, pistaAcerto, onFechar, onProx
             onResponder={handleTrivia}
           />
         ) : (
-          <ContratoNormal multiplicador={multiplicador} bonusMax={bonusMax} />
+          <ContratoNormal multiplicador={multiplicador} bonusMax={bonusMax} nomeJogador={jogador.nome} />
         )}
 
         {/* Botão principal */}
@@ -140,11 +140,18 @@ export function ModalContrato({ jogador, rodadaId, pistaAcerto, onFechar, onProx
 
 // ── Contrato normal (jogador ativo) ───────────────────────────
 
-function ContratoNormal({ multiplicador, bonusMax }: { multiplicador: number; bonusMax: number }) {
+function ContratoNormal({ multiplicador, bonusMax, nomeJogador }: { multiplicador: number; bonusMax: number; nomeJogador: string }) {
+  // Pega só o primeiro nome para ficar mais natural
+  const primeiroNome = nomeJogador.split(' ')[0]
   return (
     <div className="space-y-3">
+      {/* Frase de expectativa */}
+      <p className="text-white text-sm leading-snug">
+        Agora depende do que <span className="font-bold text-[#00C853]">{primeiroNome}</span> vai fazer em campo na próxima rodada 👀
+      </p>
+
       <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-4 space-y-2">
-        <p className="text-[#8AB4CC] text-sm font-semibold mb-3">Bônus pelo desempenho dele:</p>
+        <p className="text-[#8AB4CC] text-xs font-semibold mb-2 uppercase tracking-wider">Bônus pelo desempenho dele:</p>
         <BonusRow emoji="🏃" label="Entrou em campo" pts={BONUS_DESEMPENHO.entrou} mult={multiplicador} />
         <BonusRow emoji="⏱️" label="Jogou 70%+ do tempo" pts={BONUS_DESEMPENHO.jogou70} mult={multiplicador} />
         <BonusRow emoji="🎯" label="Criou chance de gol" pts={BONUS_DESEMPENHO.criouChance} mult={multiplicador} />
