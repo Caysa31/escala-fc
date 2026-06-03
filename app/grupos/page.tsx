@@ -120,7 +120,7 @@ export default function GruposPage() {
                     <p className={`font-semibold text-sm truncate ${sou ? 'text-[#00C853]' : 'text-white'}`}>{entrada.apelido} {sou && '(você)'}</p>
                   </div>
                   {entrada.streak_atual > 0 && (
-                    <div className="flex items-center gap-1 text-xs text-[#FFD23F]><Flame size={12} /><span>{entrada.streak_atual}</span></div>
+                    <div className="flex items-center gap-1 text-xs text-[#FFD23F]"><Flame size={12} /><span>{entrada.streak_atual}</span></div>
                   )}
                   <div className="text-right flex-shrink-0">
                     <p className="font-black text-[#FFD23F] text-sm">{entrada.pontos_semana ?? 0}</p>

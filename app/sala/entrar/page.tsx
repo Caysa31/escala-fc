@@ -4,7 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { ArrowLeft } from 'lucide-react'
-import { getSala } from '@/lib/supabase'
+import { getLiga, entrarLiga } from '@/lib/supabase'
+import { carregarPerfil } from '@/lib/perfil'
 
 export default function EntrarSalaPage() {
   const router = useRouter()
@@ -14,15 +15,20 @@ export default function EntrarSalaPage() {
 
   async function handleEntrar() {
     const cod = codigo.trim().toUpperCase()
-    if (cod.length < 4) { setErro('Digite o código da sala'); return }
+    if (cod.length < 4) { setErro('Digite o código da liga'); return }
     setBuscando(true)
     setErro('')
-    const sala = await getSala(cod)
-    setBuscando(false)
-    if (!sala) { setErro('Sala não encontrada. Verifique o código.'); return }
 
-    const expirou = new Date(sala.expira_em) < new Date()
-    if (expirou) { setErro('Esta sala já expirou. Peça ao criador que abra uma nova.'); return }
+    const liga = await getLiga(cod)
+    setBuscando(false)
+    if (!liga) { setErro('Liga não encontrada. Verifique o código.'); return }
+    if (!liga.ativa) { setErro('Esta liga já foi encerrada.'); return }
+
+    // Entra na liga registrando pontos atuais como base
+    const perfil = carregarPerfil()
+    const pontosBase = perfil?.pontosTotal ?? 0
+    const apelido = perfil?.apelido ?? 'Visitante'
+    await entrarLiga(cod, apelido, pontosBase)
 
     router.push(`/sala/${cod}`)
   }

@@ -393,6 +393,139 @@ export function subscribeToSala(
   return () => { void supabase!.removeChannel(channel) }
 }
 
+// ── Liga Privada permanente ───────────────────────────────────
+
+export interface LigaMembro {
+  apelido: string
+  user_id: string | null
+  pontos_base: number
+  joined_at: string
+  pontos_atual?: number   // preenchido ao montar o placar
+  pontos_liga?: number    // pontos_atual - pontos_base
+}
+
+export interface LigaInfo {
+  id: string
+  nome: string
+  criador_apelido: string
+  criada_em: string
+  ativa: boolean
+}
+
+function gerarCodigoLiga(): string {
+  const L = 'ABCDEFGHJKLMNPQRSTUVWXYZ'
+  const N = '23456789'
+  const l = () => L[Math.floor(Math.random() * L.length)]
+  const n = () => N[Math.floor(Math.random() * N.length)]
+  return `${l()}${l()}${l()}${l()}${n()}${n()}`
+}
+
+export async function criarLiga(
+  nome: string,
+  criadorApelido: string,
+  pontosBase: number
+): Promise<string | null> {
+  if (!supabase) return null
+  const id = gerarCodigoLiga()
+  const { error: ligaError } = await supabase.from('ligas').insert({
+    id, nome, criador_apelido: criadorApelido, ativa: true,
+  })
+  if (ligaError) { console.warn('[Supabase] criarLiga:', ligaError.message); return null }
+
+  // Criador já entra como primeiro membro
+  const userId = typeof window !== 'undefined'
+    ? (localStorage.getItem('escalafc_supabase_id') ?? null)
+    : null
+  const { error: membroError } = await supabase.from('liga_membros').insert({
+    liga_id: id, apelido: criadorApelido, user_id: userId, pontos_base: pontosBase,
+  })
+  if (membroError) { console.warn('[Supabase] criarLiga membro:', membroError.message) }
+  return id
+}
+
+export async function getLiga(ligaId: string): Promise<LigaInfo | null> {
+  if (!supabase) return null
+  const { data } = await supabase
+    .from('ligas')
+    .select('id, nome, criador_apelido, criada_em, ativa')
+    .eq('id', ligaId.toUpperCase())
+    .single()
+  return data ?? null
+}
+
+export async function entrarLiga(
+  ligaId: string,
+  apelido: string,
+  pontosBase: number
+): Promise<boolean> {
+  if (!supabase) return false
+  const userId = typeof window !== 'undefined'
+    ? (localStorage.getItem('escalafc_supabase_id') ?? null)
+    : null
+  const { error } = await supabase.from('liga_membros').upsert({
+    liga_id: ligaId.toUpperCase(), apelido, user_id: userId, pontos_base: pontosBase,
+  }, { onConflict: 'liga_id,apelido', ignoreDuplicates: true })
+  if (error) { console.warn('[Supabase] entrarLiga:', error.message); return false }
+  return true
+}
+
+export async function getMembrosLiga(ligaId: string): Promise<LigaMembro[]> {
+  if (!supabase) return []
+  const { data } = await supabase
+    .from('liga_membros')
+    .select('apelido, user_id, pontos_base, joined_at')
+    .eq('liga_id', ligaId.toUpperCase())
+    .order('joined_at', { ascending: true })
+  return (data ?? []) as LigaMembro[]
+}
+
+export async function getPlacarLiga(ligaId: string): Promise<LigaMembro[]> {
+  if (!supabase) return []
+
+  // 1. Busca membros da liga
+  const membros = await getMembrosLiga(ligaId)
+  if (membros.length === 0) return []
+
+  const apelidos = membros.map(m => m.apelido)
+
+  // 2. Busca pontos atuais de cada membro na tabela streaks
+  const { data: streaks } = await supabase
+    .from('streaks')
+    .select('apelido, pontos_total')
+    .in('apelido', apelidos)
+
+  const streakMap: Record<string, number> = {}
+  for (const s of (streaks ?? [])) {
+    streakMap[s.apelido] = s.pontos_total ?? 0
+  }
+
+  // 3. Calcula pontos na liga = atual - base
+  const placar: LigaMembro[] = membros.map(m => ({
+    ...m,
+    pontos_atual: streakMap[m.apelido] ?? 0,
+    pontos_liga: Math.max(0, (streakMap[m.apelido] ?? 0) - m.pontos_base),
+  }))
+
+  // 4. Ordena por pontos na liga DESC
+  return placar.sort((a, b) => (b.pontos_liga ?? 0) - (a.pontos_liga ?? 0))
+}
+
+export function subscribeToLiga(
+  ligaId: string,
+  onMudanca: () => void
+) {
+  if (!supabase) return () => {}
+  const channel = supabase
+    .channel(`liga-${ligaId}`)
+    .on(
+      'postgres_changes',
+      { event: '*', schema: 'public', table: 'liga_membros', filter: `liga_id=eq.${ligaId}` },
+      () => onMudanca()
+    )
+    .subscribe()
+  return () => { void supabase!.removeChannel(channel) }
+}
+
 // ── Grupos ────────────────────────────────────────────────────
 
 function gerarCodigoGrupo(nome: string): string {
