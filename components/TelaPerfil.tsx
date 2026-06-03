@@ -236,29 +236,32 @@ export function StatsPerfil({ perfil }: StatsPerfilProps) {
   }, [perfil.pontosTotal])
 
   return (
-    <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl px-5 py-4">
-      {/* Nome do jogador */}
-      <p className="text-white font-bold text-base mb-3">Olá, {perfil.apelido} 👋</p>
-
-      {/* 4 stats em linha — mesmo card, só o número tem cor */}
-      <div className="grid grid-cols-4 gap-2">
+    <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl px-4 py-3">
+      {/* Nome + stats em linha única compacta */}
+      <div className="flex items-center justify-between mb-2">
+        <p className="text-white font-bold text-sm">Olá, {perfil.apelido} 👋</p>
+        {perfil.streakAtual > 0 && (
+          <p className="text-orange-400 text-xs font-semibold">🔥 {perfil.streakAtual} dias</p>
+        )}
+      </div>
+      <div className="grid grid-cols-4 gap-1">
         <div className="text-center">
-          <p className="text-[#FFD23F] font-black text-2xl leading-none">{perfil.pontosTotal}</p>
-          <p className="text-[#8AB4CC] text-[10px] mt-1">pts total</p>
+          <p className="text-[#FFD23F] font-black text-xl leading-none">{perfil.pontosTotal}</p>
+          <p className="text-[#8AB4CC] text-[9px] mt-0.5">pts total</p>
         </div>
         <div className="text-center border-l border-[#1A3A5C]">
-          <p className="text-[#FFD23F] font-black text-2xl leading-none">
+          <p className="text-[#FFD23F] font-black text-xl leading-none">
             {posicaoRanking ? `#${posicaoRanking}` : '—'}
           </p>
-          <p className="text-[#8AB4CC] text-[10px] mt-1">ranking</p>
+          <p className="text-[#8AB4CC] text-[9px] mt-0.5">ranking</p>
         </div>
         <div className="text-center border-l border-[#1A3A5C]">
-          <p className="text-[#FFD23F] font-black text-2xl leading-none">{perfil.streakAtual}</p>
-          <p className="text-[#8AB4CC] text-[10px] mt-1">sequência</p>
+          <p className="text-[#FFD23F] font-black text-xl leading-none">{perfil.streakAtual}</p>
+          <p className="text-[#8AB4CC] text-[9px] mt-0.5">sequência</p>
         </div>
         <div className="text-center border-l border-[#1A3A5C]">
-          <p className="text-[#FFD23F] font-black text-2xl leading-none">{pontosHoje}</p>
-          <p className="text-[#8AB4CC] text-[10px] mt-1">pts hoje</p>
+          <p className="text-[#FFD23F] font-black text-xl leading-none">{pontosHoje}</p>
+          <p className="text-[#8AB4CC] text-[9px] mt-0.5">pts hoje</p>
         </div>
       </div>
     </div>

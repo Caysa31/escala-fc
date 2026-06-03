@@ -345,16 +345,12 @@ export default function JogoDesafio({
         </div>
       )}
 
-      {/* Intro narrativa */}
-      <div className="bg-[#0F1D30] border border-[#2A5275] rounded-xl px-4 py-5">
-        <p className="text-xs uppercase font-bold tracking-widest mb-3 text-[#8AB4CC]">
+      {/* Intro narrativa — compacta para pista 1 aparecer no fold */}
+      <div className="bg-[#0F1D30] border border-[#2A5275] rounded-xl px-4 py-3">
+        <p className="text-xs uppercase font-bold tracking-widest mb-2 text-[#8AB4CC]">
           ⚡ Jogador do dia
         </p>
-        <p className={`leading-relaxed italic ${
-          introEmDestaque
-            ? 'text-white text-base font-medium'
-            : 'text-[#8AB4CC] text-sm'
-        }`}>
+        <p className="leading-snug italic text-white text-sm">
           &ldquo;{introNarrativa}&rdquo;
         </p>
         {introEmDestaque && (
