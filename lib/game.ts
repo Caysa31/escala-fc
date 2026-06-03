@@ -333,8 +333,9 @@ export function gerarTextoCompartilhar(
   tentativas: { status: string }[]
 ): string {
   const grade = gerarGradeEmojis(tentativas)
-  const resultado = pistaAcerto
-    ? `Acertei em ${pistaAcerto} pista${pistaAcerto > 1 ? 's' : ''} 🎯`
+  // IMPORTANTE: pistaAcerto pode ser 0 (histórico) — usar !== null, nunca truthy check
+  const resultado = pistaAcerto !== null
+    ? (pistaAcerto === 0 ? 'Acertei pelo histórico! 🎯' : `Acertei em ${pistaAcerto} pista${pistaAcerto > 1 ? 's' : ''} 🎯`)
     : 'Não acertei hoje 😬'
 
   return `🐍 COBRA — Quem é o Craque? #${rodadaId}\n${resultado}\n\n${grade}\n\nescala-fc.vercel.app`

@@ -153,7 +153,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
                     {ganhou ? (
                       <>
                         <p className="text-[#FFD23F] font-black text-sm">+{pontos}</p>
-                        <p className="text-[#8AB4CC] text-xs">pista {resultado?.pistaAcerto}</p>
+                        <p className="text-[#8AB4CC] text-xs">{resultado?.pistaAcerto === 0 ? 'histórico' : `pista ${resultado?.pistaAcerto}`}</p>
                       </>
                     ) : (
                       <p className="text-[#5A8AAA] text-xs">0 pts</p>

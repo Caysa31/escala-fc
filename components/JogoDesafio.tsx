@@ -189,7 +189,8 @@ export default function JogoDesafio({
     }
   }
 
-  const pontosRodada = estado.pistaUsada ? Math.round(calcularPontos(estado.pistaUsada) * multiplicador) : 0
+  // IMPORTANTE: pistaUsada pode ser 0 (histórico) — usar !== null, nunca truthy check
+  const pontosRodada = estado.pistaUsada !== null ? Math.round(calcularPontos(estado.pistaUsada) * multiplicador) : 0
 
   // Intro narrativa em destaque quando ainda não há pistas reveladas (qualquer desafio, estado inicial)
   const introEmDestaque = estado.pistaAtual === 0 && estado.status === 'jogando'
@@ -395,7 +396,7 @@ export default function JogoDesafio({
       {estado.status === 'jogando' && <div className="h-28" />}
 
       {/* Modal contrato (após acertar) */}
-      {mostrarContrato && estado.pistaUsada && (
+      {mostrarContrato && estado.pistaUsada !== null && (
         <ModalContrato
           jogador={jogador}
           rodadaId={rodadaId}
