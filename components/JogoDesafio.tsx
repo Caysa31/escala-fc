@@ -117,6 +117,27 @@ export default function JogoDesafio({
     handlePalpite('—')
   }
 
+  // Pula o desafio inteiro — registra como perdeu, 0 pts, vai pro próximo sem mostrar resultado
+  function handlePularDesafio() {
+    if (estado.status !== 'jogando') return
+    if (!modoExtra && perfil) {
+      const perfilAtualizado = registrarResultado(perfil, {
+        rodadaId,
+        jogadorId: jogador.id,
+        pistaAcerto: null,
+        pontos: 0,
+        tentativas: estado.tentativas,
+      })
+      onResultado(perfilAtualizado)
+    }
+    onFimJogo?.({ ganhou: false, pontos: 0, pistaAcerto: null })
+    if (onProximoDesafio) {
+      onProximoDesafio()
+    } else {
+      setMostrarResultado(true)
+    }
+  }
+
   function handlePalpite(nome: string) {
     if (estado.status !== 'jogando') return
 
@@ -474,6 +495,17 @@ export default function JogoDesafio({
               desabilitado={false}
               tentativasAnteriores={estado.tentativas.map(t => t.nome)}
             />
+
+            {/* Opção de pular — só aparece após revelar pelo menos 1 pista */}
+            {estado.pistaAtual >= 1 && (
+              <button
+                type="button"
+                onClick={handlePularDesafio}
+                className="w-full text-center text-[#2A4A6A] hover:text-[#5A8AAA] text-xs py-1 transition-colors"
+              >
+                🏳️ Não sei esse — passar
+              </button>
+            )}
           </div>
         </div>
       )}
