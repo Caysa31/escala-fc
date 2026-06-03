@@ -161,6 +161,7 @@ export default function LigaPage() {
             rodadaId={rodadaId}
             perfil={perfil}
             indiceDesafio={desafioIdx}
+            temBottomNav={true}
             onResultado={p => {
               // Calcula pontos ganhos NESTE desafio e salva na liga
               const pontosGanhos = p.pontosTotal - (perfil?.pontosTotal ?? 0)

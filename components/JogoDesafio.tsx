@@ -29,6 +29,7 @@ interface Props {
   onResultado: (perfilAtualizado: Perfil) => void
   onContratosChange: (qtd: number) => void
   onProximoDesafio?: () => void
+  temBottomNav?: boolean      // true: empurra barra de input acima do BottomNav
   // ── Modo Extra ────────────────────────────────────────────────
   modoExtra?: boolean         // true: não afeta streak/stats, não abre ModalContrato
   totalPistasMax?: number     // override de TOTAL_PISTAS (Relâmpago = 3)
@@ -41,6 +42,7 @@ export default function JogoDesafio({
   jogador, rodadaId, perfil, indiceDesafio, mensagemMotivacional,
   telaFinalAberta,
   onResultado, onContratosChange, onProximoDesafio,
+  temBottomNav = false,
   modoExtra = false,
   totalPistasMax,
   labelProximoDesafio = 'Próximo desafio →',
@@ -436,8 +438,8 @@ export default function JogoDesafio({
           O env(safe-area-inset-bottom) cobre o indicador home do iPhone. */}
       {estado.status === 'jogando' && inputMontado && (
         <div
-          className="fixed bottom-0 left-0 right-0 z-40 bg-[#070E1A] border-t border-[#2A5275] px-4 pt-3"
-          style={{ paddingBottom: 'max(12px, env(safe-area-inset-bottom))' }}
+          className={`fixed left-0 right-0 z-50 bg-[#070E1A] border-t border-[#2A5275] px-4 pt-3 ${temBottomNav ? 'bottom-16' : 'bottom-0'}`}
+          style={{ paddingBottom: temBottomNav ? '8px' : 'max(12px, env(safe-area-inset-bottom))' }}
         >
           <div className="max-w-md mx-auto">
             {/* Placar sempre visível */}

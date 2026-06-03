@@ -175,6 +175,7 @@ export default function Home() {
           indiceDesafio={desafioIdx}
           mensagemMotivacional={mensagemMotivacional}
           telaFinalAberta={mostrarFinalDia}
+          temBottomNav={true}
           onResultado={p => setPerfil(p)}
           onContratosChange={setQtdContratosAtivos}
           onProximoDesafio={
