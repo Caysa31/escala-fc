@@ -40,7 +40,7 @@ function BlocosNome({ codificado, atual, correto }: { codificado: string; atual:
         <div key={wi} className="flex items-center">
           {wi > 0 && (
             <div className={`flex items-center ${mx}`}>
-              <div className="w-1 h-1 rounded-full bg-zinc-600" />
+              <div className="w-1 h-1 rounded-full bg-[#1A3A5C]" />
             </div>
           )}
           <div className={`flex ${gap}`}>
@@ -52,11 +52,11 @@ function BlocosNome({ codificado, atual, correto }: { codificado: string; atual:
                   className={`${bloco} rounded flex items-center justify-center ${texto} font-bold
                     ${rev
                       ? ativa
-                        ? 'bg-green-900 border-2 border-green-400 text-green-200'
-                        : 'bg-zinc-700 border-2 border-zinc-300 text-white'
+                        ? 'bg-[#071A0F] border-2 border-[#00C853] text-[#00C853]'
+                        : 'bg-[#0F1D30] border-2 border-[#2A5275] text-white'
                       : ativa
-                        ? 'bg-green-700 border border-green-600'
-                        : 'bg-zinc-600 border border-zinc-500'
+                        ? 'bg-[#0F1D30] border border-[#00C853]/40'
+                        : 'bg-[#1A3A5C] border border-zinc-500'
                     }`}
                 >
                   {rev ? char.toUpperCase() : ''}
@@ -80,7 +80,7 @@ function LetrasNome({ codificado, atual, correto }: { codificado: string; atual:
 
   return (
     <div className="space-y-2 mt-1">
-      <p className={`font-bold text-base ${ativa ? 'text-green-300' : 'text-white'}`}>
+      <p className={`font-bold text-base ${ativa ? 'text-[#4A9A6A]' : 'text-white'}`}>
         {clube}
       </p>
       {palavras.length > 0 && (
@@ -92,13 +92,13 @@ function LetrasNome({ codificado, atual, correto }: { codificado: string; atual:
                   <span
                     className={`text-base font-bold font-mono leading-none
                       ${char !== '_'
-                        ? (ativa ? 'text-green-300' : 'text-white')
-                        : 'text-zinc-500'
+                        ? (ativa ? 'text-[#4A9A6A]' : 'text-white')
+                        : 'text-[#5A8AAA]'
                       }`}
                   >
                     {char}
                   </span>
-                  <div className={`mt-0.5 h-px w-full ${char !== '_' ? (ativa ? 'bg-green-400' : 'bg-zinc-500') : 'bg-zinc-600'}`} />
+                  <div className={`mt-0.5 h-px w-full ${char !== '_' ? (ativa ? 'bg-[#00C853]' : 'bg-[#5A8AAA]') : 'bg-[#1A3A5C]'}`} />
                 </div>
               ))}
             </div>

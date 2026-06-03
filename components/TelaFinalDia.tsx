@@ -44,10 +44,10 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
 
   // Textos dinâmicos por desempenho
   const configs = {
-    3: { emoji: '🏆', titulo: 'Perfeito! Craque absoluto!', subtitulo: 'Acertou os 3 desafios de hoje.', cor: 'text-yellow-400', bg: 'bg-yellow-950 border-yellow-800' },
-    2: { emoji: '🎯', titulo: 'Muito bem! Quase perfeito!', subtitulo: '2 de 3 acertos hoje. Amanhã vai de 3!', cor: 'text-green-400', bg: 'bg-green-950 border-green-800' },
-    1: { emoji: '⚽', titulo: 'Boa! 1 acerto hoje!', subtitulo: 'Difícil, mas você jogou. Amanhã vai mais fundo!', cor: 'text-blue-400', bg: 'bg-blue-950 border-blue-800' },
-    0: { emoji: '💪', titulo: 'Hoje não foi — mas você jogou!', subtitulo: 'Amanhã são outros jogadores. Você sabe mais do que pensa.', cor: 'text-zinc-400', bg: 'bg-zinc-800 border-zinc-700' },
+    3: { emoji: '🏆', titulo: 'Perfeito! Craque absoluto!', subtitulo: 'Acertou os 3 desafios de hoje.', cor: 'text-[#FFD23F]', bg: 'bg-[#0F1D30] border border-[#FFD23F]/30' },
+    2: { emoji: '🎯', titulo: 'Muito bem! Quase perfeito!', subtitulo: '2 de 3 acertos hoje. Amanhã vai de 3!', cor: 'text-[#00C853]', bg: 'bg-[#071A0F] border border-[#00C853]/30' },
+    1: { emoji: '⚽', titulo: 'Boa! 1 acerto hoje!', subtitulo: 'Difícil, mas você jogou. Amanhã vai mais fundo!', cor: 'text-[#8AB4CC]', bg: 'bg-[#0F1D30] border border-[#2A5275]' },
+    0: { emoji: '💪', titulo: 'Hoje não foi — mas você jogou!', subtitulo: 'Amanhã são outros jogadores. Você sabe mais do que pensa.', cor: 'text-[#8AB4CC]', bg: 'bg-[#0F1D30] border border-[#1A3A5C]' },
   }
   const config = configs[acertos as keyof typeof configs] ?? configs[0]
 
@@ -58,7 +58,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
       ).join('') ?? '—'
       return emojis
     }).join(' ')
-    return `⚽ ESCALA FC — ${acertos}/3 acertos hoje!\n${linhas}\n\nFiz ${pontosHoje} pts. Você consegue mais?\nhttps://escala-fc-app2.vercel.app`
+    return `🐍 COBRA — Quem é o Craque?\n${acertos}/3 acertos hoje!\n${linhas}\n\nFiz ${pontosHoje} pts. Você consegue mais?\nhttps://escala-fc.vercel.app`
   }
 
   function compartilhar() {
@@ -67,7 +67,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
   }
 
   function desafiarAmigo() {
-    const texto = `⚽ Você conhece futebol? Fiz ${pontosHoje} pts hoje no ESCALA FC — consegue me superar?\nhttps://escala-fc-app2.vercel.app`
+    const texto = `🐍 Fiz ${pontosHoje} pts hoje no COBRA — Quem é o Craque?\nConsegue me superar?\nhttps://escala-fc.vercel.app`
     window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank')
   }
 
@@ -77,7 +77,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
 
         {/* Botão fechar */}
         <div className="flex justify-end p-4 pb-0">
-          <button onClick={onFechar} className="text-zinc-500 hover:text-white transition-colors">
+          <button onClick={onFechar} className="text-[#8AB4CC] hover:text-white transition-colors">
             <X size={20} />
           </button>
         </div>
@@ -88,7 +88,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
           <div className={`rounded-2xl border p-5 text-center space-y-2 ${config.bg}`}>
             <p className="text-5xl">{config.emoji}</p>
             <p className={`text-xl font-black ${config.cor}`}>{config.titulo}</p>
-            <p className="text-zinc-400 text-sm">{config.subtitulo}</p>
+            <p className="text-[#8AB4CC] text-sm">{config.subtitulo}</p>
           </div>
 
           {/* ── PLACAR DO DIA ────────────────────────────── */}
@@ -112,7 +112,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
 
           {/* ── RANKING GLOBAL ───────────────────────────── */}
           <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-4 flex items-center gap-3">
-            <Medal size={22} className="text-yellow-400 shrink-0" />
+            <Medal size={22} className="text-[#FFD23F] shrink-0" />
             <div className="flex-1">
               <p className="text-[#8AB4CC] text-xs uppercase tracking-wider font-semibold">Ranking global</p>
               <p className="text-white font-bold text-sm mt-0.5">
@@ -123,14 +123,14 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
               </p>
             </div>
             <div className="text-right shrink-0">
-              <p className="text-zinc-500 text-xs">total</p>
+              <p className="text-[#8AB4CC] text-xs">total</p>
               <p className="text-[#FFD23F] font-black text-lg">{perfil.pontosTotal}</p>
             </div>
           </div>
 
           {/* ── DESAFIOS DO DIA ──────────────────────────── */}
           <div className="space-y-2">
-            <p className="text-zinc-400 text-xs font-semibold uppercase tracking-wider">Seus desafios hoje</p>
+            <p className="text-[#8AB4CC] text-xs font-semibold uppercase tracking-wider">Seus desafios hoje</p>
             {resultados.map(({ rodadaId, jogador, resultado }) => {
               const ganhou = resultado?.pistaAcerto != null
               const pontos = resultado?.pontos ?? 0
@@ -147,16 +147,16 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
                   <span className="text-xl shrink-0">{jogador.bandeira}</span>
                   <div className="flex-1 min-w-0">
                     <p className="text-white text-sm font-bold truncate">{jogador.nome}</p>
-                    <p className="text-zinc-500 text-xs">{emojis || '—'}</p>
+                    <p className="text-[#8AB4CC] text-xs">{emojis || '—'}</p>
                   </div>
                   <div className="text-right shrink-0">
                     {ganhou ? (
                       <>
                         <p className="text-[#FFD23F] font-black text-sm">+{pontos}</p>
-                        <p className="text-zinc-500 text-xs">pista {resultado?.pistaAcerto}</p>
+                        <p className="text-[#8AB4CC] text-xs">pista {resultado?.pistaAcerto}</p>
                       </>
                     ) : (
-                      <p className="text-zinc-600 text-xs">0 pts</p>
+                      <p className="text-[#5A8AAA] text-xs">0 pts</p>
                     )}
                   </div>
                 </div>
@@ -166,12 +166,12 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
 
           {/* ── CONTRATOS ATIVOS ─────────────────────────── */}
           {contratosHoje.length > 0 && (
-            <div className="bg-yellow-950 border border-yellow-900 rounded-xl p-4 space-y-3">
+            <div className="bg-[#1A0F00] border border-[#FFD23F]/30 rounded-xl p-4 space-y-3">
               <div className="flex items-center gap-2">
-                <Zap size={16} className="text-yellow-400" />
-                <p className="text-yellow-300 font-bold text-sm">Contratos ativos hoje</p>
+                <Zap size={16} className="text-[#FFD23F]" />
+                <p className="text-[#FFD23F] font-bold text-sm">Contratos ativos hoje</p>
               </div>
-              <p className="text-zinc-400 text-xs">
+              <p className="text-[#8AB4CC] text-xs">
                 Você fechou contrato com {contratosHoje.length === 1 ? 'um jogador' : `${contratosHoje.length} jogadores`}.
                 O bônus é calculado automaticamente após as partidas.
               </p>
@@ -180,12 +180,12 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
                   <span className="text-base">{c.bandeira}</span>
                   <div className="flex-1">
                     <p className="text-white text-xs font-bold">{c.nomeJogador}</p>
-                    <p className="text-zinc-500 text-xs">{c.multiplicador}× multiplicador</p>
+                    <p className="text-[#8AB4CC] text-xs">{c.multiplicador}× multiplicador</p>
                   </div>
                   <p className="text-[#FFD23F] font-bold text-sm">até +{calcularBonusMaximo(c.multiplicador)} pts</p>
                 </div>
               ))}
-              <div className="border-t border-yellow-900 pt-2 flex justify-between items-center">
+              <div className="border-t border-[#FFD23F]/30 pt-2 flex justify-between items-center">
                 <p className="text-yellow-500 text-xs">Bônus potencial total</p>
                 <p className="text-[#FFD23F] font-black text-lg">+{bonusPotencialTotal} pts</p>
               </div>
@@ -196,7 +196,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
           <div className="space-y-2">
             <button
               onClick={compartilhar}
-              className="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl py-4 text-sm transition-colors"
+              className="w-full flex items-center justify-center gap-2 bg-[#00C853] hover:bg-[#00E060] text-[#0A1626] font-bold rounded-xl py-4 text-sm transition-colors"
             >
               <Share2 size={16} />
               Compartilhar resultado no WhatsApp
@@ -206,20 +206,20 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
               className="w-full flex items-center justify-center gap-2 bg-[#0F1D30] border border-[#1A3A5C] hover:border-[#00C853]/30 text-white font-semibold rounded-xl py-3 text-sm transition-all"
             >
               ⚔️ Desafiar um amigo
-              <ChevronRight size={14} className="text-zinc-400" />
+              <ChevronRight size={14} className="text-[#8AB4CC]" />
             </button>
           </div>
 
           {/* ── MOTIVAÇÃO PRO DIA SEGUINTE ───────────────── */}
           <div className="text-center space-y-1 py-1">
             <p className="text-white font-bold">🔔 Novos desafios amanhã!</p>
-            <p className="text-zinc-500 text-xs">
+            <p className="text-[#8AB4CC] text-xs">
               {perfil.streakAtual > 1
                 ? `Você está em ${perfil.streakAtual} dias seguidos. Não deixe apagar!`
                 : 'Volte amanhã e comece sua sequência de acertos.'}
             </p>
-            <p className="text-zinc-600 text-xs pt-1">
-              Pontuação total: <span className="text-zinc-400 font-semibold">{perfil.pontosTotal} pts</span>
+            <p className="text-[#5A8AAA] text-xs pt-1">
+              Pontuação total: <span className="text-[#8AB4CC] font-semibold">{perfil.pontosTotal} pts</span>
               {posicaoRanking ? ` · #${posicaoRanking} no ranking` : ''}
             </p>
           </div>

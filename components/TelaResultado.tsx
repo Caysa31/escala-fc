@@ -88,8 +88,8 @@ export default function TelaResultado({
           <div className="flex items-center gap-3 bg-[#071A0F] border border-[#00C853]/30 rounded-xl p-4">
             <Trophy size={24} className="text-[#FFD23F]" />
             <div>
-              <p className="text-[#00C853] font-black text-xl">+{pontos} pts</p>
-              <p className="text-[#4A9A6A] text-xs">
+              <p className="text-[#FFD23F] font-black text-2xl">+{pontos} pts</p>
+              <p className="text-[#8AB4CC] text-xs mt-0.5">
                 {pistaAcerto === 0 ? 'Histórico' : `Pista ${pistaAcerto}`} · multiplicador {MULTIPLICADORES_CONTRATO[pistaAcerto!]}×
               </p>
             </div>
@@ -111,7 +111,7 @@ export default function TelaResultado({
 
         {/* Grade de emojis */}
         <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-4">
-          <p className="text-[#8AB4CC] text-xs mb-2 text-center">COBRA #Quem é o Craque #{rodadaId}</p>
+          <p className="text-[#8AB4CC] text-xs mb-2 text-center">COBRA — Quem é o Craque? #{rodadaId}</p>
           <p className="text-2xl text-center tracking-widest">
             {tentativas.map(t => t.status === 'acerto' ? '🟩' : '⬛').join('')}
           </p>
@@ -148,7 +148,7 @@ export default function TelaResultado({
             const t = tentativas.map(x => x.status === 'acerto' ? '1' : '0').join('')
             const p = pistaAcerto ?? 0
             const link = `${window.location.origin}/desafio/${rodadaId}?p=${p}&t=${t}`
-            const msg = `Acertei o COBRA #${rodadaId}${pistaAcerto ? ` na pista ${pistaAcerto}` : ''} — você consegue?\n${link}`
+            const msg = `Acertei o COBRA #${rodadaId}${pistaAcerto === 0 ? ' pelo histórico' : pistaAcerto ? ` na pista ${pistaAcerto}` : ''} — você consegue?\n${link}`
             window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank')
           }}
           className="w-full flex items-center justify-center gap-2 rounded-xl py-3 font-semibold text-sm bg-[#0F1D30] border border-[#1A3A5C] hover:border-[#00C853]/30 text-white transition-all"

@@ -65,21 +65,23 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-[#0A1626] flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-sm space-y-8">
 
         {/* Logo */}
         <div className="text-center">
-          <h1 className="text-5xl font-black text-white tracking-tight">⚽ ESCALA FC</h1>
-          <p className="text-zinc-400 mt-2 text-sm">
+          <p className="text-5xl mb-1">🐍</p>
+          <h1 className="text-4xl font-black text-white tracking-widest">COBRA</h1>
+          <p className="text-[#00C853] text-sm font-semibold tracking-wider mt-0.5">QUEM É O CRAQUE?</p>
+          <p className="text-[#8AB4CC] mt-2 text-sm">
             Adivinhe o jogador do dia com o mínimo de pistas
           </p>
         </div>
 
         {/* Como funciona */}
-        <div className="bg-zinc-900 border border-zinc-700 rounded-2xl p-5 space-y-3">
+        <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-5 space-y-3">
           <p className="text-white font-bold text-sm">Como funciona:</p>
-          <div className="space-y-2 text-sm text-zinc-400">
+          <div className="space-y-2 text-sm text-[#8AB4CC]">
             <p>🔒 Pistas reveladas uma por vez</p>
             <p>⬇️ Quanto menos pistas, mais pontos</p>
             <p>🟩 Compartilhe sem spoiler</p>
@@ -91,14 +93,14 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
         {!modoRecuperacao && (
           <form onSubmit={handleSubmit} className="space-y-3">
             <div>
-              <label className="block text-zinc-400 text-sm mb-2">Escolha seu apelido:</label>
+              <label className="block text-[#8AB4CC] text-sm mb-2">Escolha seu apelido:</label>
               <input
                 type="text"
                 value={apelido}
                 onChange={e => { setApelido(e.target.value); setErro(''); setSugestoes([]) }}
                 placeholder="Ex: CraqueDaSala"
                 maxLength={20}
-                className="w-full bg-zinc-800 border-2 border-zinc-600 focus:border-green-400 rounded-xl px-4 py-3 text-white placeholder-zinc-500 outline-none transition-colors text-base"
+                className="w-full bg-[#0F1D30] border-2 border-[#1A3A5C] focus:border-[#00C853] rounded-xl px-4 py-3 text-white placeholder-[#2A4A6A] outline-none transition-colors text-base"
                 autoFocus
               />
               {erro && <p className="text-red-400 text-xs mt-1">{erro}</p>}
@@ -109,7 +111,7 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
                       key={s}
                       type="button"
                       onClick={() => { setApelido(s); setErro(''); setSugestoes([]) }}
-                      className="bg-zinc-700 hover:bg-zinc-600 text-zinc-200 text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors"
+                      className="bg-[#1A3A5C] hover:bg-[#1A3A5C] text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors"
                     >
                       {s}
                     </button>
@@ -121,7 +123,7 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
               type="submit"
               disabled={verificando}
               className={`w-full font-black text-lg rounded-xl py-4 transition-colors ${
-                verificando ? 'bg-zinc-600 text-zinc-400 cursor-not-allowed' : 'bg-green-500 hover:bg-green-400 text-black'
+                verificando ? 'bg-[#1A3A5C] text-[#8AB4CC] cursor-not-allowed' : 'bg-[#00C853] hover:bg-[#00E060] text-[#0A1626]'
               }`}
             >
               {verificando ? 'Verificando...' : 'ENTRAR NO JOGO'}
@@ -131,7 +133,7 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
             <button
               type="button"
               onClick={() => { setModoRecuperacao(true); setErro('') }}
-              className="w-full text-zinc-400 hover:text-white text-sm font-semibold text-center py-2 underline underline-offset-4 decoration-zinc-600 hover:decoration-zinc-400 transition-colors"
+              className="w-full text-[#8AB4CC] hover:text-white text-sm font-semibold text-center py-2 underline underline-offset-4 decoration-[#2A4A6A] hover:decoration-[#8AB4CC] transition-colors"
             >
               Já joguei antes →
             </button>
@@ -142,8 +144,8 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
         {modoRecuperacao && (
           <form onSubmit={handleRecuperar} className="space-y-3">
             <div>
-              <label className="block text-zinc-400 text-sm mb-1">Qual era o seu apelido?</label>
-              <p className="text-zinc-600 text-xs mb-2">
+              <label className="block text-[#8AB4CC] text-sm mb-1">Qual era o seu apelido?</label>
+              <p className="text-[#5A8AAA] text-xs mb-2">
                 O mesmo apelido que você escolheu quando entrou no jogo.
               </p>
               <input
@@ -152,7 +154,7 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
                 onChange={e => { setApelidoRecuperacao(e.target.value); setErroRecuperacao('') }}
                 placeholder="Ex: CraqueDaSala"
                 maxLength={20}
-                className="w-full bg-zinc-800 border-2 border-zinc-600 focus:border-blue-400 rounded-xl px-4 py-3 text-white placeholder-zinc-500 outline-none transition-colors text-base"
+                className="w-full bg-[#0F1D30] border-2 border-[#1A3A5C] focus:border-[#00C853] rounded-xl px-4 py-3 text-white placeholder-[#2A4A6A] outline-none transition-colors text-base"
                 autoFocus
               />
               {erroRecuperacao && <p className="text-red-400 text-xs mt-1">{erroRecuperacao}</p>}
@@ -161,7 +163,7 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
               type="submit"
               disabled={recuperando}
               className={`w-full font-black text-lg rounded-xl py-4 transition-colors ${
-                recuperando ? 'bg-zinc-600 text-zinc-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-500 text-white'
+                recuperando ? 'bg-[#1A3A5C] text-[#8AB4CC] cursor-not-allowed' : 'bg-[#0F1D30] border border-[#1A3A5C] hover:border-[#00C853] text-white'
               }`}
             >
               {recuperando ? 'Buscando conta...' : 'RECUPERAR CONTA'}
@@ -170,14 +172,14 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
             <button
               type="button"
               onClick={() => { setModoRecuperacao(false); setErroRecuperacao('') }}
-              className="w-full text-zinc-500 hover:text-zinc-300 text-sm text-center py-2 transition-colors"
+              className="w-full text-[#8AB4CC] hover:text-white text-sm text-center py-2 transition-colors"
             >
               ← Criar novo apelido
             </button>
           </form>
         )}
 
-        <p className="text-center text-zinc-600 text-xs">
+        <p className="text-center text-[#5A8AAA] text-xs">
           Sem cadastro. Sem e-mail. Sem senha.
           <br />
           Seu progresso é salvo automaticamente.

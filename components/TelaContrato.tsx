@@ -61,7 +61,7 @@ export function ModalContrato({ jogador, rodadaId, pistaAcerto, onFechar, onProx
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-      <div className="bg-zinc-900 border border-zinc-700 rounded-2xl w-full max-w-sm p-6 space-y-5">
+      <div className="bg-[#0A1626] border border-[#1A3A5C] rounded-2xl w-full max-w-sm p-6 space-y-5">
 
         {/* Header */}
         <div className="flex items-center justify-between">
@@ -79,7 +79,7 @@ export function ModalContrato({ jogador, rodadaId, pistaAcerto, onFechar, onProx
         </div>
 
         {/* Jogador */}
-        <div className="flex items-center gap-3 bg-zinc-800 rounded-xl p-3">
+        <div className="flex items-center gap-3 bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-3">
           <span className="text-3xl">{jogador.bandeira}</span>
           <div>
             <p className="font-bold text-white">{jogador.nome}</p>
@@ -112,13 +112,13 @@ export function ModalContrato({ jogador, rodadaId, pistaAcerto, onFechar, onProx
               <>
                 <button
                   onClick={onProximoDesafio}
-                  className="w-full bg-green-500 hover:bg-green-400 text-black font-bold rounded-xl py-4 text-base transition-colors"
+                  className="w-full bg-[#00C853] hover:bg-[#00E060] text-[#0A1626] font-bold rounded-xl py-4 text-base transition-colors"
                 >
                   Próximo desafio →
                 </button>
                 <button
                   onClick={handleFechar}
-                  className="w-full text-[#8AB4CC] hover:text-zinc-300 text-sm py-1 transition-colors"
+                  className="w-full text-[#8AB4CC] hover:text-[#8AB4CC] text-sm py-1 transition-colors"
                 >
                   Ver resultado
                 </button>
@@ -126,7 +126,7 @@ export function ModalContrato({ jogador, rodadaId, pistaAcerto, onFechar, onProx
             ) : (
               <button
                 onClick={handleFechar}
-                className="w-full bg-green-500 hover:bg-green-400 text-black font-bold rounded-xl py-3 transition-colors"
+                className="w-full bg-[#00C853] hover:bg-[#00E060] text-[#0A1626] font-bold rounded-xl py-3 transition-colors"
               >
                 {jogador.lenda ? `Recebi +${bonusTrivia} pts` : 'Ver resultado'}
               </button>
@@ -143,8 +143,8 @@ export function ModalContrato({ jogador, rodadaId, pistaAcerto, onFechar, onProx
 function ContratoNormal({ multiplicador, bonusMax }: { multiplicador: number; bonusMax: number }) {
   return (
     <div className="space-y-3">
-      <div className="bg-zinc-800 rounded-xl p-4 space-y-2">
-        <p className="text-zinc-300 text-sm font-semibold mb-3">Bônus pelo desempenho dele:</p>
+      <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-4 space-y-2">
+        <p className="text-[#8AB4CC] text-sm font-semibold mb-3">Bônus pelo desempenho dele:</p>
         <BonusRow emoji="🏃" label="Entrou em campo" pts={BONUS_DESEMPENHO.entrou} mult={multiplicador} />
         <BonusRow emoji="⏱️" label="Jogou 70%+ do tempo" pts={BONUS_DESEMPENHO.jogou70} mult={multiplicador} />
         <BonusRow emoji="🎯" label="Criou chance de gol" pts={BONUS_DESEMPENHO.criouChance} mult={multiplicador} />
@@ -201,18 +201,18 @@ function TriviaContrato({
 
   return (
     <div className="space-y-3">
-      <div className="bg-zinc-800 rounded-xl p-4">
-        <p className="text-zinc-300 text-sm font-semibold mb-3">Questão bônus:</p>
+      <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-4">
+        <p className="text-[#8AB4CC] text-sm font-semibold mb-3">Questão bônus:</p>
         <p className="text-white text-base font-medium leading-snug mb-4">{trivia.pergunta}</p>
 
         <div className="grid grid-cols-2 gap-2">
           {trivia.opcoes.map((opcao, i) => {
-            let estilo = 'bg-zinc-700 text-white hover:bg-zinc-600'
+            let estilo = 'bg-[#0F1D30] border border-[#1A3A5C] text-white hover:border-[#00C853]/30'
             if (triviaResolvida) {
-              if (i === trivia.respostaCorreta) estilo = 'bg-green-700 text-white'
+              if (i === trivia.respostaCorreta) estilo = 'bg-[#071A0F] border border-[#00C853] text-white'
               else if (i === triviaResposta && triviaResposta !== trivia.respostaCorreta)
-                estilo = 'bg-red-800 text-white'
-              else estilo = 'bg-zinc-800 text-[#8AB4CC]'
+                estilo = 'bg-red-950 border border-red-800 text-white'
+              else estilo = 'bg-[#0A1626] border border-[#1A3A5C] text-[#5A8AAA]'
             }
             return (
               <button
@@ -238,7 +238,7 @@ function TriviaContrato({
       )}
 
       {triviaResolvida && (
-        <div className={`flex items-center gap-2 rounded-xl p-3 ${bonusTrivia > 0 ? 'bg-green-950 border border-green-800' : 'bg-zinc-800'}`}>
+        <div className={`flex items-center gap-2 rounded-xl p-3 ${bonusTrivia > 0 ? 'bg-[#071A0F] border border-[#00C853]/30' : 'bg-[#0F1D30]'}`}>
           {bonusTrivia > 0
             ? <><CheckCircle size={16} className="text-[#00C853]" /><p className="text-[#4A9A6A] text-sm font-bold">+{bonusTrivia} pts ganhos!</p></>
             : <><X size={16} className="text-[#8AB4CC]" /><p className="text-[#8AB4CC] text-sm">Não acertou — sem bônus desta vez</p></>
@@ -260,8 +260,8 @@ export function TelaContratosAtivos({ onFechar }: TelaContratosAtivosProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-      <div className="bg-zinc-900 border border-zinc-700 rounded-2xl w-full max-w-sm max-h-[80vh] flex flex-col">
-        <div className="flex items-center justify-between p-5 border-b border-zinc-700">
+      <div className="bg-[#0A1626] border border-[#1A3A5C] rounded-2xl w-full max-w-sm max-h-[80vh] flex flex-col">
+        <div className="flex items-center justify-between p-5 border-b border-[#1A3A5C]">
           <div className="flex items-center gap-2">
             <FileText size={18} className="text-[#FFD23F]" />
             <h2 className="font-bold text-white">Contratos Ativos</h2>
@@ -276,11 +276,11 @@ export function TelaContratosAtivos({ onFechar }: TelaContratosAtivosProps) {
             <div className="text-center py-8">
               <p className="text-4xl mb-3">📋</p>
               <p className="text-[#8AB4CC]">Nenhum contrato ativo</p>
-              <p className="text-zinc-600 text-xs mt-1">Acerte o jogador do dia para assinar um</p>
+              <p className="text-[#5A8AAA] text-xs mt-1">Acerte o jogador do dia para assinar um</p>
             </div>
           ) : (
             contratos.map(c => (
-              <div key={c.id} className="bg-zinc-800 rounded-xl p-4">
+              <div key={c.id} className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-4">
                 <div className="flex items-center gap-3 mb-3">
                   <span className="text-2xl">{c.bandeira}</span>
                   <div className="flex-1">

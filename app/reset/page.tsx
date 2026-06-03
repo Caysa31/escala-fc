@@ -15,28 +15,31 @@ export default function ResetPage() {
 
   if (confirmado) {
     return (
-      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
-        <p className="text-zinc-500 animate-pulse text-lg">⚽ Reiniciando...</p>
+      <div className="min-h-screen bg-[#0A1626] flex items-center justify-center">
+        <div className="text-center space-y-2">
+          <p className="text-3xl animate-pulse">🐍</p>
+          <p className="text-[#8AB4CC] animate-pulse text-lg">Reiniciando...</p>
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950 flex items-center justify-center px-4">
-      <div className="w-full max-w-sm bg-zinc-900 border border-zinc-700 rounded-2xl p-6 space-y-5 text-center">
+    <div className="min-h-screen bg-[#0A1626] flex items-center justify-center px-4">
+      <div className="w-full max-w-sm bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-6 space-y-5 text-center">
         <p className="text-4xl">⚠️</p>
         <div>
           <h1 className="text-white font-black text-xl">Resetar o jogo?</h1>
-          <p className="text-zinc-400 text-sm mt-2">
+          <p className="text-[#8AB4CC] text-sm mt-2">
             Isso apaga <span className="text-red-400 font-semibold">todos os seus dados</span>:
             perfil, pontos, sequência e contratos.
           </p>
-          <p className="text-zinc-600 text-xs mt-1">Essa ação não pode ser desfeita.</p>
+          <p className="text-[#5A8AAA] text-xs mt-1">Essa ação não pode ser desfeita.</p>
         </div>
         <div className="flex gap-3">
           <button
             onClick={() => router.replace('/')}
-            className="flex-1 bg-zinc-700 hover:bg-zinc-600 text-white font-semibold rounded-xl py-3 text-sm transition-colors"
+            className="flex-1 bg-[#0F1D30] border border-[#1A3A5C] hover:border-[#00C853]/30 text-white font-semibold rounded-xl py-3 text-sm transition-all"
           >
             Cancelar
           </button>

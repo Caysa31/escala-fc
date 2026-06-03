@@ -70,6 +70,61 @@ export default function EntrarSalaPage() {
         <p className="text-[#8AB4CC] text-xs text-center">
           Peça o código de 6 letras para quem criou a liga
         </p>
+
+        {/* Brasão da Liga */}
+        <div className="flex flex-col items-center pt-6 pb-8 gap-3">
+          <svg viewBox="0 0 240 290" xmlns="http://www.w3.org/2000/svg" className="w-52 h-auto drop-shadow-xl">
+
+            {/* Sombra do escudo */}
+            <path d="M12 14 L228 14 L228 196 L120 278 L12 196 Z"
+              fill="#000" opacity="0.3" transform="translate(3,4)" />
+
+            {/* Escudo — fundo principal */}
+            <path d="M12 14 L228 14 L228 196 L120 278 L12 196 Z"
+              fill="#0A1626" stroke="#FFD23F" strokeWidth="3" strokeLinejoin="round" />
+
+            {/* Escudo — borda interna */}
+            <path d="M22 24 L218 24 L218 190 L120 266 L22 190 Z"
+              fill="none" stroke="#1A3A5C" strokeWidth="1.5" strokeLinejoin="round" />
+
+            {/* Faixa do topo */}
+            <path d="M22 24 L218 24 L218 66 L22 66 Z" fill="#0F1D30" />
+            <line x1="22" y1="66" x2="218" y2="66" stroke="#FFD23F" strokeWidth="1.5" />
+
+            {/* Estrelas decorativas no topo */}
+            <text x="50" y="52" textAnchor="middle" fill="#FFD23F" fontSize="12">★</text>
+            <text x="80" y="52" textAnchor="middle" fill="#FFD23F" fontSize="12">★</text>
+            <text x="120" y="52" textAnchor="middle" fill="#FFD23F" fontSize="14">★</text>
+            <text x="160" y="52" textAnchor="middle" fill="#FFD23F" fontSize="12">★</text>
+            <text x="190" y="52" textAnchor="middle" fill="#FFD23F" fontSize="12">★</text>
+
+            {/* "LIGA PRIVADA" no topo */}
+            <text x="120" y="43" textAnchor="middle" fill="#8AB4CC"
+              fontSize="10.5" fontWeight="bold" fontFamily="Arial, sans-serif" letterSpacing="3">
+              LIGA PRIVADA
+            </text>
+
+            {/* Cobra — símbolo principal */}
+            <text x="120" y="170" textAnchor="middle" fontSize="88">🐍</text>
+
+            {/* Faixa do rodapé */}
+            <line x1="40" y1="186" x2="200" y2="186" stroke="#FFD23F" strokeWidth="1.5" />
+
+            {/* Pontos decorativos */}
+            <circle cx="56" cy="210" r="3" fill="#FFD23F" />
+            <circle cx="184" cy="210" r="3" fill="#FFD23F" />
+
+            {/* "COBRA" — nome principal */}
+            <text x="120" y="218" textAnchor="middle" fill="#FFD23F"
+              fontSize="26" fontWeight="bold" fontFamily="Arial, sans-serif" letterSpacing="7">
+              COBRA
+            </text>
+
+          </svg>
+
+          <p className="text-[#5A8AAA] text-[10px] tracking-widest uppercase">Entre com seu código para competir</p>
+        </div>
+
       </div>
     </main>
   )

@@ -120,7 +120,7 @@ export default function SalaJogoPage() {
   async function compartilharWhatsApp() {
     const url = `${window.location.origin}/sala/${salaId}`
     const nomeLiga = sala?.nome ?? `Sala ${salaId}`
-    const texto = `🏆 ${nomeLiga} — Topa me vencer no ESCALA FC?\nAdivinhe o mesmo jogador e veja quem acerta com menos pistas!\n${url}`
+    const texto = `🏆 ${nomeLiga} — Topa me vencer no COBRA?\nAdivinhe o mesmo jogador e veja quem acerta com menos pistas!\n${url}`
     if (typeof navigator !== 'undefined' && navigator.share) {
       try { await navigator.share({ text: texto }); return } catch { return }
     }
@@ -135,7 +135,7 @@ export default function SalaJogoPage() {
   // ── Loading ──────────────────────────────────────────────────
   if (!carregado) {
     return (
-      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
+      <div className="min-h-screen bg-[#0A1626] flex items-center justify-center">
         <div className="text-[#8AB4CC] animate-pulse text-lg">⚔️ Carregando sala...</div>
       </div>
     )
@@ -149,7 +149,7 @@ export default function SalaJogoPage() {
   // ── Erro ─────────────────────────────────────────────────────
   if (erro || !sala || !jogador) {
     return (
-      <main className="min-h-screen bg-zinc-950 text-white">
+      <main className="min-h-screen bg-[#0A1626] text-white">
         <div className="max-w-md mx-auto px-4 py-6 space-y-4">
           <Link href="/" className="inline-flex items-center gap-2 text-[#8AB4CC] hover:text-white transition-colors">
             <ArrowLeft size={18} /> Voltar ao início
@@ -170,13 +170,13 @@ export default function SalaJogoPage() {
     const lider = resultadosOrdenados[0]
 
     return (
-      <main className="min-h-screen bg-zinc-950 text-white">
+      <main className="min-h-screen bg-[#0A1626] text-white">
         <div className="max-w-md mx-auto px-4 py-8 space-y-5 pb-32">
 
           {/* ── Hero ── */}
-          <div className="relative bg-gradient-to-b from-purple-950 to-zinc-950 border border-[#1A3A5C] rounded-3xl px-6 pt-8 pb-6 text-center overflow-hidden">
+          <div className="relative bg-gradient-to-b from-[#0A1626] to-[#0F1D30] border border-[#1A3A5C] rounded-3xl px-6 pt-8 pb-6 text-center overflow-hidden">
             {/* Brilho decorativo */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-40 bg-purple-600/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-40 bg-[#00C853]/10 rounded-full blur-3xl pointer-events-none" />
             <div className="relative z-10 space-y-3">
               <div className="text-6xl">🏆</div>
               <div>
@@ -187,7 +187,7 @@ export default function SalaJogoPage() {
                 Criada por <span className="text-[#00C853] font-semibold">{sala.criador_apelido}</span>
               </p>
               {/* Timer */}
-              <div className="inline-flex items-center gap-1.5 bg-zinc-900/80 border border-zinc-700 rounded-full px-3 py-1.5">
+              <div className="inline-flex items-center gap-1.5 bg-[#0F1D30]/80 border border-[#1A3A5C] rounded-full px-3 py-1.5">
                 <Clock size={12} className="text-[#8AB4CC]" />
                 <span className="text-[#8AB4CC] text-xs font-semibold">
                   {horasRestantes}h{minutosRestantes.toString().padStart(2,'0')}m restantes
@@ -198,14 +198,14 @@ export default function SalaJogoPage() {
 
           {/* ── Quem já está ── */}
           {resultados.length > 0 ? (
-            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden">
-              <div className="px-4 py-3 border-b border-zinc-800 flex items-center justify-between">
+            <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl overflow-hidden">
+              <div className="px-4 py-3 border-b border-[#1A3A5C] flex items-center justify-between">
                 <p className="text-white font-bold text-sm">Quem já jogou</p>
                 <span className="bg-[#1A3A5C] text-white text-xs font-bold px-2 py-0.5 rounded-full">
                   {resultados.length} {resultados.length === 1 ? 'jogador' : 'jogadores'}
                 </span>
               </div>
-              <div className="divide-y divide-zinc-800">
+              <div className="divide-y divide-[#1A3A5C]">
                 {resultadosOrdenados.slice(0, 5).map((r, i) => (
                   <div key={r.apelido} className="flex items-center gap-3 px-4 py-3">
                     <span className="text-base w-6 text-center flex-shrink-0">
@@ -228,7 +228,7 @@ export default function SalaJogoPage() {
               )}
             </div>
           ) : (
-            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl px-5 py-5 text-center space-y-1">
+            <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl px-5 py-5 text-center space-y-1">
               <p className="text-2xl">👀</p>
               <p className="text-white font-bold text-sm">Ninguém jogou ainda</p>
               <p className="text-[#8AB4CC] text-xs">Você pode ser o primeiro!</p>
@@ -236,7 +236,7 @@ export default function SalaJogoPage() {
           )}
 
           {/* ── Como jogar ── */}
-          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 space-y-4">
+          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-5 space-y-4">
             <p className="text-white font-bold text-sm">Como jogar</p>
             <div className="space-y-3">
               {[
@@ -258,14 +258,14 @@ export default function SalaJogoPage() {
           </div>
 
           {/* ── Tabela de pontos ── */}
-          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 space-y-3">
+          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-5 space-y-3">
             <p className="text-white font-bold text-sm">Como conquistar pontos</p>
             <div className="grid grid-cols-5 gap-2">
               {[
-                { pista: 'Histórico', pts: 100, cor: 'text-[#FFD23F]', bg: 'bg-yellow-950 border-yellow-800' },
-                { pista: 'Pista 1', pts: 80, cor: 'text-[#00C853]', bg: 'bg-green-950 border-green-800' },
-                { pista: 'Pista 2', pts: 60, cor: 'text-[#00C853]', bg: 'bg-green-950 border-green-900' },
-                { pista: 'Pista 3', pts: 40, cor: 'text-[#FFD23F]', bg: 'bg-orange-950 border-orange-900' },
+                { pista: 'Histórico', pts: 100, cor: 'text-[#FFD23F]', bg: 'bg-[#0F1D30] border-[#FFD23F]/30' },
+                { pista: 'Pista 1', pts: 80, cor: 'text-[#00C853]', bg: 'bg-[#071A0F] border-[#00C853]/30' },
+                { pista: 'Pista 2', pts: 60, cor: 'text-[#00C853]', bg: 'bg-[#071A0F] border-green-900' },
+                { pista: 'Pista 3', pts: 40, cor: 'text-[#FFD23F]', bg: 'bg-[#0F1D30] border-[#FFD23F]/20' },
                 { pista: 'Pista 4', pts: 20, cor: 'text-red-400', bg: 'bg-red-950 border-red-900' },
               ].map(p => (
                 <div key={p.pista} className={`border rounded-xl p-2 text-center ${p.bg}`}>
@@ -280,27 +280,27 @@ export default function SalaJogoPage() {
           </div>
 
           {/* ── Bônus de Contrato ── */}
-          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 space-y-4">
+          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-5 space-y-4">
             <div>
               <p className="text-white font-bold text-sm">⚡ Bônus de Contrato</p>
               <p className="text-[#8AB4CC] text-xs mt-1">Após acertar, você assina um contrato com o jogador — e ganha bônus pelo desempenho dele na próxima partida real</p>
             </div>
             <div className="space-y-2">
               {[
-                { acao: 'Entrou em campo',       pts: '+10',  cor: 'text-zinc-300' },
-                { acao: 'Jogou 70+ minutos',     pts: '+20',  cor: 'text-zinc-300' },
+                { acao: 'Entrou em campo',       pts: '+10',  cor: 'text-white' },
+                { acao: 'Jogou 70+ minutos',     pts: '+20',  cor: 'text-white' },
                 { acao: 'Criou chance de gol',   pts: '+30',  cor: 'text-[#4A9A6A]' },
                 { acao: 'Gol ou assistência',    pts: '+50',  cor: 'text-[#00C853]' },
                 { acao: 'Gol E assistência',     pts: '+80',  cor: 'text-[#FFD23F]' },
                 { acao: 'Man of the Match',      pts: '+100', cor: 'text-[#FFD23F]' },
               ].map(r => (
-                <div key={r.acao} className="flex items-center justify-between bg-zinc-800 rounded-lg px-3 py-2">
+                <div key={r.acao} className="flex items-center justify-between bg-[#0F1D30] rounded-lg px-3 py-2">
                   <p className="text-[#8AB4CC] text-xs">{r.acao}</p>
                   <p className={`font-black text-sm ${r.cor}`}>{r.pts} pts</p>
                 </div>
               ))}
             </div>
-            <div className="bg-zinc-800 border border-zinc-700 rounded-xl p-3 space-y-2">
+            <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-3 space-y-2">
               <p className="text-[#8AB4CC] text-xs font-bold uppercase tracking-wider">Multiplicador pelo momento do acerto</p>
               <div className="grid grid-cols-5 gap-1 text-center">
                 {[
@@ -310,7 +310,7 @@ export default function SalaJogoPage() {
                   { label: 'Pista 3',   mult: '×2.0', cor: 'text-[#00C853]' },
                   { label: 'Pista 4+',  mult: '×1.1', cor: 'text-[#8AB4CC]' },
                 ].map(m => (
-                  <div key={m.label} className="bg-zinc-900 rounded-lg py-2 px-1">
+                  <div key={m.label} className="bg-[#0F1D30] rounded-lg py-2 px-1">
                     <p className={`font-black text-sm ${m.cor}`}>{m.mult}</p>
                     <p className="text-[#5A8AAA] text-xs mt-0.5 leading-tight">{m.label}</p>
                   </div>
@@ -323,7 +323,7 @@ export default function SalaJogoPage() {
           </div>
 
           {/* ── Campeonato ── */}
-          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 space-y-4">
+          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-5 space-y-4">
             <div>
               <p className="text-white font-bold text-sm">🗓️ Duração do Campeonato</p>
               <p className="text-[#8AB4CC] text-xs mt-1">
@@ -336,7 +336,7 @@ export default function SalaJogoPage() {
                 { comp: 'Copa do Brasil', emoji: '🏆', ate: 'Novembro 2025', cor: 'text-[#00C853]' },
                 { comp: 'Brasileirão',   emoji: '🇧🇷', ate: 'Dezembro 2025 — encerramento da liga', cor: 'text-[#8AB4CC]' },
               ].map(c => (
-                <div key={c.comp} className="flex items-center gap-3 bg-zinc-800 rounded-xl px-4 py-3">
+                <div key={c.comp} className="flex items-center gap-3 bg-[#0F1D30] rounded-xl px-4 py-3">
                   <span className="text-xl flex-shrink-0">{c.emoji}</span>
                   <div className="flex-1">
                     <p className="text-white text-sm font-semibold">{c.comp}</p>
@@ -345,7 +345,7 @@ export default function SalaJogoPage() {
                 </div>
               ))}
             </div>
-            <div className="bg-gradient-to-r from-purple-950 to-zinc-900 border border-[#1A3A5C] rounded-xl px-4 py-4 space-y-1 text-center">
+            <div className="bg-gradient-to-r from-[#0A1626] to-[#0F1D30] border border-[#1A3A5C] rounded-xl px-4 py-4 space-y-1 text-center">
               <p className="text-2xl">👑</p>
               <p className="text-white font-black text-base">Quem vence a liga?</p>
               <p className="text-[#8AB4CC] text-sm leading-relaxed">
@@ -355,7 +355,7 @@ export default function SalaJogoPage() {
           </div>
 
           {/* ── Jogando como ── */}
-          <div className="bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 flex items-center justify-between">
+          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl px-4 py-3 flex items-center justify-between">
             <p className="text-[#8AB4CC] text-sm">Entrando como</p>
             <p className="text-white font-bold">{perfil?.apelido}</p>
           </div>
@@ -363,11 +363,11 @@ export default function SalaJogoPage() {
         </div>
 
         {/* ── Botão fixo no rodapé ── */}
-        <div className="fixed bottom-0 left-0 right-0 bg-zinc-950/95 backdrop-blur border-t border-zinc-800 px-4 pt-3 pb-6">
+        <div className="fixed bottom-0 left-0 right-0 bg-[#070E1A]/95 backdrop-blur border-t border-[#1A3A5C] px-4 pt-3 pb-6">
           <div className="max-w-md mx-auto">
             <button
               onClick={() => setEntrou(true)}
-              className="w-full bg-purple-700 hover:bg-purple-600 active:scale-95 text-white font-black text-xl py-5 rounded-2xl transition-all shadow-lg shadow-purple-900/40"
+              className="w-full bg-[#00C853] hover:bg-[#00E060] active:scale-95 text-[#0A1626] font-black text-xl py-5 rounded-2xl transition-all shadow-lg shadow-[#00C853]/20"
             >
               Entrar na Liga →
             </button>
@@ -385,7 +385,7 @@ export default function SalaJogoPage() {
     const lider = resultadosOrdenados[0]
 
     return (
-      <main className="min-h-screen bg-zinc-950 text-white">
+      <main className="min-h-screen bg-[#0A1626] text-white">
         <div className="max-w-md mx-auto px-4 py-6 space-y-4 pb-32">
 
           {/* Header */}
@@ -393,7 +393,7 @@ export default function SalaJogoPage() {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setEntrou(false)}
-                className="p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 transition-all"
+                className="p-2 rounded-xl bg-[#0F1D30] hover:bg-[#1A3A5C] transition-all"
               >
                 <ArrowLeft size={18} className="text-[#8AB4CC]" />
               </button>
@@ -402,14 +402,14 @@ export default function SalaJogoPage() {
                 <p className="text-[#8AB4CC] text-xs">por {sala.criador_apelido} · {horasRestantes}h{minutosRestantes.toString().padStart(2,'0')}m</p>
               </div>
             </div>
-            <button onClick={compartilharWhatsApp} className="p-2 rounded-xl bg-green-900 hover:bg-green-800 transition-all">
+            <button onClick={compartilharWhatsApp} className="p-2 rounded-xl bg-[#071A0F] hover:bg-[#0A2A1A] transition-all">
               <Share2 size={16} className="text-[#4A9A6A]" />
             </button>
           </div>
 
           {/* Seu resultado do dia */}
           {meuResultado ? (
-            <div className="bg-green-950 border border-green-800 rounded-2xl px-5 py-4 flex items-center justify-between">
+            <div className="bg-[#071A0F] border border-[#00C853]/30 rounded-2xl px-5 py-4 flex items-center justify-between">
               <div>
                 <p className="text-[#00C853] text-xs font-semibold uppercase tracking-wide">Sua rodada de hoje</p>
                 <p className="text-white font-bold text-sm mt-0.5">
@@ -437,8 +437,8 @@ export default function SalaJogoPage() {
           )}
 
           {/* Placar da Liga */}
-          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden">
-            <div className="px-4 py-3 border-b border-zinc-800 flex items-center justify-between">
+          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl overflow-hidden">
+            <div className="px-4 py-3 border-b border-[#1A3A5C] flex items-center justify-between">
               <p className="text-white font-bold text-sm">Placar da Liga</p>
               <span className="text-[#8AB4CC] text-xs">atualiza ao vivo</span>
             </div>
@@ -446,10 +446,10 @@ export default function SalaJogoPage() {
             {resultadosOrdenados.length === 0 ? (
               <div className="px-4 py-8 text-center">
                 <p className="text-[#5A8AAA] text-sm">Ninguém jogou ainda hoje</p>
-                <p className="text-zinc-700 text-xs mt-1">Seja o primeiro!</p>
+                <p className="text-[#5A8AAA] text-xs mt-1">Seja o primeiro!</p>
               </div>
             ) : (
-              <div className="divide-y divide-zinc-800">
+              <div className="divide-y divide-[#1A3A5C]">
                 {resultadosOrdenados.map((r, i) => {
                   const souEu = r.apelido === perfil?.apelido
                   const pos = i + 1
@@ -478,7 +478,7 @@ export default function SalaJogoPage() {
             )}
 
             {lider && lider.apelido !== perfil?.apelido && (
-              <div className="px-4 py-3 border-t border-zinc-800 bg-zinc-900/50">
+              <div className="px-4 py-3 border-t border-[#1A3A5C] bg-[#0F1D30]/50">
                 <p className="text-[#8AB4CC] text-xs text-center">
                   🔥 <span className="text-white font-semibold">{lider.apelido}</span> lidera hoje com{' '}
                   <span className="text-[#FFD23F] font-bold">{lider.pontos} pts</span>
@@ -490,7 +490,7 @@ export default function SalaJogoPage() {
           {/* Convidar mais */}
           <button
             onClick={compartilharWhatsApp}
-            className="w-full flex items-center justify-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-semibold py-3 rounded-xl text-sm transition-all active:scale-95"
+            className="w-full flex items-center justify-center gap-2 bg-[#0F1D30] hover:bg-[#1A3A5C] text-white font-semibold py-3 rounded-xl text-sm transition-all active:scale-95"
           >
             <Share2 size={15} />
             Convidar mais amigos para a liga
@@ -499,17 +499,17 @@ export default function SalaJogoPage() {
         </div>
 
         {/* Botão fixo — jogar ou ver placar */}
-        <div className="fixed bottom-0 left-0 right-0 bg-zinc-950/95 backdrop-blur border-t border-zinc-800 px-4 pt-3 pb-6">
+        <div className="fixed bottom-0 left-0 right-0 bg-[#070E1A]/95 backdrop-blur border-t border-[#1A3A5C] px-4 pt-3 pb-6">
           <div className="max-w-md mx-auto">
             {jaJogou ? (
-              <div className="bg-zinc-800 rounded-2xl px-5 py-4 text-center">
+              <div className="bg-[#0F1D30] rounded-2xl px-5 py-4 text-center">
                 <p className="text-[#8AB4CC] text-sm font-semibold">✅ Você já jogou a rodada de hoje</p>
                 <p className="text-[#5A8AAA] text-xs mt-1">Volte amanhã para a próxima rodada</p>
               </div>
             ) : (
               <button
                 onClick={() => setJogando(true)}
-                className="w-full bg-purple-700 hover:bg-purple-600 active:scale-95 text-white font-black text-xl py-5 rounded-2xl transition-all shadow-lg shadow-purple-900/40"
+                className="w-full bg-[#00C853] hover:bg-[#00E060] active:scale-95 text-[#0A1626] font-black text-xl py-5 rounded-2xl transition-all shadow-lg shadow-[#00C853]/20"
               >
                 ⚽ Jogar Rodada de Hoje →
               </button>
@@ -523,13 +523,13 @@ export default function SalaJogoPage() {
   // ── Sala expirada ────────────────────────────────────────────
   if (expirou) {
     return (
-      <main className="min-h-screen bg-zinc-950 text-white">
+      <main className="min-h-screen bg-[#0A1626] text-white">
         <div className="max-w-md mx-auto px-4 py-6 space-y-4">
           <div className="flex items-center gap-3">
-            <Link href="/" className="p-2 rounded-xl bg-zinc-800"><ArrowLeft size={18} className="text-[#8AB4CC]" /></Link>
+            <Link href="/" className="p-2 rounded-xl bg-[#0F1D30]"><ArrowLeft size={18} className="text-[#8AB4CC]" /></Link>
             <h1 className="text-xl font-black text-[#8AB4CC]">Sala {salaId} — Expirada</h1>
           </div>
-          <div className="bg-zinc-800 border border-zinc-700 rounded-2xl p-6 text-center space-y-3">
+          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-6 text-center space-y-3">
             <p className="text-3xl">⏱️</p>
             <p className="text-white font-bold">Esta sala expirou</p>
             <p className="text-[#8AB4CC] text-sm">Salas duram 6 horas. Peça ao criador para abrir uma nova.</p>
@@ -547,14 +547,14 @@ export default function SalaJogoPage() {
   const rodadaIdSala = 2_000_000 + parseInt(salaId.replace(/[^0-9]/g, '0').slice(0, 6), 10)
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-white">
+    <main className="min-h-screen bg-[#0A1626] text-white">
       <div className="max-w-md mx-auto px-4 py-6 space-y-4">
 
         {/* Header */}
         <div className="flex items-center gap-3">
           <button
             onClick={() => setJogando(false)}
-            className="p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 transition-all"
+            className="p-2 rounded-xl bg-[#0F1D30] hover:bg-[#1A3A5C] transition-all"
           >
             <ArrowLeft size={18} className="text-[#8AB4CC]" />
           </button>
@@ -606,12 +606,12 @@ function PlacardSala({
             className={`flex items-center gap-3 px-4 py-3 rounded-xl ${
               souEu
                 ? 'bg-[#0F1D30] border border-[#1A3A5C]'
-                : 'bg-zinc-800'
+                : 'bg-[#0F1D30]'
             }`}
           >
             <div className={`w-9 text-center font-black text-sm flex-shrink-0 ${
               pos === 1 ? 'text-[#FFD23F] text-lg' :
-              pos === 2 ? 'text-zinc-300 text-base' :
+              pos === 2 ? 'text-white text-base' :
               pos === 3 ? 'text-[#FFD23F] text-base' :
               'text-[#8AB4CC] text-sm'
             }`}>

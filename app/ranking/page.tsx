@@ -132,7 +132,7 @@ export default function RankingPage() {
                   >
                     {/* Posição */}
                     <div className={`w-8 text-center font-black text-sm flex-shrink-0
-                      ${pos === 1 ? 'text-[#FFD23F]' : pos === 2 ? 'text-zinc-300' : pos === 3 ? 'text-orange-400' : 'text-[#8AB4CC]'}`}>
+                      ${pos === 1 ? 'text-[#FFD23F]' : pos === 2 ? 'text-[#C8C8C8]' : pos === 3 ? 'text-[#CD7F32]' : 'text-[#8AB4CC]'}`}>
                       {medalha ?? `#${pos}`}
                     </div>
 

@@ -15,15 +15,10 @@ export default function RecuperarPage() {
     e.preventDefault()
     const nome = apelido.trim()
     if (!nome) { setErro('Digite seu apelido'); return }
-
-    setRecuperando(true)
-    setErro('')
+    setRecuperando(true); setErro('')
     try {
       const perfil = await recuperarPerfilPorApelido(nome)
-      if (!perfil) {
-        setErro('Apelido não encontrado. Verifique como digitou.')
-        return
-      }
+      if (!perfil) { setErro('Apelido não encontrado. Verifique como digitou.'); return }
       setSucesso(`Conta de ${perfil.apelido} restaurada! Redirecionando...`)
       setTimeout(() => router.replace('/'), 1500)
     } finally {
@@ -32,36 +27,37 @@ export default function RecuperarPage() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-[#0A1626] flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-sm space-y-6">
 
         <div className="text-center">
-          <h1 className="text-3xl font-black text-white tracking-tight">⚽ ESCALA FC</h1>
-          <p className="text-zinc-400 mt-1 text-sm">Recuperar minha conta</p>
+          <p className="text-4xl mb-1">🐍</p>
+          <h1 className="text-3xl font-black text-white tracking-widest">COBRA</h1>
+          <p className="text-[#8AB4CC] mt-1 text-sm">Recuperar minha conta</p>
         </div>
 
         {sucesso ? (
-          <div className="bg-green-950 border border-green-700 rounded-2xl px-5 py-6 text-center">
-            <p className="text-green-300 font-bold text-base">{sucesso}</p>
+          <div className="bg-[#071A0F] border border-[#00C853]/30 rounded-2xl px-5 py-6 text-center">
+            <p className="text-[#00C853] font-bold text-base">{sucesso}</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="bg-zinc-900 border border-zinc-700 rounded-2xl p-4">
-              <p className="text-zinc-400 text-xs leading-relaxed">
+            <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-4">
+              <p className="text-[#8AB4CC] text-xs leading-relaxed">
                 Digite o <span className="text-white font-bold">apelido</span> que você escolheu
                 quando entrou no jogo. Seus pontos serão restaurados.
               </p>
             </div>
 
             <div>
-              <label className="block text-zinc-400 text-sm mb-2">Qual era o seu apelido?</label>
+              <label className="block text-[#8AB4CC] text-sm mb-2">Qual era o seu apelido?</label>
               <input
                 type="text"
                 value={apelido}
                 onChange={e => { setApelido(e.target.value); setErro('') }}
                 placeholder="Ex: CraqueDaSala"
                 maxLength={20}
-                className="w-full bg-zinc-800 border-2 border-zinc-600 focus:border-blue-400 rounded-xl px-4 py-3 text-white placeholder-zinc-500 outline-none transition-colors text-base"
+                className="w-full bg-[#0F1D30] border-2 border-[#1A3A5C] focus:border-[#00C853] rounded-xl px-4 py-3 text-white placeholder-[#2A4A6A] outline-none transition-colors text-base"
                 autoFocus
               />
               {erro && <p className="text-red-400 text-xs mt-2">{erro}</p>}
@@ -72,8 +68,8 @@ export default function RecuperarPage() {
               disabled={recuperando}
               className={`w-full font-black text-lg rounded-xl py-4 transition-colors ${
                 recuperando
-                  ? 'bg-zinc-600 text-zinc-400 cursor-not-allowed'
-                  : 'bg-blue-600 hover:bg-blue-500 text-white'
+                  ? 'bg-[#1A3A5C] text-[#8AB4CC] cursor-not-allowed'
+                  : 'bg-[#00C853] hover:bg-[#00E060] text-[#0A1626]'
               }`}
             >
               {recuperando ? 'Buscando conta...' : 'RECUPERAR CONTA'}
@@ -82,7 +78,7 @@ export default function RecuperarPage() {
             <button
               type="button"
               onClick={() => router.replace('/')}
-              className="w-full text-zinc-500 hover:text-zinc-300 text-sm text-center py-2 transition-colors"
+              className="w-full text-[#8AB4CC] hover:text-white text-sm text-center py-2 transition-colors"
             >
               ← Voltar
             </button>

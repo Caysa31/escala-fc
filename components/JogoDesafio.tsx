@@ -257,20 +257,20 @@ export default function JogoDesafio({
             /* Tem próximo desafio ou "Jogar Novamente" no modo extra */
             <div className="space-y-2">
               {!modoExtra && (
-                <p className="text-zinc-300 text-sm">
+                <p className="text-[#8AB4CC] text-sm">
                   Você ainda pode aumentar sua pontuação!
                 </p>
               )}
               <button
                 onClick={onProximoDesafio}
-                className="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 rounded-xl text-sm transition-all"
+                className="w-full bg-[#00C853] hover:bg-[#00E060] text-[#0A1626] font-bold py-3 rounded-xl text-sm transition-all"
               >
                 {labelProximoDesafio}
               </button>
               {!modoExtra && (
                 <button
                   onClick={() => setMostrarResultado(true)}
-                  className="text-zinc-500 text-xs underline"
+                  className="text-[#5A8AAA] text-xs underline"
                 >
                   Ver detalhes
                 </button>
@@ -278,7 +278,7 @@ export default function JogoDesafio({
             </div>
           ) : (
             /* Último desafio ou modo extra sem mais plays */
-            <p className="text-zinc-400 text-xs animate-pulse">
+            <p className="text-[#5A8AAA] text-xs animate-pulse">
               {mensagemFimJogo}
             </p>
           )}
@@ -297,14 +297,14 @@ export default function JogoDesafio({
             <div className="space-y-2">
               <button
                 onClick={onProximoDesafio}
-                className="w-full bg-zinc-600 hover:bg-zinc-500 text-white font-bold py-3 rounded-xl text-sm transition-all"
+                className="w-full bg-[#0F1D30] border border-[#1A3A5C] text-white font-bold py-3 rounded-xl text-sm transition-all"
               >
                 {labelProximoDesafio}
               </button>
               {!modoExtra && (
                 <button
                   onClick={() => setMostrarResultado(true)}
-                  className="text-zinc-500 text-xs underline"
+                  className="text-[#5A8AAA] text-xs underline"
                 >
                   Ver detalhes
                 </button>
@@ -322,25 +322,19 @@ export default function JogoDesafio({
       )}
 
       {/* Intro narrativa */}
-      <div className={`rounded-xl px-4 py-5 transition-all duration-500 ${
-        introEmDestaque
-          ? 'bg-[#0F1D30] border-2 border-[#00C853]/60 shadow-lg shadow-[#00C853]/10'
-          : 'bg-[#0F1D30] border border-[#1A3A5C]'
-      }`}>
-        <p className={`text-xs uppercase font-bold tracking-widest mb-3 ${
-          introEmDestaque ? 'text-[#00C853]' : 'text-[#8AB4CC]'
-        }`}>
+      <div className="bg-[#0F1D30] border border-[#2A5275] rounded-xl px-4 py-5">
+        <p className="text-xs uppercase font-bold tracking-widest mb-3 text-[#8AB4CC]">
           ⚡ Jogador do dia
         </p>
         <p className={`leading-relaxed italic ${
           introEmDestaque
             ? 'text-white text-base font-medium'
-            : 'text-zinc-200 text-sm'
+            : 'text-[#8AB4CC] text-sm'
         }`}>
           &ldquo;{introNarrativa}&rdquo;
         </p>
         {introEmDestaque && (
-          <p className="text-green-600 text-xs mt-3 font-semibold">
+          <p className="text-[#8AB4CC] text-xs mt-3">
             Quem é esse jogador? Tente adivinhar agora.
           </p>
         )}

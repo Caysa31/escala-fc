@@ -9,6 +9,7 @@ import { carregarPerfil } from '@/lib/perfil'
 import { getJogadoresDoDia } from '@/lib/game'
 import { criarSala, isSupabaseConfigurado } from '@/lib/supabase'
 import TelaPerfil from '@/components/TelaPerfil'
+import BottomNav from '@/components/BottomNav'
 
 export default function SalaPage() {
   const router = useRouter()
@@ -116,6 +117,7 @@ export default function SalaPage() {
             </ul>
           </div>
         </div>
+      <BottomNav />
       </main>
     )
   }
@@ -181,6 +183,23 @@ export default function SalaPage() {
               {criando ? '⚙️ Criando liga...' : '🏆 Criar Liga'}
             </button>
 
+            {/* Como funciona */}
+            <div className="bg-[#0A1020] border border-[#1A3A5C]/50 rounded-xl p-4 space-y-2">
+              <p className="text-[#8AB4CC] text-xs font-bold uppercase tracking-wider">Como funciona</p>
+              <div className="space-y-2">
+                {[
+                  { icon: '⚔️', texto: 'Crie sua liga e convide amigos' },
+                  { icon: '⚽', texto: 'Todo mundo joga o mesmo jogador' },
+                  { icon: '🏆', texto: 'O placar atualiza ao vivo' },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <span className="text-base">{item.icon}</span>
+                    <p className="text-white text-xs">{item.texto}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <div className="text-center">
               <p className="text-[#8AB4CC] text-xs mb-2">Recebeu um código de liga?</p>
               <Link href="/sala/entrar" className="text-[#00C853] text-sm font-semibold underline">
@@ -190,6 +209,7 @@ export default function SalaPage() {
           </div>
         )}
       </div>
+      <BottomNav />
     </main>
   )
 }

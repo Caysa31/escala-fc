@@ -113,14 +113,14 @@ export default function GruposPage() {
               const medalha = pos === 1 ? '🥇' : pos === 2 ? '🥈' : pos === 3 ? '🥉' : null
               return (
                 <div key={entrada.id} className={`flex items-center gap-3 px-4 py-3 rounded-xl border ${sou ? 'bg-[#071A0F] border-[#00C853]/40' : 'bg-[#0F1D30] border-[#1A3A5C]'}`}>
-                  <div className={`w-8 text-center font-black text-sm flex-shrink-0 ${pos === 1 ? 'text-[#FFD23F]' : pos === 2 ? 'text-zinc-300' : pos === 3 ? 'text-orange-400' : 'text-[#8AB4CC]'}`}>
+                  <div className={`w-8 text-center font-black text-sm flex-shrink-0 ${pos === 1 ? 'text-[#FFD23F]' : pos === 2 ? 'text-[#C8C8C8]' : pos === 3 ? 'text-[#CD7F32]' : 'text-[#8AB4CC]'}`}>
                     {medalha ?? `#${pos}`}
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className={`font-semibold text-sm truncate ${sou ? 'text-[#00C853]' : 'text-white'}`}>{entrada.apelido} {sou && '(você)'}</p>
                   </div>
                   {entrada.streak_atual > 0 && (
-                    <div className="flex items-center gap-1 text-xs text-orange-400"><Flame size={12} /><span>{entrada.streak_atual}</span></div>
+                    <div className="flex items-center gap-1 text-xs text-[#FFD23F]><Flame size={12} /><span>{entrada.streak_atual}</span></div>
                   )}
                   <div className="text-right flex-shrink-0">
                     <p className="font-black text-[#FFD23F] text-sm">{entrada.pontos_semana ?? 0}</p>

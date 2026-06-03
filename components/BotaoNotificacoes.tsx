@@ -63,9 +63,9 @@ export default function BotaoNotificacoes({ apelido, modo = 'banner' }: Props) {
       <button
         onClick={handleAtivar}
         disabled={status === 'pedindo'}
-        className="flex items-center gap-2 text-zinc-400 hover:text-white text-xs transition-colors"
+        className="flex items-center gap-2 text-[#8AB4CC] hover:text-white text-xs transition-colors"
       >
-        <Bell size={14} className="text-zinc-500" />
+        <Bell size={14} className="text-[#5A8AAA]" />
         {status === 'pedindo' ? 'Ativando...' : 'Ativar alertas'}
       </button>
     )
@@ -109,7 +109,7 @@ export function NotifStatusIcon({ className = '' }: { className?: string }) {
 
   return (
     <div className={`flex items-center gap-1 ${className}`} title="Notificações ativas">
-      <Bell size={12} className="text-green-400" />
+      <Bell size={12} className="text-[#00C853]" />
     </div>
   )
 }

@@ -156,7 +156,7 @@ export default function ModoPage() {
           />
         ) : (
           <div className="flex items-center justify-center py-20">
-            <p className="text-zinc-500 animate-pulse">Carregando jogador...</p>
+            <p className="text-[#5A8AAA] animate-pulse">Carregando jogador...</p>
           </div>
         )}
 
