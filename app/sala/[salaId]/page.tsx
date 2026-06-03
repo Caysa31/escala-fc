@@ -161,7 +161,11 @@ export default function LigaPage() {
             rodadaId={rodadaId}
             perfil={perfil}
             indiceDesafio={desafioIdx}
-            onResultado={p => { setPerfil(p); carregarPlacar() }}
+            onResultado={p => {
+              setPerfil(p)
+              // Aguarda o upsertStreakSupabase completar antes de atualizar placar
+              setTimeout(() => carregarPlacar(), 1500)
+            }}
             onContratosChange={() => {}}
             onProximoDesafio={temProximo ? () => {
               const prox = jogadoresDoDia.findIndex(
@@ -171,8 +175,8 @@ export default function LigaPage() {
               else setTela('dashboard')
             } : undefined}
             onFimJogo={!temProximo ? () => {
-              // Só volta ao dashboard quando acabar o último desafio
-              setTimeout(() => { carregarPlacar(); setTela('dashboard') }, 800)
+              // Último desafio: aguarda sync e volta ao dashboard
+              setTimeout(() => { carregarPlacar(); setTela('dashboard') }, 2000)
             } : undefined}
           />
         </div>
@@ -318,7 +322,10 @@ export default function LigaPage() {
           <div className="px-4 py-3 border-b border-[#1A3A5C] flex items-center gap-2">
             <Users size={16} className="text-[#8AB4CC]" />
             <p className="text-white font-bold text-sm">Classificação</p>
-            <span className="ml-auto text-[#8AB4CC] text-xs">{placar.length} membros</span>
+            <div className="ml-auto flex items-center gap-2">
+              <span className="text-[#8AB4CC] text-xs">{placar.length} membros</span>
+              <button onClick={carregarPlacar} className="text-[#5A8AAA] text-xs hover:text-[#8AB4CC] transition-colors">↻</button>
+            </div>
           </div>
 
           {placar.length === 0 ? (

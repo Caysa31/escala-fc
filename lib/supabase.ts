@@ -488,15 +488,31 @@ export async function getPlacarLiga(ligaId: string): Promise<LigaMembro[]> {
 
   const apelidos = membros.map(m => m.apelido)
 
-  // 2. Busca pontos atuais via usuario_id (streaks usa usuario_id, não apelido)
-  const userIds = membros.filter(m => m.user_id).map(m => m.user_id!)
+  // 2. Busca user_ids pela tabela usuarios (mais confiável — liga_membros.user_id pode ser null)
+  const { data: usuarios } = await supabase
+    .from('usuarios')
+    .select('id, apelido')
+    .in('apelido', apelidos)
+
+  const apelidoToUserId: Record<string, string> = {}
+  for (const u of (usuarios ?? [])) {
+    apelidoToUserId[u.apelido] = u.id
+  }
+  // Fallback: usa user_id salvo em liga_membros caso apelido não bata exato
+  for (const m of membros) {
+    if (m.user_id && !apelidoToUserId[m.apelido]) {
+      apelidoToUserId[m.apelido] = m.user_id
+    }
+  }
+
+  const allUserIds = Object.values(apelidoToUserId).filter(Boolean)
   const userIdToPontos: Record<string, number> = {}
 
-  if (userIds.length > 0) {
+  if (allUserIds.length > 0) {
     const { data: streaks } = await supabase
       .from('streaks')
       .select('usuario_id, pontos_total')
-      .in('usuario_id', userIds)
+      .in('usuario_id', allUserIds)
 
     for (const s of (streaks ?? [])) {
       userIdToPontos[s.usuario_id] = s.pontos_total ?? 0
@@ -505,9 +521,10 @@ export async function getPlacarLiga(ligaId: string): Promise<LigaMembro[]> {
 
   // Mapeia apelido → pontos via user_id
   const streakMap: Record<string, number> = {}
-  for (const m of membros) {
-    if (m.user_id && userIdToPontos[m.user_id] !== undefined) {
-      streakMap[m.apelido] = userIdToPontos[m.user_id]
+  for (const apelido of apelidos) {
+    const userId = apelidoToUserId[apelido]
+    if (userId && userIdToPontos[userId] !== undefined) {
+      streakMap[apelido] = userIdToPontos[userId]
     }
   }
 
