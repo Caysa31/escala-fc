@@ -423,7 +423,7 @@ function gerarCodigoLiga(): string {
 export async function criarLiga(
   nome: string,
   criadorApelido: string,
-  pontosBase: number
+  pontosBaseLocal: number
 ): Promise<string | null> {
   if (!supabase) return null
   const id = gerarCodigoLiga()
@@ -436,6 +436,11 @@ export async function criarLiga(
   const userId = typeof window !== 'undefined'
     ? (localStorage.getItem('escalafc_supabase_id') ?? null)
     : null
+
+  // Usa pontos do SERVIDOR como base (mesma fonte que será consultada no placar)
+  const pontosServidor = userId ? await getPontosDoServidor(userId) : null
+  const pontosBase = pontosServidor ?? pontosBaseLocal
+
   const { error: membroError } = await supabase.from('liga_membros').insert({
     liga_id: id, apelido: criadorApelido, user_id: userId, pontos_base: pontosBase,
   })
@@ -456,12 +461,17 @@ export async function getLiga(ligaId: string): Promise<LigaInfo | null> {
 export async function entrarLiga(
   ligaId: string,
   apelido: string,
-  pontosBase: number
+  pontosBaseLocal: number
 ): Promise<boolean> {
   if (!supabase) return false
   const userId = typeof window !== 'undefined'
     ? (localStorage.getItem('escalafc_supabase_id') ?? null)
     : null
+
+  // Usa pontos do SERVIDOR como base (mesma fonte que será consultada no placar)
+  const pontosServidor = userId ? await getPontosDoServidor(userId) : null
+  const pontosBase = pontosServidor ?? pontosBaseLocal
+
   const { error } = await supabase.from('liga_membros').upsert({
     liga_id: ligaId.toUpperCase(), apelido, user_id: userId, pontos_base: pontosBase,
   }, { onConflict: 'liga_id,apelido', ignoreDuplicates: true })
