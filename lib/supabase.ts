@@ -399,9 +399,8 @@ export interface LigaMembro {
   apelido: string
   user_id: string | null
   pontos_base: number
+  pontos_liga: number     // incrementado diretamente no DB a cada desafio
   joined_at: string
-  pontos_atual?: number   // preenchido ao montar o placar
-  pontos_liga?: number    // pontos_atual - pontos_base
 }
 
 export interface LigaInfo {
@@ -489,64 +488,42 @@ export async function getMembrosLiga(ligaId: string): Promise<LigaMembro[]> {
   return (data ?? []) as LigaMembro[]
 }
 
+// Incrementa pontos da liga diretamente — sem subtração, sem race condition
+export async function incrementarPontosLiga(
+  ligaId: string,
+  apelido: string,
+  pontosGanhos: number
+): Promise<void> {
+  if (!supabase || pontosGanhos <= 0) return
+
+  // Lê valor atual
+  const { data } = await supabase
+    .from('liga_membros')
+    .select('pontos_liga')
+    .eq('liga_id', ligaId.toUpperCase())
+    .eq('apelido', apelido)
+    .single()
+
+  const atual = (data as { pontos_liga?: number } | null)?.pontos_liga ?? 0
+
+  await supabase
+    .from('liga_membros')
+    .update({ pontos_liga: atual + pontosGanhos })
+    .eq('liga_id', ligaId.toUpperCase())
+    .eq('apelido', apelido)
+}
+
 export async function getPlacarLiga(ligaId: string): Promise<LigaMembro[]> {
   if (!supabase) return []
 
-  // 1. Busca membros da liga
-  const membros = await getMembrosLiga(ligaId)
-  if (membros.length === 0) return []
+  // Lê pontos_liga diretamente da tabela — sem cálculo, sem subtração
+  const { data } = await supabase
+    .from('liga_membros')
+    .select('apelido, user_id, pontos_base, pontos_liga, joined_at')
+    .eq('liga_id', ligaId.toUpperCase())
+    .order('pontos_liga', { ascending: false })
 
-  const apelidos = membros.map(m => m.apelido)
-
-  // 2. Busca user_ids pela tabela usuarios (mais confiável — liga_membros.user_id pode ser null)
-  const { data: usuarios } = await supabase
-    .from('usuarios')
-    .select('id, apelido')
-    .in('apelido', apelidos)
-
-  const apelidoToUserId: Record<string, string> = {}
-  for (const u of (usuarios ?? [])) {
-    apelidoToUserId[u.apelido] = u.id
-  }
-  // Fallback: usa user_id salvo em liga_membros caso apelido não bata exato
-  for (const m of membros) {
-    if (m.user_id && !apelidoToUserId[m.apelido]) {
-      apelidoToUserId[m.apelido] = m.user_id
-    }
-  }
-
-  const allUserIds = Object.values(apelidoToUserId).filter(Boolean)
-  const userIdToPontos: Record<string, number> = {}
-
-  if (allUserIds.length > 0) {
-    const { data: streaks } = await supabase
-      .from('streaks')
-      .select('usuario_id, pontos_total')
-      .in('usuario_id', allUserIds)
-
-    for (const s of (streaks ?? [])) {
-      userIdToPontos[s.usuario_id] = s.pontos_total ?? 0
-    }
-  }
-
-  // Mapeia apelido → pontos via user_id
-  const streakMap: Record<string, number> = {}
-  for (const apelido of apelidos) {
-    const userId = apelidoToUserId[apelido]
-    if (userId && userIdToPontos[userId] !== undefined) {
-      streakMap[apelido] = userIdToPontos[userId]
-    }
-  }
-
-  // 3. Calcula pontos na liga = atual - base
-  const placar: LigaMembro[] = membros.map(m => ({
-    ...m,
-    pontos_atual: streakMap[m.apelido] ?? 0,
-    pontos_liga: Math.max(0, (streakMap[m.apelido] ?? 0) - m.pontos_base),
-  }))
-
-  // 4. Ordena por pontos na liga DESC
-  return placar.sort((a, b) => (b.pontos_liga ?? 0) - (a.pontos_liga ?? 0))
+  return (data ?? []) as LigaMembro[]
 }
 
 export function subscribeToLiga(

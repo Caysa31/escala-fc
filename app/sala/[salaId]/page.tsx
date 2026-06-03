@@ -7,7 +7,7 @@ import { Perfil } from '@/lib/types'
 import { carregarPerfil, getResultadoRodada } from '@/lib/perfil'
 import { getJogadoresDoDia } from '@/lib/game'
 import {
-  getLiga, entrarLiga, getPlacarLiga, subscribeToLiga,
+  getLiga, entrarLiga, getPlacarLiga, incrementarPontosLiga, subscribeToLiga,
   LigaInfo, LigaMembro, isSupabaseConfigurado,
 } from '@/lib/supabase'
 import JogoDesafio from '@/components/JogoDesafio'
@@ -161,22 +161,30 @@ export default function LigaPage() {
             rodadaId={rodadaId}
             perfil={perfil}
             indiceDesafio={desafioIdx}
-            onResultado={p => {
-              setPerfil(p)
-              // Aguarda o upsertStreakSupabase completar antes de atualizar placar
-              setTimeout(() => carregarPlacar(), 1500)
-            }}
+            onResultado={p => setPerfil(p)}
             onContratosChange={() => {}}
+            onFimJogo={(r) => {
+              // Salva pontos exatos no DB da liga — sem subtração, sem race condition
+              if (r.ganhou && r.pontos > 0) {
+                void incrementarPontosLiga(ligaId, perfil.apelido, r.pontos)
+              }
+              if (temProximo) {
+                // Ainda há desafios — navega para o próximo
+                const prox = jogadoresDoDia.findIndex(
+                  ({ rodadaId: rid }, i) => i > desafioIdx && getResultadoRodada(rid) === null
+                )
+                if (prox !== -1) setDesafioIdx(prox)
+              } else {
+                // Último desafio — volta ao dashboard com placar atualizado
+                setTimeout(() => { carregarPlacar(); setTela('dashboard') }, 1000)
+              }
+            }}
             onProximoDesafio={temProximo ? () => {
               const prox = jogadoresDoDia.findIndex(
                 ({ rodadaId: rid }, i) => i > desafioIdx && getResultadoRodada(rid) === null
               )
               if (prox !== -1) setDesafioIdx(prox)
               else setTela('dashboard')
-            } : undefined}
-            onFimJogo={!temProximo ? () => {
-              // Último desafio: aguarda sync e volta ao dashboard
-              setTimeout(() => { carregarPlacar(); setTela('dashboard') }, 2000)
             } : undefined}
           />
         </div>
