@@ -254,14 +254,7 @@ export default function JogoDesafio({
       )}
 
       {/* Intro em destaque — só quando ainda não revelou nenhuma pista */}
-      {introEmDestaque && (
-        <div className="bg-gradient-to-r from-[#071A0F] to-[#0A1626] border border-[#00C853]/30 rounded-xl px-4 py-3 flex items-center justify-between">
-          <p className="text-sm text-[#4A9A6A]">
-            ✨ Adivinhe pelo histórico
-          </p>
-          <span className="text-[#FFD23F] font-black text-base">{Math.round((PONTOS_BASE[0] ?? 120) * multiplicador)} pts</span>
-        </div>
-      )}
+      {/* Banner removido — info já aparece na barra de baixo */}
 
       {estado.status === 'ganhou' && (
         <div className="bg-[#071A0F] border border-[#00C853]/30 rounded-2xl px-5 py-5 text-center space-y-3">
@@ -353,11 +346,6 @@ export default function JogoDesafio({
         <p className="leading-snug italic text-white text-sm">
           &ldquo;{introNarrativa}&rdquo;
         </p>
-        {introEmDestaque && (
-          <p className="text-[#8AB4CC] text-xs mt-3">
-            Quem é esse jogador? Tente adivinhar agora.
-          </p>
-        )}
       </div>
 
       {/* Pistas */}

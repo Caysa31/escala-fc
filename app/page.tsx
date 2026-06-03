@@ -92,7 +92,7 @@ export default function Home() {
     <main className="min-h-screen bg-[#0A1626] text-white">
 
       {/* ── CONTEÚDO PRINCIPAL ─────────────────────────────── */}
-      <div className="max-w-md mx-auto px-4 pt-5 pb-28 space-y-4">
+      <div className="max-w-md mx-auto px-4 pt-3 pb-28 space-y-3">
 
         {/* ── HEADER ───────────────────────────────────────── */}
         <header className="flex items-center justify-between pt-2">
