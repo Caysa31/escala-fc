@@ -382,7 +382,14 @@ export default function LigaPage() {
             </div>
           ) : (
             <button
-              onClick={() => { setDesafioIdx(0); setTela('jogo') }}
+              onClick={() => {
+                // Começa no primeiro desafio ainda não jogado
+                const primeiroNaoJogado = jogadoresDoDia.findIndex(
+                  ({ rodadaId }) => getResultadoRodada(rodadaId) === null
+                )
+                setDesafioIdx(primeiroNaoJogado >= 0 ? primeiroNaoJogado : 0)
+                setTela('jogo')
+              }}
               className="w-full bg-[#00C853] hover:bg-[#00E060] active:scale-95 text-[#0A1626] font-black text-xl py-5 rounded-2xl transition-all shadow-lg shadow-[#00C853]/20"
             >
               ⚽ Jogar Rodada de Hoje →
