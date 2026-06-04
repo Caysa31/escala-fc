@@ -131,7 +131,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
                 src="/images/iphone-home.jpg"
                 alt="COBRA na tela inicial do iPhone"
                 className="w-full object-cover"
-                style={{ maxHeight: '150px', objectPosition: 'center 75%' }}
+                style={{ maxHeight: '220px', objectPosition: 'center 60%' }}
               />
             </div>
             <a
