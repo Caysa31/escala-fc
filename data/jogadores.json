@@ -206,23 +206,23 @@
     "posicao": "Ponta-direita",
     "nacionalidade": "Brasileiro",
     "bandeira": "🇧🇷",
-    "clube": "São Paulo",
-    "liga": "Brasileirão",
+    "clube": "Goias",
+    "liga": "Serie B",
     "dificuldade": "dificil",
     "titulos": [
       "Copa Sul-Americana"
     ],
-    "curiosidade": "Extrema veloz do São Paulo, ganhou o apelido 'Rato' pela velocidade e agilidade em campo",
+    "curiosidade": "Extrema veloz que fez historia no Sao Paulo, ganhou o apelido Rato pela velocidade e agilidade em campo",
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 126,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo",
-    "clubeAnterior": "Goiás",
+    "estadoClube": "Goias",
+    "clubeAnterior": "Sao Paulo",
     "origemAnterior": "brasil",
     "ligaAnterior": null,
     "pista2": "Extrema veloz e driblador, difícil de segurar na ponta.",
     "pista3": "Nasceu em Governador Valadares, Minas Gerais, e construiu carreira pelo interior do Brasil.",
-    "pista4": "Antes do clube atual, jogou no Goiás."
+    "pista4": "Antes do clube atual, jogou no Sao Paulo."
   },
   {
     "id": 10,
@@ -383,12 +383,12 @@
     "apiFootballTeamId": 116,
     "apiFootballLeagueId": 71,
     "estadoClube": "Minas Gerais",
-    "clubeAnterior": "Flamengo",
-    "origemAnterior": "brasil",
-    "ligaAnterior": null,
+    "clubeAnterior": "Zenit",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Liga Russa",
     "pista2": "Meia box-to-box de volume, qualidade técnica e força.",
     "pista3": "Nasceu no Rio de Janeiro e cresceu no Flamengo, clube da sua cidade natal.",
-    "pista4": "Antes do clube atual, jogou no Flamengo."
+    "pista4": "Antes do clube atual, jogou no Zenit, na Liga Russa."
   },
   {
     "id": 17,
@@ -402,7 +402,7 @@
     "titulos": [
       "Brasileirão"
     ],
-    "curiosidade": "Camisa 10 do Cruzeiro, irmão de Andreas Pereira, considerado o principal armador da Raposa",
+    "curiosidade": "Camisa 10 do Cruzeiro, considerado o principal armador da Raposa apos passagem pelo futebol arabe",
     "faixaEtaria": "28-32",
     "apiFootballTeamId": 116,
     "apiFootballLeagueId": 71,
@@ -569,17 +569,17 @@
       "Copa do Brasil",
       "Libertadores"
     ],
-    "curiosidade": "Ídolo do Palmeiras que surpreendeu ao retornar da Arábia Saudita para o Atlético-MG em 2026",
+    "curiosidade": "Idolo do Palmeiras que surpreendeu ao ir para o Cruzeiro e depois para o Atletico-MG em 2025",
     "faixaEtaria": "32-36",
     "apiFootballTeamId": 1062,
     "apiFootballLeagueId": 71,
     "estadoClube": "Minas Gerais",
-    "clubeAnterior": "Al-Qadsiah",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Saudi Pro League",
+    "clubeAnterior": "Cruzeiro",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null,
     "pista2": "Ponta driblador e veloz, especialista no um-a-um.",
     "pista3": "Natural de São Paulo, cresceu nas categorias de base do Palmeiras, onde virou ídolo.",
-    "pista4": "Antes do clube atual, jogou no Al-Qadsiah, na Saudi Pro League."
+    "pista4": "Antes do clube atual, jogou no Cruzeiro."
   },
   {
     "id": 25,
@@ -695,17 +695,17 @@
       "Brasileirão",
       "Copa do Brasil"
     ],
-    "curiosidade": "Ídolo do Flamengo que foi por empréstimo ao Santos — o mesmo clube que formou Pelé e Neymar",
+    "curiosidade": "Idolo do Flamengo que passou pelo Cruzeiro antes de retornar ao Santos — clube que formou Pele e Neymar",
     "faixaEtaria": "28-32",
     "apiFootballTeamId": 128,
     "apiFootballLeagueId": 71,
     "estadoClube": "São Paulo",
-    "clubeAnterior": "Flamengo",
+    "clubeAnterior": "Cruzeiro",
     "origemAnterior": "brasil",
     "ligaAnterior": null,
     "pista2": "Atacante clínico de área, especialista em gols decisivos.",
     "pista3": "Natural de Santos, no litoral de São Paulo — terra natal e berço de muitos craques.",
-    "pista4": "Antes do clube atual, jogou no Flamengo."
+    "pista4": "Antes do clube atual, jogou no Cruzeiro."
   },
   {
     "id": 30,
@@ -1715,12 +1715,12 @@
     "apiFootballTeamId": 121,
     "apiFootballLeagueId": 71,
     "estadoClube": "São Paulo",
-    "clubeAnterior": "Junior",
+    "clubeAnterior": "Penharol",
     "origemAnterior": "exterior",
-    "ligaAnterior": "Categoría Primera A",
+    "ligaAnterior": "Primera Division",
     "pista2": "Lateral-esquerdo uruguaio ofensivo, parece mais um ponta.",
-    "pista3": "Natural de Montevidéu, no Uruguai, cresceu no Junior de Barranquilla antes de vir ao Brasil.",
-    "pista4": "Chegou ao clube atual vindo do Junior, na Categoría Primera A."
+    "pista3": "Natural de Montevidéu, no Uruguai, cresceu no Penharol antes de vir ao Brasil.",
+    "pista4": "Chegou ao clube atual vindo do Penharol, na Primera Division."
   },
   {
     "id": 68,
@@ -1754,21 +1754,21 @@
     "posicao": "Centroavante",
     "nacionalidade": "Argentino",
     "bandeira": "🇦🇷",
-    "clube": "Vasco",
-    "liga": "Brasileirão",
+    "clube": "Cerro Porteno",
+    "liga": "Primera Division",
     "dificuldade": "medio",
     "titulos": [],
-    "curiosidade": "Apelidado de 'Gigante' pela torcida do Vasco, o centroavante argentino chegou vindo de Independiente e se tornou artilheiro e ídolo rapidamente",
+    "curiosidade": "Apelidado de 'Gigante' pela torcida do Vasco, o centroavante argentino chegou vindo de Belgrano e se tornou artilheiro e ídolo rapidamente",
     "faixaEtaria": "32-36",
     "apiFootballTeamId": 133,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro",
-    "clubeAnterior": "Independiente",
+    "estadoClube": null,
+    "clubeAnterior": "Belgrano",
     "origemAnterior": "exterior",
     "ligaAnterior": "Liga Profesional",
     "pista2": "Centroavante argentino forte, bom no ar e artilheiro.",
     "pista3": "Natural de Buenos Aires, na Argentina — chegou ao Brasil e se tornou ídolo imediato da torcida.",
-    "pista4": "Chegou ao clube atual vindo do Independiente, na Liga Profesional."
+    "pista4": "Chegou ao Vasco vindo do Belgrano, na Liga Profesional."
   },
   {
     "id": 70,
@@ -3506,8 +3506,8 @@
     "posicao": "Meia-atacante",
     "nacionalidade": "Alemão",
     "bandeira": "🇩🇪",
-    "clube": "Bayer Leverkusen",
-    "liga": "Bundesliga",
+    "clube": "Liverpool",
+    "liga": "Premier League",
     "dificuldade": "medio",
     "titulos": [
       "Bundesliga",
@@ -3519,11 +3519,11 @@
     "apiFootballLeagueId": 78,
     "estadoClube": null,
     "clubeAnterior": "Bayer Leverkusen",
-    "origemAnterior": "base",
-    "ligaAnterior": null,
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Bundesliga",
     "pista2": "Jovem meia-atacante alemão genial — dribla, cria e decide.",
     "pista3": "Natural de Pulheim, na Alemanha, cresceu nas categorias de base do Bayer Leverkusen.",
-    "pista4": "Foi revelado nas categorias de base do próprio Bayer Leverkusen."
+    "pista4": "Antes do clube atual, jogou no Bayer Leverkusen, na Bundesliga."
   },
   {
     "id": 142,
