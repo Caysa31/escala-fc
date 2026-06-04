@@ -61,7 +61,7 @@ export default function GuiaTelaPrincipal() {
 
   return (
     <main className="min-h-screen bg-[#0A1626] text-white">
-      <div className="max-w-md mx-auto px-4 pt-5 pb-10 space-y-5">
+      <div className="max-w-md mx-auto px-4 pt-5 pb-28 space-y-5">
 
         {/* Header */}
         <div className="flex items-center gap-3">
@@ -151,14 +151,21 @@ export default function GuiaTelaPrincipal() {
           </div>
         )}
 
-        {/* Botão voltar */}
-        <button
-          onClick={() => router.back()}
-          className="w-full bg-[#0F1D30] border border-[#1A3A5C] hover:border-[#00C853]/30 text-white font-bold py-4 rounded-xl text-sm transition-all active:scale-95"
-        >
-          ← Voltar para meus resultados
-        </button>
+      </div>
 
+      {/* Botão flutuante fixo no rodapé */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#070E1A] border-t border-[#1A3A5C] px-4 pt-3 pb-6">
+        <div className="max-w-md mx-auto">
+          <button
+            onClick={() => {
+              if (window.history.length > 1) router.back()
+              else router.push('/')
+            }}
+            className="w-full bg-[#0F1D30] border border-[#1A3A5C] hover:border-[#00C853]/30 text-white font-bold py-4 rounded-xl text-sm transition-all active:scale-95"
+          >
+            ← Voltar para meus resultados
+          </button>
+        </div>
       </div>
     </main>
   )
