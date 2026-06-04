@@ -265,6 +265,59 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
             </button>
           </div>
 
+          {/* ── SALVAR NA TELA INICIAL ───────────────────── */}
+          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-4 space-y-3">
+            <p className="text-white font-bold text-sm text-center">
+              📲 Salve o jogo na tela inicial para jogar amanhã
+            </p>
+
+            {/* Mockup visual das duas telas iniciais */}
+            <div className="flex gap-3 justify-center">
+
+              {/* iPhone */}
+              <div className="flex-1 space-y-1.5">
+                <p className="text-[#8AB4CC] text-[10px] text-center font-semibold uppercase tracking-wider">iPhone</p>
+                {/* Tela do phone */}
+                <div className="bg-[#1A1A2E] rounded-xl p-2.5 border border-[#2A3A5A]">
+                  {/* Grid de ícones genéricos */}
+                  <div className="grid grid-cols-4 gap-1.5 mb-1.5">
+                    {[...Array(7)].map((_, i) => (
+                      <div key={i} className="w-7 h-7 rounded-lg bg-[#2A3A5A] opacity-40" />
+                    ))}
+                    {/* Ícone do COBRA em destaque */}
+                    <div className="w-7 h-7 rounded-lg bg-[#0A1626] border-2 border-[#00C853] flex items-center justify-center text-sm">
+                      🐍
+                    </div>
+                  </div>
+                  <p className="text-[#00C853] text-[9px] text-center font-bold">COBRA</p>
+                </div>
+                <p className="text-[#5A8AAA] text-[9px] text-center leading-tight">
+                  Compartilhar →<br/>"Adicionar à Tela"
+                </p>
+              </div>
+
+              {/* Android */}
+              <div className="flex-1 space-y-1.5">
+                <p className="text-[#8AB4CC] text-[10px] text-center font-semibold uppercase tracking-wider">Android</p>
+                <div className="bg-[#1A1A2E] rounded-xl p-2.5 border border-[#2A3A5A]">
+                  <div className="grid grid-cols-4 gap-1.5 mb-1.5">
+                    {[...Array(7)].map((_, i) => (
+                      <div key={i} className="w-7 h-7 rounded-lg bg-[#2A3A5A] opacity-40" />
+                    ))}
+                    <div className="w-7 h-7 rounded-lg bg-[#0A1626] border-2 border-[#00C853] flex items-center justify-center text-sm">
+                      🐍
+                    </div>
+                  </div>
+                  <p className="text-[#00C853] text-[9px] text-center font-bold">COBRA</p>
+                </div>
+                <p className="text-[#5A8AAA] text-[9px] text-center leading-tight">
+                  ⋮ Menu →<br/>"Adicionar à tela"
+                </p>
+              </div>
+
+            </div>
+          </div>
+
           {/* ── MOTIVAÇÃO PRO DIA SEGUINTE ───────────────── */}
           <div className="text-center space-y-1 py-1">
             <p className="text-white font-bold">🔔 Novos desafios amanhã!</p>
