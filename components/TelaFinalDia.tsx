@@ -4,8 +4,12 @@ import { useState, useEffect } from 'react'
 import { Perfil, Jogador } from '@/lib/types'
 import { getResultadoRodada } from '@/lib/perfil'
 import { getContratosAtivos, calcularBonusMaximo } from '@/lib/contrato'
-import { getPosicaoRanking } from '@/lib/supabase'
-import { Flame, Trophy, Zap, Share2, X, ChevronRight, Medal } from 'lucide-react'
+import { getPosicaoRanking, salvarTokenNotificacao } from '@/lib/supabase'
+import { Flame, Trophy, Zap, Share2, X, ChevronRight, Medal, Bell } from 'lucide-react'
+import {
+  suportaNotificacoes, notificacoesAtivas,
+  pedirPermissaoNotificacoes, statusPermissao,
+} from '@/lib/notificacoes'
 
 interface TelaFinalDiaProps {
   jogadoresDoDia: { rodadaId: number; jogador: Jogador }[]
@@ -15,6 +19,26 @@ interface TelaFinalDiaProps {
 
 export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaFinalDiaProps) {
   const [posicaoRanking, setPosicaoRanking] = useState<number | null>(null)
+  const [notifStatus, setNotifStatus] = useState<string>('idle')
+
+  useEffect(() => {
+    if (!suportaNotificacoes()) return
+    if (notificacoesAtivas()) setNotifStatus('ativo')
+    else if (statusPermissao() === 'denied') setNotifStatus('negado')
+  }, [])
+
+  async function handleAtivarNotif() {
+    setNotifStatus('pedindo')
+    const token = await pedirPermissaoNotificacoes()
+    if (token) {
+      setNotifStatus('ativo')
+      const usuarioId = typeof window !== 'undefined'
+        ? (localStorage.getItem('escalafc_supabase_id') ?? undefined) : undefined
+      void salvarTokenNotificacao({ token, usuarioId, apelido: perfil.apelido })
+    } else {
+      setNotifStatus(statusPermissao() === 'denied' ? 'negado' : 'idle')
+    }
+  }
 
   // Calcula resultados do dia
   const resultados = jogadoresDoDia.map(({ rodadaId, jogador }) => ({
@@ -90,6 +114,36 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
             <p className={`text-xl font-black ${config.cor}`}>{config.titulo}</p>
             <p className="text-[#8AB4CC] text-sm">{config.subtitulo}</p>
           </div>
+
+          {/* ── NOTIFICAÇÃO — aparece só se ainda não ativou ── */}
+          {notifStatus === 'idle' && suportaNotificacoes() && (
+            <div className="bg-[#0F1D30] border border-[#00C853]/30 rounded-2xl p-4 space-y-3">
+              <div className="flex items-start gap-3">
+                <span className="text-2xl">🔔</span>
+                <div>
+                  <p className="text-white font-bold text-sm">Quer ser avisado amanhã?</p>
+                  <p className="text-[#8AB4CC] text-xs mt-0.5 leading-relaxed">
+                    Ative as notificações e a gente te avisa quando o novo desafio abrir. Não perca sua sequência.
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={handleAtivarNotif}
+                disabled={notifStatus === 'pedindo'}
+                className="w-full flex items-center justify-center gap-2 bg-[#00C853] hover:bg-[#00E060] text-[#0A1626] font-bold py-3 rounded-xl text-sm transition-all active:scale-95"
+              >
+                <Bell size={16} />
+                {notifStatus === 'pedindo' ? 'Ativando...' : 'Ativar notificações'}
+              </button>
+            </div>
+          )}
+
+          {notifStatus === 'ativo' && (
+            <div className="bg-[#071A0F] border border-[#00C853]/30 rounded-xl px-4 py-3 flex items-center gap-2">
+              <Bell size={14} className="text-[#00C853]" />
+              <p className="text-[#4A9A6A] text-xs">Notificações ativas — te avisamos amanhã às 8h ✓</p>
+            </div>
+          )}
 
           {/* ── PLACAR DO DIA ────────────────────────────── */}
           <div className="grid grid-cols-3 gap-2">
