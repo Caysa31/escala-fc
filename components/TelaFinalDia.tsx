@@ -134,11 +134,12 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
                 style={{ maxHeight: '220px', objectPosition: 'center 60%' }}
               />
             </div>
-            <div className="bg-[#0A1626] rounded-xl px-4 py-3 space-y-1.5">
-              <p className="text-white text-xs font-semibold">Como fazer:</p>
-              <p className="text-[#8AB4CC] text-xs">📱 <span className="text-white">iPhone:</span> toque em compartilhar ↑ → "Adicionar à Tela de Início"</p>
-              <p className="text-[#8AB4CC] text-xs">🤖 <span className="text-white">Android:</span> toque nos ⋮ → "Adicionar à tela inicial"</p>
-            </div>
+            <a
+              href="/guia-tela-inicial"
+              className="block w-full text-center bg-[#0F1D30] border border-[#00C853]/40 hover:border-[#00C853] text-[#00C853] font-semibold py-3 rounded-xl text-sm transition-all active:scale-95"
+            >
+              📖 Como salvar na tela inicial →
+            </a>
           </div>
 
           {/* ── NOTIFICAÇÃO — aparece só se ainda não ativou ── */}
