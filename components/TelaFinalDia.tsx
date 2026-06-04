@@ -19,7 +19,8 @@ interface TelaFinalDiaProps {
 
 export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaFinalDiaProps) {
   const [posicaoRanking, setPosicaoRanking] = useState<number | null>(null)
-  const [notifStatus, setNotifStatus] = useState<string>('idle')
+  const [notifStatus, setNotifStatus] = useState<'idle' | 'pedindo' | 'ativo' | 'negado'>('idle')
+  const notifAtivando = notifStatus === 'pedindo'
 
   useEffect(() => {
     if (!suportaNotificacoes()) return
@@ -116,7 +117,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
           </div>
 
           {/* ── NOTIFICAÇÃO — aparece só se ainda não ativou ── */}
-          {notifStatus === 'idle' && suportaNotificacoes() && (
+          {(notifStatus === 'idle' || notifStatus === 'pedindo') && suportaNotificacoes() && (
             <div className="bg-[#0F1D30] border border-[#00C853]/30 rounded-2xl p-4 space-y-3">
               <div className="flex items-start gap-3">
                 <span className="text-2xl">🔔</span>
@@ -129,11 +130,11 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
               </div>
               <button
                 onClick={handleAtivarNotif}
-                disabled={notifStatus === 'pedindo'}
+                disabled={notifAtivando}
                 className="w-full flex items-center justify-center gap-2 bg-[#00C853] hover:bg-[#00E060] text-[#0A1626] font-bold py-3 rounded-xl text-sm transition-all active:scale-95"
               >
                 <Bell size={16} />
-                {notifStatus === 'pedindo' ? 'Ativando...' : 'Ativar notificações'}
+                {notifAtivando ? 'Ativando...' : 'Ativar notificações'}
               </button>
             </div>
           )}
