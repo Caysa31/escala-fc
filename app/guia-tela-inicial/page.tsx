@@ -122,7 +122,6 @@ export default function GuiaTelaPrincipal() {
                     src={passo.img}
                     alt={`Passo ${passo.numero}`}
                     className="w-full"
-                    style={{ maxHeight: '320px', objectFit: 'cover', objectPosition: 'center top' }}
                   />
                 </div>
               </div>
