@@ -48,7 +48,7 @@
     "origemAnterior": "brasil",
     "ligaAnterior": null,
     "pista2": "Meia habilidoso, dono de dribles curtos e passe decisivo.",
-    "pista3": "Natural de Salto, no Uruguai, cresceu no futebol platino antes de vir ao Brasil.",
+    "pista3": "Natural de Nuevo Berlin, no Uruguai, cresceu no futebol platino antes de vir ao Brasil.",
     "pista4": "Antes do clube atual, jogou no Cruzeiro."
   },
   {
@@ -74,7 +74,7 @@
     "origemAnterior": "exterior",
     "ligaAnterior": "Serie A",
     "pista2": "Centroavante dominante na área, letal de cabeça e gol.",
-    "pista3": "Nasceu em Natal, no Rio Grande do Norte, e foi revelado pelo Fluminense ainda jovem.",
+    "pista3": "Nasceu no Rio de Janeiro e foi revelado pelo Fluminense ainda jovem.",
     "pista4": "Antes do clube atual, jogou na Fiorentina, na Serie A."
   },
   {
@@ -237,7 +237,7 @@
       "Copa do Brasil",
       "Brasileirão"
     ],
-    "curiosidade": "Retornou ao Brasil após empréstimo no Barcelona — foi contratado pelo Verdão para ser o futuro do ataque",
+    "curiosidade": "Contratado em definitivo pelo Palmeiras junto ao Barcelona por cerca de 150 milhoes de reais",
     "faixaEtaria": "18-22",
     "apiFootballTeamId": 121,
     "apiFootballLeagueId": 71,
@@ -246,7 +246,7 @@
     "origemAnterior": "exterior",
     "ligaAnterior": "La Liga",
     "pista2": "Jovem atacante explosivo, veloz e com faro de gol precoce.",
-    "pista3": "Nasceu em Timóteo, em Minas Gerais, e foi revelado pelo Cruzeiro ainda adolescente.",
+    "pista3": "Nasceu em Timoteo, em Minas Gerais, e foi revelado pelo Athletico-PR onde se profissionalizou.",
     "pista4": "Retornou ao Brasil após empréstimo no Barcelona, na La Liga."
   },
   {
@@ -387,7 +387,7 @@
     "origemAnterior": "exterior",
     "ligaAnterior": "Liga Russa",
     "pista2": "Meia box-to-box de volume, qualidade técnica e força.",
-    "pista3": "Nasceu no Rio de Janeiro e cresceu no Flamengo, clube da sua cidade natal.",
+    "pista3": "Nasceu em Belford Roxo, no Rio de Janeiro, e foi revelado pelo Fluminense antes de ir ao Flamengo.",
     "pista4": "Antes do clube atual, jogou no Zenit, na Liga Russa."
   },
   {
@@ -411,7 +411,7 @@
     "origemAnterior": "exterior",
     "ligaAnterior": "Saudi Pro League",
     "pista2": "Meia camisa 10 criativo, arma o jogo com passes precisos.",
-    "pista3": "Natural do Rio de Janeiro, irmão do também jogador Andreas Pereira — futebol no sangue.",
+    "pista3": "Natural de Belo Horizonte, em Minas Gerais, cresceu nas categorias de base e foi se profissionalizar na Europa.",
     "pista4": "Antes do clube atual, jogou no Al-Hilal, na Saudi Pro League."
   },
   {
@@ -433,7 +433,7 @@
     "origemAnterior": "exterior",
     "ligaAnterior": "Serie A",
     "pista2": "Atacante habilidoso com bom drible e finalização fina.",
-    "pista3": "Nasceu em Aracaju, em Sergipe, e foi revelado pelo Santos ainda como adolescente.",
+    "pista3": "Nasceu em Olinda, em Pernambuco, e foi revelado pelo Santos ainda como adolescente.",
     "pista4": "Antes do clube atual, jogou na Juventus, na Serie A."
   },
   {
@@ -457,7 +457,7 @@
     "origemAnterior": "exterior",
     "ligaAnterior": "Ucrânia",
     "pista2": "Meia criador de jogadas, inteligente e com passe preciso.",
-    "pista3": "Natural de Pelotas, no Rio Grande do Sul, construiu trajetória sólida no futebol brasileiro.",
+    "pista3": "Natural de Catanduva, em Sao Paulo, construiu trajetoria solida no futebol brasileiro antes de ir a Europa.",
     "pista4": "Antes do clube atual, jogou no Shakhtar Donetsk, na Ucrânia."
   },
   {
@@ -704,7 +704,7 @@
     "origemAnterior": "brasil",
     "ligaAnterior": null,
     "pista2": "Atacante clínico de área, especialista em gols decisivos.",
-    "pista3": "Natural de Santos, no litoral de São Paulo — terra natal e berço de muitos craques.",
+    "pista3": "Natural de Sao Paulo, na capital paulista, foi revelado pelo Santos — berco de Pele e Neymar.",
     "pista4": "Antes do clube atual, jogou no Cruzeiro."
   },
   {
@@ -893,8 +893,7 @@
     "dificuldade": "facil",
     "titulos": [
       "Champions League",
-      "La Liga",
-      "Copa do Mundo"
+      "La Liga"
     ],
     "curiosidade": "Melhor jogador do mundo em 2024, saiu do Flamengo aos 18 anos pelo maior valor pago por um brasileiro até então",
     "faixaEtaria": "24-28",
@@ -919,8 +918,7 @@
     "dificuldade": "medio",
     "titulos": [
       "Champions League",
-      "La Liga",
-      "Copa do Mundo"
+      "La Liga"
     ],
     "curiosidade": "Marcou dois gols nos acréscimos do segundo tempo contra o Manchester City na semifinal da Champions",
     "faixaEtaria": "24-28",
@@ -1094,7 +1092,7 @@
     "origemAnterior": "brasil",
     "ligaAnterior": null,
     "pista2": "Jovem craque driblador, com velocidade e gol no sangue.",
-    "pista3": "Natural de Sorocaba, em São Paulo, cresceu no Palmeiras desde muito jovem.",
+    "pista3": "Natural de Franca, em Sao Paulo, cresceu no Palmeiras desde muito jovem.",
     "pista4": "Antes do clube atual, jogou no Palmeiras."
   },
   {
@@ -1116,7 +1114,7 @@
     "origemAnterior": "brasil",
     "ligaAnterior": null,
     "pista2": "Jovem atacante explosivo, com faro de gol e frieza.",
-    "pista3": "Natural de Brasília, no Distrito Federal, foi revelado pelo Palmeiras ainda adolescente.",
+    "pista3": "Natural de Taguatinga, no Distrito Federal, foi revelado pelo Palmeiras ainda adolescente.",
     "pista4": "Antes do clube atual, jogou no Palmeiras."
   },
   {
@@ -1841,7 +1839,7 @@
     "origemAnterior": "brasil",
     "ligaAnterior": null,
     "pista2": "Goleiro lendário do Brasileirão, ídolo com grandes defesas.",
-    "pista3": "Natural de Santarém, no Pará, cresceu nas categorias de base do Corinthians onde virou lenda.",
+    "pista3": "Natural de Santarém, no Pará, foi revelado pelo Gremio e chegou ao Corinthians em 2011, onde construiu sua lenda.",
     "pista4": "Antes do clube atual, jogou no Corinthians."
   },
   {
@@ -2511,7 +2509,7 @@
       "Champions League",
       "Copa do Brasil"
     ],
-    "curiosidade": "Retornou ao clube que o revelou após 14 anos no Manchester City onde conquistou 6 Premier Leagues — o encerramento mais emocionante de uma carreira",
+    "curiosidade": "Retornou ao clube que o revelou após 14 anos no Manchester City onde conquistou 5 Premier Leagues — o encerramento mais emocionante de uma carreira",
     "faixaEtaria": "38-42",
     "apiFootballTeamId": 134,
     "apiFootballLeagueId": 71,
@@ -2756,7 +2754,7 @@
       "Champions League",
       "La Liga"
     ],
-    "curiosidade": "Marcou 50 gols em uma única temporada da Bundesliga — um recorde que pertenceu por décadas a Gerd Müller e pode durar outras tantas",
+    "curiosidade": "Marcou 41 gols em uma única temporada da Bundesliga — um recorde que pertenceu por décadas a Gerd Müller e pode durar outras tantas",
     "faixaEtaria": "37-41",
     "apiFootballTeamId": 529,
     "apiFootballLeagueId": 140,
@@ -3515,8 +3513,8 @@
     ],
     "curiosidade": "Foi peça-chave no histórico invicto do Leverkusen em 2023/24 — a melhor temporada da história do clube alemão, sem uma única derrota",
     "faixaEtaria": "21-25",
-    "apiFootballTeamId": 168,
-    "apiFootballLeagueId": 78,
+    "apiFootballTeamId": 40,
+    "apiFootballLeagueId": 39,
     "estadoClube": null,
     "clubeAnterior": "Bayer Leverkusen",
     "origemAnterior": "exterior",
@@ -3840,11 +3838,10 @@
     "dificuldade": "facil",
     "titulos": [
       "Brasileirão",
-      "Copa do Brasil",
       "Libertadores",
       "Intercontinental"
     ],
-    "curiosidade": "Eleito 3 vezes o melhor jogador do mundo pela FIFA, marcou mais de 500 gols com a camisa do Flamengo — o maior ídolo da história do futebol brasileiro",
+    "curiosidade": "Eleito 3 vezes o melhor jogador do mundo por entidades esportivas internacionais, marcou mais de 500 gols com a camisa do Flamengo — o maior ídolo da história do futebol brasileiro",
     "faixaEtaria": "Lenda",
     "lenda": true,
     "triviaContrato": {
@@ -3938,7 +3935,7 @@
     "origemAnterior": "base",
     "ligaAnterior": null,
     "pista2": "Lateral com motor infatigável — corria o jogo inteiro.",
-    "pista3": "Natural de Itaquera, em São Paulo, foi revelado pelo São Paulo FC antes de virar lenda.",
+    "pista3": "Natural de Itaquaquecetuba, em São Paulo, foi revelado pelo São Paulo FC antes de virar lenda.",
     "pista4": "Foi revelado nas categorias de base do próprio São Paulo."
   },
   {
@@ -3975,7 +3972,7 @@
     "origemAnterior": "exterior",
     "ligaAnterior": "La Liga",
     "pista2": "Atacante técnico e artilheiro — parceiro eterno de Romário.",
-    "pista3": "Natural de Vitória da Conquista, na Bahia, cresceu no futebol baiano antes de virar estrela.",
+    "pista3": "Natural de Salvador, na Bahia, cresceu no futebol baiano antes de virar estrela.",
     "pista4": "Antes do Flamengo, jogou no Deportivo La Coruña, na La Liga."
   },
   {
@@ -4038,7 +4035,7 @@
         "3",
         "5"
       ],
-      "respostaCorreta": 0
+      "respostaCorreta": 1
     },
     "apiFootballTeamId": null,
     "apiFootballLeagueId": null,
