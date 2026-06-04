@@ -136,6 +136,8 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
             </div>
             <a
               href="/guia-tela-inicial"
+              target="_blank"
+              rel="noopener noreferrer"
               className="block w-full text-center bg-[#0F1D30] border border-[#00C853]/40 hover:border-[#00C853] text-[#00C853] font-semibold py-3 rounded-xl text-sm transition-all active:scale-95"
             >
               📖 Como salvar na tela inicial →

@@ -158,8 +158,9 @@ export default function GuiaTelaPrincipal() {
         <div className="max-w-md mx-auto">
           <button
             onClick={() => {
-              if (window.history.length > 1) router.back()
-              else router.push('/')
+              window.close()
+              // Fallback se window.close() não funcionar (ex: aba original)
+              setTimeout(() => router.push('/'), 100)
             }}
             className="w-full bg-[#0F1D30] border border-[#1A3A5C] hover:border-[#00C853]/30 text-white font-bold py-4 rounded-xl text-sm transition-all active:scale-95"
           >
