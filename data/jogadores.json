@@ -11095,5 +11095,48 @@
     "pista2": "Meia-atacante criativo com chute potente de longe e capacidade de assistência",
     "pista3": "Natural de Lima, no Peru...",
     "pista4": "Antes do Universitario, jogou no DC United"
+  },
+  {
+    "id": 542,
+    "nome": "Francisco Conceição",
+    "posicao": "Ponta-direita",
+    "nacionalidade": "Português",
+    "bandeira": "🇵🇹",
+    "clube": "Juventus",
+    "liga": "Serie A",
+    "dificuldade": "medio",
+    "titulos": [
+      "Coppa Italia"
+    ],
+    "curiosidade": "Filho do treinador Sérgio Conceição, marcou dois gols na estreia da Juventus no Mundial de Clubes 2025.",
+    "faixaEtaria": "22-26",
+    "clubeAnterior": "FC Porto",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Primeira Liga",
+    "pista2": "Extremo rápido e direto, perigoso na velocidade em transição.",
+    "pista3": "Natural de Coimbra, a cidade universitária no centro de Portugal.",
+    "pista4": "Antes da Juventus, jogou no FC Porto."
+  },
+  {
+    "id": 543,
+    "nome": "Danilo Pereira",
+    "posicao": "Volante",
+    "nacionalidade": "Português",
+    "bandeira": "🇵🇹",
+    "clube": "Al-Ittihad",
+    "liga": "Saudi Pro League",
+    "dificuldade": "dificil",
+    "titulos": [
+      "UEFA Euro 2016",
+      "UEFA Nations League 2019"
+    ],
+    "curiosidade": "Atuou improvisado como zagueiro na Copa do Qatar 2022 e foi decisivo na campanha portuguesa.",
+    "faixaEtaria": "30-35",
+    "clubeAnterior": "Paris Saint-Germain",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Ligue 1",
+    "pista2": "Médio polivalente de liderança física, capaz de atuar como volante ou zagueiro.",
+    "pista3": "Natural de Lisboa, cresceu em Portugal e tornou-se pilar da seleção nacional.",
+    "pista4": "Antes do Al-Ittihad, jogou no Paris Saint-Germain por quatro temporadas."
   }
 ]
