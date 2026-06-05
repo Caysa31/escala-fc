@@ -125,25 +125,6 @@
   },
   {
     "id": 7,
-    "nome": "Maxence Lacroix",
-    "posicao": "Zagueiro",
-    "nacionalidade": "Francês",
-    "bandeira": "🇫🇷",
-    "clube": "Crystal Palace",
-    "liga": "Premier League",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Lacroix passou anos no Wolfsburg alemão antes de se transferir para a Premier League, sendo considerado uma das revelações tardias do futebol europeu em sua posição.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "Wolfsburg",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Bundesliga",
-    "pista2": "Zagueiro versátil e disciplinado, com boa antecipação e capacidade de jogar em linha defensiva alta.",
-    "pista3": "Natural de Auxerre, na França. Revelado pelo clube local antes de seguir carreira na Alemanha.",
-    "pista4": "Antes do Crystal Palace, jogou no Wolfsburg, na Bundesliga."
-  },
-  {
-    "id": 8,
     "nome": "Jules Koundé",
     "posicao": "Zagueiro",
     "nacionalidade": "Francês",
@@ -165,7 +146,7 @@
     "pista4": "Antes do Barcelona, jogou no Sevilla, na La Liga."
   },
   {
-    "id": 9,
+    "id": 8,
     "nome": "Lucas Hernández",
     "posicao": "Zagueiro",
     "nacionalidade": "Francês",
@@ -189,7 +170,7 @@
     "pista4": "Antes do Paris Saint-Germain, jogou no Bayern de Munique, na Bundesliga."
   },
   {
-    "id": 10,
+    "id": 9,
     "nome": "Lucas Digne",
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Francês",
@@ -210,7 +191,7 @@
     "pista4": "Antes do Aston Villa, jogou no Everton, na Premier League."
   },
   {
-    "id": 11,
+    "id": 10,
     "nome": "Théo Hernández",
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Francês",
@@ -232,7 +213,7 @@
     "pista4": "Antes do Al-Hilal, jogou no AC Milan, na Serie A."
   },
   {
-    "id": 12,
+    "id": 11,
     "nome": "Malo Gusto",
     "posicao": "Lateral-direito",
     "nacionalidade": "Francês",
@@ -251,7 +232,7 @@
     "pista4": "Antes do Chelsea, jogou no Lyon, na Ligue 1."
   },
   {
-    "id": 13,
+    "id": 12,
     "nome": "N'Golo Kanté",
     "posicao": "Volante",
     "nacionalidade": "Francês",
@@ -275,7 +256,7 @@
     "pista4": "Antes do Fenerbahçe, jogou no Al-Ittihad, na Saudi Pro League."
   },
   {
-    "id": 14,
+    "id": 13,
     "nome": "Aurélien Tchouaméni",
     "posicao": "Volante",
     "nacionalidade": "Francês",
@@ -297,7 +278,7 @@
     "pista4": "Antes do Real Madrid, jogou no Monaco, na Ligue 1."
   },
   {
-    "id": 15,
+    "id": 14,
     "nome": "Adrien Rabiot",
     "posicao": "Meia",
     "nacionalidade": "Francês",
@@ -320,7 +301,7 @@
     "pista4": "Antes do AC Milan, jogou na Juventus, na Serie A."
   },
   {
-    "id": 16,
+    "id": 15,
     "nome": "Warren Zaïre-Emery",
     "posicao": "Meia",
     "nacionalidade": "Francês",
@@ -341,7 +322,7 @@
     "pista4": "Antes do Paris Saint-Germain profissional, jogou no PSG B, na N2 França."
   },
   {
-    "id": 17,
+    "id": 16,
     "nome": "Manu Koné",
     "posicao": "Volante",
     "nacionalidade": "Francês",
@@ -360,7 +341,7 @@
     "pista4": "Antes da Roma, jogou no Borussia Mönchengladbach, na Bundesliga."
   },
   {
-    "id": 18,
+    "id": 17,
     "nome": "Kylian Mbappé",
     "posicao": "Atacante",
     "nacionalidade": "Francês",
@@ -388,7 +369,7 @@
     "pista4": "Antes do Real Madrid, jogou no Paris Saint-Germain, na Ligue 1."
   },
   {
-    "id": 19,
+    "id": 18,
     "nome": "Ousmane Dembélé",
     "posicao": "Ponta-direita",
     "nacionalidade": "Francês",
@@ -410,7 +391,7 @@
     "pista4": "Antes do Paris Saint-Germain, jogou no Barcelona, na La Liga."
   },
   {
-    "id": 20,
+    "id": 19,
     "nome": "Marcus Thuram",
     "posicao": "Centroavante",
     "nacionalidade": "Francês",
@@ -431,7 +412,7 @@
     "pista4": "Antes da Inter de Milão, jogou no Borussia Mönchengladbach, na Bundesliga."
   },
   {
-    "id": 21,
+    "id": 20,
     "nome": "Bradley Barcola",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Francês",
@@ -452,7 +433,7 @@
     "pista4": "Antes do Paris Saint-Germain, jogou no Lyon, na Ligue 1."
   },
   {
-    "id": 22,
+    "id": 21,
     "nome": "Michael Olise",
     "posicao": "Meia-atacante",
     "nacionalidade": "Francês",
@@ -473,7 +454,7 @@
     "pista4": "Antes do Bayern de Munique, jogou no Crystal Palace, na Premier League."
   },
   {
-    "id": 23,
+    "id": 22,
     "nome": "Désiré Doué",
     "posicao": "Meia-atacante",
     "nacionalidade": "Francês",
@@ -492,7 +473,7 @@
     "pista4": "Antes do Paris Saint-Germain, jogou no Rennes, na Ligue 1."
   },
   {
-    "id": 24,
+    "id": 23,
     "nome": "Rayan Cherki",
     "posicao": "Meia-atacante",
     "nacionalidade": "Francês",
@@ -511,7 +492,7 @@
     "pista4": "Antes do Manchester City, jogou no Lyon, na Ligue 1."
   },
   {
-    "id": 25,
+    "id": 24,
     "nome": "Jean-Philippe Mateta",
     "posicao": "Centroavante",
     "nacionalidade": "Francês",
@@ -530,7 +511,7 @@
     "pista4": "Antes do Crystal Palace, jogou no Mainz, na Bundesliga."
   },
   {
-    "id": 26,
+    "id": 25,
     "nome": "Maghnes Akliouche",
     "posicao": "Meia-atacante",
     "nacionalidade": "Francês",
@@ -549,7 +530,7 @@
     "pista4": "Antes do Monaco profissional, jogou no Monaco B, na National 2 França."
   },
   {
-    "id": 27,
+    "id": 26,
     "nome": "Unai Simón",
     "posicao": "Goleiro",
     "nacionalidade": "Espanhol",
@@ -571,7 +552,7 @@
     "pista4": "Antes do Athletic Bilbao profissional, jogou no Athletic Bilbao B, na Segunda División B."
   },
   {
-    "id": 28,
+    "id": 27,
     "nome": "David Raya",
     "posicao": "Goleiro",
     "nacionalidade": "Espanhol",
@@ -592,7 +573,7 @@
     "pista4": "Antes do Arsenal, jogou no Brentford, na Premier League."
   },
   {
-    "id": 29,
+    "id": 28,
     "nome": "Joan García",
     "posicao": "Goleiro",
     "nacionalidade": "Espanhol",
@@ -613,7 +594,7 @@
     "pista4": "Antes do Barcelona, jogou no Espanyol, na La Liga."
   },
   {
-    "id": 30,
+    "id": 29,
     "nome": "Pau Cubarsí",
     "posicao": "Zagueiro",
     "nacionalidade": "Espanhol",
@@ -636,7 +617,7 @@
     "pista4": "Antes do Barcelona profissional, jogou no Barcelona B, na Segunda División B."
   },
   {
-    "id": 31,
+    "id": 30,
     "nome": "Aymeric Laporte",
     "posicao": "Zagueiro",
     "nacionalidade": "Espanhol",
@@ -660,7 +641,7 @@
     "pista4": "Antes do Athletic Bilbao, jogou no Al-Nassr, na Saudi Pro League."
   },
   {
-    "id": 32,
+    "id": 31,
     "nome": "Eric García",
     "posicao": "Zagueiro",
     "nacionalidade": "Espanhol",
@@ -682,7 +663,7 @@
     "pista4": "Antes do Barcelona, jogou no Manchester City, na Premier League."
   },
   {
-    "id": 33,
+    "id": 32,
     "nome": "Marc Pubill",
     "posicao": "Lateral-direito",
     "nacionalidade": "Espanhol",
@@ -701,7 +682,7 @@
     "pista4": "Antes do Atlético de Madrid, jogou no Almería, na La Liga."
   },
   {
-    "id": 34,
+    "id": 33,
     "nome": "Pedro Porro",
     "posicao": "Lateral-direito",
     "nacionalidade": "Espanhol",
@@ -722,7 +703,7 @@
     "pista4": "Antes do Tottenham, jogou no Sporting CP, na Primeira Liga."
   },
   {
-    "id": 35,
+    "id": 34,
     "nome": "Marc Cucurella",
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Espanhol",
@@ -743,7 +724,7 @@
     "pista4": "Antes do Chelsea, jogou no Brighton, na Premier League."
   },
   {
-    "id": 36,
+    "id": 35,
     "nome": "Alejandro Grimaldo",
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Espanhol",
@@ -765,7 +746,7 @@
     "pista4": "Antes do Bayer Leverkusen, jogou no Benfica, na Primeira Liga."
   },
   {
-    "id": 37,
+    "id": 36,
     "nome": "Marcos Llorente",
     "posicao": "Meia",
     "nacionalidade": "Espanhol",
@@ -787,7 +768,7 @@
     "pista4": "Antes do Atlético de Madrid, jogou no Real Madrid, na La Liga."
   },
   {
-    "id": 38,
+    "id": 37,
     "nome": "Rodri",
     "posicao": "Volante",
     "nacionalidade": "Espanhol",
@@ -812,7 +793,7 @@
     "pista4": "Antes do Manchester City, jogou no Atlético de Madrid, na La Liga."
   },
   {
-    "id": 39,
+    "id": 38,
     "nome": "Pedri",
     "posicao": "Meia",
     "nacionalidade": "Espanhol",
@@ -835,7 +816,7 @@
     "pista4": "Antes do Barcelona, jogou no Las Palmas, na Segunda División."
   },
   {
-    "id": 40,
+    "id": 39,
     "nome": "Fabián Ruiz",
     "posicao": "Meia",
     "nacionalidade": "Espanhol",
@@ -856,7 +837,7 @@
     "pista4": "Antes do Paris Saint-Germain, jogou no Napoli, na Serie A."
   },
   {
-    "id": 41,
+    "id": 40,
     "nome": "Gavi",
     "posicao": "Meia",
     "nacionalidade": "Espanhol",
@@ -878,7 +859,7 @@
     "pista4": "Antes do Barcelona profissional, jogou no Barcelona B, na Segunda División B."
   },
   {
-    "id": 42,
+    "id": 41,
     "nome": "Martín Zubimendi",
     "posicao": "Volante",
     "nacionalidade": "Espanhol",
@@ -899,7 +880,7 @@
     "pista4": "Antes do Arsenal, jogou na Real Sociedad, na La Liga."
   },
   {
-    "id": 43,
+    "id": 42,
     "nome": "Mikel Merino",
     "posicao": "Meia",
     "nacionalidade": "Espanhol",
@@ -920,7 +901,7 @@
     "pista4": "Antes do Arsenal, jogou na Real Sociedad, na La Liga."
   },
   {
-    "id": 44,
+    "id": 43,
     "nome": "Alex Baena",
     "posicao": "Meia-atacante",
     "nacionalidade": "Espanhol",
@@ -941,7 +922,7 @@
     "pista4": "Antes do Atlético de Madrid, jogou no Villarreal, na La Liga."
   },
   {
-    "id": 45,
+    "id": 44,
     "nome": "Lamine Yamal",
     "posicao": "Ponta-direita",
     "nacionalidade": "Espanhol",
@@ -964,29 +945,7 @@
     "pista4": "Antes do Barcelona profissional, jogou no Barcelona B, na División de Honor."
   },
   {
-    "id": 46,
-    "nome": "Nico Williams",
-    "posicao": "Ponta-esquerda",
-    "nacionalidade": "Espanhol",
-    "bandeira": "🇪🇸",
-    "clube": "Athletic Bilbao",
-    "liga": "La Liga",
-    "dificuldade": "medio",
-    "titulos": [
-      "Eurocopa 2024",
-      "Copa do Rei 2024"
-    ],
-    "curiosidade": "Nico Williams é filho de refugiados ganeses que cruzaram o Saara a pé em busca de uma vida melhor na Espanha, e se tornou um dos mais brilhantes atacantes do futebol europeu.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "Athletic Bilbao B",
-    "origemAnterior": "base",
-    "ligaAnterior": "Segunda División B",
-    "pista2": "Ponta-esquerda explosivo e desequilibrante, com velocidade pura, drible elétrico e qualidade na finalização e assistência.",
-    "pista3": "Natural de Pamplona, na Navarra, Espanha. Filho de pais ganeses, cresceu no País Basco e subiu pelo Athletic Bilbao como seu irmão Iñaki.",
-    "pista4": "Antes do Athletic Bilbao profissional, jogou no Athletic Bilbao B, na Segunda División B."
-  },
-  {
-    "id": 47,
+    "id": 45,
     "nome": "Dani Olmo",
     "posicao": "Meia-atacante",
     "nacionalidade": "Espanhol",
@@ -1008,7 +967,7 @@
     "pista4": "Antes do Barcelona, jogou no RB Leipzig, na Bundesliga."
   },
   {
-    "id": 48,
+    "id": 46,
     "nome": "Yeremy Pino",
     "posicao": "Ponta-direita",
     "nacionalidade": "Espanhol",
@@ -1029,7 +988,7 @@
     "pista4": "Antes do Crystal Palace, jogou no Villarreal, na La Liga."
   },
   {
-    "id": 49,
+    "id": 47,
     "nome": "Ferran Torres",
     "posicao": "Atacante",
     "nacionalidade": "Espanhol",
@@ -1051,7 +1010,7 @@
     "pista4": "Antes do Barcelona, jogou no Manchester City, na Premier League."
   },
   {
-    "id": 50,
+    "id": 48,
     "nome": "Mikel Oyarzabal",
     "posicao": "Atacante",
     "nacionalidade": "Espanhol",
@@ -1072,45 +1031,7 @@
     "pista4": "Antes do profissional da Real Sociedad, jogou no Real Sociedad B, na Segunda División B."
   },
   {
-    "id": 51,
-    "nome": "Borja Iglesias",
-    "posicao": "Centroavante",
-    "nacionalidade": "Espanhol",
-    "bandeira": "🇪🇸",
-    "clube": "Celta de Vigo",
-    "liga": "La Liga",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Iglesias ficou meses sem ser convocado pela seleção espanhola por discordar da posição do governo sobre a situação na Palestina, retornando ao futebol após declarações públicas controversas.",
-    "faixaEtaria": "30-35",
-    "clubeAnterior": "Real Betis",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "La Liga",
-    "pista2": "Centroavante clássico de área, com ótimo jogo de costas, retenção de bola e finalização precisa dentro da grande área.",
-    "pista3": "Natural de A Pobra do Caramiñal, na Galícia, Espanha. Criado no futebol galego, fez carreira em vários clubes espanhóis antes de chegar ao Celta.",
-    "pista4": "Antes do Celta de Vigo, jogou no Real Betis, na La Liga."
-  },
-  {
-    "id": 52,
-    "nome": "Víctor Muñoz",
-    "posicao": "Centroavante",
-    "nacionalidade": "Espanhol",
-    "bandeira": "🇪🇸",
-    "clube": "Osasuna",
-    "liga": "La Liga",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Muñoz foi a grande surpresa da lista espanhola para a Copa 2026, sendo convocado pela primeira vez após uma temporada espetacular no Osasuna onde foi artilheiro da equipe.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "Osasuna B",
-    "origemAnterior": "base",
-    "ligaAnterior": "Segunda División B",
-    "pista2": "Centroavante moderno com mobilidade, boa pressão nas saídas de bola adversárias e eficiência na finalização.",
-    "pista3": "Natural de Pamplona, em Navarra, Espanha. Produto da academia do próprio Osasuna, onde subiu até o time profissional.",
-    "pista4": "Antes do Osasuna profissional, jogou no Osasuna B, na Segunda División B."
-  },
-  {
-    "id": 53,
+    "id": 49,
     "nome": "Lionel Messi",
     "posicao": "Atacante",
     "nacionalidade": "Argentino",
@@ -1134,7 +1055,7 @@
     "pista4": "Antes do Inter Miami, jogou no Paris Saint-Germain, na Ligue 1."
   },
   {
-    "id": 54,
+    "id": 50,
     "nome": "Lautaro Martínez",
     "posicao": "Centroavante",
     "nacionalidade": "Argentino",
@@ -1158,7 +1079,7 @@
     "pista4": "Antes da Inter de Milão, jogou no Racing Club, na Primera División Argentina."
   },
   {
-    "id": 55,
+    "id": 51,
     "nome": "Julián Álvarez",
     "posicao": "Atacante",
     "nacionalidade": "Argentino",
@@ -1182,7 +1103,7 @@
     "pista4": "Antes do Atlético de Madrid, jogou no Manchester City, na Premier League."
   },
   {
-    "id": 56,
+    "id": 52,
     "nome": "Emiliano Martínez",
     "posicao": "Goleiro",
     "nacionalidade": "Argentino",
@@ -1205,29 +1126,7 @@
     "pista4": "Antes do Aston Villa, jogou no Arsenal, na Premier League."
   },
   {
-    "id": 57,
-    "nome": "Juan Musso",
-    "posicao": "Goleiro",
-    "nacionalidade": "Argentino",
-    "bandeira": "🇦🇷",
-    "clube": "Atlético de Madrid",
-    "liga": "La Liga",
-    "dificuldade": "medio",
-    "titulos": [
-      "Copa do Mundo 2022",
-      "Copa América 2021"
-    ],
-    "curiosidade": "Musso foi um dos protagonistas da conquista da Serie A pela Atalanta em 2024, exibindo atuações decisivas que o colocaram entre os melhores goleiros da Europa.",
-    "faixaEtaria": "30-35",
-    "clubeAnterior": "Atalanta",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Serie A",
-    "pista2": "Goleiro de grande porte com excelente posicionamento, forte nas defesas de longa distância e serenidade nos momentos decisivos.",
-    "pista3": "Natural de San Nicolás de los Arroyos, na Argentina. Revelado pelo Racing Club, construiu carreira na Itália antes de ir ao Atlético de Madrid.",
-    "pista4": "Antes do Atlético de Madrid, jogou na Atalanta, na Serie A."
-  },
-  {
-    "id": 58,
+    "id": 53,
     "nome": "Gerónimo Rulli",
     "posicao": "Goleiro",
     "nacionalidade": "Argentino",
@@ -1248,7 +1147,7 @@
     "pista4": "Antes do Olympique de Marseille, jogou no Ajax, na Eredivisie."
   },
   {
-    "id": 59,
+    "id": 54,
     "nome": "Cristian Romero",
     "posicao": "Zagueiro",
     "nacionalidade": "Argentino",
@@ -1271,7 +1170,7 @@
     "pista4": "Antes do Tottenham, jogou na Atalanta, na Serie A."
   },
   {
-    "id": 60,
+    "id": 55,
     "nome": "Lisandro Martínez",
     "posicao": "Zagueiro",
     "nacionalidade": "Argentino",
@@ -1294,7 +1193,7 @@
     "pista4": "Antes do Manchester United, jogou no Ajax, na Eredivisie."
   },
   {
-    "id": 61,
+    "id": 56,
     "nome": "Nicolás Otamendi",
     "posicao": "Zagueiro",
     "nacionalidade": "Argentino",
@@ -1317,47 +1216,7 @@
     "pista4": "Antes de ficar sem clube, jogou no Benfica, na Primeira Liga."
   },
   {
-    "id": 62,
-    "nome": "Leonardo Balerdi",
-    "posicao": "Zagueiro",
-    "nacionalidade": "Argentino",
-    "bandeira": "🇦🇷",
-    "clube": "Olympique de Marseille",
-    "liga": "Ligue 1",
-    "dificuldade": "dificil",
-    "titulos": [
-      "Copa do Mundo 2022"
-    ],
-    "curiosidade": "Balerdi se tornou capitão do Olympique de Marseille e foi eleito o melhor jogador do clube na temporada 2023/24, consolidando-se na seleção argentina após anos aguardando sua chance.",
-    "faixaEtaria": "26-30",
-    "clubeAnterior": "Borussia Dortmund",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Bundesliga",
-    "pista2": "Zagueiro técnico e intenso, com boa saída de bola, capacidade de liderar a linha defensiva e duelos aéreos consistentes.",
-    "pista3": "Natural de Santa Fe, na Argentina. Saiu do Boca Juniors jovem para o Borussia Dortmund e depois foi ao Marseille onde se tornou referência.",
-    "pista4": "Antes do Olympique de Marseille, jogou no Borussia Dortmund, na Bundesliga."
-  },
-  {
-    "id": 63,
-    "nome": "Facundo Medina",
-    "posicao": "Zagueiro",
-    "nacionalidade": "Argentino",
-    "bandeira": "🇦🇷",
-    "clube": "Olympique de Marseille",
-    "liga": "Ligue 1",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Medina foi contratado pelo Lens depois de impressionar no Talleres de Córdoba e depois foi ao Marseille, tornando-se a surpresa da convocação argentina para a Copa 2026.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "Lens",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Ligue 1",
-    "pista2": "Zagueiro forte fisicamente, com bom senso de posicionamento, duelos diretos e eficiência no jogo aéreo.",
-    "pista3": "Natural de Tucumán, na Argentina. Revelado pelo Talleres de Córdoba antes de construir carreira na França.",
-    "pista4": "Antes do Olympique de Marseille, jogou no Lens, na Ligue 1."
-  },
-  {
-    "id": 64,
+    "id": 57,
     "nome": "Gonzalo Montiel",
     "posicao": "Lateral-direito",
     "nacionalidade": "Argentino",
@@ -1379,7 +1238,7 @@
     "pista4": "Antes do River Plate, jogou no Nottingham Forest, na Premier League."
   },
   {
-    "id": 65,
+    "id": 58,
     "nome": "Nahuel Molina",
     "posicao": "Lateral-direito",
     "nacionalidade": "Argentino",
@@ -1402,7 +1261,7 @@
     "pista4": "Antes do Atlético de Madrid, jogou no Udinese, na Serie A."
   },
   {
-    "id": 66,
+    "id": 59,
     "nome": "Nicolás Tagliafico",
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Argentino",
@@ -1424,26 +1283,7 @@
     "pista4": "Antes do Lyon, jogou no Ajax, na Eredivisie."
   },
   {
-    "id": 67,
-    "nome": "Valentín Barco",
-    "posicao": "Lateral-esquerdo",
-    "nacionalidade": "Argentino",
-    "bandeira": "🇦🇷",
-    "clube": "Strasbourg",
-    "liga": "Ligue 1",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Barco foi revelado pelo Boca Juniors como uma das grandes promessas do futebol argentino e chegou à Europa ainda muito jovem, sendo um dos laterais mais promissores de sua geração.",
-    "faixaEtaria": "18-22",
-    "clubeAnterior": "Brighton",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Premier League",
-    "pista2": "Lateral-esquerdo jovem e ousado, com velocidade nas subidas e capacidade de desequilibrar pela diagonal.",
-    "pista3": "Natural de Esteban Echeverría, em Buenos Aires, Argentina. Revelado pelo Boca Juniors como um dos maiores talentos argentinos de sua geração.",
-    "pista4": "Antes do Strasbourg, jogou no Brighton, na Premier League."
-  },
-  {
-    "id": 68,
+    "id": 60,
     "nome": "Alexis Mac Allister",
     "posicao": "Meia",
     "nacionalidade": "Argentino",
@@ -1466,7 +1306,7 @@
     "pista4": "Antes do Liverpool, jogou no Brighton, na Premier League."
   },
   {
-    "id": 69,
+    "id": 61,
     "nome": "Enzo Fernández",
     "posicao": "Meia",
     "nacionalidade": "Argentino",
@@ -1489,7 +1329,7 @@
     "pista4": "Antes do Chelsea, jogou no Benfica, na Primeira Liga."
   },
   {
-    "id": 70,
+    "id": 62,
     "nome": "Rodrigo De Paul",
     "posicao": "Meia",
     "nacionalidade": "Argentino",
@@ -1512,7 +1352,7 @@
     "pista4": "Antes do Inter Miami, jogou no Atlético de Madrid, na La Liga."
   },
   {
-    "id": 71,
+    "id": 63,
     "nome": "Exequiel Palacios",
     "posicao": "Meia",
     "nacionalidade": "Argentino",
@@ -1534,7 +1374,7 @@
     "pista4": "Antes do Bayer Leverkusen, jogou no River Plate, na Primera División Argentina."
   },
   {
-    "id": 72,
+    "id": 64,
     "nome": "Giovani Lo Celso",
     "posicao": "Meia",
     "nacionalidade": "Argentino",
@@ -1556,7 +1396,7 @@
     "pista4": "Antes do Real Betis, jogou no Villarreal, na La Liga."
   },
   {
-    "id": 73,
+    "id": 65,
     "nome": "Leandro Paredes",
     "posicao": "Volante",
     "nacionalidade": "Argentino",
@@ -1579,7 +1419,7 @@
     "pista4": "Antes do Boca Juniors, jogou na Roma, na Serie A."
   },
   {
-    "id": 74,
+    "id": 66,
     "nome": "Nicolás González",
     "posicao": "Atacante",
     "nacionalidade": "Argentino",
@@ -1600,7 +1440,7 @@
     "pista4": "Antes do Atlético de Madrid, jogou na Juventus, na Serie A."
   },
   {
-    "id": 75,
+    "id": 67,
     "nome": "Thiago Almada",
     "posicao": "Meia-atacante",
     "nacionalidade": "Argentino",
@@ -1621,67 +1461,7 @@
     "pista4": "Antes do Atlético de Madrid, jogou no Lyon, na Ligue 1."
   },
   {
-    "id": 76,
-    "nome": "Giuliano Simeone",
-    "posicao": "Ponta-direita",
-    "nacionalidade": "Argentino",
-    "bandeira": "🇦🇷",
-    "clube": "Atlético de Madrid",
-    "liga": "La Liga",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Giuliano é filho do técnico Diego 'Cholo' Simeone, treinador do próprio Atlético de Madrid, tornando-os o par pai-treinador e filho-jogador mais famoso do futebol atual.",
-    "faixaEtaria": "18-22",
-    "clubeAnterior": "Atlético de Madrid B",
-    "origemAnterior": "base",
-    "ligaAnterior": "Segunda División B",
-    "pista2": "Ponta veloz e direto, com boa capacidade de corte para dentro, finalização e inteligência tática herdada do ambiente familiar.",
-    "pista3": "Natural de Buenos Aires, na Argentina. Filho do técnico Diego Simeone, cresceu no futebol argentino antes de se profissionalizar no Atlético de Madrid.",
-    "pista4": "Antes do Atlético de Madrid profissional, jogou no Atlético de Madrid B, na Segunda División B."
-  },
-  {
-    "id": 77,
-    "nome": "Nico Paz",
-    "posicao": "Meia-atacante",
-    "nacionalidade": "Argentino",
-    "bandeira": "🇦🇷",
-    "clube": "Como",
-    "liga": "Serie A",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Paz é filho do ex-jogador David Paz e saiu das categorias de base do Real Madrid para o Como, onde sua qualidade impressionante chamou a atenção de Scaloni para a Copa 2026.",
-    "faixaEtaria": "18-22",
-    "clubeAnterior": "Real Madrid",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "La Liga",
-    "pista2": "Meia-atacante técnico e talentoso, com drible suave, passes precisos e visão de jogo acima da média para a idade.",
-    "pista3": "Natural de Madrid, na Espanha, mas de família argentina. Filho do ex-jogador David Paz, cresceu nas categorias de base do Real Madrid.",
-    "pista4": "Antes do Como, jogou nas categorias de base do Real Madrid, na La Liga."
-  },
-  {
-    "id": 78,
-    "nome": "Flaco López",
-    "posicao": "Centroavante",
-    "nacionalidade": "Argentino",
-    "bandeira": "🇦🇷",
-    "clube": "Palmeiras",
-    "liga": "Brasileirão",
-    "dificuldade": "dificil",
-    "titulos": [
-      "Copa do Mundo 2022",
-      "Brasileirão 2023"
-    ],
-    "curiosidade": "Flaco López é o único representante do futebol brasileiro na Copa do Mundo 2026, tornando-se o primeiro argentino convocado que atua no Brasileirão para um Mundial.",
-    "faixaEtaria": "26-30",
-    "clubeAnterior": "Lanus",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Primera División Argentina",
-    "pista2": "Centroavante habilidoso, com bom jogo de espaldas, domínio de bola e finalização técnica que encanta os torcedores palmeirenses.",
-    "pista3": "Natural de La Banda, em Santiago del Estero, Argentina. Revelado pelo Lanús antes de se tornar ídolo do Palmeiras no Brasil.",
-    "pista4": "Antes do Palmeiras, jogou no Lanús, na Primera División Argentina."
-  },
-  {
-    "id": 79,
+    "id": 68,
     "nome": "Jordan Pickford",
     "posicao": "Goleiro",
     "nacionalidade": "Inglês",
@@ -1702,7 +1482,7 @@
     "pista4": "Antes do clube atual, jogou no Sunderland, no Championship."
   },
   {
-    "id": 80,
+    "id": 69,
     "nome": "Dean Henderson",
     "posicao": "Goleiro",
     "nacionalidade": "Inglês",
@@ -1721,28 +1501,7 @@
     "pista4": "Antes do clube atual, jogou no Nottingham Forest, na Premier League."
   },
   {
-    "id": 81,
-    "nome": "Sam Trafford",
-    "posicao": "Goleiro",
-    "nacionalidade": "Inglês",
-    "bandeira": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-    "clube": "Manchester City",
-    "liga": "Premier League",
-    "dificuldade": "dificil",
-    "titulos": [
-      "Premier League 2025-26"
-    ],
-    "curiosidade": "Jovem goleiro revelado pelo Manchester City, chamado à seleção principal como terceira opção após excelente temporada.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "Manchester City B",
-    "origemAnterior": "base",
-    "ligaAnterior": null,
-    "pista2": "Goleiro jovem com excelente posicionamento e reflexos rápidos sob as traves.",
-    "pista3": "Natural de Manchester, no norte da Inglaterra. Formado inteiramente na academia do Manchester City.",
-    "pista4": "Antes do clube atual, jogou no Manchester City B, na academia do clube."
-  },
-  {
-    "id": 82,
+    "id": 70,
     "nome": "Reece James",
     "posicao": "Lateral-direito",
     "nacionalidade": "Inglês",
@@ -1764,7 +1523,7 @@
     "pista4": "Antes do clube atual, jogou no Wigan Athletic, no Championship."
   },
   {
-    "id": 83,
+    "id": 71,
     "nome": "Ezri Konsa",
     "posicao": "Zagueiro",
     "nacionalidade": "Inglês",
@@ -1783,7 +1542,7 @@
     "pista4": "Antes do clube atual, jogou no Brentford, na Premier League."
   },
   {
-    "id": 84,
+    "id": 72,
     "nome": "Jarell Quansah",
     "posicao": "Zagueiro",
     "nacionalidade": "Inglês",
@@ -1804,7 +1563,7 @@
     "pista4": "Antes do clube atual, jogou no Bristol Rovers, na League One."
   },
   {
-    "id": 85,
+    "id": 73,
     "nome": "John Stones",
     "posicao": "Zagueiro",
     "nacionalidade": "Inglês",
@@ -1828,7 +1587,7 @@
     "pista4": "Antes do clube atual, jogou no Everton, na Premier League."
   },
   {
-    "id": 86,
+    "id": 74,
     "nome": "Marc Guehi",
     "posicao": "Zagueiro",
     "nacionalidade": "Inglês",
@@ -1847,26 +1606,7 @@
     "pista4": "Antes do clube atual, jogou no Chelsea, na Premier League."
   },
   {
-    "id": 87,
-    "nome": "Dan Burn",
-    "posicao": "Zagueiro",
-    "nacionalidade": "Inglês",
-    "bandeira": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-    "clube": "Newcastle United",
-    "liga": "Premier League",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Com 1,97m, é um dos jogadores mais altos da Copa. Revelação tardia da seleção inglesa, estreou pela seleção principal aos 29 anos.",
-    "faixaEtaria": "30-35",
-    "clubeAnterior": "Brighton",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Premier League",
-    "pista2": "Zagueiro dominante no jogo aéreo, com altura imponente e forte na marcação física.",
-    "pista3": "Natural de Blyth, em Northumberland. Torcedor fervoroso do Newcastle desde criança.",
-    "pista4": "Antes do clube atual, jogou no Brighton, na Premier League."
-  },
-  {
-    "id": 88,
+    "id": 75,
     "nome": "Declan Rice",
     "posicao": "Volante",
     "nacionalidade": "Inglês",
@@ -1887,7 +1627,7 @@
     "pista4": "Antes do clube atual, jogou no West Ham United, na Premier League."
   },
   {
-    "id": 89,
+    "id": 76,
     "nome": "Jude Bellingham",
     "posicao": "Meia",
     "nacionalidade": "Inglês",
@@ -1910,26 +1650,7 @@
     "pista4": "Antes do clube atual, jogou no Borussia Dortmund, na Bundesliga."
   },
   {
-    "id": 90,
-    "nome": "Conor Gallagher",
-    "posicao": "Meia",
-    "nacionalidade": "Inglês",
-    "bandeira": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-    "clube": "Atletico de Madrid",
-    "liga": "La Liga",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Transferiu-se do Chelsea para o Atlético de Madrid em 2024, tornando-se peça importante sob Diego Simeone. É conhecido pela intensidade e garra em campo.",
-    "faixaEtaria": "26-30",
-    "clubeAnterior": "Chelsea",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Premier League",
-    "pista2": "Meia dinâmico e combativo, com alto volume de corrida e intensidade defensiva.",
-    "pista3": "Natural de Epsom, em Surrey. Formado na academia do Chelsea, onde foi emprestado a vários clubes antes de se firmar.",
-    "pista4": "Antes do clube atual, jogou no Chelsea, na Premier League."
-  },
-  {
-    "id": 91,
+    "id": 77,
     "nome": "Bukayo Saka",
     "posicao": "Ponta-direita",
     "nacionalidade": "Inglês",
@@ -1948,7 +1669,7 @@
     "pista4": "Antes do clube atual, jogou no Arsenal Sub-18, na academia do clube."
   },
   {
-    "id": 92,
+    "id": 78,
     "nome": "Marcus Rashford",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Inglês",
@@ -1969,7 +1690,7 @@
     "pista4": "Antes do clube atual, jogou no Manchester United, na Premier League."
   },
   {
-    "id": 93,
+    "id": 79,
     "nome": "Noni Madueke",
     "posicao": "Ponta-direita",
     "nacionalidade": "Inglês",
@@ -1988,7 +1709,7 @@
     "pista4": "Antes do clube atual, jogou no PSV Eindhoven, na Eredivisie."
   },
   {
-    "id": 94,
+    "id": 80,
     "nome": "Harry Kane",
     "posicao": "Centroavante",
     "nacionalidade": "Inglês",
@@ -2009,7 +1730,7 @@
     "pista4": "Antes do clube atual, jogou no Tottenham Hotspur, na Premier League."
   },
   {
-    "id": 95,
+    "id": 81,
     "nome": "Ollie Watkins",
     "posicao": "Centroavante",
     "nacionalidade": "Inglês",
@@ -2028,7 +1749,7 @@
     "pista4": "Antes do clube atual, jogou no Brentford, no Championship."
   },
   {
-    "id": 96,
+    "id": 82,
     "nome": "Ivan Toney",
     "posicao": "Centroavante",
     "nacionalidade": "Inglês",
@@ -2047,26 +1768,7 @@
     "pista4": "Antes do clube atual, jogou no Brentford, na Premier League."
   },
   {
-    "id": 97,
-    "nome": "Morgan Gibbs-White",
-    "posicao": "Meia-atacante",
-    "nacionalidade": "Inglês",
-    "bandeira": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-    "clube": "Nottingham Forest",
-    "liga": "Premier League",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Motor criativo do Nottingham Forest, Gibbs-White foi peça fundamental na surpreendente campanha do clube. Convocado por Tuchel como opção técnica no meio-campo.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "Wolverhampton",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Premier League",
-    "pista2": "Meia criativo e habilidoso, com capacidade de jogar entre linhas e driblar em espaços reduzidos.",
-    "pista3": "Natural de Stafford, em Staffordshire. Formado na academia do Wolverhampton Wanderers.",
-    "pista4": "Antes do clube atual, jogou no Wolverhampton, na Premier League."
-  },
-  {
-    "id": 98,
+    "id": 83,
     "nome": "Anthony Gordon",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Inglês",
@@ -2085,7 +1787,7 @@
     "pista4": "Antes do clube atual, jogou no Everton, na Premier League."
   },
   {
-    "id": 99,
+    "id": 84,
     "nome": "Eberechi Eze",
     "posicao": "Meia-atacante",
     "nacionalidade": "Inglês",
@@ -2104,7 +1806,7 @@
     "pista4": "Antes do clube atual, jogou no Queens Park Rangers, no Championship."
   },
   {
-    "id": 100,
+    "id": 85,
     "nome": "Trent Alexander-Arnold",
     "posicao": "Lateral-direito",
     "nacionalidade": "Inglês",
@@ -2127,7 +1829,7 @@
     "pista4": "Antes do clube atual, jogou no Liverpool, na Premier League."
   },
   {
-    "id": 101,
+    "id": 86,
     "nome": "Luke Shaw",
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Inglês",
@@ -2148,28 +1850,7 @@
     "pista4": "Antes do clube atual, jogou no Southampton, na Premier League."
   },
   {
-    "id": 102,
-    "nome": "Curtis Jones",
-    "posicao": "Meia",
-    "nacionalidade": "Inglês",
-    "bandeira": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-    "clube": "Liverpool",
-    "liga": "Premier League",
-    "dificuldade": "dificil",
-    "titulos": [
-      "Premier League 2024-25"
-    ],
-    "curiosidade": "Criativo meia do Liverpool, Jones fez parte do time que conquistou a Premier League 2024-25. Tuchel apostou nele como alternativa no meio-campo.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "Liverpool Sub-23",
-    "origemAnterior": "base",
-    "ligaAnterior": null,
-    "pista2": "Meia técnico e elegante, com boa visão de jogo e capacidade de construção pelo centro.",
-    "pista3": "Natural de Liverpool. Torcedor assumido do clube desde criança e formado inteiramente na academia do Liverpool.",
-    "pista4": "Antes do clube atual, jogou no Liverpool Sub-23, na academia do clube."
-  },
-  {
-    "id": 103,
+    "id": 87,
     "nome": "Levi Colwill",
     "posicao": "Zagueiro",
     "nacionalidade": "Inglês",
@@ -2188,26 +1869,7 @@
     "pista4": "Antes do clube atual, jogou no Brighton, na Premier League."
   },
   {
-    "id": 104,
-    "nome": "Pedro Neto",
-    "posicao": "Ponta-esquerda",
-    "nacionalidade": "Inglês",
-    "bandeira": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-    "clube": "Chelsea",
-    "liga": "Premier League",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "NOTA: Pedro Neto é português, não inglês. Jogador do Chelsea convocado por Portugal para a Copa 2026. Natural de Viana do Castelo, Portugal.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "Wolverhampton",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Premier League",
-    "pista2": "Extremo veloz e habilidoso, com ótima capacidade de driblar e criar chances pelo lado esquerdo.",
-    "pista3": "Natural de Viana do Castelo, em Portugal. Formado no Braga antes de se destacar no Wolverhampton.",
-    "pista4": "Antes do clube atual, jogou no Wolverhampton, na Premier League."
-  },
-  {
-    "id": 105,
+    "id": 88,
     "nome": "Diogo Costa",
     "posicao": "Goleiro",
     "nacionalidade": "Português",
@@ -2229,7 +1891,7 @@
     "pista4": "Antes do clube atual, jogou no FC Porto B, na academia do clube."
   },
   {
-    "id": 106,
+    "id": 89,
     "nome": "José Sá",
     "posicao": "Goleiro",
     "nacionalidade": "Português",
@@ -2248,7 +1910,7 @@
     "pista4": "Antes do clube atual, jogou no Olympiacos, na Super Liga Grega."
   },
   {
-    "id": 107,
+    "id": 90,
     "nome": "Rui Silva",
     "posicao": "Goleiro",
     "nacionalidade": "Português",
@@ -2269,26 +1931,7 @@
     "pista4": "Antes do clube atual, jogou no Real Betis, na La Liga."
   },
   {
-    "id": 108,
-    "nome": "Ricardo Velho",
-    "posicao": "Goleiro",
-    "nacionalidade": "Português",
-    "bandeira": "🇵🇹",
-    "clube": "Gençlerbirliği",
-    "liga": "Süper Lig",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "A grande surpresa da convocação portuguesa, Ricardo Velho atua na Turquia e foi incluído como quarta opção de goleiro, uma escolha incomum de Roberto Martínez.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "Famalicão",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Primeira Liga",
-    "pista2": "Goleiro jovem e corajoso, com reflexos rápidos e boa presença nas saídas.",
-    "pista3": "Natural de Braga, em Portugal. Formado no futebol português antes de se aventurar no campeonato turco.",
-    "pista4": "Antes do clube atual, jogou no Famalicão, na Primeira Liga."
-  },
-  {
-    "id": 109,
+    "id": 91,
     "nome": "Diogo Dalot",
     "posicao": "Lateral-direito",
     "nacionalidade": "Português",
@@ -2309,28 +1952,7 @@
     "pista4": "Antes do clube atual, jogou no AC Milan, na Serie A."
   },
   {
-    "id": 110,
-    "nome": "Matheus Nunes",
-    "posicao": "Lateral-direito",
-    "nacionalidade": "Português",
-    "bandeira": "🇵🇹",
-    "clube": "Manchester City",
-    "liga": "Premier League",
-    "dificuldade": "dificil",
-    "titulos": [
-      "Premier League 2024-25"
-    ],
-    "curiosidade": "Nascido no Brasil, escolheu representar Portugal desde jovem. Versátil, pode atuar como lateral-direito ou volante.",
-    "faixaEtaria": "26-30",
-    "clubeAnterior": "Wolverhampton",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Premier League",
-    "pista2": "Meio-campista dinâmico com capacidade física excepcional, que pode atuar tanto pelo lado quanto pelo centro.",
-    "pista3": "Natural do Rio de Janeiro, no Brasil, mas cresceu em Portugal. Optou por defender a seleção portuguesa desde as categorias de base.",
-    "pista4": "Antes do clube atual, jogou no Wolverhampton, na Premier League."
-  },
-  {
-    "id": 111,
+    "id": 92,
     "nome": "Nélson Semedo",
     "posicao": "Lateral-direito",
     "nacionalidade": "Português",
@@ -2352,7 +1974,7 @@
     "pista4": "Antes do clube atual, jogou no FC Barcelona, na La Liga."
   },
   {
-    "id": 112,
+    "id": 93,
     "nome": "João Cancelo",
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Português",
@@ -2375,7 +1997,7 @@
     "pista4": "Antes do clube atual, jogou no Manchester City, na Premier League."
   },
   {
-    "id": 113,
+    "id": 94,
     "nome": "Nuno Mendes",
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Português",
@@ -2398,7 +2020,7 @@
     "pista4": "Antes do clube atual, jogou no Sporting CP, na Primeira Liga."
   },
   {
-    "id": 114,
+    "id": 95,
     "nome": "Gonçalo Inácio",
     "posicao": "Zagueiro",
     "nacionalidade": "Português",
@@ -2419,26 +2041,7 @@
     "pista4": "Antes do clube atual, jogou no Sporting CP B, na academia do clube."
   },
   {
-    "id": 115,
-    "nome": "Renato Veiga",
-    "posicao": "Zagueiro",
-    "nacionalidade": "Português",
-    "bandeira": "🇵🇹",
-    "clube": "Chelsea",
-    "liga": "Premier League",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Versátil defensor capaz de jogar como zagueiro ou volante, Renato Veiga conquistou espaço no Chelsea e na seleção com atuações consistentes.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "Augsburg",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Bundesliga",
-    "pista2": "Defensor versátil e combativo, com capacidade de atuar tanto como zagueiro quanto como volante.",
-    "pista3": "Natural de Lisboa, em Portugal. Passou pelo futebol alemão antes de se firmar na Premier League.",
-    "pista4": "Antes do clube atual, jogou no Augsburg, na Bundesliga."
-  },
-  {
-    "id": 116,
+    "id": 96,
     "nome": "Rúben Dias",
     "posicao": "Zagueiro",
     "nacionalidade": "Português",
@@ -2462,7 +2065,7 @@
     "pista4": "Antes do clube atual, jogou no Benfica, na Primeira Liga."
   },
   {
-    "id": 117,
+    "id": 97,
     "nome": "Tomás Araújo",
     "posicao": "Zagueiro",
     "nacionalidade": "Português",
@@ -2483,7 +2086,7 @@
     "pista4": "Antes do clube atual, jogou no Benfica B, na academia do clube."
   },
   {
-    "id": 118,
+    "id": 98,
     "nome": "Rúben Neves",
     "posicao": "Volante",
     "nacionalidade": "Português",
@@ -2502,28 +2105,7 @@
     "pista4": "Antes do clube atual, jogou no Wolverhampton, na Premier League."
   },
   {
-    "id": 119,
-    "nome": "Samuel Costa",
-    "posicao": "Volante",
-    "nacionalidade": "Português",
-    "bandeira": "🇵🇹",
-    "clube": "Atalanta",
-    "liga": "Serie A",
-    "dificuldade": "dificil",
-    "titulos": [
-      "Europa League 2023-24"
-    ],
-    "curiosidade": "Revelação surpreendente da convocação portuguesa, Samuel Costa destacou-se na Atalanta de Gasperini e conquistou seu espaço na seleção.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "Portimonense",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Primeira Liga",
-    "pista2": "Volante combativo com forte marcação e boa capacidade de distribuição de bola.",
-    "pista3": "Natural de Almada, em Portugal. Passou pelo futebol português antes de ser descoberto pela Atalanta.",
-    "pista4": "Antes do clube atual, jogou no Portimonense, na Primeira Liga."
-  },
-  {
-    "id": 120,
+    "id": 99,
     "nome": "João Neves",
     "posicao": "Volante",
     "nacionalidade": "Português",
@@ -2544,7 +2126,7 @@
     "pista4": "Antes do clube atual, jogou no Benfica, na Primeira Liga."
   },
   {
-    "id": 121,
+    "id": 100,
     "nome": "Vitinha",
     "posicao": "Meia",
     "nacionalidade": "Português",
@@ -2567,7 +2149,7 @@
     "pista4": "Antes do clube atual, jogou no FC Porto, na Primeira Liga."
   },
   {
-    "id": 122,
+    "id": 101,
     "nome": "Bruno Fernandes",
     "posicao": "Meia-atacante",
     "nacionalidade": "Português",
@@ -2588,7 +2170,7 @@
     "pista4": "Antes do clube atual, jogou no Sporting CP, na Primeira Liga."
   },
   {
-    "id": 123,
+    "id": 102,
     "nome": "Bernardo Silva",
     "posicao": "Meia",
     "nacionalidade": "Português",
@@ -2612,7 +2194,7 @@
     "pista4": "Antes do clube atual, jogou no Monaco, na Ligue 1."
   },
   {
-    "id": 124,
+    "id": 103,
     "nome": "João Félix",
     "posicao": "Meia-atacante",
     "nacionalidade": "Português",
@@ -2631,28 +2213,7 @@
     "pista4": "Antes do clube atual, jogou no Atletico de Madrid, na La Liga."
   },
   {
-    "id": 125,
-    "nome": "Francisco Trincão",
-    "posicao": "Ponta-direita",
-    "nacionalidade": "Português",
-    "bandeira": "🇵🇹",
-    "clube": "Sporting CP",
-    "liga": "Primeira Liga",
-    "dificuldade": "dificil",
-    "titulos": [
-      "La Liga 2022-23"
-    ],
-    "curiosidade": "Após passagem pelo Barcelona e Wolverhampton, Trincão encontrou regularidade no Sporting CP onde se tornou fundamental. É rápido, habilidoso e decisivo.",
-    "faixaEtaria": "26-30",
-    "clubeAnterior": "Wolverhampton",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Premier League",
-    "pista2": "Extremo veloz e habilidoso, com capacidade de driblar e criar chances pelo lado direito.",
-    "pista3": "Natural de Viana do Castelo, no norte de Portugal. Revelado pelo Braga antes de ser vendido ao Barcelona.",
-    "pista4": "Antes do clube atual, jogou no Wolverhampton, na Premier League."
-  },
-  {
-    "id": 126,
+    "id": 104,
     "nome": "Rafael Leão",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Português",
@@ -2673,7 +2234,7 @@
     "pista4": "Antes do clube atual, jogou no Lille, na Ligue 1."
   },
   {
-    "id": 127,
+    "id": 105,
     "nome": "Gonçalo Ramos",
     "posicao": "Centroavante",
     "nacionalidade": "Português",
@@ -2695,7 +2256,7 @@
     "pista4": "Antes do clube atual, jogou no Benfica, na Primeira Liga."
   },
   {
-    "id": 128,
+    "id": 106,
     "nome": "Cristiano Ronaldo",
     "posicao": "Centroavante",
     "nacionalidade": "Português",
@@ -2722,7 +2283,7 @@
     "pista4": "Antes do clube atual, jogou no Manchester United, na Premier League."
   },
   {
-    "id": 129,
+    "id": 107,
     "nome": "Alisson Becker",
     "posicao": "Goleiro",
     "nacionalidade": "Brasileiro",
@@ -2745,7 +2306,7 @@
     "pista4": "Antes do clube atual, jogou no AS Roma, na Serie A."
   },
   {
-    "id": 130,
+    "id": 108,
     "nome": "Ederson Moraes",
     "posicao": "Goleiro",
     "nacionalidade": "Brasileiro",
@@ -2768,7 +2329,7 @@
     "pista4": "Antes do clube atual, jogou no Manchester City, na Premier League."
   },
   {
-    "id": 131,
+    "id": 109,
     "nome": "Weverton Pereira da Silva",
     "posicao": "Goleiro",
     "nacionalidade": "Brasileiro",
@@ -2790,7 +2351,7 @@
     "pista4": "Antes do clube atual, jogou no Palmeiras, no Brasileirão Série A."
   },
   {
-    "id": 132,
+    "id": 110,
     "nome": "Danilo Luiz da Silva",
     "posicao": "Lateral-direito",
     "nacionalidade": "Brasileiro",
@@ -2812,7 +2373,7 @@
     "pista4": "Antes do clube atual, jogou na Juventus, na Serie A."
   },
   {
-    "id": 133,
+    "id": 111,
     "nome": "Gabriel Magalhães",
     "posicao": "Zagueiro",
     "nacionalidade": "Brasileiro",
@@ -2831,7 +2392,7 @@
     "pista4": "Antes do clube atual, jogou no Lille, na Ligue 1."
   },
   {
-    "id": 134,
+    "id": 112,
     "nome": "Marquinhos",
     "posicao": "Zagueiro",
     "nacionalidade": "Brasileiro",
@@ -2855,7 +2416,7 @@
     "pista4": "Antes do clube atual, jogou no AS Roma, na Serie A."
   },
   {
-    "id": 135,
+    "id": 113,
     "nome": "Gleison Bremer",
     "posicao": "Zagueiro",
     "nacionalidade": "Brasileiro",
@@ -2874,7 +2435,7 @@
     "pista4": "Antes do clube atual, jogou no Torino, na Serie A."
   },
   {
-    "id": 136,
+    "id": 114,
     "nome": "Léo Pereira",
     "posicao": "Zagueiro",
     "nacionalidade": "Brasileiro",
@@ -2895,7 +2456,7 @@
     "pista4": "Antes do clube atual, jogou no Athletico Paranaense, no Brasileirão Série A."
   },
   {
-    "id": 137,
+    "id": 115,
     "nome": "Alex Sandro Lobo Silva",
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Brasileiro",
@@ -2917,7 +2478,7 @@
     "pista4": "Antes do clube atual, jogou na Juventus, na Serie A."
   },
   {
-    "id": 138,
+    "id": 116,
     "nome": "Wesley Andrade",
     "posicao": "Lateral-direito",
     "nacionalidade": "Brasileiro",
@@ -2936,7 +2497,7 @@
     "pista4": "Antes do clube atual, jogou no Internacional, no Brasileirão Série A."
   },
   {
-    "id": 139,
+    "id": 117,
     "nome": "Douglas Santos",
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Brasileiro",
@@ -2957,26 +2518,7 @@
     "pista4": "Antes do clube atual, jogou no Hamburg SV, na Bundesliga."
   },
   {
-    "id": 140,
-    "nome": "Rodrigo Ibanez",
-    "posicao": "Zagueiro",
-    "nacionalidade": "Brasileiro",
-    "bandeira": "🇧🇷",
-    "clube": "Al-Ahli",
-    "liga": "Saudi Pro League",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Zagueiro que se destacou na Roma antes de ir para a Arábia Saudita. Surpreendeu ao ser convocado por Ancelotti mesmo jogando longe dos grandes centros.",
-    "faixaEtaria": "26-30",
-    "clubeAnterior": "AS Roma",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Serie A",
-    "pista2": "Zagueiro forte fisicamente, com excelente jogo aéreo e marcação agressiva.",
-    "pista3": "Natural de Araxá, em Minas Gerais. Revelado pelo Goiás antes de se destacar na Roma.",
-    "pista4": "Antes do clube atual, jogou no AS Roma, na Serie A."
-  },
-  {
-    "id": 141,
+    "id": 118,
     "nome": "Bruno Guimarães",
     "posicao": "Volante",
     "nacionalidade": "Brasileiro",
@@ -2995,7 +2537,7 @@
     "pista4": "Antes do clube atual, jogou no Olympique de Lyon, na Ligue 1."
   },
   {
-    "id": 142,
+    "id": 119,
     "nome": "Casemiro",
     "posicao": "Volante",
     "nacionalidade": "Brasileiro",
@@ -3019,7 +2561,7 @@
     "pista4": "Antes do clube atual, jogou no Real Madrid, na La Liga."
   },
   {
-    "id": 143,
+    "id": 120,
     "nome": "Lucas Paquetá",
     "posicao": "Meia",
     "nacionalidade": "Brasileiro",
@@ -3040,7 +2582,7 @@
     "pista4": "Antes do clube atual, jogou no West Ham United, na Premier League."
   },
   {
-    "id": 144,
+    "id": 121,
     "nome": "Vinícius Júnior",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Brasileiro",
@@ -3063,7 +2605,7 @@
     "pista4": "Antes do clube atual, jogou no Flamengo, no Brasileirão Série A."
   },
   {
-    "id": 145,
+    "id": 122,
     "nome": "Raphinha",
     "posicao": "Ponta-direita",
     "nacionalidade": "Brasileiro",
@@ -3085,7 +2627,7 @@
     "pista4": "Antes do clube atual, jogou no Leeds United, na Premier League."
   },
   {
-    "id": 146,
+    "id": 123,
     "nome": "Rodrygo Goes",
     "posicao": "Ponta-direita",
     "nacionalidade": "Brasileiro",
@@ -3108,7 +2650,7 @@
     "pista4": "Antes do clube atual, jogou no Santos FC, no Brasileirão Série A."
   },
   {
-    "id": 147,
+    "id": 124,
     "nome": "Matheus Cunha",
     "posicao": "Atacante",
     "nacionalidade": "Brasileiro",
@@ -3127,7 +2669,7 @@
     "pista4": "Antes do clube atual, jogou no Wolverhampton, na Premier League."
   },
   {
-    "id": 148,
+    "id": 125,
     "nome": "Endrick Felipe",
     "posicao": "Centroavante",
     "nacionalidade": "Brasileiro",
@@ -3148,7 +2690,7 @@
     "pista4": "Antes do clube atual, jogou no Palmeiras, no Brasileirão Série A."
   },
   {
-    "id": 149,
+    "id": 126,
     "nome": "Neymar Jr.",
     "posicao": "Atacante",
     "nacionalidade": "Brasileiro",
@@ -3172,26 +2714,7 @@
     "pista4": "Antes do clube atual, jogou no Al-Hilal, na Saudi Pro League."
   },
   {
-    "id": 150,
-    "nome": "Rayan Souza",
-    "posicao": "Meia-atacante",
-    "nacionalidade": "Brasileiro",
-    "bandeira": "🇧🇷",
-    "clube": "Bournemouth",
-    "liga": "Premier League",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Revelação do Flamengo que foi vendido ao Bournemouth em 2025. Com apenas 18 anos, é uma das maiores promessas do futebol brasileiro e a surpresa de Ancelotti.",
-    "faixaEtaria": "18-22",
-    "clubeAnterior": "Flamengo",
-    "origemAnterior": "brasil",
-    "ligaAnterior": "Brasileirão Série A",
-    "pista2": "Jovem talentoso com dribbling explosivo e capacidade de criar perigo pelo lado ou pelo centro.",
-    "pista3": "Natural do Rio de Janeiro. Revelado pelo Flamengo, chegou a disputar partidas da Libertadores antes de ir para a Europa.",
-    "pista4": "Antes do clube atual, jogou no Flamengo, no Brasileirão Série A."
-  },
-  {
-    "id": 151,
+    "id": 127,
     "nome": "Bart Verbruggen",
     "posicao": "Goleiro",
     "nacionalidade": "Holandês",
@@ -3210,28 +2733,7 @@
     "pista4": "Antes do clube atual, jogou no Anderlecht, na Pro League."
   },
   {
-    "id": 152,
-    "nome": "Robin Roefs",
-    "posicao": "Goleiro",
-    "nacionalidade": "Holandês",
-    "bandeira": "🇳🇱",
-    "clube": "PSV Eindhoven",
-    "liga": "Eredivisie",
-    "dificuldade": "dificil",
-    "titulos": [
-      "Eredivisie"
-    ],
-    "curiosidade": "Reserva de Verbruggen na seleção holandesa, consolidou-se como titular do PSV após longa formação no clube.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "Jong PSV",
-    "origemAnterior": "base",
-    "ligaAnterior": "Eerste Divisie",
-    "pista2": "Goleiro reflexivo, com grande presença entre as traves.",
-    "pista3": "Natural de Eindhoven, nos Países Baixos. Formado inteiramente na academia do PSV.",
-    "pista4": "Antes do clube atual, jogou no Jong PSV, na Eerste Divisie."
-  },
-  {
-    "id": 153,
+    "id": 128,
     "nome": "Mark Flekken",
     "posicao": "Goleiro",
     "nacionalidade": "Holandês",
@@ -3250,7 +2752,7 @@
     "pista4": "Antes do clube atual, jogou no SC Freiburg, na Bundesliga."
   },
   {
-    "id": 154,
+    "id": 129,
     "nome": "Virgil van Dijk",
     "posicao": "Zagueiro",
     "nacionalidade": "Holandês",
@@ -3274,7 +2776,7 @@
     "pista4": "Antes do clube atual, jogou no Southampton, na Premier League."
   },
   {
-    "id": 155,
+    "id": 130,
     "nome": "Jurriën Timber",
     "posicao": "Zagueiro",
     "nacionalidade": "Holandês",
@@ -3295,30 +2797,7 @@
     "pista4": "Antes do clube atual, jogou no Ajax, na Eredivisie."
   },
   {
-    "id": 156,
-    "nome": "Matthijs de Ligt",
-    "posicao": "Zagueiro",
-    "nacionalidade": "Holandês",
-    "bandeira": "🇳🇱",
-    "clube": "Manchester United",
-    "liga": "Premier League",
-    "dificuldade": "facil",
-    "titulos": [
-      "Eredivisie",
-      "Serie A",
-      "DFL-Supercup"
-    ],
-    "curiosidade": "Foi capitão do Ajax aos 19 anos durante a épica campanha da Champions League 2018-19. Trocou o Bayern de Munique pelo Manchester United em 2024.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "Bayern de Munique",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Bundesliga",
-    "pista2": "Zagueiro forte no um contra um, com leitura posicional avançada e liderança.",
-    "pista3": "Natural de Leiderdorp, nos Países Baixos. Revelado pelas categorias de base do Ajax.",
-    "pista4": "Antes do clube atual, jogou no Bayern de Munique, na Bundesliga."
-  },
-  {
-    "id": 157,
+    "id": 131,
     "nome": "Denzel Dumfries",
     "posicao": "Lateral-direito",
     "nacionalidade": "Holandês",
@@ -3340,7 +2819,7 @@
     "pista4": "Antes do clube atual, jogou no PSV Eindhoven, na Eredivisie."
   },
   {
-    "id": 158,
+    "id": 132,
     "nome": "David Raum",
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Alemão",
@@ -3361,7 +2840,7 @@
     "pista4": "Antes do clube atual, jogou no SpVgg Greuther Fürth, na Bundesliga."
   },
   {
-    "id": 159,
+    "id": 133,
     "nome": "Nathan Aké",
     "posicao": "Zagueiro",
     "nacionalidade": "Holandês",
@@ -3385,7 +2864,7 @@
     "pista4": "Antes do clube atual, jogou no Bournemouth, na Premier League."
   },
   {
-    "id": 160,
+    "id": 134,
     "nome": "Micky van de Ven",
     "posicao": "Zagueiro",
     "nacionalidade": "Holandês",
@@ -3404,7 +2883,7 @@
     "pista4": "Antes do clube atual, jogou no VfL Wolfsburg, na Bundesliga."
   },
   {
-    "id": 161,
+    "id": 135,
     "nome": "Frenkie de Jong",
     "posicao": "Volante",
     "nacionalidade": "Holandês",
@@ -3426,7 +2905,7 @@
     "pista4": "Antes do clube atual, jogou no Ajax, na Eredivisie."
   },
   {
-    "id": 162,
+    "id": 136,
     "nome": "Ryan Gravenberch",
     "posicao": "Volante",
     "nacionalidade": "Holandês",
@@ -3448,7 +2927,7 @@
     "pista4": "Antes do clube atual, jogou no Bayern de Munique, na Bundesliga."
   },
   {
-    "id": 163,
+    "id": 137,
     "nome": "Tijjani Reijnders",
     "posicao": "Meia",
     "nacionalidade": "Holandês",
@@ -3467,7 +2946,7 @@
     "pista4": "Antes do clube atual, jogou no AZ Alkmaar, na Eredivisie."
   },
   {
-    "id": 164,
+    "id": 138,
     "nome": "Cody Gakpo",
     "posicao": "Atacante",
     "nacionalidade": "Holandês",
@@ -3488,7 +2967,7 @@
     "pista4": "Antes do clube atual, jogou no PSV Eindhoven, na Eredivisie."
   },
   {
-    "id": 165,
+    "id": 139,
     "nome": "Memphis Depay",
     "posicao": "Atacante",
     "nacionalidade": "Holandês",
@@ -3510,7 +2989,7 @@
     "pista4": "Antes do clube atual, jogou no Atlético de Madrid, na La Liga."
   },
   {
-    "id": 166,
+    "id": 140,
     "nome": "Donyell Malen",
     "posicao": "Ponta-direita",
     "nacionalidade": "Holandês",
@@ -3531,7 +3010,7 @@
     "pista4": "Antes do clube atual, jogou no PSV Eindhoven, na Eredivisie."
   },
   {
-    "id": 167,
+    "id": 141,
     "nome": "Wout Weghorst",
     "posicao": "Centroavante",
     "nacionalidade": "Holandês",
@@ -3550,7 +3029,7 @@
     "pista4": "Antes do clube atual, jogou no Manchester United, na Premier League."
   },
   {
-    "id": 168,
+    "id": 142,
     "nome": "Justin Kluivert",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Holandês",
@@ -3569,48 +3048,7 @@
     "pista4": "Antes do clube atual, jogou no Fulham, na Premier League."
   },
   {
-    "id": 169,
-    "nome": "Crysencio Summerville",
-    "posicao": "Ponta-esquerda",
-    "nacionalidade": "Holandês",
-    "bandeira": "🇳🇱",
-    "clube": "West Ham United",
-    "liga": "Premier League",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Eleito o melhor jogador do Championship em 2023-24 no Leeds, foi contratado pelo West Ham e se firmou na Premier League com destaque.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "Leeds United",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Championship",
-    "pista2": "Ponta veloz e imprevisível, com capacidade de driblar em espaços reduzidos e criar chances.",
-    "pista3": "Natural de Paramaribo, no Suriname. Chegou aos Países Baixos ainda criança e formou-se no Feyenoord.",
-    "pista4": "Antes do clube atual, jogou no Leeds United, no Championship."
-  },
-  {
-    "id": 170,
-    "nome": "Xavi Simons",
-    "posicao": "Meia-atacante",
-    "nacionalidade": "Holandês",
-    "bandeira": "🇳🇱",
-    "clube": "Paris Saint-Germain",
-    "liga": "Ligue 1",
-    "dificuldade": "medio",
-    "titulos": [
-      "Ligue 1",
-      "Bundesliga"
-    ],
-    "curiosidade": "Lesionou-se às vésperas da Copa, mas conseguiu se recuperar e foi confirmado na lista de 26. Foi formado no Barcelona desde os 11 anos antes de chegar ao PSG.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "RB Leipzig",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Bundesliga",
-    "pista2": "Meia criativo e veloz, com passes entre linhas precisos e capacidade de conduzir o contra-ataque.",
-    "pista3": "Natural de Amsterdã, nos Países Baixos. Filho do ex-jogador Regillio Simons, foi craque das categorias de base do Barcelona.",
-    "pista4": "Antes do clube atual, jogou no RB Leipzig (empréstimo), na Bundesliga."
-  },
-  {
-    "id": 171,
+    "id": 143,
     "nome": "Brian Brobbey",
     "posicao": "Centroavante",
     "nacionalidade": "Holandês",
@@ -3631,26 +3069,7 @@
     "pista4": "Antes do clube atual, jogou no RB Leipzig (empréstimo), na Bundesliga."
   },
   {
-    "id": 172,
-    "nome": "Ian Maatsen",
-    "posicao": "Lateral-esquerdo",
-    "nacionalidade": "Holandês",
-    "bandeira": "🇳🇱",
-    "clube": "Aston Villa",
-    "liga": "Premier League",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Formado no Chelsea, brilhou emprestado ao Borussia Dortmund na final da Champions League 2024 e foi comprado pelo Aston Villa em seguida.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "Borussia Dortmund",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Bundesliga",
-    "pista2": "Lateral-esquerdo moderno, com grande participação ofensiva e velocidade para fechar a faixa.",
-    "pista3": "Natural de Vlaardingen, nos Países Baixos. Revelado pelo Chelsea antes de se destacar no futebol europeu.",
-    "pista4": "Antes do clube atual, jogou no Borussia Dortmund (empréstimo), na Bundesliga."
-  },
-  {
-    "id": 173,
+    "id": 144,
     "nome": "Lutsharel Geertruida",
     "posicao": "Lateral-direito",
     "nacionalidade": "Holandês",
@@ -3671,28 +3090,7 @@
     "pista4": "Antes do clube atual, jogou no Feyenoord, na Eredivisie."
   },
   {
-    "id": 174,
-    "nome": "Kenneth Taylor",
-    "posicao": "Meia",
-    "nacionalidade": "Holandês",
-    "bandeira": "🇳🇱",
-    "clube": "Ajax",
-    "liga": "Eredivisie",
-    "dificuldade": "dificil",
-    "titulos": [
-      "Eredivisie"
-    ],
-    "curiosidade": "Jovem promessa do Ajax que ganhou espaço na seleção graças a suas atuações consistentes no meio-campo amsterdamês.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "Jong Ajax",
-    "origemAnterior": "base",
-    "ligaAnterior": "Eerste Divisie",
-    "pista2": "Meia dinâmico com boa visão de jogo e capacidade de transição rápida.",
-    "pista3": "Natural de Amsterdã, nos Países Baixos. Produto das categorias de base do Ajax.",
-    "pista4": "Antes do clube atual, jogou no Jong Ajax, na Eerste Divisie."
-  },
-  {
-    "id": 175,
+    "id": 145,
     "nome": "Yassine Bounou",
     "posicao": "Goleiro",
     "nacionalidade": "Marroquino",
@@ -3715,7 +3113,7 @@
     "pista4": "Antes do clube atual, jogou no Sevilla, na La Liga."
   },
   {
-    "id": 176,
+    "id": 146,
     "nome": "Munir El Kajoui",
     "posicao": "Goleiro",
     "nacionalidade": "Marroquino",
@@ -3734,7 +3132,7 @@
     "pista4": "Antes do clube atual, jogou no Stade Brestois, na Ligue 1."
   },
   {
-    "id": 177,
+    "id": 147,
     "nome": "Ahmed Reda Tagnaouti",
     "posicao": "Goleiro",
     "nacionalidade": "Marroquino",
@@ -3756,7 +3154,7 @@
     "pista4": "Antes do clube atual, jogou no Rajá Casablanca, na Botola Pro."
   },
   {
-    "id": 178,
+    "id": 148,
     "nome": "Achraf Hakimi",
     "posicao": "Lateral-direito",
     "nacionalidade": "Marroquino",
@@ -3779,7 +3177,7 @@
     "pista4": "Antes do clube atual, jogou no Inter de Milão, na Serie A."
   },
   {
-    "id": 179,
+    "id": 149,
     "nome": "Noussair Mazraoui",
     "posicao": "Lateral-direito",
     "nacionalidade": "Marroquino",
@@ -3800,7 +3198,7 @@
     "pista4": "Antes do clube atual, jogou no Bayern de Munique, na Bundesliga."
   },
   {
-    "id": 180,
+    "id": 150,
     "nome": "Nayef Aguerd",
     "posicao": "Zagueiro",
     "nacionalidade": "Marroquino",
@@ -3819,7 +3217,7 @@
     "pista4": "Antes do clube atual, jogou no Stade Rennais, na Ligue 1."
   },
   {
-    "id": 181,
+    "id": 151,
     "nome": "Chadi Riad",
     "posicao": "Zagueiro",
     "nacionalidade": "Marroquino",
@@ -3838,7 +3236,7 @@
     "pista4": "Antes do clube atual, jogou no Club Brugge, na Pro League."
   },
   {
-    "id": 182,
+    "id": 152,
     "nome": "Zakaria El Ouahdi",
     "posicao": "Lateral-direito",
     "nacionalidade": "Marroquino",
@@ -3859,7 +3257,7 @@
     "pista4": "Antes do clube atual, jogou no Toulouse, na Ligue 1."
   },
   {
-    "id": 183,
+    "id": 153,
     "nome": "Sofyan Amrabat",
     "posicao": "Volante",
     "nacionalidade": "Marroquino",
@@ -3880,7 +3278,7 @@
     "pista4": "Antes do clube atual, jogou no Manchester United (empréstimo), na Premier League."
   },
   {
-    "id": 184,
+    "id": 154,
     "nome": "Azzedine Ounahi",
     "posicao": "Meia",
     "nacionalidade": "Marroquino",
@@ -3899,7 +3297,7 @@
     "pista4": "Antes do clube atual, jogou no Angers, na Ligue 1."
   },
   {
-    "id": 185,
+    "id": 155,
     "nome": "Ayyoub Bouaddi",
     "posicao": "Meia",
     "nacionalidade": "Marroquino",
@@ -3918,7 +3316,7 @@
     "pista4": "Antes do clube atual, jogou no Lille B, na National 2."
   },
   {
-    "id": 186,
+    "id": 156,
     "nome": "Brahim Díaz",
     "posicao": "Meia-atacante",
     "nacionalidade": "Marroquino",
@@ -3941,29 +3339,7 @@
     "pista4": "Antes do clube atual, jogou no AC Milan (empréstimo), na Serie A."
   },
   {
-    "id": 187,
-    "nome": "Hakim Ziyech",
-    "posicao": "Meia-atacante",
-    "nacionalidade": "Marroquino",
-    "bandeira": "🇲🇦",
-    "clube": "Wydad AC",
-    "liga": "Botola Pro",
-    "dificuldade": "facil",
-    "titulos": [
-      "Eredivisie",
-      "FA Cup"
-    ],
-    "curiosidade": "Surpreendeu o mundo ao assinar com o Wydad AC do Marrocos em 2025, num dos maiores negócios da história da liga marroquina. Voltou às raízes.",
-    "faixaEtaria": "30-35",
-    "clubeAnterior": "Galatasaray",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Süper Lig",
-    "pista2": "Meia-atacante técnico e imprevisível, com pé esquerdo preciso, dribles e visão de passe.",
-    "pista3": "Natural de Dronten, nos Países Baixos, de família marroquina. Foi revelado no Ajax antes de chegar ao Chelsea.",
-    "pista4": "Antes do clube atual, jogou no Galatasaray, na Süper Lig."
-  },
-  {
-    "id": 188,
+    "id": 157,
     "nome": "Soufiane Rahimi",
     "posicao": "Atacante",
     "nacionalidade": "Marroquino",
@@ -3984,47 +3360,7 @@
     "pista4": "Antes do clube atual, jogou no Wydad AC, na Botola Pro."
   },
   {
-    "id": 189,
-    "nome": "Abdessamad Ezzalzouli",
-    "posicao": "Ponta-esquerda",
-    "nacionalidade": "Marroquino",
-    "bandeira": "🇲🇦",
-    "clube": "Real Betis",
-    "liga": "La Liga",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Conhecido como 'El Azzouzi', é um dos jogadores mais técnicos do futebol marroquino, com histórico de boas atuações pelo Barcelona B antes de se firmar no Betis.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "FC Barcelona B",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Segunda División",
-    "pista2": "Ponta esquerdo técnico e habilidoso, com dribles em velocidade e boa finalização.",
-    "pista3": "Natural de Beni Mellal, em Marrocos. Foi revelado pelas categorias de base do FC Barcelona.",
-    "pista4": "Antes do clube atual, jogou no FC Barcelona B, na Segunda División."
-  },
-  {
-    "id": 190,
-    "nome": "Anass Salah-Eddine",
-    "posicao": "Lateral-esquerdo",
-    "nacionalidade": "Marroquino",
-    "bandeira": "🇲🇦",
-    "clube": "Bayer Leverkusen",
-    "liga": "Bundesliga",
-    "dificuldade": "dificil",
-    "titulos": [
-      "Bundesliga"
-    ],
-    "curiosidade": "Lateral-esquerdo jovem que fez parte do histórico elenco campeão invicto do Bayer Leverkusen na Bundesliga 2023-24.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "Ajax",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Eredivisie",
-    "pista2": "Lateral-esquerdo técnico e combativo, com boa capacidade ofensiva e marcação agressiva.",
-    "pista3": "Natural de Amsterdã, nos Países Baixos, de família marroquina. Revelado pelo Ajax.",
-    "pista4": "Antes do clube atual, jogou no Ajax, na Eredivisie."
-  },
-  {
-    "id": 191,
+    "id": 158,
     "nome": "Neil El Aynaoui",
     "posicao": "Volante",
     "nacionalidade": "Marroquino",
@@ -4043,26 +3379,7 @@
     "pista4": "Antes do clube atual, jogou no Lens B, na National 2."
   },
   {
-    "id": 192,
-    "nome": "Youssef En-Nesyri",
-    "posicao": "Centroavante",
-    "nacionalidade": "Marroquino",
-    "bandeira": "🇲🇦",
-    "clube": "Fenerbahçe",
-    "liga": "Süper Lig",
-    "dificuldade": "facil",
-    "titulos": [],
-    "curiosidade": "Herói da Copa 2022, marcou o gol da semifinal contra Portugal. Porém, foi surpreendentemente cortado da lista para 2026 pelo novo treinador Ouahbi.",
-    "faixaEtaria": "26-30",
-    "clubeAnterior": "Sevilla",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "La Liga",
-    "pista2": "Centroavante poderoso no jogo aéreo, forte fisicamente, referência na área para a seleção marroquina.",
-    "pista3": "Natural de Fez, em Marrocos. Revelado pelo Málaga antes de brilhar no Sevilla durante anos.",
-    "pista4": "Antes do clube atual, jogou no Sevilla, na La Liga."
-  },
-  {
-    "id": 193,
+    "id": 159,
     "nome": "Issa Diop",
     "posicao": "Zagueiro",
     "nacionalidade": "Marroquino",
@@ -4081,7 +3398,7 @@
     "pista4": "Antes do clube atual, jogou no West Ham United, na Premier League."
   },
   {
-    "id": 194,
+    "id": 160,
     "nome": "Samir El Mourabet",
     "posicao": "Meia",
     "nacionalidade": "Marroquino",
@@ -4100,7 +3417,7 @@
     "pista4": "Antes do clube atual, jogou no Strasbourg B, na National 2."
   },
   {
-    "id": 195,
+    "id": 161,
     "nome": "Thibaut Courtois",
     "posicao": "Goleiro",
     "nacionalidade": "Belga",
@@ -4124,7 +3441,7 @@
     "pista4": "Antes do clube atual, jogou no Chelsea, na Premier League."
   },
   {
-    "id": 196,
+    "id": 162,
     "nome": "Senne Lammens",
     "posicao": "Goleiro",
     "nacionalidade": "Belga",
@@ -4143,7 +3460,7 @@
     "pista4": "Antes do clube atual, jogou no Royal Antwerp, na Pro League."
   },
   {
-    "id": 197,
+    "id": 163,
     "nome": "Mike Penders",
     "posicao": "Goleiro",
     "nacionalidade": "Belga",
@@ -4162,7 +3479,7 @@
     "pista4": "Antes do clube atual, jogou no Club Brugge, na Pro League."
   },
   {
-    "id": 198,
+    "id": 164,
     "nome": "Kevin De Bruyne",
     "posicao": "Meia",
     "nacionalidade": "Belga",
@@ -4186,7 +3503,7 @@
     "pista4": "Antes do clube atual, jogou no Chelsea, na Premier League."
   },
   {
-    "id": 199,
+    "id": 165,
     "nome": "Romelu Lukaku",
     "posicao": "Centroavante",
     "nacionalidade": "Belga",
@@ -4209,7 +3526,7 @@
     "pista4": "Antes do clube atual, jogou no AS Roma (empréstimo), na Serie A."
   },
   {
-    "id": 200,
+    "id": 166,
     "nome": "Leandro Trossard",
     "posicao": "Atacante",
     "nacionalidade": "Belga",
@@ -4230,7 +3547,7 @@
     "pista4": "Antes do clube atual, jogou no Brighton & Hove Albion, na Premier League."
   },
   {
-    "id": 201,
+    "id": 167,
     "nome": "Jérémy Doku",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Belga",
@@ -4251,7 +3568,7 @@
     "pista4": "Antes do clube atual, jogou no Stade Rennais, na Ligue 1."
   },
   {
-    "id": 202,
+    "id": 168,
     "nome": "Amadou Onana",
     "posicao": "Volante",
     "nacionalidade": "Belga",
@@ -4270,7 +3587,7 @@
     "pista4": "Antes do clube atual, jogou no Everton, na Premier League."
   },
   {
-    "id": 203,
+    "id": 169,
     "nome": "Hans Vanaken",
     "posicao": "Meia",
     "nacionalidade": "Belga",
@@ -4291,7 +3608,7 @@
     "pista4": "Antes do clube atual, jogou no Sint-Truiden, na Pro League."
   },
   {
-    "id": 204,
+    "id": 170,
     "nome": "Timothy Castagne",
     "posicao": "Lateral-direito",
     "nacionalidade": "Belga",
@@ -4312,7 +3629,7 @@
     "pista4": "Antes do clube atual, jogou no Leicester City, na Premier League."
   },
   {
-    "id": 205,
+    "id": 171,
     "nome": "Arthur Theate",
     "posicao": "Zagueiro",
     "nacionalidade": "Belga",
@@ -4331,7 +3648,7 @@
     "pista4": "Antes do clube atual, jogou no Stade Rennais, na Ligue 1."
   },
   {
-    "id": 206,
+    "id": 172,
     "nome": "Zeno Debast",
     "posicao": "Zagueiro",
     "nacionalidade": "Belga",
@@ -4352,7 +3669,7 @@
     "pista4": "Antes do clube atual, jogou no Anderlecht, na Pro League."
   },
   {
-    "id": 207,
+    "id": 173,
     "nome": "Maxim De Cuyper",
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Belga",
@@ -4373,7 +3690,7 @@
     "pista4": "Antes do clube atual, jogou no Club Brugge, na Pro League."
   },
   {
-    "id": 208,
+    "id": 174,
     "nome": "Thomas Meunier",
     "posicao": "Lateral-direito",
     "nacionalidade": "Belga",
@@ -4395,7 +3712,7 @@
     "pista4": "Antes do clube atual, jogou no Borussia Dortmund, na Bundesliga."
   },
   {
-    "id": 209,
+    "id": 175,
     "nome": "Youri Tielemans",
     "posicao": "Meia",
     "nacionalidade": "Belga",
@@ -4416,47 +3733,7 @@
     "pista4": "Antes do clube atual, jogou no Leicester City, na Premier League."
   },
   {
-    "id": 210,
-    "nome": "Johan Bakayoko",
-    "posicao": "Ponta-direita",
-    "nacionalidade": "Belga",
-    "bandeira": "🇧🇪",
-    "clube": "PSV Eindhoven",
-    "liga": "Eredivisie",
-    "dificuldade": "dificil",
-    "titulos": [
-      "Eredivisie"
-    ],
-    "curiosidade": "Ponta explosivo do PSV que recusou transferências de grandes clubes para continuar seu desenvolvimento. Eleito o melhor jovem da Eredivisie.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "PSV Jong",
-    "origemAnterior": "base",
-    "ligaAnterior": "Eerste Divisie",
-    "pista2": "Ponta-direita elétrico, com velocidade, drible e qualidade para atuar também pela esquerda.",
-    "pista3": "Natural de Bruxelas, na Bélgica. De origem congolesa, revelado pelas categorias de base do PSV.",
-    "pista4": "Antes do clube atual, jogou no PSV Jong, na Eerste Divisie."
-  },
-  {
-    "id": 211,
-    "nome": "Lois Openda",
-    "posicao": "Centroavante",
-    "nacionalidade": "Belga",
-    "bandeira": "🇧🇪",
-    "clube": "RB Leipzig",
-    "liga": "Bundesliga",
-    "dificuldade": "medio",
-    "titulos": [],
-    "curiosidade": "Artilheiro da Bundesliga em diversas temporadas, transferido do Club Brugge para o RB Leipzig por cerca de €40 milhões. Velocidade e instinto goleador são suas marcas.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "RC Lens",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Ligue 1",
-    "pista2": "Centroavante veloz e caçador de gols, eficiente no contrapé e nas corridas atrás da linha defensiva.",
-    "pista3": "Natural de Liège, na Bélgica. De origem congolesa, revelado pelo Club Brugge.",
-    "pista4": "Antes do clube atual, jogou no RC Lens (empréstimo), na Ligue 1."
-  },
-  {
-    "id": 212,
+    "id": 176,
     "nome": "Manuel Neuer",
     "posicao": "Goleiro",
     "nacionalidade": "Alemão",
@@ -4481,7 +3758,7 @@
     "pista4": "Antes do clube atual, jogou no Schalke 04, na Bundesliga."
   },
   {
-    "id": 213,
+    "id": 177,
     "nome": "Oliver Baumann",
     "posicao": "Goleiro",
     "nacionalidade": "Alemão",
@@ -4500,7 +3777,7 @@
     "pista4": "Antes do clube atual, jogou no SC Freiburg, na Bundesliga."
   },
   {
-    "id": 214,
+    "id": 178,
     "nome": "Alexander Nübel",
     "posicao": "Goleiro",
     "nacionalidade": "Alemão",
@@ -4519,7 +3796,7 @@
     "pista4": "Antes do clube atual, jogou no Bayern de Munique (emprestado ao Stuttgart), na Bundesliga."
   },
   {
-    "id": 215,
+    "id": 179,
     "nome": "Antonio Rüdiger",
     "posicao": "Zagueiro",
     "nacionalidade": "Alemão",
@@ -4544,7 +3821,7 @@
     "pista4": "Antes do clube atual, jogou no Chelsea, na Premier League."
   },
   {
-    "id": 216,
+    "id": 180,
     "nome": "Jonathan Tah",
     "posicao": "Zagueiro",
     "nacionalidade": "Alemão",
@@ -4566,7 +3843,7 @@
     "pista4": "Antes do clube atual, jogou no Bayer Leverkusen, na Bundesliga."
   },
   {
-    "id": 217,
+    "id": 181,
     "nome": "Nico Schlotterbeck",
     "posicao": "Zagueiro",
     "nacionalidade": "Alemão",
@@ -4585,7 +3862,7 @@
     "pista4": "Antes do clube atual, jogou no SC Freiburg, na Bundesliga."
   },
   {
-    "id": 218,
+    "id": 182,
     "nome": "Waldemar Anton",
     "posicao": "Zagueiro",
     "nacionalidade": "Alemão",
@@ -4604,7 +3881,7 @@
     "pista4": "Antes do clube atual, jogou no VfB Stuttgart, na Bundesliga."
   },
   {
-    "id": 219,
+    "id": 183,
     "nome": "Malick Thiaw",
     "posicao": "Zagueiro",
     "nacionalidade": "Alemão",
@@ -4623,7 +3900,7 @@
     "pista4": "Antes do clube atual, jogou no Schalke 04, na Bundesliga."
   },
   {
-    "id": 220,
+    "id": 184,
     "nome": "Nathaniel Brown",
     "posicao": "Lateral-direito",
     "nacionalidade": "Alemão",
@@ -4644,7 +3921,7 @@
     "pista4": "Antes do clube atual, jogou no Bayern de Munique II, na 3. Liga."
   },
   {
-    "id": 221,
+    "id": 185,
     "nome": "Joshua Kimmich",
     "posicao": "Volante",
     "nacionalidade": "Alemão",
@@ -4669,7 +3946,7 @@
     "pista4": "Antes do clube atual, jogou no VfB Stuttgart (categorias), na Bundesliga."
   },
   {
-    "id": 222,
+    "id": 186,
     "nome": "Leon Goretzka",
     "posicao": "Meia",
     "nacionalidade": "Alemão",
@@ -4692,7 +3969,7 @@
     "pista4": "Antes do clube atual, jogou no Schalke 04, na Bundesliga."
   },
   {
-    "id": 223,
+    "id": 187,
     "nome": "Jamal Musiala",
     "posicao": "Meia-atacante",
     "nacionalidade": "Alemão",
@@ -4714,7 +3991,7 @@
     "pista4": "Antes do clube atual, jogou nas categorias de base do Chelsea, na Premier League."
   },
   {
-    "id": 224,
+    "id": 188,
     "nome": "Florian Wirtz",
     "posicao": "Meia-atacante",
     "nacionalidade": "Alemão",
@@ -4736,7 +4013,7 @@
     "pista4": "Antes do clube atual, jogou no Bayer Leverkusen II, na Regionalliga."
   },
   {
-    "id": 225,
+    "id": 189,
     "nome": "Kai Havertz",
     "posicao": "Atacante",
     "nacionalidade": "Alemão",
@@ -4758,7 +4035,7 @@
     "pista4": "Antes do clube atual, jogou no Chelsea, na Premier League."
   },
   {
-    "id": 226,
+    "id": 190,
     "nome": "Leroy Sané",
     "posicao": "Ponta-direita",
     "nacionalidade": "Alemão",
@@ -4782,7 +4059,7 @@
     "pista4": "Antes do clube atual, jogou no Manchester City, na Premier League."
   },
   {
-    "id": 227,
+    "id": 191,
     "nome": "Pascal Gross",
     "posicao": "Meia",
     "nacionalidade": "Alemão",
@@ -4801,7 +4078,7 @@
     "pista4": "Antes do clube atual, jogou no Brighton & Hove Albion, na Premier League."
   },
   {
-    "id": 228,
+    "id": 192,
     "nome": "Aleksandar Pavlovic",
     "posicao": "Volante",
     "nacionalidade": "Alemão",
@@ -4822,7 +4099,7 @@
     "pista4": "Antes do clube atual, jogou no Bayern de Munique II, na 3. Liga."
   },
   {
-    "id": 229,
+    "id": 193,
     "nome": "Jamie Leweling",
     "posicao": "Ponta-direita",
     "nacionalidade": "Alemão",
@@ -4841,7 +4118,7 @@
     "pista4": "Antes do clube atual, jogou no Union Berlin, na Bundesliga."
   },
   {
-    "id": 230,
+    "id": 194,
     "nome": "Nick Woltemade",
     "posicao": "Centroavante",
     "nacionalidade": "Alemão",
@@ -4860,7 +4137,7 @@
     "pista4": "Antes do clube atual, jogou no Werder Bremen, na Bundesliga."
   },
   {
-    "id": 231,
+    "id": 195,
     "nome": "Deniz Undav",
     "posicao": "Atacante",
     "nacionalidade": "Alemão",
@@ -4879,26 +4156,7 @@
     "pista4": "Antes do clube atual, jogou no Brighton & Hove Albion, na Premier League."
   },
   {
-    "id": 232,
-    "nome": "Angelo Stiller",
-    "posicao": "Volante",
-    "nacionalidade": "Alemão",
-    "bandeira": "🇩🇪",
-    "clube": "VfB Stuttgart",
-    "liga": "Bundesliga",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Neto do ex-jogador Erwin Stiller, tornou-se peça fundamental do Stuttgart e chamou atenção de Nagelsmann com sua qualidade posicional e no passe.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "TSG Hoffenheim",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Bundesliga",
-    "pista2": "Volante elegante e técnico, com excelente capacidade de distribuição e posicionamento defensivo.",
-    "pista3": "Natural de Munique, na Alemanha. Neto do ex-jogador Erwin Stiller, revelado pelo TSG Hoffenheim.",
-    "pista4": "Antes do clube atual, jogou no TSG Hoffenheim, na Bundesliga."
-  },
-  {
-    "id": 233,
+    "id": 196,
     "nome": "Nadiem Amiri",
     "posicao": "Meia",
     "nacionalidade": "Alemão",
@@ -4920,7 +4178,7 @@
     "pista4": "Antes do clube atual, jogou no Mainz 05, na Bundesliga."
   },
   {
-    "id": 234,
+    "id": 197,
     "nome": "Maximilian Beier",
     "posicao": "Atacante",
     "nacionalidade": "Alemão",
@@ -4939,48 +4197,7 @@
     "pista4": "Antes do clube atual, jogou no TSG Hoffenheim, na Bundesliga."
   },
   {
-    "id": 235,
-    "nome": "Felix Nmecha",
-    "posicao": "Meia",
-    "nacionalidade": "Alemão",
-    "bandeira": "🇩🇪",
-    "clube": "Borussia Dortmund",
-    "liga": "Bundesliga",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Irmão de Lukas Nmecha, também jogador profissional alemão. Felix se firmou no Borussia Dortmund como meia de box-to-box com gols importantes.",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "VfL Wolfsburg",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Bundesliga",
-    "pista2": "Meia box-to-box com chegada ao ataque, forte nos duelos e com gols de longa distância.",
-    "pista3": "Natural de Hamburgo, na Alemanha. De origem nigeriana, irmão do atacante Lukas Nmecha.",
-    "pista4": "Antes do clube atual, jogou no VfL Wolfsburg, na Bundesliga."
-  },
-  {
-    "id": 236,
-    "nome": "Lennart Grill",
-    "posicao": "Goleiro",
-    "nacionalidade": "Alemão",
-    "bandeira": "🇩🇪",
-    "clube": "Bayer Leverkusen",
-    "liga": "Bundesliga",
-    "dificuldade": "dificil",
-    "titulos": [
-      "Bundesliga",
-      "DFB-Pokal"
-    ],
-    "curiosidade": "Reserva do lendário Lukáš Hrádecký no Leverkusen, fez parte do elenco histórico campeão invicto. Terceiro goleiro confiável da seleção alemã.",
-    "faixaEtaria": "26-30",
-    "clubeAnterior": "Bayer Leverkusen II",
-    "origemAnterior": "base",
-    "ligaAnterior": "Regionalliga",
-    "pista2": "Goleiro jovem e confiável, com boa estrutura física e reflexos sólidos.",
-    "pista3": "Natural de Bad Kreuznach, na Alemanha. Revelado pelas categorias de base do Bayer Leverkusen.",
-    "pista4": "Antes do clube atual, jogou no Bayer Leverkusen II, na Regionalliga."
-  },
-  {
-    "id": 237,
+    "id": 198,
     "nome": "Shuichi Gonda",
     "posicao": "Goleiro",
     "nacionalidade": "Japonês",
@@ -4999,7 +4216,7 @@
     "pista4": "Antes do Shimizu S-Pulse, jogou no FC Tokyo."
   },
   {
-    "id": 238,
+    "id": 199,
     "nome": "Zion Suzuki",
     "posicao": "Goleiro",
     "nacionalidade": "Japonês",
@@ -5018,7 +4235,7 @@
     "pista4": "Antes do Parma, jogou no Brentford da Premier League."
   },
   {
-    "id": 239,
+    "id": 200,
     "nome": "Takehiro Tomiyasu",
     "posicao": "Zagueiro",
     "nacionalidade": "Japonês",
@@ -5037,7 +4254,7 @@
     "pista4": "Antes do Arsenal, jogou no Bologna da Serie A italiana."
   },
   {
-    "id": 240,
+    "id": 201,
     "nome": "Ko Itakura",
     "posicao": "Zagueiro",
     "nacionalidade": "Japonês",
@@ -5056,7 +4273,7 @@
     "pista4": "Antes do Borussia Mönchengladbach, estava vinculado ao Manchester City."
   },
   {
-    "id": 241,
+    "id": 202,
     "nome": "Hiroki Ito",
     "posicao": "Zagueiro",
     "nacionalidade": "Japonês",
@@ -5077,7 +4294,7 @@
     "pista4": "Antes do Bayern Munich, jogou no VfB Stuttgart."
   },
   {
-    "id": 242,
+    "id": 203,
     "nome": "Yuto Nagatomo",
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Japonês",
@@ -5096,7 +4313,7 @@
     "pista4": "Antes do FC Tokyo, jogou no Olympique de Marseille da Ligue 1."
   },
   {
-    "id": 243,
+    "id": 204,
     "nome": "Wataru Endo",
     "posicao": "Volante",
     "nacionalidade": "Japonês",
@@ -5115,7 +4332,7 @@
     "pista4": "Antes do Liverpool, jogou no VfB Stuttgart da Bundesliga."
   },
   {
-    "id": 244,
+    "id": 205,
     "nome": "Hidemasa Morita",
     "posicao": "Volante",
     "nacionalidade": "Japonês",
@@ -5136,7 +4353,7 @@
     "pista4": "Antes do Sporting CP, jogou no Santa Clara também em Portugal."
   },
   {
-    "id": 245,
+    "id": 206,
     "nome": "Ao Tanaka",
     "posicao": "Meia",
     "nacionalidade": "Japonês",
@@ -5155,7 +4372,7 @@
     "pista4": "Antes do Borussia Dortmund, jogou no Fortuna Düsseldorf na segunda divisão alemã."
   },
   {
-    "id": 246,
+    "id": 207,
     "nome": "Daichi Kamada",
     "posicao": "Meia-atacante",
     "nacionalidade": "Japonês",
@@ -5174,7 +4391,7 @@
     "pista4": "Antes do Crystal Palace, jogou no Eintracht Frankfurt da Bundesliga."
   },
   {
-    "id": 247,
+    "id": 208,
     "nome": "Ritsu Doan",
     "posicao": "Ponta-direita",
     "nacionalidade": "Japonês",
@@ -5193,7 +4410,7 @@
     "pista4": "Antes do Eintracht Frankfurt, jogou no SC Freiburg."
   },
   {
-    "id": 248,
+    "id": 209,
     "nome": "Kaoru Mitoma",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Japonês",
@@ -5212,7 +4429,7 @@
     "pista4": "Antes do Brighton, jogou no Union Saint-Gilloise na Bélgica."
   },
   {
-    "id": 249,
+    "id": 210,
     "nome": "Takefusa Kubo",
     "posicao": "Meia-atacante",
     "nacionalidade": "Japonês",
@@ -5231,7 +4448,7 @@
     "pista4": "Antes do Real Sociedad, estava vinculado ao Real Madrid."
   },
   {
-    "id": 250,
+    "id": 211,
     "nome": "Ayase Ueda",
     "posicao": "Centroavante",
     "nacionalidade": "Japonês",
@@ -5250,7 +4467,7 @@
     "pista4": "Antes do Feyenoord, jogou no Cerezo Osaka no Japão."
   },
   {
-    "id": 251,
+    "id": 212,
     "nome": "Yukinari Sugawara",
     "posicao": "Lateral-direito",
     "nacionalidade": "Japonês",
@@ -5269,7 +4486,7 @@
     "pista4": "Antes do AZ Alkmaar, jogou no Nagoya Grampus no Japão."
   },
   {
-    "id": 252,
+    "id": 213,
     "nome": "Yann Sommer",
     "posicao": "Goleiro",
     "nacionalidade": "Suíça",
@@ -5290,7 +4507,7 @@
     "pista4": "Antes da Inter de Milão, jogou no Bayern Munich da Bundesliga."
   },
   {
-    "id": 253,
+    "id": 214,
     "nome": "Manuel Akanji",
     "posicao": "Zagueiro",
     "nacionalidade": "Suíça",
@@ -5312,7 +4529,7 @@
     "pista4": "Antes do Manchester City, jogou no Borussia Dortmund."
   },
   {
-    "id": 254,
+    "id": 215,
     "nome": "Fabian Schär",
     "posicao": "Zagueiro",
     "nacionalidade": "Suíça",
@@ -5331,7 +4548,7 @@
     "pista4": "Antes do Newcastle, jogou no Deportivo La Coruña na Espanha."
   },
   {
-    "id": 255,
+    "id": 216,
     "nome": "Silvan Widmer",
     "posicao": "Lateral-direito",
     "nacionalidade": "Suíça",
@@ -5350,7 +4567,7 @@
     "pista4": "Antes do Mainz 05, jogou na Udinese da Serie A italiana."
   },
   {
-    "id": 256,
+    "id": 217,
     "nome": "Granit Xhaka",
     "posicao": "Volante",
     "nacionalidade": "Suíça",
@@ -5371,7 +4588,7 @@
     "pista4": "Antes do Sunderland, jogou no Bayer Leverkusen onde foi campeão alemão."
   },
   {
-    "id": 257,
+    "id": 218,
     "nome": "Remo Freuler",
     "posicao": "Meia",
     "nacionalidade": "Suíça",
@@ -5390,7 +4607,7 @@
     "pista4": "Antes do Bologna, jogou no Nottingham Forest na Premier League."
   },
   {
-    "id": 258,
+    "id": 219,
     "nome": "Michel Aebischer",
     "posicao": "Meia",
     "nacionalidade": "Suíça",
@@ -5409,7 +4626,7 @@
     "pista4": "Antes do Bologna, jogou no BSC Young Boys, clube da Suíça."
   },
   {
-    "id": 259,
+    "id": 220,
     "nome": "Xherdan Shaqiri",
     "posicao": "Meia-atacante",
     "nacionalidade": "Suíça",
@@ -5428,7 +4645,7 @@
     "pista4": "Antes do Chicago Fire, jogou no Olympique Lyon da Ligue 1."
   },
   {
-    "id": 260,
+    "id": 221,
     "nome": "Dan Ndoye",
     "posicao": "Ponta-direita",
     "nacionalidade": "Suíça",
@@ -5447,7 +4664,7 @@
     "pista4": "Antes do Nottingham Forest, jogou no Bologna da Serie A italiana."
   },
   {
-    "id": 261,
+    "id": 222,
     "nome": "Noah Okafor",
     "posicao": "Atacante",
     "nacionalidade": "Suíça",
@@ -5466,7 +4683,7 @@
     "pista4": "Antes do AC Milan, jogou no RB Salzburg da Áustria."
   },
   {
-    "id": 262,
+    "id": 223,
     "nome": "Breel Embolo",
     "posicao": "Centroavante",
     "nacionalidade": "Suíça",
@@ -5485,7 +4702,7 @@
     "pista4": "Antes do Monaco, jogou no Borussia Mönchengladbach na Alemanha."
   },
   {
-    "id": 263,
+    "id": 224,
     "nome": "Kasper Dolberg",
     "posicao": "Centroavante",
     "nacionalidade": "Dinamarquês",
@@ -5504,7 +4721,7 @@
     "pista4": "Antes do Anderlecht, jogou no Hoffenheim da Bundesliga."
   },
   {
-    "id": 264,
+    "id": 225,
     "nome": "Frederik Rønnow",
     "posicao": "Goleiro",
     "nacionalidade": "Dinamarquês",
@@ -5523,7 +4740,7 @@
     "pista4": "Antes do Union Berlin, jogou no Eintracht Frankfurt."
   },
   {
-    "id": 265,
+    "id": 226,
     "nome": "Joachim Andersen",
     "posicao": "Zagueiro",
     "nacionalidade": "Dinamarquês",
@@ -5542,7 +4759,7 @@
     "pista4": "Antes do Crystal Palace, jogou no Fulham também na Premier League."
   },
   {
-    "id": 266,
+    "id": 227,
     "nome": "Joakim Maehle",
     "posicao": "Lateral-direito",
     "nacionalidade": "Dinamarquês",
@@ -5563,7 +4780,7 @@
     "pista4": "Antes da Atalanta, jogou no Genk da Bélgica."
   },
   {
-    "id": 267,
+    "id": 228,
     "nome": "Andreas Christensen",
     "posicao": "Zagueiro",
     "nacionalidade": "Dinamarquês",
@@ -5585,7 +4802,7 @@
     "pista4": "Antes do Barcelona, jogou no Chelsea da Premier League."
   },
   {
-    "id": 268,
+    "id": 229,
     "nome": "Pierre-Emile Højbjerg",
     "posicao": "Volante",
     "nacionalidade": "Dinamarquês",
@@ -5604,7 +4821,7 @@
     "pista4": "Antes do Marseille, jogou no Tottenham Hotspur da Premier League."
   },
   {
-    "id": 269,
+    "id": 230,
     "nome": "Christian Eriksen",
     "posicao": "Meia",
     "nacionalidade": "Dinamarquês",
@@ -5625,7 +4842,7 @@
     "pista4": "Antes do Wolfsburg, jogou no Manchester United da Premier League."
   },
   {
-    "id": 270,
+    "id": 231,
     "nome": "Mikkel Damsgaard",
     "posicao": "Meia-atacante",
     "nacionalidade": "Dinamarquês",
@@ -5644,7 +4861,7 @@
     "pista4": "Antes do Brentford, jogou na Sampdoria da Serie A italiana."
   },
   {
-    "id": 271,
+    "id": 232,
     "nome": "Rasmus Højlund",
     "posicao": "Centroavante",
     "nacionalidade": "Dinamarquês",
@@ -5663,7 +4880,7 @@
     "pista4": "Antes do empréstimo ao Napoli, jogava pelo Manchester United."
   },
   {
-    "id": 272,
+    "id": 233,
     "nome": "Viktor Gyökeres",
     "posicao": "Centroavante",
     "nacionalidade": "Sueco",
@@ -5682,7 +4899,7 @@
     "pista4": "Antes do Arsenal, brilhou no Sporting CP de Portugal."
   },
   {
-    "id": 273,
+    "id": 234,
     "nome": "Erling Haaland",
     "posicao": "Centroavante",
     "nacionalidade": "Norueguês",
@@ -5705,7 +4922,7 @@
     "pista4": "Antes do Manchester City, jogou no Borussia Dortmund da Bundesliga."
   },
   {
-    "id": 274,
+    "id": 235,
     "nome": "Martin Ødegaard",
     "posicao": "Meia",
     "nacionalidade": "Norueguês",
@@ -5724,7 +4941,7 @@
     "pista4": "Antes do Arsenal, jogou e foi formado pelo Real Madrid."
   },
   {
-    "id": 275,
+    "id": 236,
     "nome": "Alexander Sørloth",
     "posicao": "Centroavante",
     "nacionalidade": "Norueguês",
@@ -5743,7 +4960,7 @@
     "pista4": "Antes do Atlético de Madrid, jogou na Real Sociedad também na Espanha."
   },
   {
-    "id": 276,
+    "id": 237,
     "nome": "Antonio Nusa",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Norueguês",
@@ -5762,7 +4979,7 @@
     "pista4": "Antes do RB Leipzig, jogou no Club Brugge da Bélgica."
   },
   {
-    "id": 277,
+    "id": 238,
     "nome": "Sander Berge",
     "posicao": "Volante",
     "nacionalidade": "Norueguês",
@@ -5781,7 +4998,7 @@
     "pista4": "Antes do Burnley, jogou no Sheffield United também na Premier League."
   },
   {
-    "id": 278,
+    "id": 239,
     "nome": "Stefan Strandberg",
     "posicao": "Zagueiro",
     "nacionalidade": "Norueguês",
@@ -5800,7 +5017,7 @@
     "pista4": "Antes do Gençlerbirliği, jogou no CSKA Moscou na Rússia."
   },
   {
-    "id": 279,
+    "id": 240,
     "nome": "Jens Petter Hauge",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Norueguês",
@@ -5819,7 +5036,7 @@
     "pista4": "Antes do Bodø/Glimt, jogou no Eintracht Frankfurt da Bundesliga."
   },
   {
-    "id": 280,
+    "id": 241,
     "nome": "Leo Østigård",
     "posicao": "Zagueiro",
     "nacionalidade": "Norueguês",
@@ -5838,7 +5055,7 @@
     "pista4": "Antes do Napoli, estava vinculado ao Brighton da Premier League."
   },
   {
-    "id": 281,
+    "id": 242,
     "nome": "Mohamed Salah",
     "posicao": "Ponta-direita",
     "nacionalidade": "Egípcio",
@@ -5860,7 +5077,7 @@
     "pista4": "Antes do Liverpool, jogou na AS Roma da Serie A italiana."
   },
   {
-    "id": 282,
+    "id": 243,
     "nome": "Omar Marmoush",
     "posicao": "Atacante",
     "nacionalidade": "Egípcio",
@@ -5879,7 +5096,7 @@
     "pista4": "Antes do Manchester City, brilhou no Eintracht Frankfurt da Bundesliga."
   },
   {
-    "id": 283,
+    "id": 244,
     "nome": "Mohamed Elneny",
     "posicao": "Volante",
     "nacionalidade": "Egípcio",
@@ -5900,7 +5117,7 @@
     "pista4": "Antes do Besiktas, jogou no Arsenal da Premier League por muitos anos."
   },
   {
-    "id": 284,
+    "id": 245,
     "nome": "Ahmed Hegazi",
     "posicao": "Zagueiro",
     "nacionalidade": "Egípcio",
@@ -5919,7 +5136,7 @@
     "pista4": "Antes do Al-Ittihad, jogou no West Bromwich Albion na Inglaterra."
   },
   {
-    "id": 285,
+    "id": 246,
     "nome": "Mostafa Mohamed",
     "posicao": "Centroavante",
     "nacionalidade": "Egípcio",
@@ -5938,7 +5155,7 @@
     "pista4": "Antes do Nantes, jogou no Galatasaray da Turquia."
   },
   {
-    "id": 286,
+    "id": 247,
     "nome": "Trézéguet",
     "posicao": "Ponta-direita",
     "nacionalidade": "Egípcio",
@@ -5959,7 +5176,7 @@
     "pista4": "Antes do Al-Ahly, jogou no Aston Villa da Premier League."
   },
   {
-    "id": 287,
+    "id": 248,
     "nome": "Amr El Solia",
     "posicao": "Goleiro",
     "nacionalidade": "Egípcio",
@@ -5980,7 +5197,7 @@
     "pista4": "Antes do Al-Ahly, jogou no rival Zamalek."
   },
   {
-    "id": 288,
+    "id": 249,
     "nome": "Hamdi Fathi",
     "posicao": "Meia",
     "nacionalidade": "Egípcio",
@@ -5999,7 +5216,7 @@
     "pista4": "Antes do Al-Ahly, jogou no Wydad AC do Marrocos."
   },
   {
-    "id": 289,
+    "id": 250,
     "nome": "Marwan Hamdy",
     "posicao": "Centroavante",
     "nacionalidade": "Egípcio",
@@ -6020,7 +5237,7 @@
     "pista4": "Antes do Al-Ahly, jogou no Ismaily da mesma liga egípcia."
   },
   {
-    "id": 290,
+    "id": 251,
     "nome": "Victor Osimhen",
     "posicao": "Centroavante",
     "nacionalidade": "Nigeriano",
@@ -6041,7 +5258,7 @@
     "pista4": "Antes do Galatasaray (empréstimo do Napoli), era titular do clube italiano."
   },
   {
-    "id": 291,
+    "id": 252,
     "nome": "Ademola Lookman",
     "posicao": "Atacante",
     "nacionalidade": "Nigeriano",
@@ -6062,7 +5279,7 @@
     "pista4": "Antes da Atalanta, jogou no RB Leipzig da Bundesliga."
   },
   {
-    "id": 292,
+    "id": 253,
     "nome": "William Troost-Ekong",
     "posicao": "Zagueiro",
     "nacionalidade": "Nigeriano",
@@ -6081,7 +5298,7 @@
     "pista4": "Antes do Al-Kholood, jogou no Watford da Premier League."
   },
   {
-    "id": 293,
+    "id": 254,
     "nome": "Frank Onyeka",
     "posicao": "Volante",
     "nacionalidade": "Nigeriano",
@@ -6100,7 +5317,7 @@
     "pista4": "Antes do Brentford, jogou no FC Midtjylland da Dinamarca."
   },
   {
-    "id": 294,
+    "id": 255,
     "nome": "Alex Iwobi",
     "posicao": "Meia",
     "nacionalidade": "Nigeriano",
@@ -6119,7 +5336,7 @@
     "pista4": "Antes do Fulham, jogou no Everton também na Premier League."
   },
   {
-    "id": 295,
+    "id": 256,
     "nome": "Kelechi Iheanacho",
     "posicao": "Atacante",
     "nacionalidade": "Nigeriano",
@@ -6140,7 +5357,7 @@
     "pista4": "Antes do Sevilla, jogou no Leicester City da Premier League."
   },
   {
-    "id": 296,
+    "id": 257,
     "nome": "Stanley Nwabali",
     "posicao": "Goleiro",
     "nacionalidade": "Nigeriano",
@@ -6159,7 +5376,7 @@
     "pista4": "Antes do Chippa United, jogou no Lobi Stars da liga nigeriana."
   },
   {
-    "id": 297,
+    "id": 258,
     "nome": "Calvin Bassey",
     "posicao": "Zagueiro",
     "nacionalidade": "Nigeriano",
@@ -6178,7 +5395,7 @@
     "pista4": "Antes do Fulham, jogou no Ajax da Holanda."
   },
   {
-    "id": 298,
+    "id": 259,
     "nome": "Son Heung-min",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Sul-coreano",
@@ -6199,7 +5416,7 @@
     "pista4": "Antes do LAFC, jogou por 10 anos no Tottenham Hotspur da Premier League."
   },
   {
-    "id": 299,
+    "id": 260,
     "nome": "Lee Kang-in",
     "posicao": "Meia-atacante",
     "nacionalidade": "Sul-coreano",
@@ -6221,7 +5438,7 @@
     "pista4": "Antes do PSG, jogou no Mallorca da La Liga espanhola."
   },
   {
-    "id": 300,
+    "id": 261,
     "nome": "Kim Min-jae",
     "posicao": "Zagueiro",
     "nacionalidade": "Sul-coreano",
@@ -6242,7 +5459,7 @@
     "pista4": "Antes do Bayern Munich, jogou no Napoli da Serie A e foi campeão italiano."
   },
   {
-    "id": 301,
+    "id": 262,
     "nome": "Hwang Hee-chan",
     "posicao": "Atacante",
     "nacionalidade": "Sul-coreano",
@@ -6261,7 +5478,7 @@
     "pista4": "Antes do Wolverhampton, jogou no RB Leipzig da Bundesliga."
   },
   {
-    "id": 302,
+    "id": 263,
     "nome": "Hwang In-beom",
     "posicao": "Meia",
     "nacionalidade": "Sul-coreano",
@@ -6280,7 +5497,7 @@
     "pista4": "Antes do Feyenoord, jogou no Vancouver Whitecaps da MLS canadense."
   },
   {
-    "id": 303,
+    "id": 264,
     "nome": "Kim Seung-gyu",
     "posicao": "Goleiro",
     "nacionalidade": "Sul-coreano",
@@ -6299,7 +5516,7 @@
     "pista4": "Antes do Ulsan HD, jogou no Vissel Kobe do Japão."
   },
   {
-    "id": 304,
+    "id": 265,
     "nome": "Jung Woo-young",
     "posicao": "Volante",
     "nacionalidade": "Sul-coreano",
@@ -6318,7 +5535,7 @@
     "pista4": "Antes do Al-Qadsiah, jogou no Al-Sadd do Qatar."
   },
   {
-    "id": 305,
+    "id": 266,
     "nome": "Kim Jin-su",
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Sul-coreano",
@@ -6337,7 +5554,7 @@
     "pista4": "Antes do Jeonbuk, jogou no Hannover 96 da Bundesliga."
   },
   {
-    "id": 306,
+    "id": 267,
     "nome": "Cho Gue-sung",
     "posicao": "Centroavante",
     "nacionalidade": "Sul-coreano",
@@ -6356,7 +5573,7 @@
     "pista4": "Antes do Celta Vigo, jogou no Jeonbuk Hyundai Motors na Coreia do Sul."
   },
   {
-    "id": 307,
+    "id": 268,
     "nome": "Dominik Livaković",
     "posicao": "Goleiro",
     "nacionalidade": "Croata",
@@ -6377,7 +5594,7 @@
     "pista4": "Antes do Fenerbahçe, jogou no Dinamo Zagreb."
   },
   {
-    "id": 308,
+    "id": 269,
     "nome": "Luka Modrić",
     "posicao": "Meia",
     "nacionalidade": "Croata",
@@ -6401,7 +5618,7 @@
     "pista4": "Antes do Real Madrid, jogou no Tottenham Hotspur."
   },
   {
-    "id": 309,
+    "id": 270,
     "nome": "Mateo Kovačić",
     "posicao": "Meia",
     "nacionalidade": "Croata",
@@ -6424,7 +5641,7 @@
     "pista4": "Antes do Manchester City, jogou no Chelsea."
   },
   {
-    "id": 310,
+    "id": 271,
     "nome": "Joško Gvardiol",
     "posicao": "Zagueiro",
     "nacionalidade": "Croata",
@@ -6446,7 +5663,7 @@
     "pista4": "Antes do Manchester City, jogou no RB Leipzig."
   },
   {
-    "id": 311,
+    "id": 272,
     "nome": "Andrej Kramarić",
     "posicao": "Atacante",
     "nacionalidade": "Croata",
@@ -6468,7 +5685,7 @@
     "pista4": "Antes do Hoffenheim, jogou no Leicester City."
   },
   {
-    "id": 312,
+    "id": 273,
     "nome": "Ante Budimir",
     "posicao": "Centroavante",
     "nacionalidade": "Croata",
@@ -6489,7 +5706,7 @@
     "pista4": "Antes do Osasuna, jogou no RCD Mallorca."
   },
   {
-    "id": 313,
+    "id": 274,
     "nome": "Ivan Perišić",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Croata",
@@ -6512,7 +5729,7 @@
     "pista4": "Antes do Hajduk Split, jogou no Tottenham Hotspur."
   },
   {
-    "id": 314,
+    "id": 275,
     "nome": "Marcelo Brozović",
     "posicao": "Volante",
     "nacionalidade": "Croata",
@@ -6535,7 +5752,7 @@
     "pista4": "Antes do Al-Nassr, jogou na Inter de Milão."
   },
   {
-    "id": 315,
+    "id": 276,
     "nome": "Dejan Lovren",
     "posicao": "Zagueiro",
     "nacionalidade": "Croata",
@@ -6557,7 +5774,7 @@
     "pista4": "Antes do Zenit, jogou no Olympique de Lyon."
   },
   {
-    "id": 316,
+    "id": 277,
     "nome": "Martin Erlić",
     "posicao": "Zagueiro",
     "nacionalidade": "Croata",
@@ -6576,7 +5793,7 @@
     "pista4": "Antes do RB Leipzig, jogou no Sassuolo."
   },
   {
-    "id": 317,
+    "id": 278,
     "nome": "Josip Stanišić",
     "posicao": "Lateral-direito",
     "nacionalidade": "Croata",
@@ -6598,7 +5815,7 @@
     "pista4": "Antes do Bayer Leverkusen, estava no Bayern de Munique."
   },
   {
-    "id": 318,
+    "id": 279,
     "nome": "Luka Sučić",
     "posicao": "Meia-atacante",
     "nacionalidade": "Croata",
@@ -6619,7 +5836,7 @@
     "pista4": "Antes de retornar ao RB Salzburg, jogou no RB Leipzig."
   },
   {
-    "id": 319,
+    "id": 280,
     "nome": "Bruno Petković",
     "posicao": "Centroavante",
     "nacionalidade": "Croata",
@@ -6641,7 +5858,7 @@
     "pista4": "Antes de retornar ao Dinamo Zagreb, jogou no Venezia."
   },
   {
-    "id": 320,
+    "id": 281,
     "nome": "Lovro Majer",
     "posicao": "Meia",
     "nacionalidade": "Croata",
@@ -6660,7 +5877,7 @@
     "pista4": "Antes do Wolfsburg, jogou no Stade Rennais."
   },
   {
-    "id": 321,
+    "id": 282,
     "nome": "Borna Sosa",
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Croata",
@@ -6679,7 +5896,7 @@
     "pista4": "Antes do Ajax, jogou no VfB Stuttgart."
   },
   {
-    "id": 322,
+    "id": 283,
     "nome": "James Rodríguez",
     "posicao": "Meia-atacante",
     "nacionalidade": "Colombiano",
@@ -6701,7 +5918,7 @@
     "pista4": "Antes do Minnesota United, jogou no Club León."
   },
   {
-    "id": 323,
+    "id": 284,
     "nome": "Luis Díaz",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Colombiano",
@@ -6722,7 +5939,7 @@
     "pista4": "Antes do Bayern de Munique, jogou no Liverpool."
   },
   {
-    "id": 324,
+    "id": 285,
     "nome": "Juan Cuadrado",
     "posicao": "Ponta-direita",
     "nacionalidade": "Colombiano",
@@ -6744,7 +5961,7 @@
     "pista4": "Antes do Pisa, jogou na Inter de Milão."
   },
   {
-    "id": 325,
+    "id": 286,
     "nome": "Daniel Muñoz",
     "posicao": "Lateral-direito",
     "nacionalidade": "Colombiano",
@@ -6763,7 +5980,7 @@
     "pista4": "Antes do Crystal Palace, jogou no KRC Genk."
   },
   {
-    "id": 326,
+    "id": 287,
     "nome": "Richard Ríos",
     "posicao": "Volante",
     "nacionalidade": "Colombiano",
@@ -6785,7 +6002,7 @@
     "pista4": "Antes do Palmeiras, jogou no Guarani de Campinas."
   },
   {
-    "id": 327,
+    "id": 288,
     "nome": "Jhon Arias",
     "posicao": "Meia-atacante",
     "nacionalidade": "Colombiano",
@@ -6806,7 +6023,7 @@
     "pista4": "Antes do Fluminense, jogou no Envigado."
   },
   {
-    "id": 328,
+    "id": 289,
     "nome": "Davinson Sánchez",
     "posicao": "Zagueiro",
     "nacionalidade": "Colombiano",
@@ -6827,7 +6044,7 @@
     "pista4": "Antes do Galatasaray, jogou no Tottenham Hotspur."
   },
   {
-    "id": 329,
+    "id": 290,
     "nome": "Yerson Mosquera",
     "posicao": "Zagueiro",
     "nacionalidade": "Colombiano",
@@ -6846,7 +6063,7 @@
     "pista4": "Antes do Wolverhampton, jogou no Atlético Nacional."
   },
   {
-    "id": 330,
+    "id": 291,
     "nome": "Camilo Vargas",
     "posicao": "Goleiro",
     "nacionalidade": "Colombiano",
@@ -6867,7 +6084,7 @@
     "pista4": "Antes do Atlas, jogou no Deportivo Independiente Medellín."
   },
   {
-    "id": 331,
+    "id": 292,
     "nome": "Lerma",
     "posicao": "Volante",
     "nacionalidade": "Colombiano",
@@ -6886,7 +6103,7 @@
     "pista4": "Antes do Crystal Palace, jogou no AFC Bournemouth."
   },
   {
-    "id": 332,
+    "id": 293,
     "nome": "Sadio Mané",
     "posicao": "Atacante",
     "nacionalidade": "Senegalês",
@@ -6910,7 +6127,7 @@
     "pista4": "Antes do Al-Nassr, jogou no Bayern de Munique."
   },
   {
-    "id": 333,
+    "id": 294,
     "nome": "Idrissa Gana Guèye",
     "posicao": "Volante",
     "nacionalidade": "Senegalês",
@@ -6931,7 +6148,7 @@
     "pista4": "Antes do Everton, jogou no Paris Saint-Germain."
   },
   {
-    "id": 334,
+    "id": 295,
     "nome": "Krepin Diatta",
     "posicao": "Ponta-direita",
     "nacionalidade": "Senegalês",
@@ -6952,7 +6169,7 @@
     "pista4": "Antes do Monaco, jogou no Club Brugge."
   },
   {
-    "id": 335,
+    "id": 296,
     "nome": "Lamine Camara",
     "posicao": "Meia",
     "nacionalidade": "Senegalês",
@@ -6973,7 +6190,7 @@
     "pista4": "Antes do Monaco, jogou no Metz."
   },
   {
-    "id": 336,
+    "id": 297,
     "nome": "Ismaila Sarr",
     "posicao": "Ponta-direita",
     "nacionalidade": "Senegalês",
@@ -6994,7 +6211,7 @@
     "pista4": "Antes do Crystal Palace, jogou no Watford."
   },
   {
-    "id": 337,
+    "id": 298,
     "nome": "Édouard Mendy",
     "posicao": "Goleiro",
     "nacionalidade": "Senegalês",
@@ -7016,7 +6233,7 @@
     "pista4": "Antes do Al-Ahli, jogou no Chelsea."
   },
   {
-    "id": 338,
+    "id": 299,
     "nome": "Kalidou Koulibaly",
     "posicao": "Zagueiro",
     "nacionalidade": "Senegalês",
@@ -7038,7 +6255,7 @@
     "pista4": "Antes do Al-Hilal, jogou no Chelsea."
   },
   {
-    "id": 339,
+    "id": 300,
     "nome": "Pape Matar Sarr",
     "posicao": "Meia",
     "nacionalidade": "Senegalês",
@@ -7059,7 +6276,7 @@
     "pista4": "Antes do Tottenham, jogou no Metz."
   },
   {
-    "id": 340,
+    "id": 301,
     "nome": "Nicolas Ioannou",
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Senegalês",
@@ -7078,7 +6295,7 @@
     "pista4": "Antes do Maccabi Tel Aviv, jogou no APOEL Nicósia."
   },
   {
-    "id": 341,
+    "id": 302,
     "nome": "Habib Diallo",
     "posicao": "Centroavante",
     "nacionalidade": "Senegalês",
@@ -7099,7 +6316,7 @@
     "pista4": "Antes do Al-Shabab, jogou no Strasbourg."
   },
   {
-    "id": 342,
+    "id": 303,
     "nome": "Raúl Jiménez",
     "posicao": "Centroavante",
     "nacionalidade": "Mexicano",
@@ -7120,7 +6337,7 @@
     "pista4": "Antes do Fulham, jogou no Wolverhampton."
   },
   {
-    "id": 343,
+    "id": 304,
     "nome": "Edson Álvarez",
     "posicao": "Volante",
     "nacionalidade": "Mexicano",
@@ -7141,7 +6358,7 @@
     "pista4": "Antes do Fenerbahçe, jogou no West Ham."
   },
   {
-    "id": 344,
+    "id": 305,
     "nome": "Santiago Giménez",
     "posicao": "Centroavante",
     "nacionalidade": "Mexicano",
@@ -7160,7 +6377,7 @@
     "pista4": "Antes do AC Milan, jogou no Feyenoord."
   },
   {
-    "id": 345,
+    "id": 306,
     "nome": "Guillermo Ochoa",
     "posicao": "Goleiro",
     "nacionalidade": "Mexicano",
@@ -7179,7 +6396,7 @@
     "pista4": "Antes do AEL Limassol, jogou no Salernitana."
   },
   {
-    "id": 346,
+    "id": 307,
     "nome": "César Montes",
     "posicao": "Zagueiro",
     "nacionalidade": "Mexicano",
@@ -7198,7 +6415,7 @@
     "pista4": "Antes do Espanyol, jogou no Monterrey."
   },
   {
-    "id": 347,
+    "id": 308,
     "nome": "Alexis Vega",
     "posicao": "Meia-atacante",
     "nacionalidade": "Mexicano",
@@ -7219,7 +6436,7 @@
     "pista4": "Antes do Toluca, jogou no Chivas de Guadalajara."
   },
   {
-    "id": 348,
+    "id": 309,
     "nome": "Roberto Alvarado",
     "posicao": "Meia",
     "nacionalidade": "Mexicano",
@@ -7240,7 +6457,7 @@
     "pista4": "Antes do Chivas, jogou no Cruz Azul."
   },
   {
-    "id": 349,
+    "id": 310,
     "nome": "Johan Vásquez",
     "posicao": "Zagueiro",
     "nacionalidade": "Mexicano",
@@ -7259,7 +6476,7 @@
     "pista4": "Antes do Genoa, jogou no Pumas UNAM."
   },
   {
-    "id": 350,
+    "id": 311,
     "nome": "Julián Quiñones",
     "posicao": "Atacante",
     "nacionalidade": "Mexicano",
@@ -7278,7 +6495,7 @@
     "pista4": "Antes do Al-Qadsiah, jogou no Club América."
   },
   {
-    "id": 351,
+    "id": 312,
     "nome": "Christian Pulisic",
     "posicao": "Meia-atacante",
     "nacionalidade": "Americano",
@@ -7299,7 +6516,7 @@
     "pista4": "Antes do AC Milan, jogou no Chelsea."
   },
   {
-    "id": 352,
+    "id": 313,
     "nome": "Weston McKennie",
     "posicao": "Meia",
     "nacionalidade": "Americano",
@@ -7318,7 +6535,7 @@
     "pista4": "Antes da Juventus, jogou no Schalke 04."
   },
   {
-    "id": 353,
+    "id": 314,
     "nome": "Timothy Weah",
     "posicao": "Ponta-direita",
     "nacionalidade": "Americano",
@@ -7337,7 +6554,7 @@
     "pista4": "Antes do Marseille, estava cedido pela Juventus."
   },
   {
-    "id": 354,
+    "id": 315,
     "nome": "Tyler Adams",
     "posicao": "Volante",
     "nacionalidade": "Americano",
@@ -7356,7 +6573,7 @@
     "pista4": "Antes do Bournemouth, jogou no Leeds United."
   },
   {
-    "id": 355,
+    "id": 316,
     "nome": "Ricardo Pepi",
     "posicao": "Centroavante",
     "nacionalidade": "Americano",
@@ -7377,7 +6594,7 @@
     "pista4": "Antes do PSV, jogou no FC Augsburg."
   },
   {
-    "id": 356,
+    "id": 317,
     "nome": "Gio Reyna",
     "posicao": "Meia-atacante",
     "nacionalidade": "Americano",
@@ -7396,7 +6613,7 @@
     "pista4": "Antes do Nottingham Forest, jogou no Borussia Dortmund."
   },
   {
-    "id": 357,
+    "id": 318,
     "nome": "Matt Turner",
     "posicao": "Goleiro",
     "nacionalidade": "Americano",
@@ -7415,7 +6632,7 @@
     "pista4": "Antes do New England Revolution, jogou no Nottingham Forest."
   },
   {
-    "id": 358,
+    "id": 319,
     "nome": "Sergino Dest",
     "posicao": "Lateral-direito",
     "nacionalidade": "Americano",
@@ -7436,7 +6653,7 @@
     "pista4": "Antes de retornar ao PSV, estava cedido pelo AC Milan."
   },
   {
-    "id": 359,
+    "id": 320,
     "nome": "Brenden Aaronson",
     "posicao": "Meia",
     "nacionalidade": "Americano",
@@ -7455,7 +6672,7 @@
     "pista4": "Antes do Union Berlin, jogou no Leeds United."
   },
   {
-    "id": 360,
+    "id": 321,
     "nome": "Alphonso Davies",
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Canadá",
@@ -7477,7 +6694,7 @@
     "pista4": "Antes do Bayern de Munique, jogou no Vancouver Whitecaps."
   },
   {
-    "id": 361,
+    "id": 322,
     "nome": "Jonathan David",
     "posicao": "Centroavante",
     "nacionalidade": "Canadá",
@@ -7498,7 +6715,7 @@
     "pista4": "Antes do Lille, jogou no KAA Gent."
   },
   {
-    "id": 362,
+    "id": 323,
     "nome": "Stephen Eustáquio",
     "posicao": "Meia",
     "nacionalidade": "Canadá",
@@ -7519,7 +6736,7 @@
     "pista4": "Antes do Porto, jogou no Paços de Ferreira."
   },
   {
-    "id": 363,
+    "id": 324,
     "nome": "Tajon Buchanan",
     "posicao": "Ponta-direita",
     "nacionalidade": "Canadá",
@@ -7540,7 +6757,7 @@
     "pista4": "Antes da Inter de Milão, jogou no Club Brugge."
   },
   {
-    "id": 364,
+    "id": 325,
     "nome": "Cyle Larin",
     "posicao": "Atacante",
     "nacionalidade": "Canadá",
@@ -7561,7 +6778,7 @@
     "pista4": "Antes do Club Brugge, jogou no Mallorca."
   },
   {
-    "id": 365,
+    "id": 326,
     "nome": "Alistair Johnston",
     "posicao": "Lateral-direito",
     "nacionalidade": "Canadá",
@@ -7582,7 +6799,7 @@
     "pista4": "Antes do Celtic, jogou no CF Montréal."
   },
   {
-    "id": 366,
+    "id": 327,
     "nome": "Ismaël Koné",
     "posicao": "Meia",
     "nacionalidade": "Canadá",
@@ -7601,7 +6818,7 @@
     "pista4": "Antes do Watford, jogou no CF Montréal."
   },
   {
-    "id": 367,
+    "id": 328,
     "nome": "Maxime Crépeau",
     "posicao": "Goleiro",
     "nacionalidade": "Canadá",
@@ -7622,7 +6839,7 @@
     "pista4": "Antes do LA Galaxy, jogou no Vancouver Whitecaps."
   },
   {
-    "id": 368,
+    "id": 329,
     "nome": "Mathew Leckie",
     "posicao": "Ponta-direita",
     "nacionalidade": "Austrália",
@@ -7641,7 +6858,7 @@
     "pista4": "Antes do Melbourne City, jogou no Hertha BSC."
   },
   {
-    "id": 369,
+    "id": 330,
     "nome": "Jackson Irvine",
     "posicao": "Meia",
     "nacionalidade": "Austrália",
@@ -7660,7 +6877,7 @@
     "pista4": "Antes do St. Pauli, jogou no Hull City."
   },
   {
-    "id": 370,
+    "id": 331,
     "nome": "Harry Souttar",
     "posicao": "Zagueiro",
     "nacionalidade": "Austrália",
@@ -7679,7 +6896,7 @@
     "pista4": "Antes do Leicester City, jogou no Stoke City."
   },
   {
-    "id": 371,
+    "id": 332,
     "nome": "Cristian Volpato",
     "posicao": "Meia-atacante",
     "nacionalidade": "Austrália",
@@ -7698,7 +6915,7 @@
     "pista4": "Antes do Sassuolo, estava na AS Roma."
   },
   {
-    "id": 372,
+    "id": 333,
     "nome": "Mitchell Duke",
     "posicao": "Centroavante",
     "nacionalidade": "Austrália",
@@ -7717,7 +6934,7 @@
     "pista4": "Antes do Macarthur FC, jogou no Fagiano Okayama no Japão."
   },
   {
-    "id": 373,
+    "id": 334,
     "nome": "Nestory Irankunda",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Austrália",
@@ -7738,7 +6955,7 @@
     "pista4": "Antes do Bayern de Munique, jogou no Adelaide United."
   },
   {
-    "id": 374,
+    "id": 335,
     "nome": "Ryan Strain",
     "posicao": "Lateral-direito",
     "nacionalidade": "Austrália",
@@ -7757,7 +6974,7 @@
     "pista4": "Antes do St. Mirren, jogou no Auckland City."
   },
   {
-    "id": 375,
+    "id": 336,
     "nome": "Cameron Devlin",
     "posicao": "Meia",
     "nacionalidade": "Austrália",
@@ -7776,7 +6993,7 @@
     "pista4": "Antes do Hearts, jogou no Newcastle Jets."
   },
   {
-    "id": 376,
+    "id": 337,
     "nome": "Moisés Caicedo",
     "posicao": "Volante",
     "nacionalidade": "Equador",
@@ -7795,7 +7012,7 @@
     "pista4": "Antes do Chelsea, jogou no Brighton & Hove Albion."
   },
   {
-    "id": 377,
+    "id": 338,
     "nome": "Willian Pacho",
     "posicao": "Zagueiro",
     "nacionalidade": "Equador",
@@ -7817,7 +7034,7 @@
     "pista4": "Antes do PSG, jogou no Eintracht Frankfurt."
   },
   {
-    "id": 378,
+    "id": 339,
     "nome": "Piero Hincapié",
     "posicao": "Zagueiro",
     "nacionalidade": "Equador",
@@ -7836,7 +7053,7 @@
     "pista4": "Antes do Arsenal, jogou no Bayer Leverkusen."
   },
   {
-    "id": 379,
+    "id": 340,
     "nome": "Enner Valencia",
     "posicao": "Centroavante",
     "nacionalidade": "Equador",
@@ -7855,7 +7072,7 @@
     "pista4": "Antes do Internacional, jogou no Fenerbahçe."
   },
   {
-    "id": 380,
+    "id": 341,
     "nome": "Gonzalo Plata",
     "posicao": "Ponta-direita",
     "nacionalidade": "Equador",
@@ -7876,7 +7093,7 @@
     "pista4": "Antes de retornar ao Sporting, jogou no Real Valladolid."
   },
   {
-    "id": 381,
+    "id": 342,
     "nome": "Pervis Estupiñán",
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Equador",
@@ -7895,7 +7112,7 @@
     "pista4": "Antes do Brighton, jogou no Villarreal."
   },
   {
-    "id": 382,
+    "id": 343,
     "nome": "Jeremy Sarmiento",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Equador",
@@ -7914,7 +7131,7 @@
     "pista4": "Antes do Brighton, estava no Benfica."
   },
   {
-    "id": 383,
+    "id": 344,
     "nome": "Byron Castillo",
     "posicao": "Lateral-direito",
     "nacionalidade": "Equador",
@@ -7933,7 +7150,7 @@
     "pista4": "Antes do León, jogou no Barcelona SC."
   },
   {
-    "id": 384,
+    "id": 345,
     "nome": "Ángel Mena",
     "posicao": "Atacante",
     "nacionalidade": "Equador",
@@ -7954,7 +7171,7 @@
     "pista4": "Antes do León, jogou no Club Nacional do Uruguai."
   },
   {
-    "id": 385,
+    "id": 346,
     "nome": "Hakan Çalhanoğlu",
     "posicao": "Volante",
     "nacionalidade": "Turquia",
@@ -7976,7 +7193,7 @@
     "pista4": "Antes da Inter de Milão, jogou no AC Milan."
   },
   {
-    "id": 386,
+    "id": 347,
     "nome": "Arda Güler",
     "posicao": "Meia-atacante",
     "nacionalidade": "Turquia",
@@ -7998,7 +7215,7 @@
     "pista4": "Antes do Real Madrid, jogou no Fenerbahçe."
   },
   {
-    "id": 387,
+    "id": 348,
     "nome": "Kenan Yıldız",
     "posicao": "Meia-atacante",
     "nacionalidade": "Turquia",
@@ -8017,7 +7234,7 @@
     "pista4": "Antes da Juventus, foi formado nas categorias de base do Bayern de Munique."
   },
   {
-    "id": 388,
+    "id": 349,
     "nome": "Uğurcan Çakır",
     "posicao": "Goleiro",
     "nacionalidade": "Turquia",
@@ -8038,7 +7255,7 @@
     "pista4": "Antes do Galatasaray, jogou no Trabzonspor."
   },
   {
-    "id": 389,
+    "id": 350,
     "nome": "Zeki Çelik",
     "posicao": "Lateral-direito",
     "nacionalidade": "Turquia",
@@ -8059,7 +7276,7 @@
     "pista4": "Antes da AS Roma, jogou no Lille."
   },
   {
-    "id": 390,
+    "id": 351,
     "nome": "Salih Özcan",
     "posicao": "Volante",
     "nacionalidade": "Turquia",
@@ -8078,7 +7295,7 @@
     "pista4": "Antes do Borussia Dortmund, jogou no Cologne."
   },
   {
-    "id": 391,
+    "id": 352,
     "nome": "Orkun Kökçü",
     "posicao": "Meia",
     "nacionalidade": "Turquia",
@@ -8099,7 +7316,7 @@
     "pista4": "Antes do Besiktas, jogou no Benfica."
   },
   {
-    "id": 392,
+    "id": 353,
     "nome": "Yusuf Yazıcı",
     "posicao": "Meia-atacante",
     "nacionalidade": "Turquia",
@@ -8120,7 +7337,7 @@
     "pista4": "Antes do Lille, jogou no Trabzonspor."
   },
   {
-    "id": 393,
+    "id": 354,
     "nome": "Cenk Tosun",
     "posicao": "Centroavante",
     "nacionalidade": "Turquia",
@@ -8141,7 +7358,7 @@
     "pista4": "Antes de retornar ao Besiktas, jogou no Everton."
   },
   {
-    "id": 394,
+    "id": 355,
     "nome": "Can Uzun",
     "posicao": "Atacante",
     "nacionalidade": "Turquia",
@@ -8160,7 +7377,7 @@
     "pista4": "Antes do Eintracht Frankfurt, jogou no 1. FC Nürnberg."
   },
   {
-    "id": 395,
+    "id": 356,
     "nome": "David Alaba",
     "posicao": "Zagueiro",
     "nacionalidade": "Áustria",
@@ -8184,7 +7401,7 @@
     "pista4": "Antes do Real Madrid, jogou no Bayern de Munique."
   },
   {
-    "id": 396,
+    "id": 357,
     "nome": "Marcel Sabitzer",
     "posicao": "Meia",
     "nacionalidade": "Áustria",
@@ -8206,7 +7423,7 @@
     "pista4": "Antes do Borussia Dortmund, esteve cedido pelo Bayern ao Manchester United."
   },
   {
-    "id": 397,
+    "id": 358,
     "nome": "Marko Arnautović",
     "posicao": "Centroavante",
     "nacionalidade": "Áustria",
@@ -8225,7 +7442,7 @@
     "pista4": "Antes do Rapid Wien, jogou na Inter de Milão."
   },
   {
-    "id": 398,
+    "id": 359,
     "nome": "Konrad Laimer",
     "posicao": "Meia",
     "nacionalidade": "Áustria",
@@ -8247,7 +7464,7 @@
     "pista4": "Antes do Bayern de Munique, jogou no RB Leipzig."
   },
   {
-    "id": 399,
+    "id": 360,
     "nome": "Kevin Danso",
     "posicao": "Zagueiro",
     "nacionalidade": "Áustria",
@@ -8266,7 +7483,7 @@
     "pista4": "Antes do Lens, jogou no Augsburg."
   },
   {
-    "id": 400,
+    "id": 361,
     "nome": "Christoph Baumgartner",
     "posicao": "Meia-atacante",
     "nacionalidade": "Áustria",
@@ -8285,7 +7502,7 @@
     "pista4": "Antes do RB Leipzig, jogou no Hoffenheim."
   },
   {
-    "id": 401,
+    "id": 362,
     "nome": "Patrick Wimmer",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Áustria",
@@ -8304,7 +7521,7 @@
     "pista4": "Antes do Wolfsburg, jogou no Arminia Bielefeld."
   },
   {
-    "id": 402,
+    "id": 363,
     "nome": "Maximilian Wöber",
     "posicao": "Zagueiro",
     "nacionalidade": "Áustria",
@@ -8323,7 +7540,7 @@
     "pista4": "Antes do Leeds United, jogou no RB Salzburg."
   },
   {
-    "id": 403,
+    "id": 364,
     "nome": "Romano Schmid",
     "posicao": "Meia",
     "nacionalidade": "Áustria",
@@ -8342,7 +7559,7 @@
     "pista4": "Antes do Werder Bremen, jogou no RB Salzburg."
   },
   {
-    "id": 404,
+    "id": 365,
     "nome": "Paul Wanner",
     "posicao": "Meia-atacante",
     "nacionalidade": "Áustria",
@@ -8361,7 +7578,7 @@
     "pista4": "Antes do Heidenheim, estava no Bayern de Munique."
   },
   {
-    "id": 405,
+    "id": 366,
     "nome": "Fernando Muslera",
     "posicao": "Goleiro",
     "nacionalidade": "Uruguaio",
@@ -8383,7 +7600,7 @@
     "pista4": "Antes do Galatasaray, jogou no Lazio da Itália."
   },
   {
-    "id": 406,
+    "id": 367,
     "nome": "Ronald Araújo",
     "posicao": "Zagueiro",
     "nacionalidade": "Uruguaio",
@@ -8405,7 +7622,7 @@
     "pista4": "Antes do Barcelona, jogou no Boston River do Uruguai."
   },
   {
-    "id": 407,
+    "id": 368,
     "nome": "José María Giménez",
     "posicao": "Zagueiro",
     "nacionalidade": "Uruguaio",
@@ -8427,7 +7644,7 @@
     "pista4": "Antes do Atlético de Madrid, jogou no Danubio do Uruguai."
   },
   {
-    "id": 408,
+    "id": 369,
     "nome": "Rodrigo Bentancur",
     "posicao": "Volante",
     "nacionalidade": "Uruguaio",
@@ -8448,7 +7665,7 @@
     "pista4": "Antes do Tottenham, jogou na Juventus da Itália."
   },
   {
-    "id": 409,
+    "id": 370,
     "nome": "Federico Valverde",
     "posicao": "Meia",
     "nacionalidade": "Uruguaio",
@@ -8471,7 +7688,7 @@
     "pista4": "Antes do Real Madrid, jogou no Peñarol do Uruguai."
   },
   {
-    "id": 410,
+    "id": 371,
     "nome": "Manuel Ugarte",
     "posicao": "Volante",
     "nacionalidade": "Uruguaio",
@@ -8490,7 +7707,7 @@
     "pista4": "Antes do Manchester United, jogou no Paris Saint-Germain da França."
   },
   {
-    "id": 411,
+    "id": 372,
     "nome": "Nicolás De la Cruz",
     "posicao": "Meia-atacante",
     "nacionalidade": "Uruguaio",
@@ -8511,7 +7728,7 @@
     "pista4": "Antes do Atlético de Madrid, jogou no Flamengo do Brasil."
   },
   {
-    "id": 412,
+    "id": 373,
     "nome": "Giorgian De Arrascaeta",
     "posicao": "Meia-atacante",
     "nacionalidade": "Uruguaio",
@@ -8534,7 +7751,7 @@
     "pista4": "Antes do Flamengo, jogou no Cruzeiro do Brasil."
   },
   {
-    "id": 413,
+    "id": 374,
     "nome": "Darwin Núñez",
     "posicao": "Centroavante",
     "nacionalidade": "Uruguaio",
@@ -8553,7 +7770,7 @@
     "pista4": "Antes do Al Hilal, jogou no Liverpool da Inglaterra."
   },
   {
-    "id": 414,
+    "id": 375,
     "nome": "Brian Rodríguez",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Uruguaio",
@@ -8574,7 +7791,7 @@
     "pista4": "Antes do Club América, jogou no Los Angeles FC dos EUA."
   },
   {
-    "id": 415,
+    "id": 376,
     "nome": "Facundo Pellistri",
     "posicao": "Ponta-direita",
     "nacionalidade": "Uruguaio",
@@ -8593,7 +7810,7 @@
     "pista4": "Antes do Manchester United, jogou no Peñarol do Uruguai."
   },
   {
-    "id": 416,
+    "id": 377,
     "nome": "Mehdi Taremi",
     "posicao": "Centroavante",
     "nacionalidade": "Irã",
@@ -8615,7 +7832,7 @@
     "pista4": "Antes do Olympiakos, jogou na Inter de Milão da Itália."
   },
   {
-    "id": 417,
+    "id": 378,
     "nome": "Alireza Jahanbakhsh",
     "posicao": "Ponta-direita",
     "nacionalidade": "Irã",
@@ -8636,7 +7853,7 @@
     "pista4": "Antes do Heerenveen, jogou no Brighton da Inglaterra."
   },
   {
-    "id": 418,
+    "id": 379,
     "nome": "Ali Gholizadeh",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Irã",
@@ -8655,7 +7872,7 @@
     "pista4": "Antes do Lech Poznań, jogou no Charleroi da Bélgica."
   },
   {
-    "id": 419,
+    "id": 380,
     "nome": "Ramin Rezaeian",
     "posicao": "Lateral-direito",
     "nacionalidade": "Irã",
@@ -8674,7 +7891,7 @@
     "pista4": "Antes do Sepahan, jogou no Anderlecht da Bélgica."
   },
   {
-    "id": 420,
+    "id": 381,
     "nome": "Ehsan Hajsafi",
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Irã",
@@ -8695,7 +7912,7 @@
     "pista4": "Antes do Persepolis, jogou no Olympiakos da Grécia."
   },
   {
-    "id": 421,
+    "id": 382,
     "nome": "Morteza Pouraliganji",
     "posicao": "Zagueiro",
     "nacionalidade": "Irã",
@@ -8714,7 +7931,7 @@
     "pista4": "Antes do Al-Sailiya, jogou no Al-Wehdat da Jordânia."
   },
   {
-    "id": 422,
+    "id": 383,
     "nome": "Sardar Azmoun",
     "posicao": "Centroavante",
     "nacionalidade": "Irã",
@@ -8733,7 +7950,7 @@
     "pista4": "Antes do Shabab Al-Ahli, jogou no Bayer Leverkusen da Alemanha."
   },
   {
-    "id": 423,
+    "id": 384,
     "nome": "Karim Ansarifard",
     "posicao": "Atacante",
     "nacionalidade": "Irã",
@@ -8752,7 +7969,7 @@
     "pista4": "Antes do Esteghlal, jogou no Nottingham Forest da Inglaterra."
   },
   {
-    "id": 424,
+    "id": 385,
     "nome": "Saman Ghoddos",
     "posicao": "Meia-atacante",
     "nacionalidade": "Irã",
@@ -8771,7 +7988,7 @@
     "pista4": "Antes do Brentford, jogou no Amiens da França."
   },
   {
-    "id": 425,
+    "id": 386,
     "nome": "Riyad Mahrez",
     "posicao": "Ponta-direita",
     "nacionalidade": "Argélia",
@@ -8794,7 +8011,7 @@
     "pista4": "Antes do Al Ahli, jogou no Manchester City da Inglaterra."
   },
   {
-    "id": 426,
+    "id": 387,
     "nome": "Ismaël Bennacer",
     "posicao": "Volante",
     "nacionalidade": "Argélia",
@@ -8816,7 +8033,7 @@
     "pista4": "Antes do Dinamo Zagreb, jogou no AC Milan da Itália."
   },
   {
-    "id": 427,
+    "id": 388,
     "nome": "Houssem Aouar",
     "posicao": "Meia",
     "nacionalidade": "Argélia",
@@ -8835,7 +8052,7 @@
     "pista4": "Antes da Roma, jogou no Olympique Lyonnais da França."
   },
   {
-    "id": 428,
+    "id": 389,
     "nome": "Amine Gouiri",
     "posicao": "Atacante",
     "nacionalidade": "Argélia",
@@ -8854,7 +8071,7 @@
     "pista4": "Antes do Stade Rennais, jogou no OGC Nice da França."
   },
   {
-    "id": 429,
+    "id": 390,
     "nome": "Aissa Mandi",
     "posicao": "Zagueiro",
     "nacionalidade": "Argélia",
@@ -8875,7 +8092,7 @@
     "pista4": "Antes do Villarreal, jogou no Real Betis da Espanha."
   },
   {
-    "id": 430,
+    "id": 391,
     "nome": "Yacine Brahimi",
     "posicao": "Meia-atacante",
     "nacionalidade": "Argélia",
@@ -8896,7 +8113,7 @@
     "pista4": "Antes do Al-Rayyan, jogou no Porto de Portugal."
   },
   {
-    "id": 431,
+    "id": 392,
     "nome": "Islam Slimani",
     "posicao": "Centroavante",
     "nacionalidade": "Argélia",
@@ -8917,7 +8134,7 @@
     "pista4": "Antes do CR Belouizdad, jogou no Brest da França."
   },
   {
-    "id": 432,
+    "id": 393,
     "nome": "Yeferson Soteldo",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Venezuela",
@@ -8938,7 +8155,7 @@
     "pista4": "Antes do Club América, jogou no Grêmio do Brasil."
   },
   {
-    "id": 433,
+    "id": 394,
     "nome": "Tomás Rincón",
     "posicao": "Volante",
     "nacionalidade": "Venezuela",
@@ -8959,7 +8176,7 @@
     "pista4": "Antes do Deportivo Táchira, jogou no Santos do Brasil."
   },
   {
-    "id": 434,
+    "id": 395,
     "nome": "Darwin Machis",
     "posicao": "Ponta-direita",
     "nacionalidade": "Venezuela",
@@ -8978,7 +8195,7 @@
     "pista4": "Antes do Granada, jogou no Getafe da Espanha."
   },
   {
-    "id": 435,
+    "id": 396,
     "nome": "Salomón Rondón",
     "posicao": "Centroavante",
     "nacionalidade": "Venezuela",
@@ -8997,7 +8214,7 @@
     "pista4": "Antes do Everton, jogou no Al-Qadsiah da Arábia Saudita."
   },
   {
-    "id": 436,
+    "id": 397,
     "nome": "Josef Martínez",
     "posicao": "Atacante",
     "nacionalidade": "Venezuela",
@@ -9018,7 +8235,7 @@
     "pista4": "Antes do Inter Miami, jogou no Atlanta United dos EUA."
   },
   {
-    "id": 437,
+    "id": 398,
     "nome": "Jan Arango",
     "posicao": "Meia-atacante",
     "nacionalidade": "Venezuela",
@@ -9037,7 +8254,7 @@
     "pista4": "Antes do Monterrey, jogou no Club Brugge da Bélgica."
   },
   {
-    "id": 438,
+    "id": 399,
     "nome": "Yordan Osorio",
     "posicao": "Zagueiro",
     "nacionalidade": "Venezuela",
@@ -9056,7 +8273,7 @@
     "pista4": "Antes do Tigres UANL, jogou no Granada da Espanha."
   },
   {
-    "id": 439,
+    "id": 400,
     "nome": "Adalberto Peñaranda",
     "posicao": "Atacante",
     "nacionalidade": "Venezuela",
@@ -9075,7 +8292,7 @@
     "pista4": "Antes da Udinese, jogou no Watford da Inglaterra."
   },
   {
-    "id": 440,
+    "id": 401,
     "nome": "Robert Lewandowski",
     "posicao": "Centroavante",
     "nacionalidade": "Polonês",
@@ -9098,7 +8315,7 @@
     "pista4": "Antes do Barcelona, jogou no Bayern de Munique da Alemanha."
   },
   {
-    "id": 441,
+    "id": 402,
     "nome": "Piotr Zielinski",
     "posicao": "Meia",
     "nacionalidade": "Polonês",
@@ -9119,7 +8336,7 @@
     "pista4": "Antes da Inter de Milão, jogou no Napoli da Itália."
   },
   {
-    "id": 442,
+    "id": 403,
     "nome": "Wojciech Szczesny",
     "posicao": "Goleiro",
     "nacionalidade": "Polonês",
@@ -9141,7 +8358,7 @@
     "pista4": "Antes do Barcelona, jogou na Juventus da Itália."
   },
   {
-    "id": 443,
+    "id": 404,
     "nome": "Kamil Grosicki",
     "posicao": "Ponta-direita",
     "nacionalidade": "Polonês",
@@ -9160,7 +8377,7 @@
     "pista4": "Antes do Pogoń Szczecin, jogou no West Bromwich Albion da Inglaterra."
   },
   {
-    "id": 444,
+    "id": 405,
     "nome": "Jakub Kiwior",
     "posicao": "Zagueiro",
     "nacionalidade": "Polonês",
@@ -9179,7 +8396,7 @@
     "pista4": "Antes do Arsenal, jogou na Spezia da Itália."
   },
   {
-    "id": 445,
+    "id": 406,
     "nome": "Sebastian Szymanski",
     "posicao": "Meia-atacante",
     "nacionalidade": "Polonês",
@@ -9198,7 +8415,7 @@
     "pista4": "Antes do Fenerbahçe, jogou no Feyenoord da Holanda."
   },
   {
-    "id": 446,
+    "id": 407,
     "nome": "Arkadiusz Milik",
     "posicao": "Centroavante",
     "nacionalidade": "Polonês",
@@ -9220,7 +8437,7 @@
     "pista4": "Antes da Juventus, jogou no Olympique de Marseille da França."
   },
   {
-    "id": 447,
+    "id": 408,
     "nome": "Vanja Milinkovic-Savic",
     "posicao": "Goleiro",
     "nacionalidade": "Sérvio",
@@ -9241,7 +8458,7 @@
     "pista4": "Antes do Napoli, jogou no Torino da Itália."
   },
   {
-    "id": 448,
+    "id": 409,
     "nome": "Dušan Vlahovic",
     "posicao": "Centroavante",
     "nacionalidade": "Sérvio",
@@ -9260,7 +8477,7 @@
     "pista4": "Antes da Juventus, jogou na Fiorentina da Itália."
   },
   {
-    "id": 449,
+    "id": 410,
     "nome": "Dušan Tadić",
     "posicao": "Meia-atacante",
     "nacionalidade": "Sérvio",
@@ -9281,7 +8498,7 @@
     "pista4": "Antes do Al-Wahda, jogou no Fenerbahçe da Turquia."
   },
   {
-    "id": 450,
+    "id": 411,
     "nome": "Aleksandar Mitrovic",
     "posicao": "Centroavante",
     "nacionalidade": "Sérvio",
@@ -9300,7 +8517,7 @@
     "pista4": "Antes do Al Hilal, jogou no Fulham da Inglaterra."
   },
   {
-    "id": 451,
+    "id": 412,
     "nome": "Nemanja Matic",
     "posicao": "Volante",
     "nacionalidade": "Sérvio",
@@ -9322,7 +8539,7 @@
     "pista4": "Antes do Lyon, jogou na Roma da Itália."
   },
   {
-    "id": 452,
+    "id": 413,
     "nome": "Filip Kostic",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Sérvio",
@@ -9343,7 +8560,7 @@
     "pista4": "Antes da Juventus, jogou no Eintracht Frankfurt da Alemanha."
   },
   {
-    "id": 453,
+    "id": 414,
     "nome": "Nikola Milenkovic",
     "posicao": "Zagueiro",
     "nacionalidade": "Sérvio",
@@ -9362,7 +8579,7 @@
     "pista4": "Antes do Nottingham Forest, jogou na Fiorentina da Itália."
   },
   {
-    "id": 454,
+    "id": 415,
     "nome": "Viktor Gyokeres",
     "posicao": "Centroavante",
     "nacionalidade": "Sueco",
@@ -9381,7 +8598,7 @@
     "pista4": "Antes do Arsenal, jogou no Sporting CP de Portugal."
   },
   {
-    "id": 455,
+    "id": 416,
     "nome": "Alexander Isak",
     "posicao": "Centroavante",
     "nacionalidade": "Sueco",
@@ -9400,7 +8617,7 @@
     "pista4": "Antes do Liverpool, jogou no Newcastle United da Inglaterra."
   },
   {
-    "id": 456,
+    "id": 417,
     "nome": "Dejan Kulusevski",
     "posicao": "Ponta-direita",
     "nacionalidade": "Sueco",
@@ -9419,7 +8636,7 @@
     "pista4": "Antes do Tottenham, jogou na Juventus da Itália."
   },
   {
-    "id": 457,
+    "id": 418,
     "nome": "Emil Forsberg",
     "posicao": "Meia",
     "nacionalidade": "Sueco",
@@ -9440,7 +8657,7 @@
     "pista4": "Antes do RB Leipzig, jogou no Malmö FF da Suécia."
   },
   {
-    "id": 458,
+    "id": 419,
     "nome": "Robin Olsen",
     "posicao": "Goleiro",
     "nacionalidade": "Sueco",
@@ -9459,7 +8676,7 @@
     "pista4": "Antes do Aston Villa, jogou na Roma da Itália."
   },
   {
-    "id": 459,
+    "id": 420,
     "nome": "Marcus Danielson",
     "posicao": "Zagueiro",
     "nacionalidade": "Sueco",
@@ -9480,7 +8697,7 @@
     "pista4": "Antes do Djurgårdens, jogou no Dalian Professional da China."
   },
   {
-    "id": 460,
+    "id": 421,
     "nome": "Mattias Svanberg",
     "posicao": "Volante",
     "nacionalidade": "Sueco",
@@ -9499,7 +8716,7 @@
     "pista4": "Antes do Wolfsburg, jogou no Bologna da Itália."
   },
   {
-    "id": 461,
+    "id": 422,
     "nome": "Keylor Navas",
     "posicao": "Goleiro",
     "nacionalidade": "Costa Rica",
@@ -9521,7 +8738,7 @@
     "pista4": "Antes do Pumas UNAM, jogou no Paris Saint-Germain da França."
   },
   {
-    "id": 462,
+    "id": 423,
     "nome": "Joel Campbell",
     "posicao": "Ponta-direita",
     "nacionalidade": "Costa Rica",
@@ -9540,7 +8757,7 @@
     "pista4": "Antes de se tornar agente livre, jogou no Alajuelense da Costa Rica."
   },
   {
-    "id": 463,
+    "id": 424,
     "nome": "Bryan Ruiz",
     "posicao": "Meia-atacante",
     "nacionalidade": "Costa Rica",
@@ -9561,7 +8778,7 @@
     "pista4": "Antes do Alajuelense, jogou no Sporting CP de Portugal."
   },
   {
-    "id": 464,
+    "id": 425,
     "nome": "Celso Borges",
     "posicao": "Volante",
     "nacionalidade": "Costa Rica",
@@ -9582,7 +8799,7 @@
     "pista4": "Antes do Alajuelense, jogou no AIK da Suécia."
   },
   {
-    "id": 465,
+    "id": 426,
     "nome": "Francisco Calvo",
     "posicao": "Zagueiro",
     "nacionalidade": "Costa Rica",
@@ -9601,7 +8818,7 @@
     "pista4": "Antes do FC Cincinnati, jogou no Minnesota United dos EUA."
   },
   {
-    "id": 466,
+    "id": 427,
     "nome": "Anthony Contreras",
     "posicao": "Atacante",
     "nacionalidade": "Costa Rica",
@@ -9622,7 +8839,7 @@
     "pista4": "Antes do Alajuelense, jogou no Herediano da Costa Rica."
   },
   {
-    "id": 467,
+    "id": 428,
     "nome": "Kendall Waston",
     "posicao": "Zagueiro",
     "nacionalidade": "Costa Rica",
@@ -9643,7 +8860,7 @@
     "pista4": "Antes do Saprissa, jogou no Vancouver Whitecaps do Canadá."
   },
   {
-    "id": 468,
+    "id": 429,
     "nome": "Michail Antonio",
     "posicao": "Centroavante",
     "nacionalidade": "Jamaica",
@@ -9662,7 +8879,7 @@
     "pista4": "Antes do West Ham, jogou no Nottingham Forest da Inglaterra."
   },
   {
-    "id": 469,
+    "id": 430,
     "nome": "Bobby Decordova-Reid",
     "posicao": "Ponta-direita",
     "nacionalidade": "Jamaica",
@@ -9681,7 +8898,7 @@
     "pista4": "Antes do Fulham, jogou no Leicester City da Inglaterra."
   },
   {
-    "id": 470,
+    "id": 431,
     "nome": "Leon Bailey",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Jamaica",
@@ -9700,7 +8917,7 @@
     "pista4": "Antes do Aston Villa, jogou no Bayer Leverkusen da Alemanha."
   },
   {
-    "id": 471,
+    "id": 432,
     "nome": "Shamar Nicholson",
     "posicao": "Centroavante",
     "nacionalidade": "Jamaica",
@@ -9719,7 +8936,7 @@
     "pista4": "Antes do Stade Brestois, jogou no Charleroi da Bélgica."
   },
   {
-    "id": 472,
+    "id": 433,
     "nome": "Damion Lowe",
     "posicao": "Zagueiro",
     "nacionalidade": "Jamaica",
@@ -9738,7 +8955,7 @@
     "pista4": "Antes do Inter Miami, jogou no Hammarby da Suécia."
   },
   {
-    "id": 473,
+    "id": 434,
     "nome": "Daniel Johnson",
     "posicao": "Meia",
     "nacionalidade": "Jamaica",
@@ -9757,7 +8974,7 @@
     "pista4": "Antes do Preston, jogou no Aston Villa da Inglaterra."
   },
   {
-    "id": 474,
+    "id": 435,
     "nome": "Je-Vaughn Watson",
     "posicao": "Lateral-direito",
     "nacionalidade": "Jamaica",
@@ -9776,7 +8993,7 @@
     "pista4": "Antes do Colorado Rapids, jogou no New York Red Bulls dos EUA."
   },
   {
-    "id": 475,
+    "id": 436,
     "nome": "Mohammed Kudus",
     "posicao": "Meia-atacante",
     "nacionalidade": "Ghana",
@@ -9795,7 +9012,7 @@
     "pista4": "Antes do Tottenham, jogou no West Ham United da Inglaterra."
   },
   {
-    "id": 476,
+    "id": 437,
     "nome": "Thomas Partey",
     "posicao": "Volante",
     "nacionalidade": "Ghana",
@@ -9816,7 +9033,7 @@
     "pista4": "Antes do Villarreal, jogou no Arsenal da Inglaterra."
   },
   {
-    "id": 477,
+    "id": 438,
     "nome": "Jordan Ayew",
     "posicao": "Atacante",
     "nacionalidade": "Ghana",
@@ -9835,7 +9052,7 @@
     "pista4": "Antes do Leicester, jogou no Crystal Palace da Inglaterra."
   },
   {
-    "id": 478,
+    "id": 439,
     "nome": "Abdul Fatawu Issahaku",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Ghana",
@@ -9854,7 +9071,7 @@
     "pista4": "Antes do Leicester, jogou no Sporting CP de Portugal."
   },
   {
-    "id": 479,
+    "id": 440,
     "nome": "Inaki Williams",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Ghana",
@@ -9873,7 +9090,7 @@
     "pista4": "Sempre jogou no Athletic Club de Bilbao, onde foi formado desde jovem."
   },
   {
-    "id": 480,
+    "id": 441,
     "nome": "Tariq Lamptey",
     "posicao": "Lateral-direito",
     "nacionalidade": "Ghana",
@@ -9892,7 +9109,7 @@
     "pista4": "Antes do Brighton, foi formado no Chelsea da Inglaterra."
   },
   {
-    "id": 481,
+    "id": 442,
     "nome": "Kamaldeen Sulemana",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Ghana",
@@ -9911,7 +9128,7 @@
     "pista4": "Antes do Southampton, jogou no Stade Rennais da França."
   },
   {
-    "id": 482,
+    "id": 443,
     "nome": "André Onana",
     "posicao": "Goleiro",
     "nacionalidade": "Camarões",
@@ -9932,7 +9149,7 @@
     "pista4": "Antes do Manchester United, jogou na Inter de Milão da Itália."
   },
   {
-    "id": 483,
+    "id": 444,
     "nome": "André-Frank Zambo Anguissa",
     "posicao": "Volante",
     "nacionalidade": "Camarões",
@@ -9953,7 +9170,7 @@
     "pista4": "Antes do Napoli, jogou no Fulham da Inglaterra."
   },
   {
-    "id": 484,
+    "id": 445,
     "nome": "Eric Maxim Choupo-Moting",
     "posicao": "Centroavante",
     "nacionalidade": "Camarões",
@@ -9975,7 +9192,7 @@
     "pista4": "Antes do New York Red Bulls, jogou no Bayern de Munique da Alemanha."
   },
   {
-    "id": 485,
+    "id": 446,
     "nome": "Bryan Mbeumo",
     "posicao": "Ponta-direita",
     "nacionalidade": "Camarões",
@@ -9994,7 +9211,7 @@
     "pista4": "Antes do Brentford, jogou no Troyes da França."
   },
   {
-    "id": 486,
+    "id": 447,
     "nome": "Vincent Aboubakar",
     "posicao": "Centroavante",
     "nacionalidade": "Camarões",
@@ -10015,7 +9232,7 @@
     "pista4": "Antes do Al-Nassr, jogou no Al-Qadsiah da Arábia Saudita."
   },
   {
-    "id": 487,
+    "id": 448,
     "nome": "Carlos Baleba",
     "posicao": "Volante",
     "nacionalidade": "Camarões",
@@ -10034,7 +9251,7 @@
     "pista4": "Antes do Brighton, jogou no LOSC Lille da França."
   },
   {
-    "id": 488,
+    "id": 449,
     "nome": "Christopher Wooh",
     "posicao": "Zagueiro",
     "nacionalidade": "Camarões",
@@ -10053,7 +9270,7 @@
     "pista4": "Antes do Stade Rennais, jogou no RC Lens da França."
   },
   {
-    "id": 489,
+    "id": 450,
     "nome": "Georges-Kevin Nkoudou",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Camarões",
@@ -10072,7 +9289,7 @@
     "pista4": "Antes do Besiktas, jogou no Tottenham Hotspur da Inglaterra."
   },
   {
-    "id": 490,
+    "id": 451,
     "nome": "Neymar Jr",
     "posicao": "Meia-atacante",
     "nacionalidade": "Brasileiro",
@@ -10095,123 +9312,7 @@
     "pista4": "Antes do Al-Hilal, jogou no Paris Saint-Germain"
   },
   {
-    "id": 491,
-    "nome": "Guilherme Arana",
-    "posicao": "Lateral-esquerdo",
-    "nacionalidade": "Brasileiro",
-    "bandeira": "🇧🇷",
-    "clube": "Atlético Mineiro",
-    "liga": "Brasileirão",
-    "dificuldade": "medio",
-    "titulos": [
-      "Copa Libertadores 2013 (base)"
-    ],
-    "curiosidade": "Um dos melhores laterais-esquerdos do futebol sul-americano na atualidade",
-    "faixaEtaria": "26-30",
-    "clubeAnterior": "Sevilla",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "La Liga",
-    "pista2": "Lateral ofensivo com ótima capacidade de cruzamento e chegada ao ataque",
-    "pista3": "Natural de São Paulo, em São Paulo, Brasil...",
-    "pista4": "Antes do Atlético Mineiro, jogou no Sevilla"
-  },
-  {
-    "id": 492,
-    "nome": "Yan Couto",
-    "posicao": "Lateral-direito",
-    "nacionalidade": "Brasileiro",
-    "bandeira": "🇧🇷",
-    "clube": "Manchester City",
-    "liga": "Premier League",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Revelado pelo Coritiba, consolidou-se na Europa em poucos anos",
-    "faixaEtaria": "22-26",
-    "clubeAnterior": "Girona",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "La Liga",
-    "pista2": "Lateral veloz com qualidade técnica e habilidade no um contra um",
-    "pista3": "Natural de Curitiba, em Paraná, Brasil...",
-    "pista4": "Antes do Manchester City, jogou no Girona"
-  },
-  {
-    "id": 493,
-    "nome": "Andreas Pereira",
-    "posicao": "Meia",
-    "nacionalidade": "Brasileiro",
-    "bandeira": "🇧🇷",
-    "clube": "Fulham",
-    "liga": "Premier League",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Nascido na Bélgica de pais brasileiros, escolheu defender o Brasil",
-    "faixaEtaria": "26-30",
-    "clubeAnterior": "Manchester United",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Premier League",
-    "pista2": "Meia criativo com boa visão de passe e chute potente de fora da área",
-    "pista3": "Natural de Duffel, na Bélgica...",
-    "pista4": "Antes do Fulham, jogou no Manchester United"
-  },
-  {
-    "id": 494,
-    "nome": "Wendell",
-    "posicao": "Lateral-esquerdo",
-    "nacionalidade": "Brasileiro",
-    "bandeira": "🇧🇷",
-    "clube": "Porto",
-    "liga": "Primeira Liga",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Passou pela base do Grêmio antes de conquistar a Europa",
-    "faixaEtaria": "30-35",
-    "clubeAnterior": "Bayer Leverkusen",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Bundesliga",
-    "pista2": "Lateral resistente com boa capacidade defensiva e presença constante no ataque",
-    "pista3": "Natural de Recife, em Pernambuco, Brasil...",
-    "pista4": "Antes do Porto, jogou no Bayer Leverkusen"
-  },
-  {
-    "id": 495,
-    "nome": "Beraldo",
-    "posicao": "Zagueiro",
-    "nacionalidade": "Brasileiro",
-    "bandeira": "🇧🇷",
-    "clube": "Paris Saint-Germain",
-    "liga": "Ligue 1",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Revelação do São Paulo FC que rapidamente chamou atenção do PSG",
-    "faixaEtaria": "18-22",
-    "clubeAnterior": "São Paulo",
-    "origemAnterior": "brasil",
-    "ligaAnterior": "Brasileirão",
-    "pista2": "Zagueiro jovem com bom posicionamento, saída de bola e inteligência tática",
-    "pista3": "Natural de São Paulo, em São Paulo, Brasil...",
-    "pista4": "Antes do PSG, jogou no São Paulo FC"
-  },
-  {
-    "id": 496,
-    "nome": "Savinho",
-    "posicao": "Ponta-direita",
-    "nacionalidade": "Brasileiro",
-    "bandeira": "🇧🇷",
-    "clube": "Manchester City",
-    "liga": "Premier League",
-    "dificuldade": "dificil",
-    "titulos": [],
-    "curiosidade": "Revelado pelo Atletico Mineiro, explodiu no Girona antes de ir ao City",
-    "faixaEtaria": "18-22",
-    "clubeAnterior": "Girona",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "La Liga",
-    "pista2": "Ponta veloz e dribblador com forte presença ofensiva pelo lado direito",
-    "pista3": "Natural de Belo Horizonte, em Minas Gerais, Brasil...",
-    "pista4": "Antes do Manchester City, jogou no Girona"
-  },
-  {
-    "id": 497,
+    "id": 452,
     "nome": "Paulo Dybala",
     "posicao": "Meia-atacante",
     "nacionalidade": "Argentino",
@@ -10233,7 +9334,7 @@
     "pista4": "Antes da Roma, jogou na Juventus"
   },
   {
-    "id": 498,
+    "id": 453,
     "nome": "Alejandro Garnacho",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Argentino",
@@ -10252,7 +9353,7 @@
     "pista4": "Antes do Manchester United, estava nas divisões de base do Atlético de Madrid"
   },
   {
-    "id": 499,
+    "id": 454,
     "nome": "Randal Kolo Muani",
     "posicao": "Atacante",
     "nacionalidade": "Francês",
@@ -10271,7 +9372,7 @@
     "pista4": "Antes do PSG, jogou no Eintracht Frankfurt"
   },
   {
-    "id": 500,
+    "id": 455,
     "nome": "Álvaro Morata",
     "posicao": "Centroavante",
     "nacionalidade": "Espanhol",
@@ -10294,7 +9395,7 @@
     "pista4": "Antes do AC Milan, jogou no Atlético de Madrid"
   },
   {
-    "id": 501,
+    "id": 456,
     "nome": "Rafael Santos Borré",
     "posicao": "Centroavante",
     "nacionalidade": "Colombiano",
@@ -10315,7 +9416,7 @@
     "pista4": "Antes do Eintracht Frankfurt, jogou no River Plate"
   },
   {
-    "id": 502,
+    "id": 457,
     "nome": "Jhon Durán",
     "posicao": "Centroavante",
     "nacionalidade": "Colombiano",
@@ -10334,7 +9435,7 @@
     "pista4": "Antes do Aston Villa, jogou no Chicago Fire"
   },
   {
-    "id": 503,
+    "id": 458,
     "nome": "Idrissa Gueye",
     "posicao": "Volante",
     "nacionalidade": "Senegalês",
@@ -10355,7 +9456,7 @@
     "pista4": "Antes do Everton, jogou no Paris Saint-Germain"
   },
   {
-    "id": 504,
+    "id": 459,
     "nome": "Pape Gueye",
     "posicao": "Volante",
     "nacionalidade": "Senegalês",
@@ -10376,7 +9477,7 @@
     "pista4": "Antes do Olympique de Marselha, jogou no Le Havre"
   },
   {
-    "id": 505,
+    "id": 460,
     "nome": "Nicolas Jackson",
     "posicao": "Centroavante",
     "nacionalidade": "Senegalês",
@@ -10395,7 +9496,7 @@
     "pista4": "Antes do Chelsea, jogou no Villarreal"
   },
   {
-    "id": 506,
+    "id": 461,
     "nome": "Héctor Herrera",
     "posicao": "Meia",
     "nacionalidade": "Mexicano",
@@ -10414,7 +9515,7 @@
     "pista4": "Antes do Houston Dynamo, jogou no Atlético de Madrid"
   },
   {
-    "id": 507,
+    "id": 462,
     "nome": "Andrés Guardado",
     "posicao": "Meia",
     "nacionalidade": "Mexicano",
@@ -10433,7 +9534,7 @@
     "pista4": "Antes do Club León, jogou no Real Betis"
   },
   {
-    "id": 508,
+    "id": 463,
     "nome": "Hirving Lozano",
     "posicao": "Ponta-direita",
     "nacionalidade": "Mexicano",
@@ -10452,7 +9553,7 @@
     "pista4": "Antes do San Diego FC, jogou no PSV Eindhoven"
   },
   {
-    "id": 509,
+    "id": 464,
     "nome": "Giovanni Reyna",
     "posicao": "Meia-atacante",
     "nacionalidade": "Americano",
@@ -10471,7 +9572,7 @@
     "pista4": "Antes do Dortmund principal, vinha das categorias de base do próprio Dortmund"
   },
   {
-    "id": 510,
+    "id": 465,
     "nome": "Folarin Balogun",
     "posicao": "Centroavante",
     "nacionalidade": "Americano",
@@ -10490,7 +9591,7 @@
     "pista4": "Antes do Monaco, jogou no Arsenal"
   },
   {
-    "id": 511,
+    "id": 466,
     "nome": "Matías Vecino",
     "posicao": "Meia",
     "nacionalidade": "Uruguaio",
@@ -10509,7 +9610,7 @@
     "pista4": "Antes da Lazio, jogou na Inter de Milão"
   },
   {
-    "id": 512,
+    "id": 467,
     "nome": "Maximiliano Araújo",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Uruguaio",
@@ -10528,7 +9629,7 @@
     "pista4": "Antes do Sporting CP, jogou no Peñarol"
   },
   {
-    "id": 513,
+    "id": 468,
     "nome": "Piotr Zieliński",
     "posicao": "Meia",
     "nacionalidade": "Polonês",
@@ -10547,7 +9648,7 @@
     "pista4": "Antes da Inter de Milão, jogou no Nápoles"
   },
   {
-    "id": 514,
+    "id": 469,
     "nome": "Wojciech Szczęsny",
     "posicao": "Goleiro",
     "nacionalidade": "Polonês",
@@ -10569,7 +9670,7 @@
     "pista4": "Antes do Barcelona, jogou na Juventus"
   },
   {
-    "id": 515,
+    "id": 470,
     "nome": "Aleksandar Mitrović",
     "posicao": "Centroavante",
     "nacionalidade": "Sérvio",
@@ -10588,7 +9689,7 @@
     "pista4": "Antes do Al-Hilal, jogou no Fulham"
   },
   {
-    "id": 516,
+    "id": 471,
     "nome": "Sergej Milinković-Savić",
     "posicao": "Meia",
     "nacionalidade": "Sérvio",
@@ -10607,7 +9708,7 @@
     "pista4": "Antes do Al-Hilal, jogou na Lazio"
   },
   {
-    "id": 517,
+    "id": 472,
     "nome": "Dušan Vlahović",
     "posicao": "Centroavante",
     "nacionalidade": "Sérvio",
@@ -10626,7 +9727,7 @@
     "pista4": "Antes da Juventus, jogou na Fiorentina"
   },
   {
-    "id": 518,
+    "id": 473,
     "nome": "Akram Afif",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Qatariano",
@@ -10648,7 +9749,7 @@
     "pista4": "Antes do Al-Sadd, jogou no Sporting CP"
   },
   {
-    "id": 519,
+    "id": 474,
     "nome": "Almoez Ali",
     "posicao": "Centroavante",
     "nacionalidade": "Qatariano",
@@ -10670,7 +9771,7 @@
     "pista4": "Antes do time principal, vinha das categorias de base do Al-Duhail"
   },
   {
-    "id": 520,
+    "id": 475,
     "nome": "Hassan Al-Haydos",
     "posicao": "Meia-atacante",
     "nacionalidade": "Qatariano",
@@ -10692,7 +9793,7 @@
     "pista4": "Antes do time principal, vinha das categorias de base do Al-Sadd"
   },
   {
-    "id": 521,
+    "id": 476,
     "nome": "Boualem Khoukhi",
     "posicao": "Zagueiro",
     "nacionalidade": "Qatariano",
@@ -10713,7 +9814,7 @@
     "pista4": "Antes do Al-Sadd, jogou no JS Kabylie"
   },
   {
-    "id": 522,
+    "id": 477,
     "nome": "Mohammed Al-Owais",
     "posicao": "Goleiro",
     "nacionalidade": "Qatariano",
@@ -10734,7 +9835,7 @@
     "pista4": "Antes do time principal, vinha das categorias de base do Al-Sadd"
   },
   {
-    "id": 523,
+    "id": 478,
     "nome": "Salem Al-Dawsari",
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Saudita",
@@ -10753,7 +9854,7 @@
     "pista4": "Antes do Al-Hilal principal, jogou no Villarreal por empréstimo"
   },
   {
-    "id": 524,
+    "id": 479,
     "nome": "Mohamed Kanno",
     "posicao": "Volante",
     "nacionalidade": "Saudita",
@@ -10772,7 +9873,7 @@
     "pista4": "Antes do Al-Shabab, jogou no Al-Ahli"
   },
   {
-    "id": 525,
+    "id": 480,
     "nome": "Firas Al-Buraikan",
     "posicao": "Centroavante",
     "nacionalidade": "Saudita",
@@ -10791,7 +9892,7 @@
     "pista4": "Antes do Al-Fateh, jogou no Al-Ahli"
   },
   {
-    "id": 526,
+    "id": 481,
     "nome": "Ali Al-Bulaihi",
     "posicao": "Zagueiro",
     "nacionalidade": "Saudita",
@@ -10810,7 +9911,7 @@
     "pista4": "Antes do time principal, vinha das categorias de base do Al-Hilal"
   },
   {
-    "id": 527,
+    "id": 482,
     "nome": "Yasser Al-Shahrani",
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Saudita",
@@ -10829,7 +9930,7 @@
     "pista4": "Antes do time principal, vinha das categorias de base do Al-Hilal"
   },
   {
-    "id": 528,
+    "id": 483,
     "nome": "Miguel Almirón",
     "posicao": "Meia-atacante",
     "nacionalidade": "Paraguaio",
@@ -10848,7 +9949,7 @@
     "pista4": "Antes do Newcastle, jogou no Atlanta United"
   },
   {
-    "id": 529,
+    "id": 484,
     "nome": "Alejandro Romero Gamarra (Kaku)",
     "posicao": "Meia",
     "nacionalidade": "Paraguaio",
@@ -10867,7 +9968,7 @@
     "pista4": "Antes do Club Olimpia, jogou no New York Red Bulls"
   },
   {
-    "id": 530,
+    "id": 485,
     "nome": "Ángel Romero",
     "posicao": "Atacante",
     "nacionalidade": "Paraguaio",
@@ -10886,7 +9987,7 @@
     "pista4": "Antes do Club América, jogou no Corinthians"
   },
   {
-    "id": 531,
+    "id": 486,
     "nome": "Robert Morales",
     "posicao": "Meia",
     "nacionalidade": "Paraguaio",
@@ -10905,7 +10006,7 @@
     "pista4": "Antes do time principal, vinha das categorias de base do Cerro Porteño"
   },
   {
-    "id": 532,
+    "id": 487,
     "nome": "Diego Vaca",
     "posicao": "Meia",
     "nacionalidade": "Boliviano",
@@ -10924,7 +10025,7 @@
     "pista4": "Antes do time principal, vinha das categorias de base do The Strongest"
   },
   {
-    "id": 533,
+    "id": 488,
     "nome": "Marcelo Moreno Martins",
     "posicao": "Centroavante",
     "nacionalidade": "Boliviano",
@@ -10943,7 +10044,7 @@
     "pista4": "Antes do Club Bolívar, jogou no Cruzeiro"
   },
   {
-    "id": 534,
+    "id": 489,
     "nome": "Juan Arce",
     "posicao": "Lateral-direito",
     "nacionalidade": "Boliviano",
@@ -10962,7 +10063,7 @@
     "pista4": "Antes do Oriente Petrolero, jogou no The Strongest"
   },
   {
-    "id": 535,
+    "id": 490,
     "nome": "Rodrigo Ramallo",
     "posicao": "Atacante",
     "nacionalidade": "Boliviano",
@@ -10981,7 +10082,7 @@
     "pista4": "Antes do time principal, vinha das categorias de base do Club Bolívar"
   },
   {
-    "id": 536,
+    "id": 491,
     "nome": "Luciano Vietto",
     "posicao": "Atacante",
     "nacionalidade": "Boliviano",
@@ -11000,7 +10101,7 @@
     "pista4": "Antes do Bolívar, jogou no Valencia"
   },
   {
-    "id": 537,
+    "id": 492,
     "nome": "Gianluca Lapadula",
     "posicao": "Centroavante",
     "nacionalidade": "Peruano",
@@ -11019,7 +10120,7 @@
     "pista4": "Antes do Benevento, jogou no Cagliari"
   },
   {
-    "id": 538,
+    "id": 493,
     "nome": "Renato Tapia",
     "posicao": "Volante",
     "nacionalidade": "Peruano",
@@ -11038,7 +10139,7 @@
     "pista4": "Antes do Celta de Vigo, jogou no Feyenoord"
   },
   {
-    "id": 539,
+    "id": 494,
     "nome": "André Carrillo",
     "posicao": "Ponta-direita",
     "nacionalidade": "Peruano",
@@ -11057,7 +10158,7 @@
     "pista4": "Antes do Al-Qadsiah, jogou no Al-Hilal"
   },
   {
-    "id": 540,
+    "id": 495,
     "nome": "Paolo Guerrero",
     "posicao": "Centroavante",
     "nacionalidade": "Peruano",
@@ -11078,7 +10179,7 @@
     "pista4": "Antes do LDU Quito, jogou no César Vallejo"
   },
   {
-    "id": 541,
+    "id": 496,
     "nome": "Edison Flores",
     "posicao": "Meia-atacante",
     "nacionalidade": "Peruano",
@@ -11097,7 +10198,7 @@
     "pista4": "Antes do Universitario, jogou no DC United"
   },
   {
-    "id": 542,
+    "id": 497,
     "nome": "Francisco Conceição",
     "posicao": "Ponta-direita",
     "nacionalidade": "Português",
@@ -11116,27 +10217,5 @@
     "pista2": "Extremo rápido e direto, perigoso na velocidade em transição.",
     "pista3": "Natural de Coimbra, a cidade universitária no centro de Portugal.",
     "pista4": "Antes da Juventus, jogou no FC Porto."
-  },
-  {
-    "id": 543,
-    "nome": "Danilo Pereira",
-    "posicao": "Volante",
-    "nacionalidade": "Português",
-    "bandeira": "🇵🇹",
-    "clube": "Al-Ittihad",
-    "liga": "Saudi Pro League",
-    "dificuldade": "dificil",
-    "titulos": [
-      "UEFA Euro 2016",
-      "UEFA Nations League 2019"
-    ],
-    "curiosidade": "Atuou improvisado como zagueiro na Copa do Qatar 2022 e foi decisivo na campanha portuguesa.",
-    "faixaEtaria": "30-35",
-    "clubeAnterior": "Paris Saint-Germain",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Ligue 1",
-    "pista2": "Médio polivalente de liderança física, capaz de atuar como volante ou zagueiro.",
-    "pista3": "Natural de Lisboa, cresceu em Portugal e tornou-se pilar da seleção nacional.",
-    "pista4": "Antes do Al-Ittihad, jogou no Paris Saint-Germain por quatro temporadas."
   }
 ]
