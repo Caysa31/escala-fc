@@ -99,7 +99,7 @@
     "origemAnterior": "base",
     "ligaAnterior": null,
     "pista2": "Meia jovem com boa leitura tática e qualidade no passe.",
-    "pista3": "Nasceu em São Paulo e foi revelado nas categorias de base do próprio Corinthians.",
+    "pista3": "Nasceu em Sao Paulo e chegou ao Corinthians aos 14 anos, depois de passagens pela Portuguesa e pelo Audax.",
     "pista4": "Foi revelado nas categorias de base do próprio clube onde joga hoje."
   },
   {
@@ -221,7 +221,7 @@
     "origemAnterior": "brasil",
     "ligaAnterior": null,
     "pista2": "Extrema veloz e driblador, difícil de segurar na ponta.",
-    "pista3": "Nasceu em Governador Valadares, Minas Gerais, e construiu carreira pelo interior do Brasil.",
+    "pista3": "Nasceu em Japeri, no Rio de Janeiro, e revelado pelo Audax Rio antes de construir carreira pelo Brasil.",
     "pista4": "Antes do clube atual, jogou no Sao Paulo."
   },
   {
@@ -314,12 +314,12 @@
     "apiFootballTeamId": 133,
     "apiFootballLeagueId": 71,
     "estadoClube": "Rio de Janeiro",
-    "clubeAnterior": "Deportivo Pereira",
+    "clubeAnterior": "Atletico Nacional",
     "origemAnterior": "exterior",
     "ligaAnterior": "Categoría Primera A",
     "pista2": "Atacante veloz da Colômbia, driblador e imprevisível.",
     "pista3": "Natural de Pereira, na Colômbia, é um dos talentos mais promissores da América do Sul.",
-    "pista4": "Chegou ao clube atual vindo do Deportivo Pereira, na Categoría Primera A."
+    "pista4": "Chegou ao clube atual vindo do Atletico Nacional, na Categoria Primera A."
   },
   {
     "id": 14,
@@ -358,12 +358,12 @@
     "apiFootballTeamId": 133,
     "apiFootballLeagueId": 71,
     "estadoClube": "Rio de Janeiro",
-    "clubeAnterior": "Coritiba",
-    "origemAnterior": "brasil",
-    "ligaAnterior": null,
+    "clubeAnterior": "Lille",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Ligue 1",
     "pista2": "Goleiro de bons reflexos e posicionamento seguro.",
-    "pista3": "Natural de Campina Grande, na Paraíba, construiu sua carreira pelos clubes brasileiros.",
-    "pista4": "Antes do clube atual, jogou no Coritiba."
+    "pista3": "Natural de Ribeirao Preto, em Sao Paulo, construiu carreira entre o Brasil e a Franca.",
+    "pista4": "Antes do clube atual, jogou no Lille, na Ligue 1 francesa."
   },
   {
     "id": 16,
@@ -378,7 +378,7 @@
       "Libertadores",
       "Brasileirão"
     ],
-    "curiosidade": "Chegou ao Cruzeiro por €30M a pedido de Tite — maior contratação da história do futebol sul-americano",
+    "curiosidade": "Chegou ao Cruzeiro por €27M a pedido de Tite — maior contratação da história do futebol sul-americano",
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 116,
     "apiFootballLeagueId": 71,
@@ -548,12 +548,12 @@
     "apiFootballTeamId": 1062,
     "apiFootballLeagueId": 71,
     "estadoClube": "Minas Gerais",
-    "clubeAnterior": "Palmeiras",
-    "origemAnterior": "brasil",
-    "ligaAnterior": null,
+    "clubeAnterior": "Nottingham Forest",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Premier League",
     "pista2": "Meia criativo com pé esquerdo preciso e faltas especiais.",
     "pista3": "Nasceu em São Paulo e cresceu pelo futebol paulista antes do Palmeiras.",
-    "pista4": "Antes do clube atual, jogou no Palmeiras."
+    "pista4": "Antes do clube atual, jogou no Nottingham Forest, na Premier League."
   },
   {
     "id": 24,
@@ -726,12 +726,12 @@
     "apiFootballTeamId": 128,
     "apiFootballLeagueId": 71,
     "estadoClube": "São Paulo",
-    "clubeAnterior": "Flamengo",
-    "origemAnterior": "brasil",
-    "ligaAnterior": null,
+    "clubeAnterior": "Panathinaikos",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Super League Grecia",
     "pista2": "Volante seguro e disciplinado, equilíbrio do meio-campo.",
     "pista3": "Natural do Rio de Janeiro, construiu sua história no futebol carioca antes de chegar ao Santos.",
-    "pista4": "Antes do clube atual, jogou no Flamengo."
+    "pista4": "Antes do clube atual, jogou no Panathinaikos, no campeonato grego."
   },
   {
     "id": 31,
@@ -850,12 +850,12 @@
     "apiFootballTeamId": 711,
     "apiFootballLeagueId": 71,
     "estadoClube": "Rio de Janeiro",
-    "clubeAnterior": "Sevilla",
+    "clubeAnterior": "Al-Nassr",
     "origemAnterior": "exterior",
-    "ligaAnterior": "La Liga",
+    "ligaAnterior": "Saudi Pro League",
     "pista2": "Lateral ofensivo com cruzamento preciso e gols de falta.",
     "pista3": "Natural de Caxias do Sul, no Rio Grande do Sul, cresceu no futebol gaúcho.",
-    "pista4": "Antes do clube atual, jogou no Sevilla, na La Liga."
+    "pista4": "Antes do clube atual, jogou no Al-Nassr, na Saudi Pro League."
   },
   {
     "id": 36,
@@ -875,12 +875,12 @@
     "apiFootballTeamId": 711,
     "apiFootballLeagueId": 71,
     "estadoClube": "Rio de Janeiro",
-    "clubeAnterior": "Racing Club",
+    "clubeAnterior": "Velez Sarsfield",
     "origemAnterior": "exterior",
     "ligaAnterior": "Liga Profesional",
     "pista2": "Meia argentino técnico e de movimentação, forte no drible.",
-    "pista3": "Natural de Buenos Aires, na Argentina, formou-se nas categorias do Racing Club.",
-    "pista4": "Chegou ao clube atual vindo do Racing Club, na Liga Profesional."
+    "pista3": "Natural de Concepcion, em Tucuman, na Argentina, formou-se nas categorias do Velez Sarsfield.",
+    "pista4": "Chegou ao clube atual vindo do Velez Sarsfield, na Liga Profesional."
   },
   {
     "id": 37,
@@ -990,8 +990,7 @@
     "dificuldade": "medio",
     "titulos": [
       "Champions League",
-      "Premier League",
-      "Copa do Mundo"
+      "Premier League"
     ],
     "curiosidade": "Considerado o melhor goleiro do mundo, marcou um gol de cabeça decisivo pelo Liverpool na Champions",
     "faixaEtaria": "32-36",
@@ -1024,7 +1023,7 @@
     "origemAnterior": "exterior",
     "ligaAnterior": "Ligue 1",
     "pista2": "Volante completo — corta, cria e lidera o meio-campo.",
-    "pista3": "Natural de Duque de Caxias, no Rio de Janeiro, cresceu no Audax antes do Athletico-PR.",
+    "pista3": "Natural do Rio de Janeiro, cresceu no Audax Rio antes do Athletico-PR.",
     "pista4": "Antes do clube atual, jogou no Lyon, na Ligue 1."
   },
   {
@@ -1471,7 +1470,7 @@
     "origemAnterior": "exterior",
     "ligaAnterior": "Liga Portugal",
     "pista2": "Ponta esquerdista veloz, com drible e participação em gols.",
-    "pista3": "Natural de Paulista, em Pernambuco — nordestino que virou herói da Copa América 2019.",
+    "pista3": "Natural de Maracanaú, no Ceara, foi revelado pelo futebol cearense antes de se destacar no Gremio.",
     "pista4": "Antes do clube atual, jogou no Benfica, na Liga Portugal."
   },
   {
@@ -1565,12 +1564,12 @@
     "apiFootballTeamId": 131,
     "apiFootballLeagueId": 71,
     "estadoClube": "São Paulo",
-    "clubeAnterior": "CF Montréal",
+    "clubeAnterior": "Santos Laguna",
     "origemAnterior": "exterior",
-    "ligaAnterior": "MLS",
+    "ligaAnterior": "Liga MX",
     "pista2": "Zagueiro equatoriano forte, aéreo e de liderança.",
     "pista3": "Natural de Santo Domingo, no Equador, é o capitão da Seleção Equatoriana em crescimento.",
-    "pista4": "Antes do clube atual, jogou no CF Montréal, na MLS."
+    "pista4": "Antes do clube atual, jogou no Santos Laguna, na Liga MX."
   },
   {
     "id": 62,
@@ -1808,12 +1807,12 @@
     "apiFootballTeamId": 133,
     "apiFootballLeagueId": 71,
     "estadoClube": "Rio de Janeiro",
-    "clubeAnterior": "Barcelona",
+    "clubeAnterior": "Aston Villa",
     "origemAnterior": "exterior",
-    "ligaAnterior": "La Liga",
+    "ligaAnterior": "Premier League",
     "pista2": "Meia de classe europeia — dribla, chuta e encanta.",
     "pista3": "Nasceu no Rio de Janeiro e foi revelado pelo próprio Vasco, clube ao qual retornou ao fim da carreira.",
-    "pista4": "Antes do clube atual, jogou no Barcelona, na La Liga."
+    "pista4": "Antes do clube atual, jogou no Aston Villa, na Premier League."
   },
   {
     "id": 72,
@@ -1839,7 +1838,7 @@
     "origemAnterior": "brasil",
     "ligaAnterior": null,
     "pista2": "Goleiro lendário do Brasileirão, ídolo com grandes defesas.",
-    "pista3": "Natural de Santarém, no Pará, foi revelado pelo Gremio e chegou ao Corinthians em 2011, onde construiu sua lenda.",
+    "pista3": "Natural de Veranopolis, no Rio Grande do Sul, foi revelado pelo Gremio e chegou ao Corinthians em 2011.",
     "pista4": "Antes do clube atual, jogou no Corinthians."
   },
   {
@@ -1848,8 +1847,8 @@
     "posicao": "Ponta-direita",
     "nacionalidade": "Português",
     "bandeira": "🇵🇹",
-    "clube": "Cruzeiro",
-    "liga": "Brasileirão",
+    "clube": "Benfica",
+    "liga": "Liga Portugal",
     "dificuldade": "dificil",
     "titulos": [
       "Euro 2016",
@@ -1859,13 +1858,13 @@
     "faixaEtaria": "30-35",
     "apiFootballTeamId": 116,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Minas Gerais",
-    "clubeAnterior": "Benfica",
+    "estadoClube": null,
+    "clubeAnterior": "Besiktas",
     "origemAnterior": "exterior",
-    "ligaAnterior": "Liga Portugal",
+    "ligaAnterior": "Super Lig",
     "pista2": "Ponta português veloz, habilidoso e participativo.",
-    "pista3": "Natural de Penafiel, em Portugal, é campeão europeu pela Seleção Portuguesa em 2016.",
-    "pista4": "Antes do clube atual, jogou no Benfica, na Liga Portugal."
+    "pista3": "Natural de Vila Franca de Xira, em Portugal, cresceu na formacao do Braga antes de ir ao Benfica.",
+    "pista4": "Antes do clube atual, jogou no Besiktas, na Super Lig turca."
   },
   {
     "id": 74,
@@ -1908,12 +1907,12 @@
     "apiFootballTeamId": 119,
     "apiFootballLeagueId": 71,
     "estadoClube": "Rio Grande do Sul",
-    "clubeAnterior": "Sporting CP",
+    "clubeAnterior": "Shakhtar Donetsk",
     "origemAnterior": "exterior",
-    "ligaAnterior": "Liga Portugal",
+    "ligaAnterior": "Liga Ucraniana",
     "pista2": "Zagueiro sólido, bom na marcação e no passe longo.",
     "pista3": "Natural de Porto Alegre, no Rio Grande do Sul, foi revelado nas categorias do Internacional.",
-    "pista4": "Antes do clube atual, jogou no Sporting CP, na Liga Portugal."
+    "pista4": "Antes do clube atual, jogou no Shakhtar Donetsk, na Ucrania."
   },
   {
     "id": 76,
@@ -1932,12 +1931,12 @@
     "apiFootballTeamId": 119,
     "apiFootballLeagueId": 71,
     "estadoClube": "Rio Grande do Sul",
-    "clubeAnterior": "Tigres UANL",
+    "clubeAnterior": "Fenerbahce",
     "origemAnterior": "exterior",
-    "ligaAnterior": "Liga MX",
+    "ligaAnterior": "Super Lig",
     "pista2": "Atacante equatoriano veloz, garra e artilheiro pela Seleção.",
     "pista3": "Natural de Esmeraldas, no Equador, é o maior artilheiro da história da Seleção Equatoriana.",
-    "pista4": "Antes do clube atual, jogou no Tigres UANL, na Liga MX."
+    "pista4": "Antes do clube atual, jogou no Fenerbahce, na Super Lig turca."
   },
   {
     "id": 77,
@@ -1970,7 +1969,7 @@
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Brasileiro",
     "bandeira": "🇧🇷",
-    "clube": "Atlético-MG",
+    "clube": "Fluminense",
     "liga": "Brasileirão",
     "dificuldade": "medio",
     "titulos": [
@@ -1982,13 +1981,13 @@
     "faixaEtaria": "26-30",
     "apiFootballTeamId": 1062,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Minas Gerais",
-    "clubeAnterior": "Sevilla",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "La Liga",
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Atletico-MG",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null,
     "pista2": "Lateral-esquerdo ofensivo, veloz e de bom cruzamento.",
     "pista3": "Natural de São Paulo, cresceu nas categorias de base do Corinthians antes de ir ao exterior.",
-    "pista4": "Antes do clube atual, jogou no Sevilla, na La Liga."
+    "pista4": "Antes do clube atual, jogou no Atletico-MG."
   },
   {
     "id": 79,
@@ -2022,8 +2021,8 @@
     "posicao": "Meia",
     "nacionalidade": "Português",
     "bandeira": "🇵🇹",
-    "clube": "Atlético-MG",
-    "liga": "Brasileirão",
+    "clube": "Al-Qadsiah",
+    "liga": "Saudi Pro League",
     "dificuldade": "dificil",
     "titulos": [
       "Liga Portugal",
@@ -2033,13 +2032,13 @@
     "faixaEtaria": "30-34",
     "apiFootballTeamId": 1062,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Minas Gerais",
-    "clubeAnterior": "FC Porto",
+    "estadoClube": null,
+    "clubeAnterior": "Al-Nassr",
     "origemAnterior": "exterior",
-    "ligaAnterior": "Liga Portugal",
+    "ligaAnterior": "Saudi Pro League",
     "pista2": "Meia português técnico — passe, drible e liderança.",
-    "pista3": "Natural de Lisboa, em Portugal, cresceu nas categorias de base do Benfica.",
-    "pista4": "Antes do clube atual, jogou no FC Porto, na Liga Portugal."
+    "pista3": "Nasceu em Joao Pessoa, na Paraiba, e naturalizou-se portugues antes de se destacar no Porto.",
+    "pista4": "Antes do clube atual, jogou no Al-Nassr, na Saudi Pro League."
   },
   {
     "id": 81,
@@ -2063,7 +2062,7 @@
     "origemAnterior": "exterior",
     "ligaAnterior": "Liga Portugal",
     "pista2": "Ponta veloz e driblador — vai e volta sem parar.",
-    "pista3": "Natural de Vitória, no Espírito Santo, foi revelado pelo Grêmio ainda jovem.",
+    "pista3": "Natural de Foz do Iguacu, no Parana, foi revelado pelo Gremio antes de se destacar no futebol europeu.",
     "pista4": "Antes do clube atual, jogou no FC Porto, na Liga Portugal."
   },
   {
@@ -2130,12 +2129,12 @@
     "apiFootballTeamId": 128,
     "apiFootballLeagueId": 71,
     "estadoClube": "São Paulo",
-    "clubeAnterior": "Atlético-MG",
+    "clubeAnterior": "Corinthians",
     "origemAnterior": "brasil",
     "ligaAnterior": null,
     "pista2": "Meia venezuelano criativo, técnico e difícil de marcar.",
     "pista3": "Natural da Venezuela, é um dos jogadores mais técnicos que o futebol venezuelano exportou.",
-    "pista4": "Antes do clube atual, jogou no Atlético-MG."
+    "pista4": "Antes do clube atual, jogou no Corinthians."
   },
   {
     "id": 85,
@@ -2151,7 +2150,7 @@
       "Brasileirão",
       "Copa do Brasil"
     ],
-    "curiosidade": "Campeão da Libertadores 2012 pelo Corinthians — o único mundial de clubes de um clube brasileiro —, encerrando a carreira no Santos",
+    "curiosidade": "Campeão da Libertadores 2012 pelo Corinthians — o único mundial de clubes de um clube brasileiro —, encerrando a carreira no Santos Anunciou aposentadoria em setembro de 2025.",
     "faixaEtaria": "36-40",
     "apiFootballTeamId": 128,
     "apiFootballLeagueId": 71,
@@ -2206,7 +2205,7 @@
     "origemAnterior": "brasil",
     "ligaAnterior": null,
     "pista2": "Centroavante artilheiro com os dois pés e de cabeça.",
-    "pista3": "Natural de Mendoza, na Argentina, passou por vários clubes antes de virar herói do Fluminense.",
+    "pista3": "Natural de Lomas de Zamora, na Argentina, passou por vários clubes antes de virar herói do Fluminense.",
     "pista4": "Antes do clube atual, jogou no Vasco."
   },
   {
@@ -2215,8 +2214,8 @@
     "posicao": "Zagueiro",
     "nacionalidade": "Brasileiro",
     "bandeira": "🇧🇷",
-    "clube": "Fluminense",
-    "liga": "Brasileirão",
+    "clube": "FC Porto",
+    "liga": "Primeira Liga",
     "dificuldade": "facil",
     "titulos": [
       "Champions League",
@@ -2228,13 +2227,13 @@
     "faixaEtaria": "40+",
     "apiFootballTeamId": 124,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro",
-    "clubeAnterior": "Chelsea",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Premier League",
+    "estadoClube": null,
+    "clubeAnterior": "Fluminense",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null,
     "pista2": "Zagueiro elegante e líder — lê o jogo como poucos no mundo.",
-    "pista3": "Nasceu em Juiz de Fora, em Minas Gerais, mas cresceu no Rio de Janeiro e foi revelado pelo Fluminense.",
-    "pista4": "Antes do clube atual, jogou no Chelsea, na Premier League."
+    "pista3": "Nasceu no Rio de Janeiro e foi revelado pelo Fluminense, onde retornou para encerrar a carreira no Brasil.",
+    "pista4": "Antes do clube atual, jogou no Fluminense."
   },
   {
     "id": 89,
@@ -2242,8 +2241,8 @@
     "posicao": "Meia",
     "nacionalidade": "Brasileiro",
     "bandeira": "🇧🇷",
-    "clube": "Fluminense",
-    "liga": "Brasileirão",
+    "clube": "America (Mexico)",
+    "liga": "Liga MX",
     "dificuldade": "dificil",
     "titulos": [
       "Libertadores"
@@ -2252,13 +2251,13 @@
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 124,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro",
-    "clubeAnterior": "Avaí",
+    "estadoClube": null,
+    "clubeAnterior": "Fluminense",
     "origemAnterior": "brasil",
     "ligaAnterior": null,
     "pista2": "Meia criativo com visão de jogo e gol de fora da área.",
     "pista3": "Natural de Florianópolis, em Santa Catarina, cresceu no futebol catarinense antes do Avaí.",
-    "pista4": "Antes do clube atual, jogou no Avaí."
+    "pista4": "Antes do clube atual, jogou no Fluminense."
   },
   {
     "id": 90,
@@ -2266,7 +2265,7 @@
     "posicao": "Ponta-direita",
     "nacionalidade": "Venezuelano",
     "bandeira": "🇻🇪",
-    "clube": "Botafogo",
+    "clube": "Fluminense",
     "liga": "Brasileirão",
     "dificuldade": "medio",
     "titulos": [
@@ -2278,12 +2277,12 @@
     "apiFootballTeamId": 711,
     "apiFootballLeagueId": 71,
     "estadoClube": "Rio de Janeiro",
-    "clubeAnterior": "River Plate",
+    "clubeAnterior": "Real Salt Lake",
     "origemAnterior": "exterior",
-    "ligaAnterior": "Liga Profesional",
+    "ligaAnterior": "MLS",
     "pista2": "Ponta veloz e decisivo, eleito o melhor da América em 2024.",
     "pista3": "Natural da Venezuela, é um dos maiores talentos exportados pelo país no futebol sul-americano.",
-    "pista4": "Antes do clube atual, jogou no River Plate, na Liga Profesional."
+    "pista4": "Antes do clube atual, jogou no Real Salt Lake, na MLS."
   },
   {
     "id": 91,
@@ -2291,7 +2290,7 @@
     "posicao": "Volante",
     "nacionalidade": "Brasileiro",
     "bandeira": "🇧🇷",
-    "clube": "Botafogo",
+    "clube": "Palmeiras",
     "liga": "Brasileirão",
     "dificuldade": "medio",
     "titulos": [
@@ -2300,15 +2299,15 @@
     ],
     "curiosidade": "Eleito o melhor volante do Brasil em 2024, foi o cérebro do milagre do Botafogo na conquista histórica da Libertadores",
     "faixaEtaria": "28-32",
-    "apiFootballTeamId": 711,
+    "apiFootballTeamId": 121,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro",
-    "clubeAnterior": "Atlético-GO",
+    "estadoClube": "Sao Paulo",
+    "clubeAnterior": "Botafogo",
     "origemAnterior": "brasil",
     "ligaAnterior": null,
     "pista2": "Volante de alta intensidade — marca, corre e distribui.",
     "pista3": "Natural de Campo Grande, no Mato Grosso do Sul, cresceu no futebol sul-mato-grossense.",
-    "pista4": "Antes do clube atual, jogou no Atlético-GO."
+    "pista4": "Antes do clube atual, jogou no Botafogo."
   },
   {
     "id": 92,
@@ -2316,8 +2315,8 @@
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Brasileiro",
     "bandeira": "🇧🇷",
-    "clube": "Botafogo",
-    "liga": "Brasileirão",
+    "clube": "Zenit",
+    "liga": "Liga Russa",
     "dificuldade": "medio",
     "titulos": [
       "Libertadores",
@@ -2327,13 +2326,13 @@
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 711,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro",
-    "clubeAnterior": "Real Betis",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "La Liga",
+    "estadoClube": null,
+    "clubeAnterior": "Botafogo",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null,
     "pista2": "Ponta veloz e driblador, com drible curto e boa finalização.",
     "pista3": "Natural de São Paulo, foi revelado pelo Fluminense e depois brilhou na Europa.",
-    "pista4": "Antes do clube atual, jogou no Real Betis, na La Liga."
+    "pista4": "Antes do clube atual, jogou no Botafogo."
   },
   {
     "id": 93,
@@ -2356,7 +2355,7 @@
     "origemAnterior": "brasil",
     "ligaAnterior": null,
     "pista2": "Atacante veloz, raçudo e de gols decisivos no momento certo.",
-    "pista3": "Natural de Feira de Santana, na Bahia, cresceu no futebol nordestino antes de brilhar no Sul.",
+    "pista3": "Natural de Belo Horizonte, em Minas Gerais, foi revelado pelo futebol mineiro antes do Palmeiras.",
     "pista4": "Antes do clube atual, jogou no Palmeiras."
   },
   {
@@ -2387,21 +2386,21 @@
     "posicao": "Centroavante",
     "nacionalidade": "Argentino",
     "bandeira": "🇦🇷",
-    "clube": "Fortaleza",
-    "liga": "Brasileirão",
+    "clube": "Universidad de Chile",
+    "liga": "Primera Division Chile",
     "dificuldade": "dificil",
     "titulos": [],
     "curiosidade": "Centroavante argentino que se tornou um dos maiores artilheiros da história do Fortaleza, ídolo da torcida leonina do Nordeste",
     "faixaEtaria": "28-32",
     "apiFootballTeamId": 1054,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Ceará",
-    "clubeAnterior": "Independiente",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Liga Profesional",
+    "estadoClube": null,
+    "clubeAnterior": "Fortaleza",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null,
     "pista2": "Centroavante argentino de área, artilheiro e ídolo leonino.",
     "pista3": "Natural de Buenos Aires, na Argentina, é um dos maiores artilheiros da história do Fortaleza.",
-    "pista4": "Chegou ao clube atual vindo do Independiente, na Liga Profesional."
+    "pista4": "Antes do clube atual, jogou no Fortaleza."
   },
   {
     "id": 96,
@@ -2409,7 +2408,7 @@
     "posicao": "Meia",
     "nacionalidade": "Brasileiro",
     "bandeira": "🇧🇷",
-    "clube": "Bahia",
+    "clube": "Sao Paulo",
     "liga": "Brasileirão",
     "dificuldade": "dificil",
     "titulos": [],
@@ -2422,8 +2421,8 @@
     "origemAnterior": "exterior",
     "ligaAnterior": "Liga Portugal",
     "pista2": "Meia artilheiro e assistente — melhor do Nordeste.",
-    "pista3": "Natural do interior da Bahia, cresceu no futebol baiano antes de se destacar em Portugal.",
-    "pista4": "Antes do clube atual, jogou no Estoril Praia, na Liga Portugal."
+    "pista3": "Natural do Porto Seguro, na Bahia, cresceu no futebol baiano antes de se destacar em Portugal.",
+    "pista4": "Antes do clube atual, jogou no Bahia."
   },
   {
     "id": 97,
@@ -2479,7 +2478,7 @@
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Uruguaio",
     "bandeira": "🇺🇾",
-    "clube": "Athletico-PR",
+    "clube": "Fluminense",
     "liga": "Brasileirão",
     "dificuldade": "dificil",
     "titulos": [],
@@ -2487,13 +2486,13 @@
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 134,
     "apiFootballLeagueId": 71,
-    "estadoClube": "Paraná",
-    "clubeAnterior": "Nacional",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Primera División",
+    "estadoClube": "Rio de Janeiro",
+    "clubeAnterior": "Athletico-PR",
+    "origemAnterior": "brasil",
+    "ligaAnterior": null,
     "pista2": "Ponta uruguaio veloz, de drible e participação em gols.",
     "pista3": "Natural de Montevidéu, no Uruguai, cresceu no Nacional antes de se destacar no Brasil.",
-    "pista4": "Chegou ao clube atual vindo do Nacional, na Primera División."
+    "pista4": "Antes do clube atual, jogou no Athletico-PR."
   },
   {
     "id": 100,
@@ -2509,7 +2508,7 @@
       "Champions League",
       "Copa do Brasil"
     ],
-    "curiosidade": "Retornou ao clube que o revelou após 14 anos no Manchester City onde conquistou 5 Premier Leagues — o encerramento mais emocionante de uma carreira",
+    "curiosidade": "Retornou ao clube que o revelou após 14 anos no Manchester City onde conquistou 5 Premier Leagues — o encerramento mais emocionante de uma carreira Anunciou aposentadoria em novembro de 2025.",
     "faixaEtaria": "38-42",
     "apiFootballTeamId": 134,
     "apiFootballLeagueId": 71,
@@ -2547,22 +2546,22 @@
     "id": 102,
     "nome": "Thiago Borbas",
     "posicao": "Centroavante",
-    "nacionalidade": "Brasileiro",
-    "bandeira": "🇧🇷",
-    "clube": "Red Bull Bragantino",
-    "liga": "Brasileirão",
+    "nacionalidade": "Uruguaio",
+    "bandeira": "🏀🇺🇾",
+    "clube": "Real Oviedo",
+    "liga": "La Liga",
     "dificuldade": "dificil",
     "titulos": [],
     "curiosidade": "Centroavante artilheiro do Bragantino contratado do futebol sul-americano, tornou-se um dos goleadores mais eficientes do Brasileirão",
     "faixaEtaria": "24-28",
     "apiFootballTeamId": 747,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo",
+    "estadoClube": null,
     "clubeAnterior": "Cuiabá",
     "origemAnterior": "brasil",
     "ligaAnterior": null,
     "pista2": "Centroavante artilheiro e eficiente no Brasileirão.",
-    "pista3": "Natural do interior do Brasil, foi revelado pelo futebol do Centro-Oeste antes do Bragantino.",
+    "pista3": "Natural de Montevideu, no Uruguai, foi revelado pelo Red Bull Bragantino antes de ir a Europa.",
     "pista4": "Antes do clube atual, jogou no Cuiabá."
   },
   {
@@ -2595,7 +2594,7 @@
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Brasileiro",
     "bandeira": "🇧🇷",
-    "clube": "Red Bull Bragantino",
+    "clube": "Vitoria",
     "liga": "Brasileirão",
     "dificuldade": "dificil",
     "titulos": [
@@ -2605,13 +2604,13 @@
     "faixaEtaria": "22-26",
     "apiFootballTeamId": 747,
     "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo",
+    "estadoClube": "Bahia",
     "clubeAnterior": "RB Leipzig",
     "origemAnterior": "exterior",
     "ligaAnterior": "Bundesliga",
     "pista2": "Lateral-esquerdo técnico, com boa participação ofensiva.",
     "pista3": "Natural do interior de São Paulo, teve passagem pela Europa antes de retornar ao Brasil.",
-    "pista4": "Antes do clube atual, jogou no RB Leipzig, na Bundesliga."
+    "pista4": "Antes do clube atual, jogou no Red Bull Bragantino."
   },
   {
     "id": 105,
@@ -2772,8 +2771,8 @@
     "posicao": "Meia",
     "nacionalidade": "Belga",
     "bandeira": "🇧🇪",
-    "clube": "Manchester City",
-    "liga": "Premier League",
+    "clube": "Napoli",
+    "liga": "Serie A",
     "dificuldade": "facil",
     "titulos": [
       "Premier League",
@@ -2784,12 +2783,12 @@
     "apiFootballTeamId": 50,
     "apiFootballLeagueId": 39,
     "estadoClube": null,
-    "clubeAnterior": "Wolfsburg",
+    "clubeAnterior": "Manchester City",
     "origemAnterior": "exterior",
-    "ligaAnterior": "Bundesliga",
+    "ligaAnterior": "Premier League",
     "pista2": "Meia de visão cirúrgica — passe, chute e criação únicos.",
     "pista3": "Natural de Drongen, na Bélgica, foi revelado pelo Gent antes de brilhar no Chelsea e Wolfsburg.",
-    "pista4": "Antes do clube atual, jogou no Wolfsburg, na Bundesliga."
+    "pista4": "Antes do clube atual, jogou no Manchester City, na Premier League."
   },
   {
     "id": 112,
@@ -2898,8 +2897,8 @@
     "posicao": "Atacante",
     "nacionalidade": "Uruguaio",
     "bandeira": "🇺🇾",
-    "clube": "Liverpool",
-    "liga": "Premier League",
+    "clube": "Al Hilal",
+    "liga": "Saudi Pro League",
     "dificuldade": "medio",
     "titulos": [
       "Premier League"
@@ -2909,12 +2908,12 @@
     "apiFootballTeamId": 40,
     "apiFootballLeagueId": 39,
     "estadoClube": null,
-    "clubeAnterior": "Benfica",
+    "clubeAnterior": "Liverpool",
     "origemAnterior": "exterior",
-    "ligaAnterior": "Liga Portugal",
+    "ligaAnterior": "Premier League",
     "pista2": "Atacante uruguaio explosivo e veloz — imprevisível.",
     "pista3": "Natural de Artigas, no Uruguai, cresceu em condições humildes antes de se tornar estrela.",
-    "pista4": "Antes do clube atual, jogou no Benfica, na Liga Portugal."
+    "pista4": "Antes do clube atual, jogou no Liverpool, na Premier League."
   },
   {
     "id": 117,
@@ -3278,7 +3277,7 @@
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Argentino",
     "bandeira": "🇦🇷",
-    "clube": "Manchester United",
+    "clube": "Chelsea",
     "liga": "Premier League",
     "dificuldade": "medio",
     "titulos": [
@@ -3291,11 +3290,11 @@
     "apiFootballLeagueId": 39,
     "estadoClube": null,
     "clubeAnterior": "Manchester United",
-    "origemAnterior": "base",
-    "ligaAnterior": null,
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Premier League",
     "pista2": "Ponta argentino explosivo, veloz e com drible de alto nível.",
     "pista3": "Nasceu em Madri, na Espanha, de pai argentino — escolheu defender a Argentina.",
-    "pista4": "Foi revelado nas categorias de base do próprio Manchester United."
+    "pista4": "Antes do clube atual, jogou no Manchester United, na Premier League."
   },
   {
     "id": 133,
@@ -3328,8 +3327,8 @@
     "posicao": "Centroavante",
     "nacionalidade": "Dinamarquês",
     "bandeira": "🇩🇰",
-    "clube": "Manchester United",
-    "liga": "Premier League",
+    "clube": "Napoli",
+    "liga": "Serie A",
     "dificuldade": "dificil",
     "titulos": [
       "FA Cup"
@@ -3339,12 +3338,12 @@
     "apiFootballTeamId": 33,
     "apiFootballLeagueId": 39,
     "estadoClube": null,
-    "clubeAnterior": "Atalanta",
+    "clubeAnterior": "Manchester United",
     "origemAnterior": "exterior",
-    "ligaAnterior": "Serie A",
+    "ligaAnterior": "Premier League",
     "pista2": "Centroavante dinamarquês jovem, veloz e com faro de gol.",
     "pista3": "Natural de Copenhague, na Dinamarca, cresceu nas categorias do Copenhague antes de ir à Europa.",
-    "pista4": "Antes do clube atual, jogou na Atalanta, na Serie A."
+    "pista4": "Antes do clube atual, jogou no Manchester United, na Premier League."
   },
   {
     "id": 135,
@@ -3425,8 +3424,8 @@
     "posicao": "Atacante",
     "nacionalidade": "Francês",
     "bandeira": "🇫🇷",
-    "clube": "Atlético Madrid",
-    "liga": "La Liga",
+    "clube": "Orlando City",
+    "liga": "MLS",
     "dificuldade": "facil",
     "titulos": [
       "Copa do Mundo",
@@ -3439,12 +3438,12 @@
     "apiFootballTeamId": 530,
     "apiFootballLeagueId": 140,
     "estadoClube": null,
-    "clubeAnterior": "Barcelona",
+    "clubeAnterior": "Atletico de Madrid",
     "origemAnterior": "exterior",
     "ligaAnterior": "La Liga",
     "pista2": "Atacante francês completo — gol, drible e criação em um só.",
     "pista3": "Natural de Mâcon, na França, foi revelado pelo Real Sociedad ainda jovem antes de virar estrela.",
-    "pista4": "Antes do clube atual, jogou no Barcelona, na La Liga."
+    "pista4": "Antes do clube atual, jogou no Atletico de Madrid, na La Liga."
   },
   {
     "id": 139,
@@ -3529,8 +3528,8 @@
     "posicao": "Volante",
     "nacionalidade": "Suíço",
     "bandeira": "🇨🇭",
-    "clube": "Bayer Leverkusen",
-    "liga": "Bundesliga",
+    "clube": "Sunderland",
+    "liga": "Premier League",
     "dificuldade": "dificil",
     "titulos": [
       "Bundesliga",
@@ -3541,12 +3540,12 @@
     "apiFootballTeamId": 168,
     "apiFootballLeagueId": 78,
     "estadoClube": null,
-    "clubeAnterior": "Arsenal",
+    "clubeAnterior": "Bayer Leverkusen",
     "origemAnterior": "exterior",
-    "ligaAnterior": "Premier League",
+    "ligaAnterior": "Bundesliga",
     "pista2": "Volante suíço de liderança — cobre e distribui com classe.",
     "pista3": "Natural de Basileia, na Suíça, de família albanesa — cresceu no Basel antes de ir à Europa.",
-    "pista4": "Antes do clube atual, jogou no Arsenal, na Premier League."
+    "pista4": "Antes do clube atual, jogou no Bayer Leverkusen, na Bundesliga."
   },
   {
     "id": 143,
@@ -3603,8 +3602,8 @@
     "posicao": "Lateral-esquerdo",
     "nacionalidade": "Francês",
     "bandeira": "🇫🇷",
-    "clube": "AC Milan",
-    "liga": "Serie A",
+    "clube": "Al-Hilal",
+    "liga": "Saudi Pro League",
     "dificuldade": "medio",
     "titulos": [
       "Serie A"
@@ -3614,12 +3613,12 @@
     "apiFootballTeamId": 489,
     "apiFootballLeagueId": 135,
     "estadoClube": null,
-    "clubeAnterior": "Real Sociedad",
+    "clubeAnterior": "AC Milan",
     "origemAnterior": "exterior",
-    "ligaAnterior": "La Liga",
+    "ligaAnterior": "Serie A",
     "pista2": "Lateral-esquerdo muito ofensivo — parece um atacante.",
     "pista3": "Natural de Marseille, na França, irmão de Lucas Hernández — futebol no DNA familiar.",
-    "pista4": "Antes do clube atual, jogou na Real Sociedad, na La Liga."
+    "pista4": "Antes do clube atual, jogou no AC Milan, na Serie A."
   },
   {
     "id": 146,
@@ -3652,8 +3651,8 @@
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Sul-Coreano",
     "bandeira": "🇰🇷",
-    "clube": "Tottenham",
-    "liga": "Premier League",
+    "clube": "Los Angeles FC",
+    "liga": "MLS",
     "dificuldade": "facil",
     "titulos": [],
     "curiosidade": "Artilheiro compartilhado da Premier League em 2021/22 sem converter nenhum pênalti — façanha inédita na história da competição mais assistida do mundo",
@@ -3661,12 +3660,12 @@
     "apiFootballTeamId": 47,
     "apiFootballLeagueId": 39,
     "estadoClube": null,
-    "clubeAnterior": "Bayer Leverkusen",
+    "clubeAnterior": "Tottenham",
     "origemAnterior": "exterior",
-    "ligaAnterior": "Bundesliga",
+    "ligaAnterior": "Premier League",
     "pista2": "Ponta sul-coreano veloz e artilheiro — gols dos dois lados.",
     "pista3": "Natural de Chuncheon, na Coreia do Sul, cresceu jogando futebol desde jovem com o pai.",
-    "pista4": "Antes do clube atual, jogou no Bayer Leverkusen, na Bundesliga."
+    "pista4": "Antes do clube atual, jogou no Tottenham, na Premier League."
   },
   {
     "id": 148,
@@ -3740,8 +3739,8 @@
     "posicao": "Ponta-esquerda",
     "nacionalidade": "Inglês",
     "bandeira": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-    "clube": "Borussia Dortmund",
-    "liga": "Bundesliga",
+    "clube": "Chelsea",
+    "liga": "Premier League",
     "dificuldade": "dificil",
     "titulos": [],
     "curiosidade": "Jovem inglês revelado pelo Dortmund como um dos talentos mais explosivos da Bundesliga — chamou atenção de clubes gigantes da Premier League",
@@ -3750,11 +3749,11 @@
     "apiFootballLeagueId": 78,
     "estadoClube": null,
     "clubeAnterior": "Borussia Dortmund",
-    "origemAnterior": "base",
-    "ligaAnterior": null,
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Bundesliga",
     "pista2": "Ponta inglês explosivo, veloz e imprevisível no drible.",
     "pista3": "Natural de Bristol, na Inglaterra, cresceu nas categorias do Manchester City antes do Dortmund.",
-    "pista4": "Foi revelado nas categorias de base do próprio Borussia Dortmund."
+    "pista4": "Antes do clube atual, jogou no Borussia Dortmund, na Bundesliga."
   },
   {
     "id": 152,
@@ -4302,8 +4301,8 @@
     "posicao": "Volante",
     "nacionalidade": "Brasileiro",
     "bandeira": "🇧🇷",
-    "clube": "Manchester United",
-    "liga": "Premier League",
+    "clube": "Inter Miami",
+    "liga": "MLS",
     "dificuldade": "medio",
     "titulos": [
       "Champions League",
@@ -4315,11 +4314,11 @@
     "apiFootballTeamId": 33,
     "apiFootballLeagueId": 39,
     "estadoClube": null,
-    "clubeAnterior": "Real Madrid",
+    "clubeAnterior": "Manchester United",
     "origemAnterior": "exterior",
-    "ligaAnterior": "La Liga",
+    "ligaAnterior": "Premier League",
     "pista2": "Volante de corte e liderança, tricampeão da Champions.",
     "pista3": "Natural de São José dos Campos, em São Paulo, foi revelado pelo São Paulo FC ainda jovem.",
-    "pista4": "Antes do clube atual, jogou no Real Madrid, na La Liga."
+    "pista4": "Antes do clube atual, jogou no Manchester United, na Premier League."
   }
 ]
