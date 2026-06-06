@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback, useRef } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { Perfil } from '@/lib/types'
 import { getJogadoresDoDia } from '@/lib/game'
 import { carregarPerfil, getResultadoRodada, sincronizarPontosDeServidor } from '@/lib/perfil'
@@ -27,7 +28,11 @@ export default function Home() {
   const finalDiaMostrado = useRef(false)
   const isInitialLoad = useRef(true)
 
-  const jogadoresDoDia = getJogadoresDoDia()
+  // ?preview=N permite testar dias diferentes (ex: ?preview=5 → dia 5)
+  const searchParams = useSearchParams()
+  const previewDia = searchParams.get('preview') ? Number(searchParams.get('preview')) : undefined
+
+  const jogadoresDoDia = getJogadoresDoDia(previewDia)
 
   useEffect(() => {
     const p = carregarPerfil()

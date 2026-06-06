@@ -48,11 +48,12 @@ export function getJogadorPorRodadaId(rodadaId: number): Jogador | null {
   return slots[slotIndex] ?? null
 }
 
-/** 5 jogadores do dia — Copa 2026, mesmo para todos os usuários */
-export function getJogadoresDoDia(): Array<{ jogador: Jogador; rodadaId: number }> {
+/** 5 jogadores do dia — Copa 2026, mesmo para todos os usuários.
+ *  Passa diaOverride (ex: via ?preview=N) para testar dias diferentes. */
+export function getJogadoresDoDia(diaOverride?: number): Array<{ jogador: Jogador; rodadaId: number }> {
   const hoje = new Date()
   const inicio = new Date('2026-06-01')
-  const diffDias = Math.floor((hoje.getTime() - inicio.getTime()) / (1000 * 60 * 60 * 24))
+  const diffDias = diaOverride ?? Math.floor((hoje.getTime() - inicio.getTime()) / (1000 * 60 * 60 * 24))
 
   const iF0 = diffDias % poolFacil.length
   const iF1 = (diffDias + Math.floor(poolFacil.length / 2)) % poolFacil.length
