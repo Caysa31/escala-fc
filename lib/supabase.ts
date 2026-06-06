@@ -1,4 +1,4 @@
-// Cliente Supabase — COBRA
+// Cliente Supabase — COBRA da Copa
 // Preencha o .env.local com suas credenciais (veja .env.local.example)
 
 import { createClient } from '@supabase/supabase-js'
@@ -75,7 +75,7 @@ export async function salvarResultadoSupabase(payload: {
   tentativas: object[]
 }) {
   if (!supabase) return
-  await supabase.from('resultados').upsert({
+  await supabase.from('copa_resultados').upsert({
     usuario_id:   payload.usuarioId,
     rodada_id:    payload.rodadaId,
     jogador_id:   payload.jogadorId,
@@ -94,7 +94,7 @@ export async function salvarResultadoSupabase(payload: {
 export async function getPontosDoServidor(usuarioId: string): Promise<number | null> {
   if (!supabase) return null
   const { data } = await supabase
-    .from('streaks')
+    .from('copa_streaks')
     .select('pontos_total')
     .eq('usuario_id', usuarioId)
     .single()
@@ -108,13 +108,13 @@ export async function getPontosDoServidor(usuarioId: string): Promise<number | n
 export async function incrementarPontosStreak(usuarioId: string, bonus: number): Promise<void> {
   if (!supabase || bonus <= 0) return
   const { data } = await supabase
-    .from('streaks')
+    .from('copa_streaks')
     .select('pontos_total')
     .eq('usuario_id', usuarioId)
     .single()
   const atual = data?.pontos_total ?? 0
   await supabase
-    .from('streaks')
+    .from('copa_streaks')
     .update({ pontos_total: atual + bonus })
     .eq('usuario_id', usuarioId)
 }
@@ -128,7 +128,7 @@ export async function upsertStreakSupabase(usuarioId: string, dados: {
   rodadasAcertadas: number
 }) {
   if (!supabase) return
-  await supabase.from('streaks').upsert({
+  await supabase.from('copa_streaks').upsert({
     usuario_id:        usuarioId,
     streak_atual:      dados.streakAtual,
     streak_maximo:     dados.streakMaximo,
@@ -144,7 +144,7 @@ export async function upsertStreakSupabase(usuarioId: string, dados: {
 export async function getRankingSemanal(limite = 100) {
   if (!supabase) return []
   const { data } = await supabase
-    .from('ranking_semanal')
+    .from('copa_ranking_semanal')
     .select('*')
     .limit(limite)
   return data ?? []
@@ -153,7 +153,7 @@ export async function getRankingSemanal(limite = 100) {
 export async function getRankingGeral(limite = 100) {
   if (!supabase) return []
   const { data } = await supabase
-    .from('ranking_geral')
+    .from('copa_ranking_geral')
     .select('*')
     .limit(limite)
   return data ?? []
@@ -165,16 +165,16 @@ export async function getPosicaoRanking(usuarioId: string): Promise<{ semanal: n
   // Conta quantos usuários têm mais pontos que o usuário atual — posição = count + 1
   // Evita trazer todos os registros para o client (escalável)
   const [semanalResult, geralResult] = await Promise.all([
-    supabase.from('ranking_semanal').select('pontos_semana').eq('id', usuarioId).single(),
-    supabase.from('ranking_geral').select('pontos_total').eq('id', usuarioId).single(),
+    supabase.from('copa_ranking_semanal').select('pontos_semana').eq('id', usuarioId).single(),
+    supabase.from('copa_ranking_geral').select('pontos_total').eq('id', usuarioId).single(),
   ])
 
   const pontosSemanal = semanalResult.data?.pontos_semana ?? 0
   const pontosGeral   = geralResult.data?.pontos_total   ?? 0
 
   const [{ count: acimaSemanal }, { count: acimaGeral }] = await Promise.all([
-    supabase.from('ranking_semanal').select('id', { count: 'exact', head: true }).gt('pontos_semana', pontosSemanal),
-    supabase.from('ranking_geral').select('id', { count: 'exact', head: true }).gt('pontos_total', pontosGeral),
+    supabase.from('copa_ranking_semanal').select('id', { count: 'exact', head: true }).gt('pontos_semana', pontosSemanal),
+    supabase.from('copa_ranking_geral').select('id', { count: 'exact', head: true }).gt('pontos_total', pontosGeral),
   ])
 
   return {
@@ -199,7 +199,7 @@ export async function assinarContratoSupabase(payload: {
 }) {
   if (!supabase) return
   try {
-    const { error } = await supabase.from('contratos').upsert({
+    const { error } = await supabase.from('copa_contratos').upsert({
       id:            payload.id,
       usuario_id:    payload.usuarioId,
       rodada_id:     payload.rodadaId,
@@ -223,7 +223,7 @@ export async function resolverTriviaSupabase(
   bonusTotal: number
 ) {
   if (!supabase) return
-  await supabase.from('contratos').update({
+  await supabase.from('copa_contratos').update({
     status:       'trivia_resolvida',
     bonus_base:   bonusBase,
     bonus_total:  bonusTotal,
@@ -241,7 +241,7 @@ export async function atualizarFixtureContrato(
   leagueId:      number,
 ) {
   if (!supabase) return
-  const { error } = await supabase.from('contratos').update({
+  const { error } = await supabase.from('copa_contratos').update({
     fixture_id:     fixtureId,
     data_jogo:      dataJogo,
     rodada_futebol: rodadaFutebol,
@@ -259,7 +259,7 @@ export async function resolverContratoSupabase(
   desempenho: object,
 ) {
   if (!supabase) return
-  const { error } = await supabase.from('contratos').update({
+  const { error } = await supabase.from('copa_contratos').update({
     status:       'resolvido',
     bonus_base:   bonusBase,
     bonus_total:  bonusTotal,
@@ -272,7 +272,7 @@ export async function resolverContratoSupabase(
 export async function getContratosResolvidosSupabase(usuarioId: string) {
   if (!supabase) return []
   const { data } = await supabase
-    .from('contratos')
+    .from('copa_contratos')
     .select('*')
     .eq('usuario_id', usuarioId)
     .in('status', ['resolvido', 'trivia_resolvida'])
@@ -426,7 +426,7 @@ export async function criarLiga(
 ): Promise<string | null> {
   if (!supabase) return null
   const id = gerarCodigoLiga()
-  const { error: ligaError } = await supabase.from('ligas').insert({
+  const { error: ligaError } = await supabase.from('copa_ligas').insert({
     id, nome, criador_apelido: criadorApelido, ativa: true,
   })
   if (ligaError) { console.warn('[Supabase] criarLiga:', ligaError.message); return null }
@@ -440,7 +440,7 @@ export async function criarLiga(
   const pontosServidor = userId ? await getPontosDoServidor(userId) : null
   const pontosBase = pontosServidor ?? pontosBaseLocal
 
-  const { error: membroError } = await supabase.from('liga_membros').insert({
+  const { error: membroError } = await supabase.from('copa_liga_membros').insert({
     liga_id: id, apelido: criadorApelido, user_id: userId, pontos_base: pontosBase,
   })
   if (membroError) { console.warn('[Supabase] criarLiga membro:', membroError.message) }
@@ -450,7 +450,7 @@ export async function criarLiga(
 export async function getLiga(ligaId: string): Promise<LigaInfo | null> {
   if (!supabase) return null
   const { data } = await supabase
-    .from('ligas')
+    .from('copa_ligas')
     .select('id, nome, criador_apelido, criada_em, ativa')
     .eq('id', ligaId.toUpperCase())
     .single()
@@ -471,7 +471,7 @@ export async function entrarLiga(
   const pontosServidor = userId ? await getPontosDoServidor(userId) : null
   const pontosBase = pontosServidor ?? pontosBaseLocal
 
-  const { error } = await supabase.from('liga_membros').upsert({
+  const { error } = await supabase.from('copa_liga_membros').upsert({
     liga_id: ligaId.toUpperCase(), apelido, user_id: userId, pontos_base: pontosBase,
   }, { onConflict: 'liga_id,apelido', ignoreDuplicates: true })
   if (error) { console.warn('[Supabase] entrarLiga:', error.message); return false }
@@ -481,7 +481,7 @@ export async function entrarLiga(
 export async function getMembrosLiga(ligaId: string): Promise<LigaMembro[]> {
   if (!supabase) return []
   const { data } = await supabase
-    .from('liga_membros')
+    .from('copa_liga_membros')
     .select('apelido, user_id, pontos_base, joined_at')
     .eq('liga_id', ligaId.toUpperCase())
     .order('joined_at', { ascending: true })
@@ -498,7 +498,7 @@ export async function incrementarPontosLiga(
 
   // Lê valor atual
   const { data } = await supabase
-    .from('liga_membros')
+    .from('copa_liga_membros')
     .select('pontos_liga')
     .eq('liga_id', ligaId.toUpperCase())
     .eq('apelido', apelido)
@@ -507,7 +507,7 @@ export async function incrementarPontosLiga(
   const atual = (data as { pontos_liga?: number } | null)?.pontos_liga ?? 0
 
   await supabase
-    .from('liga_membros')
+    .from('copa_liga_membros')
     .update({ pontos_liga: atual + pontosGanhos })
     .eq('liga_id', ligaId.toUpperCase())
     .eq('apelido', apelido)
@@ -518,7 +518,7 @@ export async function getPlacarLiga(ligaId: string): Promise<LigaMembro[]> {
 
   // Lê pontos_liga diretamente da tabela — sem cálculo, sem subtração
   const { data } = await supabase
-    .from('liga_membros')
+    .from('copa_liga_membros')
     .select('apelido, user_id, pontos_base, pontos_liga, joined_at')
     .eq('liga_id', ligaId.toUpperCase())
     .order('pontos_liga', { ascending: false })
@@ -611,7 +611,7 @@ export async function getRankingGrupo(grupoId: string) {
 
   // Pontos da semana para esses usuários
   const { data } = await supabase
-    .from('ranking_semanal')
+    .from('copa_ranking_semanal')
     .select('id, apelido, pontos_semana, streak_atual')
     .in('id', ids)
     .order('pontos_semana', { ascending: false })

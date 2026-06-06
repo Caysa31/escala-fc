@@ -1,74 +1,76 @@
-// Lógica central do jogo COBRA — Quem é o Craque?
+// Lógica central do jogo COBRA da Copa — Quem é o Craque?
 
 import jogadoresData from '@/data/jogadores.json'
 import { Jogador, PONTOS_BASE, TIPO_PISTAS, TipoPista } from './types'
 
 const jogadores = jogadoresData as Jogador[]
 
-// ── Pools por categoria de posição ────────────────────────────
-// Dias pares:   ATQ + MEI + DEF/GOL  (variedade máxima)
-// Dias ímpares: ATQ + ATQ + MEI      (atacante famoso no slot extra)
-// Proporção média: ~1.5 ATQ + ~1 MEI + ~0.5 DEF/GOL por dia
-// Cada pool tem rotação independente → todos os jogadores aparecem
-// em frequência similar independente do tamanho do pool.
+// ── Pools por dificuldade — Copa do Mundo 2026 ────────────────────────────
+// 5 desafios por dia:
+//   Slot 0 — Fácil    (craque mundialmente famoso)
+//   Slot 1 — Fácil    (outro craque muito conhecido)
+//   Slot 2 — Médio    (jogador bem conhecido do futebol europeu)
+//   Slot 3 — Médio    (jogador de seleção forte, menos famoso)
+//   Slot 4 — Difícil  (jogador menos midiático)
+// Cada pool tem rotação independente → todos aparecem ao longo das semanas.
 
-const POSICOES_ATAQUE = new Set([
-  'Atacante', 'Centroavante', 'Ponta-direita', 'Ponta-esquerda', 'Ponta', 'Meia-atacante',
-])
-const POSICOES_MEIO = new Set(['Meia', 'Volante'])
-const POSICOES_DEFESA = new Set(['Zagueiro', 'Lateral-direito', 'Lateral-esquerdo', 'Lateral', 'Goleiro'])
+const NUM_DESAFIOS = 5
 
-const poolAtaque = jogadores.filter(j => POSICOES_ATAQUE.has(j.posicao))
-const poolMeio   = jogadores.filter(j => POSICOES_MEIO.has(j.posicao))
-const poolDefesa = jogadores.filter(j => POSICOES_DEFESA.has(j.posicao))
+const poolFacil  = jogadores.filter(j => j.dificuldade === 'facil')
+const poolMedio  = jogadores.filter(j => j.dificuldade === 'medio')
+const poolDificil = jogadores.filter(j => j.dificuldade === 'dificil')
 
 /**
  * Retorna o jogador correto para um rodadaId específico.
- * Usa a mesma lógica de pools por posição de getJogadoresDoDia().
+ * Usa a mesma lógica de pools por dificuldade de getJogadoresDoDia().
  * Retorna null se rodadaId for inválido.
  */
 export function getJogadorPorRodadaId(rodadaId: number): Jogador | null {
   if (!Number.isFinite(rodadaId) || rodadaId < 1) return null
 
-  const diffDias  = Math.floor((rodadaId - 1) / 3)
-  const slotIndex = (rodadaId - 1) % 3
+  const diffDias  = Math.floor((rodadaId - 1) / NUM_DESAFIOS)
+  const slotIndex = (rodadaId - 1) % NUM_DESAFIOS
 
-  const iAtq0 = diffDias % poolAtaque.length
-  const iAtq1 = (diffDias + Math.floor(poolAtaque.length / 2)) % poolAtaque.length
-  const iMeio = diffDias % poolMeio.length
-  const iDef  = Math.floor(diffDias / 2) % poolDefesa.length
+  const iF0 = diffDias % poolFacil.length
+  const iF1 = (diffDias + Math.floor(poolFacil.length / 2)) % poolFacil.length
+  const iM0 = diffDias % poolMedio.length
+  const iM1 = (diffDias + Math.floor(poolMedio.length / 2)) % poolMedio.length
+  const iD  = diffDias % poolDificil.length
 
-  const isDiaImpar = diffDias % 2 === 1
-
-  const slots = isDiaImpar
-    ? [poolAtaque[iAtq0], poolAtaque[iAtq1], poolMeio[iMeio]]
-    : [poolAtaque[iAtq0], poolMeio[iMeio],   poolDefesa[iDef]]
+  const slots = [
+    poolFacil[iF0],
+    poolFacil[iF1],
+    poolMedio[iM0],
+    poolMedio[iM1],
+    poolDificil[iD],
+  ]
 
   return slots[slotIndex] ?? null
 }
 
-/** 3 jogadores do dia — um por desafio, mesmo para todos os usuários */
+/** 5 jogadores do dia — Copa 2026, mesmo para todos os usuários */
 export function getJogadoresDoDia(): Array<{ jogador: Jogador; rodadaId: number }> {
   const hoje = new Date()
-  const inicio = new Date('2026-05-22')
+  const inicio = new Date('2026-06-01')
   const diffDias = Math.floor((hoje.getTime() - inicio.getTime()) / (1000 * 60 * 60 * 24))
 
-  // Índices dentro de cada pool — offsets distintos para nunca repetir o mesmo jogador no mesmo dia
-  const iAtq0 = diffDias % poolAtaque.length
-  const iAtq1 = (diffDias + Math.floor(poolAtaque.length / 2)) % poolAtaque.length
-  const iMeio = diffDias % poolMeio.length
-  // Defesa avança 1 a cada 2 dias (só aparece em dias pares) → ciclo completo em ~68 dias
-  const iDef  = Math.floor(diffDias / 2) % poolDefesa.length
+  const iF0 = diffDias % poolFacil.length
+  const iF1 = (diffDias + Math.floor(poolFacil.length / 2)) % poolFacil.length
+  const iM0 = diffDias % poolMedio.length
+  const iM1 = (diffDias + Math.floor(poolMedio.length / 2)) % poolMedio.length
+  const iD  = diffDias % poolDificil.length
 
-  const isDiaImpar = diffDias % 2 === 1
-
-  const slots = isDiaImpar
-    ? [poolAtaque[iAtq0], poolAtaque[iAtq1], poolMeio[iMeio]]   // ATQ + ATQ + MEI
-    : [poolAtaque[iAtq0], poolMeio[iMeio],   poolDefesa[iDef]]   // ATQ + MEI + DEF/GOL
+  const slots = [
+    poolFacil[iF0],   // Slot 0 — Fácil
+    poolFacil[iF1],   // Slot 1 — Fácil
+    poolMedio[iM0],   // Slot 2 — Médio
+    poolMedio[iM1],   // Slot 3 — Médio
+    poolDificil[iD],  // Slot 4 — Difícil
+  ]
 
   return slots.map((jogador, i) => ({
     jogador,
-    rodadaId: diffDias * 3 + i + 1,
+    rodadaId: diffDias * NUM_DESAFIOS + i + 1,
   }))
 }
 
@@ -338,5 +340,5 @@ export function gerarTextoCompartilhar(
     ? (pistaAcerto === 0 ? 'Acertei pelo histórico! 🎯' : `Acertei em ${pistaAcerto} pista${pistaAcerto > 1 ? 's' : ''} 🎯`)
     : 'Não acertei hoje 😬'
 
-  return `🐍 COBRA — Quem é o Craque? #${rodadaId}\n${resultado}\n\n${grade}\n\ncobra-craque.vercel.app`
+  return `⚽ COBRA da Copa — Quem é o Craque? #${rodadaId}\n${resultado}\n\n${grade}\n\ncobra-copa.vercel.app`
 }

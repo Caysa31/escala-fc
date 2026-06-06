@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "COBRA — Quem é o Craque?",
-  description: "Jogo diário de futebol: adivinhe o jogador com o mínimo de pistas. Prove que você é cobra no assunto!",
+  title: "COBRA da Copa — Quem é o Craque?",
+  description: "Jogo diário da Copa do Mundo 2026: adivinhe o jogador da seleção com o mínimo de pistas. Prove que você manja de Copa!",
 };
 
 export default function RootLayout({
