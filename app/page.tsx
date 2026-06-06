@@ -62,8 +62,8 @@ export default function Home() {
   if (!carregado) {
     return (
       <div className="min-h-screen bg-[#0A1626] flex flex-col items-center justify-center gap-3">
-        <div className="text-4xl animate-bounce">⚽</div>
-        <div className="text-[#FFD23F] font-black text-xl tracking-widest">COBRA da Copa</div>
+        <div className="text-4xl animate-bounce">🐍</div>
+        <div className="text-[#FFD23F] font-black text-xl tracking-widest">COBRA DA COPA</div>
         <div className="text-[#1A3A5C] text-xs animate-pulse">carregando...</div>
       </div>
     )
@@ -97,11 +97,11 @@ export default function Home() {
         {/* ── HEADER ───────────────────────────────────────── */}
         <header className="flex items-center justify-between pt-2">
           <div className="flex items-center gap-3">
-            <span className="text-3xl">⚽</span>
+            <span className="text-3xl">🐍</span>
             <div>
-              <h1 className="text-2xl font-black tracking-widest text-white leading-none">COBRA da Copa</h1>
+              <h1 className="text-2xl font-black tracking-widest text-white leading-none">COBRA DA COPA</h1>
               <p className="text-xs text-[#FFD23F] font-semibold tracking-wider leading-none mt-0.5">
-                QUEM É O CRAQUE?
+                QUEM É O CRAQUE? <span className="text-[10px]">⚽</span>
               </p>
             </div>
           </div>
