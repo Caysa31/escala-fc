@@ -57,23 +57,8 @@ export default function JogoDesafio({
   const pistasTexto = getPistasTexto(jogador)
   const introNarrativa = getIntroNarrativa(jogador)
 
-  // Label do Capítulo 2 varia por posição — identidade narrativa antes de revelar o estilo de jogo
-  const chapterLabelPosicao: Record<string, string> = {
-    'Goleiro':          'O Guardião',
-    'Zagueiro':         'O Muro',
-    'Lateral-direito':  'O Corredor',
-    'Lateral-esquerdo': 'O Corredor',
-    'Lateral':          'O Corredor',
-    'Volante':          'O Escudo',
-    'Meia':             'O Maestro',
-    'Meia-atacante':    'O Artista',
-    'Ponta':            'O Relâmpago',
-    'Ponta-direita':    'O Relâmpago',
-    'Ponta-esquerda':   'O Relâmpago',
-    'Atacante':         'O Artilheiro',
-    'Centroavante':     'O Artilheiro',
-  }
-  const subtituloPista2 = chapterLabelPosicao[jogador.posicao] ?? 'O Dom'
+  // Copa: label fixo "O Estilo" — não revela posição antes de abrir a pista
+  const subtituloPista2 = 'O Estilo'
 
   const [estado, setEstado] = useState<EstadoJogo>({
     pistaAtual: 0,
@@ -131,11 +116,8 @@ export default function JogoDesafio({
       onResultado(perfilAtualizado)
     }
     onFimJogo?.({ ganhou: false, pontos: 0, pistaAcerto: null })
-    if (onProximoDesafio) {
-      onProximoDesafio()
-    } else {
-      setMostrarResultado(true)
-    }
+    // Sempre mostra resultado primeiro — nunca pula direto para o próximo
+    setMostrarResultado(true)
   }
 
   function handlePalpite(nome: string) {

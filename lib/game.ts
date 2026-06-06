@@ -166,10 +166,26 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
     ).join('')
   }).join('|')
 
-  // Pista 3 — O Segredo: curiosidade única do jogador (não revela nome)
+  // Pista 3 — O Segredo: curiosidade única, com nome do jogador ocultado
   const curiosidade = jogador.curiosidade ?? ''
-  const pista3 = curiosidade
-    ? (curiosidade.endsWith('.') ? curiosidade : `${curiosidade}.`)
+  const ocultarNome = (texto: string): string => {
+    if (!texto) return texto
+    // Remove nome completo e cada parte do nome (sobrenome, primeiro nome)
+    const partes = jogador.nome.trim().split(/\s+/)
+    let resultado = texto
+    // Substitui nome completo primeiro
+    resultado = resultado.replace(new RegExp(jogador.nome.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), 'Este craque')
+    // Substitui partes individuais com mais de 3 letras (evita substituir "de", "da", etc.)
+    partes.forEach(parte => {
+      if (parte.length > 3) {
+        resultado = resultado.replace(new RegExp(parte.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), '???')
+      }
+    })
+    return resultado
+  }
+  const curiosidadeOculta = ocultarNome(curiosidade)
+  const pista3 = curiosidadeOculta
+    ? (curiosidadeOculta.endsWith('.') ? curiosidadeOculta : `${curiosidadeOculta}.`)
     : `${jogador.bandeira ?? ''} Representante de ${jogador.nacionalidade} na Copa 2026.`
 
   // Pista 4 — A Copa: contexto de seleção e Copa, sem mencionar clubes
