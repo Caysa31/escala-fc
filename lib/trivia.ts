@@ -300,3 +300,4 @@ export const PONTOS_TRIVIA: Record<string, number> = {
   medio: 20,
   dificil: 35,
 }
+// deploy test Sat Jun  6 18:08:47 HEUA 2026
