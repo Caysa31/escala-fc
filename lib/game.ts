@@ -166,80 +166,47 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
     ).join('')
   }).join('|')
 
-  // Pista 3 — Nacionalidade (país real)
-  const paisNascimento: Record<string, string> = {
-    'Alemão':       'Nasceu na Alemanha — terra de disciplina, organização e um futebol admirado no mundo inteiro.',
-    'Argentino':    'Nasceu na Argentina, onde o futebol não é esporte — é religião.',
-    'Belga':        'Nasceu na Bélgica, da geração dourada que dominou rankings e encantou a Europa por anos.',
-    'Brasileiro':   'Nasceu no Brasil, o país que mais ama o futebol no mundo.',
-    'Camaronês':    'Nasceu nos Camarões — terra do Leão Indomável e de atletas que encantam multidões.',
-    'Chileno':      'Nasceu no Chile, nação que revelou uma das gerações mais guerreiras da América do Sul.',
-    'Colombiano':   'Nasceu na Colômbia, país que nos últimos anos não para de revelar talentos ao futebol.',
-    'Dinamarquês':  'Nasceu na Dinamarca — pequeno país com força de gigante dentro de campo.',
-    'Egípcio':      'Nasceu no Egito, terra de faraós — e de um dos ídolos mais admirados do futebol atual.',
-    'Equatoriano':  'Nasceu no Equador, país que vem ganhando cada vez mais respeito no cenário sul-americano.',
-    'Esloveno':     'Nasceu na Eslovênia, nação pequena que revelou ao mundo um dos mais temidos artilheiros da Europa.',
-    'Espanhol':     'Nasceu na Espanha, berço do tiki-taka e de gerações que dominaram o futebol mundial.',
-    'Francês':      'Nasceu na França — nação que revelou uma nova geração de gênios do futebol.',
-    'Georgiano':    'Nasceu na Geórgia, um país que surpreende o mundo com talentos que ninguém esperava.',
-    'Guineense':    'Nasceu na Guiné, um dos países africanos que mais exporta talentos para o futebol europeu.',
-    'Holandês':     'Nasceu na Holanda, país do futebol total e de uma escola técnica admirada em todo o mundo.',
-    'Inglês':       'Nasceu na Inglaterra — onde o futebol nasceu, e onde esta história também começou.',
-    'Italiano':     'Nasceu na Itália, terra de grandes defensores, táticos geniais e campeões do mundo.',
-    'Marfinense':   'Nasceu na Costa do Marfim, que revelou ao mundo uma geração extraordinária de jogadores.',
-    'Nigeriano':    'Nasceu na Nigéria, um dos países africanos com maior tradição em revelar atletas de elite.',
-    'Norueguês':    'Nasceu na Noruega — terra fria com um goleador que aquece qualquer estádio do mundo.',
-    'Paraguaio':    'Nasceu no Paraguai, país pequeno com coração grande e garra que não conhece derrota fácil.',
-    'Peruano':      'Nasceu no Peru, nação com amor ao futebol que atravessa gerações.',
-    'Polonês':      'Nasceu na Polônia, que revelou ao mundo um dos centroavantes mais letais da atualidade.',
-    'Português':    'Nasceu em Portugal — pequeno país com história enorme dentro do futebol europeu.',
-    'Senegalês':    'Nasceu no Senegal, a nação dos Leões de Teranga que rugem cada vez mais alto.',
-    'Sul-Coreano':  'Nasceu na Coreia do Sul, país que assombrou o mundo na Copa de 2002 e nunca mais parou.',
-    'Suíço':        'Nasceu na Suíça, terra neutra que produz jogadores de alto nível para as melhores ligas do mundo.',
-    'Sérvio':       'Nasceu na Sérvia, país dos Bálcãs com uma escola de futebol cada vez mais respeitada.',
-    'Turco':        'Nasceu na Turquia, que vive um momento de crescimento real no futebol internacional.',
-    'Uruguaio':     'Nasceu no Uruguai — pequeno país com alma enorme e história gigante dentro do futebol.',
-    'Venezuelano':  'Nasceu na Venezuela, nação que vem crescendo a passos largos no cenário do futebol sul-americano.',
-  }
-  const pista3 = paisNascimento[jogador.nacionalidade] ?? `Nasceu em ${jogador.nacionalidade} — um país que tem sua própria história dentro do futebol.`
+  // Pista 3 — O Segredo: curiosidade única do jogador (não revela nome)
+  const curiosidade = jogador.curiosidade ?? ''
+  const pista3 = curiosidade
+    ? (curiosidade.endsWith('.') ? curiosidade : `${curiosidade}.`)
+    : `${jogador.bandeira ?? ''} Representante de ${jogador.nacionalidade} na Copa 2026.`
 
-  // Pista 4 — Copa context + trajetória de clubes
+  // Pista 4 — A Copa: contexto de seleção e Copa, sem mencionar clubes
   const fe = jogador.faixaEtaria ?? ''
-  const copaCtx = (fe === 'jovem' || fe === '18-22')
-    ? 'Estreia numa Copa do Mundo em 2026.'
-    : (fe === '22-26' || fe === 'jovem adulto')
-      ? 'Uma das primeiras Copas do Mundo da carreira.'
-      : (fe === '35+' || fe === 'veterano')
-        ? 'Copa 2026 pode ser sua última grande chance no palco mais grandioso do futebol.'
-        : 'Veterano das seleções — Copa 2026 é mais um capítulo da sua história internacional.'
+  const copaExp = (fe === 'jovem' || fe === '18-22')
+    ? 'Estreia numa Copa do Mundo em 2026 — o momento mais esperado da carreira.'
+    : (fe === '35+' || fe === 'veterano')
+      ? 'Veterano de Copas. Cada torneio pode ser o último — e ele sabe disso.'
+      : (fe === '30-35' || fe === 'adulto')
+        ? 'Já sabe o peso de uma Copa do Mundo e voltou para buscar mais.'
+        : 'Está no auge — a Copa 2026 é o palco ideal para escrever história.'
 
-  let pista4: string
-  if (!jogador.clubeAnterior || jogador.origemAnterior === 'base') {
-    pista4 = `${copaCtx} Revelado nas categorias de base do próprio clube onde joga hoje.`
-  } else if (jogador.origemAnterior === 'brasil') {
-    pista4 = `${copaCtx} Antes do clube atual, construiu seu nome no ${jogador.clubeAnterior}.`
-  } else {
-    pista4 = `${copaCtx} Antes do clube atual, jogou no ${jogador.clubeAnterior}, na ${jogador.ligaAnterior}.`
-  }
+  const teamRole = jogador.dificuldade === 'facil'
+    ? 'Titular indiscutível. A seleção é construída ao redor dele.'
+    : jogador.dificuldade === 'medio'
+      ? 'Peça importante no esquema tático da seleção.'
+      : 'Convocado após temporada de destaque. Merece cada minuto em campo.'
 
-  // Pista 5 — SELEÇÃO (não clube) + letras parciais do nome
-  // Copa: o que importa descobrir é o JOGADOR, não a seleção
+  const pista4 = `${copaExp} ${teamRole}`
+
+  // Pista 5 — Clube + letras parciais do nome
+  // O clube é a dica final concreta — especialmente para times grandes (PSG, Real Madrid...)
   const letrasReveladas = jogador.nome.trim().split(/\s+/).map(palavra =>
     palavra.split('').map((letra, i) => {
       if (i === 0 || i === 2 || (i === 4 && palavra.length > 5)) return letra
       return '_'
     }).join(' ')
   ).join('   ')
-  const selecaoLabel = `${jogador.bandeira ?? ''} ${jogador.nacionalidade ?? jogador.clube}`
-  const pista5 = `${selecaoLabel}|${letrasReveladas}`
+  const pista5 = `${jogador.clube}|${letrasReveladas}`
 
-  // Pista 1 = Nome (blocos), Pista 2 = Posição — ordem invertida intencionalmente
-  // Campos personalizados por jogador têm prioridade sobre o template automático
+  // Copa 2026: pistas 3 e 4 sempre geradas (curiosidade e contexto de Copa)
+  // pista2 customizada do jogador ainda é usada para o estilo de jogo
   return {
     1: pista2,
     2: jogador.pista2 ?? pista1,
-    3: jogador.pista3 ?? pista3,
-    4: jogador.pista4 ?? pista4,
+    3: pista3,   // O Segredo — sempre curiosidade, nunca campo customizado
+    4: pista4,   // A Copa — sempre gerado, foco em seleção/Copa
     5: pista5,
   }
 }
