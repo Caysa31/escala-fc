@@ -70,11 +70,11 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
 
         {/* Logo */}
         <div className="text-center">
-          <p className="text-5xl mb-1">🐍</p>
-          <h1 className="text-4xl font-black text-white tracking-widest">COBRA</h1>
-          <p className="text-[#00C853] text-sm font-semibold tracking-wider mt-0.5">QUEM É O CRAQUE?</p>
+          <p className="text-5xl mb-1">⚽</p>
+          <h1 className="text-4xl font-black text-white tracking-widest">COBRA da Copa</h1>
+          <p className="text-[#FFD23F] text-sm font-semibold tracking-wider mt-0.5">QUEM É O CRAQUE?</p>
           <p className="text-[#8AB4CC] mt-2 text-sm">
-            Adivinhe o jogador do dia com o mínimo de pistas
+            Adivinhe o jogador da Copa 2026 com o mínimo de pistas
           </p>
         </div>
 
@@ -95,7 +95,7 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
             <p className="text-2xl">🌍</p>
             <p className="text-white font-bold text-sm">Ranking Global</p>
             <p className="text-[#8AB4CC] text-xs leading-relaxed">
-              Compita com jogadores do Brasil inteiro. Quem é o cobra de verdade?
+              Compita com jogadores do mundo inteiro. Quem manja mais de Copa?
             </p>
           </div>
           <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-4 space-y-2">
