@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Perfil } from '@/lib/types'
 import { getJogadoresDoDia } from '@/lib/game'
@@ -18,6 +18,20 @@ import Link from 'next/link'
 import BottomNav from '@/components/BottomNav'
 
 export default function Home() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-[#0A1626] flex flex-col items-center justify-center gap-3">
+        <div className="text-4xl animate-bounce">🐍</div>
+        <div className="text-[#FFD23F] font-black text-xl tracking-widest">COBRA DA COPA</div>
+        <div className="text-[#1A3A5C] text-xs animate-pulse">carregando...</div>
+      </div>
+    }>
+      <HomeContent />
+    </Suspense>
+  )
+}
+
+function HomeContent() {
   const [perfil, setPerfil] = useState<Perfil | null>(null)
   const [carregado, setCarregado] = useState(false)
   const [desafioIdx, setDesafioIdx] = useState(0)
