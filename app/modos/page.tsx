@@ -54,7 +54,7 @@ export default function ModosPage() {
             return (
               <Link
                 key={modo.id}
-                href={esgotado ? '#' : `/modos/${modo.id}`}
+                href={esgotado ? '#' : (modo.href ?? `/modos/${modo.id}`)}
                 className={`flex items-center gap-4 bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl px-4 py-4 transition-all ${
                   esgotado
                     ? 'opacity-40 cursor-not-allowed'

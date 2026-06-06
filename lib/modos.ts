@@ -1,47 +1,39 @@
-// Puzzles Ilimitados Temáticos — definições e helpers
+// Puzzles Ilimitados Temáticos — Copa do Mundo 2026
 
 import jogadoresData from '@/data/jogadores.json'
 import { Jogador } from './types'
 
 const jogadores = jogadoresData as Jogador[]
 
-export type ModoId = 'lenda' | 'brasileirao' | 'jovens' | 'relampago'
+export type ModoId = 'lenda' | 'jovens' | 'relampago'
 
 export interface ModoConfig {
-  id: ModoId
+  id: ModoId | 'cobra-sabe'
   label: string
   emoji: string
   descricao: string
-  corFundo: string   // tailwind bg class
-  corBorda: string   // tailwind border class
-  corTexto: string   // tailwind text class
-  totalPistas?: number  // override de TOTAL_PISTAS (Relâmpago = 3)
+  corFundo: string
+  corBorda: string
+  corTexto: string
+  totalPistas?: number
+  href?: string  // URL customizada (ex: modo trivia)
 }
 
 export const MODOS_CONFIG: ModoConfig[] = [
   {
     id: 'lenda',
-    label: 'Modo Lenda',
+    label: 'Modo Lenda da Copa',
     emoji: '🏆',
-    descricao: 'Ídolos que moldaram o futebol. Você os conhece de verdade?',
+    descricao: 'Os maiores craques da Copa 2026. Você os conhece todos?',
     corFundo: 'bg-[#0F1D30]',
     corBorda: 'border-[#2A5275]',
     corTexto: 'text-[#FFD23F]',
   },
   {
-    id: 'brasileirao',
-    label: 'Modo Brasileirão',
-    emoji: '🇧🇷',
-    descricao: 'Só jogadores do Brasileirão. O futebol que você acompanha todo fim de semana.',
-    corFundo: 'bg-[#0F1D30]',
-    corBorda: 'border-[#2A5275]',
-    corTexto: 'text-[#00C853]',
-  },
-  {
     id: 'jovens',
-    label: 'Modo Jovens',
+    label: 'Modo Jovens da Copa',
     emoji: '⚡',
-    descricao: 'Talentos em ascensão. Os próximos ídolos já estão em campo.',
+    descricao: 'A nova geração em campo. Os craques de amanhã jogando hoje.',
     corFundo: 'bg-[#0F1D30]',
     corBorda: 'border-[#2A5275]',
     corTexto: 'text-[#8AB4CC]',
@@ -50,23 +42,35 @@ export const MODOS_CONFIG: ModoConfig[] = [
     id: 'relampago',
     label: 'Modo Relâmpago',
     emoji: '🔥',
-    descricao: 'Só 3 pistas. Ou você sabe, ou não sabe. Sem segunda chance.',
+    descricao: 'Só 3 pistas. Copa é assim: ou você sabe, ou não sabe.',
     corFundo: 'bg-[#0F1D30]',
     corBorda: 'border-[#2A5275]',
     corTexto: 'text-red-400',
     totalPistas: 3,
   },
+  {
+    id: 'cobra-sabe',
+    label: 'Só Cobra Sabe',
+    emoji: '🐍',
+    descricao: 'Fatos históricos da Copa do Mundo. Só quem é cobra de verdade sabe!',
+    corFundo: 'bg-[#0F1D30]',
+    corBorda: 'border-[#2A5275]',
+    corTexto: 'text-[#00C853]',
+    href: '/modos/cobra-sabe',
+  },
 ]
 
 // ── Pools por modo ────────────────────────────────────────────
+// Lenda:     dificuldade 'facil' = craques mundialmente famosos
+// Jovens:    faixaEtaria '18-22' ou '22-26' (jovens da Copa)
+// Relâmpago: todos os jogadores da Copa
 
-const JOVENS_FA = new Set(['17-21', '18-22', '19-23', '20-24', '21-25', '22-26'])
+const JOVENS_FA = new Set(['17-21', '18-22', '19-23', '20-24', '21-25', '22-26', 'jovem', 'jovem adulto'])
 
 const POOLS: Record<ModoId, Jogador[]> = {
-  lenda:       jogadores.filter(j => j.lenda === true),
-  brasileirao: jogadores.filter(j => j.liga === 'Brasileirão'),
-  jovens:      jogadores.filter(j => JOVENS_FA.has(j.faixaEtaria)),
-  relampago:   jogadores,
+  lenda:     jogadores.filter(j => j.dificuldade === 'facil'),
+  jovens:    jogadores.filter(j => JOVENS_FA.has(j.faixaEtaria ?? '')),
+  relampago: jogadores,
 }
 
 export function getModoConfig(id: string): ModoConfig | undefined {
