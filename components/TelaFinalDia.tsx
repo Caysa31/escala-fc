@@ -309,6 +309,14 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
             </p>
           </div>
 
+          {/* ── VOLTAR PARA O INÍCIO ─────────────────────── */}
+          <button
+            onClick={onFechar}
+            className="w-full text-center text-[#8AB4CC] hover:text-white text-sm font-semibold py-2 border border-[#1A3A5C] rounded-xl transition-colors"
+          >
+            ← Voltar ao início
+          </button>
+
         </div>
       </div>
     </div>
