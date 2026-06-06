@@ -83,16 +83,26 @@ export function getIntroNarrativa(jogador: Jogador): string {
   const bandeira = jogador.bandeira ?? ''
   const nac = jogador.nacionalidade ?? ''
 
-  // Usa a curiosidade do jogador — campo único e personalizado para cada um
-  const curiosidade = jogador.curiosidade ?? ''
-  const curiosidadeFormatada = curiosidade.endsWith('.') ? curiosidade : `${curiosidade}.`
-
-  if (curiosidade) {
-    return `${bandeira} ${nac} na Copa 2026. ${curiosidadeFormatada} Você sabe quem é?`
+  const posLabel: Record<string, string> = {
+    'Goleiro': 'Goleiro', 'Zagueiro': 'Zagueiro',
+    'Lateral-direito': 'Lateral', 'Lateral-esquerdo': 'Lateral', 'Lateral': 'Lateral',
+    'Volante': 'Volante', 'Meia': 'Meia', 'Meia-atacante': 'Meia',
+    'Ponta': 'Extremo', 'Ponta-direita': 'Extremo', 'Ponta-esquerda': 'Extremo',
+    'Atacante': 'Atacante', 'Centroavante': 'Centroavante',
   }
+  const pos = posLabel[jogador.posicao] ?? jogador.posicao
+  const temTitulos = jogador.titulos && jogador.titulos.length > 0
 
-  // Fallback se não tiver curiosidade
-  return `${bandeira} ${nac} na Copa 2026. Um jogador que estará em campo no maior torneio do mundo. Você sabe quem é?`
+  if (jogador.dificuldade === 'facil') {
+    return `${bandeira} ${nac} na Copa 2026. ${pos} — um dos maiores nomes do futebol mundial. Você sabe quem é?`
+  }
+  if (jogador.dificuldade === 'medio' && temTitulos) {
+    return `${bandeira} ${nac} na Copa 2026. ${pos} com títulos no currículo e destaque nas principais ligas. Você sabe quem é?`
+  }
+  if (jogador.dificuldade === 'medio') {
+    return `${bandeira} ${nac} na Copa 2026. ${pos} em alta no futebol europeu. Prove que você acompanha de perto.`
+  }
+  return `${bandeira} ${nac} na Copa 2026. ${pos} — nome que cresce no cenário internacional. Você sabe quem é?`
 }
 
 /**
