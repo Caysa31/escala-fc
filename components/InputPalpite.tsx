@@ -72,13 +72,11 @@ export default function InputPalpite({ onPalpite, desabilitado, tentativasAnteri
             spellCheck={false}
           />
 
-          {/* Dropdown de sugestões — fixed no viewport, acima do teclado.
-              Usa fixed em vez de absolute para escapar do stacking context
-              do elemento pai (fixed z-40), que bloqueava a visibilidade. */}
+          {/* Dropdown de sugestões — absolute acima do input */}
           {focado && sugestoes.length > 0 && (
             <ul
-              className="fixed left-4 right-4 z-[999] bg-[#0F1D30] border border-[#1A3A5C] rounded-xl overflow-hidden shadow-2xl max-h-56 overflow-y-auto"
-              style={{ bottom: 'calc(max(88px, 88px + env(safe-area-inset-bottom)))' }}
+              className="absolute left-0 right-0 z-[999] bg-[#0F1D30] border border-[#1A3A5C] rounded-xl overflow-hidden shadow-2xl max-h-56 overflow-y-auto"
+              style={{ bottom: 'calc(100% + 6px)' }}
             >
               {sugestoes.map(j => (
                 <li key={j.id}>

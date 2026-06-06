@@ -158,22 +158,29 @@ function HomeContent() {
             {jogadoresDoDia.map(({ rodadaId }, i) => {
               const status = getStatusDesafio(rodadaId)
               const isAtivo = desafioIdx === i
+              // Só pode acessar desafio se todos os anteriores estiverem concluídos
+              const anteriorConcluido = i === 0 || jogadoresDoDia
+                .slice(0, i)
+                .every(({ rodadaId: rid }) => getStatusDesafio(rid) !== 'jogando')
+              const bloqueado = !anteriorConcluido && status === 'jogando'
               return (
                 <button
                   key={rodadaId}
-                  onClick={() => setDesafioIdx(i)}
+                  onClick={() => { if (!bloqueado) setDesafioIdx(i) }}
                   className={`flex-1 rounded-xl py-3 text-sm font-bold transition-all flex flex-col items-center gap-1
-                    ${isAtivo
-                      ? 'bg-[#00C853] text-[#0A1626]'
-                      : status === 'ganhou'
-                        ? 'bg-[#0F1D30] text-[#00C853] border border-[#00C853]/40'
-                        : status === 'perdeu'
-                          ? 'bg-[#0F1D30] text-red-400 border border-red-900/30'
-                          : 'bg-[#1A3050] text-[#8AB4CC] border border-[#1A3A5C]'
+                    ${bloqueado
+                      ? 'bg-[#0A1626] text-[#2A4A6A] border border-[#1A3A5C] cursor-not-allowed opacity-40'
+                      : isAtivo
+                        ? 'bg-[#00C853] text-[#0A1626]'
+                        : status === 'ganhou'
+                          ? 'bg-[#0F1D30] text-[#00C853] border border-[#00C853]/40'
+                          : status === 'perdeu'
+                            ? 'bg-[#0F1D30] text-red-400 border border-red-900/30'
+                            : 'bg-[#1A3050] text-[#8AB4CC] border border-[#1A3A5C]'
                     }`}
                 >
                   <span className="text-lg leading-none">
-                    {status === 'ganhou' ? '✅' : status === 'perdeu' ? '❌' : '⚽'}
+                    {bloqueado ? '🔒' : status === 'ganhou' ? '✅' : status === 'perdeu' ? '❌' : '⚽'}
                   </span>
                   <span className="text-xs">Desafio {i + 1}</span>
                 </button>

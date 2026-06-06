@@ -94,15 +94,15 @@ export function getIntroNarrativa(jogador: Jogador): string {
   const temTitulos = jogador.titulos && jogador.titulos.length > 0
 
   if (jogador.dificuldade === 'facil') {
-    return `${bandeira} ${nac} na Copa 2026. ${pos} — um dos maiores nomes do futebol mundial. Você sabe quem é?`
+    return `${bandeira} ${nac} na Copa 2026 — um dos maiores nomes do futebol mundial. Você sabe quem é?`
   }
   if (jogador.dificuldade === 'medio' && temTitulos) {
-    return `${bandeira} ${nac} na Copa 2026. ${pos} com títulos no currículo e destaque nas principais ligas. Você sabe quem é?`
+    return `${bandeira} ${nac} na Copa 2026 — títulos no currículo e destaque nas principais ligas. Você sabe quem é?`
   }
   if (jogador.dificuldade === 'medio') {
-    return `${bandeira} ${nac} na Copa 2026. ${pos} em alta no futebol europeu. Prove que você acompanha de perto.`
+    return `${bandeira} ${nac} na Copa 2026 — nome em alta no futebol europeu. Prove que você acompanha de perto.`
   }
-  return `${bandeira} ${nac} na Copa 2026. ${pos} — nome que cresce no cenário internacional. Você sabe quem é?`
+  return `${bandeira} ${nac} na Copa 2026 — nome que cresce no cenário internacional. Você sabe quem é?`
 }
 
 /**
