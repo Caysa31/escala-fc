@@ -76,46 +76,45 @@ export function getJogadoresDoDia(diaOverride?: number): Array<{ jogador: Jogado
 }
 
 /**
- * Gera o parágrafo de introdução narrativa do jogador do dia.
- * Aparece antes das pistas — serve de gancho dramático.
+ * Gera o parágrafo de introdução narrativa do jogador — versão Copa 2026.
+ * Inclui bandeira, seleção e nível do jogador. Curto e direto.
  */
 export function getIntroNarrativa(jogador: Jogador): string {
-  const ligaLabel = jogador.liga === 'Brasileirão' ? 'no Brasileirão'
-    : jogador.liga === 'Premier League' ? 'na Premier League'
-    : jogador.liga === 'La Liga' ? 'na La Liga'
-    : jogador.liga === 'Bundesliga' ? 'na Bundesliga'
-    : jogador.liga === 'Serie A' ? 'na Serie A'
-    : jogador.liga === 'Ligue 1' ? 'na Ligue 1'
-    : `na ${jogador.liga}`
+  const bandeira = jogador.bandeira ?? ''
+  const nac = jogador.nacionalidade ?? ''
 
-  const temTitulos = jogador.titulos.length > 0
-  const eLenda = jogador.lenda === true
+  const posLabel: Record<string, string> = {
+    'Goleiro': 'Goleiro',
+    'Zagueiro': 'Zagueiro',
+    'Lateral-direito': 'Lateral',
+    'Lateral-esquerdo': 'Lateral',
+    'Lateral': 'Lateral',
+    'Volante': 'Volante',
+    'Meia': 'Meia',
+    'Meia-atacante': 'Meia',
+    'Ponta': 'Extremo',
+    'Ponta-direita': 'Extremo',
+    'Ponta-esquerda': 'Extremo',
+    'Atacante': 'Atacante',
+    'Centroavante': 'Centroavante',
+  }
+  const pos = posLabel[jogador.posicao] ?? jogador.posicao
 
-  if (eLenda && temTitulos) {
-    return `Uma lenda. Um nome gravado na história do futebol. ${jogador.titulos.slice(0, 2).join(' e ')} estão entre as conquistas de quem marcou uma geração. Você consegue adivinhar quem é?`
+  const temTitulos = jogador.titulos && jogador.titulos.length > 0
+
+  if (jogador.dificuldade === 'facil') {
+    return `${bandeira} ${nac} na Copa 2026. ${pos} — um dos maiores nomes do futebol mundial. Você sabe quem é?`
   }
 
-  if (eLenda) {
-    return `Um nome que dispensaria apresentações. Uma carreira que atravessou gerações e deixou marca onde passou. Você ainda se lembra de quem é?`
-  }
-
-  if (temTitulos && jogador.dificuldade === 'dificil') {
-    return `Campeão. Vencedor. Um dos jogadores mais decisivos ${ligaLabel} nos últimos anos. Mas será que você sabe o nome por trás das taças?`
-  }
-
-  if (temTitulos) {
-    return `Títulos no currículo e prestígio na chuteira. Este jogador já ergueu troféus e continua sendo peça-chave ${ligaLabel}. Você sabe quem é?`
-  }
-
-  if (jogador.dificuldade === 'dificil') {
-    return `Nem todo herói tem holofotes. Este jogador é decisivo, temido pelos adversários e ainda assim pouco falado fora do seu país. Prove que você conhece o futebol de verdade.`
+  if (jogador.dificuldade === 'medio' && temTitulos) {
+    return `${bandeira} ${nac} na Copa 2026. ${pos} com títulos no currículo e destaque nas principais ligas. Você sabe quem é?`
   }
 
   if (jogador.dificuldade === 'medio') {
-    return `Um nome que está em alta ${ligaLabel}. Aparece nas manchetes, rouba a cena e agita a torcida. Você acompanhou o futebol essa temporada?`
+    return `${bandeira} ${nac} na Copa 2026. ${pos} em alta no futebol europeu. Prove que você acompanha de perto.`
   }
 
-  return `Um jogador que está entre os mais conhecidos do futebol mundial. Mas nem todo mundo sabe tudo sobre ele. Quantas pistas você vai precisar?`
+  return `${bandeira} ${nac} na Copa 2026. ${pos} — nome que cresce no cenário internacional. Você sabe quem é?`
 }
 
 /**
@@ -216,33 +215,35 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
   }
   const pista3 = paisNascimento[jogador.nacionalidade] ?? `Nasceu em ${jogador.nacionalidade} — um país que tem sua própria história dentro do futebol.`
 
-  // Pista 4 — Clube anterior (trajetória)
+  // Pista 4 — Copa context + trajetória de clubes
+  const fe = jogador.faixaEtaria ?? ''
+  const copaCtx = (fe === 'jovem' || fe === '18-22')
+    ? 'Estreia numa Copa do Mundo em 2026.'
+    : (fe === '22-26' || fe === 'jovem adulto')
+      ? 'Uma das primeiras Copas do Mundo da carreira.'
+      : (fe === '35+' || fe === 'veterano')
+        ? 'Copa 2026 pode ser sua última grande chance no palco mais grandioso do futebol.'
+        : 'Veterano das seleções — Copa 2026 é mais um capítulo da sua história internacional.'
+
   let pista4: string
   if (!jogador.clubeAnterior || jogador.origemAnterior === 'base') {
-    // Revelado nas categorias de base do próprio clube
-    pista4 = 'Cresceu ali, aprendeu ali, se formou ali. Foi revelado nas categorias de base do próprio clube onde joga hoje — e nunca precisou ir longe para encontrar seu caminho.'
+    pista4 = `${copaCtx} Revelado nas categorias de base do próprio clube onde joga hoje.`
   } else if (jogador.origemAnterior === 'brasil') {
-    pista4 = `Antes de chegar ao clube atual, construiu seu nome no ${jogador.clubeAnterior}. Foi de lá que veio o convite que mudou tudo.`
+    pista4 = `${copaCtx} Antes do clube atual, construiu seu nome no ${jogador.clubeAnterior}.`
   } else {
-    // exterior — distingue se o clube atual é no Brasil ou fora
-    if (jogador.liga === 'Brasileirão') {
-      pista4 = `Rodou o mundo antes de voltar para casa. Retornou ao Brasil vindo do ${jogador.clubeAnterior}, na ${jogador.ligaAnterior}.`
-    } else {
-      pista4 = `Cruzou fronteiras em busca de um desafio maior. Chegou ao clube atual vindo do ${jogador.clubeAnterior}, na ${jogador.ligaAnterior}.`
-    }
+    pista4 = `${copaCtx} Antes do clube atual, jogou no ${jogador.clubeAnterior}, na ${jogador.ligaAnterior}.`
   }
 
-  // Pista 5 — Clube + letras parciais do nome
-  // Formato: "NomeClube|L _ t _ a _ _   P _ r _ i _ _"
-  // Posições reveladas: 0, 2, e 4 (se palavra > 5 chars). Resto = "_"
-  // Palavras separadas por "   " (3 espaços), letras por " " (1 espaço)
+  // Pista 5 — SELEÇÃO (não clube) + letras parciais do nome
+  // Copa: o que importa descobrir é o JOGADOR, não a seleção
   const letrasReveladas = jogador.nome.trim().split(/\s+/).map(palavra =>
     palavra.split('').map((letra, i) => {
       if (i === 0 || i === 2 || (i === 4 && palavra.length > 5)) return letra
       return '_'
     }).join(' ')
   ).join('   ')
-  const pista5 = `${jogador.clube}|${letrasReveladas}`
+  const selecaoLabel = `${jogador.bandeira ?? ''} ${jogador.nacionalidade ?? jogador.clube}`
+  const pista5 = `${selecaoLabel}|${letrasReveladas}`
 
   // Pista 1 = Nome (blocos), Pista 2 = Posição — ordem invertida intencionalmente
   // Campos personalizados por jogador têm prioridade sobre o template automático
