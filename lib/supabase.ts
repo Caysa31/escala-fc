@@ -407,8 +407,9 @@ export interface LigaInfo {
   id: string
   nome: string
   criador_apelido: string
-  criada_em: string
-  ativa: boolean
+  created_at?: string
+  criada_em?: string
+  ativa?: boolean
 }
 
 function gerarCodigoLiga(): string {

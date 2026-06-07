@@ -190,7 +190,7 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
       if (resultado && candidato.length > 170) break  // não adiciona se passar muito
       resultado = candidato
     }
-    return resultado.trim() || frases[0].trim()
+    return resultado.trim() || (frases[0]?.trim() ?? '')
   }
 
   const curiosidadeOculta = limitar3Frases(ocultarNome(curiosidade))
