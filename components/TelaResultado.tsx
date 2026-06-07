@@ -111,11 +111,11 @@ export default function TelaResultado({
 
         {/* Grade de emojis */}
         <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-4">
-          <p className="text-[#8AB4CC] text-xs mb-2 text-center">COBRA — Quem é o Craque? #{rodadaId}</p>
+          <p className="text-[#8AB4CC] text-xs mb-2 text-center">COBRA DA COPA — Quem é o Craque? #{rodadaId}</p>
           <p className="text-2xl text-center tracking-widest">
             {tentativas.map(t => t.status === 'acerto' ? '🟩' : '⬛').join('')}
           </p>
-          <p className="text-[#5A8AAA] text-xs text-center mt-2">cobra-craque.vercel.app</p>
+          <p className="text-[#5A8AAA] text-xs text-center mt-2">cobra-copa.vercel.app</p>
         </div>
 
         {/* Botões de compartilhar */}
@@ -157,13 +157,21 @@ export default function TelaResultado({
           Desafiar amigo
         </button>
 
-        {/* Encerramento do dia */}
+        {/* Encerramento do dia + botão home */}
         {!onProximoDesafio && (
-          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-4 text-center space-y-1">
-            <p className="text-2xl">🏆</p>
-            <p className="text-white font-bold text-sm">Você completou os 3 desafios de hoje!</p>
-            <p className="text-[#8AB4CC] text-xs">Novos desafios amanhã.</p>
-          </div>
+          <>
+            <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-4 text-center space-y-1">
+              <p className="text-2xl">🏆</p>
+              <p className="text-white font-bold text-sm">Você completou os desafios de hoje!</p>
+              <p className="text-[#8AB4CC] text-xs">Novos desafios amanhã.</p>
+            </div>
+            <button
+              onClick={onFechar}
+              className="w-full text-center text-[#8AB4CC] hover:text-white text-sm font-semibold py-2 border border-[#1A3A5C] rounded-xl transition-colors"
+            >
+              ← Voltar ao início
+            </button>
+          </>
         )}
       </div>
     </div>
