@@ -116,7 +116,8 @@ export default function JogoDesafio({
       onResultado(perfilAtualizado)
     }
     onFimJogo?.({ ganhou: false, pontos: 0, pistaAcerto: null })
-    // Sempre mostra resultado primeiro — nunca pula direto para o próximo
+    // Muda status para 'perdeu' para ocultar a barra de input
+    setEstado(prev => ({ ...prev, status: 'perdeu' }))
     setMostrarResultado(true)
   }
 

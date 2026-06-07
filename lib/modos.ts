@@ -61,14 +61,23 @@ export const MODOS_CONFIG: ModoConfig[] = [
 ]
 
 // ── Pools por modo ────────────────────────────────────────────
-// Lenda:     dificuldade 'facil' = craques mundialmente famosos
-// Jovens:    faixaEtaria '18-22' ou '22-26' (jovens da Copa)
+// Lenda:     veteranos da Copa — jogadores 30+ que marcaram época pelas seleções
+//            (35+ OU 30-35 com dificuldade facil = ícones que viveram Copas)
+//            Ex: Messi, CR7, Modric, Mané, Neuer, Lewandowski — NÃO Wirtz ou Sané
+// Jovens:    faixaEtaria '18-22' ou '22-26' (nova geração na Copa)
 // Relâmpago: todos os jogadores da Copa
 
+const LENDA_FA = new Set(['30-35', '35+', 'adulto', 'veterano'])
 const JOVENS_FA = new Set(['17-21', '18-22', '19-23', '20-24', '21-25', '22-26', 'jovem', 'jovem adulto'])
 
 const POOLS: Record<ModoId, Jogador[]> = {
-  lenda:     jogadores.filter(j => j.dificuldade === 'facil'),
+  lenda: jogadores.filter(j => {
+    const fe = j.faixaEtaria ?? ''
+    // 35+ sempre entra (veterano histórico), 30-35 só se for facil (craque consagrado)
+    if (fe === '35+' || fe === 'veterano') return true
+    if ((fe === '30-35' || fe === 'adulto') && j.dificuldade === 'facil') return true
+    return false
+  }),
   jovens:    jogadores.filter(j => JOVENS_FA.has(j.faixaEtaria ?? '')),
   relampago: jogadores,
 }
