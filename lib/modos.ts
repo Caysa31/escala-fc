@@ -1,9 +1,11 @@
 // Puzzles Ilimitados Temáticos — Copa do Mundo 2026
 
 import jogadoresData from '@/data/jogadores.json'
+import lendasData from '@/data/lendas.json'
 import { Jogador } from './types'
 
 const jogadores = jogadoresData as Jogador[]
+const lendas = lendasData as Jogador[]
 
 export type ModoId = 'lenda' | 'jovens' | 'relampago'
 
@@ -24,7 +26,7 @@ export const MODOS_CONFIG: ModoConfig[] = [
     id: 'lenda',
     label: 'Modo Lenda da Copa',
     emoji: '🏆',
-    descricao: 'Os maiores craques da Copa 2026. Você os conhece todos?',
+    descricao: 'Pelé, Maradona, Zidane, Ronaldo... As lendas que fizeram história na Copa do Mundo.',
     corFundo: 'bg-[#0F1D30]',
     corBorda: 'border-[#2A5275]',
     corTexto: 'text-[#FFD23F]',
@@ -67,17 +69,10 @@ export const MODOS_CONFIG: ModoConfig[] = [
 // Jovens:    faixaEtaria '18-22' ou '22-26' (nova geração na Copa)
 // Relâmpago: todos os jogadores da Copa
 
-const LENDA_FA = new Set(['30-35', '35+', 'adulto', 'veterano'])
 const JOVENS_FA = new Set(['17-21', '18-22', '19-23', '20-24', '21-25', '22-26', 'jovem', 'jovem adulto'])
 
 const POOLS: Record<ModoId, Jogador[]> = {
-  lenda: jogadores.filter(j => {
-    const fe = j.faixaEtaria ?? ''
-    // 35+ sempre entra (veterano histórico), 30-35 só se for facil (craque consagrado)
-    if (fe === '35+' || fe === 'veterano') return true
-    if ((fe === '30-35' || fe === 'adulto') && j.dificuldade === 'facil') return true
-    return false
-  }),
+  lenda:     lendas,   // Lendas históricas da Copa — arquivo separado (Pelé, Maradona, Zidane...)
   jovens:    jogadores.filter(j => JOVENS_FA.has(j.faixaEtaria ?? '')),
   relampago: jogadores,
 }
