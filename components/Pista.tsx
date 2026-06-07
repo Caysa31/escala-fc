@@ -109,7 +109,7 @@ function LetrasNome({ codificado, atual, correto }: { codificado: string; atual:
 }
 
 // Label temático padrão de cada capítulo (pista 2 é sobrescrita por `subtitulo` via posição)
-const LABELS_PISTAS = ['O Nome', 'O Estilo', 'O Segredo', 'A Copa', 'Clube + Nome']
+const LABELS_PISTAS = ['O Nome', 'O Estilo', 'O Segredo', 'Clube + Nome']
 
 export default function Pista({ numero, texto, revelada, atual, errou, correto, subtitulo, onRevelar, onDestravar, pontosAtual,  custoDestravar }: PistaProps) {
   // Determina o estado visual da pista

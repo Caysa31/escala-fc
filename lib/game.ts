@@ -82,27 +82,9 @@ export function getJogadoresDoDia(diaOverride?: number): Array<{ jogador: Jogado
 export function getIntroNarrativa(jogador: Jogador): string {
   const bandeira = jogador.bandeira ?? ''
   const nac = jogador.nacionalidade ?? ''
-
-  const posLabel: Record<string, string> = {
-    'Goleiro': 'Goleiro', 'Zagueiro': 'Zagueiro',
-    'Lateral-direito': 'Lateral', 'Lateral-esquerdo': 'Lateral', 'Lateral': 'Lateral',
-    'Volante': 'Volante', 'Meia': 'Meia', 'Meia-atacante': 'Meia',
-    'Ponta': 'Extremo', 'Ponta-direita': 'Extremo', 'Ponta-esquerda': 'Extremo',
-    'Atacante': 'Atacante', 'Centroavante': 'Centroavante',
-  }
-  const pos = posLabel[jogador.posicao] ?? jogador.posicao
-  const temTitulos = jogador.titulos && jogador.titulos.length > 0
-
-  if (jogador.dificuldade === 'facil') {
-    return `${bandeira} ${nac} na Copa 2026 — um dos maiores nomes do futebol mundial. Você sabe quem é?`
-  }
-  if (jogador.dificuldade === 'medio' && temTitulos) {
-    return `${bandeira} ${nac} na Copa 2026 — títulos no currículo e destaque nas principais ligas. Você sabe quem é?`
-  }
-  if (jogador.dificuldade === 'medio') {
-    return `${bandeira} ${nac} na Copa 2026 — nome em alta no futebol europeu. Prove que você acompanha de perto.`
-  }
-  return `${bandeira} ${nac} na Copa 2026 — nome que cresce no cenário internacional. Você sabe quem é?`
+  const clube = jogador.clube ?? ''
+  // Intro usa o clube como gancho específico do jogador — curto e único
+  return `${bandeira} ${nac} na Copa 2026. Joga pelo ${clube}. Você sabe quem é?`
 }
 
 /**
@@ -170,60 +152,56 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
   const curiosidade = jogador.curiosidade ?? ''
   const ocultarNome = (texto: string): string => {
     if (!texto) return texto
-    // Remove nome completo e cada parte do nome (sobrenome, primeiro nome)
+    // Substitui nome completo → "este craque"
     const partes = jogador.nome.trim().split(/\s+/)
     let resultado = texto
-    // Substitui nome completo primeiro
-    resultado = resultado.replace(new RegExp(jogador.nome.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), 'Este craque')
-    // Substitui partes individuais com mais de 3 letras (evita substituir "de", "da", etc.)
+    resultado = resultado.replace(
+      new RegExp(jogador.nome.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'),
+      'este craque'
+    )
+    // Substitui partes isoladas com > 3 letras → remove (sem ???)
     partes.forEach(parte => {
       if (parte.length > 3) {
-        resultado = resultado.replace(new RegExp(parte.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), '???')
+        resultado = resultado.replace(
+          new RegExp('\\b' + parte.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'gi'),
+          ''
+        )
       }
     })
+    // Limpa espaços duplos e vírgulas órfãs após remoções
+    resultado = resultado.replace(/\s{2,}/g, ' ').replace(/,\s*,/g, ',').replace(/\.\s*\./g, '.').trim()
     return resultado
   }
-  const curiosidadeOculta = ocultarNome(curiosidade)
+
+  // Limitar a 3 frases curtas (regra Copa)
+  const limitar3Frases = (texto: string): string => {
+    const frases = texto.match(/[^.!?]+[.!?]+/g) ?? [texto]
+    return frases.slice(0, 3).join(' ').trim()
+  }
+
+  const curiosidadeOculta = limitar3Frases(ocultarNome(curiosidade))
   const pista3 = curiosidadeOculta
-    ? (curiosidadeOculta.endsWith('.') ? curiosidadeOculta : `${curiosidadeOculta}.`)
-    : `${jogador.bandeira ?? ''} Representante de ${jogador.nacionalidade} na Copa 2026.`
+    ? (curiosidadeOculta.endsWith('.') || curiosidadeOculta.endsWith('!') ? curiosidadeOculta : `${curiosidadeOculta}.`)
+    : `Representa ${jogador.nacionalidade} na Copa 2026.`
 
-  // Pista 4 — A Copa: contexto de seleção e Copa, sem mencionar clubes
-  const fe = jogador.faixaEtaria ?? ''
-  const copaExp = (fe === 'jovem' || fe === '18-22')
-    ? 'Estreia numa Copa do Mundo em 2026 — o momento mais esperado da carreira.'
-    : (fe === '35+' || fe === 'veterano')
-      ? 'Veterano de Copas. Cada torneio pode ser o último — e ele sabe disso.'
-      : (fe === '30-35' || fe === 'adulto')
-        ? 'Já sabe o peso de uma Copa do Mundo e voltou para buscar mais.'
-        : 'Está no auge — a Copa 2026 é o palco ideal para escrever história.'
+  // Pista 4 (Copa 2026) — ELIMINADA. Estrutura final: Nome → Estilo → Segredo → Clube+Nome
+  // Pista 4 agora é Clube + Nome
 
-  const teamRole = jogador.dificuldade === 'facil'
-    ? 'Titular indiscutível. A seleção é construída ao redor dele.'
-    : jogador.dificuldade === 'medio'
-      ? 'Peça importante no esquema tático da seleção.'
-      : 'Convocado após temporada de destaque. Merece cada minuto em campo.'
-
-  const pista4 = `${copaExp} ${teamRole}`
-
-  // Pista 5 — Clube + letras parciais do nome
-  // O clube é a dica final concreta — especialmente para times grandes (PSG, Real Madrid...)
   const letrasReveladas = jogador.nome.trim().split(/\s+/).map(palavra =>
     palavra.split('').map((letra, i) => {
       if (i === 0 || i === 2 || (i === 4 && palavra.length > 5)) return letra
       return '_'
     }).join(' ')
   ).join('   ')
-  const pista5 = `${jogador.clube}|${letrasReveladas}`
+  const pista4 = `${jogador.clube}|${letrasReveladas}`
 
-  // Copa 2026: pistas 3 e 4 sempre geradas (curiosidade e contexto de Copa)
-  // pista2 customizada do jogador ainda é usada para o estilo de jogo
+  // Copa 2026: 4 pistas — Nome, Estilo, Segredo, Clube+Nome
+  const estiloTexto = jogador.pista2 ?? pista1
   return {
     1: pista2,
-    2: jogador.pista2 ?? pista1,
-    3: pista3,   // O Segredo — sempre curiosidade, nunca campo customizado
-    4: pista4,   // A Copa — sempre gerado, foco em seleção/Copa
-    5: pista5,
+    2: limitar3Frases(estiloTexto),
+    3: pista3,
+    4: pista4,
   }
 }
 

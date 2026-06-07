@@ -147,7 +147,7 @@ function ContratoNormal({ multiplicador, bonusMax, nomeJogador }: { multiplicado
     <div className="space-y-3">
       {/* Frase de expectativa */}
       <p className="text-white text-sm leading-snug">
-        Agora depende do que <span className="font-bold text-[#00C853]">{primeiroNome}</span> vai fazer em campo na próxima rodada 👀
+        Agora depende do que <span className="font-bold text-[#00C853]">{primeiroNome}</span> vai fazer em campo na próxima rodada da Copa ⚽
       </p>
 
       <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-4 space-y-2">

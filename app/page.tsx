@@ -169,7 +169,7 @@ function HomeContent() {
                   onClick={() => { if (!bloqueado) setDesafioIdx(i) }}
                   className={`flex-1 rounded-xl py-3 text-sm font-bold transition-all flex flex-col items-center gap-1
                     ${bloqueado
-                      ? 'bg-[#0A1626] text-[#2A4A6A] border border-[#1A3A5C] cursor-not-allowed opacity-40'
+                      ? 'bg-[#0A1626] text-[#4A6A8A] border border-[#1A3A5C] cursor-not-allowed'
                       : isAtivo
                         ? 'bg-[#00C853] text-[#0A1626]'
                         : status === 'ganhou'
