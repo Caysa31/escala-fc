@@ -173,10 +173,16 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
     return resultado
   }
 
-  // Limitar a 3 frases curtas (regra Copa)
+  // Limitar texto: máx 2 frases OU 160 chars — o que vier primeiro
   const limitar3Frases = (texto: string): string => {
     const frases = texto.match(/[^.!?]+[.!?]+/g) ?? [texto]
-    return frases.slice(0, 3).join(' ').trim()
+    let resultado = ''
+    for (let i = 0; i < Math.min(2, frases.length); i++) {
+      const candidato = (resultado + ' ' + frases[i]).trim()
+      if (candidato.length > 160) break
+      resultado = candidato
+    }
+    return resultado.trim() || frases[0]?.slice(0, 160) || texto.slice(0, 160)
   }
 
   const curiosidadeOculta = limitar3Frases(ocultarNome(curiosidade))

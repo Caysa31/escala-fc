@@ -180,10 +180,10 @@ export default function Pista({ numero, texto, revelada, atual, errou, correto, 
               {numero === 1 && (
                 <BlocosNome codificado={texto} atual={atual} correto={correto} />
               )}
-              {numero === 5 && (
+              {numero === 4 && texto.includes('|') && (
                 <LetrasNome codificado={texto} atual={atual} correto={correto} />
               )}
-              {numero !== 1 && numero !== 5 && (
+              {numero !== 1 && !(numero === 4 && texto.includes('|')) && (
                 <p className={`font-semibold text-base leading-snug ${textoClass}`}>
                   {texto}
                 </p>
