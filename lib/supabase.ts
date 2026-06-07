@@ -126,8 +126,11 @@ export async function upsertStreakSupabase(usuarioId: string, dados: {
   pontosTotal: number
   rodadasJogadas: number
   rodadasAcertadas: number
+  apelido?: string
 }) {
   if (!supabase) return
+
+  // Salva streak e pontos
   await supabase.from('copa_streaks').upsert({
     usuario_id:        usuarioId,
     streak_atual:      dados.streakAtual,
@@ -137,6 +140,20 @@ export async function upsertStreakSupabase(usuarioId: string, dados: {
     rodadas_jogadas:   dados.rodadasJogadas,
     rodadas_acertadas: dados.rodadasAcertadas,
   }, { onConflict: 'usuario_id' })
+
+  // Atualiza ranking geral e semanal
+  if (dados.apelido) {
+    const semana = new Date().toISOString().slice(0, 10).slice(0, 7) // YYYY-MM
+    await Promise.all([
+      supabase.from('copa_ranking_geral').upsert({
+        id: usuarioId, apelido: dados.apelido, pontos_total: dados.pontosTotal,
+      }, { onConflict: 'id' }),
+      supabase.from('copa_ranking_semanal').upsert({
+        id: `${usuarioId}-${semana}`, apelido: dados.apelido,
+        pontos_semana: dados.pontosTotal, semana,
+      }, { onConflict: 'id' }),
+    ])
+  }
 }
 
 // ── Ranking ───────────────────────────────────────────────────

@@ -186,6 +186,7 @@ export function registrarResultado(
       pontosTotal:       perfilAtualizado.pontosTotal,
       rodadasJogadas:    perfilAtualizado.rodadasJogadas,
       rodadasAcertadas:  perfilAtualizado.rodadasAcertadas,
+      apelido:           perfilAtualizado.apelido,
     })
   }
 
@@ -239,6 +240,7 @@ export function aplicarBonusContrato(bonusTotal: number): Perfil | null {
       pontosTotal:      perfilAtualizado.pontosTotal,
       rodadasJogadas:   perfilAtualizado.rodadasJogadas,
       rodadasAcertadas: perfilAtualizado.rodadasAcertadas,
+      apelido:          perfilAtualizado.apelido,
     })
   }
 
