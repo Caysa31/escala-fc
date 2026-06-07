@@ -1,4 +1,4 @@
-// Lógica central do jogo COBRA da Copa — Quem é o Craque?
+// Lógica central do jogo COBRA DA COPA — Quem é o Craque?
 
 import jogadoresData from '@/data/jogadores.json'
 import { Jogador, PONTOS_BASE, TIPO_PISTAS, TipoPista } from './types'
@@ -310,5 +310,5 @@ export function gerarTextoCompartilhar(
     ? (pistaAcerto === 0 ? 'Acertei pelo histórico! 🎯' : `Acertei em ${pistaAcerto} pista${pistaAcerto > 1 ? 's' : ''} 🎯`)
     : 'Não acertei hoje 😬'
 
-  return `⚽ COBRA da Copa — Quem é o Craque? #${rodadaId}\n${resultado}\n\n${grade}\n\ncobra-copa.vercel.app`
+  return `⚽ COBRA DA COPA — Quem é o Craque? #${rodadaId}\n${resultado}\n\n${grade}\n\ncobra-copa.vercel.app`
 }

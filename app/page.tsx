@@ -157,7 +157,7 @@ function HomeContent() {
         <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl px-4 py-3 space-y-2">
           <div className="flex items-center justify-between">
             <p className="text-white font-bold text-sm">Desafios de hoje</p>
-            <p className="text-[#8AB4CC] text-xs">{totalDesafiosConcluidos}/5 concluídos</p>
+            <p className="text-[#8AB4CC] text-xs">{totalDesafiosConcluidos}/{jogadoresDoDia.length} concluídos</p>
           </div>
 
           <div className="flex gap-2">

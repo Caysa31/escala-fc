@@ -45,7 +45,7 @@ const passosAndroid = [
   },
   {
     numero: 3,
-    instrucao: 'Uma janela de confirmação aparece com o nome "COBRA — Quem é o Craque?". Toque em "Adicionar"',
+    instrucao: 'Uma janela de confirmação aparece com o nome "COBRA DA COPA". Toque em "Adicionar"',
     icon: '✅',
   },
   {

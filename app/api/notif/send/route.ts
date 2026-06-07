@@ -56,7 +56,7 @@ async function enviarNotificacao(tokens: string[], titulo: string, corpo: string
         notification: { title: titulo, body: corpo },
         webpush: {
           notification: { icon: '/icon-192.png', badge: '/icon-192.png' },
-          fcmOptions: { link: `${process.env.NEXT_PUBLIC_APP_URL ?? 'https://cobra-craque.vercel.app'}${url}` },
+          fcmOptions: { link: `${process.env.NEXT_PUBLIC_APP_URL ?? 'https://cobra-copa.vercel.app'}${url}` },
         },
       })
       enviados += res.successCount
