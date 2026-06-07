@@ -38,6 +38,7 @@ function HomeContent() {
   const [mostrarContratosAtivos, setMostrarContratosAtivos] = useState(false)
   const [mostrarFinalDia, setMostrarFinalDia] = useState(false)
   const [qtdContratosAtivos, setQtdContratosAtivos] = useState(0)
+  const [jogoKey, setJogoKey] = useState(0) // força remount do JogoDesafio ao voltar para home
 
   const finalDiaMostrado = useRef(false)
   const isInitialLoad = useRef(true)
@@ -194,7 +195,7 @@ function HomeContent() {
 
         {/* ── JOGO ─────────────────────────────────────────── */}
         <JogoDesafio
-          key={rodadaAtiva}
+          key={`${rodadaAtiva}-${jogoKey}`}
           jogador={jogadorAtivo}
           rodadaId={rodadaAtiva}
           perfil={perfil}
@@ -240,7 +241,11 @@ function HomeContent() {
         <TelaFinalDia
           jogadoresDoDia={jogadoresDoDia}
           perfil={perfil}
-          onFechar={() => setMostrarFinalDia(false)}
+          onFechar={() => {
+            setMostrarFinalDia(false)
+            setJogoKey(k => k + 1) // reseta JogoDesafio (fecha TelaResultado interna)
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+          }}
         />
       )}
     </main>
