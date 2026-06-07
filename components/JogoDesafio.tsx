@@ -416,7 +416,7 @@ export default function JogoDesafio({
           pistaAcerto={estado.pistaUsada}
           pontos={pontosRodada}
           tentativas={estado.tentativas}
-          onFechar={() => setMostrarResultado(false)}
+          onFechar={() => { setMostrarResultado(false); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
           onProximoDesafio={onProximoDesafio}
         />
       )}
