@@ -427,7 +427,7 @@ export async function criarLiga(
   if (!supabase) return null
   const id = gerarCodigoLiga()
   const { error: ligaError } = await supabase.from('copa_ligas').insert({
-    id, nome, criador_apelido: criadorApelido, ativa: true,
+    id, nome, criador_apelido: criadorApelido,
   })
   if (ligaError) { console.warn('[Supabase] criarLiga:', ligaError.message); return null }
 
@@ -451,7 +451,7 @@ export async function getLiga(ligaId: string): Promise<LigaInfo | null> {
   if (!supabase) return null
   const { data } = await supabase
     .from('copa_ligas')
-    .select('id, nome, criador_apelido, criada_em, ativa')
+    .select('id, nome, criador_apelido, created_at')
     .eq('id', ligaId.toUpperCase())
     .single()
   return data ?? null
