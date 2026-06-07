@@ -152,14 +152,14 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
   const curiosidade = jogador.curiosidade ?? ''
   const ocultarNome = (texto: string): string => {
     if (!texto) return texto
-    // Substitui nome completo → "este craque"
     const partes = jogador.nome.trim().split(/\s+/)
     let resultado = texto
+    // Substitui nome completo → "este craque"
     resultado = resultado.replace(
       new RegExp(jogador.nome.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'),
       'este craque'
     )
-    // Substitui partes isoladas com > 3 letras → remove (sem ???)
+    // Substitui partes isoladas com > 3 letras → remove
     partes.forEach(parte => {
       if (parte.length > 3) {
         resultado = resultado.replace(
@@ -168,27 +168,40 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
         )
       }
     })
-    // Limpa espaços duplos e vírgulas órfãs após remoções
-    resultado = resultado.replace(/\s{2,}/g, ' ').replace(/,\s*,/g, ',').replace(/\.\s*\./g, '.').trim()
+    // Limpa preposições/artigos órfãos antes de pontuação: "da .", "do .", "de ." etc.
+    resultado = resultado.replace(/\b(da|do|de|dos|das|em|o|a|os|as|um|uma|e)\s*([.!?,])/gi, '$2')
+    // Limpa espaços duplos, vírgulas e pontos duplicados
+    resultado = resultado
+      .replace(/\s{2,}/g, ' ')
+      .replace(/,\s*,/g, ',')
+      .replace(/\.\s*\./g, '.')
+      .replace(/\s+([.!?,])/g, '$1')
+      .trim()
     return resultado
   }
 
-  // Limitar texto: máx 2 frases OU 160 chars — o que vier primeiro
+  // Limitar: máx 2 frases completas — nunca corta no meio
   const limitar3Frases = (texto: string): string => {
-    const frases = texto.match(/[^.!?]+[.!?]+/g) ?? [texto]
+    const frases = texto.match(/[^.!?]+[.!?]+/g) ?? []
+    if (frases.length === 0) return texto.slice(0, 160)
     let resultado = ''
-    for (let i = 0; i < Math.min(2, frases.length); i++) {
-      const candidato = (resultado + ' ' + frases[i]).trim()
-      if (candidato.length > 160) break
+    for (const frase of frases.slice(0, 2)) {
+      const candidato = (resultado + ' ' + frase).trim()
+      if (resultado && candidato.length > 170) break  // não adiciona se passar muito
       resultado = candidato
     }
-    return resultado.trim() || frases[0]?.slice(0, 160) || texto.slice(0, 160)
+    return resultado.trim() || frases[0].trim()
   }
 
   const curiosidadeOculta = limitar3Frases(ocultarNome(curiosidade))
-  const pista3 = curiosidadeOculta
-    ? (curiosidadeOculta.endsWith('.') || curiosidadeOculta.endsWith('!') ? curiosidadeOculta : `${curiosidadeOculta}.`)
-    : `Representa ${jogador.nacionalidade} na Copa 2026.`
+  // Garante que termina com ponto — mas só após limpar trailing spaces/palavras soltas
+  const finalizarFrase = (t: string): string => {
+    const limpo = t.replace(/[\s,;—]+$/, '').trim()
+    if (!limpo) return ''
+    return limpo.endsWith('.') || limpo.endsWith('!') || limpo.endsWith('?') ? limpo : `${limpo}.`
+  }
+  const pista3 = finalizarFrase(curiosidadeOculta)
+    || `Representa ${jogador.nacionalidade} na Copa 2026.`
 
   // Pista 4 (Copa 2026) — ELIMINADA. Estrutura final: Nome → Estilo → Segredo → Clube+Nome
   // Pista 4 agora é Clube + Nome
