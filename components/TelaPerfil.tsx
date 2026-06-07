@@ -65,15 +65,15 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#0A1626] flex flex-col items-center justify-center p-5">
-      <div className="w-full max-w-sm space-y-6">
+    <div className="min-h-screen bg-[#0A1626] flex flex-col items-center justify-center px-5 py-8">
+      <div className="w-full max-w-sm space-y-5">
 
-        {/* Logo — destaque máximo */}
-        <div className="text-center space-y-2">
-          <p className="text-6xl">🐍</p>
-          <h1 className="text-5xl font-black text-white tracking-widest leading-none">COBRA DA COPA</h1>
-          <p className="text-[#FFD23F] text-base font-bold tracking-wider">QUEM É O CRAQUE? ⚽</p>
-          <p className="text-[#8AB4CC] text-sm font-medium">
+        {/* Logo */}
+        <div className="text-center space-y-1.5">
+          <p className="text-5xl leading-none">🐍</p>
+          <h1 className="text-4xl font-black text-white tracking-widest leading-tight">COBRA DA COPA</h1>
+          <p className="text-[#FFD23F] text-sm font-bold tracking-wider">QUEM É O CRAQUE? ⚽</p>
+          <p className="text-[#8AB4CC] text-sm">
             Adivinhe o jogador da Copa 2026 com o mínimo de pistas
           </p>
         </div>
