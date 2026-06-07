@@ -43,9 +43,10 @@ function HomeContent() {
   const finalDiaMostrado = useRef(false)
   const isInitialLoad = useRef(true)
 
-  // ?preview=N permite testar dias diferentes (ex: ?preview=5 → dia 5)
+  // ?preview=N permite testar dias diferentes; ?finaldia=1 abre tela final direto
   const searchParams = useSearchParams()
   const previewDia = searchParams.get('preview') ? Number(searchParams.get('preview')) : undefined
+  const debugFinalDia = searchParams.get('finaldia') === '1'
 
   const jogadoresDoDia = getJogadoresDoDia(previewDia)
 
@@ -54,6 +55,10 @@ function HomeContent() {
     setPerfil(p)
     setQtdContratosAtivos(getContratosAtivos().length)
     setCarregado(true)
+    if (debugFinalDia) {
+      finalDiaMostrado.current = true
+      setTimeout(() => setMostrarFinalDia(true), 300)
+    }
     void sincronizarPontosDeServidor().then(() => {
       const pAtualizado = carregarPerfil()
       if (pAtualizado) setPerfil(pAtualizado)
