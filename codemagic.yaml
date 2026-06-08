@@ -95,11 +95,8 @@ workflows:
           ls ../node_modules/@capacitor/splash-screen/android/
           ls ../node_modules/@capacitor/status-bar/android/
           echo "=== Iniciando bundleRelease ==="
-          ./gradlew bundleRelease --stacktrace \
-            -Pandroid.injected.signing.store.file=$KEYSTORE_PATH \
-            -Pandroid.injected.signing.store.password=$KEYSTORE_PASSWORD \
-            -Pandroid.injected.signing.key.alias=$KEY_ALIAS \
-            -Pandroid.injected.signing.key.password=$KEY_PASSWORD
+          echo "KEY_ALIAS=[${KEY_ALIAS}]"
+          ./gradlew bundleRelease --stacktrace
 
     artifacts:
       - android/app/build/outputs/bundle/release/app-release.aab
