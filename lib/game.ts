@@ -30,8 +30,8 @@ const poolDefesa = jogadores.filter(j => POSICOES_DEFESA.has(j.posicao))
 export function getJogadorPorRodadaId(rodadaId: number): Jogador | null {
   if (!Number.isFinite(rodadaId) || rodadaId < 1) return null
 
-  const diffDias  = Math.floor((rodadaId - 1) / 3)
-  const slotIndex = (rodadaId - 1) % 3
+  const diffDias  = Math.floor((rodadaId - 1) / NUM_DESAFIOS)
+  const slotIndex = (rodadaId - 1) % NUM_DESAFIOS
 
   const iAtq0 = diffDias % poolAtaque.length
   const iAtq1 = (diffDias + Math.floor(poolAtaque.length / 2)) % poolAtaque.length
@@ -47,28 +47,32 @@ export function getJogadorPorRodadaId(rodadaId: number): Jogador | null {
   return slots[slotIndex] ?? null
 }
 
-/** 3 jogadores do dia — um por desafio, mesmo para todos os usuários */
+const NUM_DESAFIOS = 5
+
+/** 5 jogadores do dia — COBRA DA BOLA, mesmo para todos os usuários.
+ *  2 atacantes + 2 meias + 1 defensor/goleiro */
 export function getJogadoresDoDia(): Array<{ jogador: Jogador; rodadaId: number }> {
   const hoje = new Date()
   const inicio = new Date('2026-05-22')
   const diffDias = Math.floor((hoje.getTime() - inicio.getTime()) / (1000 * 60 * 60 * 24))
 
-  // Índices dentro de cada pool — offsets distintos para nunca repetir o mesmo jogador no mesmo dia
   const iAtq0 = diffDias % poolAtaque.length
   const iAtq1 = (diffDias + Math.floor(poolAtaque.length / 2)) % poolAtaque.length
-  const iMeio = diffDias % poolMeio.length
-  // Defesa avança 1 a cada 2 dias (só aparece em dias pares) → ciclo completo em ~68 dias
-  const iDef  = Math.floor(diffDias / 2) % poolDefesa.length
+  const iMeio0 = diffDias % poolMeio.length
+  const iMeio1 = (diffDias + Math.floor(poolMeio.length / 2)) % poolMeio.length
+  const iDef   = Math.floor(diffDias / 2) % poolDefesa.length
 
-  const isDiaImpar = diffDias % 2 === 1
-
-  const slots = isDiaImpar
-    ? [poolAtaque[iAtq0], poolAtaque[iAtq1], poolMeio[iMeio]]   // ATQ + ATQ + MEI
-    : [poolAtaque[iAtq0], poolMeio[iMeio],   poolDefesa[iDef]]   // ATQ + MEI + DEF/GOL
+  const slots = [
+    poolAtaque[iAtq0],   // Slot 0 — Atacante
+    poolAtaque[iAtq1],   // Slot 1 — Atacante (offset)
+    poolMeio[iMeio0],    // Slot 2 — Meia
+    poolMeio[iMeio1],    // Slot 3 — Meia (offset)
+    poolDefesa[iDef],    // Slot 4 — Zagueiro/Lateral/Goleiro
+  ]
 
   return slots.map((jogador, i) => ({
     jogador,
-    rodadaId: diffDias * 3 + i + 1,
+    rodadaId: diffDias * NUM_DESAFIOS + i + 1,
   }))
 }
 

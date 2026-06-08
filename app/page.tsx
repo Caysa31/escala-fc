@@ -63,7 +63,7 @@ export default function Home() {
     return (
       <div className="min-h-screen bg-[#0A1626] flex flex-col items-center justify-center gap-3">
         <div className="text-4xl animate-bounce">🐍</div>
-        <div className="text-[#00C853] font-black text-xl tracking-widest">COBRA</div>
+        <div className="text-[#00C853] font-black text-xl tracking-widest">COBRA DA BOLA</div>
         <div className="text-[#1A3A5C] text-xs animate-pulse">carregando...</div>
       </div>
     )
@@ -99,7 +99,7 @@ export default function Home() {
           <div className="flex items-center gap-3">
             <span className="text-3xl">🐍</span>
             <div>
-              <h1 className="text-2xl font-black tracking-widest text-white leading-none">COBRA</h1>
+              <h1 className="text-2xl font-black tracking-widest text-white leading-none">COBRA DA BOLA</h1>
               <p className="text-xs text-[#00C853] font-semibold tracking-wider leading-none mt-0.5">
                 QUEM É O CRAQUE?
               </p>
@@ -132,7 +132,7 @@ export default function Home() {
         <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl px-4 py-3 space-y-2">
           <div className="flex items-center justify-between">
             <p className="text-white font-bold text-sm">Desafios de hoje</p>
-            <p className="text-[#8AB4CC] text-xs">{totalDesafiosConcluidos}/3 concluídos</p>
+            <p className="text-[#8AB4CC] text-xs">{totalDesafiosConcluidos}/{jogadoresDoDia.length} concluídos</p>
           </div>
 
           <div className="flex gap-2">

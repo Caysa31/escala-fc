@@ -65,44 +65,43 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#0A1626] flex flex-col items-center justify-center p-4">
-      <div className="w-full max-w-sm space-y-8">
+    <div className="min-h-screen bg-[#0A1626] flex flex-col items-center justify-center px-5 py-8">
+      <div className="w-full max-w-sm space-y-5">
 
         {/* Logo */}
-        <div className="text-center">
-          <p className="text-5xl mb-1">🐍</p>
-          <h1 className="text-4xl font-black text-white tracking-widest">COBRA</h1>
-          <p className="text-[#00C853] text-sm font-semibold tracking-wider mt-0.5">QUEM É O CRAQUE?</p>
-          <p className="text-[#8AB4CC] mt-2 text-sm">
-            Adivinhe o jogador do dia com o mínimo de pistas
+        <div className="text-center space-y-1.5">
+          <p className="text-5xl leading-none">🐍</p>
+          <h1 className="text-4xl font-black text-white tracking-widest leading-tight">COBRA DA BOLA</h1>
+          <p className="text-[#00C853] text-sm font-bold tracking-wider">QUEM É O CRAQUE?</p>
+          <p className="text-[#8AB4CC] text-sm">
+            Adivinhe o jogador do Brasileirão com o mínimo de pistas
           </p>
         </div>
 
-        {/* Como funciona */}
-        <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-5 space-y-3">
-          <p className="text-white font-bold text-sm">Como funciona:</p>
-          <div className="space-y-2 text-sm text-[#8AB4CC]">
+        {/* Como funciona — compacto */}
+        <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl px-5 py-4 space-y-2">
+          <p className="text-white font-bold text-xs uppercase tracking-wider mb-3">Como funciona</p>
+          <div className="space-y-1.5 text-sm text-[#8AB4CC]">
             <p>🔒 Pistas reveladas uma por vez</p>
             <p>⬇️ Quanto menos pistas, mais pontos</p>
-            <p>🟩 Compartilhe sem spoiler</p>
             <p>🔥 Jogue todo dia para manter sua sequência</p>
           </div>
         </div>
 
         {/* Dois diferenciais */}
         <div className="grid grid-cols-2 gap-3">
-          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-4 space-y-2">
-            <p className="text-2xl">🌍</p>
+          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-4 space-y-1.5">
+            <p className="text-xl">🌍</p>
             <p className="text-white font-bold text-sm">Ranking Global</p>
-            <p className="text-[#8AB4CC] text-xs leading-relaxed">
+            <p className="text-[#8AB4CC] text-xs leading-snug">
               Compita com jogadores do Brasil inteiro. Quem é o cobra de verdade?
             </p>
           </div>
-          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-4 space-y-2">
-            <p className="text-2xl">⚡</p>
+          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-4 space-y-1.5">
+            <p className="text-xl">⚡</p>
             <p className="text-white font-bold text-sm">Bônus de Contrato</p>
-            <p className="text-[#8AB4CC] text-xs leading-relaxed">
-              Adivinhou? Assine contrato com o jogador real. O que ele fizer em campo pode render pontos pra você.
+            <p className="text-[#8AB4CC] text-xs leading-snug">
+              Acertou? O que ele fizer em campo rende pontos pra você.
             </p>
           </div>
         </div>
