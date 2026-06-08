@@ -17,6 +17,7 @@ workflows:
 
       - name: Sync Capacitor Android
         script: |
+          mkdir -p android/app/src/main/assets
           npm install -g @capacitor/cli@8.4.0
           cap sync android
 
