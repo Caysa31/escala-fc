@@ -12,16 +12,65 @@ workflows:
       node: 22.13.0
 
     scripts:
-      - name: Instalar dependências e sincronizar Capacitor
+      - name: Instalar dependências
         script: |
           npm install
-          npm install @capacitor/core@8.4.0 @capacitor/cli@8.4.0 @capacitor/android@8.4.0 @capacitor/ios@8.4.0 @capacitor/splash-screen @capacitor/status-bar
-          echo "=== Capacitor packages ==="
-          ls node_modules/@capacitor/ || echo "AVISO: @capacitor não encontrado!"
-          echo "=== Subpastas @capacitor/android ==="
-          ls node_modules/@capacitor/android/ || echo "NÃO ENCONTRADO"
+
+      - name: Instalar e verificar pacotes Capacitor
+        script: |
+          npm install @capacitor/core@8.4.0 @capacitor/cli@8.4.0 @capacitor/android@8.4.0 @capacitor/ios@8.4.0 @capacitor/splash-screen@8.0.1 @capacitor/status-bar@8.0.2
+          echo "=== @capacitor packages instalados ==="
+          ls node_modules/@capacitor/
+          echo "=== @capacitor/android subdirs ==="
+          ls node_modules/@capacitor/android/
+          echo "=== @capacitor/android/capacitor (deve ter build.gradle) ==="
+          ls node_modules/@capacitor/android/capacitor/
+          echo "=== @capacitor/splash-screen/android (deve ter build.gradle) ==="
+          ls node_modules/@capacitor/splash-screen/android/
+          echo "=== @capacitor/status-bar/android (deve ter build.gradle) ==="
+          ls node_modules/@capacitor/status-bar/android/
+
+      - name: Criar arquivos de config Capacitor (cap sync manual)
+        script: |
           mkdir -p android/app/src/main/assets
-          npx cap sync android || echo "cap sync falhou, continuando..."
+          mkdir -p android/app/src/main/res/xml
+          mkdir -p out
+
+          # capacitor.config.json → lido pelo app em runtime
+          cat > android/app/src/main/assets/capacitor.config.json << 'EOF'
+          {
+            "appId": "com.cobradabola.app",
+            "appName": "Cobra da Bola",
+            "webDir": "public",
+            "server": {
+              "url": "https://cobra-craque.vercel.app",
+              "cleartext": false
+            }
+          }
+          EOF
+
+          # capacitor.plugins.json → registro de plugins nativos
+          cat > android/app/src/main/assets/capacitor.plugins.json << 'EOF'
+          {
+            "ios": [],
+            "android": [
+              {
+                "pkg": "@capacitor/splash-screen",
+                "classpath": "com.capacitorjs.plugins.splashscreen.SplashScreenPlugin"
+              },
+              {
+                "pkg": "@capacitor/status-bar",
+                "classpath": "com.capacitorjs.plugins.statusbar.StatusBarPlugin"
+              }
+            ]
+          }
+          EOF
+
+          # Tenta cap sync para gerar config.xml e demais arquivos
+          npx cap sync android 2>&1 || echo "cap sync falhou, continuando com config manual..."
+
+          echo "=== Assets gerados ==="
+          ls android/app/src/main/assets/
 
       - name: Decodificar keystore
         script: |
@@ -31,6 +80,11 @@ workflows:
         script: |
           cd android
           chmod +x gradlew
+          echo "=== Verificando estrutura Gradle antes do build ==="
+          ls ../node_modules/@capacitor/android/capacitor/
+          ls ../node_modules/@capacitor/splash-screen/android/
+          ls ../node_modules/@capacitor/status-bar/android/
+          echo "=== Iniciando bundleRelease ==="
           ./gradlew bundleRelease --stacktrace \
             -Pandroid.injected.signing.store.file=$KEYSTORE_PATH \
             -Pandroid.injected.signing.store.password=$KEYSTORE_PASSWORD \
