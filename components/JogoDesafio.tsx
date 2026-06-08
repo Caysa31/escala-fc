@@ -85,6 +85,15 @@ export default function JogoDesafio({
   const [mostrarResultado, setMostrarResultado] = useState(false)
   const [inputMontado, setInputMontado] = useState(false)
 
+  // Quando TelaFinalDia fecha (telaFinalAberta: true→false), fecha TelaResultado
+  const prevTelaFinalAberta = useRef(false)
+  useEffect(() => {
+    if (prevTelaFinalAberta.current && !telaFinalAberta) {
+      setMostrarResultado(false)
+    }
+    prevTelaFinalAberta.current = telaFinalAberta ?? false
+  }, [telaFinalAberta])
+
   // Carrega progresso salvo ao montar (ou ao trocar de rodada)
   useEffect(() => {
     // 1. Desmonta o input para o iOS não focar e rolar a tela
@@ -131,11 +140,8 @@ export default function JogoDesafio({
       onResultado(perfilAtualizado)
     }
     onFimJogo?.({ ganhou: false, pontos: 0, pistaAcerto: null })
-    if (onProximoDesafio) {
-      onProximoDesafio()
-    } else {
-      setMostrarResultado(true)
-    }
+    setEstado(prev => ({ ...prev, status: 'perdeu' }))
+    setMostrarResultado(true)
   }
 
   function handlePalpite(nome: string) {

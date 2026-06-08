@@ -23,6 +23,7 @@ export default function Home() {
   const [mostrarContratosAtivos, setMostrarContratosAtivos] = useState(false)
   const [mostrarFinalDia, setMostrarFinalDia] = useState(false)
   const [qtdContratosAtivos, setQtdContratosAtivos] = useState(0)
+  const [jogoKey, setJogoKey] = useState(0)
 
   const finalDiaMostrado = useRef(false)
   const isInitialLoad = useRef(true)
@@ -139,22 +140,28 @@ export default function Home() {
             {jogadoresDoDia.map(({ rodadaId }, i) => {
               const status = getStatusDesafio(rodadaId)
               const isAtivo = desafioIdx === i
+              const anteriorConcluido = i === 0 || jogadoresDoDia
+                .slice(0, i)
+                .every(({ rodadaId: rid }) => getStatusDesafio(rid) !== 'jogando')
+              const bloqueado = !anteriorConcluido && status === 'jogando'
               return (
                 <button
                   key={rodadaId}
-                  onClick={() => setDesafioIdx(i)}
+                  onClick={() => { if (!bloqueado) setDesafioIdx(i) }}
                   className={`flex-1 rounded-xl py-3 text-sm font-bold transition-all flex flex-col items-center gap-1
-                    ${isAtivo
-                      ? 'bg-[#00C853] text-[#0A1626]'
-                      : status === 'ganhou'
-                        ? 'bg-[#0F1D30] text-[#00C853] border border-[#00C853]/40'
-                        : status === 'perdeu'
-                          ? 'bg-[#0F1D30] text-red-400 border border-red-900/30'
-                          : 'bg-[#1A3050] text-[#8AB4CC] border border-[#1A3A5C]'
+                    ${bloqueado
+                      ? 'bg-[#0A1626] text-[#4A6A8A] border border-[#1A3A5C] cursor-not-allowed'
+                      : isAtivo
+                        ? 'bg-[#00C853] text-[#0A1626]'
+                        : status === 'ganhou'
+                          ? 'bg-[#0F1D30] text-[#00C853] border border-[#00C853]/40'
+                          : status === 'perdeu'
+                            ? 'bg-[#0F1D30] text-red-400 border border-red-900/30'
+                            : 'bg-[#1A3050] text-[#8AB4CC] border border-[#1A3A5C]'
                     }`}
                 >
                   <span className="text-lg leading-none">
-                    {status === 'ganhou' ? '✅' : status === 'perdeu' ? '❌' : '⚽'}
+                    {bloqueado ? '🔒' : status === 'ganhou' ? '✅' : status === 'perdeu' ? '❌' : '⚽'}
                   </span>
                   <span className="text-xs">Desafio {i + 1}</span>
                 </button>
@@ -168,7 +175,7 @@ export default function Home() {
 
         {/* ── JOGO ─────────────────────────────────────────── */}
         <JogoDesafio
-          key={rodadaAtiva}
+          key={`${rodadaAtiva}-${jogoKey}`}
           jogador={jogadorAtivo}
           rodadaId={rodadaAtiva}
           perfil={perfil}
@@ -214,7 +221,11 @@ export default function Home() {
         <TelaFinalDia
           jogadoresDoDia={jogadoresDoDia}
           perfil={perfil}
-          onFechar={() => setMostrarFinalDia(false)}
+          onFechar={() => {
+            setMostrarFinalDia(false)
+            setJogoKey(k => k + 1)
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+          }}
         />
       )}
     </main>

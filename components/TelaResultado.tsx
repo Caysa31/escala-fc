@@ -159,11 +159,19 @@ export default function TelaResultado({
 
         {/* Encerramento do dia */}
         {!onProximoDesafio && (
-          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-4 text-center space-y-1">
-            <p className="text-2xl">🏆</p>
-            <p className="text-white font-bold text-sm">Você completou os 3 desafios de hoje!</p>
-            <p className="text-[#8AB4CC] text-xs">Novos desafios amanhã.</p>
-          </div>
+          <>
+            <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-4 text-center space-y-1">
+              <p className="text-2xl">🏆</p>
+              <p className="text-white font-bold text-sm">Você completou os desafios de hoje!</p>
+              <p className="text-[#8AB4CC] text-xs">Novos desafios amanhã.</p>
+            </div>
+            <button
+              onClick={onFechar}
+              className="w-full text-center text-[#8AB4CC] hover:text-white text-sm font-semibold py-2 border border-[#1A3A5C] rounded-xl transition-colors"
+            >
+              ← Voltar ao início
+            </button>
+          </>
         )}
       </div>
     </div>

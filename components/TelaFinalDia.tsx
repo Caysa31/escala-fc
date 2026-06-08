@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { Perfil, Jogador } from '@/lib/types'
 import { getResultadoRodada } from '@/lib/perfil'
 import { getContratosAtivos, calcularBonusMaximo } from '@/lib/contrato'
@@ -18,6 +19,7 @@ interface TelaFinalDiaProps {
 }
 
 export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaFinalDiaProps) {
+  const router = useRouter()
   const [posicaoRanking, setPosicaoRanking] = useState<number | null>(null)
   const [notifStatus, setNotifStatus] = useState<'idle' | 'pedindo' | 'ativo' | 'negado'>('idle')
   const notifAtivando = notifStatus === 'pedindo'
@@ -306,6 +308,14 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
               {posicaoRanking ? ` · #${posicaoRanking} no ranking` : ''}
             </p>
           </div>
+
+          {/* ── VER RANKING ─────────────────────────────── */}
+          <button
+            onClick={() => { onFechar(); router.push('/ranking') }}
+            className="w-full text-center text-[#8AB4CC] hover:text-white text-sm font-semibold py-2 border border-[#1A3A5C] rounded-xl transition-colors"
+          >
+            🏆 Ver meu ranking
+          </button>
 
         </div>
       </div>
