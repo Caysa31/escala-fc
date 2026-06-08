@@ -10,6 +10,7 @@ interface PistaProps {
   errou?: boolean       // essa pista teve tentativa errada — card vermelho
   correto?: boolean     // essa pista foi onde acertou — mantém verde mesmo após ganhar
   subtitulo?: string    // label do capítulo (substitui o padrão quando fornecido — ex: "O Maestro")
+  renderAs?: number     // força um renderer específico sem alterar o número exibido (ex: Copa pista4 usa renderer do 5)
   onRevelar?: () => void    // card travado vira clicável (pista 1 do primeiro desafio)
   onDestravar?: () => void  // botão "Ver próxima dica" na pista seguinte travada
   // Pontuação dinâmica
@@ -111,7 +112,9 @@ function LetrasNome({ codificado, atual, correto }: { codificado: string; atual:
 // Label temático padrão de cada capítulo (pista 2 é sobrescrita por `subtitulo` via posição)
 const LABELS_PISTAS = ['O Nome', 'O Dom', 'A Raiz', 'A Jornada', 'Time + Nome']
 
-export default function Pista({ numero, texto, revelada, atual, errou, correto, subtitulo, onRevelar, onDestravar, pontosAtual,  custoDestravar }: PistaProps) {
+export default function Pista({ numero, texto, revelada, atual, errou, correto, subtitulo, renderAs, onRevelar, onDestravar, pontosAtual, custoDestravar }: PistaProps) {
+  // renderAs permite forçar um renderer diferente (ex: Copa pista 4 usa renderer do 5)
+  const renderer = renderAs ?? numero
   // Determina o estado visual da pista
   const isVerde = atual || correto
   const isVermelho = errou && !isVerde
@@ -177,13 +180,13 @@ export default function Pista({ numero, texto, revelada, atual, errou, correto, 
 
           {revelada ? (
             <>
-              {numero === 1 && (
+              {renderer === 1 && (
                 <BlocosNome codificado={texto} atual={atual} correto={correto} />
               )}
-              {numero === 5 && (
+              {renderer === 5 && (
                 <LetrasNome codificado={texto} atual={atual} correto={correto} />
               )}
-              {numero !== 1 && numero !== 5 && (
+              {renderer !== 1 && renderer !== 5 && (
                 <p className={`font-semibold text-base leading-snug ${textoClass}`}>
                   {texto}
                 </p>

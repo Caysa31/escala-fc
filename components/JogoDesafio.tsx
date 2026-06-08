@@ -57,7 +57,7 @@ export default function JogoDesafio({
   const multiplicador = modoExtra ? 1 : getMultiplicadorTreino()
   const mode = getModeAtual()
   const pistasTexto = getPistasTexto(jogador, mode)
-  const introNarrativa = getIntroNarrativa(jogador)
+  const introNarrativa = getIntroNarrativa(jogador, mode)
 
   // Label do Capítulo 2 varia por posição — identidade narrativa antes de revelar o estilo de jogo
   const chapterLabelPosicao: Record<string, string> = {
@@ -397,6 +397,7 @@ export default function JogoDesafio({
                 : (mode === 'copa' && num === 4) ? 'Time + Nome'
                 : undefined
               }
+              renderAs={mode === 'copa' && num === 4 ? 5 : undefined}
               onRevelar={onRevelar}
               onDestravar={onDestravar}
               // "Agora vale X pts" → só na pista ATIVA (recém-revelada)

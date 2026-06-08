@@ -68,7 +68,28 @@ export function getJogadoresDoDia(mode: GameMode = 'bola', diaOverride?: number)
  * Gera o parágrafo de introdução narrativa do jogador do dia.
  * Aparece antes das pistas — serve de gancho dramático.
  */
-export function getIntroNarrativa(jogador: Jogador): string {
+export function getIntroNarrativa(jogador: Jogador, mode: GameMode = 'bola'): string {
+  const temTitulos = jogador.titulos.length > 0
+  const eLenda = jogador.lenda === true
+
+  // ── COPA: linguagem focada na Copa do Mundo, sem referência a ligas de clube ──
+  if (mode === 'copa') {
+    if (eLenda && temTitulos) {
+      return `Uma lenda das Copas do Mundo. ${jogador.titulos.slice(0, 2).join(' e ')} — uma carreira escrita em letras douradas. Você ainda se lembra de quem é?`
+    }
+    if (eLenda) {
+      return `Um nome que dispensaria apresentações. Uma carreira que atravessou Copas e deixou marca onde passou. Você ainda se lembra de quem é?`
+    }
+    if (jogador.dificuldade === 'facil') {
+      return `Um dos grandes nomes desta Copa do Mundo 2026. Todo mundo conhece — mas será que você sabe tudo sobre ele? Quantas pistas você vai precisar?`
+    }
+    if (jogador.dificuldade === 'medio') {
+      return `Vai defender sua seleção na Copa do Mundo 2026 com tudo. Tem talento, tem história — mas você sabe quem é? Teste seu conhecimento.`
+    }
+    return `Estará em campo na Copa do Mundo 2026. Poucos sabem o nome, mas ele pode surpreender o mundo. Prove que você é cobra mesmo.`
+  }
+
+  // ── BOLA: linguagem focada nas ligas de clube ──
   const ligaLabel = jogador.liga === 'Brasileirão' ? 'no Brasileirão'
     : jogador.liga === 'Premier League' ? 'na Premier League'
     : jogador.liga === 'La Liga' ? 'na La Liga'
@@ -76,9 +97,6 @@ export function getIntroNarrativa(jogador: Jogador): string {
     : jogador.liga === 'Serie A' ? 'na Serie A'
     : jogador.liga === 'Ligue 1' ? 'na Ligue 1'
     : `na ${jogador.liga}`
-
-  const temTitulos = jogador.titulos.length > 0
-  const eLenda = jogador.lenda === true
 
   if (eLenda && temTitulos) {
     return `Uma lenda. Um nome gravado na história do futebol. ${jogador.titulos.slice(0, 2).join(' e ')} estão entre as conquistas de quem marcou uma geração. Você consegue adivinhar quem é?`
