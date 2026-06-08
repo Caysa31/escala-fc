@@ -76,18 +76,7 @@ workflows:
       - name: Decodificar keystore
         script: |
           # Decodifica base64 via Python (mais robusto que base64/openssl no macOS)
-          python3 -c "
-import base64, os, sys
-data = os.environ.get('KEYSTORE_BASE64', '')
-if not data:
-    print('ERRO: KEYSTORE_BASE64 está vazio!')
-    sys.exit(1)
-decoded = base64.b64decode(data)
-with open('$KEYSTORE_PATH', 'wb') as f:
-    f.write(decoded)
-print(f'Keystore decodificado: {len(decoded)} bytes')
-print(f'Primeiros bytes (hex): {decoded[:8].hex()}')
-"
+          python3 -c "import base64,os,sys; d=os.environ.get('KEYSTORE_BASE64',''); b=base64.b64decode(d) if d else b''; open('$KEYSTORE_PATH','wb').write(b); print('Keystore:',len(b),'bytes'); print('Hex:',b[:8].hex()) if b else print('ERRO: KEYSTORE_BASE64 vazio')"
 
           echo "=== Diagnóstico keystore ==="
           echo "KEY_ALIAS=[${KEY_ALIAS}]"
