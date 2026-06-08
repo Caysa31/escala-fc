@@ -7,10 +7,8 @@ workflows:
     instance_type: mac_mini_m2
 
     environment:
-      android_signing:
-        - cobra_keystore          # nome do keystore cadastrado no Codemagic
-      groups:
-        - google_play             # variáveis de ambiente do grupo (chave JSON do Google Play)
+      vars:
+        KEYSTORE_PATH: /tmp/cobra-bola.keystore
       node: 20.11.0
 
     scripts:
@@ -22,11 +20,19 @@ workflows:
           npx cap add android || true
           npx cap sync android
 
+      - name: Decodificar keystore
+        script: |
+          echo $KEYSTORE_BASE64 | base64 --decode > $KEYSTORE_PATH
+
       - name: Build Android (.aab)
         script: |
           cd android
           chmod +x gradlew
-          ./gradlew bundleRelease
+          ./gradlew bundleRelease \
+            -Pandroid.injected.signing.store.file=$KEYSTORE_PATH \
+            -Pandroid.injected.signing.store.password=$KEYSTORE_PASSWORD \
+            -Pandroid.injected.signing.key.alias=$KEY_ALIAS \
+            -Pandroid.injected.signing.key.password=$KEY_PASSWORD
 
     artifacts:
       - android/app/build/outputs/bundle/release/app-release.aab
