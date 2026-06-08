@@ -15,6 +15,7 @@ workflows:
       - name: Instalar dependências e sincronizar Capacitor
         script: |
           npm install
+          npm install @capacitor/core@8.4.0 @capacitor/cli@8.4.0 @capacitor/android@8.4.0 @capacitor/ios@8.4.0 @capacitor/splash-screen @capacitor/status-bar
           echo "=== Capacitor packages ==="
           ls node_modules/@capacitor/ || echo "AVISO: @capacitor não encontrado!"
           echo "=== Subpastas @capacitor/android ==="
