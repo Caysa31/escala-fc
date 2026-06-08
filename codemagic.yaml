@@ -15,10 +15,9 @@ workflows:
       - name: Instalar dependências
         script: npm ci
 
-      - name: Adicionar plataforma Android
+      - name: Sync Capacitor Android
         script: |
-          npm install -g @capacitor/cli
-          cap add android || true
+          npm install -g @capacitor/cli@8.4.0
           cap sync android
 
       - name: Decodificar keystore

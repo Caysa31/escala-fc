@@ -40,8 +40,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# capacitor
-/android
+# capacitor — android e ios são commitados (necessário para o Codemagic)
 /ios
 *.keystore
 *.jks
+*.b64
