@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { ArrowLeft, Lock } from 'lucide-react'
+import { getModeAtual } from '@/lib/gameMode'
 import { MODOS_CONFIG, getModoPlaysHoje, MAX_PLAYS_POR_DIA, getTreinoJogosHoje, getBonusAmanha } from '@/lib/modos'
 import BottomNav from '@/components/BottomNav'
 
@@ -46,7 +47,7 @@ export default function ModosPage() {
 
         {/* Cards de modos — todos com mesmo card, sem arco-íris */}
         <div className="space-y-2">
-          {MODOS_CONFIG.map(modo => {
+          {MODOS_CONFIG(getModeAtual()).map(modo => {
             const playsHoje = getModoPlaysHoje(modo.id)
             const restantes = MAX_PLAYS_POR_DIA - playsHoje
             const esgotado = restantes <= 0

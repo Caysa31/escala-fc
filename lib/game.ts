@@ -1,79 +1,64 @@
-// Lógica central do jogo COBRA DA BOLA — Quem é o Craque?
+// Lógica central do jogo — COBRA DA BOLA + COBRA DA COPA
 
-import jogadoresData from '@/data/jogadores.json'
+import jogadoresBolaData from '@/data/jogadores.json'
+import jogadoresCopaData from '@/data/jogadores-copa.json'
 import { Jogador, PONTOS_BASE, TIPO_PISTAS, TipoPista } from './types'
+import { GameMode } from './gameMode'
 
-const jogadores = jogadoresData as Jogador[]
+const jogadoresBola = jogadoresBolaData as Jogador[]
+const jogadoresCopa = jogadoresCopaData as Jogador[]
 
-// ── Pools por categoria de posição ────────────────────────────
-// Dias pares:   ATQ + MEI + DEF/GOL  (variedade máxima)
-// Dias ímpares: ATQ + ATQ + MEI      (atacante famoso no slot extra)
-// Proporção média: ~1.5 ATQ + ~1 MEI + ~0.5 DEF/GOL por dia
-// Cada pool tem rotação independente → todos os jogadores aparecem
-// em frequência similar independente do tamanho do pool.
+const NUM_DESAFIOS = 5
 
+// ── POOLS BOLA (por posição) ──────────────────────────────────
 const POSICOES_ATAQUE = new Set([
   'Atacante', 'Centroavante', 'Ponta-direita', 'Ponta-esquerda', 'Ponta', 'Meia-atacante',
 ])
-const POSICOES_MEIO = new Set(['Meia', 'Volante'])
+const POSICOES_MEIO   = new Set(['Meia', 'Volante'])
 const POSICOES_DEFESA = new Set(['Zagueiro', 'Lateral-direito', 'Lateral-esquerdo', 'Lateral', 'Goleiro'])
 
-const poolAtaque = jogadores.filter(j => POSICOES_ATAQUE.has(j.posicao))
-const poolMeio   = jogadores.filter(j => POSICOES_MEIO.has(j.posicao))
-const poolDefesa = jogadores.filter(j => POSICOES_DEFESA.has(j.posicao))
+const poolBolaAtaque = jogadoresBola.filter(j => POSICOES_ATAQUE.has(j.posicao))
+const poolBolaMeio   = jogadoresBola.filter(j => POSICOES_MEIO.has(j.posicao))
+const poolBolaDefesa = jogadoresBola.filter(j => POSICOES_DEFESA.has(j.posicao))
 
-/**
- * Retorna o jogador correto para um rodadaId específico.
- * Usa a mesma lógica de pools por posição de getJogadoresDoDia().
- * Retorna null se rodadaId for inválido.
- */
-const NUM_DESAFIOS = 5
+// ── POOLS COPA (por dificuldade — sem difícil no diário) ──────
+const poolCopaFacil  = jogadoresCopa.filter(j => j.dificuldade === 'facil')
+const poolCopaMedio  = jogadoresCopa.filter(j => j.dificuldade === 'medio')
 
-export function getJogadorPorRodadaId(rodadaId: number): Jogador | null {
+/** Retorna o jogador correto para um rodadaId específico */
+export function getJogadorPorRodadaId(rodadaId: number, mode: GameMode = 'bola'): Jogador | null {
   if (!Number.isFinite(rodadaId) || rodadaId < 1) return null
-
   const diffDias  = Math.floor((rodadaId - 1) / NUM_DESAFIOS)
   const slotIndex = (rodadaId - 1) % NUM_DESAFIOS
-
-  const iAtq0  = diffDias % poolAtaque.length
-  const iAtq1  = (diffDias + Math.floor(poolAtaque.length / 2)) % poolAtaque.length
-  const iMeio0 = diffDias % poolMeio.length
-  const iMeio1 = (diffDias + Math.floor(poolMeio.length / 2)) % poolMeio.length
-  const iDef   = Math.floor(diffDias / 2) % poolDefesa.length
-
-  const slots = [
-    poolAtaque[iAtq0],
-    poolAtaque[iAtq1],
-    poolMeio[iMeio0],
-    poolMeio[iMeio1],
-    poolDefesa[iDef],
-  ]
-
-  return slots[slotIndex] ?? null
+  return getSlots(diffDias, mode)[slotIndex] ?? null
 }
 
-/** 5 jogadores do dia — COBRA DA BOLA, mesmo para todos os usuários.
- *  2 atacantes + 2 meias + 1 defensor/goleiro */
-export function getJogadoresDoDia(): Array<{ jogador: Jogador; rodadaId: number }> {
+function getSlots(diffDias: number, mode: GameMode): Jogador[] {
+  if (mode === 'copa') {
+    const iF0 = diffDias % poolCopaFacil.length
+    const iF1 = (diffDias + Math.floor(poolCopaFacil.length / 2)) % poolCopaFacil.length
+    const iM0 = diffDias % poolCopaMedio.length
+    const iM1 = (diffDias + Math.floor(poolCopaMedio.length / 2)) % poolCopaMedio.length
+    const iM2 = (diffDias + Math.floor(poolCopaMedio.length / 3)) % poolCopaMedio.length
+    return [poolCopaFacil[iF0], poolCopaFacil[iF1], poolCopaMedio[iM0], poolCopaMedio[iM1], poolCopaMedio[iM2]]
+  }
+  // Bola: 2 ATQ + 2 MEI + 1 DEF
+  const iAtq0  = diffDias % poolBolaAtaque.length
+  const iAtq1  = (diffDias + Math.floor(poolBolaAtaque.length / 2)) % poolBolaAtaque.length
+  const iMeio0 = diffDias % poolBolaMeio.length
+  const iMeio1 = (diffDias + Math.floor(poolBolaMeio.length / 2)) % poolBolaMeio.length
+  const iDef   = Math.floor(diffDias / 2) % poolBolaDefesa.length
+  return [poolBolaAtaque[iAtq0], poolBolaAtaque[iAtq1], poolBolaMeio[iMeio0], poolBolaMeio[iMeio1], poolBolaDefesa[iDef]]
+}
+
+/** 5 jogadores do dia — modo determinado pelo GameMode */
+export function getJogadoresDoDia(mode: GameMode = 'bola', diaOverride?: number): Array<{ jogador: Jogador; rodadaId: number }> {
+  const startDate = mode === 'copa' ? '2026-06-01' : '2026-05-22'
   const hoje = new Date()
-  const inicio = new Date('2026-05-22')
-  const diffDias = Math.floor((hoje.getTime() - inicio.getTime()) / (1000 * 60 * 60 * 24))
+  const inicio = new Date(startDate)
+  const diffDias = diaOverride ?? Math.floor((hoje.getTime() - inicio.getTime()) / (1000 * 60 * 60 * 24))
 
-  const iAtq0 = diffDias % poolAtaque.length
-  const iAtq1 = (diffDias + Math.floor(poolAtaque.length / 2)) % poolAtaque.length
-  const iMeio0 = diffDias % poolMeio.length
-  const iMeio1 = (diffDias + Math.floor(poolMeio.length / 2)) % poolMeio.length
-  const iDef   = Math.floor(diffDias / 2) % poolDefesa.length
-
-  const slots = [
-    poolAtaque[iAtq0],   // Slot 0 — Atacante
-    poolAtaque[iAtq1],   // Slot 1 — Atacante (offset)
-    poolMeio[iMeio0],    // Slot 2 — Meia
-    poolMeio[iMeio1],    // Slot 3 — Meia (offset)
-    poolDefesa[iDef],    // Slot 4 — Zagueiro/Lateral/Goleiro
-  ]
-
-  return slots.map((jogador, i) => ({
+  return getSlots(diffDias, mode).map((jogador, i) => ({
     jogador,
     rodadaId: diffDias * NUM_DESAFIOS + i + 1,
   }))
@@ -309,10 +294,11 @@ export function calcularPontos(pistaAcerto: number): number {
 }
 
 /** Busca jogadores para autocomplete */
-export function buscarJogadores(termo: string): Jogador[] {
+export function buscarJogadores(termo: string, mode: GameMode = 'bola'): Jogador[] {
   if (!termo || termo.length < 2) return []
   const t = normalizarNome(termo)
-  const resultados = jogadores.filter(j => normalizarNome(j.nome).includes(t))
+  const pool = mode === 'copa' ? jogadoresCopa : jogadoresBola
+  const resultados = pool.filter(j => normalizarNome(j.nome).includes(t))
 
   // Ordena por relevância: nomes que começam com o termo aparecem antes dos que só contêm
   resultados.sort((a, b) => {

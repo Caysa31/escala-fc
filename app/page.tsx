@@ -1,11 +1,13 @@
 'use client'
 
 import { useState, useEffect, useCallback, useRef } from 'react'
+import { useRouter } from 'next/navigation'
 import { Perfil } from '@/lib/types'
 import { getJogadoresDoDia } from '@/lib/game'
 import { carregarPerfil, getResultadoRodada, sincronizarPontosDeServidor } from '@/lib/perfil'
 import { getContratosAtivos } from '@/lib/contrato'
 import { getMultiplicadorTreino } from '@/lib/modos'
+import { getModeAtual, getModeConfig } from '@/lib/gameMode'
 
 import TelaPerfil, { StatsPerfil } from '@/components/TelaPerfil'
 import JogoDesafio from '@/components/JogoDesafio'
@@ -17,6 +19,7 @@ import Link from 'next/link'
 import BottomNav from '@/components/BottomNav'
 
 export default function Home() {
+  const router = useRouter()
   const [perfil, setPerfil] = useState<Perfil | null>(null)
   const [carregado, setCarregado] = useState(false)
   const [desafioIdx, setDesafioIdx] = useState(0)
@@ -28,7 +31,11 @@ export default function Home() {
   const finalDiaMostrado = useRef(false)
   const isInitialLoad = useRef(true)
 
-  const jogadoresDoDia = getJogadoresDoDia()
+  // Modo atual (bola ou copa)
+  const mode = getModeAtual()
+  const modeConfig = getModeConfig(mode)
+
+  const jogadoresDoDia = getJogadoresDoDia(mode)
 
   useEffect(() => {
     const p = carregarPerfil()
@@ -97,15 +104,18 @@ export default function Home() {
 
         {/* ── HEADER ───────────────────────────────────────── */}
         <header className="flex items-center justify-between pt-2">
-          <div className="flex items-center gap-3">
-            <span className="text-3xl">🐍</span>
+          <button
+            onClick={() => router.push('/selecionar-modo')}
+            className="flex items-center gap-3 active:opacity-70 transition-opacity"
+          >
+            <span className="text-3xl">{modeConfig.emoji}</span>
             <div>
-              <h1 className="text-2xl font-black tracking-widest text-white leading-none">COBRA DA BOLA</h1>
-              <p className="text-xs text-[#00C853] font-semibold tracking-wider leading-none mt-0.5">
-                QUEM É O CRAQUE?
+              <h1 className="text-2xl font-black tracking-widest text-white leading-none">{modeConfig.name}</h1>
+              <p className="text-xs font-semibold tracking-wider leading-none mt-0.5" style={{ color: modeConfig.subtitleColor }}>
+                {modeConfig.tagline}
               </p>
             </div>
-          </div>
+          </button>
           <div className="flex items-center gap-2">
             {qtdContratosAtivos > 0 && (
               <button onClick={() => setMostrarContratosAtivos(true)}
@@ -183,6 +193,7 @@ export default function Home() {
           mensagemMotivacional={mensagemMotivacional}
           telaFinalAberta={mostrarFinalDia}
           temBottomNav={true}
+          totalPistasMax={modeConfig.totalPistas}
           onResultado={p => setPerfil(p)}
           onContratosChange={setQtdContratosAtivos}
           onProximoDesafio={

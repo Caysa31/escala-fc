@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Perfil } from '@/lib/types'
 import { criarPerfil, recuperarPerfilPorApelido, getResultadoRodada } from '@/lib/perfil'
+import { getModeAtual, getModeConfig } from '@/lib/gameMode'
 import { getJogadoresDoDia } from '@/lib/game'
 import { getPosicaoRanking, verificarApelidoDisponivel } from '@/lib/supabase'
 import { Flame, Trophy, Medal } from 'lucide-react'
@@ -64,17 +65,19 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
     }
   }
 
+  const modeConfig = getModeConfig(getModeAtual())
+
   return (
     <div className="min-h-screen bg-[#0A1626] flex flex-col items-center justify-center px-5 py-8">
       <div className="w-full max-w-sm space-y-5">
 
         {/* Logo */}
         <div className="text-center space-y-1.5">
-          <p className="text-5xl leading-none">🐍</p>
-          <h1 className="text-4xl font-black text-white tracking-widest leading-tight">COBRA DA BOLA</h1>
-          <p className="text-[#00C853] text-sm font-bold tracking-wider">QUEM É O CRAQUE?</p>
+          <p className="text-5xl leading-none">{modeConfig.emoji}</p>
+          <h1 className="text-4xl font-black text-white tracking-widest leading-tight">{modeConfig.name}</h1>
+          <p className="text-sm font-bold tracking-wider" style={{ color: modeConfig.subtitleColor }}>{modeConfig.tagline}</p>
           <p className="text-[#8AB4CC] text-sm">
-            Adivinhe o jogador do dia com o mínimo de pistas
+            {modeConfig.description}
           </p>
         </div>
 

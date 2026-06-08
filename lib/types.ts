@@ -139,7 +139,7 @@ export const MULTIPLICADORES_CONTRATO: Record<number, number> = {
   5: 1.1,
 }
 
-export const TOTAL_PISTAS = 5
+export const TOTAL_PISTAS = 5  // Bola: 5 pistas | Copa usa 4 via totalPistasMax prop
 
 // Labels visuais de cada pista
 export const LABEL_PISTAS: Record<number, string> = {
