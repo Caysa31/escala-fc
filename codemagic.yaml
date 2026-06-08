@@ -28,7 +28,7 @@ workflows:
         script: |
           cd android
           chmod +x gradlew
-          ./gradlew bundleRelease \
+          ./gradlew bundleRelease --stacktrace \
             -Pandroid.injected.signing.store.file=$KEYSTORE_PATH \
             -Pandroid.injected.signing.store.password=$KEYSTORE_PASSWORD \
             -Pandroid.injected.signing.key.alias=$KEY_ALIAS \
