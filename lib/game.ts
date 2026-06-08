@@ -6,23 +6,25 @@ import { Jogador, PONTOS_BASE, TIPO_PISTAS, TipoPista } from './types'
 const jogadores = jogadoresData as Jogador[]
 
 // ── Pools por dificuldade — Copa do Mundo 2026 ────────────────────────────
-// 5 desafios por dia:
-//   Slot 0 — Fácil    (craque mundialmente famoso)
-//   Slot 1 — Fácil    (outro craque muito conhecido)
-//   Slot 2 — Médio    (jogador bem conhecido do futebol europeu)
-//   Slot 3 — Médio    (jogador de seleção forte, menos famoso)
-//   Slot 4 — Difícil  (jogador menos midiático)
-// Cada pool tem rotação independente → todos aparecem ao longo das semanas.
+// 5 desafios por dia — SEM jogadores difíceis no diário:
+//   Slot 0 — Fácil  (craque mundialmente famoso)
+//   Slot 1 — Fácil  (outro craque famoso, offset 1/2)
+//   Slot 2 — Médio  (bem conhecido)
+//   Slot 3 — Médio  (bem conhecido, offset 1/2)
+//   Slot 4 — Médio  (bem conhecido, offset 1/3)
+//
+// Jogadores "difícil" ficam APENAS no Modo Relâmpago (lá a dificuldade é o ponto).
+// Pool diário: 83 fácil + 205 médio = 288 jogadores — todos reconhecíveis.
 
 const NUM_DESAFIOS = 5
 
-const poolFacil  = jogadores.filter(j => j.dificuldade === 'facil')
-const poolMedio  = jogadores.filter(j => j.dificuldade === 'medio')
-const poolDificil = jogadores.filter(j => j.dificuldade === 'dificil')
+const poolFacil   = jogadores.filter(j => j.dificuldade === 'facil')   // 83
+const poolMedio   = jogadores.filter(j => j.dificuldade === 'medio')   // 205
+// poolDificil: mantido para uso no Modo Relâmpago via modos.ts (não entra no diário)
 
 /**
  * Retorna o jogador correto para um rodadaId específico.
- * Usa a mesma lógica de pools por dificuldade de getJogadoresDoDia().
+ * Usa a mesma lógica de pools de getJogadoresDoDia().
  * Retorna null se rodadaId for inválido.
  */
 export function getJogadorPorRodadaId(rodadaId: number): Jogador | null {
@@ -35,14 +37,14 @@ export function getJogadorPorRodadaId(rodadaId: number): Jogador | null {
   const iF1 = (diffDias + Math.floor(poolFacil.length / 2)) % poolFacil.length
   const iM0 = diffDias % poolMedio.length
   const iM1 = (diffDias + Math.floor(poolMedio.length / 2)) % poolMedio.length
-  const iD  = diffDias % poolDificil.length
+  const iM2 = (diffDias + Math.floor(poolMedio.length / 3)) % poolMedio.length
 
   const slots = [
     poolFacil[iF0],
     poolFacil[iF1],
     poolMedio[iM0],
     poolMedio[iM1],
-    poolDificil[iD],
+    poolMedio[iM2],
   ]
 
   return slots[slotIndex] ?? null
@@ -59,14 +61,14 @@ export function getJogadoresDoDia(diaOverride?: number): Array<{ jogador: Jogado
   const iF1 = (diffDias + Math.floor(poolFacil.length / 2)) % poolFacil.length
   const iM0 = diffDias % poolMedio.length
   const iM1 = (diffDias + Math.floor(poolMedio.length / 2)) % poolMedio.length
-  const iD  = diffDias % poolDificil.length
+  const iM2 = (diffDias + Math.floor(poolMedio.length / 3)) % poolMedio.length
 
   const slots = [
     poolFacil[iF0],   // Slot 0 — Fácil
     poolFacil[iF1],   // Slot 1 — Fácil
     poolMedio[iM0],   // Slot 2 — Médio
     poolMedio[iM1],   // Slot 3 — Médio
-    poolDificil[iD],  // Slot 4 — Difícil
+    poolMedio[iM2],   // Slot 4 — Médio
   ]
 
   return slots.map((jogador, i) => ({
