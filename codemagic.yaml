@@ -1,0 +1,87 @@
+workflows:
+
+  # ── Android ─────────────────────────────────────────────────────────────────
+  android-release:
+    name: Android Release (Google Play)
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+
+    environment:
+      android_signing:
+        - cobra_keystore          # nome do keystore cadastrado no Codemagic
+      groups:
+        - google_play             # variáveis de ambiente do grupo (chave JSON do Google Play)
+      node: 20.11.0
+
+    scripts:
+      - name: Instalar dependências
+        script: npm ci
+
+      - name: Adicionar plataforma Android
+        script: |
+          npx cap add android || true
+          npx cap sync android
+
+      - name: Build Android (.aab)
+        script: |
+          cd android
+          chmod +x gradlew
+          ./gradlew bundleRelease
+
+    artifacts:
+      - android/app/build/outputs/bundle/release/app-release.aab
+
+    publishing:
+      google_play:
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        track: internal          # sobe para trilha interna primeiro
+        submit_as_draft: true
+
+
+  # ── iOS ─────────────────────────────────────────────────────────────────────
+  ios-release:
+    name: iOS Release (App Store)
+    max_build_duration: 90
+    instance_type: mac_mini_m2
+
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.cobradabola.app
+      groups:
+        - app_store_connect       # variáveis de ambiente do App Store Connect
+      node: 20.11.0
+      xcode: latest
+      cocoapods: default
+
+    scripts:
+      - name: Instalar dependências
+        script: npm ci
+
+      - name: Adicionar plataforma iOS
+        script: |
+          npx cap add ios || true
+          npx cap sync ios
+
+      - name: Instalar pods
+        script: |
+          cd ios/App
+          pod install
+
+      - name: Build iOS (.ipa)
+        script: |
+          xcode-project use-profiles
+          xcode-project build-ipa \
+            --workspace ios/App/App.xcworkspace \
+            --scheme App
+
+    artifacts:
+      - build/ios/ipa/*.ipa
+
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
+        submit_to_app_store: false   # revisão manual antes de publicar
