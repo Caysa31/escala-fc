@@ -75,8 +75,10 @@ workflows:
 
       - name: Decodificar keystore
         script: |
-          # Usa openssl (mais robusto que base64 no macOS)
-          printf '%s' "$KEYSTORE_BASE64" | openssl base64 -d > $KEYSTORE_PATH
+          # Decodifica base64 (funciona em macOS e Linux)
+          echo "$KEYSTORE_BASE64" | base64 -d > $KEYSTORE_PATH 2>/dev/null || \
+          echo "$KEYSTORE_BASE64" | base64 -D > $KEYSTORE_PATH 2>/dev/null || \
+          printf '%s' "$KEYSTORE_BASE64" | openssl base64 -A -d > $KEYSTORE_PATH
 
           echo "=== Diagnóstico keystore ==="
           echo "KEY_ALIAS=[${KEY_ALIAS}]"
