@@ -120,33 +120,6 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
             <p className="text-[#8AB4CC] text-sm">{config.subtitulo}</p>
           </div>
 
-          {/* ── SALVAR NA TELA INICIAL — logo após celebração ── */}
-          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-4 space-y-3">
-            <p className="text-white font-bold text-sm text-center">
-              📲 Salve o jogo na tela inicial para jogar amanhã
-            </p>
-            <p className="text-[#8AB4CC] text-xs text-center leading-relaxed">
-              É assim que vai ficar no seu celular — toque no ícone e o jogo abre na hora.
-            </p>
-            {/* Foto real da tela inicial */}
-            <div className="rounded-xl overflow-hidden border border-[#2A5275]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/iphone-home.jpg"
-                alt="COBRA na tela inicial do iPhone"
-                className="w-full object-cover"
-                style={{ maxHeight: '220px', objectPosition: 'center 60%' }}
-              />
-            </div>
-            <a
-              href="/guia-tela-inicial"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full text-center bg-[#0F1D30] border border-[#00C853]/40 hover:border-[#00C853] text-[#00C853] font-semibold py-3 rounded-xl text-sm transition-all active:scale-95"
-            >
-              📖 Como salvar na tela inicial →
-            </a>
-          </div>
 
           {/* ── NOTIFICAÇÃO — aparece só se ainda não ativou ── */}
           {(notifStatus === 'idle' || notifStatus === 'pedindo') && suportaNotificacoes() && (
