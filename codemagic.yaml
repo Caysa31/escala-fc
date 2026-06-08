@@ -73,9 +73,32 @@ workflows:
           echo "=== Assets gerados ==="
           ls android/app/src/main/assets/
 
-      - name: Decodificar keystore
+      - name: Decodificar e converter keystore
         script: |
           echo $KEYSTORE_BASE64 | base64 --decode > $KEYSTORE_PATH
+
+          echo "=== Diagnóstico keystore ==="
+          echo "KEY_ALIAS=${KEY_ALIAS}"
+          keytool -list -keystore $KEYSTORE_PATH -storepass "$KEYSTORE_PASSWORD" -v 2>&1 | head -20
+
+          # Converte PKCS12 → JKS (AGP bundle tool não suporta OIDs modernos do PKCS12)
+          JKS_PATH=/tmp/cobra-bola-jks.keystore
+          keytool -importkeystore \
+            -srckeystore $KEYSTORE_PATH \
+            -srcstoretype PKCS12 \
+            -destkeystore $JKS_PATH \
+            -deststoretype JKS \
+            -srcstorepass "$KEYSTORE_PASSWORD" \
+            -deststorepass "$KEYSTORE_PASSWORD" \
+            -srcalias "$KEY_ALIAS" \
+            -destalias "$KEY_ALIAS" \
+            -srckeypass "$KEY_PASSWORD" \
+            -destkeypass "$KEY_PASSWORD" \
+            -noprompt 2>&1 && cp $JKS_PATH $KEYSTORE_PATH && echo "Conversão PKCS12→JKS ok" \
+            || echo "Conversão falhou, usando keystore original"
+
+          echo "=== Keystore final ==="
+          keytool -list -keystore $KEYSTORE_PATH -storepass "$KEYSTORE_PASSWORD" 2>&1 | head -10
 
       - name: Build Android (.aab)
         script: |
