@@ -75,12 +75,14 @@ workflows:
 
       - name: Decodificar keystore
         script: |
-          echo $KEYSTORE_BASE64 | base64 --decode > $KEYSTORE_PATH
+          # Usa openssl (mais robusto que base64 no macOS)
+          printf '%s' "$KEYSTORE_BASE64" | openssl base64 -d > $KEYSTORE_PATH
 
           echo "=== Diagnóstico keystore ==="
           echo "KEY_ALIAS=[${KEY_ALIAS}]"
-          echo "KEYSTORE_PASSWORD length=${#KEYSTORE_PASSWORD}"
-          keytool -list -keystore $KEYSTORE_PATH -storepass "$KEYSTORE_PASSWORD" 2>&1 | head -10
+          echo "Tamanho do arquivo: $(wc -c < $KEYSTORE_PATH) bytes"
+          echo "Primeiros bytes (hex): $(xxd $KEYSTORE_PATH | head -2)"
+          keytool -list -keystore $KEYSTORE_PATH -storepass "$KEYSTORE_PASSWORD" -storetype JKS 2>&1 | head -15
 
       - name: Build Android (.aab)
         script: |
