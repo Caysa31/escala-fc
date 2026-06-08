@@ -6,17 +6,15 @@ android {
 
     signingConfigs {
         release {
-            def ksPath = System.getenv("KEYSTORE_PATH")
-            def ksPassword = System.getenv("KEYSTORE_PASSWORD")
-            def ksAlias = System.getenv("KEY_ALIAS")
-            def ksKeyPassword = System.getenv("KEY_PASSWORD")
-            if (ksPath && ksAlias && ksPassword) {
-                storeFile file(ksPath)
-                storePassword ksPassword
-                keyAlias ksAlias
-                keyPassword ksKeyPassword ?: ksPassword
-                storeType "JKS"
-            }
+            def ksPath = System.getenv("KEYSTORE_PATH") ?: "/tmp/cobra-bola.keystore"
+            def ksPassword = System.getenv("KEYSTORE_PASSWORD") ?: ""
+            def ksAlias = System.getenv("KEY_ALIAS") ?: "cobra_bola_key"
+            def ksKeyPassword = System.getenv("KEY_PASSWORD") ?: ksPassword
+            storeFile file(ksPath)
+            storePassword ksPassword
+            keyAlias ksAlias
+            keyPassword ksKeyPassword
+            storeType "JKS"
         }
     }
 
