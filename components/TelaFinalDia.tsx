@@ -69,14 +69,16 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
     }
   }, [])
 
-  // Textos dinâmicos por desempenho
-  const configs = {
-    3: { emoji: '🏆', titulo: 'Perfeito! Craque absoluto!', subtitulo: 'Acertou os 3 desafios de hoje.', cor: 'text-[#FFD23F]', bg: 'bg-[#0F1D30] border border-[#FFD23F]/30' },
-    2: { emoji: '🎯', titulo: 'Muito bem! Quase perfeito!', subtitulo: '2 de 3 acertos hoje. Amanhã vai de 3!', cor: 'text-[#00C853]', bg: 'bg-[#071A0F] border border-[#00C853]/30' },
-    1: { emoji: '⚽', titulo: 'Boa! 1 acerto hoje!', subtitulo: 'Difícil, mas você jogou. Amanhã vai mais fundo!', cor: 'text-[#8AB4CC]', bg: 'bg-[#0F1D30] border border-[#2A5275]' },
-    0: { emoji: '💪', titulo: 'Hoje não foi — mas você jogou!', subtitulo: 'Amanhã são outros jogadores. Você sabe mais do que pensa.', cor: 'text-[#8AB4CC]', bg: 'bg-[#0F1D30] border border-[#1A3A5C]' },
-  }
-  const config = configs[acertos as keyof typeof configs] ?? configs[0]
+  // Textos dinâmicos por desempenho — adaptado ao total de desafios
+  const totalDesafios = jogadoresDoDia.length
+  const pct = totalDesafios > 0 ? acertos / totalDesafios : 0
+  const config = pct === 1
+    ? { emoji: '🏆', titulo: 'Perfeito! Craque absoluto!', subtitulo: `Acertou os ${totalDesafios} desafios de hoje.`, cor: 'text-[#FFD23F]', bg: 'bg-[#0F1D30] border border-[#FFD23F]/30' }
+    : pct >= 0.6
+      ? { emoji: '🎯', titulo: 'Muito bem! Quase perfeito!', subtitulo: `${acertos} de ${totalDesafios} acertos. Amanhã vai de ${totalDesafios}!`, cor: 'text-[#00C853]', bg: 'bg-[#071A0F] border border-[#00C853]/30' }
+      : pct >= 0.2
+        ? { emoji: '⚽', titulo: `Boa! ${acertos} acerto${acertos !== 1 ? 's' : ''} hoje!`, subtitulo: 'Difícil, mas você jogou. Amanhã vai mais fundo!', cor: 'text-[#8AB4CC]', bg: 'bg-[#0F1D30] border border-[#2A5275]' }
+        : { emoji: '💪', titulo: 'Hoje não foi — mas você jogou!', subtitulo: 'Amanhã são outros jogadores. Você sabe mais do que pensa.', cor: 'text-[#8AB4CC]', bg: 'bg-[#0F1D30] border border-[#1A3A5C]' }
 
   function gerarTextoCompartilhar() {
     const linhas = resultados.map(({ jogador, resultado }) => {
@@ -85,7 +87,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
       ).join('') ?? '—'
       return emojis
     }).join(' ')
-    return `🐍 COBRA — Quem é o Craque?\n${acertos}/3 acertos hoje!\n${linhas}\n\nFiz ${pontosHoje} pts. Você consegue mais?\nhttps://cobra-craque.vercel.app`
+    return `🐍 COBRA DA BOLA — Quem é o Craque?\n${acertos}/${totalDesafios} acertos hoje!\n${linhas}\n\nFiz ${pontosHoje} pts. Você consegue mais?\nhttps://cobra-craque.vercel.app`
   }
 
   function compartilhar() {
@@ -94,7 +96,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
   }
 
   function desafiarAmigo() {
-    const texto = `🐍 Fiz ${pontosHoje} pts hoje no COBRA — Quem é o Craque?\nConsegue me superar?\nhttps://cobra-craque.vercel.app`
+    const texto = `🐍 Fiz ${pontosHoje} pts hoje no COBRA DA BOLA!\nConsegue me superar?\nhttps://cobra-craque.vercel.app`
     window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank')
   }
 
@@ -158,7 +160,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
 
             </div>
             <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-3 text-center">
-              <p className="text-2xl font-black text-[#FFD23F]">{acertos}<span className="text-[#8AB4CC] text-base">/3</span></p>
+              <p className="text-2xl font-black text-[#FFD23F]">{acertos}<span className="text-[#8AB4CC] text-base">/{totalDesafios}</span></p>
               <p className="text-[#8AB4CC] text-xs mt-1">acertos</p>
             </div>
             <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-3 text-center">
