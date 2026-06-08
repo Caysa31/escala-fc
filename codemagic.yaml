@@ -13,14 +13,13 @@ workflows:
 
     scripts:
       - name: Instalar dependências
-        script: |
-          npm install
-          npm install @capacitor/cli @capacitor/android @capacitor/core @capacitor/splash-screen @capacitor/status-bar
+        script: npm install
 
-      - name: Sync Capacitor Android
+      - name: Preparar assets Android
         script: |
           mkdir -p android/app/src/main/assets
-          node node_modules/@capacitor/cli/bin/capacitor.js sync android
+          echo '{"ok":true}' > android/app/src/main/assets/capacitor.config.json
+          echo '[]' > android/app/src/main/assets/capacitor.plugins.json
 
       - name: Decodificar keystore
         script: |
