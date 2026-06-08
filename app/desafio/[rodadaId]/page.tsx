@@ -99,7 +99,7 @@ function DesafioConteudo({ rodadaId }: { rodadaId: number }) {
         </Link>
 
         <p className="text-center text-[#5A8AAA] text-xs">
-          Jogue os 3 desafios do dia, acumule pontos e entre no ranking global
+          Jogue os 5 desafios do dia, acumule pontos e entre no ranking global
         </p>
       </div>
     </main>

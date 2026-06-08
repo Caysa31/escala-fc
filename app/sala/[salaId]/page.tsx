@@ -224,7 +224,7 @@ export default function LigaPage() {
             <p className="text-white text-sm font-bold">Como funciona</p>
             <div className="space-y-2">
               {[
-                { n: '1', t: 'Todo dia os mesmos 3 desafios para todos os membros' },
+                { n: '1', t: 'Todo dia os mesmos 5 desafios para todos os membros' },
                 { n: '2', t: 'Pontos acumulam ao longo de toda a temporada' },
                 { n: '3', t: 'Bônus de contrato (Brasileirão, Libertadores, Copa) também valem' },
                 { n: '4', t: 'Campeão = quem tiver mais pontos no fim da última rodada' },
@@ -245,7 +245,7 @@ export default function LigaPage() {
             {[
               { emoji: '🏆', nome: 'Copa do Brasil', ate: 'Final da temporada 2026' },
               { emoji: '⭐', nome: 'Libertadores', ate: 'Final da temporada 2026' },
-              { emoji: '🇧🇷', nome: 'Brasileirão', ate: 'Dezembro 2025 — encerramento' },
+              { emoji: '⚽', nome: 'Brasileirão 2026', ate: 'Dezembro 2026' },
             ].map(c => (
               <div key={c.nome} className="flex items-center gap-3">
                 <span className="text-lg">{c.emoji}</span>

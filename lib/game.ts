@@ -1,4 +1,4 @@
-// Lógica central do jogo COBRA — Quem é o Craque?
+// Lógica central do jogo COBRA DA BOLA — Quem é o Craque?
 
 import jogadoresData from '@/data/jogadores.json'
 import { Jogador, PONTOS_BASE, TIPO_PISTAS, TipoPista } from './types'
@@ -27,27 +27,30 @@ const poolDefesa = jogadores.filter(j => POSICOES_DEFESA.has(j.posicao))
  * Usa a mesma lógica de pools por posição de getJogadoresDoDia().
  * Retorna null se rodadaId for inválido.
  */
+const NUM_DESAFIOS = 5
+
 export function getJogadorPorRodadaId(rodadaId: number): Jogador | null {
   if (!Number.isFinite(rodadaId) || rodadaId < 1) return null
 
   const diffDias  = Math.floor((rodadaId - 1) / NUM_DESAFIOS)
   const slotIndex = (rodadaId - 1) % NUM_DESAFIOS
 
-  const iAtq0 = diffDias % poolAtaque.length
-  const iAtq1 = (diffDias + Math.floor(poolAtaque.length / 2)) % poolAtaque.length
-  const iMeio = diffDias % poolMeio.length
-  const iDef  = Math.floor(diffDias / 2) % poolDefesa.length
+  const iAtq0  = diffDias % poolAtaque.length
+  const iAtq1  = (diffDias + Math.floor(poolAtaque.length / 2)) % poolAtaque.length
+  const iMeio0 = diffDias % poolMeio.length
+  const iMeio1 = (diffDias + Math.floor(poolMeio.length / 2)) % poolMeio.length
+  const iDef   = Math.floor(diffDias / 2) % poolDefesa.length
 
-  const isDiaImpar = diffDias % 2 === 1
-
-  const slots = isDiaImpar
-    ? [poolAtaque[iAtq0], poolAtaque[iAtq1], poolMeio[iMeio]]
-    : [poolAtaque[iAtq0], poolMeio[iMeio],   poolDefesa[iDef]]
+  const slots = [
+    poolAtaque[iAtq0],
+    poolAtaque[iAtq1],
+    poolMeio[iMeio0],
+    poolMeio[iMeio1],
+    poolDefesa[iDef],
+  ]
 
   return slots[slotIndex] ?? null
 }
-
-const NUM_DESAFIOS = 5
 
 /** 5 jogadores do dia — COBRA DA BOLA, mesmo para todos os usuários.
  *  2 atacantes + 2 meias + 1 defensor/goleiro */

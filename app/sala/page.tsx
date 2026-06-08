@@ -185,7 +185,7 @@ export default function SalaPage() {
               <div className="space-y-3">
                 {[
                   { icon: '👥', titulo: 'Convide quem você quer desafiar', texto: 'Compartilhe o código com amigos, colegas e família. Cada um entra com o próprio apelido.' },
-                  { icon: '🎯', titulo: 'Todo dia, os mesmos 3 desafios', texto: 'Todos os membros jogam os mesmos desafios diários. Adivinhou o jogador? Ganhou pontos para a liga.' },
+                  { icon: '🎯', titulo: 'Todo dia, os mesmos 5 desafios', texto: 'Todos os membros jogam os mesmos desafios diários. Adivinhou o jogador? Ganhou pontos para a liga.' },
                   { icon: '⚡', titulo: 'Assine contratos com jogadores reais', texto: 'Ao acertar, você assina um contrato com o jogador. Se ele entrar em campo, criar chances ou marcar — você ganha bônus automático.' },
                   { icon: '🏆', titulo: 'A liga dura a temporada inteira', texto: 'Os pontos acumulam semana a semana. Quem tiver mais pontos ao final da Copa do Brasil, Libertadores e Brasileirão é o campeão da liga.' },
                 ].map((item, i) => (

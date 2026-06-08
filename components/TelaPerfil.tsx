@@ -74,7 +74,7 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
           <h1 className="text-4xl font-black text-white tracking-widest leading-tight">COBRA DA BOLA</h1>
           <p className="text-[#00C853] text-sm font-bold tracking-wider">QUEM É O CRAQUE?</p>
           <p className="text-[#8AB4CC] text-sm">
-            Adivinhe o jogador do Brasileirão com o mínimo de pistas
+            Adivinhe o jogador do dia com o mínimo de pistas
           </p>
         </div>
 

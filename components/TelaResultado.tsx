@@ -111,7 +111,7 @@ export default function TelaResultado({
 
         {/* Grade de emojis */}
         <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-4">
-          <p className="text-[#8AB4CC] text-xs mb-2 text-center">COBRA — Quem é o Craque? #{rodadaId}</p>
+          <p className="text-[#8AB4CC] text-xs mb-2 text-center">COBRA DA BOLA — Quem é o Craque? #{rodadaId}</p>
           <p className="text-2xl text-center tracking-widest">
             {tentativas.map(t => t.status === 'acerto' ? '🟩' : '⬛').join('')}
           </p>
