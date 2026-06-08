@@ -38,6 +38,12 @@ export default function Home() {
   const jogadoresDoDia = getJogadoresDoDia(mode)
 
   useEffect(() => {
+    // Primeira vez: redireciona para seleção de modo
+    const jaEscolheuModo = localStorage.getItem('cobradabola_mode')
+    if (!jaEscolheuModo) {
+      router.replace('/selecionar-modo')
+      return
+    }
     const p = carregarPerfil()
     setPerfil(p)
     setQtdContratosAtivos(getContratosAtivos().length)
@@ -117,6 +123,14 @@ export default function Home() {
             </div>
           </button>
           <div className="flex items-center gap-2">
+            {/* Botão trocar jogo */}
+            <button
+              onClick={() => router.push('/selecionar-modo')}
+              className="flex items-center gap-1 bg-[#0F1D30] border border-[#1A3A5C] rounded-xl px-3 py-2 text-[#8AB4CC] hover:text-white transition-colors"
+            >
+              <span className="text-xs font-semibold">Trocar</span>
+              <span className="text-xs">{mode === 'bola' ? '⚽' : '🐍'}</span>
+            </button>
             {qtdContratosAtivos > 0 && (
               <button onClick={() => setMostrarContratosAtivos(true)}
                 className="flex items-center gap-1.5 bg-[#0F1D30] border border-[#1A3A5C] rounded-xl px-3 py-2">
