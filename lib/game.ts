@@ -111,7 +111,7 @@ export function getIntroNarrativa(jogador: Jogador): string {
  * Retorna as 6 pistas de texto de um jogador — escritas como frases narrativas.
  * Progressão: pista 1 é a mais difícil, pista 6 é a mais fácil.
  */
-export function getPistasTexto(jogador: Jogador): Record<number, string> {
+export function getPistasTexto(jogador: Jogador, mode: GameMode = 'bola'): Record<number, string> {
   // Pista 1 — Posição em campo (com narrativa por liga)
   const ligaLabel = jogador.liga === 'Brasileirão' ? 'Brasileirão Série A'
     : jogador.liga === 'Premier League' ? 'Premier League'
@@ -235,6 +235,18 @@ export function getPistasTexto(jogador: Jogador): Record<number, string> {
 
   // Pista 1 = Nome (blocos), Pista 2 = Posição — ordem invertida intencionalmente
   // Campos personalizados por jogador têm prioridade sobre o template automático
+
+  // Copa: 4 pistas — elimina Trajetória (pista4), mantém Time+Nome como última dica
+  if (mode === 'copa') {
+    return {
+      1: pista2,
+      2: jogador.pista2 ?? pista1,
+      3: jogador.pista3 ?? pista3,
+      4: pista5,  // Time + Nome com letras parciais (era pista 5, vira pista 4 na Copa)
+    }
+  }
+
+  // Bola: 5 pistas completas
   return {
     1: pista2,
     2: jogador.pista2 ?? pista1,

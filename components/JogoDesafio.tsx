@@ -12,6 +12,7 @@ import {
 import { registrarResultado, getResultadoRodada, aplicarBonusContrato } from '@/lib/perfil'
 import { getContratosAtivos } from '@/lib/contrato'
 import { getMultiplicadorTreino } from '@/lib/modos'
+import { getModeAtual } from '@/lib/gameMode'
 
 import Pista from './Pista'
 import InputPalpite from './InputPalpite'
@@ -54,7 +55,8 @@ export default function JogoDesafio({
 
   // Multiplicador de treino — ativo apenas no desafio diário (não em modos extras)
   const multiplicador = modoExtra ? 1 : getMultiplicadorTreino()
-  const pistasTexto = getPistasTexto(jogador)
+  const mode = getModeAtual()
+  const pistasTexto = getPistasTexto(jogador, mode)
   const introNarrativa = getIntroNarrativa(jogador)
 
   // Label do Capítulo 2 varia por posição — identidade narrativa antes de revelar o estilo de jogo
@@ -390,7 +392,11 @@ export default function JogoDesafio({
               atual={atual}
               errou={errou}
               correto={correto}
-              subtitulo={num === 2 ? subtituloPista2 : undefined}
+              subtitulo={
+                num === 2 ? subtituloPista2
+                : (mode === 'copa' && num === 4) ? 'Time + Nome'
+                : undefined
+              }
               onRevelar={onRevelar}
               onDestravar={onDestravar}
               // "Agora vale X pts" → só na pista ATIVA (recém-revelada)
