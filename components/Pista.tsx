@@ -69,7 +69,7 @@ function BlocosNome({ codificado, atual, correto }: { codificado: string; atual:
   )
 }
 
-// Pista 5 — clube + letras parciais do nome
+// Pista 4 (Copa) — seleção/clube + letras parciais do nome
 function LetrasNome({ codificado, atual, correto }: { codificado: string; atual: boolean; correto?: boolean }) {
   const ativa = atual || correto
   const sepIdx = codificado.indexOf('|')

@@ -22,7 +22,7 @@ function getHeaders(): HeadersInit {
 // Ligas europeias usam o ano anterior (ex: temporada 2025 = 2025/26).
 
 const LIGAS_ANO_CORRENTE = new Set([
-  71,  // Brasileirão Série A
+  // 71,  // Brasileirão Série A — não relevante para Copa 2026
   73,  // Copa do Brasil
   13,  // Libertadores
   11,  // Sul-Americana
