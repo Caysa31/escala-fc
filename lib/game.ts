@@ -72,21 +72,42 @@ export function getIntroNarrativa(jogador: Jogador, mode: GameMode = 'bola'): st
   const temTitulos = jogador.titulos.length > 0
   const eLenda = jogador.lenda === true
 
-  // ── COPA: linguagem focada na Copa do Mundo, sem referência a ligas de clube ──
+  // ── COPA: linguagem focada na Copa do Mundo, menciona seleção e bandeira ──
   if (mode === 'copa') {
+    // Mapeamento de adjetivo de nacionalidade → nome do país
+    const adjetivoParaPais: Record<string, string> = {
+      'Alemão': 'Alemanha', 'Argentino': 'Argentina', 'Australiano': 'Austrália',
+      'Belga': 'Bélgica', 'Boliviano': 'Bolívia', 'Brasileiro': 'Brasil',
+      'Camaronês': 'Camarões', 'Canadense': 'Canadá', 'Chileno': 'Chile',
+      'Colombiano': 'Colômbia', 'Congolês': 'Congo', 'Croata': 'Croácia',
+      'Dinamarquês': 'Dinamarca', 'Egípcio': 'Egito', 'Equatoriano': 'Equador',
+      'Esloveno': 'Eslovênia', 'Espanhol': 'Espanha', 'Francês': 'França',
+      'Ganês': 'Gana', 'Georgiano': 'Geórgia', 'Guineense': 'Guiné',
+      'Holandês': 'Holanda', 'Inglês': 'Inglaterra', 'Iraniano': 'Irã',
+      'Italiano': 'Itália', 'Japonês': 'Japão', 'Marfinense': 'Costa do Marfim',
+      'Marroquino': 'Marrocos', 'Mexicano': 'México', 'Nigeriano': 'Nigéria',
+      'Norueguês': 'Noruega', 'Paraguaio': 'Paraguai', 'Peruano': 'Peru',
+      'Polonês': 'Polônia', 'Português': 'Portugal', 'Russo': 'Rússia',
+      'Senegalês': 'Senegal', 'Sérvio': 'Sérvia', 'Sul-Africano': 'África do Sul',
+      'Sul-Coreano': 'Coreia do Sul', 'Suíço': 'Suíça', 'Turco': 'Turquia',
+      'Uruguaio': 'Uruguai', 'Venezuelano': 'Venezuela',
+    }
+    const pais = adjetivoParaPais[jogador.nacionalidade] ?? jogador.nacionalidade
+    const bandeira = jogador.bandeira ?? ''
+
     if (eLenda && temTitulos) {
-      return `Uma lenda das Copas do Mundo. ${jogador.titulos.slice(0, 2).join(' e ')} — uma carreira escrita em letras douradas. Você ainda se lembra de quem é?`
+      return `${bandeira} Uma lenda das Copas do Mundo. ${jogador.titulos.slice(0, 2).join(' e ')} — uma carreira escrita em letras douradas. Você ainda se lembra de quem é?`
     }
     if (eLenda) {
-      return `Um nome que dispensaria apresentações. Uma carreira que atravessou Copas e deixou marca onde passou. Você ainda se lembra de quem é?`
+      return `${bandeira} Um nome que dispensaria apresentações. Uma lenda da ${pais} que atravessou Copas e deixou marca onde passou. Você ainda se lembra de quem é?`
     }
     if (jogador.dificuldade === 'facil') {
-      return `Um dos grandes nomes desta Copa do Mundo 2026. Todo mundo conhece — mas será que você sabe tudo sobre ele? Quantas pistas você vai precisar?`
+      return `${bandeira} Um dos grandes nomes da seleção da ${pais} nesta Copa do Mundo 2026. Todo mundo conhece — mas será que você sabe tudo sobre ele?`
     }
     if (jogador.dificuldade === 'medio') {
-      return `Vai defender sua seleção na Copa do Mundo 2026 com tudo. Tem talento, tem história — mas você sabe quem é? Teste seu conhecimento.`
+      return `${bandeira} Vai defender a seleção da ${pais} na Copa do Mundo 2026. Tem talento, tem história — mas você sabe quem é?`
     }
-    return `Estará em campo na Copa do Mundo 2026. Poucos sabem o nome, mas ele pode surpreender o mundo. Prove que você é cobra mesmo.`
+    return `${bandeira} Estará em campo pela ${pais} na Copa do Mundo 2026. Poucos sabem o nome, mas ele pode surpreender o mundo. Prove que você é cobra mesmo.`
   }
 
   // ── BOLA: linguagem focada nas ligas de clube ──
