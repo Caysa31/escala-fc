@@ -10,6 +10,7 @@ workflows:
       vars:
         KEYSTORE_PATH: /tmp/cobra-bola.keystore
       node: 22.13.0
+      java: 21
 
     scripts:
       - name: Instalar dependências
