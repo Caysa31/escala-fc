@@ -17,8 +17,9 @@ workflows:
 
       - name: Adicionar plataforma Android
         script: |
-          ./node_modules/.bin/cap add android || true
-          ./node_modules/.bin/cap sync android
+          npm install -g @capacitor/cli
+          cap add android || true
+          cap sync android
 
       - name: Decodificar keystore
         script: |
