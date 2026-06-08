@@ -31,11 +31,12 @@ workflows:
     artifacts:
       - android/app/build/outputs/bundle/release/app-release.aab
 
-    publishing:
-      google_play:
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-        track: internal          # sobe para trilha interna primeiro
-        submit_as_draft: true
+    # publishing para Google Play — ativar depois de criar a conta
+    # publishing:
+    #   google_play:
+    #     credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+    #     track: internal
+    #     submit_as_draft: true
 
 
   # ── iOS ─────────────────────────────────────────────────────────────────────
