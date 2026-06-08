@@ -9,7 +9,7 @@ workflows:
     environment:
       vars:
         KEYSTORE_PATH: /tmp/cobra-bola.keystore
-      node: 20.11.0
+      node: 22.13.0
 
     scripts:
       - name: Instalar dependências
@@ -58,7 +58,7 @@ workflows:
         bundle_identifier: com.cobradabola.app
       groups:
         - app_store_connect       # variáveis de ambiente do App Store Connect
-      node: 20.11.0
+      node: 22.13.0
       xcode: latest
       cocoapods: default
 
