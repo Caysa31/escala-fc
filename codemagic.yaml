@@ -17,6 +17,8 @@ workflows:
           npm install
           echo "=== Capacitor packages ==="
           ls node_modules/@capacitor/ || echo "AVISO: @capacitor não encontrado!"
+          echo "=== Subpastas @capacitor/android ==="
+          ls node_modules/@capacitor/android/ || echo "NÃO ENCONTRADO"
           mkdir -p android/app/src/main/assets
           npx cap sync android || echo "cap sync falhou, continuando..."
 
