@@ -305,12 +305,6 @@ export default function JogoDesafio({
   return (
     <div className="space-y-4">
 
-      {/* Banner motivacional (desafio anterior foi perdido) */}
-      {mensagemMotivacional && (
-        <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl px-4 py-3 text-center">
-          <p className="text-[#8AB4CC] text-sm font-semibold">{mensagemMotivacional}</p>
-        </div>
-      )}
 
       {/* Intro em destaque — só quando ainda não revelou nenhuma pista */}
       {/* Banner removido — info já aparece na barra de baixo */}
