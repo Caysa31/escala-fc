@@ -59,6 +59,9 @@ export default function Home() {
   useEffect(() => {
     if (!carregado || finalDiaMostrado.current) return
     if (isInitialLoad.current) { isInitialLoad.current = false; return }
+    const hoje = new Date().toDateString()
+    const jaDispensado = typeof window !== 'undefined' && localStorage.getItem('finalDia_dispensado') === hoje
+    if (jaDispensado) return
     const todosConcluidos = jogadoresDoDia.every(
       ({ rodadaId }) => getResultadoRodada(rodadaId) !== null
     )
@@ -335,6 +338,7 @@ export default function Home() {
           jogadoresDoDia={jogadoresDoDia}
           perfil={perfil}
           onFechar={() => {
+            localStorage.setItem('finalDia_dispensado', new Date().toDateString())
             setMostrarFinalDia(false)
             setJogoKey(k => k + 1)
             window.scrollTo({ top: 0, behavior: 'smooth' })
