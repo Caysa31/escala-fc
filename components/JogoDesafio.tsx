@@ -89,54 +89,51 @@ export default function JogoDesafio({
   const [mostrarResultado, setMostrarResultado] = useState(false)
   const [inputMontado, setInputMontado] = useState(false)
   const currentPistaRef = useRef<HTMLDivElement>(null)
-  const inputBarRef = useRef<HTMLDivElement>(null)
+
+  // ── Teclado iOS — solução definitiva ────────────────────────────────────
+  // Em vez de transform (frágil, depende de leitura de DOM em momento errado),
+  // controlamos o `bottom` da barra via estado React.
+  //
+  // Fórmula matemática exata:
+  //   keyboardHeight = innerHeight - vv.offsetTop - vv.height
+  //
+  // Com `bottom: keyboardHeight` na barra:
+  //   → borda inferior da barra = topo do teclado (no layout viewport)
+  //
+  // Prova:
+  //   borda_inferior_barra = innerHeight - keyboardHeight
+  //                        = innerHeight - (innerHeight - vv.offsetTop - vv.height)
+  //                        = vv.offsetTop + vv.height   ← topo exato do teclado ✓
+  const [keyboardH, setKeyboardH] = useState(0)
+  const prevKeyboardH = useRef(0)
+
+  useEffect(() => {
+    const vv = window.visualViewport
+    if (!vv) return
+    const onResize = () => {
+      const kh = Math.max(0, window.innerHeight - (vv.offsetTop ?? 0) - vv.height)
+      const wasOpen = prevKeyboardH.current > 50
+      const isOpen  = kh > 50
+      prevKeyboardH.current = kh
+      setKeyboardH(kh)
+      // Quando o teclado acabou de abrir, rola a pista atual para o topo
+      if (!wasOpen && isOpen) {
+        setTimeout(() => {
+          currentPistaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }, 200)
+      }
+    }
+    vv.addEventListener('resize', onResize)
+    return () => vv.removeEventListener('resize', onResize)
+  }, [])
 
   // Auto-scroll para a pista recém-revelada sempre que pistaAtual muda.
-  // Usa 'start' porque os cards bloqueados já estão no DOM — 'nearest' detectaria
-  // o elemento como visível e não faria nada. Com 'start' a pista revelada
-  // (que expande seu conteúdo) sobe para o topo da tela.
   useEffect(() => {
     if (estado.pistaAtual === 0) return
     setTimeout(() => {
       currentPistaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }, 250)
   }, [estado.pistaAtual]) // eslint-disable-line react-hooks/exhaustive-deps
-
-  // Mantém a barra de input visível acima do teclado iOS.
-  // Lê o `bottom` CSS computado uma vez (resolve calc+env em px) e reutiliza.
-  // Fórmula: offset = keyboard_height - base_bottom
-  // → translateY(-offset) leva a barra exatamente ao topo do teclado.
-  const baseBottomRef = useRef<number | null>(null)
-  useEffect(() => {
-    const vv = window.visualViewport
-    if (!vv) return
-    const adjust = () => {
-      const bar = inputBarRef.current
-      if (!bar) return
-      if (baseBottomRef.current === null) {
-        bar.style.transform = ''
-        baseBottomRef.current = parseFloat(window.getComputedStyle(bar).bottom) || 0
-      }
-      const keyboardH = Math.max(0, window.innerHeight - vv.height - (vv.offsetTop ?? 0))
-      const offset = Math.max(0, keyboardH - baseBottomRef.current)
-      bar.style.transform = offset > 2 ? `translateY(-${offset}px)` : ''
-    }
-    vv.addEventListener('resize', adjust)
-    vv.addEventListener('scroll', adjust)
-    return () => {
-      vv.removeEventListener('resize', adjust)
-      vv.removeEventListener('scroll', adjust)
-    }
-  }, [])
-
-  // Quando o teclado abre, rola a pista atual para o topo da área visível.
-  // 'start' coloca o topo da pista no topo do viewport — melhor que 'center'
-  // que usava o layout viewport inteiro (incluindo área atrás do teclado).
-  function handleInputFocused() {
-    setTimeout(() => {
-      currentPistaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }, 500)
-  }
 
   // Quando TelaFinalDia fecha (telaFinalAberta: true→false), fecha TelaResultado
   const prevTelaFinalAberta = useRef(false)
@@ -500,11 +497,14 @@ export default function JogoDesafio({
           O env(safe-area-inset-bottom) cobre o indicador home do iPhone. */}
       {estado.status === 'jogando' && inputMontado && (
         <div
-          ref={inputBarRef}
           className="fixed left-0 right-0 z-50 bg-[#070E1A] border-t border-[#2A5275] px-4 pt-3"
           style={{
-            bottom: temBottomNav ? 'calc(56px + env(safe-area-inset-bottom))' : '0',
-            paddingBottom: temBottomNav ? '8px' : 'max(12px, env(safe-area-inset-bottom))',
+            bottom: keyboardH > 50
+              ? `${keyboardH}px`
+              : temBottomNav ? 'calc(56px + env(safe-area-inset-bottom))' : '0',
+            paddingBottom: keyboardH > 50
+              ? '8px'
+              : temBottomNav ? '8px' : 'max(12px, env(safe-area-inset-bottom))',
           }}
         >
           <div className="max-w-md mx-auto">
@@ -550,7 +550,6 @@ export default function JogoDesafio({
               desabilitado={false}
               tentativasAnteriores={estado.tentativas.map(t => t.nome)}
               mode={mode}
-              onFocused={handleInputFocused}
             />
           </div>
         </div>
