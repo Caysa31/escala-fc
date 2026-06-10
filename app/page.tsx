@@ -333,7 +333,7 @@ export default function Home() {
       {mostrarContratosAtivos && (
         <TelaContratosAtivos onFechar={() => setMostrarContratosAtivos(false)} />
       )}
-      {mostrarFinalDia && perfil && (
+      {mostrarFinalDia && perfil && (typeof window === 'undefined' || localStorage.getItem('finalDia_dispensado') !== new Date().toDateString()) && (
         <TelaFinalDia
           jogadoresDoDia={jogadoresDoDia}
           perfil={perfil}
