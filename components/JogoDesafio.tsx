@@ -88,20 +88,28 @@ export default function JogoDesafio({
   const [mostrarContrato, setMostrarContrato] = useState(false)
   const [mostrarResultado, setMostrarResultado] = useState(false)
   const [inputMontado, setInputMontado] = useState(false)
-  const lastPistaRef = useRef<HTMLDivElement>(null)
+  const currentPistaRef = useRef<HTMLDivElement>(null)
   const inputBarRef = useRef<HTMLDivElement>(null)
 
+  // Auto-scroll para a pista recém-revelada sempre que pistaAtual muda
+  useEffect(() => {
+    if (estado.pistaAtual === 0) return
+    setTimeout(() => {
+      currentPistaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    }, 100)
+  }, [estado.pistaAtual]) // eslint-disable-line react-hooks/exhaustive-deps
+
   // Mantém a barra de input visível acima do teclado iOS.
-  // iOS não redimensiona o layout viewport ao abrir o teclado, então
-  // elementos fixed em bottom:X ficam atrás do teclado. O visualViewport
-  // retorna a altura real visível, e usamos translateY para subir a barra.
+  // iOS não redimensiona o layout viewport → fixed bottom:X fica atrás do teclado.
+  // Usamos translateY = keyboard height para subir a barra.
   useEffect(() => {
     const vv = window.visualViewport
     if (!vv) return
     const adjust = () => {
       const bar = inputBarRef.current
       if (!bar) return
-      const offset = Math.max(0, window.innerHeight - vv.height - vv.pageTop)
+      // window.innerHeight - vv.height = altura do teclado
+      const offset = Math.max(0, window.innerHeight - vv.height)
       bar.style.transform = `translateY(-${offset}px)`
     }
     vv.addEventListener('resize', adjust)
@@ -112,11 +120,10 @@ export default function JogoDesafio({
     }
   }, [])
 
-  // Rola a última pista para ficar visível acima da barra de input quando
-  // o teclado abre. Usa block:'center' para centrar no visualViewport.
+  // Quando o teclado abre, rola a pista atual para ficar visível acima da barra
   function handleInputFocused() {
     setTimeout(() => {
-      lastPistaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      currentPistaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }, 500)
   }
 
@@ -407,7 +414,7 @@ export default function JogoDesafio({
           )
 
           return (
-            <div key={num} ref={num === totalPistas ? lastPistaRef : undefined}>
+            <div key={num} ref={num === estado.pistaAtual ? currentPistaRef : undefined}>
             <Pista
               numero={num}
               texto={pistasTexto[num] ?? ''}
