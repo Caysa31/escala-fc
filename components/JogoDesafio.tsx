@@ -532,6 +532,19 @@ export default function JogoDesafio({
                 <span className="text-[#8AB4CC] text-sm font-semibold">pts</span>
               </div>
             </div>
+            {/* Opção de pular — acima do input para ficar visível mesmo com teclado aberto */}
+            {estado.pistaAtual >= 1 && (
+              <div className="mb-2">
+                <button
+                  type="button"
+                  onClick={handlePularDesafio}
+                  className="w-full text-center text-[#8AB4CC] text-xs font-medium py-1 transition-colors hover:text-white"
+                >
+                  🏳️ Não sei esse jogador — passar
+                </button>
+              </div>
+            )}
+
             <InputPalpite
               onPalpite={handlePalpite}
               desabilitado={false}
@@ -539,19 +552,6 @@ export default function JogoDesafio({
               mode={mode}
               onFocused={handleInputFocused}
             />
-
-            {/* Opção de pular — só aparece após revelar pelo menos 1 pista */}
-            {estado.pistaAtual >= 1 && (
-              <div className="border-t border-[#1A3A5C] mt-1 pt-2">
-                <button
-                  type="button"
-                  onClick={handlePularDesafio}
-                  className="w-full text-center text-white text-xs font-medium py-1 transition-colors opacity-70 hover:opacity-100"
-                >
-                  🏳️ Não sei esse jogador — passar
-                </button>
-              </div>
-            )}
           </div>
         </div>
       )}
