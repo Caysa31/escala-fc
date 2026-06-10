@@ -11,34 +11,14 @@ interface InputPalpiteProps {
   desabilitado: boolean
   tentativasAnteriores: string[]
   mode?: GameMode
+  onFocused?: () => void  // chamado quando o teclado abre — pai faz o scroll correto
 }
 
-export default function InputPalpite({ onPalpite, desabilitado, tentativasAnteriores, mode = 'bola' }: InputPalpiteProps) {
+export default function InputPalpite({ onPalpite, desabilitado, tentativasAnteriores, mode = 'bola', onFocused }: InputPalpiteProps) {
   const [valor, setValor] = useState('')
   const [sugestoes, setSugestoes] = useState<Jogador[]>([])
   const [focado, setFocado] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
-
-  // Quando o teclado abre no celular, rola apenas o suficiente para o input
-  // ficar acima do teclado — sem sobre-rolar e esconder a última pista.
-  useEffect(() => {
-    if (!focado || !inputRef.current) return
-    const scroll = () => {
-      if (!inputRef.current || !window.visualViewport) return
-      const rect = inputRef.current.getBoundingClientRect()
-      const vv = window.visualViewport
-      const visibleBottom = vv.offsetTop + vv.height
-      if (rect.bottom > visibleBottom - 8) {
-        window.scrollBy({ top: rect.bottom - visibleBottom + 24, behavior: 'smooth' })
-      }
-    }
-    if (typeof window !== 'undefined' && window.visualViewport) {
-      window.visualViewport.addEventListener('resize', scroll)
-      return () => window.visualViewport?.removeEventListener('resize', scroll)
-    }
-    const t = setTimeout(scroll, 300)
-    return () => clearTimeout(t)
-  }, [focado])
 
   // Sem auto-foco: o jogador deve ler a intro e as pistas antes de digitar
 
@@ -77,7 +57,7 @@ export default function InputPalpite({ onPalpite, desabilitado, tentativasAnteri
             type="text"
             value={valor}
             onChange={handleChange}
-            onFocus={() => setFocado(true)}
+            onFocus={() => { setFocado(true); onFocused?.() }}
             onBlur={() => setTimeout(() => setFocado(false), 150)}
             disabled={desabilitado}
             placeholder={desabilitado ? 'Rodada encerrada' : 'Digite o nome do jogador...'}
