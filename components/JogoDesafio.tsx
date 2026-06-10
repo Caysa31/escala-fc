@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, Fragment } from 'react'
 import {
   Perfil, Tentativa, EstadoJogo,
   PONTOS_BASE, TOTAL_PISTAS, Jogador,
@@ -414,43 +414,42 @@ export default function JogoDesafio({
           )
 
           return (
-            <div key={num} ref={num === estado.pistaAtual ? currentPistaRef : undefined}>
-            <Pista
-              numero={num}
-              texto={pistasTexto[num] ?? ''}
-              revelada={revelada}
-              atual={atual}
-              errou={errou}
-              correto={correto}
-              subtitulo={
-                num === 2 ? subtituloPista2
-                : (mode === 'copa' && num === 4) ? 'Time + Nome'
-                : undefined
-              }
-              renderAs={mode === 'copa' && num === 4 ? 5 : undefined}
-              onRevelar={onRevelar}
-              onDestravar={onDestravar}
-              // "Agora vale X pts" → só na pista ATIVA (recém-revelada)
-              pontosAtual={atual && estado.status === 'jogando' ? ptsDestaPista : undefined}
-              // "−X pts se revelar" → só na pista BLOQUEADA com botão
-              custoDestravar={onDestravar && custoEsta > 0 ? custoEsta : undefined}
-            />
-            </div>
+            <Fragment key={num}>
+              <div ref={num === estado.pistaAtual ? currentPistaRef : undefined}>
+                <Pista
+                  numero={num}
+                  texto={pistasTexto[num] ?? ''}
+                  revelada={revelada}
+                  atual={atual}
+                  errou={errou}
+                  correto={correto}
+                  subtitulo={
+                    num === 2 ? subtituloPista2
+                    : (mode === 'copa' && num === 4) ? 'Time + Nome'
+                    : undefined
+                  }
+                  renderAs={mode === 'copa' && num === 4 ? 5 : undefined}
+                  onRevelar={onRevelar}
+                  onDestravar={onDestravar}
+                  pontosAtual={atual && estado.status === 'jogando' ? ptsDestaPista : undefined}
+                  custoDestravar={onDestravar && custoEsta > 0 ? custoEsta : undefined}
+                />
+              </div>
+              {/* Intro narrativa — entre pista 1 e pista 2, some quando o jogo começa */}
+              {num === 1 && introEmDestaque && (
+                <div className="bg-[#0F1D30] border border-[#2A5275] rounded-xl px-4 py-3">
+                  <p className="text-xs uppercase font-bold tracking-widest mb-1.5 text-[#8AB4CC]">
+                    ⚡ Jogador do dia
+                  </p>
+                  <p className="leading-snug italic text-[#C8E0F0] text-sm">
+                    &ldquo;{introNarrativa}&rdquo;
+                  </p>
+                </div>
+              )}
+            </Fragment>
           )
         })}
       </div>
-
-      {/* Intro narrativa — aparece abaixo da pista 1, some quando o jogo começa */}
-      {introEmDestaque && (
-        <div className="bg-[#0F1D30] border border-[#2A5275] rounded-xl px-4 py-3">
-          <p className="text-xs uppercase font-bold tracking-widest mb-1.5 text-[#8AB4CC]">
-            ⚡ Jogador do dia
-          </p>
-          <p className="leading-snug italic text-[#C8E0F0] text-sm">
-            &ldquo;{introNarrativa}&rdquo;
-          </p>
-        </div>
-      )}
 
       {/* Tentativas */}
       <ListaTentativas tentativas={estado.tentativas} />
