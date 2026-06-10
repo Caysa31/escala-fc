@@ -280,8 +280,8 @@ export function StatsPerfil({ perfil }: StatsPerfilProps) {
             { val: perfil.streakMaximo,      label: 'melhor seq.',   cor: 'text-white' },
             { val: perfil.rodadasAcertadas,  label: 'acertos totais', cor: 'text-white' },
             { val: `${taxaAcerto}%`,         label: 'taxa acerto',   cor: 'text-white' },
-            ...(diferencaProximo !== null
-              ? [{ val: `+${diferencaProximo}`, label: 'p/ subir', cor: 'text-orange-400' }]
+            ...(diferencaProximo !== null && posicaoRanking
+              ? [{ val: `${diferencaProximo} pts`, label: `pro #${posicaoRanking - 1}`, cor: 'text-orange-400' }]
               : []),
           ].map(({ val, label, cor }) => (
             <div key={label} className="text-center pt-1">
