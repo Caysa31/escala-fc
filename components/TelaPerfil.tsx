@@ -246,8 +246,8 @@ export function StatsPerfil({ perfil }: StatsPerfilProps) {
 
   return (
     <Link href="/perfil" className="block">
-      <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl px-4 py-4 space-y-3 active:opacity-80 transition-opacity">
-        {/* Nome + link + posição ranking */}
+      <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl px-3 py-3 space-y-2 active:opacity-80 transition-opacity">
+        {/* Nome + ranking */}
         <div className="flex items-center justify-between">
           <p className="text-white font-bold text-sm">Olá, {perfil.apelido} 👋</p>
           <div className="flex items-center gap-2">
@@ -258,35 +258,18 @@ export function StatsPerfil({ perfil }: StatsPerfilProps) {
           </div>
         </div>
 
-        {/* Linha 1 — 4 stats em linha */}
-        <div className="grid grid-cols-4 gap-1.5">
+        {/* 4 stats compactos */}
+        <div className="grid grid-cols-4 gap-1">
           {[
             { icon: '🏆', val: perfil.pontosTotal, label: 'pts total' },
             { icon: '⚡', val: pontosHoje,         label: 'pts hoje' },
             { icon: '🔥', val: perfil.streakAtual, label: 'sequência' },
             { icon: '🥇', val: posicaoRanking ? `#${posicaoRanking}` : '—', label: 'ranking' },
           ].map(({ icon, val, label }) => (
-            <div key={label} className="bg-[#0A1626] rounded-xl px-2 py-2 text-center">
-              <p className="text-base leading-none">{icon}</p>
-              <p className="text-[#FFD23F] font-black text-lg leading-tight mt-1">{val}</p>
-              <p className="text-[#8AB4CC] text-[10px] mt-0.5 leading-none">{label}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Linha 2 — melhor seq, acertos, taxa + diferença opcional */}
-        <div className={`grid gap-1.5 pt-0.5 border-t border-[#1A3A5C] ${diferencaProximo !== null ? 'grid-cols-4' : 'grid-cols-3'}`}>
-          {[
-            { val: perfil.streakMaximo,      label: 'melhor seq.',   cor: 'text-white' },
-            { val: perfil.rodadasAcertadas,  label: 'acertos totais', cor: 'text-white' },
-            { val: `${taxaAcerto}%`,         label: 'taxa acerto',   cor: 'text-white' },
-            ...(diferencaProximo !== null && posicaoRanking
-              ? [{ val: `${diferencaProximo} pts`, label: `pro #${posicaoRanking - 1}`, cor: 'text-orange-400' }]
-              : []),
-          ].map(({ val, label, cor }) => (
-            <div key={label} className="text-center pt-1">
-              <p className={`font-bold text-sm leading-none ${cor}`}>{val}</p>
-              <p className="text-[#5A8AAA] text-[10px] mt-0.5">{label}</p>
+            <div key={label} className="bg-[#0A1626] rounded-lg px-1 py-1.5 text-center">
+              <p className="text-sm leading-none">{icon}</p>
+              <p className="text-[#FFD23F] font-black text-base leading-tight mt-0.5">{val}</p>
+              <p className="text-[#8AB4CC] text-[9px] mt-0.5 leading-none">{label}</p>
             </div>
           ))}
         </div>
