@@ -103,19 +103,22 @@ export default function JogoDesafio({
   }, [estado.pistaAtual]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Mantém a barra de input visível acima do teclado iOS.
-  // Lê a posição real da barra (inclui safe-area-inset-bottom + nav) e calcula
-  // exatamente quanto subir para ficar rente ao topo do teclado.
+  // Lê o `bottom` CSS computado uma vez (resolve calc+env em px) e reutiliza.
+  // Fórmula: offset = keyboard_height - base_bottom
+  // → translateY(-offset) leva a barra exatamente ao topo do teclado.
+  const baseBottomRef = useRef<number | null>(null)
   useEffect(() => {
     const vv = window.visualViewport
     if (!vv) return
     const adjust = () => {
       const bar = inputBarRef.current
       if (!bar) return
-      // Reset antes de medir para obter posição real sem transform anterior
-      bar.style.transform = ''
-      const barBottom = bar.getBoundingClientRect().bottom
-      const keyboardTop = (vv.offsetTop ?? 0) + vv.height
-      const offset = Math.max(0, barBottom - keyboardTop)
+      if (baseBottomRef.current === null) {
+        bar.style.transform = ''
+        baseBottomRef.current = parseFloat(window.getComputedStyle(bar).bottom) || 0
+      }
+      const keyboardH = Math.max(0, window.innerHeight - vv.height - (vv.offsetTop ?? 0))
+      const offset = Math.max(0, keyboardH - baseBottomRef.current)
       bar.style.transform = offset > 2 ? `translateY(-${offset}px)` : ''
     }
     vv.addEventListener('resize', adjust)
