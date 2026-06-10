@@ -89,31 +89,35 @@ export default function JogoDesafio({
   const [mostrarResultado, setMostrarResultado] = useState(false)
   const [inputMontado, setInputMontado] = useState(false)
   const lastPistaRef = useRef<HTMLDivElement>(null)
+  const inputBarRef = useRef<HTMLDivElement>(null)
 
-  // Quando o teclado abre, rola a página para a última pista ficar
-  // visível acima da barra fixa de input. Usa visualViewport para
-  // obter a altura real disponível (descontando o teclado iOS).
+  // Mantém a barra de input visível acima do teclado iOS.
+  // iOS não redimensiona o layout viewport ao abrir o teclado, então
+  // elementos fixed em bottom:X ficam atrás do teclado. O visualViewport
+  // retorna a altura real visível, e usamos translateY para subir a barra.
+  useEffect(() => {
+    const vv = window.visualViewport
+    if (!vv) return
+    const adjust = () => {
+      const bar = inputBarRef.current
+      if (!bar) return
+      const offset = Math.max(0, window.innerHeight - vv.height - vv.pageTop)
+      bar.style.transform = `translateY(-${offset}px)`
+    }
+    vv.addEventListener('resize', adjust)
+    vv.addEventListener('scroll', adjust)
+    return () => {
+      vv.removeEventListener('resize', adjust)
+      vv.removeEventListener('scroll', adjust)
+    }
+  }, [])
+
+  // Rola a última pista para ficar visível acima da barra de input quando
+  // o teclado abre. Usa block:'center' para centrar no visualViewport.
   function handleInputFocused() {
     setTimeout(() => {
-      const el = lastPistaRef.current
-      if (!el) return
-      const vv = window.visualViewport
-      const visibleH = vv ? vv.height : window.innerHeight
-      const fixedBarH = 130 // input bar + bottom nav estimados
-      const availableH = visibleH - fixedBarH
-      const rect = el.getBoundingClientRect()
-      const elAbsTop = rect.top + window.scrollY
-      const elH = el.offsetHeight
-      let targetScrollTop: number
-      if (elH >= availableH - 16) {
-        // pista mais alta que o espaço disponível — mostra pelo topo
-        targetScrollTop = elAbsTop - 8
-      } else {
-        // pista cabe — alinha a base da pista acima da barra fixa
-        targetScrollTop = elAbsTop + elH - availableH + 16
-      }
-      window.scrollTo({ top: Math.max(0, targetScrollTop), behavior: 'smooth' })
-    }, 450) // aguarda teclado iOS abrir completamente (~400ms)
+      lastPistaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }, 500)
   }
 
   // Quando TelaFinalDia fecha (telaFinalAberta: true→false), fecha TelaResultado
@@ -486,6 +490,7 @@ export default function JogoDesafio({
           O env(safe-area-inset-bottom) cobre o indicador home do iPhone. */}
       {estado.status === 'jogando' && inputMontado && (
         <div
+          ref={inputBarRef}
           className="fixed left-0 right-0 z-50 bg-[#070E1A] border-t border-[#2A5275] px-4 pt-3"
           style={{
             bottom: temBottomNav ? 'calc(56px + env(safe-area-inset-bottom))' : '0',
