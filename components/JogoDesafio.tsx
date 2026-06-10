@@ -88,7 +88,7 @@ export default function JogoDesafio({
   const [mostrarContrato, setMostrarContrato] = useState(false)
   const [mostrarResultado, setMostrarResultado] = useState(false)
   const [inputMontado, setInputMontado] = useState(false)
-  const lastPistaRef = useRef<HTMLDivElement>(null)
+  const currentPistaRef = useRef<HTMLDivElement>(null)
   const inputBarRef = useRef<HTMLDivElement>(null)
 
   // Mantém a barra de input visível acima do teclado iOS.
@@ -112,12 +112,18 @@ export default function JogoDesafio({
     }
   }, [])
 
-  // Rola a última pista para ficar visível acima da barra de input quando
-  // o teclado abre. Usa block:'center' para centrar no visualViewport.
+  // Quando o teclado abre, rola para manter a pista atual visível.
+  // Usa offsetTop acumulado (não getBoundingClientRect) pois é imune ao
+  // auto-scroll do iOS que ocorre antes do visualViewport disparar o resize.
   function handleInputFocused() {
     setTimeout(() => {
-      lastPistaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    }, 500)
+      const pista = currentPistaRef.current
+      if (!pista) return
+      let top = 0
+      let el: HTMLElement | null = pista
+      while (el) { top += el.offsetTop; el = el.offsetParent as HTMLElement | null }
+      window.scrollTo({ top: Math.max(0, top - 12), behavior: 'smooth' })
+    }, 350)
   }
 
   // Quando TelaFinalDia fecha (telaFinalAberta: true→false), fecha TelaResultado
@@ -411,7 +417,7 @@ export default function JogoDesafio({
           )
 
           return (
-            <div key={num} ref={num === totalPistas ? lastPistaRef : undefined}>
+            <div key={num} ref={num === (estado.pistaAtual === 0 ? 1 : estado.pistaAtual) ? currentPistaRef : undefined}>
               <Pista
                 numero={num}
                 texto={pistasTexto[num] ?? ''}
