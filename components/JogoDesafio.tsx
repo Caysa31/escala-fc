@@ -373,15 +373,15 @@ export default function JogoDesafio({
         </div>
       )}
 
-      {/* Intro narrativa — acima das pistas */}
-      {introEmDestaque && (
-        <div className="bg-[#0F1D30] border border-[#2A5275] rounded-xl px-4 py-3 space-y-1.5">
-          <p className="text-xs uppercase font-bold tracking-widest text-[#8AB4CC]">⚡ Jogador do dia</p>
-          <p className="leading-snug italic text-[#C8E0F0] text-sm">
-            &ldquo;{introNarrativa}&rdquo;
-          </p>
-        </div>
-      )}
+      {/* Intro narrativa — sempre visível acima das pistas */}
+      <div className="bg-[#0F1D30] border border-[#2A5275] rounded-xl px-4 py-3">
+        <p className="text-xs uppercase font-bold tracking-widest mb-2 text-[#8AB4CC]">
+          ⚡ Jogador do dia
+        </p>
+        <p className="leading-snug italic text-white text-sm">
+          &ldquo;{introNarrativa}&rdquo;
+        </p>
+      </div>
 
       {/* Pistas */}
       <div className="space-y-2">
