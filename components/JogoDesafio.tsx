@@ -379,16 +379,6 @@ export default function JogoDesafio({
         </div>
       )}
 
-      {/* Intro narrativa — compacta para pista 1 aparecer no fold */}
-      <div className="bg-[#0F1D30] border border-[#2A5275] rounded-xl px-4 py-3">
-        <p className="text-xs uppercase font-bold tracking-widest mb-2 text-[#8AB4CC]">
-          ⚡ Jogador do dia
-        </p>
-        <p className="leading-snug italic text-white text-sm">
-          &ldquo;{introNarrativa}&rdquo;
-        </p>
-      </div>
-
       {/* Pistas */}
       <div className="space-y-2">
         {Array.from({ length: totalPistas }, (_, i) => i + 1).map(num => {
@@ -442,6 +432,18 @@ export default function JogoDesafio({
           )
         })}
       </div>
+
+      {/* Intro narrativa — aparece abaixo da pista 1, some quando o jogo começa */}
+      {introEmDestaque && (
+        <div className="bg-[#0F1D30] border border-[#2A5275] rounded-xl px-4 py-3">
+          <p className="text-xs uppercase font-bold tracking-widest mb-1.5 text-[#8AB4CC]">
+            ⚡ Jogador do dia
+          </p>
+          <p className="leading-snug italic text-[#C8E0F0] text-sm">
+            &ldquo;{introNarrativa}&rdquo;
+          </p>
+        </div>
+      )}
 
       {/* Tentativas */}
       <ListaTentativas tentativas={estado.tentativas} />
