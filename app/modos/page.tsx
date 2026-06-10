@@ -76,16 +76,29 @@ export default function ModosPage() {
                   )}
                 </div>
 
-                {/* Restantes */}
-                <div className="shrink-0 text-right">
+                {/* Progresso X/MAX */}
+                <div className="shrink-0 text-right space-y-1">
                   {esgotado ? (
-                    <Lock size={16} className="text-[#5A8AAA]" />
+                    <>
+                      <Lock size={14} className="text-[#5A8AAA] ml-auto" />
+                      <p className="text-[#5A8AAA] text-[10px]">concluído</p>
+                    </>
                   ) : (
                     <>
-                      <p className="text-[#00C853] font-black text-xl leading-none">{restantes}</p>
-                      <p className="text-[#8AB4CC] text-[10px]">restantes</p>
+                      <p className="text-white font-black text-sm leading-none">
+                        {playsHoje}
+                        <span className="text-[#5A8AAA] font-normal">/{MAX_PLAYS_POR_DIA}</span>
+                      </p>
+                      <p className="text-[#8AB4CC] text-[10px]">hoje</p>
                     </>
                   )}
+                  {/* Mini barra de progresso */}
+                  <div className="w-12 h-1 bg-[#1A3A5C] rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-[#00C853] rounded-full transition-all"
+                      style={{ width: `${(playsHoje / MAX_PLAYS_POR_DIA) * 100}%` }}
+                    />
+                  </div>
                 </div>
               </Link>
             )

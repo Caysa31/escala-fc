@@ -12,7 +12,7 @@ import {
 import { registrarResultado, getResultadoRodada, aplicarBonusContrato } from '@/lib/perfil'
 import { getContratosAtivos } from '@/lib/contrato'
 import { getMultiplicadorTreino } from '@/lib/modos'
-import { getModeAtual } from '@/lib/gameMode'
+import { getModeAtual, GameMode } from '@/lib/gameMode'
 
 import Pista from './Pista'
 import InputPalpite from './InputPalpite'
@@ -37,6 +37,7 @@ interface Props {
   labelProximoDesafio?: string // label do botão de próximo (padrão: "Próximo desafio →")
   mensagemFimJogo?: string    // texto quando não há próximo desafio (padrão: "Calculando...")
   onFimJogo?: (resultado: { ganhou: boolean; pontos: number; pistaAcerto: number | null }) => void
+  mode?: GameMode             // override do getModeAtual() — necessário nos modos extras de copa
 }
 
 export default function JogoDesafio({
@@ -49,13 +50,14 @@ export default function JogoDesafio({
   labelProximoDesafio = 'Próximo desafio →',
   mensagemFimJogo = 'Calculando resultado do dia...',
   onFimJogo,
+  mode: modeProp,
 }: Props) {
   // Total de pistas dinâmico (Relâmpago sobrescreve TOTAL_PISTAS)
   const totalPistas = totalPistasMax ?? TOTAL_PISTAS
 
   // Multiplicador de treino — ativo apenas no desafio diário (não em modos extras)
   const multiplicador = modoExtra ? 1 : getMultiplicadorTreino()
-  const mode = getModeAtual()
+  const mode = modeProp ?? getModeAtual()
   const pistasTexto = getPistasTexto(jogador, mode)
   const introNarrativa = getIntroNarrativa(jogador, mode)
 
@@ -265,7 +267,7 @@ export default function JogoDesafio({
       {/* Banner removido — info já aparece na barra de baixo */}
 
       {estado.status === 'ganhou' && (
-        <div className="bg-[#071A0F] border border-[#00C853]/30 rounded-2xl px-5 py-5 text-center space-y-3">
+        <div className="bg-[#071A0F] border border-[#00C853]/30 rounded-2xl px-5 py-5 text-center space-y-3 animate-pop">
           <div>
             <p className="text-[#4A9A6A] font-bold text-base">
               🎯 {estado.pistaUsada === 0 ? 'Acertou pelo histórico!' : `Acertou na pista ${estado.pistaUsada}!`}
@@ -315,7 +317,7 @@ export default function JogoDesafio({
           <div>
             <p className="text-red-400 text-sm font-semibold">Não foi dessa vez...</p>
             <p className="text-white font-black text-2xl mt-1">
-              {jogador.nome} {jogador.bandeira}
+              {jogador.apelido ?? jogador.nome} {jogador.bandeira}
             </p>
           </div>
           {onProximoDesafio ? (
@@ -491,6 +493,7 @@ export default function JogoDesafio({
               onPalpite={handlePalpite}
               desabilitado={false}
               tentativasAnteriores={estado.tentativas.map(t => t.nome)}
+              mode={mode}
             />
 
             {/* Opção de pular — só aparece após revelar pelo menos 1 pista */}

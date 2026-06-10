@@ -2,7 +2,8 @@
 
 export interface Jogador {
   id: number
-  nome: string
+  nome: string          // Nome completo oficial (usado internamente)
+  apelido?: string      // Nome pelo qual o jogador é conhecido (ex: "Tchouaméni", "Neymar")
   posicao: string
   nacionalidade: string
   bandeira: string

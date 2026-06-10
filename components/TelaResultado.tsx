@@ -79,7 +79,7 @@ export default function TelaResultado({
         {/* Jogador revelado */}
         <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-4 text-center">
           <p className="text-4xl mb-2">{jogador.bandeira}</p>
-          <p className="text-2xl font-black text-white">{jogador.nome}</p>
+          <p className="text-2xl font-black text-white">{jogador.apelido ?? jogador.nome}</p>
           <p className="text-[#8AB4CC] text-sm mt-1">{jogador.posicao} · {jogador.clube}</p>
         </div>
 

@@ -3,19 +3,42 @@
 import { useState, useRef, useEffect } from 'react'
 import { buscarJogadores, verificarPalpite } from '@/lib/game'
 import { Jogador } from '@/lib/types'
+import { GameMode } from '@/lib/gameMode'
 import { Send } from 'lucide-react'
 
 interface InputPalpiteProps {
   onPalpite: (nome: string) => void
   desabilitado: boolean
   tentativasAnteriores: string[]
+  mode?: GameMode
 }
 
-export default function InputPalpite({ onPalpite, desabilitado, tentativasAnteriores }: InputPalpiteProps) {
+export default function InputPalpite({ onPalpite, desabilitado, tentativasAnteriores, mode = 'bola' }: InputPalpiteProps) {
   const [valor, setValor] = useState('')
   const [sugestoes, setSugestoes] = useState<Jogador[]>([])
   const [focado, setFocado] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+
+  // Quando o teclado abre no celular, rola apenas o suficiente para o input
+  // ficar acima do teclado — sem sobre-rolar e esconder a última pista.
+  useEffect(() => {
+    if (!focado || !inputRef.current) return
+    const scroll = () => {
+      if (!inputRef.current || !window.visualViewport) return
+      const rect = inputRef.current.getBoundingClientRect()
+      const vv = window.visualViewport
+      const visibleBottom = vv.offsetTop + vv.height
+      if (rect.bottom > visibleBottom - 8) {
+        window.scrollBy({ top: rect.bottom - visibleBottom + 24, behavior: 'smooth' })
+      }
+    }
+    if (typeof window !== 'undefined' && window.visualViewport) {
+      window.visualViewport.addEventListener('resize', scroll)
+      return () => window.visualViewport?.removeEventListener('resize', scroll)
+    }
+    const t = setTimeout(scroll, 300)
+    return () => clearTimeout(t)
+  }, [focado])
 
   // Sem auto-foco: o jogador deve ler a intro e as pistas antes de digitar
 
@@ -24,7 +47,7 @@ export default function InputPalpite({ onPalpite, desabilitado, tentativasAnteri
     setValor(v)
     // Filtra jogadores já tentados, comparando por nome canônico OU por apelido
     // (ex: tentativa "Messi" deve suprimir "Lionel Messi" no autocomplete)
-    const resultados = buscarJogadores(v).filter(
+    const resultados = buscarJogadores(v, mode).filter(
       j => !tentativasAnteriores.some(t => verificarPalpite(t, j) || t === j.nome)
     )
     setSugestoes(resultados)
@@ -82,12 +105,12 @@ export default function InputPalpite({ onPalpite, desabilitado, tentativasAnteri
                 <li key={j.id}>
                   <button
                     type="button"
-                    onMouseDown={() => handleSugestao(j.nome)}
+                    onMouseDown={() => handleSugestao(j.apelido ?? j.nome)}
                     className="w-full flex items-center gap-3 px-4 py-3 hover:bg-[#1A3A5C] transition-colors text-left border-b border-[#1A3A5C] last:border-0"
                   >
                     <span className="text-xl">{j.bandeira}</span>
                     <div>
-                      <p className="font-semibold text-white text-sm">{j.nome}</p>
+                      <p className="font-semibold text-white text-sm">{j.apelido ?? j.nome}</p>
                       <p className="text-xs text-[#8AB4CC]">{j.posicao} · {j.clube}</p>
                     </div>
                   </button>

@@ -2,28 +2,28 @@
 
 import jogadoresBolaData from '@/data/jogadores.json'
 import jogadoresCopaData from '@/data/jogadores-copa.json'
+import lendasData from '@/data/lendas.json'
 import { Jogador, PONTOS_BASE, TIPO_PISTAS, TipoPista } from './types'
 import { GameMode } from './gameMode'
 
 const jogadoresBola = jogadoresBolaData as Jogador[]
 const jogadoresCopa = jogadoresCopaData as Jogador[]
+const lendas = lendasData as Jogador[]
+// Pool copa = jogadores da copa + lendas (usadas nos modos lenda-copa)
+const jogadoresCopaCompleto = [...jogadoresCopa, ...lendas]
 
 const NUM_DESAFIOS = 5
 
-// ── POOLS BOLA (por posição) ──────────────────────────────────
-const POSICOES_ATAQUE = new Set([
-  'Atacante', 'Centroavante', 'Ponta-direita', 'Ponta-esquerda', 'Ponta', 'Meia-atacante',
-])
-const POSICOES_MEIO   = new Set(['Meia', 'Volante'])
-const POSICOES_DEFESA = new Set(['Zagueiro', 'Lateral-direito', 'Lateral-esquerdo', 'Lateral', 'Goleiro'])
+// ── POOLS BOLA (por dificuldade crescente, sem lendas) ───────
+// Lendas ficam exclusivamente nos modos Copa — nunca no diário Bola
+const poolBolaFacil   = jogadoresBola.filter(j => j.dificuldade === 'facil'   && !j.lenda)
+const poolBolaMedio   = jogadoresBola.filter(j => j.dificuldade === 'medio'   && !j.lenda)
+const poolBolaDificil = jogadoresBola.filter(j => j.dificuldade === 'dificil' && !j.lenda)
 
-const poolBolaAtaque = jogadoresBola.filter(j => POSICOES_ATAQUE.has(j.posicao))
-const poolBolaMeio   = jogadoresBola.filter(j => POSICOES_MEIO.has(j.posicao))
-const poolBolaDefesa = jogadoresBola.filter(j => POSICOES_DEFESA.has(j.posicao))
-
-// ── POOLS COPA (por dificuldade — sem difícil no diário) ──────
+// ── POOLS COPA (por dificuldade crescente) ───────────────────
 const poolCopaFacil  = jogadoresCopa.filter(j => j.dificuldade === 'facil')
 const poolCopaMedio  = jogadoresCopa.filter(j => j.dificuldade === 'medio')
+const poolCopaDificil = jogadoresCopa.filter(j => j.dificuldade === 'dificil')
 
 /** Retorna o jogador correto para um rodadaId específico */
 export function getJogadorPorRodadaId(rodadaId: number, mode: GameMode = 'bola'): Jogador | null {
@@ -34,21 +34,30 @@ export function getJogadorPorRodadaId(rodadaId: number, mode: GameMode = 'bola')
 }
 
 function getSlots(diffDias: number, mode: GameMode): Jogador[] {
+  // Ordem crescente de dificuldade: fácil → fácil → médio → médio → difícil
   if (mode === 'copa') {
     const iF0 = diffDias % poolCopaFacil.length
     const iF1 = (diffDias + Math.floor(poolCopaFacil.length / 2)) % poolCopaFacil.length
     const iM0 = diffDias % poolCopaMedio.length
     const iM1 = (diffDias + Math.floor(poolCopaMedio.length / 2)) % poolCopaMedio.length
-    const iM2 = (diffDias + Math.floor(poolCopaMedio.length / 3)) % poolCopaMedio.length
-    return [poolCopaFacil[iF0], poolCopaFacil[iF1], poolCopaMedio[iM0], poolCopaMedio[iM1], poolCopaMedio[iM2]]
+    const iD0 = diffDias % poolCopaDificil.length
+    return [poolCopaFacil[iF0], poolCopaFacil[iF1], poolCopaMedio[iM0], poolCopaMedio[iM1], poolCopaDificil[iD0]]
   }
-  // Bola: 2 ATQ + 2 MEI + 1 DEF
-  const iAtq0  = diffDias % poolBolaAtaque.length
-  const iAtq1  = (diffDias + Math.floor(poolBolaAtaque.length / 2)) % poolBolaAtaque.length
-  const iMeio0 = diffDias % poolBolaMeio.length
-  const iMeio1 = (diffDias + Math.floor(poolBolaMeio.length / 2)) % poolBolaMeio.length
-  const iDef   = Math.floor(diffDias / 2) % poolBolaDefesa.length
-  return [poolBolaAtaque[iAtq0], poolBolaAtaque[iAtq1], poolBolaMeio[iMeio0], poolBolaMeio[iMeio1], poolBolaDefesa[iDef]]
+  // Bola: fácil → fácil → médio → médio → difícil
+  const iF0 = diffDias % poolBolaFacil.length
+  const iF1 = (diffDias + Math.floor(poolBolaFacil.length / 2)) % poolBolaFacil.length
+  const iM0 = diffDias % poolBolaMedio.length
+  const iM1 = (diffDias + Math.floor(poolBolaMedio.length / 2)) % poolBolaMedio.length
+  const iD0 = diffDias % poolBolaDificil.length
+  return [poolBolaFacil[iF0], poolBolaFacil[iF1], poolBolaMedio[iM0], poolBolaMedio[iM1], poolBolaDificil[iD0]]
+}
+
+/** Dias desde o início do jogo (base para calcular histórico) */
+export function getDiffDiasAtual(mode: GameMode = 'bola'): number {
+  const startDate = mode === 'copa' ? '2026-06-01' : '2026-05-22'
+  const inicio = new Date(startDate + 'T12:00:00')
+  const hoje = new Date()
+  return Math.floor((hoje.getTime() - inicio.getTime()) / (1000 * 60 * 60 * 24))
 }
 
 /** 5 jogadores do dia — modo determinado pelo GameMode */
@@ -310,11 +319,14 @@ export function normalizarNome(nome: string): string {
     .trim()
 }
 
-/** Verifica se o palpite está correto (com apelidos) */
+/** Verifica se o palpite está correto (com apelidos e campo apelido) */
 export function verificarPalpite(palpite: string, jogador: Jogador): boolean {
   const p = normalizarNome(palpite)
   const n = normalizarNome(jogador.nome)
   if (p === n) return true
+
+  // Aceita o campo apelido como resposta correta
+  if (jogador.apelido && p === normalizarNome(jogador.apelido)) return true
 
   const apelidos: Record<string, string[]> = {
     'vinicius jr':        ['vini jr', 'vinicius junior', 'vini junior', 'vinicius'],
@@ -344,19 +356,22 @@ export function calcularPontos(pistaAcerto: number): number {
   return PONTOS_BASE[pistaAcerto] ?? 0
 }
 
-/** Busca jogadores para autocomplete */
+/** Busca jogadores para autocomplete — pesquisa em nome e apelido */
 export function buscarJogadores(termo: string, mode: GameMode = 'bola'): Jogador[] {
   if (!termo || termo.length < 2) return []
   const t = normalizarNome(termo)
-  const pool = mode === 'copa' ? jogadoresCopa : jogadoresBola
-  const resultados = pool.filter(j => normalizarNome(j.nome).includes(t))
+  const pool = mode === 'copa' ? jogadoresCopaCompleto : jogadoresBola
+  const resultados = pool.filter(j =>
+    normalizarNome(j.nome).includes(t) ||
+    (j.apelido && normalizarNome(j.apelido).includes(t))
+  )
 
-  // Ordena por relevância: nomes que começam com o termo aparecem antes dos que só contêm
+  // Ordena por relevância: matches no início do apelido/nome aparecem primeiro
   resultados.sort((a, b) => {
-    const nA = normalizarNome(a.nome)
-    const nB = normalizarNome(b.nome)
-    const aStart = nA.startsWith(t)
-    const bStart = nB.startsWith(t)
+    const nA = a.apelido ? normalizarNome(a.apelido) : normalizarNome(a.nome)
+    const nB = b.apelido ? normalizarNome(b.apelido) : normalizarNome(b.nome)
+    const aStart = nA.startsWith(t) || normalizarNome(a.nome).startsWith(t)
+    const bStart = nB.startsWith(t) || normalizarNome(b.nome).startsWith(t)
     if (aStart && !bStart) return -1
     if (!aStart && bStart) return 1
     return 0

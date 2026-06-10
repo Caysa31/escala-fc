@@ -82,7 +82,7 @@ export function ModalContrato({ jogador, rodadaId, pistaAcerto, onFechar, onProx
         <div className="flex items-center gap-3 bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-3">
           <span className="text-3xl">{jogador.bandeira}</span>
           <div>
-            <p className="font-bold text-white">{jogador.nome}</p>
+            <p className="font-bold text-white">{jogador.apelido ?? jogador.nome}</p>
             <p className="text-[#8AB4CC] text-xs">{jogador.clube}</p>
           </div>
           <div className="ml-auto text-right">
@@ -102,7 +102,7 @@ export function ModalContrato({ jogador, rodadaId, pistaAcerto, onFechar, onProx
             onResponder={handleTrivia}
           />
         ) : (
-          <ContratoNormal multiplicador={multiplicador} bonusMax={bonusMax} nomeJogador={jogador.nome} />
+          <ContratoNormal multiplicador={multiplicador} bonusMax={bonusMax} nomeJogador={jogador.apelido ?? jogador.nome} />
         )}
 
         {/* Botão principal */}

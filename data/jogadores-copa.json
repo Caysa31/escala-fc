@@ -239,7 +239,7 @@
     "bandeira": "🇫🇷",
     "clube": "Fenerbahçe",
     "liga": "Süper Lig",
-    "dificuldade": "facil",
+    "dificuldade": "medio",
     "titulos": [
       "Copa do Mundo 2018",
       "Premier League 2016 (Leicester)",
@@ -258,6 +258,7 @@
   {
     "id": 13,
     "nome": "Aurélien Tchouaméni",
+    "apelido": "Tchouaméni",
     "posicao": "Volante",
     "nacionalidade": "Francês",
     "bandeira": "🇫🇷",
@@ -4036,7 +4037,7 @@
     "bandeira": "🇨🇭",
     "clube": "Inter Milan",
     "liga": "Serie A",
-    "dificuldade": "facil",
+    "dificuldade": "medio",
     "titulos": [
       "Serie A 2023-24"
     ],
@@ -4098,7 +4099,7 @@
     "bandeira": "🇨🇭",
     "clube": "Sunderland",
     "liga": "Premier League",
-    "dificuldade": "facil",
+    "dificuldade": "medio",
     "titulos": [
       "Bundesliga 2023-24"
     ],
@@ -4233,7 +4234,7 @@
     "bandeira": "🇸🇪",
     "clube": "Arsenal",
     "liga": "Premier League",
-    "dificuldade": "facil",
+    "dificuldade": "medio",
     "titulos": [],
     "curiosidade": "Nota: incluído como referência — não está no grupo das 7 seleções solicitadas.",
     "faixaEtaria": "26-30",
@@ -7117,7 +7118,7 @@
     "bandeira": "🇸🇪",
     "clube": "Liverpool",
     "liga": "Premier League",
-    "dificuldade": "facil",
+    "dificuldade": "medio",
     "titulos": [],
     "curiosidade": "Isak se tornou o jogador mais caro da história da Premier League ao se transferir do Newcastle ao Liverpool por £125 milhões, chegando ao Mundial 2026 como um dos centroavantes mais cobiçados do planeta.",
     "faixaEtaria": "26-30",
@@ -7235,7 +7236,7 @@
     "bandeira": "🇨🇷",
     "clube": "Pumas UNAM",
     "liga": "Liga MX",
-    "dificuldade": "facil",
+    "dificuldade": "medio",
     "titulos": [
       "Champions League 2015-16, 2017-18 (Real Madrid)",
       "La Liga (múltiplas)"
@@ -7512,7 +7513,7 @@
     "bandeira": "🇬🇭",
     "clube": "Tottenham Hotspur",
     "liga": "Premier League",
-    "dificuldade": "facil",
+    "dificuldade": "medio",
     "titulos": [],
     "curiosidade": "Kudus foi vendido pelo West Ham ao Tottenham por £55 milhões em 2025, tornando-se um dos africanos mais valiosos da história do futebol. É a joia máxima do Ghana no Mundial 2026.",
     "faixaEtaria": "22-26",
@@ -7647,7 +7648,7 @@
     "bandeira": "🇨🇲",
     "clube": "Manchester United",
     "liga": "Premier League",
-    "dificuldade": "facil",
+    "dificuldade": "medio",
     "titulos": [
       "Champions League 2021-22 (Inter Milan)"
     ],

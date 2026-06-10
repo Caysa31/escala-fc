@@ -163,16 +163,15 @@ export default function Pista({ numero, texto, revelada, atual, errou, correto, 
         {/* Conteúdo */}
         <div className="flex-1 min-w-0">
 
-          {/* Rótulo secundário: "Capítulo X ·" mudo + nome da pista em destaque */}
-          <div className="flex items-baseline gap-1.5 mb-1.5">
-            <span className={`text-[10px] font-medium tracking-wide ${labelClass}`}>
+          {/* Rótulo secundário: "Cap X ·" mudo + nome da pista em destaque */}
+          <div className="flex items-baseline gap-1.5 mb-2">
+            <span className={`text-xs font-medium tracking-wide ${labelClass}`}>
               Cap. {numero} ·
             </span>
             <span className={`text-sm font-bold ${
               isVerde ? 'text-[#00C853]'
               : isVermelho ? 'text-red-400'
-              : revelada ? 'text-white'
-              : 'text-white'
+              : 'text-[#C8E0F0]'
             }`}>
               {subtitulo ?? LABELS_PISTAS[numero - 1]}
             </span>
@@ -187,7 +186,7 @@ export default function Pista({ numero, texto, revelada, atual, errou, correto, 
                 <LetrasNome codificado={texto} atual={atual} correto={correto} />
               )}
               {renderer !== 1 && renderer !== 5 && (
-                <p className={`font-semibold text-base leading-snug ${textoClass}`}>
+                <p className={`font-medium text-base leading-relaxed ${textoClass}`}>
                   {texto}
                 </p>
               )}

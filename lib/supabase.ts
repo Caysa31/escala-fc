@@ -183,6 +183,33 @@ export async function getPosicaoRanking(usuarioId: string): Promise<{ semanal: n
   }
 }
 
+/**
+ * Retorna quantos pontos faltam para ultrapassar o próximo colocado no ranking geral.
+ * Retorna null se o usuário já está em 1º ou se não há dados.
+ */
+export async function getDiferencaPontosProximo(usuarioId: string): Promise<number | null> {
+  if (!supabase) return null
+
+  const { data: userData } = await supabase
+    .from('ranking_geral')
+    .select('pontos_total')
+    .eq('id', usuarioId)
+    .single()
+
+  if (!userData) return null
+  const meusPontos = userData.pontos_total ?? 0
+
+  const { data: proximos } = await supabase
+    .from('ranking_geral')
+    .select('pontos_total')
+    .gt('pontos_total', meusPontos)
+    .order('pontos_total', { ascending: true })
+    .limit(1)
+
+  if (!proximos || proximos.length === 0) return null
+  return (proximos[0].pontos_total as number) - meusPontos
+}
+
 // ── Contratos ─────────────────────────────────────────────────
 
 export async function assinarContratoSupabase(payload: {

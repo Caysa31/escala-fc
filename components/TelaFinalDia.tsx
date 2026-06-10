@@ -120,6 +120,24 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
             <p className="text-[#8AB4CC] text-sm">{config.subtitulo}</p>
           </div>
 
+          {/* ── PRÓXIMO DIA + RANKING ────────────────────── */}
+          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-4 space-y-3">
+            <div className="text-center space-y-0.5">
+              <p className="text-white font-bold">🔔 Novos desafios amanhã!</p>
+              <p className="text-[#8AB4CC] text-xs">
+                {perfil.streakAtual > 1
+                  ? `Você está em ${perfil.streakAtual} dias seguidos. Não deixe apagar!`
+                  : 'Volte amanhã e comece sua sequência de acertos.'}
+              </p>
+            </div>
+            <button
+              onClick={() => { onFechar(); router.push('/ranking') }}
+              className="w-full flex items-center justify-center gap-2 bg-[#FFD23F] hover:bg-[#FFE060] active:scale-95 text-[#0A1626] font-black rounded-xl py-3 text-sm transition-all"
+            >
+              <Trophy size={16} />
+              Ver ranking geral
+            </button>
+          </div>
 
           {/* ── NOTIFICAÇÃO — aparece só se ainda não ativou ── */}
           {(notifStatus === 'idle' || notifStatus === 'pedindo') && suportaNotificacoes() && (
@@ -206,7 +224,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
                 >
                   <span className="text-xl shrink-0">{jogador.bandeira}</span>
                   <div className="flex-1 min-w-0">
-                    <p className="text-white text-sm font-bold truncate">{jogador.nome}</p>
+                    <p className="text-white text-sm font-bold truncate">{jogador.apelido ?? jogador.nome}</p>
                     <p className="text-[#8AB4CC] text-xs">{emojis || '—'}</p>
                   </div>
                   <div className="text-right shrink-0">
@@ -270,27 +288,6 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
             </button>
           </div>
 
-          {/* ── MOTIVAÇÃO PRO DIA SEGUINTE ───────────────── */}
-          <div className="text-center space-y-1 py-1">
-            <p className="text-white font-bold">🔔 Novos desafios amanhã!</p>
-            <p className="text-[#8AB4CC] text-xs">
-              {perfil.streakAtual > 1
-                ? `Você está em ${perfil.streakAtual} dias seguidos. Não deixe apagar!`
-                : 'Volte amanhã e comece sua sequência de acertos.'}
-            </p>
-            <p className="text-[#5A8AAA] text-xs pt-1">
-              Pontuação total: <span className="text-[#8AB4CC] font-semibold">{perfil.pontosTotal} pts</span>
-              {posicaoRanking ? ` · #${posicaoRanking} no ranking` : ''}
-            </p>
-          </div>
-
-          {/* ── VER RANKING ─────────────────────────────── */}
-          <button
-            onClick={() => { onFechar(); router.push('/ranking') }}
-            className="w-full text-center text-[#8AB4CC] hover:text-white text-sm font-semibold py-2 border border-[#1A3A5C] rounded-xl transition-colors"
-          >
-            🏆 Ver meu ranking
-          </button>
 
         </div>
       </div>

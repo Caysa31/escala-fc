@@ -7,14 +7,20 @@ import { ArrowLeft } from 'lucide-react'
 
 import { Perfil, Jogador } from '@/lib/types'
 import { carregarPerfil } from '@/lib/perfil'
-import jogadoresData from '@/data/jogadores.json'
+import { GameMode } from '@/lib/gameMode'
+import jogadoresBolaData from '@/data/jogadores.json'
+import jogadoresCopaData from '@/data/jogadores-copa.json'
+import lendasData from '@/data/lendas.json'
 
-const todosJogadores = jogadoresData as Jogador[]
+const todosJogadoresBola = jogadoresBolaData as Jogador[]
+const todosJogadoresCopa = [...(jogadoresCopaData as Jogador[]), ...(lendasData as Jogador[])]
+
 import {
   ModoId, getModoConfig, getJogadorAleatorio,
   getModoPlaysHoje, getModoPlayedIdsHoje,
   incrementarModoPlays, registrarModoJogadorId,
   MAX_PLAYS_POR_DIA, registrarTreinoHoje, getBonusAmanha,
+  MODOS_COPA,
 } from '@/lib/modos'
 
 import JogoDesafio from '@/components/JogoDesafio'
@@ -25,7 +31,11 @@ export default function ModoPage() {
   const router = useRouter()
   const modoId = params.modo as ModoId
 
-  const modo = getModoConfig(modoId)
+  // Determina se é modo Copa ou Bola para buscar config e pool corretos
+  const modoGameMode: GameMode = MODOS_COPA.some(m => m.id === modoId) ? 'copa' : 'bola'
+  const todosJogadores = modoGameMode === 'copa' ? todosJogadoresCopa : todosJogadoresBola
+
+  const modo = getModoConfig(modoId, modoGameMode)
 
   const [perfil, setPerfil] = useState<Perfil | null>(null)
   const [carregado, setCarregado] = useState(false)
@@ -54,7 +64,7 @@ export default function ModoPage() {
     setBonusAmanha(getBonusAmanha())
     setCarregado(true)
 
-    if (!getModoConfig(modoId)) {
+    if (!getModoConfig(modoId, modoGameMode)) {
       router.replace('/modos')
       return
     }
@@ -131,6 +141,7 @@ export default function ModoPage() {
             perfil={perfil}
             indiceDesafio={0}
             modoExtra={true}
+            mode={modoGameMode}
             totalPistasMax={modo.totalPistas}
             labelProximoDesafio="Jogar Novamente →"
             mensagemFimJogo={restantes <= 0 ? '🔒 Limite diário atingido. Volte amanhã!' : undefined}

@@ -5,8 +5,9 @@ import { Perfil } from '@/lib/types'
 import { criarPerfil, recuperarPerfilPorApelido, getResultadoRodada } from '@/lib/perfil'
 import { getModeAtual, getModeConfig } from '@/lib/gameMode'
 import { getJogadoresDoDia } from '@/lib/game'
-import { getPosicaoRanking, verificarApelidoDisponivel } from '@/lib/supabase'
-import { Flame, Trophy, Medal } from 'lucide-react'
+import { getPosicaoRanking, getDiferencaPontosProximo, verificarApelidoDisponivel } from '@/lib/supabase'
+import { Flame, Trophy, Medal, ChevronRight } from 'lucide-react'
+import Link from 'next/link'
 
 interface TelaPerfilProps {
   onCriar: (perfil: Perfil) => void
@@ -217,6 +218,7 @@ interface StatsPerfilProps {
 
 export function StatsPerfil({ perfil }: StatsPerfilProps) {
   const [posicaoRanking, setPosicaoRanking] = useState<number | null>(null)
+  const [diferencaProximo, setDiferencaProximo] = useState<number | null>(null)
 
   // Pontos ganhos hoje (soma dos desafios do dia)
   const jogadoresDoDia = getJogadoresDoDia()
@@ -225,48 +227,99 @@ export function StatsPerfil({ perfil }: StatsPerfilProps) {
     return sum + (resultado?.pontos ?? 0)
   }, 0)
 
-  // Posição no ranking global (busca async)
+  // Taxa de acerto
+  const taxaAcerto = perfil.rodadasJogadas > 0
+    ? Math.round((perfil.rodadasAcertadas / perfil.rodadasJogadas) * 100)
+    : 0
+
+  // Posição no ranking global + diferença pro próximo
   useEffect(() => {
     const usuarioId = typeof window !== 'undefined'
       ? localStorage.getItem('escalafc_supabase_id')
       : null
-    if (usuarioId) {
-      getPosicaoRanking(usuarioId).then(pos => {
-        if (pos.geral > 0) setPosicaoRanking(pos.geral)
-      })
-    }
+    if (!usuarioId) return
+    getPosicaoRanking(usuarioId).then(pos => {
+      if (pos.geral > 0) setPosicaoRanking(pos.geral)
+    })
+    getDiferencaPontosProximo(usuarioId).then(d => setDiferencaProximo(d))
   }, [perfil.pontosTotal])
 
   return (
-    <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl px-4 py-3">
-      {/* Nome + stats em linha única compacta */}
-      <div className="flex items-center justify-between mb-2">
-        <p className="text-white font-bold text-sm">Olá, {perfil.apelido} 👋</p>
-        {perfil.streakAtual > 0 && (
-          <p className="text-orange-400 text-xs font-semibold">🔥 {perfil.streakAtual} dias</p>
-        )}
+    <Link href="/perfil" className="block">
+      <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl px-4 py-4 space-y-3 active:opacity-80 transition-opacity">
+        {/* Nome + link + posição ranking */}
+        <div className="flex items-center justify-between">
+          <p className="text-white font-bold text-sm">Olá, {perfil.apelido} 👋</p>
+          <div className="flex items-center gap-2">
+            {posicaoRanking && (
+              <p className="text-[#FFD23F] text-xs font-bold">🏅 #{posicaoRanking}</p>
+            )}
+            <ChevronRight size={14} className="text-[#5A8AAA]" />
+          </div>
+        </div>
+
+        {/* Grid 2×2 — stats principais */}
+        <div className="grid grid-cols-2 gap-2">
+          <div className="bg-[#0A1626] rounded-xl px-3 py-2.5 flex items-center gap-2.5">
+            <span className="text-xl">🏆</span>
+            <div>
+              <p className="text-[#FFD23F] font-black text-2xl leading-none">{perfil.pontosTotal}</p>
+              <p className="text-[#8AB4CC] text-xs mt-0.5">pts total</p>
+            </div>
+          </div>
+          <div className="bg-[#0A1626] rounded-xl px-3 py-2.5 flex items-center gap-2.5">
+            <span className="text-xl">⚡</span>
+            <div>
+              <p className="text-[#FFD23F] font-black text-2xl leading-none">{pontosHoje}</p>
+              <p className="text-[#8AB4CC] text-xs mt-0.5">pts hoje</p>
+            </div>
+          </div>
+          <div className="bg-[#0A1626] rounded-xl px-3 py-2.5 flex items-center gap-2.5">
+            <span className="text-xl">🔥</span>
+            <div>
+              <p className="text-[#FFD23F] font-black text-2xl leading-none">{perfil.streakAtual}</p>
+              <p className="text-[#8AB4CC] text-xs mt-0.5">sequência</p>
+            </div>
+          </div>
+          <div className="bg-[#0A1626] rounded-xl px-3 py-2.5 flex items-center gap-2.5">
+            <span className="text-xl">🥇</span>
+            <div>
+              <p className="text-[#FFD23F] font-black text-2xl leading-none">
+                {posicaoRanking ? `#${posicaoRanking}` : '—'}
+              </p>
+              <p className="text-[#8AB4CC] text-xs mt-0.5">ranking</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Linha de stats pessoais — melhor seq, acertos, diferença */}
+        <div className="flex items-center gap-3 pt-1 border-t border-[#1A3A5C]">
+          <div className="flex-1 text-center">
+            <p className="text-white font-bold text-sm">{perfil.streakMaximo}</p>
+            <p className="text-[#5A8AAA] text-[10px]">melhor seq.</p>
+          </div>
+          <div className="w-px h-7 bg-[#1A3A5C]" />
+          <div className="flex-1 text-center">
+            <p className="text-white font-bold text-sm">{perfil.rodadasAcertadas}</p>
+            <p className="text-[#5A8AAA] text-[10px]">acertos totais</p>
+          </div>
+          <div className="w-px h-7 bg-[#1A3A5C]" />
+          <div className="flex-1 text-center">
+            <p className="text-white font-bold text-sm">{taxaAcerto}%</p>
+            <p className="text-[#5A8AAA] text-[10px]">taxa acerto</p>
+          </div>
+          {diferencaProximo !== null && (
+            <>
+              <div className="w-px h-7 bg-[#1A3A5C]" />
+              <div className="flex-1 text-center">
+                <p className="text-orange-400 font-bold text-xs leading-tight">+{diferencaProximo}</p>
+                <p className="text-[#5A8AAA] text-[10px]">p/ subir</p>
+              </div>
+            </>
+          )}
+        </div>
       </div>
-      <div className="grid grid-cols-4 gap-1">
-        <div className="text-center">
-          <p className="text-[#FFD23F] font-black text-xl leading-none">{perfil.pontosTotal}</p>
-          <p className="text-[#8AB4CC] text-[9px] mt-0.5">pts total</p>
-        </div>
-        <div className="text-center border-l border-[#1A3A5C]">
-          <p className="text-[#FFD23F] font-black text-xl leading-none">
-            {posicaoRanking ? `#${posicaoRanking}` : '—'}
-          </p>
-          <p className="text-[#8AB4CC] text-[9px] mt-0.5">ranking</p>
-        </div>
-        <div className="text-center border-l border-[#1A3A5C]">
-          <p className="text-[#FFD23F] font-black text-xl leading-none">{perfil.streakAtual}</p>
-          <p className="text-[#8AB4CC] text-[9px] mt-0.5">sequência</p>
-        </div>
-        <div className="text-center border-l border-[#1A3A5C]">
-          <p className="text-[#FFD23F] font-black text-xl leading-none">{pontosHoje}</p>
-          <p className="text-[#8AB4CC] text-[9px] mt-0.5">pts hoje</p>
-        </div>
-      </div>
-    </div>
+    </Link>
   )
 }
 

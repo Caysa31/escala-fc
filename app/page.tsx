@@ -13,7 +13,8 @@ import TelaPerfil, { StatsPerfil } from '@/components/TelaPerfil'
 import JogoDesafio from '@/components/JogoDesafio'
 import { TelaContratosAtivos } from '@/components/TelaContrato'
 import TelaFinalDia from '@/components/TelaFinalDia'
-import BotaoNotificacoes from '@/components/BotaoNotificacoes'
+import BotaoNotificacoes, { NotifStatusIcon } from '@/components/BotaoNotificacoes'
+import HistoricoDias from '@/components/HistoricoDias'
 import { Flame, FileText } from 'lucide-react'
 import Link from 'next/link'
 import BottomNav from '@/components/BottomNav'
@@ -30,6 +31,7 @@ export default function Home() {
 
   const finalDiaMostrado = useRef(false)
   const isInitialLoad = useRef(true)
+  const jogoRef = useRef<HTMLDivElement>(null)
 
   // Modo atual (bola ou copa)
   const mode = getModeAtual()
@@ -102,6 +104,18 @@ export default function Home() {
     ({ rodadaId }) => getStatusDesafio(rodadaId) !== 'jogando'
   ).length
 
+  const todosConcluidos = totalDesafiosConcluidos === jogadoresDoDia.length
+  const nenhumJogadoHoje = totalDesafiosConcluidos === 0
+
+  const pontosHoje = jogadoresDoDia.reduce((sum, { rodadaId }) => {
+    const r = getResultadoRodada(rodadaId)
+    return sum + (r?.pontos ?? 0)
+  }, 0)
+  const acertosHoje = jogadoresDoDia.filter(({ rodadaId }) => {
+    const r = getResultadoRodada(rodadaId)
+    return r?.pistaAcerto != null
+  }).length
+
   return (
     <main className="min-h-screen bg-[#0A1626] text-white">
 
@@ -147,11 +161,34 @@ export default function Home() {
               <Flame size={15} className="text-[#FFD23F]" />
               <span className="font-black text-sm text-[#FFD23F]">{perfil.streakAtual}</span>
             </div>
+            <NotifStatusIcon />
           </div>
         </header>
 
         {/* ── STATS ────────────────────────────────────────── */}
         <StatsPerfil perfil={perfil} />
+
+        {/* ── TEASER AMANHÃ / CTA HOJE ─────────────────────── */}
+        {todosConcluidos ? (
+          <div className="bg-[#0A1020] border border-[#1A3A5C]/50 rounded-2xl px-4 py-4 flex items-center gap-3">
+            <span className="text-2xl opacity-30">🔒</span>
+            <div>
+              <p className="text-[#4A6A8A] font-bold text-sm">Desafio de amanhã</p>
+              <p className="text-[#2A4A6A] text-xs mt-0.5">Volta amanhã para o novo desafio</p>
+            </div>
+          </div>
+        ) : nenhumJogadoHoje && perfil.rodadasJogadas > 0 ? (
+          <button
+            onClick={() => jogoRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
+            className="w-full bg-[#00C853] hover:bg-[#00E060] active:scale-95 text-[#0A1626] font-black rounded-2xl px-4 py-4 flex items-center gap-3 transition-all"
+          >
+            <span className="text-2xl">▶️</span>
+            <div className="text-left">
+              <p className="font-black text-base leading-none">Desafio de hoje disponível!</p>
+              <p className="font-semibold text-xs opacity-70 mt-0.5">Toque para jogar</p>
+            </div>
+          </button>
+        ) : null}
 
         {/* ── DESAFIOS DO DIA ──────────────────────────────── */}
         <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl px-4 py-3 space-y-2">
@@ -197,30 +234,69 @@ export default function Home() {
         {/* ── NOTIFICAÇÕES ─────────────────────────────────── */}
         <BotaoNotificacoes apelido={perfil.apelido} />
 
-        {/* ── JOGO ─────────────────────────────────────────── */}
-        <JogoDesafio
-          key={`${rodadaAtiva}-${jogoKey}`}
-          jogador={jogadorAtivo}
-          rodadaId={rodadaAtiva}
-          perfil={perfil}
-          indiceDesafio={desafioIdx}
-          mensagemMotivacional={mensagemMotivacional}
-          telaFinalAberta={mostrarFinalDia}
-          temBottomNav={true}
-          totalPistasMax={modeConfig.totalPistas}
-          onResultado={p => setPerfil(p)}
-          onContratosChange={setQtdContratosAtivos}
-          onProximoDesafio={
-            temProximoDesafio
-              ? () => {
-                  const proximo = jogadoresDoDia.findIndex(
-                    ({ rodadaId }, i) => i > desafioIdx && getStatusDesafio(rodadaId) === 'jogando'
-                  )
-                  if (proximo !== -1) setDesafioIdx(proximo)
-                }
-              : undefined
-          }
-        />
+        {/* ── JOGO OU ESTADO CONCLUÍDO ─────────────────────── */}
+        {!todosConcluidos && (
+          <div className="flex items-center gap-2 px-1">
+            <div className="w-1 h-5 bg-[#00C853] rounded-full shrink-0" />
+            <p className="text-white font-black text-sm tracking-wide">
+              Desafio {desafioIdx + 1} de {jogadoresDoDia.length}
+            </p>
+            <div className="flex-1" />
+            <p className="text-[#5A8AAA] text-xs">{modeConfig.name}</p>
+          </div>
+        )}
+        <div ref={jogoRef}>
+        {todosConcluidos ? (
+          <div className="bg-[#071A0F] border border-[#00C853]/30 rounded-2xl p-5 text-center space-y-3">
+            <p className="text-4xl">✅</p>
+            <p className="text-[#00C853] font-black text-lg">Desafios de hoje concluídos!</p>
+            <div className="flex justify-center gap-6">
+              <div>
+                <p className="text-[#FFD23F] font-black text-2xl">{pontosHoje}</p>
+                <p className="text-[#8AB4CC] text-xs">pts hoje</p>
+              </div>
+              <div className="w-px bg-[#1A3A5C]" />
+              <div>
+                <p className="text-[#FFD23F] font-black text-2xl">
+                  {acertosHoje}<span className="text-[#8AB4CC] text-sm">/{jogadoresDoDia.length}</span>
+                </p>
+                <p className="text-[#8AB4CC] text-xs">acertos</p>
+              </div>
+            </div>
+            <p className="text-[#5A8AAA] text-xs">🔔 Novos desafios amanhã</p>
+          </div>
+        ) : (
+          <JogoDesafio
+            key={`${rodadaAtiva}-${jogoKey}`}
+            jogador={jogadorAtivo}
+            rodadaId={rodadaAtiva}
+            perfil={perfil}
+            indiceDesafio={desafioIdx}
+            mensagemMotivacional={mensagemMotivacional}
+            telaFinalAberta={mostrarFinalDia}
+            temBottomNav={true}
+            totalPistasMax={modeConfig.totalPistas}
+            onResultado={p => setPerfil(p)}
+            onContratosChange={setQtdContratosAtivos}
+            onProximoDesafio={
+              temProximoDesafio
+                ? () => {
+                    const proximo = jogadoresDoDia.findIndex(
+                      ({ rodadaId }, i) => i > desafioIdx && getStatusDesafio(rodadaId) === 'jogando'
+                    )
+                    if (proximo !== -1) setDesafioIdx(proximo)
+                  }
+                : undefined
+            }
+          />
+        )}
+
+        </div>
+
+        {/* ── HISTÓRICO DE DIAS ────────────────────────────── */}
+        {(todosConcluidos || nenhumJogadoHoje) && (
+          <HistoricoDias mode={mode} includeToday={todosConcluidos} />
+        )}
 
         {/* ── CÓDIGO DE RECUPERAÇÃO ────────────────────────── */}
         <div className="bg-[#0A1020] border border-[#1A3A5C]/50 rounded-xl px-4 py-3 flex items-center justify-between">
