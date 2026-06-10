@@ -90,12 +90,30 @@ export default function JogoDesafio({
   const [inputMontado, setInputMontado] = useState(false)
   const lastPistaRef = useRef<HTMLDivElement>(null)
 
-  // Quando o teclado abre, rola a página para a última pista aparecer
-  // no topo da área visível acima da barra fixa de input.
+  // Quando o teclado abre, rola a página para a última pista ficar
+  // visível acima da barra fixa de input. Usa visualViewport para
+  // obter a altura real disponível (descontando o teclado iOS).
   function handleInputFocused() {
     setTimeout(() => {
-      lastPistaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }, 320) // aguarda animação do teclado
+      const el = lastPistaRef.current
+      if (!el) return
+      const vv = window.visualViewport
+      const visibleH = vv ? vv.height : window.innerHeight
+      const fixedBarH = 130 // input bar + bottom nav estimados
+      const availableH = visibleH - fixedBarH
+      const rect = el.getBoundingClientRect()
+      const elAbsTop = rect.top + window.scrollY
+      const elH = el.offsetHeight
+      let targetScrollTop: number
+      if (elH >= availableH - 16) {
+        // pista mais alta que o espaço disponível — mostra pelo topo
+        targetScrollTop = elAbsTop - 8
+      } else {
+        // pista cabe — alinha a base da pista acima da barra fixa
+        targetScrollTop = elAbsTop + elH - availableH + 16
+      }
+      window.scrollTo({ top: Math.max(0, targetScrollTop), behavior: 'smooth' })
+    }, 450) // aguarda teclado iOS abrir completamente (~400ms)
   }
 
   // Quando TelaFinalDia fecha (telaFinalAberta: true→false), fecha TelaResultado
