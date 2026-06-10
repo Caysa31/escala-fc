@@ -115,6 +115,15 @@ export default function JogoDesafio({
     }, 350)
   }
 
+  // Auto-scroll quando uma nova pista é revelada: mostra a pista atual no topo
+  // para que a próxima (bloqueada) fique visível abaixo.
+  useEffect(() => {
+    if (estado.pistaAtual === 0) return
+    setTimeout(() => {
+      currentPistaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 250)
+  }, [estado.pistaAtual]) // eslint-disable-line react-hooks/exhaustive-deps
+
   // Quando TelaFinalDia fecha (telaFinalAberta: true→false), fecha TelaResultado
   const prevTelaFinalAberta = useRef(false)
   useEffect(() => {
