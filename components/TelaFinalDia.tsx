@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { Perfil, Jogador } from '@/lib/types'
 import { getResultadoRodada } from '@/lib/perfil'
 import { getContratosAtivos, calcularBonusMaximo } from '@/lib/contrato'
@@ -130,13 +131,14 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
                   : 'Volte amanhã e comece sua sequência de acertos.'}
               </p>
             </div>
-            <button
-              onClick={() => { onFechar(); router.push('/ranking') }}
+            <Link
+              href="/ranking"
+              onClick={onFechar}
               className="w-full flex items-center justify-center gap-2 bg-[#FFD23F] hover:bg-[#FFE060] active:scale-95 text-[#0A1626] font-black rounded-xl py-3 text-sm transition-all"
             >
               <Trophy size={16} />
               Ver ranking geral
-            </button>
+            </Link>
           </div>
 
           {/* ── NOTIFICAÇÃO — aparece só se ainda não ativou ── */}
