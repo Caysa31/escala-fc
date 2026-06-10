@@ -116,11 +116,19 @@ export default function JogoDesafio({
       const isOpen  = kh > 50
       prevKeyboardH.current = kh
       setKeyboardH(kh)
-      // Quando o teclado acabou de abrir, rola a pista atual para o topo
+      // Quando o teclado acabou de abrir, rola a pista atual para o topo.
+      // Usa window.scrollTo com posição absoluta no documento (não scrollIntoView)
+      // para evitar conflito com o auto-scroll do iOS.
+      // Aguarda 350ms para o teclado estar completamente aberto.
       if (!wasOpen && isOpen) {
         setTimeout(() => {
-          currentPistaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }, 200)
+          const pista = currentPistaRef.current
+          if (!pista) return
+          // getBoundingClientRect retorna posição relativa ao visual viewport.
+          // Somando scrollY temos a posição absoluta no documento.
+          const pistaDocTop = pista.getBoundingClientRect().top + window.scrollY
+          window.scrollTo({ top: Math.max(0, pistaDocTop - 8), behavior: 'smooth' })
+        }, 350)
       }
     }
     vv.addEventListener('resize', onResize)
