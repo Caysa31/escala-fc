@@ -391,6 +391,16 @@ export default function JogoDesafio({
         </div>
       )}
 
+      {/* Intro narrativa — acima das pistas, compacta para caber com pista 1 na tela */}
+      {introEmDestaque && (
+        <div className="bg-[#0F1D30] border border-[#2A5275] rounded-xl px-3 py-2.5 flex items-start gap-2">
+          <span className="text-[#8AB4CC] text-sm shrink-0 mt-0.5">⚡</span>
+          <p className="leading-snug italic text-[#C8E0F0] text-xs line-clamp-3">
+            &ldquo;{introNarrativa}&rdquo;
+          </p>
+        </div>
+      )}
+
       {/* Pistas */}
       <div className="space-y-2">
         {Array.from({ length: totalPistas }, (_, i) => i + 1).map(num => {
@@ -419,39 +429,26 @@ export default function JogoDesafio({
           )
 
           return (
-            <Fragment key={num}>
-              <div ref={num === estado.pistaAtual ? currentPistaRef : undefined}>
-                <Pista
-                  numero={num}
-                  texto={pistasTexto[num] ?? ''}
-                  revelada={revelada}
-                  atual={atual}
-                  errou={errou}
-                  correto={correto}
-                  subtitulo={
-                    num === 2 ? subtituloPista2
-                    : (mode === 'copa' && num === 4) ? 'Time + Nome'
-                    : undefined
-                  }
-                  renderAs={mode === 'copa' && num === 4 ? 5 : undefined}
-                  onRevelar={onRevelar}
-                  onDestravar={onDestravar}
-                  pontosAtual={atual && estado.status === 'jogando' ? ptsDestaPista : undefined}
-                  custoDestravar={onDestravar && custoEsta > 0 ? custoEsta : undefined}
-                />
-              </div>
-              {/* Intro narrativa — entre pista 1 e pista 2, some quando o jogo começa */}
-              {num === 1 && introEmDestaque && (
-                <div className="bg-[#0F1D30] border border-[#2A5275] rounded-xl px-4 py-3">
-                  <p className="text-xs uppercase font-bold tracking-widest mb-1.5 text-[#8AB4CC]">
-                    ⚡ Jogador do dia
-                  </p>
-                  <p className="leading-snug italic text-[#C8E0F0] text-sm">
-                    &ldquo;{introNarrativa}&rdquo;
-                  </p>
-                </div>
-              )}
-            </Fragment>
+            <div key={num} ref={num === estado.pistaAtual ? currentPistaRef : undefined}>
+              <Pista
+                numero={num}
+                texto={pistasTexto[num] ?? ''}
+                revelada={revelada}
+                atual={atual}
+                errou={errou}
+                correto={correto}
+                subtitulo={
+                  num === 2 ? subtituloPista2
+                  : (mode === 'copa' && num === 4) ? 'Time + Nome'
+                  : undefined
+                }
+                renderAs={mode === 'copa' && num === 4 ? 5 : undefined}
+                onRevelar={onRevelar}
+                onDestravar={onDestravar}
+                pontosAtual={atual && estado.status === 'jogando' ? ptsDestaPista : undefined}
+                custoDestravar={onDestravar && custoEsta > 0 ? custoEsta : undefined}
+              />
+            </div>
           )
         })}
       </div>
