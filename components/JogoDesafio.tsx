@@ -89,32 +89,21 @@ export default function JogoDesafio({
   const [mostrarResultado, setMostrarResultado] = useState(false)
   const [inputMontado, setInputMontado] = useState(false)
   const currentPistaRef = useRef<HTMLDivElement>(null)
-  const inputBarRef = useRef<HTMLDivElement>(null)
+  const [keyboardH, setKeyboardH] = useState(0)
 
-  // Mantém a barra de input visível acima do teclado iOS.
-  // iOS não redimensiona o layout viewport ao abrir o teclado, então
-  // elementos fixed em bottom:X ficam atrás do teclado. O visualViewport
-  // retorna a altura real visível, e usamos translateY para subir a barra.
+  // Detecta altura do teclado via visualViewport e armazena em React state.
+  // Usar state (não translateY no DOM) evita que re-renders do React anulem
+  // o estilo aplicado diretamente. Fórmula sem vv.pageTop: pageTop varia com
+  // scroll da página e causaria offset menor que o teclado real.
   useEffect(() => {
     const vv = window.visualViewport
     if (!vv) return
-    const adjust = () => {
-      const bar = inputBarRef.current
-      if (!bar) return
-      // Usa apenas vv.height (não vv.pageTop) — pageTop muda com scroll da página
-      // e causaria translateY insuficiente quando iOS auto-scrolla ao abrir teclado.
-      const offset = Math.max(0, window.innerHeight - vv.height)
-      bar.style.transform = `translateY(-${offset}px)`
-    }
-    vv.addEventListener('resize', adjust)
-    return () => {
-      vv.removeEventListener('resize', adjust)
-    }
+    const onResize = () => setKeyboardH(Math.max(0, window.innerHeight - vv.height))
+    vv.addEventListener('resize', onResize)
+    return () => vv.removeEventListener('resize', onResize)
   }, [])
 
-  // Quando o teclado abre, rola para manter a pista atual visível.
-  // Usa offsetTop acumulado (não getBoundingClientRect) pois é imune ao
-  // auto-scroll do iOS que ocorre antes do visualViewport disparar o resize.
+  // Quando o teclado abre, rola para manter a pista atual visível acima da barra.
   function handleInputFocused() {
     setTimeout(() => {
       const pista = currentPistaRef.current
@@ -488,11 +477,12 @@ export default function JogoDesafio({
           O env(safe-area-inset-bottom) cobre o indicador home do iPhone. */}
       {estado.status === 'jogando' && inputMontado && (
         <div
-          ref={inputBarRef}
           className="fixed left-0 right-0 z-50 bg-[#070E1A] border-t border-[#2A5275] px-4 pt-3"
           style={{
-            bottom: temBottomNav ? 'calc(56px + env(safe-area-inset-bottom))' : '0',
-            paddingBottom: temBottomNav ? '8px' : 'max(12px, env(safe-area-inset-bottom))',
+            bottom: keyboardH > 50
+              ? `${keyboardH}px`
+              : temBottomNav ? 'calc(56px + env(safe-area-inset-bottom))' : '0',
+            paddingBottom: keyboardH > 50 ? '8px' : temBottomNav ? '8px' : 'max(12px, env(safe-area-inset-bottom))',
           }}
         >
           <div className="max-w-md mx-auto">
