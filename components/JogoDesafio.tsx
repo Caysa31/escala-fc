@@ -124,10 +124,13 @@ export default function JogoDesafio({
         setTimeout(() => {
           const pista = currentPistaRef.current
           if (!pista) return
-          // getBoundingClientRect retorna posição relativa ao visual viewport.
-          // Somando scrollY temos a posição absoluta no documento.
-          const pistaDocTop = pista.getBoundingClientRect().top + window.scrollY
-          window.scrollTo({ top: Math.max(0, pistaDocTop - 8), behavior: 'smooth' })
+          // offsetTop acumula a posição absoluta no documento percorrendo
+          // offsetParent. Não depende de scrollY nem de vv.pageTop — imune
+          // ao auto-scroll interno do iOS quando o teclado abre.
+          let docTop = 0
+          let el: HTMLElement | null = pista
+          while (el) { docTop += el.offsetTop; el = el.offsetParent as HTMLElement | null }
+          window.scrollTo({ top: Math.max(0, docTop - 8), behavior: 'smooth' })
         }, 350)
       }
     }
