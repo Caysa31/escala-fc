@@ -101,14 +101,14 @@ export default function JogoDesafio({
     const adjust = () => {
       const bar = inputBarRef.current
       if (!bar) return
-      const offset = Math.max(0, window.innerHeight - vv.height - vv.pageTop)
+      // Usa apenas vv.height (não vv.pageTop) — pageTop muda com scroll da página
+      // e causaria translateY insuficiente quando iOS auto-scrolla ao abrir teclado.
+      const offset = Math.max(0, window.innerHeight - vv.height)
       bar.style.transform = `translateY(-${offset}px)`
     }
     vv.addEventListener('resize', adjust)
-    vv.addEventListener('scroll', adjust)
     return () => {
       vv.removeEventListener('resize', adjust)
-      vv.removeEventListener('scroll', adjust)
     }
   }, [])
 
