@@ -88,6 +88,15 @@ export default function JogoDesafio({
   const [mostrarContrato, setMostrarContrato] = useState(false)
   const [mostrarResultado, setMostrarResultado] = useState(false)
   const [inputMontado, setInputMontado] = useState(false)
+  const lastPistaRef = useRef<HTMLDivElement>(null)
+
+  // Quando o teclado abre, rola a página para a última pista aparecer
+  // no topo da área visível acima da barra fixa de input.
+  function handleInputFocused() {
+    setTimeout(() => {
+      lastPistaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 320) // aguarda animação do teclado
+  }
 
   // Quando TelaFinalDia fecha (telaFinalAberta: true→false), fecha TelaResultado
   const prevTelaFinalAberta = useRef(false)
@@ -386,8 +395,8 @@ export default function JogoDesafio({
           )
 
           return (
+            <div key={num} ref={num === totalPistas ? lastPistaRef : undefined}>
             <Pista
-              key={num}
               numero={num}
               texto={pistasTexto[num] ?? ''}
               revelada={revelada}
@@ -407,6 +416,7 @@ export default function JogoDesafio({
               // "−X pts se revelar" → só na pista BLOQUEADA com botão
               custoDestravar={onDestravar && custoEsta > 0 ? custoEsta : undefined}
             />
+            </div>
           )
         })}
       </div>
@@ -494,6 +504,7 @@ export default function JogoDesafio({
               desabilitado={false}
               tentativasAnteriores={estado.tentativas.map(t => t.nome)}
               mode={mode}
+              onFocused={handleInputFocused}
             />
 
             {/* Opção de pular — só aparece após revelar pelo menos 1 pista */}
