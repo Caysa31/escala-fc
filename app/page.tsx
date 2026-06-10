@@ -170,12 +170,24 @@ export default function Home() {
 
         {/* ── TEASER AMANHÃ / CTA HOJE ─────────────────────── */}
         {todosConcluidos ? (
-          <div className="bg-[#0A1020] border border-[#1A3A5C]/50 rounded-2xl px-4 py-4 flex items-center gap-3">
-            <span className="text-2xl opacity-30">🔒</span>
-            <div>
-              <p className="text-[#4A6A8A] font-bold text-sm">Desafio de amanhã</p>
-              <p className="text-[#2A4A6A] text-xs mt-0.5">Volta amanhã para o novo desafio</p>
+          <div className="space-y-2">
+            <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl px-4 py-4 flex items-center gap-3">
+              <span className="text-2xl">🔒</span>
+              <div className="flex-1">
+                <p className="text-white font-bold text-sm">Desafio de amanhã</p>
+                <p className="text-[#8AB4CC] text-xs mt-0.5">Volta amanhã para o novo desafio</p>
+              </div>
+              <span className="text-[#FFD23F] text-xs font-bold bg-[#FFD23F]/10 border border-[#FFD23F]/20 rounded-lg px-2 py-1">em breve</span>
             </div>
+            <a
+              href={`https://wa.me/?text=${encodeURIComponent('Tô jogando Cobra da Bola, o quiz de futebol diário! Consegue adivinhar os jogadores com menos pistas que eu? 🐍⚽\n\nhttps://cobra-craque.vercel.app')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20C55A] active:scale-95 text-white font-black rounded-2xl px-4 py-3 text-sm transition-all"
+            >
+              <span className="text-base">💬</span>
+              Desafiar um amigo no WhatsApp
+            </a>
           </div>
         ) : nenhumJogadoHoje && perfil.rodadasJogadas > 0 ? (
           <button
