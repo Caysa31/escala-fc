@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef, Fragment } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import {
   Perfil, Tentativa, EstadoJogo,
   PONTOS_BASE, TOTAL_PISTAS, Jogador,
@@ -88,63 +88,37 @@ export default function JogoDesafio({
   const [mostrarContrato, setMostrarContrato] = useState(false)
   const [mostrarResultado, setMostrarResultado] = useState(false)
   const [inputMontado, setInputMontado] = useState(false)
-  const currentPistaRef = useRef<HTMLDivElement>(null)
+  const lastPistaRef = useRef<HTMLDivElement>(null)
+  const inputBarRef = useRef<HTMLDivElement>(null)
 
-  // ── Teclado iOS — solução definitiva ────────────────────────────────────
-  // Em vez de transform (frágil, depende de leitura de DOM em momento errado),
-  // controlamos o `bottom` da barra via estado React.
-  //
-  // Fórmula matemática exata:
-  //   keyboardHeight = innerHeight - vv.offsetTop - vv.height
-  //
-  // Com `bottom: keyboardHeight` na barra:
-  //   → borda inferior da barra = topo do teclado (no layout viewport)
-  //
-  // Prova:
-  //   borda_inferior_barra = innerHeight - keyboardHeight
-  //                        = innerHeight - (innerHeight - vv.offsetTop - vv.height)
-  //                        = vv.offsetTop + vv.height   ← topo exato do teclado ✓
-  const [keyboardH, setKeyboardH] = useState(0)
-  const prevKeyboardH = useRef(0)
-
+  // Mantém a barra de input visível acima do teclado iOS.
+  // iOS não redimensiona o layout viewport ao abrir o teclado, então
+  // elementos fixed em bottom:X ficam atrás do teclado. O visualViewport
+  // retorna a altura real visível, e usamos translateY para subir a barra.
   useEffect(() => {
     const vv = window.visualViewport
     if (!vv) return
-    const onResize = () => {
-      const kh = Math.max(0, window.innerHeight - (vv.offsetTop ?? 0) - vv.height)
-      const wasOpen = prevKeyboardH.current > 50
-      const isOpen  = kh > 50
-      prevKeyboardH.current = kh
-      setKeyboardH(kh)
-      // Quando o teclado acabou de abrir, rola a pista atual para o topo.
-      // Usa window.scrollTo com posição absoluta no documento (não scrollIntoView)
-      // para evitar conflito com o auto-scroll do iOS.
-      // Aguarda 350ms para o teclado estar completamente aberto.
-      if (!wasOpen && isOpen) {
-        setTimeout(() => {
-          const pista = currentPistaRef.current
-          if (!pista) return
-          // offsetTop acumula a posição absoluta no documento percorrendo
-          // offsetParent. Não depende de scrollY nem de vv.pageTop — imune
-          // ao auto-scroll interno do iOS quando o teclado abre.
-          let docTop = 0
-          let el: HTMLElement | null = pista
-          while (el) { docTop += el.offsetTop; el = el.offsetParent as HTMLElement | null }
-          window.scrollTo({ top: Math.max(0, docTop - 8), behavior: 'smooth' })
-        }, 350)
-      }
+    const adjust = () => {
+      const bar = inputBarRef.current
+      if (!bar) return
+      const offset = Math.max(0, window.innerHeight - vv.height - vv.pageTop)
+      bar.style.transform = `translateY(-${offset}px)`
     }
-    vv.addEventListener('resize', onResize)
-    return () => vv.removeEventListener('resize', onResize)
+    vv.addEventListener('resize', adjust)
+    vv.addEventListener('scroll', adjust)
+    return () => {
+      vv.removeEventListener('resize', adjust)
+      vv.removeEventListener('scroll', adjust)
+    }
   }, [])
 
-  // Auto-scroll para a pista recém-revelada sempre que pistaAtual muda.
-  useEffect(() => {
-    if (estado.pistaAtual === 0) return
+  // Rola a última pista para ficar visível acima da barra de input quando
+  // o teclado abre. Usa block:'center' para centrar no visualViewport.
+  function handleInputFocused() {
     setTimeout(() => {
-      currentPistaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }, 250)
-  }, [estado.pistaAtual]) // eslint-disable-line react-hooks/exhaustive-deps
+      lastPistaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }, 500)
+  }
 
   // Quando TelaFinalDia fecha (telaFinalAberta: true→false), fecha TelaResultado
   const prevTelaFinalAberta = useRef(false)
@@ -437,7 +411,7 @@ export default function JogoDesafio({
           )
 
           return (
-            <div key={num} ref={num === estado.pistaAtual ? currentPistaRef : undefined}>
+            <div key={num} ref={num === totalPistas ? lastPistaRef : undefined}>
               <Pista
                 numero={num}
                 texto={pistasTexto[num] ?? ''}
@@ -508,14 +482,11 @@ export default function JogoDesafio({
           O env(safe-area-inset-bottom) cobre o indicador home do iPhone. */}
       {estado.status === 'jogando' && inputMontado && (
         <div
+          ref={inputBarRef}
           className="fixed left-0 right-0 z-50 bg-[#070E1A] border-t border-[#2A5275] px-4 pt-3"
           style={{
-            bottom: keyboardH > 50
-              ? `${keyboardH}px`
-              : temBottomNav ? 'calc(56px + env(safe-area-inset-bottom))' : '0',
-            paddingBottom: keyboardH > 50
-              ? '8px'
-              : temBottomNav ? '8px' : 'max(12px, env(safe-area-inset-bottom))',
+            bottom: temBottomNav ? 'calc(56px + env(safe-area-inset-bottom))' : '0',
+            paddingBottom: temBottomNav ? '8px' : 'max(12px, env(safe-area-inset-bottom))',
           }}
         >
           <div className="max-w-md mx-auto">
@@ -561,6 +532,7 @@ export default function JogoDesafio({
               desabilitado={false}
               tentativasAnteriores={estado.tentativas.map(t => t.nome)}
               mode={mode}
+              onFocused={handleInputFocused}
             />
           </div>
         </div>
