@@ -91,12 +91,15 @@ export default function JogoDesafio({
   const currentPistaRef = useRef<HTMLDivElement>(null)
   const inputBarRef = useRef<HTMLDivElement>(null)
 
-  // Auto-scroll para a pista recém-revelada sempre que pistaAtual muda
+  // Auto-scroll para a pista recém-revelada sempre que pistaAtual muda.
+  // Usa 'start' porque os cards bloqueados já estão no DOM — 'nearest' detectaria
+  // o elemento como visível e não faria nada. Com 'start' a pista revelada
+  // (que expande seu conteúdo) sobe para o topo da tela.
   useEffect(() => {
     if (estado.pistaAtual === 0) return
     setTimeout(() => {
-      currentPistaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
-    }, 100)
+      currentPistaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 250)
   }, [estado.pistaAtual]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Mantém a barra de input visível acima do teclado iOS.
@@ -120,10 +123,12 @@ export default function JogoDesafio({
     }
   }, [])
 
-  // Quando o teclado abre, rola a pista atual para ficar visível acima da barra
+  // Quando o teclado abre, rola a pista atual para o topo da área visível.
+  // 'start' coloca o topo da pista no topo do viewport — melhor que 'center'
+  // que usava o layout viewport inteiro (incluindo área atrás do teclado).
   function handleInputFocused() {
     setTimeout(() => {
-      currentPistaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      currentPistaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }, 500)
   }
 
