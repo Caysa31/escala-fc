@@ -450,13 +450,16 @@ export async function criarLiga(
   nome: string,
   criadorApelido: string,
   pontosBaseLocal: number
-): Promise<string | null> {
-  if (!supabase) return null
+): Promise<{ id: string | null; erroMsg: string | null }> {
+  if (!supabase) return { id: null, erroMsg: 'Supabase não configurado' }
   const id = gerarCodigoLiga()
   const { error: ligaError } = await supabase.from('ligas').insert({
     id, nome, criador_apelido: criadorApelido, ativa: true,
   })
-  if (ligaError) { console.warn('[Supabase] criarLiga:', ligaError.message); return null }
+  if (ligaError) {
+    console.warn('[Supabase] criarLiga:', ligaError.message)
+    return { id: null, erroMsg: ligaError.message }
+  }
 
   // Criador já entra como primeiro membro
   const userId = typeof window !== 'undefined'
@@ -471,7 +474,7 @@ export async function criarLiga(
     liga_id: id, apelido: criadorApelido, user_id: userId, pontos_base: pontosBase,
   })
   if (membroError) { console.warn('[Supabase] criarLiga membro:', membroError.message) }
-  return id
+  return { id, erroMsg: null }
 }
 
 export async function getLiga(ligaId: string): Promise<LigaInfo | null> {

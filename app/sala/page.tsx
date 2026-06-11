@@ -33,9 +33,9 @@ export default function SalaPage() {
     if (!nomeLiga.trim()) { setErro('Escolha um nome para a liga'); return }
     setCriando(true); setErro('')
     const nomeFormatado = `Liga ${nomeLiga.trim()}`
-    const id = await criarLiga(nomeFormatado, perfil.apelido, perfil.pontosTotal)
+    const { id, erroMsg } = await criarLiga(nomeFormatado, perfil.apelido, perfil.pontosTotal)
     setCriando(false)
-    if (!id) { setErro('Erro ao criar liga. Tente novamente.'); return }
+    if (!id) { setErro(`Erro ao criar liga: ${erroMsg ?? 'tente novamente'}`); return }
     setNomeSalvo(nomeFormatado)
     setLigaId(id)
   }
