@@ -7,7 +7,7 @@ import { getJogadoresDoDia } from '@/lib/game'
 import { carregarPerfil, getResultadoRodada, sincronizarPontosDeServidor } from '@/lib/perfil'
 import { getContratosAtivos } from '@/lib/contrato'
 import { getMultiplicadorTreino } from '@/lib/modos'
-import { getModeAtual, getModeConfig } from '@/lib/gameMode'
+import { getModeAtual, getModeConfig, GameMode } from '@/lib/gameMode'
 
 import TelaPerfil, { StatsPerfil } from '@/components/TelaPerfil'
 import JogoDesafio from '@/components/JogoDesafio'
@@ -33,10 +33,9 @@ export default function Home() {
   const isInitialLoad = useRef(true)
   const jogoRef = useRef<HTMLDivElement>(null)
 
-  // Modo atual (bola ou copa)
-  const mode = getModeAtual()
+  // Modo atual (bola ou copa) — state para evitar mismatch SSR/localStorage
+  const [mode, setMode] = useState<GameMode>('bola')
   const modeConfig = getModeConfig(mode)
-
   const jogadoresDoDia = getJogadoresDoDia(mode)
 
   useEffect(() => {
@@ -46,6 +45,7 @@ export default function Home() {
       router.replace('/selecionar-modo')
       return
     }
+    setMode(getModeAtual())
     const p = carregarPerfil()
     setPerfil(p)
     setQtdContratosAtivos(getContratosAtivos().length)
