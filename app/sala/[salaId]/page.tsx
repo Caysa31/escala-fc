@@ -6,6 +6,7 @@ import { ArrowLeft, Share2, Trophy, Users } from 'lucide-react'
 import { Perfil } from '@/lib/types'
 import { carregarPerfil, getResultadoRodada } from '@/lib/perfil'
 import { getJogadoresDoDia } from '@/lib/game'
+import { getModeAtual, getModeConfig, GameMode } from '@/lib/gameMode'
 import {
   getLiga, entrarLiga, getPlacarLiga, incrementarPontosLiga, subscribeToLiga,
   LigaInfo, LigaMembro, isSupabaseConfigurado,
@@ -34,8 +35,9 @@ export default function LigaPage() {
   const [membroAtual, setMembroAtual] = useState<LigaMembro | null>(null)
   const [tela, setTela] = useState<'lobby' | 'dashboard' | 'jogo'>('lobby')
   const [desafioIdx, setDesafioIdx] = useState(0)
-
-  const jogadoresDoDia = getJogadoresDoDia()
+  const [mode, setMode] = useState<GameMode>('bola')
+  const modeConfig = getModeConfig(mode)
+  const jogadoresDoDia = getJogadoresDoDia(mode)
 
   // Verifica se o user já jogou todos os desafios hoje
   const jogouHoje = jogadoresDoDia.every(
@@ -57,6 +59,7 @@ export default function LigaPage() {
     async function init() {
       const p = carregarPerfil()
       setPerfil(p)
+      setMode(getModeAtual())
 
       const ligaData = await getLiga(ligaId)
       if (!ligaData) { setErro('Liga não encontrada.'); setCarregado(true); return }
@@ -159,6 +162,7 @@ export default function LigaPage() {
             perfil={perfil}
             indiceDesafio={desafioIdx}
             temBottomNav={true}
+            totalPistasMax={modeConfig.totalPistas}
             onResultado={p => {
               // Calcula pontos ganhos NESTE desafio e salva na liga
               const pontosGanhos = p.pontosTotal - (perfil?.pontosTotal ?? 0)
@@ -224,7 +228,7 @@ export default function LigaPage() {
             <p className="text-white text-sm font-bold">Como funciona</p>
             <div className="space-y-2">
               {[
-                { n: '1', t: 'Todo dia os mesmos 5 desafios para todos os membros' },
+                { n: '1', t: `Todo dia os mesmos ${modeConfig.totalPistas === 4 ? '4' : '5'} desafios para todos os membros` },
                 { n: '2', t: 'Pontos acumulam ao longo de toda a temporada' },
                 { n: '3', t: 'Bônus de contrato (Brasileirão, Libertadores, Copa) também valem' },
                 { n: '4', t: 'Campeão = quem tiver mais pontos no fim da última rodada' },
