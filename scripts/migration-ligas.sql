@@ -19,9 +19,13 @@ CREATE TABLE IF NOT EXISTS liga_membros (
   apelido       TEXT NOT NULL,
   user_id       TEXT,                      -- supabase_id do usuário (pode ser null se offline)
   pontos_base   INT NOT NULL DEFAULT 0,    -- pontos_total no momento que entrou
+  pontos_liga   INT NOT NULL DEFAULT 0,    -- pontos acumulados dentro da liga (incrementados a cada desafio)
   joined_at     TIMESTAMPTZ DEFAULT NOW(),
   UNIQUE(liga_id, apelido)                 -- um apelido só pode entrar uma vez por liga
 );
+
+-- Política de UPDATE para pontos_liga (necessária para incrementarPontosLiga)
+CREATE POLICY "liga_membros_update" ON liga_membros FOR UPDATE WITH CHECK (true);
 
 -- Índices para performance
 CREATE INDEX IF NOT EXISTS idx_liga_membros_liga_id ON liga_membros(liga_id);

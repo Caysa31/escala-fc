@@ -34,7 +34,11 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
     setVerificando(true)
     setSugestoes([])
     try {
-      const disponivel = await verificarApelidoDisponivel(nome)
+      // Timeout de 2.5s: se o Supabase demorar, libera a entrada sem checar duplicata
+      const disponivel = await Promise.race([
+        verificarApelidoDisponivel(nome),
+        new Promise<boolean>(res => setTimeout(() => res(true), 2500)),
+      ])
       if (!disponivel) {
         setSugestoes([`${nome}2`, `${nome}FC`, `${nome}10`])
         setErro('Esse apelido já está em uso — escolha outro ou use uma sugestão abaixo')
