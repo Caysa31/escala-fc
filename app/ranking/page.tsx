@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { carregarPerfil } from '@/lib/perfil'
 import { getRankingSemanal, getRankingGeral, isSupabaseConfigurado } from '@/lib/supabase'
-import { Flame, Trophy, ArrowLeft } from 'lucide-react'
+import { Flame, ArrowLeft, WifiOff } from 'lucide-react'
 import Link from 'next/link'
 import BottomNav from '@/components/BottomNav'
 
@@ -16,10 +16,35 @@ interface EntradaRanking {
   taxa_acerto?: number
 }
 
+const CACHE_KEY_SEMANAL = 'escalafc_ranking_cache_semanal'
+const CACHE_KEY_GERAL   = 'escalafc_ranking_cache_geral'
+const CACHE_TS_KEY      = 'escalafc_ranking_cache_ts'
+
+function salvarCache(aba: 'semanal' | 'geral', dados: EntradaRanking[]) {
+  try {
+    localStorage.setItem(aba === 'semanal' ? CACHE_KEY_SEMANAL : CACHE_KEY_GERAL, JSON.stringify(dados))
+    localStorage.setItem(CACHE_TS_KEY, new Date().toISOString())
+  } catch {}
+}
+
+function lerCache(aba: 'semanal' | 'geral'): EntradaRanking[] {
+  try {
+    const raw = localStorage.getItem(aba === 'semanal' ? CACHE_KEY_SEMANAL : CACHE_KEY_GERAL)
+    return raw ? JSON.parse(raw) : []
+  } catch { return [] }
+}
+
+function lerCacheTs(): string | null {
+  try { return localStorage.getItem(CACHE_TS_KEY) } catch { return null }
+}
+
 export default function RankingPage() {
   const [aba, setAba] = useState<'semanal' | 'geral'>('semanal')
   const [ranking, setRanking] = useState<EntradaRanking[]>([])
   const [carregando, setCarregando] = useState(true)
+  const [erroConexao, setErroConexao] = useState(false)
+  const [usandoCache, setUsandoCache] = useState(false)
+  const [cacheTs, setCacheTs] = useState<string | null>(null)
   const [meuId, setMeuId] = useState<string | null>(null)
   const supabaseOk = isSupabaseConfigurado()
 
@@ -34,11 +59,38 @@ export default function RankingPage() {
   useEffect(() => {
     async function carregar() {
       setCarregando(true)
+      setErroConexao(false)
+      setUsandoCache(false)
+
       if (supabaseOk) {
-        const dados = aba === 'semanal'
-          ? await getRankingSemanal(100)
-          : await getRankingGeral(100)
-        setRanking(dados as EntradaRanking[])
+        try {
+          const dados = aba === 'semanal'
+            ? await getRankingSemanal(100)
+            : await getRankingGeral(100)
+
+          if (dados && dados.length > 0) {
+            setRanking(dados as EntradaRanking[])
+            salvarCache(aba, dados as EntradaRanking[])
+            setCacheTs(null)
+          } else {
+            // Query retornou vazio — tenta cache antes de mostrar vazio
+            const cache = lerCache(aba)
+            if (cache.length > 0) {
+              setRanking(cache)
+              setUsandoCache(true)
+              setCacheTs(lerCacheTs())
+            } else {
+              setRanking([])
+            }
+          }
+        } catch {
+          // Erro de conexão — usa cache
+          const cache = lerCache(aba)
+          setRanking(cache)
+          setErroConexao(true)
+          setUsandoCache(cache.length > 0)
+          setCacheTs(lerCacheTs())
+        }
       }
       setCarregando(false)
     }
@@ -101,6 +153,26 @@ export default function RankingPage() {
           </div>
         )}
 
+        {/* Banner de erro de conexão */}
+        {erroConexao && (
+          <div className="flex items-center gap-3 bg-orange-950/40 border border-orange-900/40 rounded-xl px-4 py-3">
+            <WifiOff size={16} className="text-orange-400 shrink-0" />
+            <div>
+              <p className="text-orange-300 text-sm font-semibold">Ranking temporariamente indisponível</p>
+              <p className="text-orange-400/70 text-xs">Problema de conexão com o servidor</p>
+            </div>
+          </div>
+        )}
+
+        {/* Banner de cache */}
+        {usandoCache && !erroConexao && cacheTs && (
+          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl px-4 py-2 text-center">
+            <p className="text-[#5A8AAA] text-xs">
+              Exibindo último ranking salvo · {new Date(cacheTs).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}
+            </p>
+          </div>
+        )}
+
         {/* Lista */}
         {supabaseOk && (
           <div className="space-y-2">
@@ -108,13 +180,13 @@ export default function RankingPage() {
               Array.from({ length: 8 }).map((_, i) => (
                 <div key={i} className="bg-[#0F1D30] rounded-xl h-14 animate-pulse" />
               ))
-            ) : ranking.length === 0 ? (
+            ) : ranking.length === 0 && !erroConexao ? (
               <div className="text-center py-10 text-[#8AB4CC]">
                 <p className="text-3xl mb-2">🏆</p>
                 <p>Ninguém no ranking ainda</p>
                 <p className="text-xs mt-1">Jogue hoje para aparecer aqui!</p>
               </div>
-            ) : (
+            ) : ranking.length === 0 && erroConexao ? null : (
               ranking.map((entrada, i) => {
                 const pos = i + 1
                 const sou = entrada.id === meuId
