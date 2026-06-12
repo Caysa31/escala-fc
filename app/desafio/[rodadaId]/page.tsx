@@ -4,6 +4,7 @@ import { use } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Suspense } from 'react'
 import { getIntroNarrativa, getJogadorPorRodadaId } from '@/lib/game'
+import { GameMode } from '@/lib/gameMode'
 import { PONTOS_BASE } from '@/lib/types'
 import Link from 'next/link'
 import { Trophy, ArrowRight } from 'lucide-react'
@@ -11,11 +12,12 @@ import { Trophy, ArrowRight } from 'lucide-react'
 function DesafioConteudo({ rodadaId }: { rodadaId: number }) {
   const params = useSearchParams()
 
+  const mode = (params.get('mode') === 'copa' ? 'copa' : 'bola') as GameMode
   const pistaAcerto = parseInt(params.get('p') ?? '0', 10) || null
   const tentativasStr = params.get('t') ?? ''
   const tentativas = tentativasStr.split('').map(c => c === '1' ? '🟩' : '⬛')
 
-  const jogador = getJogadorPorRodadaId(rodadaId)
+  const jogador = getJogadorPorRodadaId(rodadaId, mode)
 
   if (!jogador) {
     return (
@@ -32,7 +34,7 @@ function DesafioConteudo({ rodadaId }: { rodadaId: number }) {
     )
   }
 
-  const intro = getIntroNarrativa(jogador)
+  const intro = getIntroNarrativa(jogador, mode)
   const pontos = pistaAcerto !== null ? (PONTOS_BASE[pistaAcerto] ?? 0) : 0
   const pistaLabel = pistaAcerto === 0 ? 'pelo histórico' : pistaAcerto ? `na pista ${pistaAcerto}` : null
 

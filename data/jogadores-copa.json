@@ -10306,5 +10306,53 @@
     "pista2": "Meia técnico e habilidoso, excelente visão de jogo e capacidade de driblar em alta velocidade",
     "pista3": "Natural de Sunderland, na Inglaterra, filho do ex-internacional americano Claudio Reyna",
     "pista4": "Formado no Borussia Dortmund (Alemanha)"
+  },
+  {
+    "id": 502,
+    "nome": "Edin Džeko",
+    "posicao": "Centroavante",
+    "nacionalidade": "Bósnio",
+    "bandeira": "🇧🇦",
+    "clube": "Fiorentina",
+    "liga": "Serie A",
+    "dificuldade": "facil",
+    "titulos": [
+      "Premier League (×2)",
+      "Bundesliga (×1)",
+      "Serie A (×1)",
+      "Copa da Itália (×2)"
+    ],
+    "curiosidade": "Artilheiro histórico da Bósnia, Džeko sobreviveu ao cerco de Sarajevo na infância e se tornou o maior nome do futebol bósnio. Aos 40 anos, lidera a seleção em sua segunda Copa do Mundo.",
+    "faixaEtaria": "38-42",
+    "clubeAnterior": "Fenerbahçe",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "Süper Lig",
+    "pista2": "Centroavante físico e com faro de gol impressionante. Foi o primeiro a marcar 50+ gols em três das cinco principais ligas europeias.",
+    "pista3": "Nasceu em Sarajevo e cresceu durante o cerco da cidade nos anos 1990. A guerra moldou sua determinação.",
+    "pista4": "Antes da Fiorentina, defendeu as cores do Fenerbahçe na Turquia."
+  },
+  {
+    "id": 503,
+    "nome": "Miralem Pjanić",
+    "posicao": "Meia",
+    "nacionalidade": "Bósnio",
+    "bandeira": "🇧🇦",
+    "clube": "CSKA Moscou",
+    "liga": "Premier League Russa",
+    "dificuldade": "medio",
+    "titulos": [
+      "Série A (×4)",
+      "Copa da Itália (×4)",
+      "Copa do Rei (×1)",
+      "Supercopa da Turquia (×1)"
+    ],
+    "curiosidade": "Nascido na Bósnia e criado no Luxemburgo após a guerra, Pjanić fugiu do país com a família ainda criança. Apaixonado pelo piano, foi apelidado de \"Il Pianista\" pelos torcedores da Juventus.",
+    "faixaEtaria": "34-38",
+    "clubeAnterior": "Sharjah",
+    "origemAnterior": "exterior",
+    "ligaAnterior": "UAE Pro League",
+    "pista2": "Meia de visão privilegiada, passes milimétricos e especialista em bolas paradas. Um dos melhores meias da geração 2010-2020.",
+    "pista3": "Nasceu na Bósnia mas cresceu no Luxemburgo, para onde sua família fugiu durante a guerra nos Bálcãs nos anos 1990.",
+    "pista4": "Antes do CSKA Moscou, atuou no Sharjah, nos Emirados Árabes Unidos."
   }
 ]
