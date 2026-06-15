@@ -17,7 +17,7 @@ body {
 .estadio-bg {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   background-color: #030810;
   background-image:
     linear-gradient(
@@ -41,6 +41,7 @@ html {
   background-color: #030810;
   scroll-behavior: smooth;
 }
+
 
 /* Glassmorphism — backdrop blur cross-browser */
 .card-glass {
