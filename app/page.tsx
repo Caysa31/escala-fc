@@ -10,6 +10,7 @@ import { getMultiplicadorTreino } from '@/lib/modos'
 import { getModeAtual, getModeConfig, GameMode } from '@/lib/gameMode'
 
 import TelaPerfil, { StatsPerfil } from '@/components/TelaPerfil'
+import TutorialOnboarding from '@/components/TutorialOnboarding'
 import JogoDesafio from '@/components/JogoDesafio'
 import { TelaContratosAtivos } from '@/components/TelaContrato'
 import TelaFinalDia from '@/components/TelaFinalDia'
@@ -28,6 +29,7 @@ export default function Home() {
   const [mostrarFinalDia, setMostrarFinalDia] = useState(false)
   const [qtdContratosAtivos, setQtdContratosAtivos] = useState(0)
   const [jogoKey, setJogoKey] = useState(0)
+  const [mostrarTutorial, setMostrarTutorial] = useState(false)
 
   const finalDiaMostrado = useRef(false)
   const isInitialLoad = useRef(true)
@@ -48,6 +50,7 @@ export default function Home() {
     setMode(getModeAtual())
     const p = carregarPerfil()
     setPerfil(p)
+    if (!localStorage.getItem('tutorial_visto')) setMostrarTutorial(true)
     setQtdContratosAtivos(getContratosAtivos().length)
     setCarregado(true)
     void sincronizarPontosDeServidor().then(() => {
@@ -332,6 +335,15 @@ export default function Home() {
       {/* ── MODAIS ───────────────────────────────────────────── */}
       {mostrarContratosAtivos && (
         <TelaContratosAtivos onFechar={() => setMostrarContratosAtivos(false)} />
+      )}
+      {mostrarTutorial && (
+        <TutorialOnboarding
+          modeColor={modeConfig.subtitleColor}
+          onConcluir={() => {
+            localStorage.setItem('tutorial_visto', '1')
+            setMostrarTutorial(false)
+          }}
+        />
       )}
       {mostrarFinalDia && perfil && (typeof window === 'undefined' || localStorage.getItem('finalDia_dispensado') !== new Date().toDateString()) && (
         <TelaFinalDia

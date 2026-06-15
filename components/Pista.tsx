@@ -7,40 +7,59 @@ interface PistaProps {
   texto: string
   revelada: boolean
   atual: boolean
-  errou?: boolean       // essa pista teve tentativa errada — card vermelho
-  correto?: boolean     // essa pista foi onde acertou — mantém verde mesmo após ganhar
-  subtitulo?: string    // label do capítulo (substitui o padrão quando fornecido — ex: "O Maestro")
-  renderAs?: number     // força um renderer específico sem alterar o número exibido (ex: Copa pista4 usa renderer do 5)
-  onRevelar?: () => void    // card travado vira clicável (pista 1 do primeiro desafio)
-  onDestravar?: () => void  // botão "Ver próxima dica" na pista seguinte travada
-  // Pontuação dinâmica
-  pontosAtual?: number    // pontos que o jogador ganha SE acertar agora (mostrado na pista ativa)
-  custoDestravar?: number // custo de revelar a próxima pista (mostrado no botão "Ver próxima dica")
+  errou?: boolean
+  correto?: boolean
+  subtitulo?: string
+  renderAs?: number
+  onRevelar?: () => void
+  onDestravar?: () => void
+  pontosAtual?: number
+  custoDestravar?: number
+  modeColor?: string   // cor do modo: '#00C853' (bola) ou '#FFD23F' (copa)
 }
 
-// Pista 1 — blocos com letras do meio reveladas
-// Ajusta tamanho dos blocos dinamicamente pela palavra mais longa
-function BlocosNome({ codificado, atual, correto }: { codificado: string; atual: boolean; correto?: boolean }) {
-  const ativa = atual || correto
+// Cor e metadados por número de pista
+const PISTA_META: Record<number, { cor: string; corBg: string; chip: string; icone: string }> = {
+  1: { cor: '#818cf8', corBg: 'rgba(129,140,248,0.12)', chip: 'CÓDIGO',     icone: '🔐' },
+  2: { cor: '#60a5fa', corBg: 'rgba(96,165,250,0.12)',  chip: 'HABILIDADE', icone: '⚡' },
+  3: { cor: '#34d399', corBg: 'rgba(52,211,153,0.12)',  chip: 'ORIGEM',     icone: '🌍' },
+  4: { cor: '#fb923c', corBg: 'rgba(251,146,60,0.12)',  chip: 'JORNADA',    icone: '🗺️' },
+  5: { cor: '#FFD23F', corBg: 'rgba(255,210,63,0.12)',  chip: 'FINAL',      icone: '👕' },
+}
+// Pista 4 em modo copa usa renderer 5 (LetrasNome) — mesma cor dourada
+const PISTA_META_COPA4 = PISTA_META[5]
+
+function getPistaMeta(numero: number, renderAs?: number) {
+  if (renderAs === 5 && numero === 4) return PISTA_META_COPA4
+  return PISTA_META[numero] ?? PISTA_META[5]
+}
+
+// Ícone específico por posição para pista 2
+const ICONE_POSICAO: Record<string, string> = {
+  'Goleiro': '🧤', 'Zagueiro': '🛡️', 'Lateral-direito': '🏃', 'Lateral-esquerdo': '🏃',
+  'Lateral': '🏃', 'Volante': '⚙️', 'Meia': '🎯', 'Meia-atacante': '✨',
+  'Ponta': '⚡', 'Ponta-direita': '⚡', 'Ponta-esquerda': '⚡',
+  'Atacante': '🔥', 'Centroavante': '🔥',
+}
+
+// Pista 1 — blocos de letras
+function BlocosNome({ codificado, isAtivo, modeColor }: { codificado: string; isAtivo: boolean; modeColor: string }) {
   const palavras = codificado.split('|').map(p => p.split(''))
   const maxLen = Math.max(...palavras.map(p => p.length))
-
-  // Largura disponível aprox: 360px tela - 32px padding card - 32px ícone - 12px gap ≈ 284px
-  // bloco + gap por letra: calcula pra caber dentro de 280px
   const { bloco, texto, gap, mx } =
-    maxLen <= 5  ? { bloco: 'w-8 h-8',  texto: 'text-sm', gap: 'gap-1.5', mx: 'mx-2' } :
-    maxLen <= 7  ? { bloco: 'w-7 h-7',  texto: 'text-sm', gap: 'gap-1',   mx: 'mx-2' } :
-    maxLen <= 9  ? { bloco: 'w-6 h-6',  texto: 'text-xs', gap: 'gap-1',   mx: 'mx-1.5' } :
-    maxLen <= 11 ? { bloco: 'w-5 h-5',  texto: 'text-xs', gap: 'gap-1',   mx: 'mx-1.5' } :
-                   { bloco: 'w-4 h-4',  texto: 'text-xs', gap: 'gap-0.5', mx: 'mx-1' }
+    maxLen <= 5  ? { bloco: 'w-9 h-9',  texto: 'text-sm',  gap: 'gap-1.5', mx: 'mx-2' } :
+    maxLen <= 7  ? { bloco: 'w-8 h-8',  texto: 'text-sm',  gap: 'gap-1',   mx: 'mx-2' } :
+    maxLen <= 9  ? { bloco: 'w-7 h-7',  texto: 'text-xs',  gap: 'gap-1',   mx: 'mx-1.5' } :
+    maxLen <= 11 ? { bloco: 'w-6 h-6',  texto: 'text-xs',  gap: 'gap-1',   mx: 'mx-1' } :
+                   { bloco: 'w-5 h-5',  texto: 'text-[10px]', gap: 'gap-0.5', mx: 'mx-1' }
 
   return (
-    <div className="flex items-center flex-wrap mt-1 gap-y-2">
+    <div className="flex items-center flex-wrap gap-y-2">
       {palavras.map((chars, wi) => (
         <div key={wi} className="flex items-center">
           {wi > 0 && (
             <div className={`flex items-center ${mx}`}>
-              <div className="w-1 h-1 rounded-full bg-[#1A3A5C]" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#2A3A5A]" />
             </div>
           )}
           <div className={`flex ${gap}`}>
@@ -49,15 +68,11 @@ function BlocosNome({ codificado, atual, correto }: { codificado: string; atual:
               return (
                 <div
                   key={ci}
-                  className={`${bloco} rounded flex items-center justify-center ${texto} font-bold
-                    ${rev
-                      ? ativa
-                        ? 'bg-[#071A0F] border-2 border-[#00C853] text-[#00C853]'
-                        : 'bg-[#0F1D30] border-2 border-[#2A5275] text-white'
-                      : ativa
-                        ? 'bg-[#0F1D30] border border-[#00C853]/40'
-                        : 'bg-[#1A3A5C] border border-[#2A5275]'
-                    }`}
+                  className={`${bloco} rounded-md flex items-center justify-center ${texto} font-black transition-all duration-200`}
+                  style={rev
+                    ? { background: isAtivo ? `${modeColor}18` : '#0D1829', border: `2px solid ${isAtivo ? modeColor : '#3A5070'}`, color: isAtivo ? modeColor : '#C0D8EE' }
+                    : { background: '#0A1220', border: '2px solid #1E3050', color: 'transparent' }
+                  }
                 >
                   {rev ? char.toUpperCase() : ''}
                 </div>
@@ -70,35 +85,29 @@ function BlocosNome({ codificado, atual, correto }: { codificado: string; atual:
   )
 }
 
-// Pista 5 — clube + letras parciais do nome
-function LetrasNome({ codificado, atual, correto }: { codificado: string; atual: boolean; correto?: boolean }) {
-  const ativa = atual || correto
+// Pista 5 / Copa pista 4 — clube + letras parciais do nome
+function LetrasNome({ codificado, isAtivo, modeColor }: { codificado: string; isAtivo: boolean; modeColor: string }) {
   const sepIdx = codificado.indexOf('|')
   const clube   = sepIdx >= 0 ? codificado.slice(0, sepIdx) : codificado
   const letras  = sepIdx >= 0 ? codificado.slice(sepIdx + 1) : ''
   const palavras = letras ? letras.split('   ') : []
 
   return (
-    <div className="space-y-2 mt-1">
-      <p className={`font-bold text-base ${ativa ? 'text-[#4A9A6A]' : 'text-white'}`}>
-        {clube}
-      </p>
+    <div className="space-y-2">
+      <p className="font-black text-sm" style={{ color: isAtivo ? modeColor : '#A0BDD0' }}>{clube}</p>
       {palavras.length > 0 && (
         <div className="flex gap-4 flex-wrap items-end">
           {palavras.map((palavra, wi) => (
             <div key={wi} className="flex gap-1 items-end">
               {palavra.split(' ').map((char, ci) => (
-                <div key={ci} className="flex flex-col items-center" style={{ minWidth: '14px' }}>
+                <div key={ci} className="flex flex-col items-center" style={{ minWidth: '16px' }}>
                   <span
-                    className={`text-base font-bold font-mono leading-none
-                      ${char !== '_'
-                        ? (ativa ? 'text-[#4A9A6A]' : 'text-white')
-                        : 'text-[#5A8AAA]'
-                      }`}
+                    className="text-base font-black font-mono leading-none"
+                    style={{ color: char !== '_' ? (isAtivo ? modeColor : '#C0D8EE') : '#3A5570' }}
                   >
-                    {char}
+                    {char !== '_' ? char : '_'}
                   </span>
-                  <div className={`mt-0.5 h-px w-full ${char !== '_' ? (ativa ? 'bg-[#00C853]' : 'bg-[#5A8AAA]') : 'bg-[#1A3A5C]'}`} />
+                  <div className="mt-0.5 h-[2px] w-full" style={{ background: char !== '_' ? (isAtivo ? modeColor : '#3A5570') : '#1E3050' }} />
                 </div>
               ))}
             </div>
@@ -109,118 +118,136 @@ function LetrasNome({ codificado, atual, correto }: { codificado: string; atual:
   )
 }
 
-// Label temático padrão de cada capítulo (pista 2 é sobrescrita por `subtitulo` via posição)
 const LABELS_PISTAS = ['O Nome', 'O Dom', 'A Raiz', 'A Jornada', 'Time + Nome']
 
-export default function Pista({ numero, texto, revelada, atual, errou, correto, subtitulo, renderAs, onRevelar, onDestravar, pontosAtual, custoDestravar }: PistaProps) {
-  // renderAs permite forçar um renderer diferente (ex: Copa pista 4 usa renderer do 5)
+export default function Pista({
+  numero, texto, revelada, atual, errou, correto,
+  subtitulo, renderAs, onRevelar, onDestravar,
+  pontosAtual, custoDestravar,
+  modeColor = '#00C853',
+}: PistaProps) {
   const renderer = renderAs ?? numero
-  // Determina o estado visual da pista
   const isVerde = atual || correto
   const isVermelho = errou && !isVerde
+  const meta = getPistaMeta(numero, renderAs)
 
-  // Card
-  const cardClass = revelada
-    ? isVermelho
-      ? 'border-red-800 bg-red-950/40'
-      : isVerde
-        ? 'border-[#00C853] bg-[#071A0F] shadow-lg shadow-[#00C853]/10'
-        : 'border-[#2A5275] bg-[#0F1D30]'
-    : 'border-[#2A5275] bg-[#0A1626]'
+  // Estado visual do card
+  const cardStyle = (() => {
+    if (!revelada) return {
+      background: '#080D18',
+      border: '1.5px solid #1A2A40',
+    }
+    if (isVermelho) return {
+      background: 'rgba(127,29,29,0.25)',
+      border: '1.5px solid rgba(239,68,68,0.4)',
+    }
+    if (isVerde) return {
+      background: `${modeColor}0A`,
+      border: `1.5px solid ${modeColor}50`,
+      boxShadow: `0 0 20px ${modeColor}15`,
+    }
+    return {
+      background: '#0A1220',
+      border: `1.5px solid ${meta.cor}30`,
+    }
+  })()
 
-  // Bolinha do número
-  const circuloClass = revelada
-    ? isVermelho
-      ? 'bg-red-700 text-white'
-      : isVerde
-        ? 'bg-[#00C853] text-[#0A1626]'
-        : 'bg-[#1E3A5F] text-white'
-    : 'bg-[#0F1D30] border border-[#2A5275] text-[#8AB4CC]'
-
-  // Label da pista
-  const labelClass = revelada
-    ? isVermelho
-      ? 'text-red-500'
-      : 'text-[#8AB4CC]'
-    : 'text-[#8AB4CC]'
-
-  // Texto do conteúdo (pistas 2, 3, 4)
-  const textoClass = isVerde ? 'text-[#4A9A6A]' : isVermelho ? 'text-red-200' : 'text-white'
-
+  const barColor = isVermelho ? '#ef4444' : isVerde ? modeColor : revelada ? meta.cor : '#1E3050'
+  const numColor = isVermelho ? '#ef4444' : isVerde ? modeColor : revelada ? meta.cor : '#3A5570'
+  const labelColor = isVermelho ? '#ef4444' : isVerde ? `${modeColor}99` : revelada ? `${meta.cor}99` : '#3A5570'
+  const titleColor = isVermelho ? '#fca5a5' : isVerde ? modeColor : revelada ? meta.cor : '#4A6A8A'
   const clicavel = !revelada && !!onRevelar
 
   return (
     <div
-      className={`rounded-xl border-2 p-4 transition-all duration-300 ${cardClass} ${clicavel ? 'cursor-pointer active:scale-95 hover:border-[#00C853]/60' : ''}`}
+      className={`rounded-2xl overflow-hidden transition-all duration-300 ${clicavel ? 'cursor-pointer active:scale-[0.98] hover:brightness-110' : ''} ${revelada ? 'animate-reveal' : ''}`}
+      style={cardStyle}
       onClick={clicavel ? onRevelar : undefined}
     >
-      <div className="flex items-start gap-3">
-        {/* Número */}
-        <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${circuloClass}`}>
-          {numero}
-        </div>
+      {/* Barra colorida lateral */}
+      <div className="flex">
+        <div className="w-[3px] flex-shrink-0 rounded-l-2xl transition-colors duration-300" style={{ background: barColor }} />
 
-        {/* Conteúdo */}
-        <div className="flex-1 min-w-0">
+        <div className="flex-1 min-w-0 p-3">
 
-          {/* Rótulo secundário: "Cap X ·" mudo + nome da pista em destaque */}
-          <div className="flex items-baseline gap-1.5 mb-2">
-            <span className={`text-xs font-medium tracking-wide ${labelClass}`}>
-              Cap. {numero} ·
+          {/* ── Topo: número + label + chip ── */}
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-xs font-black tabular-nums w-5 text-center transition-colors" style={{ color: numColor }}>
+              {numero}
             </span>
-            <span className={`text-sm font-bold ${
-              isVerde ? 'text-[#00C853]'
-              : isVermelho ? 'text-red-400'
-              : 'text-[#C8E0F0]'
-            }`}>
-              {subtitulo ?? LABELS_PISTAS[numero - 1]}
-            </span>
+            <div className="flex-1 min-w-0">
+              <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: labelColor }}>
+                {subtitulo ?? LABELS_PISTAS[numero - 1]}
+              </span>
+            </div>
+            {/* Chip de categoria — só quando revelada */}
+            {revelada && (
+              <span
+                className="text-[9px] font-black tracking-wider px-2 py-0.5 rounded-full flex-shrink-0"
+                style={{ background: isVerde ? `${modeColor}18` : isVermelho ? 'rgba(239,68,68,0.12)' : meta.corBg, color: isVerde ? modeColor : isVermelho ? '#ef4444' : meta.cor, border: `1px solid ${isVerde ? modeColor + '30' : isVermelho ? 'rgba(239,68,68,0.25)' : meta.cor + '30'}` }}
+              >
+                {meta.icone} {meta.chip}
+              </span>
+            )}
           </div>
 
-          {revelada ? (
-            <>
-              {renderer === 1 && (
-                <BlocosNome codificado={texto} atual={atual} correto={correto} />
-              )}
-              {renderer === 5 && (
-                <LetrasNome codificado={texto} atual={atual} correto={correto} />
-              )}
-              {renderer !== 1 && renderer !== 5 && (
-                <p className={`font-medium text-base leading-relaxed ${textoClass}`}>
-                  {texto}
-                </p>
-              )}
+          {/* Separador */}
+          <div className="h-px mb-3 -mx-1" style={{ background: isVerde ? `${modeColor}20` : isVermelho ? 'rgba(239,68,68,0.15)' : `${meta.cor}18` }} />
 
-              {/* Banner de pontos — aparece na pista recém-revelada (ativa) */}
+          {/* ── Conteúdo ── */}
+          {revelada ? (
+            <div>
+              {/* Badge de pontos — canto direito, só na pista ativa */}
               {atual && pontosAtual !== undefined && (
-                <div className="mt-3 pt-2 border-t border-[#2A5275] text-right">
-                  <span className="text-[#FFD23F] text-sm font-black">
-                    Agora vale {pontosAtual} pts
+                <div className="float-right ml-2 mb-1">
+                  <span className="text-xs font-black px-2 py-0.5 rounded-lg" style={{ color: '#FFD23F', background: 'rgba(255,210,63,0.12)', border: '1px solid rgba(255,210,63,0.25)' }}>
+                    {pontosAtual} pts
                   </span>
                 </div>
               )}
-            </>
+
+              {renderer === 1 && (
+                <BlocosNome codificado={texto} isAtivo={!!isVerde} modeColor={modeColor} />
+              )}
+              {renderer === 5 && (
+                <LetrasNome codificado={texto} isAtivo={!!isVerde} modeColor={modeColor} />
+              )}
+              {renderer !== 1 && renderer !== 5 && (
+                <p
+                  className="text-sm leading-snug font-medium overflow-hidden"
+                  style={{
+                    color: isVerde ? `${modeColor}CC` : isVermelho ? '#fca5a5' : '#A8C5D8',
+                    display: '-webkit-box',
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: 'vertical',
+                  }}
+                >
+                  {texto}
+                </p>
+              )}
+            </div>
           ) : (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 py-0.5">
               {clicavel ? (
-                <span className="text-[#00C853] text-sm font-semibold">Toque para revelar →</span>
+                <span className="text-sm font-bold" style={{ color: modeColor }}>Toque para revelar →</span>
               ) : onDestravar ? (
                 <div className="flex items-center justify-between w-full">
                   <button
                     type="button"
                     onClick={e => { e.stopPropagation(); onDestravar() }}
-                    className="text-xs font-semibold text-[#00C853] border border-[#00C853]/30 rounded-lg px-3 py-1.5 hover:bg-[#00C853]/10 active:scale-95 transition-all"
+                    className="text-xs font-bold rounded-lg px-3 py-1.5 transition-all active:scale-95"
+                    style={{ color: modeColor, border: `1px solid ${modeColor}30`, background: `${modeColor}08` }}
                   >
                     Ver próxima dica →
                   </button>
                   {custoDestravar !== undefined && (
-                    <span className="text-red-400 text-xs font-bold">−{custoDestravar} pts se revelar</span>
+                    <span className="text-red-400 text-xs font-bold">−{custoDestravar} pts</span>
                   )}
                 </div>
               ) : (
                 <div className="flex items-center gap-1.5">
-                  <Lock size={12} className="text-[#5A8AAA]" />
-                  <span className="text-[#8AB4CC] text-xs">bloqueada</span>
+                  <Lock size={11} className="text-[#3A5570]" />
+                  <span className="text-xs text-[#3A5570]">bloqueada</span>
                 </div>
               )}
             </div>

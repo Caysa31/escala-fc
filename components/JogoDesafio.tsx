@@ -20,6 +20,35 @@ import ListaTentativas from './ListaTentativas'
 import TelaResultado from './TelaResultado'
 import { ModalContrato } from './TelaContrato'
 
+// Cor do modo para passar às pistas
+const MODE_COLOR: Record<string, string> = {
+  bola: '#00C853',
+  copa: '#FFD23F',
+}
+
+// Confetti CSS — cria partículas que caem e remove automaticamente
+function dispararConfetti() {
+  const colors = ['#FFD23F', '#00C853', '#60a5fa', '#f472b6', '#fb923c', '#a78bfa']
+  const container = document.body
+  for (let i = 0; i < 40; i++) {
+    const el = document.createElement('div')
+    el.className = 'confetti-piece'
+    el.style.left = `${Math.random() * 100}vw`
+    el.style.background = colors[Math.floor(Math.random() * colors.length)]
+    el.style.animationDuration = `${0.8 + Math.random() * 1.2}s`
+    el.style.animationDelay = `${Math.random() * 0.4}s`
+    el.style.width = `${6 + Math.random() * 6}px`
+    el.style.height = `${6 + Math.random() * 6}px`
+    container.appendChild(el)
+    setTimeout(() => el.remove(), 2500)
+  }
+}
+
+// Vibração háptica — silenciosamente ignora se API não disponível
+function vibrar(padrao: number | number[]) {
+  try { navigator.vibrate?.(padrao) } catch { /* silencioso */ }
+}
+
 interface Props {
   jogador: Jogador
   rodadaId: number
@@ -79,6 +108,8 @@ export default function JogoDesafio({
   }
   const subtituloPista2 = chapterLabelPosicao[jogador.posicao] ?? 'O Dom'
 
+  const modeColor = MODE_COLOR[mode] ?? '#00C853'
+
   const [estado, setEstado] = useState<EstadoJogo>({
     pistaAtual: 0,
     tentativas: [],
@@ -88,6 +119,7 @@ export default function JogoDesafio({
   const [mostrarContrato, setMostrarContrato] = useState(false)
   const [mostrarResultado, setMostrarResultado] = useState(false)
   const [inputMontado, setInputMontado] = useState(false)
+  const [shakePistas, setShakePistas] = useState(false)
   const currentPistaRef = useRef<HTMLDivElement>(null)
   const [keyboardH, setKeyboardH] = useState(0)
 
@@ -190,10 +222,11 @@ export default function JogoDesafio({
     const novaTentativa: Tentativa = { nome, status: acertou ? 'acerto' : 'erro' }
     const novasTentativas = [...estado.tentativas, novaTentativa]
 
-    // pistaAtual=0 = acertou pelo histórico (120 pts), 1-5 = pistas normais
     const pistaEfetiva = estado.pistaAtual
 
     if (acertou) {
+      vibrar(300)
+      dispararConfetti()
       const pontosBrutos = calcularPontos(pistaEfetiva)
       // Aplica multiplicador de treino apenas no desafio diário
       const pontos = Math.round(pontosBrutos * multiplicador)
@@ -225,6 +258,10 @@ export default function JogoDesafio({
       onFimJogo?.({ ganhou: true, pontos, pistaAcerto: pistaEfetiva })
       if (!modoExtra) setMostrarContrato(true)
     } else {
+      vibrar([60, 40, 60])
+      setShakePistas(true)
+      setTimeout(() => setShakePistas(false), 400)
+
       const novaPista = estado.pistaAtual + 1
       const acabou = novaPista > totalPistas
 
@@ -296,123 +333,101 @@ export default function JogoDesafio({
       {/* Banner removido — info já aparece na barra de baixo */}
 
       {estado.status === 'ganhou' && (
-        <div className="bg-[#071A0F] border border-[#00C853]/30 rounded-2xl px-5 py-5 text-center space-y-3 animate-pop">
+        <div className="rounded-2xl px-5 py-5 text-center space-y-3 animate-pop" style={{ background: `${modeColor}0C`, border: `1px solid ${modeColor}40`, boxShadow: `0 0 24px ${modeColor}18` }}>
           <div>
-            <p className="text-[#4A9A6A] font-bold text-base">
+            <p className="font-bold text-base" style={{ color: `${modeColor}CC` }}>
               🎯 {estado.pistaUsada === 0 ? 'Acertou pelo histórico!' : `Acertou na pista ${estado.pistaUsada}!`}
             </p>
-            <p className="text-[#FFD23F] font-black text-3xl mt-1">+{pontosRodada} pts</p>
+            <p className="text-[#FFD23F] font-black text-4xl mt-1">+{pontosRodada} <span className="text-xl">pts</span></p>
             {!modoExtra && multiplicador > 1 && (
-              <p className="text-[#8AB4CC] text-xs font-semibold mt-1">
-                🏋️ Bônus de treino ×{multiplicador} ativado!
-              </p>
+              <p className="text-[#8AB4CC] text-xs font-semibold mt-1">🏋️ Bônus de treino ×{multiplicador} ativado!</p>
             )}
           </div>
-
           {onProximoDesafio ? (
-            /* Tem próximo desafio ou "Jogar Novamente" no modo extra */
             <div className="space-y-2">
-              {!modoExtra && (
-                <p className="text-[#8AB4CC] text-sm">
-                  Você ainda pode aumentar sua pontuação!
-                </p>
-              )}
-              <button
-                onClick={onProximoDesafio}
-                className="w-full bg-[#00C853] hover:bg-[#00E060] text-[#0A1626] font-bold py-3 rounded-xl text-sm transition-all"
-              >
+              {!modoExtra && <p className="text-[#5A8AAA] text-sm">Você ainda pode aumentar sua pontuação!</p>}
+              <button onClick={onProximoDesafio} className="w-full font-bold py-3 rounded-xl text-sm transition-all text-[#0A1626]" style={{ background: modeColor }}>
                 {labelProximoDesafio}
               </button>
-              {!modoExtra && (
-                <button
-                  onClick={() => setMostrarResultado(true)}
-                  className="text-[#5A8AAA] text-xs underline"
-                >
-                  Ver detalhes
-                </button>
-              )}
+              {!modoExtra && <button onClick={() => setMostrarResultado(true)} className="text-[#5A8AAA] text-xs underline">Ver detalhes</button>}
             </div>
           ) : (
-            /* Último desafio ou modo extra sem mais plays */
-            <p className="text-[#5A8AAA] text-xs animate-pulse">
-              {mensagemFimJogo}
-            </p>
+            <p className="text-[#5A8AAA] text-xs animate-pulse">{mensagemFimJogo}</p>
           )}
         </div>
       )}
 
       {estado.status === 'perdeu' && (
-        <div className="bg-red-950 border border-red-900 rounded-2xl px-5 py-5 text-center space-y-3">
+        <div className="bg-red-950/30 border border-red-900/50 rounded-2xl px-5 py-5 text-center space-y-3">
           <div>
             <p className="text-red-400 text-sm font-semibold">Não foi dessa vez...</p>
-            <p className="text-white font-black text-2xl mt-1">
-              {jogador.apelido ?? jogador.nome} {jogador.bandeira}
-            </p>
+            <p className="text-white font-black text-2xl mt-1">{jogador.apelido ?? jogador.nome} {jogador.bandeira}</p>
           </div>
           {onProximoDesafio ? (
             <div className="space-y-2">
-              <button
-                onClick={onProximoDesafio}
-                className="w-full bg-[#0F1D30] border border-[#1A3A5C] text-white font-bold py-3 rounded-xl text-sm transition-all"
-              >
-                {labelProximoDesafio}
-              </button>
-              {!modoExtra && (
-                <button
-                  onClick={() => setMostrarResultado(true)}
-                  className="text-[#5A8AAA] text-xs underline"
-                >
-                  Ver detalhes
-                </button>
-              )}
+              <button onClick={onProximoDesafio} className="w-full bg-[#0A1220] border border-[#1A2A40] text-white font-bold py-3 rounded-xl text-sm transition-all">{labelProximoDesafio}</button>
+              {!modoExtra && <button onClick={() => setMostrarResultado(true)} className="text-[#5A8AAA] text-xs underline">Ver detalhes</button>}
             </div>
           ) : (
-            <button
-              onClick={() => setMostrarResultado(true)}
-              className="text-red-400 text-xs underline"
-            >
-              Ver resultado
-            </button>
+            <button onClick={() => setMostrarResultado(true)} className="text-red-400 text-xs underline">Ver resultado</button>
           )}
         </div>
       )}
 
-      {/* Intro narrativa — sempre visível acima das pistas */}
-      <div className="bg-[#0F1D30] border border-[#2A5275] rounded-xl px-4 py-3">
-        <p className="text-xs uppercase font-bold tracking-widest mb-2 text-[#8AB4CC]">
+      {/* Intro narrativa */}
+      <div className="rounded-xl px-4 py-3" style={{ background: '#080D18', border: '1px solid #1A2A40' }}>
+        <p className="text-[10px] uppercase font-black tracking-widest mb-1.5" style={{ color: `${modeColor}80` }}>
           ⚡ Jogador do dia
         </p>
-        <p className="leading-snug italic text-white text-sm">
+        <p className="leading-snug italic text-[#8AB4CC] text-sm">
           &ldquo;{introNarrativa}&rdquo;
         </p>
       </div>
 
+      {/* Barra de progresso visual das pistas */}
+      {estado.status === 'jogando' && (
+        <div className="flex items-center gap-1 px-1">
+          {Array.from({ length: totalPistas }, (_, i) => i + 1).map(num => {
+            const revelada = num <= estado.pistaAtual
+            const atual = num === estado.pistaAtual
+            const errou = revelada && num < estado.pistaAtual
+            return (
+              <div key={num} className="flex items-center gap-1 flex-1">
+                <div
+                  className="flex-1 h-1.5 rounded-full transition-all duration-300"
+                  style={{
+                    background: errou ? '#ef4444' : atual ? modeColor : revelada ? `${modeColor}60` : '#1A2A40',
+                    boxShadow: atual ? `0 0 8px ${modeColor}80` : 'none',
+                  }}
+                />
+                {num < totalPistas && <div className="w-0.5 h-0.5 rounded-full bg-[#1A2A40]" />}
+              </div>
+            )
+          })}
+          <span className="text-[10px] font-black ml-2 flex-shrink-0" style={{ color: `${modeColor}80` }}>
+            {estado.pistaAtual === 0 ? 'início' : `${estado.pistaAtual}/${totalPistas}`}
+          </span>
+        </div>
+      )}
+
       {/* Pistas */}
-      <div className="space-y-2">
+      <div className={`space-y-2 ${shakePistas ? 'animate-shake' : ''}`}>
         {Array.from({ length: totalPistas }, (_, i) => i + 1).map(num => {
           const revelada = num <= estado.pistaAtual
           const atual = num === estado.pistaAtual && estado.status === 'jogando'
-          // Pista ficou vermelha se foi revelada, não é a atual e não é a pista de acerto
           const errou = revelada && (num < estado.pistaAtual || estado.status === 'perdeu')
-          // Pista fica verde permanente se foi onde o jogador acertou
           const correto = estado.status === 'ganhou' && num === estado.pistaUsada
-          // Pista 1 é clicável para revelar em todos os desafios quando ainda não há pistas abertas
           const onRevelar = estado.pistaAtual === 0 && num === 1 && estado.status === 'jogando'
             ? () => setEstado(e => ({ ...e, pistaAtual: 1 }))
             : undefined
-          // Botão "Ver próxima dica" aparece apenas na pista seguinte à atual (quando em jogo)
           const onDestravar = estado.status === 'jogando' &&
             estado.pistaAtual >= 1 &&
             num === estado.pistaAtual + 1 &&
             !onRevelar
             ? handleDestravar
             : undefined
-          // Valor desta pista — mostrado dentro do card após ser revelada (pista ativa)
           const ptsDestaPista = Math.round((PONTOS_BASE[num] ?? 20) * multiplicador)
-          // Custo de revelar a PRÓXIMA — mostrado no botão da pista bloqueada
-          const custoEsta = Math.round(
-            ((PONTOS_BASE[num - 1] ?? 100) - (PONTOS_BASE[num] ?? 20)) * multiplicador
-          )
+          const custoEsta = Math.round(((PONTOS_BASE[num - 1] ?? 100) - (PONTOS_BASE[num] ?? 20)) * multiplicador)
 
           return (
             <div key={num} ref={num === (estado.pistaAtual === 0 ? 1 : estado.pistaAtual) ? currentPistaRef : undefined}>
@@ -423,16 +438,13 @@ export default function JogoDesafio({
                 atual={atual}
                 errou={errou}
                 correto={correto}
-                subtitulo={
-                  num === 2 ? subtituloPista2
-                  : (mode === 'copa' && num === 4) ? 'Time + Nome'
-                  : undefined
-                }
+                subtitulo={num === 2 ? subtituloPista2 : (mode === 'copa' && num === 4) ? 'Time + Nome' : undefined}
                 renderAs={mode === 'copa' && num === 4 ? 5 : undefined}
                 onRevelar={onRevelar}
                 onDestravar={onDestravar}
                 pontosAtual={atual && estado.status === 'jogando' ? ptsDestaPista : undefined}
                 custoDestravar={onDestravar && custoEsta > 0 ? custoEsta : undefined}
+                modeColor={modeColor}
               />
             </div>
           )
@@ -486,8 +498,11 @@ export default function JogoDesafio({
           O env(safe-area-inset-bottom) cobre o indicador home do iPhone. */}
       {estado.status === 'jogando' && inputMontado && (
         <div
-          className="fixed left-0 right-0 z-50 bg-[#070E1A] border-t border-[#2A5275] px-4 pt-3"
+          className="fixed left-0 right-0 z-50 px-4 pt-3"
           style={{
+            background: 'rgba(5, 8, 18, 0.96)',
+            borderTop: `1px solid ${modeColor}20`,
+            backdropFilter: 'blur(12px)',
             bottom: keyboardH > 50
               ? `${keyboardH}px`
               : temBottomNav ? 'calc(56px + env(safe-area-inset-bottom))' : '0',
@@ -495,28 +510,22 @@ export default function JogoDesafio({
           }}
         >
           <div className="max-w-md mx-auto">
-            {/* Placar sempre visível */}
+            {/* Placar arcade */}
             <div className="flex items-center justify-between mb-2 px-1">
-              <p className="text-[#8AB4CC] text-xs">
-                {introEmDestaque
-                  ? 'Adivinhe pelo histórico'
-                  : `Pista ${estado.pistaAtual} de ${totalPistas}`}
+              <p className="text-[10px] font-black uppercase tracking-widest" style={{ color: `${modeColor}70` }}>
+                {introEmDestaque ? 'Adivinhe pelo histórico' : `Pista ${estado.pistaAtual} / ${totalPistas}`}
               </p>
-              <div
-                className={`flex items-baseline gap-1 transition-transform duration-300 ${
-                  flashPts ? 'scale-125' : 'scale-100'
-                }`}
-              >
+              <div className={`flex items-baseline gap-1 transition-transform duration-300 ${flashPts ? 'animate-pts-drop' : ''}`}>
                 {multiplicador > 1 && (
                   <>
-                    <span className="text-[#8AB4CC] text-xs line-through">{pontosBrutosDisplay}</span>
-                    <span className="text-orange-400 text-xs font-bold">×{multiplicador}</span>
+                    <span className="text-[#5A8AAA] text-xs line-through">{pontosBrutosDisplay}</span>
+                    <span className="text-orange-400 text-xs font-black">×{multiplicador}</span>
                   </>
                 )}
-                <span className={`text-2xl font-black leading-none transition-colors duration-300 ${corPts}`}>
+                <span className="text-3xl font-black leading-none tabular-nums" style={{ color: pontosDisplay >= Math.round(40 * multiplicador) ? modeColor : '#ef4444' }}>
                   {pontosDisplay}
                 </span>
-                <span className="text-[#8AB4CC] text-sm font-semibold">pts</span>
+                <span className="text-xs font-bold" style={{ color: `${modeColor}80` }}>pts</span>
               </div>
             </div>
             {/* Opção de pular — acima do input para ficar visível mesmo com teclado aberto */}

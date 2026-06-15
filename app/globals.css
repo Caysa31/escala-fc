@@ -7,10 +7,30 @@
 }
 
 body {
-  background: var(--background);
+  background-color: #060B14;
+  background-image: url('/assets/stadium-bg.jpg');
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   -webkit-tap-highlight-color: transparent;
+}
+
+/* Overlay escuro sobre o fundo de estádio */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 9, 20, 0.88);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Garante que todo conteúdo fica acima do overlay */
+body > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Remove outline padrão em mobile */
@@ -42,4 +62,58 @@ html {
 
 .animate-fade-up {
   animation: fadeSlideUp 0.3s ease-out;
+}
+
+/* ── Confetti ── */
+@keyframes confetti-fall {
+  0%   { transform: translateY(-10px) rotate(0deg);   opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+@keyframes confetti-fall-2 {
+  0%   { transform: translateY(-10px) rotate(0deg) translateX(0);    opacity: 1; }
+  100% { transform: translateY(100vh) rotate(-540deg) translateX(40px); opacity: 0; }
+}
+.confetti-piece {
+  position: fixed;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: confetti-fall linear forwards;
+}
+.confetti-piece:nth-child(even) {
+  border-radius: 50%;
+  animation-name: confetti-fall-2;
+}
+
+/* ── Flash de pontos ── */
+@keyframes pts-drop {
+  0%   { transform: scale(1.4); color: #FF6B00; }
+  100% { transform: scale(1);   }
+}
+.animate-pts-drop {
+  animation: pts-drop 0.4s ease-out;
+}
+
+/* ── Pista revelada ── */
+@keyframes revealCard {
+  0%   { transform: translateY(6px); opacity: 0; }
+  100% { transform: translateY(0);   opacity: 1; }
+}
+.animate-reveal {
+  animation: revealCard 0.25s ease-out;
+}
+
+/* ── Shake no erro ── */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+.animate-shake {
+  animation: shake 0.35s ease-out;
 }

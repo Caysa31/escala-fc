@@ -8,6 +8,7 @@ import { getResultadoRodada } from '@/lib/perfil'
 import { getContratosAtivos, calcularBonusMaximo } from '@/lib/contrato'
 import { getPosicaoRanking, salvarTokenNotificacao } from '@/lib/supabase'
 import { Flame, Trophy, Zap, Share2, X, ChevronRight, Medal, Bell } from 'lucide-react'
+import Image from 'next/image'
 import {
   suportaNotificacoes, notificacoesAtivas,
   pedirPermissaoNotificacoes, statusPermissao,
@@ -74,12 +75,12 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
   const totalDesafios = jogadoresDoDia.length
   const pct = totalDesafios > 0 ? acertos / totalDesafios : 0
   const config = pct === 1
-    ? { emoji: '🏆', titulo: 'Perfeito! Craque absoluto!', subtitulo: `Acertou os ${totalDesafios} desafios de hoje.`, cor: 'text-[#FFD23F]', bg: 'bg-[#0F1D30] border border-[#FFD23F]/30' }
+    ? { asset: '/assets/trophy.png', titulo: 'Perfeito! Craque absoluto!', subtitulo: `Acertou os ${totalDesafios} desafios de hoje.`, cor: 'text-[#FFD23F]', bg: 'bg-[#080D18] border border-[#FFD23F]/30', glow: 'rgba(255,210,63,0.15)' }
     : pct >= 0.6
-      ? { emoji: '🎯', titulo: 'Muito bem! Quase perfeito!', subtitulo: `${acertos} de ${totalDesafios} acertos. Amanhã vai de ${totalDesafios}!`, cor: 'text-[#00C853]', bg: 'bg-[#071A0F] border border-[#00C853]/30' }
+      ? { asset: '/assets/medal-gold.png', titulo: 'Muito bem! Quase perfeito!', subtitulo: `${acertos} de ${totalDesafios} acertos. Amanhã vai de ${totalDesafios}!`, cor: 'text-[#FFD23F]', bg: 'bg-[#080D18] border border-[#FFD23F]/20', glow: 'rgba(255,210,63,0.1)' }
       : pct >= 0.2
-        ? { emoji: '⚽', titulo: `Boa! ${acertos} acerto${acertos !== 1 ? 's' : ''} hoje!`, subtitulo: 'Difícil, mas você jogou. Amanhã vai mais fundo!', cor: 'text-[#8AB4CC]', bg: 'bg-[#0F1D30] border border-[#2A5275]' }
-        : { emoji: '💪', titulo: 'Hoje não foi — mas você jogou!', subtitulo: 'Amanhã são outros jogadores. Você sabe mais do que pensa.', cor: 'text-[#8AB4CC]', bg: 'bg-[#0F1D30] border border-[#1A3A5C]' }
+        ? { asset: '/assets/medal-silver.png', titulo: `Boa! ${acertos} acerto${acertos !== 1 ? 's' : ''} hoje!`, subtitulo: 'Difícil, mas você jogou. Amanhã vai mais fundo!', cor: 'text-[#A0BDD0]', bg: 'bg-[#080D18] border border-[#2A3A50]', glow: 'rgba(160,189,208,0.08)' }
+        : { asset: '/assets/medal-bronze.png', titulo: 'Hoje não foi — mas você jogou!', subtitulo: 'Amanhã são outros jogadores. Você sabe mais do que pensa.', cor: 'text-[#A07060]', bg: 'bg-[#080D18] border border-[#2A2A1A]', glow: 'rgba(180,120,80,0.08)' }
 
   function gerarTextoCompartilhar() {
     const linhas = resultados.map(({ jogador, resultado }) => {
@@ -115,10 +116,19 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
         <div className="px-5 pb-6 space-y-5">
 
           {/* ── HERO ─────────────────────────────────────── */}
-          <div className={`rounded-2xl border p-5 text-center space-y-2 ${config.bg}`}>
-            <p className="text-5xl">{config.emoji}</p>
+          <div className={`rounded-2xl border p-5 text-center space-y-2 ${config.bg}`} style={{ boxShadow: `0 0 40px ${config.glow}` }}>
+            <div className="flex justify-center">
+              <Image
+                src={config.asset}
+                alt="resultado"
+                width={100}
+                height={100}
+                className="object-contain"
+                style={{ filter: `drop-shadow(0 4px 24px ${config.glow})` }}
+              />
+            </div>
             <p className={`text-xl font-black ${config.cor}`}>{config.titulo}</p>
-            <p className="text-[#8AB4CC] text-sm">{config.subtitulo}</p>
+            <p className="text-[#5A8AAA] text-sm">{config.subtitulo}</p>
           </div>
 
           {/* ── PRÓXIMO DIA + RANKING ────────────────────── */}
