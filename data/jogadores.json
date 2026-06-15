@@ -2745,8 +2745,8 @@
     "posicao": "Centroavante",
     "nacionalidade": "Polonês",
     "bandeira": "🇵🇱",
-    "clube": "Barcelona",
-    "liga": "La Liga",
+    "clube": "Al-Hilal",
+    "liga": "Saudi Pro League",
     "dificuldade": "medio",
     "titulos": [
       "Bundesliga",
@@ -2758,12 +2758,12 @@
     "apiFootballTeamId": 529,
     "apiFootballLeagueId": 140,
     "estadoClube": null,
-    "clubeAnterior": "Bayern Munich",
+    "clubeAnterior": "Barcelona",
     "origemAnterior": "exterior",
-    "ligaAnterior": "Bundesliga",
+    "ligaAnterior": "La Liga",
     "pista2": "Centroavante polaco completo — gol nos dois pés e de cabeça.",
     "pista3": "Natural de Varsóvia, na Polônia, cresceu no Legia Varsóvia antes de ir ao Borussia Dortmund.",
-    "pista4": "Antes do clube atual, jogou no Bayern Munich, na Bundesliga."
+    "pista4": "Antes do clube atual, jogou no Barcelona, na La Liga."
   },
   {
     "id": 111,
