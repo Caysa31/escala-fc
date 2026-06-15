@@ -19,7 +19,7 @@ const SLIDES = [
     emoji: '🏆',
     titulo: 'Acerte cedo, ganhe mais',
     desc: 'Acertar na pista 1 vale 120 pts. Na pista 4 já vale só 20 pts.',
-    detalhe: 'Há 3 desafios por dia. Volte amanhã para mais.',
+    detalhe: 'Há 5 desafios por dia. Volte amanhã para mais.',
   },
 ]
 

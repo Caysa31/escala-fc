@@ -118,6 +118,18 @@ function LetrasNome({ codificado, isAtivo, modeColor }: { codificado: string; is
   )
 }
 
+// Corta o texto na última frase/cláusula completa antes de maxChars
+// Evita corte no meio de palavras ou sentenças (o ". " e ", " são pontos de quebra naturais)
+function truncarTexto(texto: string, maxChars = 200): string {
+  if (texto.length <= maxChars) return texto
+  const sub = texto.slice(0, maxChars)
+  const pontos = [sub.lastIndexOf('. '), sub.lastIndexOf('! '), sub.lastIndexOf('? '), sub.lastIndexOf(' — '), sub.lastIndexOf(', ')]
+  const melhor = Math.max(...pontos)
+  if (melhor > maxChars * 0.4) return texto.slice(0, melhor + 1).trim()
+  const ultimoEspaco = sub.lastIndexOf(' ')
+  return texto.slice(0, ultimoEspaco > 0 ? ultimoEspaco : maxChars).trim() + '.'
+}
+
 const LABELS_PISTAS = ['O Nome', 'O Dom', 'A Raiz', 'A Jornada', 'Time + Nome']
 
 export default function Pista({
@@ -214,15 +226,16 @@ export default function Pista({
               )}
               {renderer !== 1 && renderer !== 5 && (
                 <p
-                  className="text-sm leading-snug font-medium overflow-hidden"
+                  className="text-sm leading-snug font-medium"
                   style={{
                     color: isVerde ? `${modeColor}CC` : isVermelho ? '#fca5a5' : '#A8C5D8',
                     display: '-webkit-box',
-                    WebkitLineClamp: 2,
+                    WebkitLineClamp: 3,
                     WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden',
                   }}
                 >
-                  {texto}
+                  {truncarTexto(texto)}
                 </p>
               )}
             </div>
