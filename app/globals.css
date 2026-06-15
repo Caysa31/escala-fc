@@ -9,10 +9,14 @@
 body {
   background-color: #030810;
   background-image:
-    linear-gradient(rgba(3, 8, 16, 0.82), rgba(3, 8, 16, 0.82)),
+    linear-gradient(
+      rgba(3, 8, 16, 0.90) 0%,
+      rgba(3, 8, 16, 0.78) 45%,
+      rgba(3, 8, 16, 0.60) 100%
+    ),
     url('/assets/estadio-bg.jpg');
   background-size: cover;
-  background-position: center center;
+  background-position: center 65%;
   background-attachment: scroll;
   background-repeat: no-repeat;
 
