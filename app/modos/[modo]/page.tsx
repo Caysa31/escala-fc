@@ -81,7 +81,7 @@ export default function ModoPage() {
 
   if (!carregado) {
     return (
-      <div className="min-h-screen bg-[#0A1626] flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-[#8AB4CC] animate-pulse text-lg">⚽ Carregando...</div>
       </div>
     )
@@ -100,7 +100,7 @@ export default function ModoPage() {
     : null
 
   return (<>
-    <main className="min-h-screen bg-[#0A1626] text-white">
+    <main className="min-h-screen text-white">
       <div className="max-w-md mx-auto px-4 pt-5 pb-10 space-y-4">
 
         {/* Header */}

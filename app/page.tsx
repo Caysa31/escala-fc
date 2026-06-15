@@ -83,7 +83,7 @@ export default function Home() {
 
   if (!carregado) {
     return (
-      <div className="min-h-screen bg-[#0A1626] flex flex-col items-center justify-center gap-3">
+      <div className="min-h-screen flex flex-col items-center justify-center gap-3">
         <div className="text-4xl animate-bounce">🐍</div>
         <div className="text-[#00C853] font-black text-xl tracking-widest">COBRA DA BOLA</div>
         <div className="text-[#1A3A5C] text-xs animate-pulse">carregando...</div>
@@ -123,7 +123,7 @@ export default function Home() {
   }).length
 
   return (
-    <main className="min-h-screen bg-[#0A1626] text-white">
+    <main className="min-h-screen text-white">
 
       {/* ── CONTEÚDO PRINCIPAL ─────────────────────────────── */}
       <div className="max-w-md mx-auto px-4 pt-3 pb-28 space-y-3">

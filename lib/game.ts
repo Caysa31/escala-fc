@@ -86,7 +86,7 @@ export function getIntroNarrativa(jogador: Jogador, mode: GameMode = 'bola'): st
     // Mapeamento de adjetivo de nacionalidade → nome do país
     const adjetivoParaPais: Record<string, string> = {
       'Alemão': 'Alemanha', 'Argentino': 'Argentina', 'Australiano': 'Austrália',
-      'Belga': 'Bélgica', 'Boliviano': 'Bolívia', 'Brasileiro': 'Brasil',
+      'Belga': 'Bélgica', 'Boliviano': 'Bolívia', 'Bósnio': 'Bósnia', 'Brasileiro': 'Brasil',
       'Camaronês': 'Camarões', 'Canadense': 'Canadá', 'Chileno': 'Chile',
       'Colombiano': 'Colômbia', 'Congolês': 'Congo', 'Croata': 'Croácia',
       'Dinamarquês': 'Dinamarca', 'Egípcio': 'Egito', 'Equatoriano': 'Equador',

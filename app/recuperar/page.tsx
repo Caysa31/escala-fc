@@ -27,7 +27,7 @@ export default function RecuperarPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0A1626] flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-sm space-y-6">
 
         <div className="text-center">

@@ -21,7 +21,7 @@ function DesafioConteudo({ rodadaId }: { rodadaId: number }) {
 
   if (!jogador) {
     return (
-      <main className="min-h-screen bg-[#0A1626] text-white flex items-center justify-center px-4">
+      <main className="min-h-screen text-white flex items-center justify-center px-4">
         <div className="text-center space-y-3">
           <p className="text-4xl">🐍</p>
           <p className="text-white font-bold">Desafio não encontrado</p>
@@ -39,7 +39,7 @@ function DesafioConteudo({ rodadaId }: { rodadaId: number }) {
   const pistaLabel = pistaAcerto === 0 ? 'pelo histórico' : pistaAcerto ? `na pista ${pistaAcerto}` : null
 
   return (
-    <main className="min-h-screen bg-[#0A1626] text-white flex items-center justify-center px-4 py-8">
+    <main className="min-h-screen text-white flex items-center justify-center px-4 py-8">
       <div className="w-full max-w-sm space-y-4">
 
         {/* Header COBRA */}
@@ -115,7 +115,7 @@ export default function DesafioPage({ params }: { params: Promise<{ rodadaId: st
 
   return (
     <Suspense fallback={
-      <main className="min-h-screen bg-[#0A1626] flex items-center justify-center">
+      <main className="min-h-screen flex items-center justify-center">
         <div className="text-[#00C853] font-black text-xl animate-pulse">🐍 COBRA</div>
       </main>
     }>

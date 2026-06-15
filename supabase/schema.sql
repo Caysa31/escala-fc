@@ -86,12 +86,21 @@ CREATE INDEX IF NOT EXISTS idx_streaks_pontos ON streaks(pontos_total DESC);
 
 -- ── Ranking global (view) ─────────────────────────────────────
 -- Ranking da semana atual
+-- Fonte: tabela resultados (desafio diário apenas — modos não gravam aqui)
+--        + bônus de contratos resolvidos nesta semana
 CREATE OR REPLACE VIEW ranking_semanal AS
 SELECT
   u.id,
   u.apelido,
   s.streak_atual,
-  COALESCE(SUM(r.pontos), 0) AS pontos_semana,
+  COALESCE(SUM(r.pontos), 0)
+    + COALESCE((
+        SELECT SUM(c.bonus_total)
+        FROM contratos c
+        WHERE c.usuario_id = u.id
+          AND c.status IN ('resolvido', 'trivia_resolvida')
+          AND DATE_TRUNC('week', c.resolvido_em) = DATE_TRUNC('week', NOW())
+      ), 0) AS pontos_semana,
   COUNT(r.id) AS jogos_semana
 FROM usuarios u
 JOIN streaks s ON s.usuario_id = u.id
@@ -101,13 +110,23 @@ GROUP BY u.id, u.apelido, s.streak_atual
 ORDER BY pontos_semana DESC;
 
 -- Ranking geral (all time)
+-- Fonte: tabela resultados (desafio diário) + contratos resolvidos
+-- NÃO usa streaks.pontos_total para evitar dessincronia com o ranking semanal.
+-- Modos extras não gravam em resultados, portanto não entram no ranking.
 CREATE OR REPLACE VIEW ranking_geral AS
 SELECT
   u.id,
   u.apelido,
   s.streak_atual,
   s.streak_maximo,
-  s.pontos_total,
+  COALESCE((
+    SELECT SUM(r.pontos) FROM resultados r WHERE r.usuario_id = u.id
+  ), 0)
+  + COALESCE((
+    SELECT SUM(c.bonus_total) FROM contratos c
+    WHERE c.usuario_id = u.id
+      AND c.status IN ('resolvido', 'trivia_resolvida')
+  ), 0) AS pontos_total,
   s.rodadas_jogadas,
   s.rodadas_acertadas,
   CASE WHEN s.rodadas_jogadas > 0
@@ -116,7 +135,7 @@ SELECT
   END AS taxa_acerto
 FROM usuarios u
 JOIN streaks s ON s.usuario_id = u.id
-ORDER BY s.pontos_total DESC;
+ORDER BY pontos_total DESC;
 
 -- ── Row Level Security (RLS) ──────────────────────────────────
 ALTER TABLE usuarios       ENABLE ROW LEVEL SECURITY;

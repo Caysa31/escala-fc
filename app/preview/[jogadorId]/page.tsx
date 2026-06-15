@@ -41,7 +41,7 @@ export default function PreviewPage() {
 
   if (!carregado) {
     return (
-      <div className="min-h-screen bg-[#0A1626] flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <p className="text-[#FFD23F] font-black text-xl animate-pulse">⚽ COBRA DA COPA</p>
       </div>
     )
@@ -49,7 +49,7 @@ export default function PreviewPage() {
 
   if (!jogador) {
     return (
-      <div className="min-h-screen bg-[#0A1626] flex items-center justify-center text-white px-4 text-center">
+      <div className="min-h-screen flex items-center justify-center text-white px-4 text-center">
         <div>
           <p className="text-4xl mb-3">⚠️</p>
           <p className="font-bold">Jogador não encontrado (ID {jogadorId})</p>
@@ -61,7 +61,7 @@ export default function PreviewPage() {
   if (!perfil) return <TelaPerfil onCriar={p => setPerfil(p)} />
 
   return (
-    <main className="min-h-screen bg-[#0A1626] text-white">
+    <main className="min-h-screen text-white">
       <div className="max-w-md mx-auto px-4 pt-4 pb-10 space-y-3">
 
         {/* Banner modo preview */}
@@ -87,6 +87,7 @@ export default function PreviewPage() {
           jogador={jogador}
           rodadaId={rodadaId}
           perfil={perfil}
+          mode="copa"
           indiceDesafio={0}
           temBottomNav={false}
           totalPistasMax={4}

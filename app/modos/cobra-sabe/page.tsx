@@ -54,7 +54,7 @@ export default function CobraSabePage() {
 
   if (!perguntaAtual && estado !== 'fim') {
     return (
-      <div className="min-h-screen bg-[#0A1626] flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-[#8AB4CC] animate-pulse">Carregando...</div>
       </div>
     )
@@ -66,7 +66,7 @@ export default function CobraSabePage() {
     const cor = acertos >= 7 ? 'text-[#00C853]' : acertos >= 5 ? 'text-[#FFD23F]' : 'text-red-400'
 
     return (
-      <div className="min-h-screen bg-[#0A1626] text-white flex flex-col items-center justify-center px-6 pb-28">
+      <div className="min-h-screen text-white flex flex-col items-center justify-center px-6 pb-28">
         <div className="w-full max-w-sm space-y-6 text-center">
           <div className="text-7xl">{acertos >= 7 ? '🏆' : acertos >= 5 ? '🎯' : '📚'}</div>
 
@@ -108,7 +108,7 @@ export default function CobraSabePage() {
   const progresso = ((idx) / TOTAL_PERGUNTAS) * 100
 
   return (
-    <main className="min-h-screen bg-[#0A1626] text-white">
+    <main className="min-h-screen text-white">
       <div className="max-w-md mx-auto px-4 pt-5 pb-28 space-y-4">
 
         {/* Header */}

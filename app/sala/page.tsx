@@ -63,7 +63,7 @@ export default function SalaPage() {
   if (ligaId) {
     const url = `${typeof window !== 'undefined' ? window.location.origin : ''}/sala/${ligaId}`
     return (
-      <main className="min-h-screen bg-[#0A1626] text-white">
+      <main className="min-h-screen text-white">
         <div className="max-w-md mx-auto px-4 pt-5 pb-28 space-y-4">
           <div className="flex items-center gap-3">
             <button onClick={() => setLigaId(null)} className="p-2 rounded-xl bg-[#0F1D30] border border-[#1A3A5C] shrink-0">
@@ -120,7 +120,7 @@ export default function SalaPage() {
 
   // ── Tela inicial ─────────────────────────────────────────────
   return (
-    <main className="min-h-screen bg-[#0A1626] text-white">
+    <main className="min-h-screen text-white">
       <div className="max-w-md mx-auto px-4 pt-5 pb-28 space-y-4">
 
         <div className="flex items-center gap-3">

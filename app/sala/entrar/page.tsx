@@ -34,7 +34,7 @@ export default function EntrarSalaPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#0A1626] text-white">
+    <main className="min-h-screen text-white">
       <div className="max-w-md mx-auto px-4 pt-5 space-y-5">
 
         <div className="flex items-center gap-3">

@@ -44,3 +44,5 @@ next-env.d.ts
 *.keystore
 *.jks
 *.b64
+
+.vercel

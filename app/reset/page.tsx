@@ -15,7 +15,7 @@ export default function ResetPage() {
 
   if (confirmado) {
     return (
-      <div className="min-h-screen bg-[#0A1626] flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center space-y-2">
           <p className="text-3xl animate-pulse">🐍</p>
           <p className="text-[#8AB4CC] animate-pulse text-lg">Reiniciando...</p>
@@ -25,7 +25,7 @@ export default function ResetPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0A1626] flex items-center justify-center px-4">
+    <div className="min-h-screen flex items-center justify-center px-4">
       <div className="w-full max-w-sm bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-6 space-y-5 text-center">
         <p className="text-4xl">⚠️</p>
         <div>

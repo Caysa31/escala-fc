@@ -73,7 +73,7 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
   const modeConfig = getModeConfig(getModeAtual())
 
   return (
-    <div className="min-h-screen bg-[#0A1626] flex flex-col items-center justify-center px-5 py-8">
+    <div className="min-h-screen flex flex-col items-center justify-center px-5 py-8">
       <div className="w-full max-w-sm space-y-5">
 
         {/* Logo */}

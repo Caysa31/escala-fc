@@ -86,7 +86,7 @@ export default function GruposPage() {
   // ── Ranking do grupo ──────────────────────────────────────────────
   if (tela === 'ranking' && grupoAtivo) {
     return (
-      <main className="min-h-screen bg-[#0A1626] text-white">
+      <main className="min-h-screen text-white">
         <div className="max-w-md mx-auto px-4 pt-5 pb-28 space-y-4">
           {headerBack(() => setTela('lista'), grupoAtivo.nome, 'Ranking da semana')}
 
@@ -139,7 +139,7 @@ export default function GruposPage() {
   // ── Criar grupo ───────────────────────────────────────────────────
   if (tela === 'criar') {
     return (
-      <main className="min-h-screen bg-[#0A1626] text-white">
+      <main className="min-h-screen text-white">
         <div className="max-w-md mx-auto px-4 pt-5 pb-28 space-y-4">
           {headerBack(() => { setTela('lista'); setErro('') }, 'Criar grupo')}
           <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-5 space-y-4">
@@ -165,7 +165,7 @@ export default function GruposPage() {
   // ── Entrar em grupo ───────────────────────────────────────────────
   if (tela === 'entrar') {
     return (
-      <main className="min-h-screen bg-[#0A1626] text-white">
+      <main className="min-h-screen text-white">
         <div className="max-w-md mx-auto px-4 pt-5 pb-28 space-y-4">
           {headerBack(() => { setTela('lista'); setErro('') }, 'Entrar em grupo')}
           <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-xl p-5 space-y-4">
@@ -190,7 +190,7 @@ export default function GruposPage() {
 
   // ── Lista de grupos ───────────────────────────────────────────────
   return (
-    <main className="min-h-screen bg-[#0A1626] text-white">
+    <main className="min-h-screen text-white">
       <div className="max-w-md mx-auto px-4 pt-5 pb-28 space-y-4">
 
         <header className="flex items-center gap-3">

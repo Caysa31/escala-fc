@@ -11,7 +11,7 @@ export default function ModosPage() {
   const bonusAmanha = getBonusAmanha()
 
   return (
-    <main className="min-h-screen bg-[#0A1626] text-white">
+    <main className="min-h-screen text-white">
       <div className="max-w-md mx-auto px-4 pt-5 pb-28 space-y-4">
 
         {/* Header */}

@@ -107,7 +107,7 @@ export default function LigaPage() {
 
   if (!carregado) {
     return (
-      <div className="min-h-screen bg-[#0A1626] flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <p className="text-[#8AB4CC] animate-pulse">Carregando liga...</p>
       </div>
     )
@@ -117,7 +117,7 @@ export default function LigaPage() {
 
   if (erro) {
     return (
-      <main className="min-h-screen bg-[#0A1626] text-white flex items-center justify-center px-4">
+      <main className="min-h-screen text-white flex items-center justify-center px-4">
         <div className="text-center space-y-4">
           <p className="text-4xl">⚠️</p>
           <p className="text-white font-bold">{erro}</p>
@@ -141,7 +141,7 @@ export default function LigaPage() {
     )
 
     return (
-      <main className="min-h-screen bg-[#0A1626] text-white">
+      <main className="min-h-screen text-white">
         <div className="max-w-md mx-auto px-4 pt-5 pb-28 space-y-4">
           <div className="flex items-center gap-3">
             <button onClick={() => setTela('dashboard')}
@@ -193,7 +193,7 @@ export default function LigaPage() {
   // ── TELA 1: LOBBY (ainda não é membro) ───────────────────────
   if (tela === 'lobby') {
     return (
-      <main className="min-h-screen bg-[#0A1626] text-white">
+      <main className="min-h-screen text-white">
         <div className="max-w-md mx-auto px-4 pt-5 pb-28 space-y-5">
 
           {/* Header */}
@@ -281,7 +281,7 @@ export default function LigaPage() {
 
   // ── TELA 2: DASHBOARD (já é membro) ──────────────────────────
   return (
-    <main className="min-h-screen bg-[#0A1626] text-white">
+    <main className="min-h-screen text-white">
       <div className="max-w-md mx-auto px-4 pt-5 pb-28 space-y-4">
 
         {/* Header */}
