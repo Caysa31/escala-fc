@@ -120,6 +120,12 @@ export default function JogoDesafio({
   const [mostrarResultado, setMostrarResultado] = useState(false)
   const [inputMontado, setInputMontado] = useState(false)
   const [shakePistas, setShakePistas] = useState(false)
+
+  // Timer de velocidade — bônus de até +30 pts que decai em 90 segundos
+  const TIMER_DURACAO = 90
+  const BONUS_MAX = 30
+  const [segundosRestantes, setSegundosRestantes] = useState(TIMER_DURACAO)
+  const [timerAtivo, setTimerAtivo] = useState(false)
   const currentPistaRef = useRef<HTMLDivElement>(null)
   const [keyboardH, setKeyboardH] = useState(0)
 
@@ -186,11 +192,30 @@ export default function JogoDesafio({
     }
     setMostrarContrato(false)
     setMostrarResultado(false)
+    setSegundosRestantes(TIMER_DURACAO)
+    setTimerAtivo(false)
 
     // 3. Monta o input depois que a tela já está no topo
     const timer = setTimeout(() => setInputMontado(true), 400)
     return () => clearTimeout(timer)
   }, [rodadaId]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Inicia timer quando primeira pista é revelada; para quando jogo termina
+  useEffect(() => {
+    if (estado.pistaAtual >= 1 && estado.status === 'jogando' && !timerAtivo) {
+      setTimerAtivo(true)
+    }
+    if (estado.status !== 'jogando') {
+      setTimerAtivo(false)
+    }
+  }, [estado.pistaAtual, estado.status]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Countdown — decrementa 1 segundo por tick
+  useEffect(() => {
+    if (!timerAtivo || segundosRestantes <= 0) return
+    const id = setInterval(() => setSegundosRestantes(s => Math.max(0, s - 1)), 1000)
+    return () => clearInterval(id)
+  }, [timerAtivo, segundosRestantes])
 
   // Avança para a próxima pista sem digitar nome (custa uma tentativa)
   function handleDestravar() {
@@ -227,9 +252,11 @@ export default function JogoDesafio({
     if (acertou) {
       vibrar(300)
       dispararConfetti()
+      setTimerAtivo(false)
       const pontosBrutos = calcularPontos(pistaEfetiva)
+      const bonusTempo = timerAtivo ? Math.floor(BONUS_MAX * Math.max(0, segundosRestantes) / TIMER_DURACAO) : 0
       // Aplica multiplicador de treino apenas no desafio diário
-      const pontos = Math.round(pontosBrutos * multiplicador)
+      const pontos = Math.round((pontosBrutos + bonusTempo) * multiplicador)
       const novoEstado: EstadoJogo = {
         ...estado,
         tentativas: novasTentativas,
@@ -305,7 +332,10 @@ export default function JogoDesafio({
   // pistaAtual=0 → histórico vale 120, pista 1 em diante segue PONTOS_BASE
   const pistaValor = estado.pistaAtual  // 0 = histórico, 1-5 = pistas
   const pontosBrutosDisplay = PONTOS_BASE[pistaValor] ?? 20
-  const pontosDisplay = Math.round(pontosBrutosDisplay * multiplicador)
+  const bonusTempoDisplay = timerAtivo && segundosRestantes > 0
+    ? Math.floor(BONUS_MAX * segundosRestantes / TIMER_DURACAO)
+    : 0
+  const pontosDisplay = Math.round((pontosBrutosDisplay + bonusTempoDisplay) * multiplicador)
 
   // Cor muda conforme os pontos caem (cria urgência visual) — sempre dourado até cair para vermelho
   const corPts = (() => {
@@ -541,6 +571,20 @@ export default function JogoDesafio({
                 <span className="text-xs font-bold" style={{ color: `${modeColor}80` }}>pts</span>
               </div>
             </div>
+            {/* Barra de timer de velocidade */}
+            {timerAtivo && (
+              <div className="w-full h-1 rounded-full mb-2.5 overflow-hidden" style={{ background: 'rgba(255,255,255,0.06)' }}>
+                <div
+                  className="h-full rounded-full"
+                  style={{
+                    width: `${(segundosRestantes / TIMER_DURACAO) * 100}%`,
+                    background: segundosRestantes > 45 ? '#00C853' : segundosRestantes > 20 ? '#FFD23F' : '#ef4444',
+                    transition: 'width 1s linear, background 0.5s',
+                  }}
+                />
+              </div>
+            )}
+
             {/* Opção de pular — acima do input para ficar visível mesmo com teclado aberto */}
             {estado.pistaAtual >= 1 && (
               <div className="mb-2">
