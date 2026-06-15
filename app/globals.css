@@ -8,29 +8,9 @@
 
 body {
   background-color: #060B14;
-  background-image: url('/assets/stadium-bg.jpg');
-  background-size: cover;
-  background-position: center top;
-  background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   -webkit-tap-highlight-color: transparent;
-}
-
-/* Overlay escuro sobre o fundo de estádio */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: rgba(4, 9, 20, 0.88);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Garante que todo conteúdo fica acima do overlay */
-body > * {
-  position: relative;
-  z-index: 1;
 }
 
 /* Remove outline padrão em mobile */
