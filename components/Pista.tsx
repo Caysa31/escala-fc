@@ -143,24 +143,32 @@ export default function Pista({
   const isVermelho = errou && !isVerde
   const meta = getPistaMeta(numero, renderAs)
 
-  // Estado visual do card
+  // Estado visual do card — rgba para o fundo de campo aparecer
   const cardStyle = (() => {
     if (!revelada) return {
-      background: '#080D18',
-      border: '1.5px solid #1A2A40',
+      background: 'rgba(8,13,24,0.78)',
+      border: '1.5px solid rgba(26,42,64,0.9)',
+      backdropFilter: 'blur(6px)',
+      WebkitBackdropFilter: 'blur(6px)',
     }
     if (isVermelho) return {
-      background: 'rgba(127,29,29,0.25)',
+      background: 'rgba(127,29,29,0.55)',
       border: '1.5px solid rgba(239,68,68,0.4)',
+      backdropFilter: 'blur(6px)',
+      WebkitBackdropFilter: 'blur(6px)',
     }
     if (isVerde) return {
-      background: `${modeColor}0A`,
+      background: `${modeColor}12`,
       border: `1.5px solid ${modeColor}50`,
       boxShadow: `0 0 20px ${modeColor}15`,
+      backdropFilter: 'blur(6px)',
+      WebkitBackdropFilter: 'blur(6px)',
     }
     return {
-      background: '#0A1220',
+      background: 'rgba(10,18,32,0.75)',
       border: `1.5px solid ${meta.cor}30`,
+      backdropFilter: 'blur(6px)',
+      WebkitBackdropFilter: 'blur(6px)',
     }
   })()
 

@@ -388,7 +388,7 @@ export default function JogoDesafio({
       )}
 
       {/* Intro narrativa */}
-      <div className="rounded-xl px-4 py-3" style={{ background: '#080D18', border: '1px solid #1A2A40' }}>
+      <div className="rounded-xl px-4 py-3" style={{ background: 'rgba(8,13,24,0.75)', border: '1px solid rgba(26,42,64,0.8)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)' }}>
         <p className="text-[10px] uppercase font-black tracking-widest mb-1.5" style={{ color: `${modeColor}80` }}>
           ⚡ Jogador do dia
         </p>
@@ -513,7 +513,9 @@ export default function JogoDesafio({
         <div
           className="fixed left-0 right-0 z-50 px-4 pt-3"
           style={{
-            background: 'rgba(5, 8, 18, 0.96)',
+            background: 'rgba(5, 8, 18, 0.88)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
             borderTop: `1px solid ${modeColor}20`,
             backdropFilter: 'blur(12px)',
             bottom: keyboardH > 50
