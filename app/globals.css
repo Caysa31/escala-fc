@@ -7,6 +7,17 @@
 }
 
 body {
+  background-color: transparent;
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Fundo de estádio fixo — fica no viewport independente do scroll */
+.estadio-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
   background-color: #030810;
   background-image:
     linear-gradient(
@@ -16,13 +27,8 @@ body {
     ),
     url('/assets/estadio-bg.jpg');
   background-size: cover;
-  background-position: center 90%;
-  background-attachment: scroll;
+  background-position: center 65%;
   background-repeat: no-repeat;
-
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
-  -webkit-tap-highlight-color: transparent;
 }
 
 /* Remove outline padrão em mobile */
@@ -32,6 +38,7 @@ body {
 
 /* Scroll suave */
 html {
+  background-color: #030810;
   scroll-behavior: smooth;
 }
 
