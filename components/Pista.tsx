@@ -148,28 +148,20 @@ export default function Pista({
     if (!revelada) return {
       background: 'rgba(8,13,24,0.78)',
       border: '1.5px solid rgba(26,42,64,0.9)',
-      backdropFilter: 'blur(6px)',
-      WebkitBackdropFilter: 'blur(6px)',
-    }
+          }
     if (isVermelho) return {
       background: 'rgba(127,29,29,0.55)',
       border: '1.5px solid rgba(239,68,68,0.4)',
-      backdropFilter: 'blur(6px)',
-      WebkitBackdropFilter: 'blur(6px)',
-    }
+          }
     if (isVerde) return {
       background: `${modeColor}12`,
       border: `1.5px solid ${modeColor}50`,
       boxShadow: `0 0 20px ${modeColor}15`,
-      backdropFilter: 'blur(6px)',
-      WebkitBackdropFilter: 'blur(6px)',
-    }
+          }
     return {
       background: 'rgba(10,18,32,0.75)',
       border: `1.5px solid ${meta.cor}30`,
-      backdropFilter: 'blur(6px)',
-      WebkitBackdropFilter: 'blur(6px)',
-    }
+          }
   })()
 
   const barColor = isVermelho ? '#ef4444' : isVerde ? modeColor : revelada ? meta.cor : '#1E3050'
@@ -180,7 +172,7 @@ export default function Pista({
 
   return (
     <div
-      className={`rounded-2xl overflow-hidden transition-all duration-300 ${clicavel ? 'cursor-pointer active:scale-[0.98] hover:brightness-110' : ''} ${revelada ? 'animate-reveal' : ''}`}
+      className={`card-glass rounded-2xl overflow-hidden transition-all duration-300 ${clicavel ? 'cursor-pointer active:scale-[0.98] hover:brightness-110' : ''} ${revelada ? 'animate-reveal' : ''}`}
       style={cardStyle}
       onClick={clicavel ? onRevelar : undefined}
     >

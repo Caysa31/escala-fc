@@ -45,6 +45,16 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Glassmorphism — backdrop blur cross-browser */
+.card-glass {
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.input-glass {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
 /* Animação de acerto — aparece com pop rápido */
 @keyframes pop {
   0%   { transform: scale(0.85); opacity: 0 }
