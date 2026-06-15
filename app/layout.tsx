@@ -28,9 +28,6 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
-        {/* Fundo de estádio — div fixo funciona no iOS onde background-attachment:fixed falha */}
-        <div style={{ position: 'fixed', inset: 0, zIndex: -2, backgroundImage: "url('/assets/stadium-bg.jpg')", backgroundSize: 'cover', backgroundPosition: 'center top' }} aria-hidden="true" />
-        <div style={{ position: 'fixed', inset: 0, zIndex: -1, background: 'rgba(4, 9, 20, 0.72)' }} aria-hidden="true" />
         {children}
       </body>
     </html>

@@ -7,7 +7,32 @@
 }
 
 body {
-  background-color: #060B14;
+  /* ── Fundo campo de futebol — 100% CSS, sem imagem, sem z-index ── */
+  background-color: #04080F;
+
+  /* Camadas (de baixo para cima):
+     1. Listras horizontais de gramado
+     2. Glow verde da grama iluminada
+     3. Círculo central sutil (meio-campo)
+     4. Raios de refletor nos cantos superiores                     */
+  background-image:
+    /* Refletores de estádio — cantos superiores */
+    radial-gradient(ellipse 55% 45% at 0% 0%,   rgba(255,248,200,0.055) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 45% at 100% 0%, rgba(255,248,200,0.055) 0%, transparent 55%),
+    /* Círculo do meio-campo — traço sutil */
+    radial-gradient(circle 160px at 50% 62%, transparent 148px, rgba(255,255,255,0.04) 148px, rgba(255,255,255,0.04) 152px, transparent 152px),
+    /* Grama iluminada — glow verde na base */
+    radial-gradient(ellipse 110% 38% at 50% 100%, rgba(0,140,55,0.30) 0%, transparent 75%),
+    radial-gradient(ellipse 75%  22% at 50% 105%, rgba(0,100,40,0.38) 0%, transparent 60%),
+    /* Listras horizontais de gramado (claro/escuro alternados) */
+    repeating-linear-gradient(
+      180deg,
+      rgba(0,55,22,0.00) 0px,
+      rgba(0,55,22,0.00) 52px,
+      rgba(0,55,22,0.07) 52px,
+      rgba(0,55,22,0.07) 104px
+    );
+
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   -webkit-tap-highlight-color: transparent;
