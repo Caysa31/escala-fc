@@ -343,6 +343,14 @@ export default function JogoDesafio({
               <p className="text-[#8AB4CC] text-xs font-semibold mt-1">🏋️ Bônus de treino ×{multiplicador} ativado!</p>
             )}
           </div>
+          {/* Card com dados do jogador */}
+          <div className="flex items-center gap-3 rounded-xl px-4 py-3 text-left" style={{ background: '#0A1220', border: `1px solid ${modeColor}25` }}>
+            <span className="text-3xl flex-shrink-0">{jogador.bandeira}</span>
+            <div className="min-w-0">
+              <p className="font-black text-white text-base leading-tight truncate">{jogador.apelido ?? jogador.nome}</p>
+              <p className="text-[#8AB4CC] text-xs mt-0.5">{jogador.posicao} · {jogador.clube}</p>
+            </div>
+          </div>
           {onProximoDesafio ? (
             <div className="space-y-2">
               {!modoExtra && <p className="text-[#5A8AAA] text-sm">Você ainda pode aumentar sua pontuação!</p>}
@@ -359,9 +367,14 @@ export default function JogoDesafio({
 
       {estado.status === 'perdeu' && (
         <div className="bg-red-950/30 border border-red-900/50 rounded-2xl px-5 py-5 text-center space-y-3">
-          <div>
-            <p className="text-red-400 text-sm font-semibold">Não foi dessa vez...</p>
-            <p className="text-white font-black text-2xl mt-1">{jogador.apelido ?? jogador.nome} {jogador.bandeira}</p>
+          <p className="text-red-400 text-sm font-semibold">Não foi dessa vez...</p>
+          {/* Card com dados do jogador */}
+          <div className="flex items-center gap-3 rounded-xl px-4 py-3 text-left" style={{ background: '#0A1220', border: '1px solid rgba(239,68,68,0.2)' }}>
+            <span className="text-3xl flex-shrink-0">{jogador.bandeira}</span>
+            <div className="min-w-0">
+              <p className="font-black text-white text-base leading-tight truncate">{jogador.apelido ?? jogador.nome}</p>
+              <p className="text-[#8AB4CC] text-xs mt-0.5">{jogador.posicao} · {jogador.clube}</p>
+            </div>
           </div>
           {onProximoDesafio ? (
             <div className="space-y-2">
