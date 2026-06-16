@@ -40,7 +40,7 @@ export default function TutorialOnboarding({ onConcluir, modeColor = '#00C853' }
   const s = SLIDES[slide]
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/90 backdrop-blur-sm p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4">
       <div className="w-full max-w-sm rounded-2xl overflow-hidden" style={{ background: '#080D18', border: `1px solid ${modeColor}30` }}>
 
         {/* Indicadores de slide */}

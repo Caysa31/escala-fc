@@ -101,16 +101,10 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
           <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-4 space-y-1.5">
             <p className="text-xl">🌍</p>
             <p className="text-white font-bold text-sm">Ranking Global</p>
-            <p className="text-[#8AB4CC] text-xs leading-snug">
-              Compita com jogadores do Brasil inteiro. Quem é o cobra de verdade?
-            </p>
           </div>
           <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-4 space-y-1.5">
             <p className="text-xl">⚡</p>
             <p className="text-white font-bold text-sm">Bônus de Contrato</p>
-            <p className="text-[#8AB4CC] text-xs leading-snug">
-              Acertou? O que ele fizer em campo rende pontos pra você.
-            </p>
           </div>
         </div>
 
