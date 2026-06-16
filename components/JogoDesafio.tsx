@@ -200,9 +200,10 @@ export default function JogoDesafio({
     return () => clearTimeout(timer)
   }, [rodadaId]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Inicia timer quando primeira pista é revelada; para quando jogo termina
+  // Reseta e inicia timer a cada nova pista revelada; para quando jogo termina
   useEffect(() => {
-    if (estado.pistaAtual >= 1 && estado.status === 'jogando' && !timerAtivo) {
+    if (estado.pistaAtual >= 1 && estado.status === 'jogando') {
+      setSegundosRestantes(TIMER_DURACAO) // reseta a cada nova pista
       setTimerAtivo(true)
     }
     if (estado.status !== 'jogando') {
@@ -254,9 +255,11 @@ export default function JogoDesafio({
       dispararConfetti()
       setTimerAtivo(false)
       const pontosBrutos = calcularPontos(pistaEfetiva)
-      const bonusTempo = timerAtivo ? Math.floor(BONUS_MAX * Math.max(0, segundosRestantes) / TIMER_DURACAO) : 0
+      // Desconta o decaimento acumulado até o momento do acerto
+      const decayAtual = timerAtivo ? Math.floor(BONUS_MAX * (1 - segundosRestantes / TIMER_DURACAO)) : 0
+      const pontosFinais = Math.max(pontosBrutos - BONUS_MAX, pontosBrutos - decayAtual)
       // Aplica multiplicador de treino apenas no desafio diário
-      const pontos = Math.round((pontosBrutos + bonusTempo) * multiplicador)
+      const pontos = Math.round(pontosFinais * multiplicador)
       const novoEstado: EstadoJogo = {
         ...estado,
         tentativas: novasTentativas,
@@ -332,10 +335,11 @@ export default function JogoDesafio({
   // pistaAtual=0 → histórico vale 120, pista 1 em diante segue PONTOS_BASE
   const pistaValor = estado.pistaAtual  // 0 = histórico, 1-5 = pistas
   const pontosBrutosDisplay = PONTOS_BASE[pistaValor] ?? 20
-  const bonusTempoDisplay = timerAtivo && segundosRestantes > 0
-    ? Math.floor(BONUS_MAX * segundosRestantes / TIMER_DURACAO)
+  // Decaimento: começa em 0 quando a pista é revelada, cresce até BONUS_MAX ao longo do timer
+  const decayTempo = timerAtivo
+    ? Math.floor(BONUS_MAX * (1 - segundosRestantes / TIMER_DURACAO))
     : 0
-  const pontosDisplay = Math.round((pontosBrutosDisplay + bonusTempoDisplay) * multiplicador)
+  const pontosDisplay = Math.round(Math.max(pontosBrutosDisplay - BONUS_MAX, pontosBrutosDisplay - decayTempo) * multiplicador)
 
   // Cor muda conforme os pontos caem (cria urgência visual) — sempre dourado até cair para vermelho
   const corPts = (() => {
