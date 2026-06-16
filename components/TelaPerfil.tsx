@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { Perfil } from '@/lib/types'
 import { criarPerfil, recuperarPerfilPorApelido, getResultadoRodada } from '@/lib/perfil'
 import { getModeAtual, getModeConfig } from '@/lib/gameMode'
@@ -79,12 +80,22 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
       <div className="w-full max-w-sm flex flex-col items-center">
 
         {/* Bola 3D com glow */}
-        <div className="relative mb-2" style={{ filter: `drop-shadow(0 0 48px ${accent}66) drop-shadow(0 0 16px ${accent}44)` }}>
-          <img
+        <div className="relative mb-2" style={{ width: 180, height: 180 }}>
+          <Image
             src="/assets/soccer-ball-3d.png"
             alt=""
             width={180}
             height={180}
+            priority
+            style={{
+              filter: 'brightness(0.65) contrast(2.2)',
+              mixBlendMode: 'screen',
+            }}
+          />
+          {/* Glow separado em círculo para não vazar fora da bola */}
+          <div
+            className="absolute inset-0 rounded-full pointer-events-none"
+            style={{ boxShadow: `0 0 70px 25px ${accent}33, 0 0 24px 6px ${accent}55` }}
           />
         </div>
 
