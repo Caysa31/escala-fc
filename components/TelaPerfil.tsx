@@ -79,13 +79,12 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
       <div className="w-full max-w-sm flex flex-col items-center">
 
         {/* Bola 3D com glow */}
-        <div className="relative mb-2" style={{ filter: `drop-shadow(0 0 40px ${accent}55)` }}>
+        <div className="relative mb-2" style={{ filter: `drop-shadow(0 0 48px ${accent}66) drop-shadow(0 0 16px ${accent}44)` }}>
           <img
             src="/assets/soccer-ball-3d.png"
             alt=""
             width={180}
             height={180}
-            style={{ mixBlendMode: 'screen' }}
           />
         </div>
 
