@@ -72,41 +72,36 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
 
   const modeConfig = getModeConfig(getModeAtual())
 
+  const accent = modeConfig.subtitleColor ?? '#FFD23F'
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-5 py-8">
-      <div className="w-full max-w-sm space-y-5">
+    <div className="min-h-screen flex flex-col items-center justify-center px-5 py-10">
+      <div className="w-full max-w-sm flex flex-col items-center">
 
-        {/* Logo */}
-        <div className="text-center space-y-1.5">
-          <p className="text-5xl leading-none">{modeConfig.emoji}</p>
-          <h1 className="text-4xl font-black text-white tracking-widest leading-tight">{modeConfig.name}</h1>
-          <p className="text-sm font-bold tracking-wider" style={{ color: modeConfig.subtitleColor }}>{modeConfig.tagline}</p>
-          <p className="text-[#8AB4CC] text-sm">
-            {modeConfig.description}
+        {/* Bola 3D com glow */}
+        <div className="relative mb-2" style={{ filter: `drop-shadow(0 0 40px ${accent}55)` }}>
+          <img
+            src="/assets/soccer-ball-3d.png"
+            alt=""
+            width={180}
+            height={180}
+            style={{ mixBlendMode: 'screen' }}
+          />
+        </div>
+
+        {/* Título épico */}
+        <div className="text-center mb-8 space-y-1">
+          <h1 className="text-5xl font-black text-white tracking-widest leading-none uppercase">
+            {modeConfig.name}
+          </h1>
+          <p className="text-base font-black tracking-[0.3em] uppercase" style={{ color: accent }}>
+            {modeConfig.tagline}
           </p>
+          <p className="text-[#4A6A8A] text-xs tracking-wider mt-2">{modeConfig.description}</p>
         </div>
 
-        {/* Como funciona — compacto */}
-        <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl px-5 py-4 space-y-2">
-          <p className="text-white font-bold text-xs uppercase tracking-wider mb-3">Como funciona</p>
-          <div className="space-y-1.5 text-sm text-[#8AB4CC]">
-            <p>🔒 Pistas reveladas uma por vez</p>
-            <p>⬇️ Quanto menos pistas, mais pontos</p>
-            <p>🔥 Jogue todo dia para manter sua sequência</p>
-          </div>
-        </div>
-
-        {/* Dois diferenciais */}
-        <div className="grid grid-cols-2 gap-3">
-          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-4 space-y-1.5">
-            <p className="text-xl">🌍</p>
-            <p className="text-white font-bold text-sm">Ranking Global</p>
-          </div>
-          <div className="bg-[#0F1D30] border border-[#1A3A5C] rounded-2xl p-4 space-y-1.5">
-            <p className="text-xl">⚡</p>
-            <p className="text-white font-bold text-sm">Bônus de Contrato</p>
-          </div>
-        </div>
+        {/* Formulário */}
+        <div className="w-full space-y-4">
 
         {/* ── Novo jogador ── */}
         {!modoRecuperacao && (
@@ -141,9 +136,11 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
             <button
               type="submit"
               disabled={verificando}
-              className={`w-full font-black text-lg rounded-xl py-4 transition-colors ${
-                verificando ? 'bg-[#1A3A5C] text-[#8AB4CC] cursor-not-allowed' : 'bg-[#00C853] hover:bg-[#00E060] text-[#0A1626]'
-              }`}
+              className="w-full font-black text-lg rounded-xl py-4 transition-all active:scale-95"
+              style={verificando
+                ? { background: '#1A3A5C', color: '#8AB4CC', cursor: 'not-allowed' }
+                : { background: accent, color: '#080D18' }
+              }
             >
               {verificando ? 'Verificando...' : 'ENTRAR NO JOGO'}
             </button>
@@ -203,6 +200,8 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
           <br />
           Seu progresso é salvo automaticamente.
         </p>
+
+        </div>
       </div>
     </div>
   )
