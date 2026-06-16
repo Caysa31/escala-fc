@@ -118,6 +118,7 @@ export default function JogoDesafio({
   })
   const [mostrarContrato, setMostrarContrato] = useState(false)
   const [mostrarResultado, setMostrarResultado] = useState(false)
+  const [pontosGanhos, setPontosGanhos] = useState(0) // pontos reais com decay do timer
   const [inputMontado, setInputMontado] = useState(false)
   const [shakePistas, setShakePistas] = useState(false)
 
@@ -194,6 +195,7 @@ export default function JogoDesafio({
     }
     setMostrarContrato(false)
     setMostrarResultado(false)
+    setPontosGanhos(0)
     setSegundosRestantes(TIMER_DURACAO)
     setTimerAtivo(false)
 
@@ -276,6 +278,7 @@ export default function JogoDesafio({
       const pontosFinais = Math.max(pontosBrutos - BONUS_MAX, pontosBrutos - decayAtual)
       // Aplica multiplicador de treino apenas no desafio diário
       const pontos = Math.round(pontosFinais * multiplicador)
+      setPontosGanhos(pontos)
       const novoEstado: EstadoJogo = {
         ...estado,
         tentativas: novasTentativas,
@@ -341,7 +344,7 @@ export default function JogoDesafio({
   }
 
   // IMPORTANTE: pistaUsada pode ser 0 (histórico) — usar !== null, nunca truthy check
-  const pontosRodada = estado.pistaUsada !== null ? Math.round(calcularPontos(estado.pistaUsada) * multiplicador) : 0
+  const pontosRodada = pontosGanhos > 0 ? pontosGanhos : (estado.pistaUsada !== null ? Math.round(calcularPontos(estado.pistaUsada) * multiplicador) : 0)
 
   // Intro narrativa em destaque quando ainda não há pistas reveladas (qualquer desafio, estado inicial)
   const introEmDestaque = estado.pistaAtual === 0 && estado.status === 'jogando'
