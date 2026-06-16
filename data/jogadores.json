@@ -1790,31 +1790,6 @@
     "pista4": "Chegou ao clube atual vindo do Nacional, na Primera División."
   },
   {
-    "id": 71,
-    "nome": "Philippe Coutinho",
-    "posicao": "Meia",
-    "nacionalidade": "Brasileiro",
-    "bandeira": "🇧🇷",
-    "clube": "Vasco",
-    "liga": "Brasileirão",
-    "dificuldade": "medio",
-    "titulos": [
-      "Premier League",
-      "Copa do Rei"
-    ],
-    "curiosidade": "Ex-Liverpool e Barcelona, retornou ao Brasil para jogar no Vasco — o mesmo clube que o revelou antes de ser vendido ao Inter de Milão",
-    "faixaEtaria": "33-37",
-    "apiFootballTeamId": 133,
-    "apiFootballLeagueId": 71,
-    "estadoClube": "Rio de Janeiro",
-    "clubeAnterior": "Aston Villa",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Premier League",
-    "pista2": "Meia de classe europeia — dribla, chuta e encanta.",
-    "pista3": "Nasceu no Rio de Janeiro e foi revelado pelo próprio Vasco, clube ao qual retornou ao fim da carreira.",
-    "pista4": "Antes do clube atual, jogou no Aston Villa, na Premier League."
-  },
-  {
     "id": 72,
     "nome": "Cássio",
     "posicao": "Goleiro",
@@ -1920,23 +1895,23 @@
     "posicao": "Atacante",
     "nacionalidade": "Equatoriano",
     "bandeira": "🇪🇨",
-    "clube": "Internacional",
-    "liga": "Brasileirão",
+    "clube": "Pachuca",
+    "liga": "Liga MX",
     "dificuldade": "medio",
     "titulos": [
       "Gaúcho"
     ],
     "curiosidade": "O maior artilheiro da história da Seleção Equatoriana marcou três gols sozinho na Copa do Mundo de 2014 — incluindo dois na estreia",
     "faixaEtaria": "34-38",
-    "apiFootballTeamId": 119,
-    "apiFootballLeagueId": 71,
-    "estadoClube": "Rio Grande do Sul",
-    "clubeAnterior": "Fenerbahce",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Super Lig",
+    "apiFootballTeamId": null,
+    "apiFootballLeagueId": null,
+    "estadoClube": null,
+    "clubeAnterior": "Internacional",
+    "origemAnterior": "brasil",
+    "ligaAnterior": "Brasileirão",
     "pista2": "Atacante equatoriano veloz, garra e artilheiro pela Seleção.",
     "pista3": "Natural de Esmeraldas, no Equador, é o maior artilheiro da história da Seleção Equatoriana.",
-    "pista4": "Antes do clube atual, jogou no Fenerbahce, na Super Lig turca."
+    "pista4": "Antes do clube atual, jogou no Internacional, no Brasileirão."
   },
   {
     "id": 77,
@@ -2134,32 +2109,6 @@
     "ligaAnterior": null,
     "pista2": "Meia venezuelano criativo, técnico e difícil de marcar.",
     "pista3": "Natural da Venezuela, é um dos jogadores mais técnicos que o futebol venezuelano exportou.",
-    "pista4": "Antes do clube atual, jogou no Corinthians."
-  },
-  {
-    "id": 85,
-    "nome": "Gil",
-    "posicao": "Zagueiro",
-    "nacionalidade": "Brasileiro",
-    "bandeira": "🇧🇷",
-    "clube": "Santos",
-    "liga": "Brasileirão",
-    "dificuldade": "dificil",
-    "titulos": [
-      "Libertadores",
-      "Brasileirão",
-      "Copa do Brasil"
-    ],
-    "curiosidade": "Campeão da Libertadores 2012 pelo Corinthians — o único mundial de clubes de um clube brasileiro —, encerrando a carreira no Santos Anunciou aposentadoria em setembro de 2025.",
-    "faixaEtaria": "36-40",
-    "apiFootballTeamId": 128,
-    "apiFootballLeagueId": 71,
-    "estadoClube": "São Paulo",
-    "clubeAnterior": "Corinthians",
-    "origemAnterior": "brasil",
-    "ligaAnterior": null,
-    "pista2": "Zagueiro veterano campeão de tudo no Brasil — sólido.",
-    "pista3": "Natural de Rondonópolis, no Mato Grosso, foi revelado pelo Corinthians onde virou lenda.",
     "pista4": "Antes do clube atual, jogou no Corinthians."
   },
   {
@@ -2493,32 +2442,6 @@
     "pista2": "Ponta uruguaio veloz, de drible e participação em gols.",
     "pista3": "Natural de Montevidéu, no Uruguai, cresceu no Nacional antes de se destacar no Brasil.",
     "pista4": "Antes do clube atual, jogou no Athletico-PR."
-  },
-  {
-    "id": 100,
-    "nome": "Fernandinho",
-    "posicao": "Volante",
-    "nacionalidade": "Brasileiro",
-    "bandeira": "🇧🇷",
-    "clube": "Athletico-PR",
-    "liga": "Brasileirão",
-    "dificuldade": "medio",
-    "titulos": [
-      "Premier League",
-      "Champions League",
-      "Copa do Brasil"
-    ],
-    "curiosidade": "Retornou ao clube que o revelou após 14 anos no Manchester City onde conquistou 5 Premier Leagues — o encerramento mais emocionante de uma carreira Anunciou aposentadoria em novembro de 2025.",
-    "faixaEtaria": "38-42",
-    "apiFootballTeamId": 134,
-    "apiFootballLeagueId": 71,
-    "estadoClube": "Paraná",
-    "clubeAnterior": "Manchester City",
-    "origemAnterior": "exterior",
-    "ligaAnterior": "Premier League",
-    "pista2": "Volante campeão na Europa — liderança e inteligência raros.",
-    "pista3": "Natural de Londrina, no Paraná, foi revelado pelo próprio Athletico-PR antes de ir ao City.",
-    "pista4": "Antes do clube atual, jogou no Manchester City, na Premier League."
   },
   {
     "id": 101,
