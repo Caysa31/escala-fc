@@ -121,11 +121,12 @@ export default function JogoDesafio({
   const [inputMontado, setInputMontado] = useState(false)
   const [shakePistas, setShakePistas] = useState(false)
 
-  // Timer de velocidade — bônus de até +30 pts que decai em 90 segundos
-  const TIMER_DURACAO = 90
+  // Timer de velocidade — pontos decaem em 60 segundos (máx -30 pts)
+  const TIMER_DURACAO = 60
   const BONUS_MAX = 30
   const [segundosRestantes, setSegundosRestantes] = useState(TIMER_DURACAO)
   const [timerAtivo, setTimerAtivo] = useState(false)
+  const segundosRef = useRef(TIMER_DURACAO) // ref para capturar valor exato no acerto
   const currentPistaRef = useRef<HTMLDivElement>(null)
   const [keyboardH, setKeyboardH] = useState(0)
 
@@ -203,7 +204,8 @@ export default function JogoDesafio({
   // Reseta e inicia timer a cada nova pista revelada; para quando jogo termina
   useEffect(() => {
     if (estado.pistaAtual >= 1 && estado.status === 'jogando') {
-      setSegundosRestantes(TIMER_DURACAO) // reseta a cada nova pista
+      segundosRef.current = TIMER_DURACAO
+      setSegundosRestantes(TIMER_DURACAO)
       setTimerAtivo(true)
     }
     if (estado.status !== 'jogando') {
@@ -211,10 +213,16 @@ export default function JogoDesafio({
     }
   }, [estado.pistaAtual, estado.status]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Countdown — decrementa 1 segundo por tick
+  // Countdown — decrementa 1 segundo por tick e mantém ref sincronizado
   useEffect(() => {
     if (!timerAtivo || segundosRestantes <= 0) return
-    const id = setInterval(() => setSegundosRestantes(s => Math.max(0, s - 1)), 1000)
+    const id = setInterval(() => {
+      setSegundosRestantes(s => {
+        const novo = Math.max(0, s - 1)
+        segundosRef.current = novo
+        return novo
+      })
+    }, 1000)
     return () => clearInterval(id)
   }, [timerAtivo, segundosRestantes])
 
@@ -255,8 +263,8 @@ export default function JogoDesafio({
       dispararConfetti()
       setTimerAtivo(false)
       const pontosBrutos = calcularPontos(pistaEfetiva)
-      // Desconta o decaimento acumulado até o momento do acerto
-      const decayAtual = timerAtivo ? Math.floor(BONUS_MAX * (1 - segundosRestantes / TIMER_DURACAO)) : 0
+      // Usa ref para garantir valor exato no momento do acerto (evita stale closure)
+      const decayAtual = timerAtivo ? Math.floor(BONUS_MAX * (1 - segundosRef.current / TIMER_DURACAO)) : 0
       const pontosFinais = Math.max(pontosBrutos - BONUS_MAX, pontosBrutos - decayAtual)
       // Aplica multiplicador de treino apenas no desafio diário
       const pontos = Math.round(pontosFinais * multiplicador)
