@@ -80,22 +80,28 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
       <div className="w-full max-w-sm flex flex-col items-center">
 
         {/* Bola 3D com glow */}
-        <div className="relative mb-2" style={{ width: 180, height: 180 }}>
+        <div className="relative mb-6" style={{ width: 200, height: 200 }}>
+          {/* Glow atrás da bola */}
+          <div
+            className="absolute pointer-events-none"
+            style={{
+              inset: '-20px',
+              borderRadius: '50%',
+              background: `radial-gradient(circle at center, ${accent}40 0%, ${accent}10 45%, transparent 70%)`,
+              filter: 'blur(12px)',
+            }}
+          />
           <Image
             src="/assets/soccer-ball-3d.png"
             alt=""
-            width={180}
-            height={180}
+            width={200}
+            height={200}
             priority
             style={{
-              filter: 'brightness(0.65) contrast(2.2)',
-              mixBlendMode: 'screen',
+              position: 'relative',
+              maskImage: 'radial-gradient(circle at center, black 40%, transparent 68%)',
+              WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 68%)',
             }}
-          />
-          {/* Glow separado em círculo para não vazar fora da bola */}
-          <div
-            className="absolute inset-0 rounded-full pointer-events-none"
-            style={{ boxShadow: `0 0 70px 25px ${accent}33, 0 0 24px 6px ${accent}55` }}
           />
         </div>
 
