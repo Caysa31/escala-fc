@@ -126,7 +126,8 @@ export default function JogoDesafio({
   const BONUS_MAX = 30
   const [segundosRestantes, setSegundosRestantes] = useState(TIMER_DURACAO)
   const [timerAtivo, setTimerAtivo] = useState(false)
-  const segundosRef = useRef(TIMER_DURACAO) // ref para capturar valor exato no acerto
+  const segundosRef = useRef(TIMER_DURACAO)   // valor sempre atualizado, sem stale closure
+  const timerAtivoRef = useRef(false)          // idem para timerAtivo
   const currentPistaRef = useRef<HTMLDivElement>(null)
   const [keyboardH, setKeyboardH] = useState(0)
 
@@ -205,10 +206,12 @@ export default function JogoDesafio({
   useEffect(() => {
     if (estado.pistaAtual >= 1 && estado.status === 'jogando') {
       segundosRef.current = TIMER_DURACAO
+      timerAtivoRef.current = true
       setSegundosRestantes(TIMER_DURACAO)
       setTimerAtivo(true)
     }
     if (estado.status !== 'jogando') {
+      timerAtivoRef.current = false
       setTimerAtivo(false)
     }
   }, [estado.pistaAtual, estado.status]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -261,10 +264,15 @@ export default function JogoDesafio({
     if (acertou) {
       vibrar(300)
       dispararConfetti()
+      const eraTimerAtivo = timerAtivoRef.current
+      const segundosNoAcerto = segundosRef.current
+      timerAtivoRef.current = false
       setTimerAtivo(false)
       const pontosBrutos = calcularPontos(pistaEfetiva)
-      // Usa ref para garantir valor exato no momento do acerto (evita stale closure)
-      const decayAtual = timerAtivo ? Math.floor(BONUS_MAX * (1 - segundosRef.current / TIMER_DURACAO)) : 0
+      // Usa refs para garantir valores exatos no momento do acerto (evita stale closure)
+      const decayAtual = eraTimerAtivo
+        ? Math.floor(BONUS_MAX * (1 - segundosNoAcerto / TIMER_DURACAO))
+        : 0
       const pontosFinais = Math.max(pontosBrutos - BONUS_MAX, pontosBrutos - decayAtual)
       // Aplica multiplicador de treino apenas no desafio diário
       const pontos = Math.round(pontosFinais * multiplicador)
