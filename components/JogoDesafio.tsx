@@ -400,7 +400,7 @@ export default function JogoDesafio({
           <div className="flex items-center gap-3 rounded-xl px-4 py-3 text-left" style={{ background: '#0A1220', border: `1px solid ${modeColor}25` }}>
             <span className="text-3xl flex-shrink-0">{jogador.bandeira}</span>
             <div className="min-w-0">
-              <p className="font-black text-white text-base leading-tight truncate">{jogador.apelido ?? jogador.nome}</p>
+              <p className="font-black text-white text-base leading-tight truncate">{jogador.nome}</p>
               <p className="text-[#8AB4CC] text-xs mt-0.5">{jogador.posicao} · {jogador.clube}</p>
             </div>
           </div>
@@ -425,7 +425,7 @@ export default function JogoDesafio({
           <div className="flex items-center gap-3 rounded-xl px-4 py-3 text-left" style={{ background: '#0A1220', border: '1px solid rgba(239,68,68,0.2)' }}>
             <span className="text-3xl flex-shrink-0">{jogador.bandeira}</span>
             <div className="min-w-0">
-              <p className="font-black text-white text-base leading-tight truncate">{jogador.apelido ?? jogador.nome}</p>
+              <p className="font-black text-white text-base leading-tight truncate">{jogador.nome}</p>
               <p className="text-[#8AB4CC] text-xs mt-0.5">{jogador.posicao} · {jogador.clube}</p>
             </div>
           </div>

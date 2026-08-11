@@ -54,7 +54,7 @@ function groupBy<T>(arr: T[], key: (item: T) => string): Map<string, T[]> {
   return m
 }
 
-function nome(j: Jogador) { return j.apelido || j.nome }
+function nome(j: Jogador) { return j.nome }
 
 function prefixoLiga(liga: string): string {
   const usarNo = ['Brasileirão', 'La Liga', 'Serie A', 'Bundesliga', 'Eredivisie', 'Liga Portugal', 'Ligue 1 Uber Eats']

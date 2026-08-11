@@ -85,12 +85,12 @@ export default function InputPalpite({ onPalpite, desabilitado, tentativasAnteri
                 <li key={j.id}>
                   <button
                     type="button"
-                    onMouseDown={() => handleSugestao(j.apelido ?? j.nome)}
+                    onMouseDown={() => handleSugestao(j.nome)}
                     className="w-full flex items-center gap-3 px-4 py-3 hover:bg-[#1A3A5C] transition-colors text-left border-b border-[#1A3A5C] last:border-0"
                   >
                     <span className="text-xl">{j.bandeira}</span>
                     <div>
-                      <p className="font-semibold text-white text-sm">{j.apelido ?? j.nome}</p>
+                      <p className="font-semibold text-white text-sm">{j.nome}</p>
                       <p className="text-xs text-[#8AB4CC]">{j.posicao} · {j.clube}</p>
                     </div>
                   </button>

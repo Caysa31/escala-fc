@@ -86,7 +86,7 @@ export default function TelaResultado({
             <p className="text-4xl mb-2">😤</p>
           )}
           <p className="text-3xl mb-1">{jogador.bandeira}</p>
-          <p className="text-2xl font-black text-white">{jogador.apelido ?? jogador.nome}</p>
+          <p className="text-2xl font-black text-white">{jogador.nome}</p>
           <p className="text-[#5A8AAA] text-sm mt-1">{jogador.posicao} · {jogador.clube}</p>
         </div>
 

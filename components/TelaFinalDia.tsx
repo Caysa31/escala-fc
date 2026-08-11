@@ -236,7 +236,7 @@ export default function TelaFinalDia({ jogadoresDoDia, perfil, onFechar }: TelaF
                 >
                   <span className="text-xl shrink-0">{jogador.bandeira}</span>
                   <div className="flex-1 min-w-0">
-                    <p className="text-white text-sm font-bold truncate">{jogador.apelido ?? jogador.nome}</p>
+                    <p className="text-white text-sm font-bold truncate">{jogador.nome}</p>
                     <p className="text-[#8AB4CC] text-xs">{emojis || '—'}</p>
                   </div>
                   <div className="text-right shrink-0">

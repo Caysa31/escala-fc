@@ -368,8 +368,8 @@ export function buscarJogadores(termo: string, mode: GameMode = 'bola'): Jogador
 
   // Ordena por relevância: matches no início do apelido/nome aparecem primeiro
   resultados.sort((a, b) => {
-    const nA = a.apelido ? normalizarNome(a.apelido) : normalizarNome(a.nome)
-    const nB = b.apelido ? normalizarNome(b.apelido) : normalizarNome(b.nome)
+    const nA = normalizarNome(a.nome)
+    const nB = normalizarNome(b.nome)
     const aStart = nA.startsWith(t) || normalizarNome(a.nome).startsWith(t)
     const bStart = nB.startsWith(t) || normalizarNome(b.nome).startsWith(t)
     if (aStart && !bStart) return -1

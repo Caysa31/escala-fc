@@ -102,7 +102,7 @@ export default function CardJogador({ jogador, estado, onClick, disabled, escond
       {/* Nome */}
       <div className="px-2 py-2 text-center">
         <p className="text-[13px] font-bold text-white leading-tight line-clamp-2">
-          {jogador.apelido ?? jogador.nome}
+          {jogador.nome}
         </p>
         {!esconderPosicao && (
           <p className="text-[10px] text-white/50 mt-0.5">{jogador.posicao}</p>
