@@ -7,7 +7,7 @@
         "bandeira": "🇧🇷",
         "clube": "Flamengo",
         "liga": "Brasileirão",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Copa do Brasil",
             "Libertadores",
@@ -141,7 +141,7 @@
         "bandeira": "🇧🇷",
         "clube": "Corinthians",
         "liga": "Brasileirão",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Copa do Brasil"
         ],
@@ -289,7 +289,7 @@
         "bandeira": "🇧🇷",
         "clube": "Palmeiras",
         "liga": "Brasileirão",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Copa do Brasil",
             "Brasileirão"
@@ -347,7 +347,7 @@
         "bandeira": "🇧🇷",
         "clube": "Palmeiras",
         "liga": "Brasileirão",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Brasileirão",
             "Copa do Brasil"
@@ -438,7 +438,7 @@
         "bandeira": "🇧🇷",
         "clube": "Cruzeiro",
         "liga": "Brasileirão",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Libertadores",
             "Brasileirão"
@@ -472,7 +472,7 @@
         "bandeira": "🇧🇷",
         "clube": "Cruzeiro",
         "liga": "Brasileirão",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Brasileirão"
         ],
@@ -528,7 +528,7 @@
         "bandeira": "🇧🇷",
         "clube": "Internacional",
         "liga": "Brasileirão",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Gaúcho"
         ],
@@ -638,7 +638,7 @@
         "bandeira": "🇧🇷",
         "clube": "Atlético-MG",
         "liga": "Brasileirão",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Brasileirão",
             "Copa do Brasil",
@@ -664,7 +664,7 @@
         "bandeira": "🇧🇷",
         "clube": "Atlético-MG",
         "liga": "Brasileirão",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Brasileirão",
             "Copa do Brasil",
@@ -714,7 +714,7 @@
         "bandeira": "🇧🇷",
         "clube": "Grêmio",
         "liga": "Brasileirão",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Brasileirão",
             "Libertadores"
@@ -925,7 +925,7 @@
         "bandeira": "🇧🇷",
         "clube": "Botafogo",
         "liga": "Brasileirão",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Libertadores",
             "Brasileirão"
@@ -1025,7 +1025,7 @@
         "bandeira": "🇧🇷",
         "clube": "Real Madrid",
         "liga": "La Liga",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Champions League",
             "La Liga"
@@ -1057,7 +1057,7 @@
         "bandeira": "🇧🇷",
         "clube": "Barcelona",
         "liga": "La Liga",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "La Liga",
             "Copa do Rei"
@@ -1091,7 +1091,7 @@
         "bandeira": "🇧🇷",
         "clube": "Arsenal",
         "liga": "Premier League",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "FA Cup"
         ],
@@ -1115,7 +1115,7 @@
         "bandeira": "🇧🇷",
         "clube": "Liverpool",
         "liga": "Premier League",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Champions League",
             "Premier League"
@@ -1148,7 +1148,7 @@
         "bandeira": "🇧🇷",
         "clube": "Arsenal",
         "liga": "Premier League",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [],
         "curiosidade": "Melhor volante do Brasil atualmente, foi vendido ao Newcastle pelo Lyon e se tornou ídolo da torcida inglesa",
         "faixaEtaria": "26-30",
@@ -1178,7 +1178,7 @@
         "bandeira": "🇧🇷",
         "clube": "Nottingham Forest",
         "liga": "Premier League",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Copa Libertadores"
         ],
@@ -1231,7 +1231,7 @@
         "bandeira": "🇧🇷",
         "clube": "Chelsea",
         "liga": "Premier League",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [],
         "curiosidade": "Foi do Palmeiras ao Chelsea por €80M — maior transferência da história do futebol brasileiro para a Europa",
         "faixaEtaria": "18-22",
@@ -1260,7 +1260,7 @@
         "bandeira": "🇧🇷",
         "clube": "Real Madrid",
         "liga": "La Liga",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [],
         "curiosidade": "Vendido pelo Palmeiras ao Real Madrid por €60M — o brasileiro mais jovem a defender o clube merengue na história",
         "faixaEtaria": "18-22",
@@ -1710,7 +1710,7 @@
         "bandeira": "🇧🇷",
         "clube": "Flamengo",
         "liga": "Brasileirão",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Copa América",
             "Copa do Brasil",
@@ -1874,7 +1874,7 @@
         "bandeira": "🇧🇷",
         "clube": "São Paulo",
         "liga": "Brasileirão",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Copa do Brasil",
             "Copa Sul-Americana"
@@ -2110,7 +2110,7 @@
         "bandeira": "🇧🇷",
         "clube": "Cruzeiro",
         "liga": "Brasileirão",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Copa do Brasil",
             "Brasileirão",
@@ -2295,7 +2295,7 @@
         "bandeira": "🇧🇷",
         "clube": "Palmeiras",
         "liga": "Brasileirão",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Libertadores",
             "Copa do Brasil",
@@ -2756,7 +2756,7 @@
         "bandeira": "🇧🇷",
         "clube": "Bahia",
         "liga": "Brasileirão",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Libertadores",
             "Brasileirão",
@@ -3572,7 +3572,7 @@
         "bandeira": "🇧🇷",
         "clube": "PSG",
         "liga": "Ligue 1",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Ligue 1"
         ],
@@ -4284,7 +4284,7 @@
         "bandeira": "🇧🇷",
         "clube": "Tottenham",
         "liga": "Premier League",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [],
         "curiosidade": "Comprado pelo Tottenham por £60M, marcou dois gols na estreia do Brasil na Copa do Mundo de 2022 — incluindo uma bicicleta que parou o mundo",
         "faixaEtaria": "27-31",
@@ -5045,7 +5045,7 @@
         "bandeira": "🇧🇷",
         "clube": "Real Madrid",
         "liga": "La Liga",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Champions League",
             "La Liga"
@@ -5078,7 +5078,7 @@
         "bandeira": "🇧🇷",
         "clube": "Inter Miami",
         "liga": "MLS",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Champions League",
             "La Liga",
@@ -5112,7 +5112,7 @@
         "bandeira": "🇧🇷",
         "clube": "Flamengo",
         "liga": "Brasileirão",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Champions League",
             "Serie A",
@@ -5416,7 +5416,7 @@
         "bandeira": "🇧🇷",
         "clube": "Arsenal",
         "liga": "Premier League",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Premier League",
             "FA Cup",
@@ -5450,7 +5450,7 @@
         "bandeira": "🇧🇷",
         "clube": "Arsenal",
         "liga": "Premier League",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [
             "Ligue 1",
             "FA Cup"
@@ -5483,7 +5483,7 @@
         "bandeira": "🇧🇷",
         "clube": "Manchester United",
         "liga": "Premier League",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "titulos": [],
         "curiosidade": "Artilheiro da Premier League 2024/25 pelo Wolverhampton, transferido ao Manchester United — o atacante brasileiro mais quente da Europa",
         "faixaEtaria": "24-28",
@@ -12224,7 +12224,7 @@
         "clube": "Palmeiras",
         "liga": "Brasileirão",
         "estadoClube": "São Paulo",
-        "dificuldade": "medio",
+        "dificuldade": "facil",
         "faixaEtaria": "30-34",
         "titulos": [
             "UEFA Europa Conference League 2023",
