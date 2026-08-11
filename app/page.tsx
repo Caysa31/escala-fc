@@ -1,13 +1,12 @@
 'use client'
 
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { useRouter } from 'next/navigation'
 import { Perfil } from '@/lib/types'
 import { getJogadoresDoDia } from '@/lib/game'
 import { carregarPerfil, getResultadoRodada, sincronizarPontosDeServidor } from '@/lib/perfil'
 import { getContratosAtivos } from '@/lib/contrato'
 import { getMultiplicadorTreino } from '@/lib/modos'
-import { getModeAtual, getModeConfig, GameMode } from '@/lib/gameMode'
+import { getModeAtual, setModeAtual, getModeConfig, GameMode } from '@/lib/gameMode'
 
 import TelaPerfil, { StatsPerfil } from '@/components/TelaPerfil'
 import TutorialOnboarding from '@/components/TutorialOnboarding'
@@ -21,7 +20,7 @@ import Link from 'next/link'
 import BottomNav from '@/components/BottomNav'
 
 export default function Home() {
-  const router = useRouter()
+
   const [perfil, setPerfil] = useState<Perfil | null>(null)
   const [carregado, setCarregado] = useState(false)
   const [desafioIdx, setDesafioIdx] = useState(0)
@@ -41,11 +40,10 @@ export default function Home() {
   const jogadoresDoDia = getJogadoresDoDia(mode)
 
   useEffect(() => {
-    // Primeira vez: redireciona para seleção de modo
+    // Primeira vez: define bola automaticamente, sem passar pela seleção
     const jaEscolheuModo = localStorage.getItem('cobradabola_mode')
     if (!jaEscolheuModo) {
-      router.replace('/selecionar-modo')
-      return
+      setModeAtual('bola')
     }
     setMode(getModeAtual())
     const p = carregarPerfil()
@@ -130,10 +128,7 @@ export default function Home() {
 
         {/* ── HEADER ───────────────────────────────────────── */}
         <header className="flex items-center justify-between pt-2">
-          <button
-            onClick={() => router.push('/selecionar-modo')}
-            className="flex items-center gap-3 active:opacity-70 transition-opacity"
-          >
+          <div className="flex items-center gap-3">
             <span className="text-3xl">{modeConfig.emoji}</span>
             <div>
               <h1 className="text-2xl font-black tracking-widest text-white leading-none">{modeConfig.name}</h1>
@@ -141,16 +136,8 @@ export default function Home() {
                 {modeConfig.tagline}
               </p>
             </div>
-          </button>
+          </div>
           <div className="flex items-center gap-2">
-            {/* Botão trocar jogo */}
-            <button
-              onClick={() => router.push('/selecionar-modo')}
-              className="flex items-center gap-1 bg-[#0F1D30] border border-[#1A3A5C] rounded-xl px-3 py-2 text-[#8AB4CC] hover:text-white transition-colors"
-            >
-              <span className="text-xs font-semibold">Trocar</span>
-              <span className="text-xs">{mode === 'bola' ? '⚽' : '🐍'}</span>
-            </button>
             {qtdContratosAtivos > 0 && (
               <button onClick={() => setMostrarContratosAtivos(true)}
                 className="flex items-center gap-1.5 bg-[#0F1D30] border border-[#1A3A5C] rounded-xl px-3 py-2">
