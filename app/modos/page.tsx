@@ -105,9 +105,26 @@ export default function ModosPage() {
           })}
         </div>
 
-        <p className="text-center text-[#5A8AAA] text-xs pb-4">
+        <p className="text-center text-[#5A8AAA] text-xs pb-2">
           Novos desafios disponíveis todo dia à meia-noite
         </p>
+
+        {/* ── MODOS EXTRAS ──────────────────────────────────── */}
+        <div className="h-px bg-gradient-to-r from-transparent via-[#1A3A5C] to-transparent my-2" />
+        <Link
+          href="/modos-extras"
+          className="flex items-center gap-4 bg-gradient-to-r from-[#00C853]/12 to-transparent border border-[#00C853]/25 rounded-2xl px-4 py-4 hover:border-[#00C853]/50 active:scale-[0.99] transition-all"
+        >
+          <span className="text-3xl shrink-0">🔍</span>
+          <div className="flex-1">
+            <div className="flex items-center gap-2">
+              <p className="text-white font-bold text-sm">Modos Extras</p>
+              <span className="bg-[#00C853]/20 text-[#00C853] text-[9px] font-black px-1.5 py-0.5 rounded border border-[#00C853]/30">NOVO</span>
+            </div>
+            <p className="text-[#8AB4CC] text-xs mt-0.5">Quem Não Pertence · Elimine 1 dos 4 · questões dinâmicas</p>
+          </div>
+          <span className="text-[#00C853] text-lg">›</span>
+        </Link>
       </div>
       <BottomNav />
     </main>

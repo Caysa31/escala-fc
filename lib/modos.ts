@@ -68,7 +68,7 @@ const JOVENS_FA      = new Set(['17-21', '18-22', '19-23', '20-24', '21-25', '22
 const COPA_JOVENS_FA = new Set(['17-21', '18-22', '19-23', '20-24', '21-25', '22-26', 'jovem', 'jovem adulto'])
 
 const POOLS: Record<ModoId, Jogador[]> = {
-  lenda:          jogadoresBola.filter(j => j.lenda === true),
+  lenda:          [...jogadoresBola.filter(j => j.lenda === true), ...lendas],
   brasileirao:    jogadoresBola.filter(j => j.liga === 'Brasileirão'),
   jovens:         jogadoresBola.filter(j => JOVENS_FA.has(j.faixaEtaria ?? '')),
   relampago:      jogadoresBola,

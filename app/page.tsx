@@ -316,6 +316,20 @@ export default function Home() {
           <HistoricoDias mode={mode} includeToday={todosConcluidos} />
         )}
 
+        {/* ── MODOS EXTRAS ─────────────────────────────────── */}
+        <Link href="/modos-extras" className="block">
+          <div className="bg-gradient-to-r from-[#00C853]/10 to-transparent border border-[#00C853]/25 rounded-2xl px-4 py-4 flex items-center gap-3 hover:border-[#00C853]/50 transition-all active:scale-[0.98]">
+            <span className="text-2xl">🔍</span>
+            <div className="flex-1">
+              <p className="text-white font-black text-sm">Modos Extras</p>
+              <p className="text-[#8AB4CC] text-xs mt-0.5">Quem Não Pertence · Elimine 1 dos 4</p>
+            </div>
+            <span className="bg-[#00C853]/20 text-[#00C853] text-[10px] font-black px-2 py-1 rounded-lg border border-[#00C853]/30 shrink-0">
+              NOVO
+            </span>
+          </div>
+        </Link>
+
         {/* ── CÓDIGO DE RECUPERAÇÃO ────────────────────────── */}
         <div className="bg-[#0A1020] border border-[#1A3A5C]/50 rounded-xl px-4 py-3 flex items-center justify-between">
           <div>

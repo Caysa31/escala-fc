@@ -32,6 +32,12 @@ export interface Jogador {
   apiFootballTeamId?: number | null
   apiFootballLeagueId?: number | null
 
+  // Dados biográficos e de carreira — usados nos Modos Extras
+  estadoNatal?: string | null       // estado de nascimento (só brasileiros)
+  clubeBase?: string                // clube onde foi revelado/formado
+  copasDoMundo?: number             // quantas Copas do Mundo disputou
+  clubesCarreira?: string[]         // principais clubes da carreira (cronológico)
+
   // Trivia para Contrato Histórico (lendas)
   triviaContrato?: {
     pergunta: string
