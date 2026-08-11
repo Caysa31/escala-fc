@@ -601,36 +601,6 @@
         "pista4": "Antes do clube atual, jogou no Sporting CP, na Liga Portugal."
     },
     {
-        "id": 22,
-        "nome": "Cassierra",
-        "posicao": "Atacante",
-        "nacionalidade": "Colombiano",
-        "bandeira": "🇨🇴",
-        "clube": "Atlético-MG",
-        "liga": "Brasileirão",
-        "dificuldade": "dificil",
-        "titulos": [],
-        "curiosidade": "Centroavante colombiano escolhido pelo técnico Domínguez para liderar o ataque do Galo após a saída de Hulk",
-        "faixaEtaria": "26-30",
-        "apiFootballTeamId": 1062,
-        "apiFootballLeagueId": 71,
-        "estadoClube": "Minas Gerais",
-        "clubeAnterior": "Atlético Nacional",
-        "origemAnterior": "exterior",
-        "ligaAnterior": "Categoría Primera A",
-        "pista2": "Centroavante colombiano físico, de área, bom no jogo aéreo.",
-        "pista3": "Natural da Colômbia, cresceu na base do Atlético Nacional antes de ir ao Brasil.",
-        "pista4": "Chegou ao clube atual vindo do Atlético Nacional, na Categoría Primera A.",
-        "estadoNatal": null,
-        "clubeBase": null,
-        "copasDoMundo": 0,
-        "clubesCarreira": [
-            "Independiente Medellín",
-            "Club Bruges",
-            "Botafogo"
-        ]
-    },
-    {
         "id": 23,
         "nome": "Scarpa",
         "posicao": "Meia",
@@ -5780,8 +5750,8 @@
         "posicao": "Atacante",
         "nacionalidade": "Inglês",
         "bandeira": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-        "clube": "Manchester United",
-        "liga": "Premier League",
+        "clube": "Barcelona",
+        "liga": "La Liga",
         "dificuldade": "medio",
         "titulos": [
             "Europa League"
@@ -5790,7 +5760,7 @@
         "faixaEtaria": "26-30",
         "apiFootballTeamId": 529,
         "apiFootballLeagueId": 140,
-        "estadoClube": null,
+        "estadoClube": "",
         "clubeAnterior": "Manchester United",
         "origemAnterior": "exterior",
         "ligaAnterior": "Premier League",
@@ -5802,7 +5772,8 @@
         "copasDoMundo": 2,
         "clubesCarreira": [
             "Manchester United",
-            "Aston Villa"
+            "Aston Villa",
+            "Barcelona"
         ]
     },
     {
@@ -6390,8 +6361,8 @@
         "id": 210
     },
     {
-        "nome": "Lucas Piton Crivellaro",
-        "apelido": "",
+        "nome": "Lucas Piton",
+        "apelido": "Lucas Piton Crivellaro",
         "posicao": "Lateral-esquerdo",
         "nacionalidade": "Brasileiro",
         "bandeira": "🇧🇷",
@@ -8236,7 +8207,7 @@
         "posicao": "Zagueiro",
         "nacionalidade": "Uruguaio",
         "bandeira": "🇺🇾",
-        "clube": "Palmeiras",
+        "clube": "Botafogo",
         "liga": "Brasileirão",
         "estadoClube": "Rio de Janeiro",
         "dificuldade": "medio",
@@ -8876,9 +8847,9 @@
         "posicao": "Meia",
         "nacionalidade": "Argentino",
         "bandeira": "🇦🇷",
-        "clube": "River Plate",
-        "liga": "Liga Profesional Argentina",
-        "estadoClube": null,
+        "clube": "São Paulo",
+        "liga": "Brasileirão",
+        "estadoClube": "São Paulo",
         "dificuldade": "medio",
         "faixaEtaria": "27-31",
         "titulos": [
@@ -8890,7 +8861,7 @@
         "pista4": "Deixou clube argentino tradicional celeiro de talentos para brilhar no futebol brasileiro",
         "clubeAnterior": "Banfield",
         "origemAnterior": "exterior",
-        "ligaAnterior": "Liga Profesional",
+        "ligaAnterior": "Liga Profesional Argentina",
         "estadoNatal": "nao se aplica",
         "clubeBase": "Banfield",
         "copasDoMundo": 0,
@@ -9427,9 +9398,9 @@
         "posicao": "Volante",
         "nacionalidade": "Brasileiro",
         "bandeira": "🇧🇷",
-        "clube": "Clube do Remo",
+        "clube": "Athletico Paranaense",
         "liga": "Brasileirão",
-        "estadoClube": "Pará",
+        "estadoClube": "Paraná",
         "dificuldade": "medio",
         "faixaEtaria": "32-36",
         "titulos": [],
@@ -10325,8 +10296,8 @@
         "posicao": "Lateral-esquerdo",
         "nacionalidade": "Espanhol",
         "bandeira": "🇪🇸",
-        "clube": "Real Madrid",
-        "liga": "La Liga",
+        "clube": "Chelsea",
+        "liga": "Premier League",
         "estadoClube": "",
         "dificuldade": "medio",
         "faixaEtaria": "25-29",
@@ -15418,117 +15389,6 @@
             {
                 "tipo": "apelido_extra",
                 "texto": "Sesko"
-            }
-        ],
-        "titulos": []
-    },
-    {
-        "id": 489,
-        "nome": "Lois Openda",
-        "apelido": "Openda",
-        "clube": "Juventus",
-        "liga": "Serie A",
-        "estadoClube": "",
-        "posicao": "Atacante",
-        "nacionalidade": "Bélgica",
-        "dataNascimento": "2000-02-16",
-        "faixaEtaria": "24-28",
-        "lenda": false,
-        "dificuldade": "medio",
-        "pistas": [
-            {
-                "tipo": "clube",
-                "texto": "Atacante da Juventus, ex-RB Leipzig"
-            },
-            {
-                "tipo": "posicao",
-                "texto": "Centroavante veloz e goleador"
-            },
-            {
-                "tipo": "selecao",
-                "texto": "Internacional pela Bélgica"
-            },
-            {
-                "tipo": "curiosidade",
-                "texto": "Foi artilheiro do RB Leipzig e se destacou na Champions League"
-            },
-            {
-                "tipo": "apelido_extra",
-                "texto": "Openda"
-            }
-        ],
-        "titulos": []
-    },
-    {
-        "id": 490,
-        "nome": "Timothy Weah",
-        "apelido": "Weah",
-        "clube": "Marseille",
-        "liga": "Ligue 1",
-        "estadoClube": "",
-        "posicao": "Atacante",
-        "nacionalidade": "EUA",
-        "dataNascimento": "2000-02-22",
-        "faixaEtaria": "24-28",
-        "lenda": false,
-        "dificuldade": "medio",
-        "pistas": [
-            {
-                "tipo": "clube",
-                "texto": "Ponta do Marseille, ex-Juventus"
-            },
-            {
-                "tipo": "posicao",
-                "texto": "Atacante veloz pelo lado direito"
-            },
-            {
-                "tipo": "selecao",
-                "texto": "Internacional pelos EUA"
-            },
-            {
-                "tipo": "curiosidade",
-                "texto": "Filho do ex-jogador e presidente da Libéria George Weah"
-            },
-            {
-                "tipo": "apelido_extra",
-                "texto": "Tim Weah"
-            }
-        ],
-        "titulos": []
-    },
-    {
-        "id": 491,
-        "nome": "Giovanni Reyna",
-        "apelido": "Gio Reyna",
-        "clube": "RC Strasbourg",
-        "liga": "Ligue 1",
-        "estadoClube": "",
-        "posicao": "Meio-campo",
-        "nacionalidade": "EUA",
-        "dataNascimento": "2002-11-13",
-        "faixaEtaria": "22-26",
-        "lenda": false,
-        "dificuldade": "dificil",
-        "pistas": [
-            {
-                "tipo": "clube",
-                "texto": "Meia do RC Strasbourg, filho do ex-jogador Claudio Reyna"
-            },
-            {
-                "tipo": "posicao",
-                "texto": "Meia criativo com ótima técnica"
-            },
-            {
-                "tipo": "selecao",
-                "texto": "Internacional pelos EUA, participou da Copa do Mundo 2022"
-            },
-            {
-                "tipo": "curiosidade",
-                "texto": "Passou por lesões graves que atrasaram seu desenvolvimento no Borussia Dortmund"
-            },
-            {
-                "tipo": "apelido_extra",
-                "texto": "Gio Reyna"
             }
         ],
         "titulos": []
