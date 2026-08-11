@@ -43,8 +43,11 @@ export default function TelaPerfil({ onCriar }: TelaPerfilProps) {
       if (!disponivel) {
         setSugestoes([`${nome}2`, `${nome}FC`, `${nome}10`])
         setErro('Esse apelido já está em uso — escolha outro ou use uma sugestão abaixo')
+        setVerificando(false)
         return
       }
+    } catch {
+      // Supabase indisponível — libera a entrada mesmo assim
     } finally {
       setVerificando(false)
     }
