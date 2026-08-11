@@ -78,7 +78,7 @@ export function getJogadoresDoDia(mode: GameMode = 'bola', diaOverride?: number)
  * Aparece antes das pistas — serve de gancho dramático.
  */
 export function getIntroNarrativa(jogador: Jogador, mode: GameMode = 'bola'): string {
-  const temTitulos = jogador.titulos.length > 0
+  const temTitulos = (jogador.titulos ?? []).length > 0
   const eLenda = jogador.lenda === true
 
   // ── COPA: linguagem focada na Copa do Mundo, menciona seleção e bandeira ──
