@@ -128,34 +128,40 @@ workflows:
       - name: Instalar dependências
         script: npm ci
 
-      - name: Adicionar plataforma iOS e sincronizar
+      - name: Preparar config e criar projeto iOS
         script: |
-          # Cria o projeto iOS se não existir
-          if [ ! -d "ios" ]; then
-            echo "=== Criando projeto iOS ==="
-            npx cap add ios
-          else
-            echo "=== Pasta ios já existe ==="
-          fi
+          # Instalar @capacitor/ios explicitamente
+          npm install @capacitor/core@8.4.0 @capacitor/cli@8.4.0 @capacitor/ios@8.4.0
 
-          # Gera capacitor.config.json para o sync
-          cat > capacitor.config.json << 'EOF'
-          {
-            "appId": "com.cobradabola.app",
-            "appName": "Cobra da Bola",
-            "webDir": "out",
-            "server": {
-              "url": "https://cobra-craque.vercel.app",
-              "cleartext": false
-            }
-          }
-          EOF
+          # Criar webDir mínimo (necessário para cap add ios)
+          mkdir -p out
+          echo "<html><body></body></html>" > out/index.html
 
-          echo "=== Sincronizando iOS ==="
-          npx cap sync ios
+          # Escrever config via Node para evitar problemas de indentação YAML
+          node -e "
+          const fs = require('fs');
+          const config = {
+            appId: 'com.cobradabola.app',
+            appName: 'Cobra da Bola',
+            webDir: 'out',
+            server: { url: 'https://cobra-craque.vercel.app', cleartext: false }
+          };
+          fs.writeFileSync('capacitor.config.json', JSON.stringify(config, null, 2));
+          console.log('Config escrito:', fs.readFileSync('capacitor.config.json', 'utf8'));
+          "
+
+          echo "=== Rodando cap add ios ==="
+          npx cap add ios 2>&1
+          echo "=== Exit code: $? ==="
+
+          echo "=== Conteúdo de ios/ ==="
+          ls -la ios/ 2>/dev/null || echo "ERRO: pasta ios não criada"
+
+          echo "=== Sincronizando ==="
+          npx cap sync ios 2>&1
 
           echo "=== Verificando Podfile ==="
-          ls ios/App/
+          ls ios/App/ 2>/dev/null || echo "ERRO: ios/App não encontrado"
 
       - name: Instalar pods
         script: |
