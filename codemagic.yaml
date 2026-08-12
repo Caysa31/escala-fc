@@ -128,45 +128,14 @@ workflows:
       - name: Instalar dependências
         script: npm ci
 
-      - name: Preparar config e criar projeto iOS
+      - name: Sincronizar iOS (SPM)
         script: |
-          # Instalar @capacitor/ios explicitamente
-          npm install @capacitor/core@8.4.0 @capacitor/cli@8.4.0 @capacitor/ios@8.4.0
-
-          # Criar webDir mínimo (necessário para cap add ios)
+          # Capacitor 8 usa Swift Package Manager — sem CocoaPods
+          npm install @capacitor/core@8.4.0 @capacitor/cli@8.4.0 @capacitor/ios@8.4.0 @capacitor/splash-screen@8.0.1 @capacitor/status-bar@8.0.2
           mkdir -p out
-          echo "<html><body></body></html>" > out/index.html
-
-          # Escrever config via Node para evitar problemas de indentação YAML
-          node -e "
-          const fs = require('fs');
-          const config = {
-            appId: 'com.cobradabola.app',
-            appName: 'Cobra da Bola',
-            webDir: 'out',
-            server: { url: 'https://cobra-craque.vercel.app', cleartext: false }
-          };
-          fs.writeFileSync('capacitor.config.json', JSON.stringify(config, null, 2));
-          console.log('Config escrito:', fs.readFileSync('capacitor.config.json', 'utf8'));
-          "
-
-          echo "=== Rodando cap add ios ==="
-          npx cap add ios 2>&1
-          echo "=== Exit code: $? ==="
-
-          echo "=== Conteúdo de ios/ ==="
-          ls -la ios/ 2>/dev/null || echo "ERRO: pasta ios não criada"
-
-          echo "=== Sincronizando ==="
-          npx cap sync ios 2>&1
-
-          echo "=== Verificando Podfile ==="
-          ls ios/App/ 2>/dev/null || echo "ERRO: ios/App não encontrado"
-
-      - name: Instalar pods
-        script: |
-          cd ios/App
-          pod install --repo-update
+          npx cap sync ios
+          echo "=== Estrutura ios/App ==="
+          ls ios/App/
 
       - name: Configurar assinatura iOS
         script: |
@@ -181,7 +150,7 @@ workflows:
         script: |
           xcode-project use-profiles
           xcode-project build-ipa \
-            --workspace ios/App/App.xcworkspace \
+            --project ios/App/App.xcodeproj \
             --scheme App
 
     artifacts:
