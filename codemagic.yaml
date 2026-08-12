@@ -116,14 +116,13 @@ workflows:
     instance_type: mac_mini_m2
 
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.cobradabola.app
       groups:
-        - app_store_connect       # variáveis de ambiente do App Store Connect
+        - app_store_connect
       node: 22.13.0
       xcode: latest
       cocoapods: default
+      vars:
+        BUNDLE_ID: com.cobradabola.app
 
     scripts:
       - name: Instalar dependências
@@ -138,6 +137,15 @@ workflows:
         script: |
           cd ios/App
           pod install
+
+      - name: Configurar assinatura iOS
+        script: |
+          keychain initialize
+          app-store-connect fetch-signing-files \
+            --type IOS_APP_STORE \
+            --bundle-identifier $BUNDLE_ID \
+            --create
+          keychain add-certificates
 
       - name: Build iOS (.ipa)
         script: |
@@ -155,4 +163,4 @@ workflows:
         key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
         issuer_id: $APP_STORE_CONNECT_ISSUER_ID
         submit_to_testflight: true
-        submit_to_app_store: false   # revisão manual antes de publicar
+        submit_to_app_store: false
