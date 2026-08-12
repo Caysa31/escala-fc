@@ -128,15 +128,39 @@ workflows:
       - name: Instalar dependências
         script: npm ci
 
-      - name: Adicionar plataforma iOS
+      - name: Adicionar plataforma iOS e sincronizar
         script: |
-          npx cap add ios || true
+          # Cria o projeto iOS se não existir
+          if [ ! -d "ios" ]; then
+            echo "=== Criando projeto iOS ==="
+            npx cap add ios
+          else
+            echo "=== Pasta ios já existe ==="
+          fi
+
+          # Gera capacitor.config.json para o sync
+          cat > capacitor.config.json << 'EOF'
+          {
+            "appId": "com.cobradabola.app",
+            "appName": "Cobra da Bola",
+            "webDir": "out",
+            "server": {
+              "url": "https://cobra-craque.vercel.app",
+              "cleartext": false
+            }
+          }
+          EOF
+
+          echo "=== Sincronizando iOS ==="
           npx cap sync ios
+
+          echo "=== Verificando Podfile ==="
+          ls ios/App/
 
       - name: Instalar pods
         script: |
           cd ios/App
-          pod install
+          pod install --repo-update
 
       - name: Configurar assinatura iOS
         script: |
