@@ -141,8 +141,8 @@ workflows:
         script: |
           keychain initialize
           app-store-connect fetch-signing-files \
+            $BUNDLE_ID \
             --type IOS_APP_STORE \
-            --bundle-identifier $BUNDLE_ID \
             --create
           keychain add-certificates
 
