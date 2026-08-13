@@ -116,13 +116,14 @@ workflows:
     instance_type: mac_mini_m2
 
     environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.cobradabola.app
       groups:
         - app_store_connect
       node: 22.13.0
       xcode: latest
       cocoapods: default
-      vars:
-        BUNDLE_ID: com.cobradabola.app
 
     scripts:
       - name: Instalar dependências
@@ -136,15 +137,6 @@ workflows:
           npx cap sync ios
           echo "=== Estrutura ios/App ==="
           ls ios/App/
-
-      - name: Configurar assinatura iOS
-        script: |
-          keychain initialize
-          app-store-connect fetch-signing-files \
-            $BUNDLE_ID \
-            --type IOS_APP_STORE \
-            --create
-          keychain add-certificates
 
       - name: Build iOS (.ipa)
         script: |
