@@ -136,58 +136,71 @@ workflows:
           echo "=== Estrutura ios/App ==="
           ls ios/App/
 
+      - name: Diagnóstico Apple Developer
+        script: |
+          echo "=== Bundle IDs registrados na conta ==="
+          app-store-connect bundle-ids list 2>&1 || echo "ERRO ao listar bundle IDs"
+
+          echo "=== Certificados IOS_DISTRIBUTION ==="
+          app-store-connect certificates list --type IOS_DISTRIBUTION 2>&1 || echo "ERRO"
+
+          echo "=== Perfis IOS_APP_STORE ==="
+          app-store-connect profiles list --type IOS_APP_STORE 2>&1 || echo "ERRO"
+
+          echo "=== Estrutura ios/App ==="
+          ls -la ios/App/
+
+      - name: Configurar assinatura iOS
+        script: |
+          set -e
+          keychain initialize
+
+          echo "=== Revogando certificados antigos ==="
+          CERT_IDS=$(app-store-connect certificates list \
+              --type IOS_DISTRIBUTION --json 2>/dev/null \
+            | python3 -c "
+          import sys, json
+          try:
+              for c in json.load(sys.stdin): print(c.get('id',''))
+          except: pass
+          " 2>/dev/null || true)
+
+          for ID in $CERT_IDS; do
+            [ -n "$ID" ] && app-store-connect certificates revoke "$ID" 2>&1 && echo "Revogado: $ID" || true
+          done
+
+          echo "=== Criando certificado + perfil ==="
+          app-store-connect fetch-signing-files \
+              "$BUNDLE_ID" \
+              --type IOS_APP_STORE \
+              --create
+
+          echo "=== Certificados em ~/Library/MobileDevice/Certificates ==="
+          ls -la ~/Library/MobileDevice/Certificates/ 2>/dev/null || echo "VAZIO"
+
+          echo "=== Perfis em ~/Library/MobileDevice/Provisioning Profiles ==="
+          ls -la ~/Library/MobileDevice/Provisioning\ Profiles/ 2>/dev/null || echo "VAZIO"
+
+          keychain add-certificates
+
+          echo "=== Identidades de code signing no keychain ==="
+          security find-identity -v -p codesigning 2>&1 || true
+
       - name: Build iOS (.ipa)
         script: |
-          # Salvar API key em arquivo (xcodebuild lê do disco)
-          mkdir -p /tmp/asc_keys
-          echo "$APP_STORE_CONNECT_PRIVATE_KEY" \
-            > /tmp/asc_keys/AuthKey_${APP_STORE_CONNECT_KEY_IDENTIFIER}.p8
+          echo "=== workspace/project disponíveis ==="
+          ls ios/App/*.xcworkspace 2>/dev/null && echo "WORKSPACE encontrado" || echo "Sem workspace"
+          ls ios/App/*.xcodeproj  2>/dev/null && echo "PROJECT encontrado"  || echo "Sem project"
 
-          ARCHIVE_PATH="$CM_BUILD_DIR/build/ios/xcarchive/App.xcarchive"
-          IPA_DIR="$CM_BUILD_DIR/build/ios/ipa"
-          mkdir -p "$IPA_DIR"
+          xcode-project use-profiles
 
-          # ExportOptions — Xcode cuida do signing automaticamente via API key
-          cat > /tmp/ExportOptions.plist << EOF
-          <?xml version="1.0" encoding="UTF-8"?>
-          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-          <plist version="1.0">
-          <dict>
-              <key>method</key>
-              <string>app-store-connect</string>
-              <key>teamID</key>
-              <string>LUB75N7LB4</string>
-              <key>signingStyle</key>
-              <string>automatic</string>
-          </dict>
-          </plist>
-          EOF
+          echo "=== Signing settings após use-profiles ==="
+          grep -E 'PROVISIONING_PROFILE|CODE_SIGN_IDENTITY|DEVELOPMENT_TEAM' \
+            ios/App/App.xcodeproj/project.pbxproj 2>/dev/null | sort -u | head -20 || true
 
-          echo "=== Arquivando ==="
-          xcodebuild \
-            -project ios/App/App.xcodeproj \
-            -scheme App \
-            -configuration Release \
-            -archivePath "$ARCHIVE_PATH" \
-            -authenticationKeyPath /tmp/asc_keys/AuthKey_${APP_STORE_CONNECT_KEY_IDENTIFIER}.p8 \
-            -authenticationKeyID "$APP_STORE_CONNECT_KEY_IDENTIFIER" \
-            -authenticationKeyIssuerID "$APP_STORE_CONNECT_ISSUER_ID" \
-            -allowProvisioningUpdates \
-            archive \
-            DEVELOPMENT_TEAM=LUB75N7LB4 \
-            CODE_SIGN_STYLE=Automatic \
-            COMPILER_INDEX_STORE_ENABLE=NO
-
-          echo "=== Exportando IPA ==="
-          xcodebuild \
-            -exportArchive \
-            -archivePath "$ARCHIVE_PATH" \
-            -exportPath "$IPA_DIR" \
-            -exportOptionsPlist /tmp/ExportOptions.plist \
-            -authenticationKeyPath /tmp/asc_keys/AuthKey_${APP_STORE_CONNECT_KEY_IDENTIFIER}.p8 \
-            -authenticationKeyID "$APP_STORE_CONNECT_KEY_IDENTIFIER" \
-            -authenticationKeyIssuerID "$APP_STORE_CONNECT_ISSUER_ID" \
-            -allowProvisioningUpdates
+          xcode-project build-ipa \
+            --project ios/App/App.xcodeproj \
+            --scheme App
 
     artifacts:
       - build/ios/ipa/*.ipa
