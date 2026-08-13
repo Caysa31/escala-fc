@@ -116,14 +116,13 @@ workflows:
     instance_type: mac_mini_m2
 
     environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.cobradabola.app
       groups:
         - app_store_connect
       node: 22.13.0
       xcode: latest
       cocoapods: default
+      vars:
+        BUNDLE_ID: com.cobradabola.app
 
     scripts:
       - name: Instalar dependências
@@ -131,12 +130,47 @@ workflows:
 
       - name: Sincronizar iOS (SPM)
         script: |
-          # Capacitor 8 usa Swift Package Manager — sem CocoaPods
           npm install @capacitor/core@8.4.0 @capacitor/cli@8.4.0 @capacitor/ios@8.4.0 @capacitor/splash-screen@8.0.1 @capacitor/status-bar@8.0.2
           mkdir -p out
           npx cap sync ios
           echo "=== Estrutura ios/App ==="
           ls ios/App/
+
+      - name: Configurar assinatura iOS
+        script: |
+          keychain initialize
+
+          echo "=== Certificados IOS_DISTRIBUTION existentes ==="
+          app-store-connect certificates list --type IOS_DISTRIBUTION 2>&1 || true
+
+          echo "=== Revogando certificados antigos para clean slate ==="
+          CERT_IDS=$(app-store-connect certificates list \
+              --type IOS_DISTRIBUTION \
+              --json 2>/dev/null \
+            | python3 -c "
+          import sys, json
+          certs = json.load(sys.stdin)
+          for c in certs:
+              print(c.get('id',''))
+          " 2>/dev/null || true)
+
+          for CERT_ID in $CERT_IDS; do
+            if [ -n "$CERT_ID" ]; then
+              echo "Revogando certificado $CERT_ID"
+              app-store-connect certificates revoke "$CERT_ID" 2>&1 || true
+            fi
+          done
+
+          echo "=== Criando novos certificado + perfil ==="
+          app-store-connect fetch-signing-files \
+              "$BUNDLE_ID" \
+              --type IOS_APP_STORE \
+              --create
+
+          keychain add-certificates
+
+          echo "=== Perfis instalados ==="
+          ls ~/Library/MobileDevice/Provisioning\ Profiles/ 2>/dev/null || true
 
       - name: Build iOS (.ipa)
         script: |
