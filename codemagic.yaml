@@ -155,18 +155,23 @@ workflows:
           set -e
           keychain initialize
 
-          echo "=== Revogando certificados antigos ==="
-          CERT_IDS=$(app-store-connect certificates list \
-              --type IOS_DISTRIBUTION --json 2>/dev/null \
-            | python3 -c "
+          echo "=== Revogando certificados de distribuição (todos os tipos) ==="
+          # Revogar IOS_DISTRIBUTION e APPLE_DISTRIBUTION
+          for CERT_TYPE in IOS_DISTRIBUTION APPLE_DISTRIBUTION; do
+            CERT_IDS=$(app-store-connect certificates list \
+                --type "$CERT_TYPE" --json 2>/dev/null \
+              | python3 -c "
           import sys, json
           try:
               for c in json.load(sys.stdin): print(c.get('id',''))
           except: pass
           " 2>/dev/null || true)
-
-          for ID in $CERT_IDS; do
-            [ -n "$ID" ] && app-store-connect certificates revoke "$ID" 2>&1 && echo "Revogado: $ID" || true
+            for ID in $CERT_IDS; do
+              if [ -n "$ID" ]; then
+                echo "Revogando $CERT_TYPE: $ID"
+                app-store-connect certificates revoke "$ID" 2>&1 || true
+              fi
+            done
           done
 
           echo "=== Criando certificado + perfil ==="
