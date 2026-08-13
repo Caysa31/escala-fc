@@ -174,6 +174,8 @@ workflows:
             -authenticationKeyIssuerID "$APP_STORE_CONNECT_ISSUER_ID" \
             -allowProvisioningUpdates \
             archive \
+            DEVELOPMENT_TEAM=LUB75N7LB4 \
+            CODE_SIGN_STYLE=Automatic \
             COMPILER_INDEX_STORE_ENABLE=NO
 
           echo "=== Exportando IPA ==="
