@@ -136,48 +136,56 @@ workflows:
           echo "=== Estrutura ios/App ==="
           ls ios/App/
 
-      - name: Configurar assinatura iOS
-        script: |
-          keychain initialize
-
-          echo "=== Certificados IOS_DISTRIBUTION existentes ==="
-          app-store-connect certificates list --type IOS_DISTRIBUTION 2>&1 || true
-
-          echo "=== Revogando certificados antigos para clean slate ==="
-          CERT_IDS=$(app-store-connect certificates list \
-              --type IOS_DISTRIBUTION \
-              --json 2>/dev/null \
-            | python3 -c "
-          import sys, json
-          certs = json.load(sys.stdin)
-          for c in certs:
-              print(c.get('id',''))
-          " 2>/dev/null || true)
-
-          for CERT_ID in $CERT_IDS; do
-            if [ -n "$CERT_ID" ]; then
-              echo "Revogando certificado $CERT_ID"
-              app-store-connect certificates revoke "$CERT_ID" 2>&1 || true
-            fi
-          done
-
-          echo "=== Criando novos certificado + perfil ==="
-          app-store-connect fetch-signing-files \
-              "$BUNDLE_ID" \
-              --type IOS_APP_STORE \
-              --create
-
-          keychain add-certificates
-
-          echo "=== Perfis instalados ==="
-          ls ~/Library/MobileDevice/Provisioning\ Profiles/ 2>/dev/null || true
-
       - name: Build iOS (.ipa)
         script: |
-          xcode-project use-profiles
-          xcode-project build-ipa \
-            --project ios/App/App.xcodeproj \
-            --scheme App
+          # Salvar API key em arquivo (xcodebuild lê do disco)
+          mkdir -p /tmp/asc_keys
+          echo "$APP_STORE_CONNECT_PRIVATE_KEY" \
+            > /tmp/asc_keys/AuthKey_${APP_STORE_CONNECT_KEY_IDENTIFIER}.p8
+
+          ARCHIVE_PATH="$CM_BUILD_DIR/build/ios/xcarchive/App.xcarchive"
+          IPA_DIR="$CM_BUILD_DIR/build/ios/ipa"
+          mkdir -p "$IPA_DIR"
+
+          # ExportOptions — Xcode cuida do signing automaticamente via API key
+          cat > /tmp/ExportOptions.plist << EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+              <key>method</key>
+              <string>app-store-connect</string>
+              <key>teamID</key>
+              <string>LUB75N7LB4</string>
+              <key>signingStyle</key>
+              <string>automatic</string>
+          </dict>
+          </plist>
+          EOF
+
+          echo "=== Arquivando ==="
+          xcodebuild \
+            -project ios/App/App.xcodeproj \
+            -scheme App \
+            -configuration Release \
+            -archivePath "$ARCHIVE_PATH" \
+            -authenticationKeyPath /tmp/asc_keys/AuthKey_${APP_STORE_CONNECT_KEY_IDENTIFIER}.p8 \
+            -authenticationKeyID "$APP_STORE_CONNECT_KEY_IDENTIFIER" \
+            -authenticationKeyIssuerID "$APP_STORE_CONNECT_ISSUER_ID" \
+            -allowProvisioningUpdates \
+            archive \
+            COMPILER_INDEX_STORE_ENABLE=NO
+
+          echo "=== Exportando IPA ==="
+          xcodebuild \
+            -exportArchive \
+            -archivePath "$ARCHIVE_PATH" \
+            -exportPath "$IPA_DIR" \
+            -exportOptionsPlist /tmp/ExportOptions.plist \
+            -authenticationKeyPath /tmp/asc_keys/AuthKey_${APP_STORE_CONNECT_KEY_IDENTIFIER}.p8 \
+            -authenticationKeyID "$APP_STORE_CONNECT_KEY_IDENTIFIER" \
+            -authenticationKeyIssuerID "$APP_STORE_CONNECT_ISSUER_ID" \
+            -allowProvisioningUpdates
 
     artifacts:
       - build/ios/ipa/*.ipa
