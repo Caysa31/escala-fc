@@ -446,7 +446,7 @@ export default function JogoDesafio({
           ⚡ Jogador do dia
         </p>
         <p className="leading-snug italic text-[#8AB4CC] text-sm">
-          &ldquo;{introNarrativa}&rdquo;
+          &ldquo;{jogador.dica ?? introNarrativa}&rdquo;
         </p>
       </div>
 

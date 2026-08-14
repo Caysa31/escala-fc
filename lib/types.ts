@@ -23,6 +23,9 @@ export interface Jogador {
   origemAnterior?: 'exterior' | 'brasil' | 'base'
   ligaAnterior?: string | null
 
+  // Dica de introdução personalizada por jogador (substitui o template genérico "Jogador do dia")
+  dica?: string     // 1-2 frases — específico do jogador, sem revelar clube atual ou apelido famoso
+
   // Pistas personalizadas por jogador (sobrescrevem o template automático quando presentes)
   pista2?: string   // estilo de jogo — máx 60 chars (Capítulo 2)
   pista3?: string   // origem/raiz — 1-2 frases (Capítulo 3)
