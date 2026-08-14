@@ -189,22 +189,43 @@ workflows:
             done
           done
 
-          echo "=== Criando certificado + perfil do zero ==="
-          app-store-connect fetch-signing-files \
-              "$BUNDLE_ID" \
-              --type IOS_APP_STORE \
-              --create
+          echo "=== STEP 1: Criar certificado IOS_DISTRIBUTION ==="
+          app-store-connect certificates create \
+              --type IOS_DISTRIBUTION \
+              --save
 
-          echo "=== Certificados em ~/Library/MobileDevice/Certificates ==="
+          echo "=== Arquivos .p12 salvos ==="
           ls -la ~/Library/MobileDevice/Certificates/ 2>/dev/null || echo "VAZIO"
+          find ~/Library -name "*.p12" 2>/dev/null || true
 
-          echo "=== Perfis em ~/Library/MobileDevice/Provisioning Profiles ==="
-          ls -la ~/Library/MobileDevice/Provisioning\ Profiles/ 2>/dev/null || echo "VAZIO"
-
+          echo "=== STEP 2: Adicionar ao keychain ==="
           keychain add-certificates
 
-          echo "=== Identidades de code signing no keychain ==="
+          echo "=== Identidades no keychain ==="
           security find-identity -v -p codesigning 2>&1 || true
+
+          echo "=== STEP 3: Obter ID do certificado criado ==="
+          CERT_ID=$(app-store-connect certificates list \
+              --type IOS_DISTRIBUTION --json 2>/dev/null \
+            | python3 -c "
+          import sys, json
+          try:
+              data = json.load(sys.stdin)
+              if data: print(data[0]['id'])
+          except: pass
+          " 2>/dev/null)
+          echo "Certificate ID: [$CERT_ID]"
+
+          echo "=== STEP 4: Criar provisioning profile ==="
+          app-store-connect profiles create \
+              CobraDaBolaAppStore \
+              IOS_APP_STORE \
+              6U6W4GP93Y \
+              --certificate-id "$CERT_ID" \
+              --save
+
+          echo "=== Profiles salvos ==="
+          ls -la ~/Library/MobileDevice/Provisioning\ Profiles/ 2>/dev/null || echo "VAZIO"
 
       - name: Build iOS (.ipa)
         script: |
