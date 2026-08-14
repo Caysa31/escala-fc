@@ -14,11 +14,13 @@ const jogadoresCopaCompleto = [...jogadoresCopa, ...lendas]
 
 const NUM_DESAFIOS = 5
 
-// ── POOLS BOLA (por dificuldade crescente, sem lendas) ───────
-// Lendas ficam exclusivamente nos modos Copa — nunca no diário Bola
-const poolBolaFacil   = jogadoresBola.filter(j => j.dificuldade === 'facil'   && !j.lenda)
-const poolBolaMedio   = jogadoresBola.filter(j => j.dificuldade === 'medio'   && !j.lenda)
-const poolBolaDificil = jogadoresBola.filter(j => j.dificuldade === 'dificil' && !j.lenda)
+// ── POOLS BOLA — proporção 4 Brasileirão + 1 rotativo ────────
+// Slots 1-4: apenas jogadores do Brasileirão (ativos, sem lendas)
+// Slot 5: alterna dia a dia entre lenda (dias pares) e outra liga (dias ímpares)
+const poolBR_Facil   = jogadoresBola.filter(j => j.liga === 'Brasileirão' && j.dificuldade === 'facil'   && !j.lenda)
+const poolBR_Medio   = jogadoresBola.filter(j => j.liga === 'Brasileirão' && j.dificuldade === 'medio'   && !j.lenda)
+const poolLendasBola  = lendas
+const poolOutrasLigas = jogadoresBola.filter(j => j.liga !== 'Brasileirão' && !j.lenda)
 
 // ── POOLS COPA (por dificuldade crescente) ───────────────────
 const poolCopaFacil  = jogadoresCopa.filter(j => j.dificuldade === 'facil')
@@ -43,13 +45,16 @@ function getSlots(diffDias: number, mode: GameMode): Jogador[] {
     const iD0 = diffDias % poolCopaDificil.length
     return [poolCopaFacil[iF0], poolCopaFacil[iF1], poolCopaMedio[iM0], poolCopaMedio[iM1], poolCopaDificil[iD0]]
   }
-  // Bola: fácil → fácil → médio → médio → difícil
-  const iF0 = diffDias % poolBolaFacil.length
-  const iF1 = (diffDias + Math.floor(poolBolaFacil.length / 2)) % poolBolaFacil.length
-  const iM0 = diffDias % poolBolaMedio.length
-  const iM1 = (diffDias + Math.floor(poolBolaMedio.length / 2)) % poolBolaMedio.length
-  const iD0 = diffDias % poolBolaDificil.length
-  return [poolBolaFacil[iF0], poolBolaFacil[iF1], poolBolaMedio[iM0], poolBolaMedio[iM1], poolBolaDificil[iD0]]
+  // Bola: 4 do Brasileirão (fácil, fácil, médio, médio) + 1 rotativo
+  const iF0 = diffDias % poolBR_Facil.length
+  const iF1 = (diffDias + Math.floor(poolBR_Facil.length / 2)) % poolBR_Facil.length
+  const iM0 = diffDias % poolBR_Medio.length
+  const iM1 = (diffDias + Math.floor(poolBR_Medio.length / 2)) % poolBR_Medio.length
+  // 5º slot: dias pares = lenda, dias ímpares = outra liga
+  const slot5 = diffDias % 2 === 0
+    ? poolLendasBola[diffDias % poolLendasBola.length]
+    : poolOutrasLigas[diffDias % poolOutrasLigas.length]
+  return [poolBR_Facil[iF0], poolBR_Facil[iF1], poolBR_Medio[iM0], poolBR_Medio[iM1], slot5]
 }
 
 /** Dias desde o início do jogo (base para calcular histórico) */
