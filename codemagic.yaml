@@ -183,8 +183,8 @@ workflows:
           " 2>/dev/null || true)
             for ID in $CERT_IDS; do
               if [ -n "$ID" ]; then
-                echo "Revogando $CERT_TYPE: $ID"
-                app-store-connect certificates revoke "$ID" 2>&1 || true
+                echo "Deletando $CERT_TYPE: $ID"
+                app-store-connect certificates delete "$ID" 2>&1 || true
               fi
             done
           done
