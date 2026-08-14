@@ -197,7 +197,7 @@ workflows:
           app-store-connect fetch-signing-files \
               "$BUNDLE_ID" \
               --type IOS_APP_STORE \
-              --private-key /tmp/distribution.key \
+              --certificate-key "$(cat /tmp/distribution.key)" \
               --create
 
           echo "=== .p12 salvo ==="
