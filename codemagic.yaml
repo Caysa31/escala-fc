@@ -172,7 +172,7 @@ workflows:
           done
 
           echo "=== Revogando certificados de distribuição (todos os tipos) ==="
-          for CERT_TYPE in IOS_DISTRIBUTION APPLE_DISTRIBUTION; do
+          for CERT_TYPE in IOS_DISTRIBUTION APPLE_DISTRIBUTION DISTRIBUTION; do
             CERT_IDS=$(app-store-connect certificates list \
                 --type "$CERT_TYPE" --json 2>/dev/null \
               | python3 -c "
