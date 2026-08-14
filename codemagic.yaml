@@ -212,6 +212,14 @@ workflows:
           echo "=== Identidades no keychain ==="
           security find-identity -v -p codesigning 2>&1 || true
 
+      - name: Incrementar build number
+        script: |
+          # CFBundleVersion = número sequencial do Codemagic (sempre cresce)
+          PLIST="ios/App/App/Info.plist"
+          echo "Build number: $BUILD_NUMBER"
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $BUILD_NUMBER" "$PLIST"
+          echo "CFBundleVersion agora: $(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' $PLIST)"
+
       - name: Build iOS (.ipa)
         script: |
           echo "=== workspace/project disponíveis ==="
