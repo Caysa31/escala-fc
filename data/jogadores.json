@@ -480,14 +480,14 @@
         "pista4":  "Antes do clube atual, jogou no Zenit, na Liga Russa.",
         "estadoNatal":  "Rio de Janeiro",
         "clubeBase":  "Flamengo",
-        "copasDoMundo":  1,
+        "copasDoMundo":  0,
         "clubesCarreira":  [
                                "Flamengo",
                                "AS Roma",
                                "Olympique de Marseille",
                                "Flamengo"
                            ],
-        "dica":  "Copa do Mundo pela Seleção e Libertadores e Brasileirão no clube. Currículo sólido."
+        "dica":  "Campeão da Libertadores e do Brasileirão pelo Flamengo. Um dos volantes mais titulados do futebol nacional."
     },
     {
         "id":  17,
@@ -1062,12 +1062,12 @@
         "pista4":  "Antes do clube atual, jogou no Santos.",
         "estadoNatal":  "São Paulo",
         "clubeBase":  "Santos",
-        "copasDoMundo":  2,
+        "copasDoMundo":  1,
         "clubesCarreira":  [
                                "Santos",
                                "Real Madrid"
                            ],
-        "dica":  "Duas Copas do Mundo disputadas e campeão de Champions League e La Liga. Carreira de alto nível."
+        "dica":  "Copa do Mundo no currículo e campeão de Champions League e La Liga. Carreira de alto nível pelo Real Madrid."
     },
     {
         "id":  39,
@@ -1221,12 +1221,12 @@
         "pista4":  "Antes do clube atual, jogou no Botafogo.",
         "estadoNatal":  "Goiás",
         "clubeBase":  "Red Bull Bragantino",
-        "copasDoMundo":  1,
+        "copasDoMundo":  0,
         "clubesCarreira":  [
                                "Red Bull Bragantino",
                                "Botafogo"
                            ],
-        "dica":  "Campeão de Copa Libertadores e com uma Copa do Mundo disputada. Uma carreira de alto nível."
+        "dica":  "Campeão da Copa Libertadores pelo Botafogo. Jovem atacante em ascensão no futebol brasileiro."
     },
     {
         "id":  44,
@@ -3722,13 +3722,13 @@
         "pista4":  "Antes do clube atual, jogou na Roma, na Serie A.",
         "estadoNatal":  "São Paulo",
         "clubeBase":  "Corinthians",
-        "copasDoMundo":  4,
+        "copasDoMundo":  3,
         "clubesCarreira":  [
                                "Corinthians",
                                "Roma",
                                "PSG"
                            ],
-        "dica":  "Disputou 4 Copas do Mundo — poucas carreiras chegam a tanto no futebol mundial Campeão de Ligue 1."
+        "dica":  "3 Copas do Mundo disputadas e Campeão da Ligue 1. Um dos maiores zagueiros da geração."
     },
     {
         "id":  126,
@@ -4462,14 +4462,14 @@
         "pista4":  "Antes do clube atual, jogou no Everton, na Premier League.",
         "estadoNatal":  "Espírito Santo",
         "clubeBase":  "América-MG",
-        "copasDoMundo":  2,
+        "copasDoMundo":  1,
         "clubesCarreira":  [
                                "América-MG",
                                "Watford",
                                "Everton",
                                "Tottenham"
                            ],
-        "dica":  "Duas Copas do Mundo pela Seleção. Presença constante no maior palco do futebol mundial."
+        "dica":  "Copa do Mundo disputada pela Seleção e destaque da Premier League. Presença constante no maior palco do futebol."
     },
     {
         "id":  149,
@@ -5649,13 +5649,13 @@
         "pista4":  "Antes do Arsenal, foi múltiplo campeão inglês pelo Manchester City.",
         "estadoNatal":  "São Paulo",
         "clubeBase":  "Palmeiras",
-        "copasDoMundo":  3,
+        "copasDoMundo":  2,
         "clubesCarreira":  [
                                "Palmeiras",
                                "Manchester City",
                                "Arsenal"
                            ],
-        "dica":  "3 Mundiais e conquistas expressivas: Premier League e FA Cup. Um dos melhores de sua geração."
+        "dica":  "Bicampeão — 2 Copas do Mundo pela Seleção, Premier League e FA Cup pelo Arsenal."
     },
     {
         "id":  182,
@@ -8263,7 +8263,7 @@
         "ligaAnterior":  "Serie A",
         "estadoNatal":  "São Paulo",
         "clubeBase":  "Ponte Preta",
-        "copasDoMundo":  2,
+        "copasDoMundo":  0,
         "clubesCarreira":  [
                                "Ponte Preta",
                                "Real Betis",
@@ -8274,7 +8274,7 @@
                            ],
         "lenda":  false,
         "id":  255,
-        "dica":  "Disputou 2 Copas do Mundo — uma trajetória de comprometimento com a seleção nacional."
+        "dica":  "Lateral-direito titular da Seleção por anos, mas ainda sem Copa do Mundo na trajetória."
     },
     {
         "nome":  "Ayrton Lucas",
