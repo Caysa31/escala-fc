@@ -304,7 +304,7 @@ export function getPistasTexto(jogador: Jogador, mode: GameMode = 'bola'): Recor
     1: pista2,
     2: jogador.pista2 ?? pista1,
     3: jogador.pista3 ?? pista3,
-    4: jogador.pista4 ?? pista4,
+    4: jogador.pista4 || pista4,
     5: pista5,
   }
 }

@@ -135,7 +135,7 @@
     "clubesCarreira": [
       "Corinthians"
     ],
-    "dica": "Meia jovem com boa leitura tática e qualidade no passe. Campeão de Campeonato Brasileiro e outros títulos marcantes."
+    "dica": "Joia do Corinthians, chegou aos profissionais jovem e já soma títulos no clube. Futuro da Seleção."
   },
   {
     "id": 5,
@@ -168,7 +168,7 @@
       "Internacional",
       "Corinthians"
     ],
-    "dica": "Atacante veloz e goleador, mata dentro da área com frieza. Campeão de Copa do Brasil."
+    "dica": "Nasceu em Santos e foi revelado no Internacional. Chegou ao Corinthians como um dos ataques mais promissores do Brasil."
   },
   {
     "id": 6,
@@ -263,7 +263,7 @@
       "Grêmio",
       "São Paulo"
     ],
-    "dica": "Atacante raçudo, inteligente e com faro de gol consistente. Campeão de Copa do Brasil e outros títulos marcantes."
+    "dica": "Atacante que percorreu vários clubes antes de brilhar no São Paulo. Ídolo da torcida tricolor."
   },
   {
     "id": 9,
@@ -288,7 +288,7 @@
     "pista2": "Extrema veloz e driblador, difícil de segurar na ponta.",
     "pista3": "Nasceu em Japeri, no Rio de Janeiro, e revelado pelo Audax Rio antes de construir carreira pelo Brasil.",
     "pista4": "Antes do clube atual, jogou no Sao Paulo.",
-    "dica": "Extrema veloz e driblador, difícil de segurar na ponta. Campeão de Copa Sul-Americana."
+    "dica": "Lateral revelado no interior do Brasil que se reinventou como atacante. Trajetória improvável até o profissional."
   },
   {
     "id": 10,
@@ -374,7 +374,7 @@
     "pista2": "Meia completo, com poder de chute e criatividade europeia.",
     "pista3": "Nasceu na Bélgica mas tem raízes brasileiras — cresceu entre o Brasil e a Europa.",
     "pista4": "Antes do clube atual, jogou no Fulham, na Premier League.",
-    "dica": "Meia completo, com poder de chute e criatividade europeia. Campeão de Brasileirão e outros títulos marcantes."
+    "dica": "Nasceu na Bélgica mas é brasileiro de coração. Construiu carreira no Manchester United antes de voltar ao Brasil."
   },
   {
     "id": 13,
@@ -443,7 +443,7 @@
     "pista2": "Goleiro de bons reflexos e posicionamento seguro.",
     "pista3": "Natural de Ribeirao Preto, em Sao Paulo, construiu carreira entre o Brasil e a Franca.",
     "pista4": "Antes do clube atual, jogou no Lille, na Ligue 1 francesa.",
-    "dica": "Goleiro de bons reflexos e posicionamento seguro."
+    "dica": "Passou pelo Lille antes de chegar ao Brasil."
   },
   {
     "id": 16,
@@ -536,7 +536,7 @@
     "pista2": "Atacante habilidoso com bom drible e finalização fina.",
     "pista3": "Nasceu em Olinda, em Pernambuco, e foi revelado pelo Santos ainda como adolescente.",
     "pista4": "Antes do clube atual, jogou na Juventus, na Serie A.",
-    "dica": "Atacante habilidoso com bom drible e finalização fina."
+    "dica": "Revelado em Caxias do Sul, percorreu o Brasil inteiro até se tornar ídolo do Flamengo. Copa do Mundo 2022."
   },
   {
     "id": 19,
@@ -619,7 +619,7 @@
     "pista2": "Meia-atacante veloz, habilidoso e com gol nos pés.",
     "pista3": "Nasceu em São Paulo e teve boa formação antes de se destacar no futebol europeu.",
     "pista4": "Antes do clube atual, jogou no Sporting CP, na Liga Portugal.",
-    "dica": "Meia-atacante veloz, habilidoso e com gol nos pés."
+    "dica": "Passou pelo Sporting CP antes de chegar ao Brasil."
   },
   {
     "id": 23,
@@ -646,7 +646,7 @@
     "pista2": "Meia criativo com pé esquerdo preciso e faltas especiais.",
     "pista3": "Nasceu em São Paulo e cresceu pelo futebol paulista antes do Palmeiras.",
     "pista4": "Antes do clube atual, jogou no Nottingham Forest, na Premier League.",
-    "dica": "Meia criativo com pé esquerdo preciso e faltas especiais. Campeão de Libertadores e outros títulos marcantes."
+    "dica": "Passou pelo Nottingham Forest antes de chegar ao Brasil. Campeão de Brasileirão na carreira."
   },
   {
     "id": 24,
@@ -673,7 +673,7 @@
     "pista2": "Ponta driblador e veloz, especialista no um-a-um.",
     "pista3": "Natural de São Paulo, cresceu nas categorias de base do Palmeiras, onde virou ídolo.",
     "pista4": "Antes do clube atual, jogou no Cruzeiro.",
-    "dica": "Ponta driblador e veloz, especialista no um-a-um. Campeão de Libertadores e outros títulos marcantes."
+    "dica": "Campeão de Brasileirão na carreira."
   },
   {
     "id": 25,
@@ -698,7 +698,7 @@
     "pista2": "Centroavante alto e técnico, com passagem pela Europa.",
     "pista3": "Nasceu em Ibirité, em Minas Gerais, e foi revelado pelo futebol mineiro.",
     "pista4": "Antes do clube atual, jogou no Fulham, na Premier League.",
-    "dica": "Centroavante alto e técnico, com passagem pela Europa. Campeão de Copa do Brasil."
+    "dica": "Passou pelo Fulham antes de chegar ao Brasil. Campeão de Copa do Brasil na carreira."
   },
   {
     "id": 26,
@@ -724,7 +724,7 @@
     "pista2": "Meia de toque curto e posse — saído da escola de Guardiola.",
     "pista3": "Natural de Goiânia, em Goiás, foi revelado pelo Grêmio e logo chamou atenção da Europa.",
     "pista4": "Antes do clube atual, jogou na Juventus, na Serie A.",
-    "dica": "Meia de toque curto e posse — saído da escola de Guardiola. Campeão de Libertadores e outros títulos marcantes."
+    "dica": "Passou pelo Juventus antes de chegar ao Brasil. Campeão de Brasileirão na carreira."
   },
   {
     "id": 27,
@@ -813,7 +813,7 @@
     "pista2": "Atacante clínico de área, especialista em gols decisivos.",
     "pista3": "Natural de Sao Paulo, na capital paulista, foi revelado pelo Santos — berco de Pele e Neymar.",
     "pista4": "Antes do clube atual, jogou no Cruzeiro.",
-    "dica": "Atacante clínico de área, especialista em gols decisivos. Campeão de Libertadores e outros títulos marcantes."
+    "dica": "Campeão de Libertadores na carreira."
   },
   {
     "id": 30,
@@ -840,7 +840,7 @@
     "pista2": "Volante seguro e disciplinado, equilíbrio do meio-campo.",
     "pista3": "Natural do Rio de Janeiro, construiu sua história no futebol carioca antes de chegar ao Santos.",
     "pista4": "Antes do clube atual, jogou no Panathinaikos, no campeonato grego.",
-    "dica": "Volante seguro e disciplinado, equilíbrio do meio-campo. Campeão de Libertadores e outros títulos marcantes."
+    "dica": "Passou pelo Panathinaikos antes de chegar ao Brasil. Campeão de Libertadores na carreira."
   },
   {
     "id": 31,
@@ -866,7 +866,7 @@
     "pista2": "Goleiro lendário com mais de 40 anos ao mais alto nível.",
     "pista3": "Natural de Juiz de Fora, em Minas Gerais, cresceu na base do Cruzeiro onde virou ídolo.",
     "pista4": "Antes do clube atual, jogou no Cruzeiro.",
-    "dica": "Goleiro lendário com mais de 40 anos ao mais alto nível. Campeão de Libertadores e outros títulos marcantes."
+    "dica": "Campeão de Libertadores na carreira."
   },
   {
     "id": 32,
@@ -892,7 +892,7 @@
     "pista2": "Atacante potente, bom de chute forte e gols espetaculares.",
     "pista3": "Nasceu em Campina Grande, na Paraíba — nordestino que fez história no Brasil e no mundo.",
     "pista4": "Antes do clube atual, jogou no Atlético-MG.",
-    "dica": "Atacante potente, bom de chute forte e gols espetaculares. Campeão de Brasileirão e outros títulos marcantes."
+    "dica": "Campeão de Brasileirão na carreira."
   },
   {
     "id": 33,
@@ -917,7 +917,7 @@
     "pista2": "Atacante de profundidade, com gol certeiro e sangue-frio.",
     "pista3": "Nasceu no Rio de Janeiro e cresceu nas categorias de base do próprio Fluminense.",
     "pista4": "Foi revelado nas categorias de base do próprio clube onde joga hoje.",
-    "dica": "Atacante de profundidade, com gol certeiro e sangue-frio. Campeão de Libertadores."
+    "dica": "Campeão de Libertadores na carreira."
   },
   {
     "id": 34,
@@ -943,7 +943,7 @@
     "pista2": "Centroavante técnico e de área, letal de cabeça e pé.",
     "pista3": "Natural de Patos, na Paraíba, foi revelado pelo Ceará antes de se destacar na Europa.",
     "pista4": "Antes do clube atual, jogou no Benfica, na Liga Portugal.",
-    "dica": "Centroavante técnico e de área, letal de cabeça e pé. Campeão de Libertadores e outros títulos marcantes."
+    "dica": "Passou pelo Benfica antes de chegar ao Brasil. Campeão de Libertadores na carreira."
   },
   {
     "id": 35,
@@ -969,7 +969,7 @@
     "pista2": "Lateral ofensivo com cruzamento preciso e gols de falta.",
     "pista3": "Natural de Caxias do Sul, no Rio Grande do Sul, cresceu no futebol gaúcho.",
     "pista4": "Antes do clube atual, jogou no Al-Nassr, na Saudi Pro League.",
-    "dica": "Lateral ofensivo com cruzamento preciso e gols de falta. Campeão de Libertadores e outros títulos marcantes."
+    "dica": "Passou pelo Al-Nassr antes de chegar ao Brasil. Campeão de Libertadores na carreira."
   },
   {
     "id": 36,
@@ -1021,7 +1021,7 @@
     "pista2": "Atacante elétrico, dribla, envolve e decide com classe.",
     "pista3": "Nasceu em São Gonçalo, no Rio de Janeiro, e foi revelado pelo Flamengo aos 11 anos.",
     "pista4": "Antes do clube atual, jogou no Flamengo.",
-    "dica": "Atacante elétrico, dribla, envolve e decide com classe. Campeão de Champions League e outros títulos marcantes."
+    "dica": "Campeão de Champions League na carreira."
   },
   {
     "id": 38,
@@ -1054,7 +1054,7 @@
       "Santos",
       "Real Madrid"
     ],
-    "dica": "Atacante versátil, inteligente e decisivo nos grandes jogos. Duas Copas do Mundo pela Seleção."
+    "dica": "Revelado pelo Santos. 2 Copas do Mundo pela Seleção Brasileira."
   },
   {
     "id": 39,
@@ -1114,7 +1114,7 @@
     "pista2": "Atacante brasileiro raçudo, veloz e com gol nos dois pés.",
     "pista3": "Natural de Guarulhos, em São Paulo, foi revelado pelo Ituano com apenas 17 anos.",
     "pista4": "Antes do clube atual, jogou no Ituano.",
-    "dica": "Atacante brasileiro raçudo, veloz e com gol nos dois pés. Campeão de FA Cup."
+    "dica": "Campeão de FA Cup na carreira."
   },
   {
     "id": 41,
@@ -1211,7 +1211,7 @@
       "Red Bull Bragantino",
       "Botafogo"
     ],
-    "dica": "Atacante poderoso, letal de cabeça e com pressão intensa. Disputou uma Copa do Mundo pela Seleção."
+    "dica": "Revelado pelo Red Bull Bragantino. 1 Copa do Mundo pela Seleção Brasileira."
   },
   {
     "id": 44,
@@ -1895,7 +1895,7 @@
     "pista2": "Goleiro jovem de reflexos rápidos e saída de bola segura.",
     "pista3": "Natural do Rio de Janeiro, foi revelado nas categorias de base do Flamengo ainda jovem.",
     "pista4": "Antes do clube atual, jogou no Flamengo.",
-    "dica": "Goleiro jovem de reflexos rápidos e saída de bola segura. Campeão de Copa do Brasil."
+    "dica": "Campeão de Copa do Brasil na carreira."
   },
   {
     "id": 63,
@@ -1921,7 +1921,7 @@
     "pista2": "Meia técnico e inteligente — viveu anos no futebol europeu.",
     "pista3": "Natural de Americana, em São Paulo, foi revelado pelo Internacional antes de ir ao Chelsea.",
     "pista4": "Antes do clube atual, jogou no Shanghai Port, na Super Liga Chinesa.",
-    "dica": "Meia técnico e inteligente — viveu anos no futebol europeu. Campeão de Copa do Brasil e outros títulos marcantes."
+    "dica": "Passou pelo Shanghai Port antes de chegar ao Brasil. Campeão de Copa do Brasil na carreira."
   },
   {
     "id": 64,
@@ -1979,7 +1979,7 @@
     "pista2": "Lateral-esquerdo ofensivo, veloz e participativo nos gols.",
     "pista3": "Natural de São Paulo, cresceu no próprio Tricolor do Morumbi desde as categorias de base.",
     "pista4": "Foi revelado nas categorias de base do próprio clube onde joga hoje.",
-    "dica": "Lateral-esquerdo ofensivo, veloz e participativo nos gols. Campeão de Copa Sul-Americana."
+    "dica": "Campeão de Copa Sul-Americana na carreira."
   },
   {
     "id": 66,
@@ -2167,7 +2167,7 @@
     "pista2": "Goleiro lendário do Brasileirão, ídolo com grandes defesas.",
     "pista3": "Natural de Veranopolis, no Rio Grande do Sul, foi revelado pelo Gremio e chegou ao Corinthians em 2011.",
     "pista4": "Antes do clube atual, jogou no Corinthians.",
-    "dica": "Goleiro lendário do Brasileirão, ídolo com grandes defesas. Colecionou títulos ao longo da carreira."
+    "dica": "Campeão de Copa do Brasil na carreira."
   },
   {
     "id": 73,
@@ -2218,7 +2218,7 @@
     "pista2": "Meia gaúcho experiente, de volume e liderança no meio-campo.",
     "pista3": "Natural do Rio Grande do Sul, passou por Grêmio, Corinthians e até Boca Juniors na carreira.",
     "pista4": "Antes do clube atual, jogou no Boca Juniors, na Liga Profesional.",
-    "dica": "Meia gaúcho experiente, de volume e liderança no meio-campo. Campeão de Brasileirão."
+    "dica": "Passou pelo Boca Juniors antes de chegar ao Brasil. Campeão de Brasileirão na carreira."
   },
   {
     "id": 75,
@@ -2243,7 +2243,7 @@
     "pista2": "Zagueiro sólido, bom na marcação e no passe longo.",
     "pista3": "Natural de Porto Alegre, no Rio Grande do Sul, foi revelado nas categorias do Internacional.",
     "pista4": "Antes do clube atual, jogou no Shakhtar Donetsk, na Ucrania.",
-    "dica": "Zagueiro sólido, bom na marcação e no passe longo. Campeão de Gaúcho."
+    "dica": "Passou pelo Shakhtar Donetsk antes de chegar ao Brasil. Campeão de Gaúcho na carreira."
   },
   {
     "id": 76,
@@ -2304,7 +2304,7 @@
     "pista2": "Lateral-esquerdo raçudo e experiente, de muita entrega.",
     "pista3": "Natural do Rio de Janeiro, construiu sua carreira no Flamengo antes de ir à Europa.",
     "pista4": "Antes do clube atual, jogou no Rennes, na Ligue 1.",
-    "dica": "Lateral-esquerdo raçudo e experiente, de muita entrega. Campeão de Brasileirão e outros títulos marcantes."
+    "dica": "Passou pelo Rennes antes de chegar ao Brasil. Campeão de Copa do Brasil na carreira."
   },
   {
     "id": 78,
@@ -2331,7 +2331,7 @@
     "pista2": "Lateral-esquerdo ofensivo, veloz e de bom cruzamento.",
     "pista3": "Natural de São Paulo, cresceu nas categorias de base do Corinthians antes de ir ao exterior.",
     "pista4": "Antes do clube atual, jogou no Atletico-MG.",
-    "dica": "Lateral-esquerdo ofensivo, veloz e de bom cruzamento. Campeão de Libertadores e outros títulos marcantes."
+    "dica": "Campeão de Brasileirão na carreira."
   },
   {
     "id": 79,
@@ -2358,7 +2358,7 @@
     "pista2": "Atacante explosivo, veloz e com gol nos dois pés.",
     "pista3": "Natural de Belo Horizonte, em Minas Gerais, cresceu nas categorias de base do próprio Atlético-MG.",
     "pista4": "Antes do clube atual, foi revelado e conquistou a Libertadores pelo Atlético-MG.",
-    "dica": "Atacante explosivo, veloz e com gol nos dois pés. Campeão de Libertadores e outros títulos marcantes."
+    "dica": "Campeão de Libertadores na carreira."
   },
   {
     "id": 80,
@@ -2410,7 +2410,7 @@
     "pista2": "Ponta veloz e driblador — vai e volta sem parar.",
     "pista3": "Natural de Foz do Iguacu, no Parana, foi revelado pelo Gremio antes de se destacar no futebol europeu.",
     "pista4": "Antes do clube atual, jogou no FC Porto, na Liga Portugal.",
-    "dica": "Ponta veloz e driblador — vai e volta sem parar. Campeão de Copa do Brasil e outros títulos marcantes."
+    "dica": "Passou pelo FC Porto antes de chegar ao Brasil. Campeão de Copa do Brasil na carreira."
   },
   {
     "id": 82,
@@ -2435,7 +2435,7 @@
     "pista2": "Lateral-esquerdo experiente, com bom cruzamento e raça.",
     "pista3": "Natural de Palmeira dos Índios, em Alagoas, cresceu no futebol alagoano antes de se firmar.",
     "pista4": "Antes do clube atual, jogou no São Paulo.",
-    "dica": "Lateral-esquerdo experiente, com bom cruzamento e raça. Campeão de Copa do Brasil."
+    "dica": "Campeão de Copa do Brasil na carreira."
   },
   {
     "id": 83,
@@ -2507,7 +2507,7 @@
     "pista2": "Lateral-direito jovem, veloz e ofensivo — joia do Santos.",
     "pista3": "Natural de Santos, no litoral de São Paulo, cresceu na base do clube que revelou Pelé e Neymar.",
     "pista4": "Foi revelado nas categorias de base do próprio Santos.",
-    "dica": "Lateral-direito jovem, veloz e ofensivo — joia do seu clube."
+    "dica": "Lateral-direito revelado no futebol brasileiro com passagem por diferentes clubes."
   },
   {
     "id": 87,
@@ -2603,7 +2603,7 @@
     "pista2": "Meia criativo com visão de jogo e gol de fora da área.",
     "pista3": "Natural de Florianópolis, em Santa Catarina, cresceu no futebol catarinense antes do Avaí.",
     "pista4": "Antes do clube atual, jogou no Fluminense.",
-    "dica": "Meia criativo com visão de jogo e gol de fora da área. Campeão de Libertadores."
+    "dica": "Campeão de Libertadores na carreira."
   },
   {
     "id": 90,
@@ -2664,7 +2664,7 @@
     "pista2": "Volante de alta intensidade — marca, corre e distribui.",
     "pista3": "Natural de Campo Grande, no Mato Grosso do Sul, cresceu no futebol sul-mato-grossense.",
     "pista4": "Antes do clube atual, jogou no Botafogo.",
-    "dica": "Volante de alta intensidade — marca, corre e distribui. Campeão de Libertadores e outros títulos marcantes."
+    "dica": "Campeão de Libertadores na carreira."
   },
   {
     "id": 92,
@@ -2723,7 +2723,7 @@
     "pista2": "Atacante veloz, raçudo e de gols decisivos no momento certo.",
     "pista3": "Natural de Belo Horizonte, em Minas Gerais, foi revelado pelo futebol mineiro antes do Palmeiras.",
     "pista4": "Antes do clube atual, jogou no Palmeiras.",
-    "dica": "Atacante veloz, raçudo e de gols decisivos no momento certo. Campeão de Libertadores."
+    "dica": "Campeão de Libertadores na carreira."
   },
   {
     "id": 94,
@@ -2746,7 +2746,7 @@
     "pista2": "Meia criativo do Nordeste, com drible e visão de jogo.",
     "pista3": "Natural de Fortaleza, no Ceará, cresceu nas categorias de base do próprio Fortaleza.",
     "pista4": "Foi revelado nas categorias de base do próprio clube onde joga hoje.",
-    "dica": "Meia criativo do Nordeste, com drible e visão de jogo."
+    "dica": "Meia revelado no futebol brasileiro com passagem por diferentes clubes."
   },
   {
     "id": 95,
@@ -2844,7 +2844,7 @@
       "Flamengo",
       "Bahia"
     ],
-    "dica": "Meia experiente, de técnica apurada e liderança de campeão. Campeão de Libertadores e outros títulos marcantes."
+    "dica": "Revelado pelo Cruzeiro. Campeão de Libertadores na carreira."
   },
   {
     "id": 98,
@@ -2875,7 +2875,7 @@
       "Vitória",
       "Bahia"
     ],
-    "dica": "Meia-atacante baiano de raiz, decisivo e ídolo do Tricolor."
+    "dica": "Revelado pelo Sampaio Corrêa."
   },
   {
     "id": 99,
@@ -2929,7 +2929,7 @@
     "pista2": "Meia raçudo e técnico, talento do futebol paranaense.",
     "pista3": "Natural do Paraná, cresceu nas categorias de base do próprio Athletico-PR desde jovem.",
     "pista4": "Foi revelado nas categorias de base do próprio clube onde joga hoje.",
-    "dica": "Meia raçudo e técnico, talento do futebol paranaense."
+    "dica": "Meia revelado no futebol brasileiro com passagem por diferentes clubes."
   },
   {
     "id": 102,
@@ -2977,7 +2977,7 @@
     "pista2": "Volante de visão ampla e regularidade — peça do Bragantino.",
     "pista3": "Natural do interior de São Paulo, cresceu nas categorias de base do próprio Bragantino.",
     "pista4": "Foi revelado nas categorias de base do próprio clube onde joga hoje.",
-    "dica": "Volante de visão ampla e regularidade — peça do Bragantino. Campeão de Copa Sul-Americana."
+    "dica": "Campeão de Copa Sul-Americana na carreira."
   },
   {
     "id": 104,
@@ -3002,7 +3002,7 @@
     "pista2": "Lateral-esquerdo técnico, com boa participação ofensiva.",
     "pista3": "Natural do interior de São Paulo, teve passagem pela Europa antes de retornar ao Brasil.",
     "pista4": "Antes do clube atual, jogou no Red Bull Bragantino.",
-    "dica": "Lateral-esquerdo técnico, com boa participação ofensiva. Campeão de Copa Sul-Americana."
+    "dica": "Passou pelo RB Leipzig antes de chegar ao Brasil. Campeão de Copa Sul-Americana na carreira."
   },
   {
     "id": 105,
@@ -4696,7 +4696,7 @@
       "Real Madrid",
       "Fenerbahçe"
     ],
-    "dica": "Lateral-esquerdo com chute de canhão e velocidade de ponta. 4 Copas do Mundo pela Seleção."
+    "dica": "Passou pelo Inter Milan antes de chegar ao Brasil. 4 Copas do Mundo pela Seleção Brasileira."
   },
   {
     "id": 157,
@@ -4790,7 +4790,7 @@
       "Vasco da Gama",
       "Deportivo La Coruña"
     ],
-    "dica": "Atacante técnico e artilheiro — parceiro eterno de Romário. 3 Copas do Mundo pela Seleção."
+    "dica": "Passou pelo Deportivo La Coruña antes de chegar ao Brasil. 3 Copas do Mundo pela Seleção Brasileira."
   },
   {
     "id": 159,
@@ -4838,7 +4838,7 @@
       "Barcelona",
       "AC Milan"
     ],
-    "dica": "Meia-atacante de dois pés perfeitos e Bola de Ouro. 3 Copas do Mundo pela Seleção."
+    "dica": "Passou pelo Deportivo La Coruña antes de chegar ao Brasil. 3 Copas do Mundo pela Seleção Brasileira."
   },
   {
     "id": 160,
@@ -4882,7 +4882,7 @@
       "Santos",
       "Esporte Clube do Recife"
     ],
-    "dica": "O Anjo das Pernas Tortas — dribla impossível. 3 Copas do Mundo pela Seleção."
+    "dica": "3 Copas do Mundo pela Seleção Brasileira. Campeão de Copa do Mundo na carreira."
   },
   {
     "id": 161,
@@ -5233,9 +5233,10 @@
     "clubesCarreira": [
       "São Paulo FC",
       "Real Madrid",
-      "Manchester United"
+      "Manchester United",
+      "Inter Miami"
     ],
-    "dica": "Volante que brilhou no Real Madrid antes de retornar ao Brasil. 4 Copas do Mundo pela Seleção."
+    "dica": "Tricampeão da Champions League pelo Real Madrid. Um dos maiores volantes da história, com 4 Copas do Mundo pela Seleção."
   },
   {
     "id": 169,
@@ -5364,7 +5365,7 @@
     "pista2": "Centroavante jovem com instinto de gol e boa movimentação na área.",
     "pista3": "Natural do Rio de Janeiro, cresceu nas categorias de base do próprio Botafogo.",
     "pista4": "Foi revelado pelas categorias de base do próprio clube onde joga hoje.",
-    "dica": "Centroavante jovem com instinto de gol e boa movimentação na área. Campeão de Libertadores."
+    "dica": "Campeão de Libertadores na carreira."
   },
   {
     "id": 173,
@@ -5391,7 +5392,7 @@
     "pista2": "Goleiro de reflexos rápidos, liderança e boa saída de bola.",
     "pista3": "Natural de Fortaleza, no Ceará — revelado no futebol nordestino.",
     "pista4": "Antes do clube atual, jogou no Ceará, no Brasileirão.",
-    "dica": "Goleiro de reflexos rápidos, liderança e boa saída de bola. Campeão de Libertadores e outros títulos marcantes."
+    "dica": "Campeão de Brasileirão na carreira."
   },
   {
     "id": 174,
@@ -5441,7 +5442,7 @@
     "pista2": "Lateral-esquerdo ofensivo e veloz, com qualidade no cruzamento e na subida.",
     "pista3": "Natural de Curitiba, no Paraná — revelado pelo Athletico-PR antes da Europa.",
     "pista4": "Antes do clube atual, jogou no Nottingham Forest, na Premier League.",
-    "dica": "Lateral-esquerdo ofensivo e veloz, com qualidade no cruzamento e na subida."
+    "dica": "Passou pelo Nottingham Forest antes de chegar ao Brasil."
   },
   {
     "id": 177,
@@ -5464,7 +5465,7 @@
     "pista2": "Ponta veloz e driblador, com participações decisivas pelo Tricolor de Aço.",
     "pista3": "Natural do Maranhão, construiu carreira pelo futebol nordestino antes do Bahia.",
     "pista4": "Antes do clube atual, passou pelo Athletico-PR, no Brasileirão.",
-    "dica": "Ponta veloz e driblador, com participações decisivas pelo Tricolor de Aço."
+    "dica": "Ponta-esquerda revelado no futebol brasileiro com passagem por diferentes clubes."
   },
   {
     "id": 178,
@@ -5487,7 +5488,7 @@
     "pista2": "Centroavante físico e experiente, com passagens na La Liga e Premier League.",
     "pista3": "Natural de Serra Talhada, em Pernambuco — nordestino que rodou a Europa.",
     "pista4": "Antes do clube atual, jogou no Wolverhampton, na Premier League.",
-    "dica": "Centroavante físico e experiente, com passagens na La Liga e Premier League."
+    "dica": "Passou pelo Wolverhampton antes de chegar ao Brasil."
   },
   {
     "id": 179,
@@ -5518,7 +5519,7 @@
       "Ceará",
       "Fortaleza"
     ],
-    "dica": "Atacante explosivo, veloz e intenso, capaz de mudar o jogo em segundos."
+    "dica": "Revelado pelo Ferroviário."
   },
   {
     "id": 180,
@@ -6191,7 +6192,7 @@
     ],
     "lenda": false,
     "id": 199,
-    "dica": "Lateral veterano com mais de 300 jogos pelo Tricolor. Colecionou títulos ao longo da carreira."
+    "dica": "Revelado pelo Paulista de Jundiaí. Campeão de Copa Libertadores 2023 na carreira."
   },
   {
     "nome": "Nonato",
@@ -6225,7 +6226,7 @@
     ],
     "lenda": false,
     "id": 200,
-    "dica": "Meia box-to-box que aparece na hora certa para decidir."
+    "dica": "Revelado pelo São Caetano."
   },
   {
     "nome": "Martinelli",
@@ -6258,7 +6259,7 @@
     ],
     "lenda": false,
     "id": 201,
-    "dica": "Cria da base que domina o meio com maturidade acima da idade."
+    "dica": "Campeão de Copa Libertadores 2023 na carreira."
   },
   {
     "nome": "Hércules",
@@ -6288,7 +6289,7 @@
     ],
     "lenda": false,
     "id": 202,
-    "dica": "Meia que chega pela intermediária com força e finaliza com categoria."
+    "dica": "Revelado pelo Fortaleza."
   },
   {
     "nome": "Lucho Acosta",
@@ -6425,7 +6426,7 @@
     ],
     "lenda": false,
     "id": 206,
-    "dica": "Zagueiro combativo, especialista em bola parada e antecipação. Campeão de Brasileirão 2021 e outros títulos marcantes."
+    "dica": "Revelado pelo Botafogo. Campeão de Brasileirão 2021 na carreira."
   },
   {
     "nome": "Freytes",
@@ -6594,7 +6595,7 @@
     ],
     "lenda": false,
     "id": 211,
-    "dica": "Lateral ofensivo que avança pela esquerda combinando marcação e criação de jogo. Campeão de Copa do Brasil 2022."
+    "dica": "Revelado pelo Corinthians. Campeão de Copa do Brasil 2022 na carreira."
   },
   {
     "nome": "Cuiabano",
@@ -6702,7 +6703,7 @@
     ],
     "lenda": false,
     "id": 214,
-    "dica": "Volante raçudo de briga e experiência, joga no limite sempre. Colecionou títulos ao longo da carreira."
+    "dica": "Revelado pelo Palmeiras. Campeão de Brasileirão 2016 na carreira."
   },
   {
     "nome": "Johan Rojas",
@@ -6944,7 +6945,7 @@
       "Sport Club Internacional"
     ],
     "id": 221,
-    "dica": "Lateral ofensivo e veloz, forte na subida pela esquerda e nos cruzamentos rasteiros."
+    "dica": "Revelado pelo Esporte Clube Bahia. Carreira com passagens por Ceará Sporting Club."
   },
   {
     "nome": "Villagra",
@@ -7043,7 +7044,7 @@
       "Sport Club Internacional"
     ],
     "id": 224,
-    "dica": "Meia técnico e dinâmico, bom no passe curto e na construção de jogadas pelo centro. Campeão de Campeonato Gaúcho 2025."
+    "dica": "Revelado pelo Sport Club Internacional. Campeão de Campeonato Gaúcho 2025 na carreira."
   },
   {
     "nome": "Alerrandro",
@@ -7163,7 +7164,7 @@
       "Grêmio"
     ],
     "id": 227,
-    "dica": "Goleiro seguro e experiente, ídolo do Verdão e líder nato dentro e fora das quatro linhas."
+    "dica": "Revelado pelo Sport Club Corinthians Paulista. 1 Copa do Mundo pela Seleção Brasileira."
   },
   {
     "nome": "Balbuena",
@@ -7243,7 +7244,7 @@
       "Grêmio"
     ],
     "id": 229,
-    "dica": "Zagueiro versátil que também pode jogar como volante, combativo e inteligente no posicionamento."
+    "dica": "Revelado pelo Santos FC. Campeão de Campeonato Brasileiro Série B 2022 na carreira."
   },
   {
     "nome": "Villasanti",
@@ -7365,7 +7366,7 @@
       "Grêmio"
     ],
     "id": 232,
-    "dica": "Lateral-esquerdo ofensivo que também atua como ponta, veloz e habilidoso na subida."
+    "dica": "Revelado pelo Tombense Futebol Clube. Campeão de Campeonato Catarinense 2019 na carreira."
   },
   {
     "nome": "Braithwaite",
@@ -7674,7 +7675,7 @@
     ],
     "lenda": false,
     "id": 241,
-    "dica": "Meia box-to-box com visão de jogo e raça defensiva. Colecionou títulos ao longo da carreira."
+    "dica": "Revelado pelo São Paulo. Campeão de Campeonato Paulista 2021 na carreira."
   },
   {
     "nome": "Léo Duarte",
@@ -7743,7 +7744,7 @@
     ],
     "lenda": false,
     "id": 243,
-    "dica": "Volante jovem e moderno, articulador de grande futuro. Campeão de Copa Libertadores 2023 e outros títulos marcantes."
+    "dica": "Passou pelo Al-Ahli antes de chegar ao Brasil. Campeão de Copa Libertadores 2023 na carreira."
   },
   {
     "nome": "Ruan Tressoldi",
@@ -7857,7 +7858,7 @@
     ],
     "lenda": false,
     "id": 246,
-    "dica": "Zagueiro mineiro sólido, Bola de Prata 2025. Colecionou títulos ao longo da carreira."
+    "dica": "Campeão de Copa Libertadores 2022 na carreira."
   },
   {
     "nome": "Lucas Silva",
@@ -7931,7 +7932,7 @@
     ],
     "lenda": false,
     "id": 248,
-    "dica": "Ponta elétrico, campeão da MLS 2024 pelo LA Galaxy. Campeão de MLS Cup 2024."
+    "dica": "Passou pelo LA Galaxy antes de chegar ao Brasil. Campeão de MLS Cup 2024 na carreira."
   },
   {
     "nome": "Luis Sinisterra",
@@ -8097,7 +8098,7 @@
     ],
     "lenda": false,
     "id": 253,
-    "dica": "Sólido na marcação e elegante na saída de bola desde o setor defensivo."
+    "dica": "Revelado pelo RB Bragantino."
   },
   {
     "nome": "Léo Pereira",
@@ -8131,7 +8132,7 @@
     ],
     "lenda": false,
     "id": 254,
-    "dica": "Marcador implacável que não faz prisioneiros nos duelos aéreos e disputas físicas."
+    "dica": "Revelado pelo Athletico Paranaense. Campeão de Copa Libertadores 2022 na carreira."
   },
   {
     "nome": "Emerson Royal",
@@ -8299,7 +8300,7 @@
     ],
     "lenda": false,
     "id": 259,
-    "dica": "Jovem com raça, técnica e inteligência posicional acima da média para a idade."
+    "dica": "Volante formado nas categorias de base do Flamengo."
   },
   {
     "nome": "Jorge Carrascal",
@@ -8423,7 +8424,7 @@
     ],
     "lenda": false,
     "id": 263,
-    "dica": "Centroavante com posicionamento preciso e frieza clínica na hora de finalizar."
+    "dica": "Centroavante formado nas categorias de base do Flamengo."
   },
   {
     "nome": "John Victor",
@@ -8456,7 +8457,7 @@
     ],
     "lenda": false,
     "id": 264,
-    "dica": "Goleiro seguro com excelente leitura de jogo e reflexos ágeis sob pressão máxima."
+    "dica": "Revelado pelo Fortaleza. Campeão de Copa Libertadores 2024 na carreira."
   },
   {
     "nome": "Alexander Barboza",
@@ -8656,7 +8657,7 @@
     ],
     "lenda": false,
     "id": 271,
-    "dica": "Lateral veloz e ofensivo com cruzamentos precisos. Campeão de Libertadores e outros títulos marcantes."
+    "dica": "Revelado pelo Flamengo. Campeão de Brasileirão na carreira."
   },
   {
     "nome": "Matheus Bidu",
@@ -8686,7 +8687,7 @@
     ],
     "lenda": false,
     "id": 272,
-    "dica": "Lateral esquerdo veloz que aparece muito no ataque."
+    "dica": "Revelado pelo Avaí."
   },
   {
     "nome": "Raniele",
@@ -8716,7 +8717,7 @@
     ],
     "lenda": false,
     "id": 273,
-    "dica": "Volante de marcação insaciável que nunca para de correr."
+    "dica": "Revelado pelo Cuiabá."
   },
   {
     "nome": "Gabriel Paulista",
@@ -8950,7 +8951,7 @@
     ],
     "lenda": false,
     "id": 280,
-    "dica": "Ponta esquerda com velocidade e drible que confunde defensores."
+    "dica": "Ponta-esquerda formado nas categorias de base do Corinthians."
   },
   {
     "nome": "Vitinho",
@@ -9085,7 +9086,7 @@
     ],
     "lenda": false,
     "id": 284,
-    "dica": "Lateral moderno que aparece constantemente no ataque com qualidade. Campeão de Copa do Brasil."
+    "dica": "Revelado pelo Ituano. Campeão de Copa do Brasil na carreira."
   },
   {
     "nome": "Pablo Maia",
@@ -9116,7 +9117,7 @@
     ],
     "lenda": false,
     "id": 285,
-    "dica": "Volante técnico com visão de jogo avançada para a sua idade. Campeão de Copa do Brasil."
+    "dica": "Campeão de Copa do Brasil na carreira."
   },
   {
     "nome": "Giuliano Galoppo",
@@ -9179,7 +9180,7 @@
     ],
     "lenda": false,
     "id": 287,
-    "dica": "Meia box-to-box que chega com potência e distribui bem a bola. Campeão de Copa do Brasil."
+    "dica": "Revelado pelo São Paulo. Campeão de Copa do Brasil na carreira."
   },
   {
     "nome": "Michel Araújo",
@@ -9274,7 +9275,7 @@
     ],
     "lenda": false,
     "id": 290,
-    "dica": "Reflexos rápidos e liderança incontest ável entre os postes do Nordeste."
+    "dica": "Campeão de Copa do Nordeste 2022 na carreira."
   },
   {
     "nome": "Pierre",
@@ -9307,7 +9308,7 @@
     ],
     "lenda": false,
     "id": 291,
-    "dica": "Guerreiro incansável, pilar do meio-campo leonino por mais de uma década."
+    "dica": "Campeão de Série B 2018 na carreira."
   },
   {
     "nome": "Lucas Crispim",
@@ -9327,8 +9328,8 @@
     "curiosidade": "Maestro criativo do Fortaleza, Lucas Crispim é especialista em cobranças de falta e lançamentos precisos",
     "pista2": "Pé esquerdo afiado, cobranças de falta e passes que abrem qualquer defesa",
     "pista3": "Seu país exporta mais jogadores que qualquer outro no mundo, pátria do jogo bonito e da criatividade",
-    "pista4": "",
-    "clubeAnterior": "",
+    "pista4": null,
+    "clubeAnterior": null,
     "origemAnterior": "brasil",
     "ligaAnterior": "",
     "estadoNatal": "",
@@ -9339,7 +9340,7 @@
     ],
     "lenda": false,
     "id": 292,
-    "dica": "Pé esquerdo afiado, cobranças de falta e passes que abrem qualquer defesa."
+    "dica": "Campeão de Copa do Nordeste 2022 na carreira."
   },
   {
     "nome": "Gabriel Fuentes",
@@ -9432,7 +9433,7 @@
     ],
     "lenda": false,
     "id": 295,
-    "dica": "Goleiro moderno, confiante com os pés e eficiente nas defesas difíceis. Campeão de Campeonato Baiano 2026."
+    "dica": "Revelado pelo Atlético Goianiense. Campeão de Campeonato Baiano 2026 na carreira."
   },
   {
     "nome": "Gabriel Xavier",
@@ -9463,7 +9464,7 @@
     ],
     "lenda": false,
     "id": 296,
-    "dica": "Zagueiro moderno, forte no jogo aéreo e seguro com a bola no pé. Campeão de Campeonato Baiano 2026."
+    "dica": "Campeão de Campeonato Baiano 2026 na carreira."
   },
   {
     "nome": "Kanu",
@@ -9496,7 +9497,7 @@
     ],
     "lenda": false,
     "id": 297,
-    "dica": "Capitão firme, liderança inata e domínio total nas disputas pelo alto."
+    "dica": "Revelado pelo Botafogo. Campeão de Série B 2021 na carreira."
   },
   {
     "nome": "Nicolás Acevedo",
@@ -9560,7 +9561,7 @@
     ],
     "lenda": false,
     "id": 299,
-    "dica": "Goleiro jovem com reflexos impressionantes e frieza acima da sua idade. Campeão de Campeonato Paranaense 2024."
+    "dica": "Campeão de Campeonato Paranaense 2024 na carreira."
   },
   {
     "nome": "Tobias Figueiredo",
@@ -9610,8 +9611,8 @@
     "curiosidade": "Zagueiro colombiano de 25 anos que chegou ao Athletico e se firmou como revelação defensiva no Brasileirão 2026",
     "pista2": "Zagueiro jovem com marcação precisa e saída de bola elegante para a sua idade",
     "pista3": "País andino que revelou jogadores como Valderrama e hoje forma defensores técnicos de alto nível",
-    "pista4": "",
-    "clubeAnterior": "",
+    "pista4": null,
+    "clubeAnterior": null,
     "origemAnterior": "exterior",
     "ligaAnterior": "Primera A",
     "estadoNatal": "",
@@ -9673,8 +9674,8 @@
     "curiosidade": "Artilheiro do Athletico no Brasileirão 2026 com 12 gols, Kevin Viveros é o centroavante revelação do Furacão",
     "pista2": "Centroavante letal na área, rápido e certeiro, maior artilheiro do time na temporada",
     "pista3": "Vem do país das montanhas andinas e do café premiado, que nas últimas décadas produz atacantes de elite mundial",
-    "pista4": "",
-    "clubeAnterior": "",
+    "pista4": null,
+    "clubeAnterior": null,
     "origemAnterior": "exterior",
     "ligaAnterior": "Primera A",
     "estadoNatal": "",
@@ -9701,9 +9702,9 @@
     "titulos": [],
     "curiosidade": "Volante veterano com mais de uma década no futebol brasileiro de elite, referência de raça e experiência no Furacão",
     "pista2": "Volante experiente, forte no duelo e incansável em cobrir o campo inteiro",
-    "pista3": "Terra onde até o volante precisa ter qualidade técnica para sobreviver num futebol que valoriza o jogo bonito",
-    "pista4": "",
-    "clubeAnterior": "",
+    "pista3": null,
+    "pista4": null,
+    "clubeAnterior": "São Paulo FC",
     "origemAnterior": "brasil",
     "ligaAnterior": "Brasileirão",
     "estadoNatal": "São Paulo",
@@ -9715,7 +9716,7 @@
     ],
     "lenda": false,
     "id": 304,
-    "dica": "Volante experiente, forte no duelo e incansável em cobrir o campo inteiro."
+    "dica": "Revelado pelo São Paulo FC."
   },
   {
     "nome": "Stiven Mendoza",
@@ -9777,7 +9778,7 @@
     ],
     "lenda": false,
     "id": 306,
-    "dica": "Goleiro moderno, eficiente com os pés e seguro nas defesas mais difíceis."
+    "dica": "Goleiro formado nas categorias de base do Red Bull Bragantino."
   },
   {
     "nome": "Pedro Henrique",
@@ -9794,8 +9795,8 @@
     "curiosidade": "Zagueiro consistente do Bragantino, Pedro Henrique é um dos pilares da defesa mais organizada do clube paulista",
     "pista2": "Zagueiro posicional, forte na marcação individual e seguro no jogo aéreo",
     "pista3": "País que tem zagueiros tão habilidosos quanto atacantes, onde a defesa também precisa saber jogar com classe",
-    "pista4": "",
-    "clubeAnterior": "",
+    "pista4": null,
+    "clubeAnterior": null,
     "origemAnterior": "brasil",
     "ligaAnterior": "Brasileirão",
     "estadoNatal": "",
@@ -9806,7 +9807,7 @@
     ],
     "lenda": false,
     "id": 307,
-    "dica": "Zagueiro posicional, forte na marcação individual e seguro no jogo aéreo."
+    "dica": "Zagueiro revelado no futebol brasileiro com passagem por diferentes clubes."
   },
   {
     "nome": "Juninho Capixaba",
@@ -9823,8 +9824,8 @@
     "curiosidade": "Lateral-esquerdo capixaba que passou por grandes clubes do futebol brasileiro antes de se firmar no Bragantino",
     "pista2": "Lateral ofensivo com qualidade de cruzamento e energia para percorrer a lateral inteira",
     "pista3": "Natural de um estado litorâneo do Sudeste brasileiro, terra do povo capixaba entre o Rio de Janeiro e a Bahia",
-    "pista4": "",
-    "clubeAnterior": "",
+    "pista4": null,
+    "clubeAnterior": null,
     "origemAnterior": "brasil",
     "ligaAnterior": "Brasileirão",
     "estadoNatal": "Espírito Santo",
@@ -9835,7 +9836,7 @@
     ],
     "lenda": false,
     "id": 308,
-    "dica": "Lateral ofensivo com qualidade de cruzamento e energia para percorrer a lateral inteira."
+    "dica": "Lateral-esquerdo revelado no futebol brasileiro com passagem por diferentes clubes."
   },
   {
     "nome": "Ignacio Sosa",
@@ -9882,8 +9883,8 @@
     "curiosidade": "Artilheiro do Bragantino no Brasileirão 2026 com 5 gols, Isidro Pitta é o centroavante paraguaio que lidera o ataque massino",
     "pista2": "Centroavante paraguaio raçudo com olfato de gol e bom jogo de cabeça",
     "pista3": "Seu país sem litoral fica no coração da América do Sul, terra guarani que produz guerreiros do futebol",
-    "pista4": "",
-    "clubeAnterior": "",
+    "pista4": null,
+    "clubeAnterior": null,
     "origemAnterior": "exterior",
     "ligaAnterior": "División Profesional",
     "estadoNatal": "",
@@ -9911,8 +9912,8 @@
     "curiosidade": "Jovem ponta colombiano de 24 anos que chegou ao Bragantino para ser o desequilíbrio ofensivo pelas bandas do campo",
     "pista2": "Ponta explosivo com drible veloz e capacidade de criar chances do nada",
     "pista3": "País andino de cafezais e vallenatos, que forma extremas que driblam e encantam desde a mais tenra idade",
-    "pista4": "",
-    "clubeAnterior": "",
+    "pista4": null,
+    "clubeAnterior": null,
     "origemAnterior": "exterior",
     "ligaAnterior": "Primera A",
     "estadoNatal": "",
@@ -11311,7 +11312,7 @@
     ],
     "lenda": false,
     "id": 353,
-    "dica": "Volante guerreiro, potente e com pressão alta incansável em campo."
+    "dica": "Passou pelo TSG Hoffenheim antes de chegar ao Brasil."
   },
   {
     "nome": "Manuel Neuer",
@@ -12596,7 +12597,7 @@
     ],
     "lenda": false,
     "id": 391,
-    "dica": "Goleiro experiente e seguro, mais de 300 jogos pelo Internacional; referência de vestiário no Verdão."
+    "dica": "Revelado pelo Internacional. Campeão de Campeonato Gaúcho na carreira."
   },
   {
     "nome": "Gabriel Brazão",
@@ -12632,7 +12633,7 @@
     ],
     "lenda": false,
     "id": 392,
-    "dica": "Goleiro alto de 1,92m com saída de bola refinada; virou dono do gol do Peixe após longa carreira europeia."
+    "dica": "Passou pelo Inter de Milão antes de chegar ao Brasil."
   },
   {
     "nome": "Lucas Veríssimo",
@@ -12773,7 +12774,7 @@
     ],
     "lenda": false,
     "id": 396,
-    "dica": "Lateral direito participativo, 24 assistências em 217 jogos pelo São Paulo; voltou ao clube da formação por amor."
+    "dica": "Campeão de Copa do Brasil 2023 na carreira."
   },
   {
     "nome": "João Schmidt",
@@ -12942,7 +12943,7 @@
     ],
     "lenda": false,
     "id": 401,
-    "dica": "Lateral direito experiente e raçudo, dono de galeria de títulos no maior rival antes de virar peça no Peixe."
+    "dica": "Revelado pelo Cruzeiro. Campeão de Copa Libertadores 2020 na carreira."
   },
   {
     "nome": "Ederson",
@@ -15136,7 +15137,7 @@
     ],
     "lenda": false,
     "id": 467,
-    "dica": "Centroavante brasileiro veloz, ótimo finalizador no Porto. Campeão de Liga Portugal 2021-22 e outros títulos marcantes."
+    "dica": "Revelado pelo Fluminense. Carreira com passagens por Porto."
   },
   {
     "nome": "Gonçalo Inácio",
@@ -15464,7 +15465,7 @@
     ],
     "lenda": false,
     "id": 477,
-    "dica": "Goleiro brasileiro ágil, com boa saída de bola e reflexos rápidos."
+    "dica": "Revelado pelo São Paulo. Carreira com passagens por Lyon."
   },
   {
     "nome": "Nicolas Tagliafico",
