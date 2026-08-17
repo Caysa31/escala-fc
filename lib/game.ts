@@ -261,16 +261,14 @@ export function getPistasTexto(jogador: Jogador, mode: GameMode = 'bola'): Recor
   // Pista 4 — Clube anterior (trajetória)
   let pista4: string
   if (!jogador.clubeAnterior || jogador.origemAnterior === 'base') {
-    // Revelado nas categorias de base do próprio clube
-    pista4 = 'Cresceu ali, aprendeu ali, se formou ali. Foi revelado nas categorias de base do próprio clube onde joga hoje — e nunca precisou ir longe para encontrar seu caminho.'
+    pista4 = 'Produto da própria casa — formado e revelado no clube onde joga até hoje.'
   } else if (jogador.origemAnterior === 'brasil') {
-    pista4 = `Antes de chegar ao clube atual, construiu seu nome no ${jogador.clubeAnterior}. Foi de lá que veio o convite que mudou tudo.`
+    pista4 = `Antes do clube atual, passou pelo ${jogador.clubeAnterior}.`
   } else {
-    // exterior — distingue se o clube atual é no Brasil ou fora
     if (jogador.liga === 'Brasileirão') {
-      pista4 = `Rodou o mundo antes de voltar para casa. Retornou ao Brasil vindo do ${jogador.clubeAnterior}, na ${jogador.ligaAnterior}.`
+      pista4 = `Veio do ${jogador.clubeAnterior} (${jogador.ligaAnterior}) para o futebol brasileiro.`
     } else {
-      pista4 = `Cruzou fronteiras em busca de um desafio maior. Chegou ao clube atual vindo do ${jogador.clubeAnterior}, na ${jogador.ligaAnterior}.`
+      pista4 = `Chegou ao clube atual vindo do ${jogador.clubeAnterior}, na ${jogador.ligaAnterior}.`
     }
   }
 
