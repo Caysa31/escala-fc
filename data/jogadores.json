@@ -1773,15 +1773,15 @@
         "pista2":  "Ponta esquerdista veloz, com drible e participação em gols.",
         "pista3":  "Natural de Maracanaú, no Ceara, foi revelado pelo futebol cearense antes de se destacar no Gremio.",
         "pista4":  "Antes do clube atual, jogou no Benfica, na Liga Portugal.",
-        "estadoNatal":  "Rio Grande do Sul",
+        "estadoNatal":  "Ceará",
         "clubeBase":  "Grêmio",
-        "copasDoMundo":  1,
+        "copasDoMundo":  0,
         "clubesCarreira":  [
                                "Grêmio",
                                "Benfica",
                                "Flamengo"
                            ],
-        "dica":  "Campeão de Copa América e Copa do Brasil e com uma Copa do Mundo no currículo."
+        "dica":  "Herói da Copa América 2019 — três gols, incluindo o da final contra o Peru no Maracanã."
     },
     {
         "id":  58,
@@ -5288,14 +5288,14 @@
         "pista4":  "Antes do clube atual, jogou no Manchester United, na Premier League.",
         "estadoNatal":  "São Paulo",
         "clubeBase":  "São Paulo FC",
-        "copasDoMundo":  4,
+        "copasDoMundo":  3,
         "clubesCarreira":  [
                                "São Paulo FC",
                                "Real Madrid",
                                "Manchester United",
                                "Inter Miami"
                            ],
-        "dica":  "4 Mundiais e conquistas expressivas: Champions League e La Liga. Um dos melhores de sua geração."
+        "dica":  "3 Mundiais e conquistas expressivas: Champions League e La Liga. Um dos melhores volantes da história."
     },
     {
         "id":  169,
@@ -6797,7 +6797,7 @@
                            ],
         "lenda":  false,
         "id":  214,
-        "dica":  "Campeão de Brasileirão, Brasileirão e Copa Libertadores. Um dos jogadores mais vitoriosos do futebol atual."
+        "dica":  "Tricampeão do Brasileirão e Campeão da Copa Libertadores 2021. Um dos mais titulados do futebol nacional."
     },
     {
         "nome":  "Johan Rojas",
@@ -7264,7 +7264,7 @@
                                "Grêmio"
                            ],
         "id":  227,
-        "dica":  "Campeão de Copa Libertadores e Copa Libertadores e com uma Copa do Mundo no currículo."
+        "dica":  "Bicampeão da Libertadores e Medalhista de Ouro Olímpico 2016 pelo Brasil. Copa do Mundo no currículo."
     },
     {
         "nome":  "Balbuena",
@@ -7919,7 +7919,7 @@
                            ],
         "lenda":  false,
         "id":  245,
-        "dica":  "Uma Copa do Mundo e conquistas que somam: Brasileirão e Brasileirão. Currículo de elite."
+        "dica":  "Bicampeão Brasileiro com o Corinthians, Campeão da Copa América 2019 e participou da Copa do Mundo."
     },
     {
         "nome":  "Fabrício Bruno",
@@ -7958,7 +7958,7 @@
                            ],
         "lenda":  false,
         "id":  246,
-        "dica":  "Palmarès impressionante: Copa Libertadores, Copa do Brasil e Copa do Brasil entre outros. Um dos mais vitoriosos do."
+        "dica":  "Campeão da Libertadores 2022 e bicampeão da Copa do Brasil. Um dos zagueiros mais vitoriosos do país."
     },
     {
         "nome":  "Lucas Silva",
@@ -7999,7 +7999,7 @@
                            ],
         "lenda":  false,
         "id":  247,
-        "dica":  "Ergueu Brasileirão, Brasileirão e Copa do Brasil e não parou por aí. Um dos jogadores mais titulados."
+        "dica":  "Bicampeão Brasileiro e bicampeão da Copa do Brasil. Experiência e títulos de sobra no futebol nacional."
     },
     {
         "nome":  "Gabriel Pec",
@@ -10118,7 +10118,7 @@
                            ],
         "lenda":  false,
         "id":  312,
-        "dica":  "Palmarès impressionante: Champions League, Champions League e Champions League entre outros. Um dos mais vitoriosos do."
+        "dica":  "Tricampeão da Champions League e 10 vezes campeão do Bundesliga. Um dos mais vitoriosos da história."
     },
     {
         "nome":  "Antonio Rüdiger",
@@ -10155,7 +10155,7 @@
                            ],
         "lenda":  false,
         "id":  313,
-        "dica":  "3 Copas do Mundo disputadas e títulos como Champions League e Champions League. Um palmarès invejável."
+        "dica":  "3 Copas do Mundo disputadas, bicampeão da Champions League e bicampeão da La Liga com o Real Madrid."
     },
     {
         "nome":  "Thibaut Courtois",
@@ -10193,7 +10193,7 @@
                            ],
         "lenda":  false,
         "id":  314,
-        "dica":  "4 Mundiais e conquistas expressivas: Premier League e Premier League. Um dos melhores de sua geração."
+        "dica":  "Bicampeão da Premier League, Campeão da Champions League e La Liga. Um dos maiores goleiros da história."
     },
     {
         "nome":  "Eduardo Camavinga",
@@ -10298,7 +10298,7 @@
                            ],
         "lenda":  false,
         "id":  317,
-        "dica":  "Copa do Mundo disputada e palmarès de respeito: La Liga, La Liga e La Liga."
+        "dica":  "Tricampeão da La Liga com o Real Madrid e participação na Copa do Mundo com a Espanha."
     },
     {
         "nome":  "Brahim Díaz",
@@ -10334,7 +10334,7 @@
                            ],
         "lenda":  false,
         "id":  318,
-        "dica":  "Duas Copas do Mundo e títulos como La Liga e La Liga. Um currículo de elite."
+        "dica":  "Tricampeão da La Liga com o Real Madrid. Duas Copas do Mundo disputadas com a Espanha."
     },
     {
         "nome":  "Gavi",
@@ -11015,7 +11015,7 @@
                            ],
         "lenda":  false,
         "id":  338,
-        "dica":  "Campeão de Copa do Mundo e Copa América e com uma Copa do Mundo no currículo."
+        "dica":  "Campeão da Copa do Mundo 2022 e Copa América com a Argentina. Passou pelo Ajax antes de chegar ao topo."
     },
     {
         "nome":  "Kobbie Mainoo",
@@ -11256,7 +11256,7 @@
                            ],
         "lenda":  false,
         "id":  346,
-        "dica":  "Uma Copa do Mundo disputada e títulos como Copa do Mundo. Experiência de sobra."
+        "dica":  "Campeão da Copa do Mundo 2022 e Copa América com a Argentina. Defesa de nível mundial."
     },
     {
         "nome":  "Micky van de Ven",
@@ -13153,7 +13153,7 @@
                            ],
         "lenda":  false,
         "id":  401,
-        "dica":  "Ergueu Copa Libertadores, Copa Libertadores e Campeonato Brasileiro e não parou por aí. Um dos jogadores mais titulados."
+        "dica":  "Bicampeão da Libertadores e bicampeão do Brasileirão pelo Palmeiras. Um dos laterais mais vitoriosos do país."
     },
     {
         "nome":  "Ederson",
@@ -14747,7 +14747,7 @@
                            ],
         "lenda":  false,
         "id":  450,
-        "dica":  "Ergueu Bundesliga Austríaca 2021-22 e Bundesliga Austríaca 2022-23. Sabe o que é vencer em alto nível."
+        "dica":  "Bicampeão da Bundesliga Austríaca pelo RB Salzburg. Construindo carreira sólida no futebol europeu."
     },
     {
         "nome":  "Mohamed Camara",
@@ -14781,7 +14781,7 @@
                            ],
         "lenda":  false,
         "id":  451,
-        "dica":  "Campeão de Bundesliga Austríaca 2021-22 e Bundesliga Austríaca 2022-23. Um palmarès que reflete uma carreira de alto."
+        "dica":  "Bicampeão da Bundesliga Austríaca pelo RB Salzburg. Trajetória sólida com títulos desde cedo."
     },
     {
         "nome":  "Takumi Minamino",
@@ -15784,7 +15784,7 @@
                            ],
         "lenda":  false,
         "id":  480,
-        "dica":  "Copa do Mundo pela Seleção e Copa do Mundo e FA Cup no clube. Currículo sólido."
+        "dica":  "Campeão do Mundo 2018 com a França e vencedor da FA Cup com o Arsenal. Carreira de alto nível."
     },
     {
         "id":  481,
