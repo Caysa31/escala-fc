@@ -12,7 +12,7 @@ import jogadoresBolaData from '@/data/jogadores.json'
 import jogadoresCopaData from '@/data/jogadores-copa.json'
 import lendasData from '@/data/lendas.json'
 
-const todosJogadoresBola = jogadoresBolaData as Jogador[]
+const todosJogadoresBola = [...(jogadoresBolaData as Jogador[]), ...(lendasData as Jogador[])]
 const todosJogadoresCopa = [...(jogadoresCopaData as Jogador[]), ...(lendasData as Jogador[])]
 
 import {
