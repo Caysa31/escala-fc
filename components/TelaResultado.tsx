@@ -65,7 +65,7 @@ export default function TelaResultado({
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/85 backdrop-blur-sm p-4">
-      <div className="bg-[#080D18] border border-[#1A2A40] rounded-2xl w-full max-w-sm p-5 space-y-4">
+      <div className="bg-[#080D18] border border-[#1A2A40] rounded-2xl w-full max-w-sm p-5 space-y-4 overflow-y-auto max-h-[92vh]">
 
         {/* Cabeçalho */}
         <div className="flex items-center justify-between">
@@ -152,6 +152,9 @@ export default function TelaResultado({
           </button>
         )}
 
+        {/* Feedback */}
+        <FeedbackForm jogador={jogador} />
+
         <button
           onClick={() => {
             const t = tentativas.map(x => x.status === 'acerto' ? '1' : '0').join('')
@@ -180,11 +183,6 @@ export default function TelaResultado({
             </button>
           </>
         )}
-
-        {/* Feedback */}
-        <div className="pt-1">
-          <FeedbackForm jogador={jogador} />
-        </div>
 
       </div>
     </div>
