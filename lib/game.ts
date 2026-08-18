@@ -363,7 +363,8 @@ export function calcularPontos(pistaAcerto: number): number {
 export function buscarJogadores(termo: string, mode: GameMode = 'bola'): Jogador[] {
   if (!termo || termo.length < 2) return []
   const t = normalizarNome(termo)
-  const pool = mode === 'copa' ? jogadoresCopaCompleto : jogadoresBola
+  // modo bola inclui lendas porque o slot 5 do desafio diário sorteia de poolLendasBola
+  const pool = mode === 'copa' ? jogadoresCopaCompleto : [...jogadoresBola, ...lendas]
   const resultados = pool.filter(j =>
     normalizarNome(j.nome).includes(t) ||
     (j.apelido && normalizarNome(j.apelido).includes(t))
