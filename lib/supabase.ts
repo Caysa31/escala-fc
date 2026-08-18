@@ -572,6 +572,36 @@ export function subscribeToLiga(
   return () => { void supabase!.removeChannel(channel) }
 }
 
+// ── Feedbacks ────────────────────────────────────────────────
+// Tabela necessária no Supabase:
+// CREATE TABLE feedbacks (
+//   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+//   jogador_id int, jogador_nome text, tipo text,
+//   mensagem text, usuario_apelido text,
+//   criado_em timestamptz DEFAULT now()
+// );
+
+export async function enviarFeedback(payload: {
+  jogadorId: number
+  jogadorNome: string
+  tipo: string
+  mensagem: string
+  usuarioApelido?: string
+}): Promise<boolean> {
+  if (!supabase) return false
+  try {
+    const { error } = await supabase.from('feedbacks').insert({
+      jogador_id:       payload.jogadorId,
+      jogador_nome:     payload.jogadorNome,
+      tipo:             payload.tipo,
+      mensagem:         payload.mensagem,
+      usuario_apelido:  payload.usuarioApelido ?? null,
+    })
+    if (error) { console.warn('[Supabase] enviarFeedback:', error.message); return false }
+    return true
+  } catch { return false }
+}
+
 // ── Grupos ────────────────────────────────────────────────────
 
 function gerarCodigoGrupo(nome: string): string {

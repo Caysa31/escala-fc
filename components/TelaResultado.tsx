@@ -5,6 +5,7 @@ import { Jogador, Tentativa, MULTIPLICADORES_CONTRATO } from '@/lib/types'
 import { gerarTextoCompartilhar } from '@/lib/game'
 import { Check, Copy, Share2, X, Swords } from 'lucide-react'
 import Image from 'next/image'
+import FeedbackForm from '@/components/FeedbackForm'
 
 interface TelaResultadoProps {
   jogador: Jogador
@@ -179,6 +180,12 @@ export default function TelaResultado({
             </button>
           </>
         )}
+
+        {/* Feedback */}
+        <div className="pt-1">
+          <FeedbackForm jogador={jogador} />
+        </div>
+
       </div>
     </div>
   )
